@@ -1,0 +1,139 @@
+version: 1
+
+# Jupyter Book 2 (mystmd) projectconfiguratie.
+#
+# TOC-groei: elke bouw-agent voegt ZIJN EIGEN lecture toe onder het juiste
+# `- title:` deel hieronder, op de plek die overeenkomt met PLAN.md §3.
+# De TOC bevat uitsluitend bestanden die echt bestaan — een `file:` naar een
+# ontbrekend bestand laat de build falen. De volledige beoogde volgorde staat
+# als commentaar per deel; haal het commentaarteken weg zodra het bestand er is.
+
+project:
+  id: history-asset-pricing
+  title: Geschiedenis van asset pricing
+  short_title: Asset pricing
+  description: >-
+    Een chronologische reis door de asset pricing van 1863 tot nu, met
+    afleidingen op PhD-niveau en replicaties op gratis data.
+  authors:
+    - name: Maarten Nies
+      email: maartennies@gmail.com
+      roles:
+        - Conceptualization
+        - Writing
+  keywords:
+    - asset pricing
+    - financiële economie
+    - geschiedenis van de economie
+    - Python
+  license:
+    content: CC-BY-4.0
+    code: MIT
+  bibliography:
+    - references.bib
+  numbering:
+    headings: true
+    equation: true
+    figure:
+      enabled: true
+      template: 'Figuur %s'
+    table:
+      enabled: true
+      template: 'Tabel %s'
+  math:
+    # Projectbrede macro's — beschikbaar in elke lecture.
+    '\E': '\mathbb{E}'
+    '\Var': '\operatorname{Var}'
+    '\Cov': '\operatorname{Cov}'
+    '\Corr': '\operatorname{Corr}'
+    '\SD': '\operatorname{SD}'
+    '\plim': '\operatorname{plim}'
+  toc:
+    - file: lectures/index.md
+
+    # --- Deel 0 — Toolkit ---
+    # - title: Deel 0 — Toolkit
+    #   children:
+    #     - file: lectures/00_00_setup.md
+    #     - file: lectures/00_01_rendementen.md
+
+    # --- Deel I — Voordat er een vakgebied was (1863–1959) ---
+    # - title: Deel I — Voordat er een vakgebied was
+    #   children:
+    #     - file: lectures/01_02_bachelier.md
+    #     - file: lectures/01_03_williams_ddm.md
+    #     - file: lectures/01_04_markowitz.md
+
+    # --- Deel II — Het Chicago-MIT-decennium (1960–1973) ---
+    # - title: Deel II — Het Chicago-MIT-decennium
+    #   children:
+    #     - file: lectures/02_05_crsp_tape.md
+    #     - file: lectures/02_06_efficiente_markten.md
+    #     - file: lectures/02_07_event_studies.md
+    #     - file: lectures/02_08_capm.md
+    #     - file: lectures/02_09_black_scholes.md
+
+    # --- Deel III — Theorie en eerste barsten (1973–1985) ---
+    # - title: Deel III — Theorie en eerste barsten
+    #   children:
+    #     - file: lectures/03_10_merton_icapm.md
+    #     - file: lectures/03_11_apt_no_arbitrage.md
+    #     - file: lectures/03_12_consumptie_capm.md
+    #     - file: lectures/03_13_equity_premium_puzzle.md
+    #     - file: lectures/03_14_roll.md
+    #     - file: lectures/03_15_shiller_excess_volatility.md
+    #     - file: lectures/03_16_vroege_anomalieen.md
+    #     - file: lectures/03_17_termijnstructuur_real_options.md
+
+    # --- Deel IV — De empirische wending (1985–2000) ---
+    # - title: Deel IV — De empirische wending
+    #   children:
+    #     - file: lectures/04_18_fama_french.md
+    #     - file: lectures/04_19_momentum.md
+    #     - file: lectures/04_20_voorspelbaarheid.md
+    #     - file: lectures/04_21_volatiliteit.md
+    #     - file: lectures/04_22_risk_management.md
+    #     - file: lectures/04_23_behavioral.md
+    #     - file: lectures/04_24_microstructuur.md
+    #     - file: lectures/04_25_industrie.md
+
+    # --- Deel V — Het pluralistische vakgebied (2000–2013) ---
+    # - title: Deel V — Het pluralistische vakgebied
+    #   children:
+    #     - file: lectures/05_26_sdf_unificatie.md
+    #     - file: lectures/05_27_drie_antwoorden.md
+    #     - file: lectures/05_28_termijnstructuur_premies.md
+    #     - file: lectures/05_29_opties_crashrisico.md
+    #     - file: lectures/05_30_wisselkoersen.md
+    #     - file: lectures/05_31_portfolio_choice.md
+    #     - file: lectures/05_32_intermediaries.md
+    #     - file: lectures/05_33_fama_vs_shiller.md
+
+    # --- Deel VI — De factor zoo en de machines (2011–2026) ---
+    # - title: Deel VI — De factor zoo en de machines
+    #   children:
+    #     - file: lectures/06_34_factor_zoo.md
+    #     - file: lectures/06_35_machine_learning.md
+    #     - file: lectures/06_36_inelastische_markten.md
+
+    # --- Deel VII — De machines, opnieuw (2026) ---
+    # - title: Deel VII — De machines, opnieuw
+    #   children:
+    #     - file: lectures/07_37_llms_en_efficientie.md
+
+    # --- Synthese ---
+    # - title: Synthese
+    #   children:
+    #     - file: lectures/08_38_wat_we_weten.md
+    #     - file: lectures/08_39_wat_we_niet_weten.md
+
+    # --- Appendix (niet in de leesvolgorde) ---
+    - title: Appendix
+      children:
+        - file: lectures/_template.md
+
+site:
+  template: book-theme
+  options:
+    favicon: null
+    logo_text: Geschiedenis van asset pricing
