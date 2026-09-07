@@ -45,13 +45,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
 
-try:
-    import hap
-    from hap import data as hap_data
-    hap.plotting.setup()
-except (ImportError, AttributeError):  # hap nog niet beschikbaar
-    hap = None
-    plt.rcParams.update({"figure.figsize": (8, 4.5), "axes.grid": True})
+import hap
+from hap import data as hap_data
+hap.plotting.setup()
 
 rng = np.random.default_rng(20240101)
 ```

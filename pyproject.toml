@@ -47,6 +47,7 @@ package = true
 
 [tool.ruff]
 line-length = 95
+extend-exclude = ["lectures", "_build"]
 src = ["src", "tests"]
 
 [tool.ruff.lint]
