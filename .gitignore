@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+_build/
+.jupyter_cache/
+data/raw/
+*.egg-info/
