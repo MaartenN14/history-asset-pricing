@@ -52,9 +52,9 @@ project:
     - file: lectures/index.md
 
     # --- Deel 0 — Toolkit ---
-    # - title: Deel 0 — Toolkit
-    #   children:
-    #     - file: lectures/00_00_setup.md
+    - title: Deel 0 — Toolkit
+      children:
+        - file: lectures/00_00_setup.md
     #     - file: lectures/00_01_rendementen.md
 
     # --- Deel I — Voordat er een vakgebied was (1863–1959) ---
