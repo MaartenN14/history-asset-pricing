@@ -55,14 +55,14 @@ project:
     - title: Deel 0 — Toolkit
       children:
         - file: lectures/00_00_setup.md
-    #     - file: lectures/00_01_rendementen.md
+        - file: lectures/00_01_rendementen.md
 
     # --- Deel I — Voordat er een vakgebied was (1863–1959) ---
     - title: Deel I — Voordat er een vakgebied was
       children:
-    #     - file: lectures/01_02_bachelier.md
+        - file: lectures/01_02_bachelier.md
         - file: lectures/01_03_williams_ddm.md
-    #     - file: lectures/01_04_markowitz.md
+        - file: lectures/01_04_markowitz.md
 
     # --- Deel II — Het Chicago-MIT-decennium (1960–1973) ---
     # - title: Deel II — Het Chicago-MIT-decennium
