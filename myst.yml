@@ -79,9 +79,9 @@ project:
         - file: lectures/03_10_merton_icapm.md
         - file: lectures/03_11_apt_no_arbitrage.md
         - file: lectures/03_12_consumptie_capm.md
-    #     - file: lectures/03_13_equity_premium_puzzle.md
-    #     - file: lectures/03_14_roll.md
-    #     - file: lectures/03_15_shiller_excess_volatility.md
+        - file: lectures/03_13_equity_premium_puzzle.md
+        - file: lectures/03_14_roll.md
+        - file: lectures/03_15_shiller_excess_volatility.md
     #     - file: lectures/03_16_vroege_anomalieen.md
     #     - file: lectures/03_17_termijnstructuur_real_options.md
 
