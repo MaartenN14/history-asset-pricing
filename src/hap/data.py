@@ -72,7 +72,7 @@ FRENCH_DATASETS: tuple[str, ...] = (
 
 # Tables whose numbers are counts or levels rather than percent returns.
 _FRENCH_LEVEL_TABLE = re.compile(
-    r"number of firms|firm size|market cap|be/?me|sum of be", re.IGNORECASE
+    r"number of firms|firm size|market cap|be/?me|sum of be|weight average of", re.IGNORECASE
 )
 
 
@@ -106,8 +106,9 @@ def _split_french_tables(text: str) -> list[tuple[str, str, list[str]]]:
     8-digit date; a header row starts with a comma; anything else is prose, of
     which the last line before a block is used as its title.
     """
-    blocks: list[tuple[str, str, list[str]]] = []
-    title, header, rows = "", "", []
+    blocks: list[tuple[list[str], str, list[str]]] = []
+    paragraph: list[str] = []
+    header, rows = "", []
     for line in text.splitlines():
         stripped = line.strip()
         first = stripped.split(",")[0].strip()
@@ -115,18 +116,25 @@ def _split_french_tables(text: str) -> list[tuple[str, str, list[str]]]:
             rows.append(line)
             continue
         if rows:
-            blocks.append((title, header, rows))
-            rows, title = [], ""
+            blocks.append((paragraph, header, rows))
+            rows, paragraph = [], []
         if stripped.startswith(","):
             header = line
         elif stripped:
-            title = stripped.rstrip(", ")
+            paragraph.append(stripped.rstrip(", :"))
+        else:
+            paragraph = []  # a blank line starts a new title paragraph
     if rows:
-        blocks.append((title, header, rows))
-    return [
-        (t if 0 < len(t) <= 70 and not t.endswith(".") else f"Table {i}", h, r)
-        for i, (t, h, r) in enumerate(blocks)
-    ]
+        blocks.append((paragraph, header, rows))
+
+    def _title(lines: list[str], i: int) -> str:
+        # Multi-line titles ("For portfolios formed in June of year t / Value Weight
+        # Average of BE/ME ...") are named by their "average of" line.
+        fallback = lines[-1] if lines else ""
+        t = next((ln for ln in lines if "average of" in ln.lower()), fallback)
+        return t if 0 < len(t) <= 120 and not t.endswith(".") else f"Table {i}"
+
+    return [(_title(p, i), h, r) for i, (p, h, r) in enumerate(blocks)]
 
 
 def _french_index(tokens: pd.Series) -> pd.DatetimeIndex:

@@ -159,3 +159,27 @@ def test_yahoo_options():
 def test_offline_cache_miss_is_explicit():
     with pytest.raises(hap.CacheMissError, match="HAP_OFFLINE"):
         hap.fred("NO_SUCH_SERIES_XYZ")
+
+
+def test_french_multiline_titles_and_level_tables():
+    from hap.data import _french_frame, _split_french_tables
+
+    text = "\n".join([
+        "This file was created using the CRSP database.",
+        "",
+        "  Average Value Weighted Returns -- Monthly",
+        ",SMALL,BIG",
+        "202601,1.00,2.00",
+        "",
+        "  For portfolios formed in June of year t",
+        "  Value Weight Average of BE/ME Calculated for June of t to June of t+1 as: ",
+        "  Sum[ME(Mth) * BE(Fiscal Year t-1) / ME(Dec t-1)] / Sum[ME(Mth)]",
+        "  Where Mth is a month from June of t to June of t+1",
+        ",SMALL,BIG",
+        "202601,0.80,0.40",
+    ])
+    blocks = _split_french_tables(text)
+    assert blocks[0][0] == "Average Value Weighted Returns -- Monthly"
+    assert blocks[1][0].startswith("Value Weight Average of BE/ME")
+    assert _french_frame(blocks[0], None).iloc[0, 0] == 0.01
+    assert _french_frame(blocks[1], None).iloc[0, 0] == 0.80
