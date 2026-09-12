@@ -94,7 +94,7 @@ project:
         - file: lectures/04_21_volatiliteit.ipynb
         - file: lectures/04_22_risk_management.ipynb
         - file: lectures/04_23_behavioral.md
-    #     - file: lectures/04_24_microstructuur.md
+        - file: lectures/04_24_microstructuur.md
     #     - file: lectures/04_25_industrie.md
 
     # --- Deel V — Het pluralistische vakgebied (2000–2013) ---
