@@ -104,7 +104,7 @@ project:
         - file: lectures/05_27_drie_antwoorden.md
         - file: lectures/05_28_termijnstructuur_premies.md
     #     - file: lectures/05_29_opties_crashrisico.md
-    #     - file: lectures/05_30_wisselkoersen.md
+        - file: lectures/05_30_wisselkoersen.md
     #     - file: lectures/05_31_portfolio_choice.md
     #     - file: lectures/05_32_intermediaries.md
     #     - file: lectures/05_33_fama_vs_shiller.md
