@@ -65,20 +65,20 @@ project:
         - file: lectures/01_04_markowitz.md
 
     # --- Deel II — Het Chicago-MIT-decennium (1960–1973) ---
-    # - title: Deel II — Het Chicago-MIT-decennium
-    #   children:
-    #     - file: lectures/02_05_crsp_tape.md
-    #     - file: lectures/02_06_efficiente_markten.md
-    #     - file: lectures/02_07_event_studies.md
-    #     - file: lectures/02_08_capm.md
-    #     - file: lectures/02_09_black_scholes.md
+    - title: Deel II — Het Chicago-MIT-decennium
+      children:
+        - file: lectures/02_05_crsp_tape.md
+        - file: lectures/02_06_efficiente_markten.md
+        - file: lectures/02_07_event_studies.md
+        - file: lectures/02_08_capm.md
+        - file: lectures/02_09_black_scholes.md
 
     # --- Deel III — Theorie en eerste barsten (1973–1985) ---
-    # - title: Deel III — Theorie en eerste barsten
-    #   children:
-    #     - file: lectures/03_10_merton_icapm.md
-    #     - file: lectures/03_11_apt_no_arbitrage.md
-    #     - file: lectures/03_12_consumptie_capm.md
+    - title: Deel III — Theorie en eerste barsten
+      children:
+        - file: lectures/03_10_merton_icapm.md
+        - file: lectures/03_11_apt_no_arbitrage.md
+        - file: lectures/03_12_consumptie_capm.md
     #     - file: lectures/03_13_equity_premium_puzzle.md
     #     - file: lectures/03_14_roll.md
     #     - file: lectures/03_15_shiller_excess_volatility.md
