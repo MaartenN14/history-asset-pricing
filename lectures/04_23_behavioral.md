@@ -51,21 +51,16 @@ Thaler vonden in 1985 dat de verliezers van de afgelopen drie tot vijf jaar de w
 daarna verslaan {cite}`DeBondtThaler1985`; Benartzi en Thaler dat een belegger die
 verliezen zwaarder weegt dan winsten en zijn portefeuille elk jaar evalueert, precies de
 equity premium eist die Mehra en Prescott niet konden verklaren {cite}`BenartziThaler1995`;
-Odean en Barber dat particuliere beleggers winnaars te vroeg verkopen, te veel handelen en
-daar geld mee verliezen {cite}`Odean1998,BarberOdean2000,BarberOdean2001`. Epistemisch is
-dit motief 3 in zuivere vorm: geen van deze modellen wordt verworpen of bevestigd door één
-toets. Het zijn concurrerende verklaringen voor feiten die al bekend waren, en de
-gedragsverklaring en de risicoverklaring voorspellen vaak dezelfde tijdreeks.
+Odean en Barber dat particulieren winnaars te vroeg verkopen en te veel handelen
+{cite}`Odean1998,BarberOdean2000,BarberOdean2001`. Epistemisch is dit motief 3: geen toets
+verwerpt of bevestigt deze modellen; het zijn concurrerende verklaringen voor bekende feiten.
 
-We rekenen de waarde van een gok onder prospect theory met de hand uit, leiden de premie af
-waarbij een myopisch loss-averse belegger tussen aandelen en obligaties onverschillig is,
-bewijzen de prijsformule en de rendementsvoorwaarde van De Long, Shleifer, Summers en
-Waldmann, en werken het model van Shleifer en Vishny uit waarin fondsen geld terugtrekken
-precies wanneer de mispricing het grootst is. De simulatie vraagt of noise traders op
-lange termijn overleven, en hoe gevoelig de evaluatieperiode van Benartzi en Thaler is voor
-een slecht gemeten premie. Aan het eind repliceren we de lange-termijnomkering van De Bondt
-en Thaler op French-data, laten we zien dat het driefactormodel haar opslokt, en rekenen
-we de evaluatieperiode van Benartzi en Thaler na.
+We leiden de premie van een myopisch loss-averse belegger af, bewijzen de prijsformule en
+rendementsvoorwaarde van De Long, Shleifer, Summers en Waldmann, en werken het model van
+Shleifer en Vishny uit. De simulatie vraagt of noise traders overleven en hoe gevoelig de
+evaluatieperiode is voor een slecht gemeten premie. Aan het eind repliceren we de
+lange-termijnomkering van De Bondt en Thaler, die het driefactormodel opslokt, en de
+evaluatieperiode van Benartzi en Thaler.
 
 ```{code-cell} ipython3
 from itertools import product
@@ -85,51 +80,36 @@ rng = np.random.default_rng(20240101)
 ## Intuïtie: waarom zou dit waar zijn?
 
 Bied iemand een munt aan: kop wint hij 150 euro, munt verliest hij 100. De verwachte winst
-is 25 euro, en toch weigeren de meeste mensen. Onder verwacht nut is dat vreemd: voor een
-belegger met een vermogen van een ton is 100 euro een afronding, en bij zulke kleine
-bedragen hoort een rationeel iemand bijna risiconeutraal te zijn. Kahneman en Tversky
-verklaarden de weigering door drie eigenschappen van hoe mensen uitkomsten beoordelen. Ze
-kijken naar winst en verlies ten opzichte van een referentiepunt, niet naar hun vermogen.
-Een verlies doet ruwweg twee keer zoveel pijn als een even grote winst plezier doet
-(*loss aversion*, verliesaversie). En binnen winsten zijn ze risicomijdend, binnen verliezen
-risicozoekend: liever zeker 100 verliezen dan een kans op 0 of 200 is niet wat mensen
-kiezen.
+is 25 euro, en toch weigeren de meeste mensen, terwijl verwacht nut bij zulke kleine bedragen
+bijna risiconeutraliteit voorschrijft. Kahneman en Tversky verklaarden dat met drie
+eigenschappen: mensen beoordelen winst en verlies ten opzichte van een referentiepunt, een
+verlies doet ruwweg twee keer zoveel pijn als een even grote winst plezier doet (*loss
+aversion*, verliesaversie), en binnen verliezen zoeken ze risico.
 
-Dezelfde persoon neemt de gok vaak wel aan als hij hem vier keer achter elkaar mag spelen en
-alleen het eindresultaat telt: de kans op een totaal verlies is dan klein. Benartzi en
-Thaler zagen daarin de equity premium puzzle. Aandelen zijn over twintig jaar zelden een
-verlies, over één jaar vaak. Een belegger die zijn portefeuille elk jaar opent en elk
-jaarverlies als verlies voelt (*myopic loss aversion*), eist voor aandelen een hoge premie;
-een belegger die om de twintig jaar kijkt, nauwelijks. De vraag is dan niet meer welke
-risicoaversie nodig is, maar hoe vaak beleggers kijken, en het antwoord blijkt ongeveer
-eens per jaar. Dezelfde neiging om rekeningen apart bij te houden, *mental accounting*
+Dezelfde persoon neemt de gok vaak wel aan als hij hem vier keer mag spelen en alleen het
+eindresultaat telt. Benartzi en Thaler zagen daarin de equity premium puzzle: aandelen zijn
+over twintig jaar zelden een verlies, over één jaar vaak. Wie zijn portefeuille elk jaar
+bekijkt en elk jaarverlies als verlies voelt (*myopic loss aversion*), eist een hoge premie.
+Dezelfde neiging om rekeningen apart bij te houden, *mental accounting*
 {cite}`Thaler1985,Thaler1999`, verklaart het *disposition effect* (winnaars te vroeg
-verkopen, verliezers te lang vasthouden) {cite}`ShefrinStatman1985`: een aandeel onder de
-aankoopprijs zit in het verliesdomein, waar mensen risico zoeken om quitte te spelen.
+verkopen, verliezers te lang vasthouden) {cite}`ShefrinStatman1985`.
 
-Vergissingen verklaren nog geen prijzen. Als een groep beleggers te optimistisch is, kopen
-rationele beleggers minder en is de prijs weer goed; tenzij het tegenhandelen zelf riskant
-is. De Long, Shleifer, Summers en Waldmann wezen op het risico dat een arbitrageur loopt
-als hij een kortere horizon heeft dan de vergissing: het sentiment van morgen kan nog
-extremer zijn dan dat van vandaag. Dat risico bestaat alleen omdat de noise traders er zijn,
-en het is beprijsd. Het gevolg is paradoxaal: noise traders kunnen *meer* verdienen dan de
-rationele beleggers, omdat zij meer van het risico dragen dat ze zelf veroorzaken.
-Santa-Clara noemt dit in zijn terugblik een van de ideeën die hem het meest zijn bijgebleven
-{cite}`SantaClara2026`. Shleifer en Vishny voegden er de organisatie van arbitrage aan toe:
-arbitrageurs beleggen andermans geld, en die ander ziet alleen dat het fonds verliest. Hoe
-verder een prijs van zijn waarde wegdrijft, hoe groter de verliezen van wie al had gekocht,
-hoe meer geld er wordt teruggetrokken, en hoe verder de prijs wegdrijft. LTCM is het
-voorbeeld dat iedereen noemt.
+Vergissingen verklaren nog geen prijzen: als een groep te optimistisch is, kopen rationele
+beleggers minder. Tenzij tegenhandelen zelf riskant is. De Long, Shleifer, Summers en
+Waldmann wezen erop dat het sentiment van morgen nog extremer kan zijn dan dat van vandaag.
+Dat risico bestaat alleen door de noise traders, het is beprijsd, en daardoor kunnen noise
+traders *meer* verdienen dan rationele beleggers: zij dragen meer van het risico dat ze zelf
+veroorzaken. Santa-Clara haalt dit resultaat in zijn terugblik aan {cite}`SantaClara2026`.
+Shleifer en Vishny voegden toe dat arbitrageurs andermans geld beleggen: hoe verder een prijs
+wegdrijft, hoe meer geld inleggers terugtrekken, en hoe verder de prijs wegdrijft.
 
-De markt levert zelf de zuiverste voorbeelden. Royal Dutch en Shell verdeelden sinds 1907
-hun winst in een vaste verhouding van 60 tegen 40, dus de koersen hadden in die verhouding
-moeten staan; ze weken er jarenlang tientallen procenten van af {cite}`FrootDabora1999`. En
-op 2 maart 2000 bracht 3Com een klein deel van dochter Palm naar de beurs, met de aankondiging
-dat de rest aan de eigen aandeelhouders zou worden uitgedeeld. Op de eerste handelsdag was
-de marktwaarde van de Palm-aandelen die 3Com nog bezat groter dan die van heel 3Com: de
-markt waardeerde de rest van het bedrijf negatief {cite}`LamontThaler2003`. Twee dingen met
-dezelfde payoff hadden niet dezelfde prijs, en arbitrage lukte niet, omdat Palm-aandelen
-niet te lenen waren.
+De markt levert zelf voorbeelden. Royal Dutch en Shell verdeelden sinds 1907 hun winst in een
+verhouding van 60 tegen 40, maar hun koersen weken over 1980–1995 met 30% of meer van die
+verhouding af {cite}`FrootDabora1999`. Op 2 maart 2000 bracht 3Com 5% van Palm naar de beurs
+en beloofde de rest uit te delen, 1,525 Palm-aandeel per 3Com-aandeel. Palm sloot op 95,06
+dollar, 3Com op 81,81: de waarde van 3Com zonder Palm was min 63 dollar per aandeel, min 22
+miljard dollar {cite}`LamontThaler2003`. De arbitrage (koop 3Com, verkoop Palm short) was
+moeilijk omdat Palm-aandelen schaars en duur te lenen waren.
 
 ## Toy-voorbeeld: een munt, twee keer gegooid, en een generatie noise traders
 
@@ -165,7 +145,9 @@ $$
 
 Wie de twee worpen elk apart beoordeelt, telt $2 \times -23{,}63 = -47{,}26$; wie ze samen
 beoordeelt, $-6{,}11$. Hetzelfde risico, een andere boekhouding, en een acht keer kleiner
-bezwaar. Bij vier worpen samen is de waarde positief en neemt de belegger de gok aan.
+bezwaar. Zonder weging is de waarde bij vier worpen samen positief ($8{,}65$) en neemt de
+belegger de gok aan; met de waarschijnlijkheidsweging, die het kleine kansje op het slechtste
+verloop extra gewicht geeft, gebeurt dat pas bij vijf worpen ($0{,}11$).
 
 ```{code-cell} ipython3
 :label: cel-behavioral-toy-pt
@@ -273,12 +255,11 @@ toy_dssw.round(4)
 
 ### Prospect theory
 
-*Waarom zou dit waar zijn?* Een zintuig meet veranderingen, geen niveaus: een kamer van
-twintig graden voelt warm na de sneeuw en koud na de sauna. Kahneman en Tversky namen aan
-dat waardering net zo werkt. Uitkomsten worden gecodeerd als winst of verlies ten opzichte
-van een referentiepunt; de gevoeligheid neemt af naarmate je verder van dat punt komt, in
-beide richtingen; en het verlies weegt zwaarder. Dat is genoeg voor een knik in de
-nulpunt, en een knik is genoeg om kleine gokken te weigeren.
+*Waarom zou dit waar zijn?* Een zintuig meet veranderingen, geen niveaus. Kahneman en
+Tversky namen aan dat waardering net zo werkt: uitkomsten zijn winst of verlies ten opzichte
+van een referentiepunt, de gevoeligheid neemt in beide richtingen af, en verlies weegt
+zwaarder. Dat geeft een knik in het nulpunt, en een knik is genoeg om kleine gokken te
+weigeren.
 
 Een *prospect* is een loterij met uitkomsten $x_{-m} < \dots < x_{-1} < 0 \leq x_0 < \dots <
 x_{k}$ en kansen $p_j$. Onder *cumulative prospect theory* (CPT) is de waarde
@@ -302,30 +283,24 @@ w^{-}\!\left(\textstyle\sum_{i \leq j} p_i\right) - w^{-}\!\left(\textstyle\sum_
 w(p) = \frac{p^{c}}{\left(p^{c} + (1-p)^{c}\right)^{1/c}} .
 ```
 
-De weegfunctie overschat kleine kansen en onderschat middelgrote; door haar op cumulatieve
-kansen toe te passen, krijgen extreme uitkomsten extra gewicht zonder dat de theorie
-stochastische dominantie schendt, het probleem van de oorspronkelijke versie uit 1979.
+De weegfunctie overschat kleine kansen; toegepast op cumulatieve kansen schendt ze geen
+stochastische dominantie, het probleem van de versie uit 1979.
 Tversky en Kahneman rapporteerden als medianen $\alpha = \beta = 0{,}88$, $\lambda = 2{,}25$,
 $c = \gamma = 0{,}61$ voor winsten en $c = \delta = 0{,}69$ voor verliezen
 {cite}`TverskyKahneman1992`. Wij noemen die weegparameters $\gamma_w$ en $\delta_w$, om ze
 niet te verwarren met de risicoaversie $\gamma$ uit de notatietabel.
 
-Twee eigenschappen doen het werk in wat volgt. Ten eerste is $v$ homogeen van graad
-$\alpha$ als $\alpha = \beta$: $V(kX) = k^{\alpha}V(X)$ voor $k > 0$, dus de keuze tussen twee
-prospects hangt niet af van de eenheid (euro's of procenten). Ten tweede is de
-risicoaversie bij de knik van *eerste orde*: een gok $\pm\varepsilon$ kost een
-verwachtnutbelegger een bedrag van orde $\varepsilon^{2}$, een loss-averse belegger een bedrag
-van orde $\varepsilon$. Dat verklaart waarom kleine gokken worden geweigerd, en waarom de
-evaluatiehorizon zo veel uitmaakt.
+Twee eigenschappen doen het werk. Met $\alpha = \beta$ is $V(kX) = k^{\alpha}V(X)$ voor
+$k > 0$, dus keuzes hangen niet af van de eenheid. En de risicoaversie bij de knik is van
+*eerste orde*: een gok $\pm\varepsilon$ kost een verwachtnutbelegger orde $\varepsilon^{2}$,
+een loss-averse belegger orde $\varepsilon$.
 
 ### Myopic loss aversion en de equity premium
 
-*Waarom zou dit waar zijn?* Het verwachte rendement van een belegging groeit lineair met de
-horizon, de standaarddeviatie met de wortel. Over een korte horizon domineert de
-standaarddeviatie en is de kans op verlies bijna een half; over een lange horizon domineert
-het gemiddelde. Een belegger die elk verlies $\lambda$ keer zwaarder weegt, betaalt dus een
-prijs die met de wortel van de horizon daalt, en de premie die hem voor aandelen
-schadeloosstelt, daalt mee. Omgekeerd kun je uit de premie afleiden hoe vaak hij kijkt.
+*Waarom zou dit waar zijn?* Het verwachte rendement groeit lineair met de horizon, de
+standaarddeviatie met de wortel. Over een korte horizon is de kans op verlies bijna een half,
+over een lange klein. De premie die een belegger die verlies $\lambda$ keer zwaarder weegt
+schadeloosstelt, daalt dus met de horizon, en omgekeerd verraadt de premie hoe vaak hij kijkt.
 
 Neem de eenvoudigste versie: $\alpha = \beta = 1$, geen weging, een risicovrij alternatief met
 rendement $r^{f}h$ over een horizon van $h$ jaar, en een aandelenrendement over die horizon
@@ -369,13 +344,13 @@ $1 + (\lambda-1)/2 = (\lambda+1)/2$; dat geeft de eerste helft van
 
 Met $\lambda = 2{,}25$, $\sigma = 20\%$ en $r^{f} = 1\%$ geeft [](#eq-behavioral-bt) bij een
 horizon van een jaar een premie van $\tfrac{1{,}25}{3{,}25}(0{,}2 \cdot 0{,}798 - 0{,}01)
-= 5{,}75\%$, en bij tien jaar $1{,}56\%$. De hele puzzel van [](#03-13-equity-premium-puzzle)
-verdwijnt dus als beleggers eens per jaar kijken, zonder dat er een relatieve risicoaversie
-van dertig nodig is. De prijs is dat de theorie er een vrije parameter bij krijgt, $h$,
-die niet uit de consumptiedata volgt. {cite:t}`BenartziThaler1995` deden de berekening met
-de volledige CPT van [](#eq-behavioral-cpt) op historische rendementen van aandelen en
-obligaties, en zochten de horizon waarbij de prospect-waarden gelijk zijn; dat doen wij in
-de simulatie en de replicatie.
+= 5{,}75\%$, en bij tien jaar $1{,}56\%$; de exacte oplossing van [](#eq-behavioral-bt-exact)
+geeft $6{,}14\%$ en $1{,}73\%$. De puzzel van [](#03-13-equity-premium-puzzle) verdwijnt
+als beleggers eens per jaar kijken, zonder risicoaversie van dertig; de prijs is een vrije
+parameter $h$. {cite:t}`BenartziThaler1995` rekenden met de volledige CPT op historische
+rendementen: 6,5% bij één jaar en 4,65%, 3,0%, 2,0% en 1,4% bij twee, vijf, tien en twintig
+jaar (reële aandelen tegen reële vijfjaarsobligaties, NBER-versie). De exacte kolom hieronder
+volgt dat profiel tot op een halve procentpunt.
 
 ```{code-cell} ipython3
 def bt_premium_exact(h, lam=LAMBDA, sigma=0.20, rf=0.01):
@@ -399,13 +374,10 @@ pd.DataFrame({"premie exact": [bt_premium_exact(h) for h in horizons],
 
 ### Noise trader risk: het model van De Long, Shleifer, Summers en Waldmann
 
-*Waarom zou dit waar zijn?* Een arbitrageur die leeft tot morgen, verdient aan een te lage
-prijs alleen als de prijs morgen hoger is. Morgen handelt er een nieuwe generatie met een
-nieuw, onvoorspelbaar sentiment. Het verschil tussen prijs en waarde verdwijnt dus niet
-vanzelf, en het risico van die herverkoopprijs is een risico dat er zonder noise traders
-niet was. Risicomijdende arbitrageurs nemen daarom maar een beperkte positie in, en de
-prijs blijft ernaast. Omdat de noise traders dat risico zelf in grote mate dragen, krijgen
-zij er ook de premie voor.
+*Waarom zou dit waar zijn?* Een arbitrageur die morgen verkoopt, verkoopt aan een nieuwe
+generatie met een nieuw sentiment. Dat herverkooprisico bestaat alleen door de noise traders;
+risicomijdende arbitrageurs nemen daarom een beperkte positie, de prijs blijft ernaast, en wie
+het risico draagt, krijgt de premie.
 
 **Opzet.** Er zijn generaties die twee perioden leven. Het veilige activum $s$ levert een
 dividend $r$ en is in elastisch aanbod, dus zijn prijs is 1. Het onveilige activum $u$
@@ -414,9 +386,9 @@ ook 1. Een fractie $\mu$ van elke generatie is noise trader, de rest sophisticat
 kiezen hun positie $\lambda_t$ in $u$ om $\E_t[w] - \gamma\Var_t(w)$ te maximaliseren, met
 $w = \text{constante} + \lambda_t\,(r + p_{t+1} - (1+r)p_t)$. Noise traders overschatten de
 verwachte prijs van morgen met $\rho_t \sim \mathcal{N}(\rho^{*}, \sigma_\rho^{2})$,
-onafhankelijk over de tijd. De notatie is die van het paper, behalve dat wij de
-risicoaversie zoals in de notatietabel $\gamma$ noemen waar DSSW $\gamma$ ook gebruiken;
-hun $(2\gamma)$ is de coëfficiënt van absolute risicoaversie.
+onafhankelijk over de tijd. De notatie is die van het paper. Let op twee afwijkingen van
+de notatietabel: $(2\gamma)$ is hier de coëfficiënt van *absolute* risicoaversie, en $\mu$ is
+een fractie beleggers, geen verwacht rendement.
 
 De vraagfuncties volgen uit de eerste-ordevoorwaarde:
 
@@ -452,19 +424,17 @@ Probeer $p_t = a + b\rho_t$. Dan is $\E_t[p_{t+1}] = a + b\rho^{*}$ en
 $\Var_t(p_{t+1}) = b^{2}\sigma_\rho^{2}$, beide constant. Invullen en de coëfficiënt van
 $\rho_t$ gelijkstellen: $-(1+r)b + \mu = 0$, dus $b = \mu/(1+r)$. De constanten:
 $r + a + b\rho^{*} - (1+r)a = 2\gamma b^{2}\sigma_\rho^{2}$, dus
-$a = 1 + b\rho^{*}/r - 2\gamma b^{2}\sigma_\rho^{2}/r$. Met
-$b\rho^{*}/r + b\rho^{*} - b\rho^{*} = \mu\rho^{*}/(r(1+r))$ en
-$\mu\rho^{*}/(r(1+r)) = \mu\rho^{*}/r - \mu\rho^{*}/(1+r)$ is $a + b\rho_t$ gelijk aan
+$a = 1 + b\rho^{*}/r - 2\gamma b^{2}\sigma_\rho^{2}/r$. Dan is
+$a + b\rho_t = 1 + \frac{\mu\rho_t}{1+r} + \frac{\mu\rho^{*}}{r(1+r)} - \frac{2\gamma\mu^{2}\sigma_\rho^{2}}{r(1+r)^{2}}$,
+en omdat $\frac{\mu\rho^{*}}{r(1+r)} = \frac{\mu\rho^{*}}{r} - \frac{\mu\rho^{*}}{1+r}$ is dat
 [](#eq-behavioral-dssw-prijs). DSSW sluiten de niet-stationaire oplossingen van deze
 differentievergelijking uit. $\square$
 :::
 
-De drie termen hebben elk een betekenis. De tweede is het sentiment van vandaag. De derde
-is het gemiddelde optimisme, gekapitaliseerd tegen $r$. De vierde is de korting voor
-herverkooprisico, en die blijft staan als de noise traders gemiddeld gelijk hebben
-($\rho^{*} = 0$): het activum is goedkoper dan zijn fundamentele waarde puur omdat
-morgen iemand anders kan handelen. De variantie van de prijs, $\mu^{2}\sigma_\rho^{2}/(1+r)^{2}$,
-bestaat alleen door de noise traders; zonder hen is $u$ een perfect substituut voor $s$.
+De tweede term is het sentiment van vandaag, de derde het gemiddelde optimisme, de vierde
+de korting voor herverkooprisico. Die korting blijft staan als noise traders gemiddeld gelijk
+hebben ($\rho^{*} = 0$): het activum is goedkoper dan zijn waarde puur omdat morgen iemand
+anders handelt.
 
 :::{prf:proposition} Wanneer verdienen noise traders meer?
 :label: prop-behavioral-dssw-rendement
@@ -495,25 +465,18 @@ voorwaarde is een kwadratische ongelijkheid $(\rho^{*})^{2} - \kappa\rho^{*} + \
 in $\rho^{*}$, met reële wortels als $\kappa^{2} > 4\sigma_\rho^{2}$. $\square$
 :::
 
-DSSW noemden de vier krachten achter [](#eq-behavioral-dssw-rendement). *Hold more*: een
-optimistische noise trader houdt meer van het activum en krijgt meer van de risicopremie
-($\rho^{*}$). *Price pressure*: juist daardoor is de prijs hoger en de premie lager.
-*Buy high, sell low*: hij koopt het meest als zijn optimisme het grootst is en de prijs
-het hoogst. *Create space*: hoe meer noise traders er zijn ($\mu$ in $\kappa$), hoe groter
-het herverkooprisico, hoe voorzichtiger de sophisticated beleggers en hoe groter de premie.
-De eerste en de vierde winnen bij een gematigd optimisme en een grote risicoaversie; bij
-$\rho^{*} = 0$ verliezen noise traders altijd. Dat ze meer verdienen, betekent overigens niet
-dat ze beter af zijn: hun verwacht nut, gemeten met de ware verdeling, is lager, zoals in
-het toy-voorbeeld.
+DSSW noemden vier krachten: *hold more* (meer van het activum, meer premie), *price
+pressure* (daardoor een hogere prijs), *buy high, sell low* (het meest kopen als de prijs het
+hoogst is) en *create space* ($\mu$ in $\kappa$: meer noise traders, meer herverkooprisico,
+voorzichtiger sophisticated beleggers). Bij $\rho^{*} = 0$ verliezen noise traders altijd, en
+ook als ze meer verdienen, is hun verwacht nut lager, zoals in het toy-voorbeeld.
 
 ### Performance-based arbitrage: het model van Shleifer en Vishny
 
-*Waarom zou dit waar zijn?* In DSSW is het risico dat de prijs verder wegdrijft een
-kwestie van de horizon. Shleifer en Vishny maakten er een kwestie van *kapitaal* van.
-Arbitrage wordt gedaan door specialisten met andermans geld. De inleggers kunnen niet zien
-of een verlies een slechte beslissing was of een betere kans; ze zien een verlies en
-trekken geld terug. Wie op $t = 1$ een te lage prijs koopt en op $t = 2$ ziet dat die nog
-lager is, moet dan juist verkopen. Arbitrage is het zwakst wanneer ze het meest nodig is.
+*Waarom zou dit waar zijn?* Shleifer en Vishny maakten van het risico uit DSSW een kwestie
+van *kapitaal*. Inleggers zien niet of een verlies een fout was of een betere kans; ze zien
+een verlies en trekken geld terug. Wie een te lage prijs kocht die daarna nog lager wordt,
+moet juist verkopen.
 
 **Opzet.** Er zijn drie data. Het activum is op $t = 3$ zeker $V$ waard. Noise traders
 drukken de prijs op $t = 1$ met $S_1 > 0$; op $t = 2$ wordt de schok met kans $q$ groter,
@@ -527,6 +490,8 @@ F_2 = F_1 + a D_1\left(\frac{p_2}{p_1} - 1\right), \qquad a \geq 1 ,
 ```
 
 met $a > 1$ als inleggers extra geld toevoegen na winst en extra terugtrekken na verlies.
+{cite:t}`ShleiferVishny1997` schrijven $F_2 = G\{D_1(p_2/p_1) + F_1 - D_1\}$ met $G' > 1$ en
+$G'' < 0$; wij nemen $G$ lineair.
 In de slechte toestand beleggen ze alles ($D_2 = F_2$, met $F_2 < S$), dus $p_2 = V - S + F_2$.
 Ze zijn prijsnemers en maximaliseren het verwachte fondsvermogen op $t = 3$.
 
@@ -565,13 +530,10 @@ linkerlid van [](#eq-behavioral-sv-foc). Het doel is lineair in $D_1$ bij gegeve
 dus in evenwicht is ofwel die afgeleide nul ofwel $D_1 = F_1$. $\square$
 :::
 
-De propositie zegt twee dingen die LTCM in het klein bevatten. Een arbitrageur die zijn
-fonds volledig inzet, verdiept de volgende daling zelf, via de uitstroom van zijn eigen
-inleggers. En omdat hij dat weet, belegt hij op $t = 1$ minder als de kans $q$ op
-verslechtering groot is, zodat $p_1$ verder van $V$ blijft. Shleifer en Vishny trokken er
-de conclusie uit dat arbitrage zich concentreert in markten met weinig fundamenteel risico
-en snelle convergentie, en dat anomalieën in volatiele markten met lange convergentie het
-langst blijven bestaan {cite}`ShleiferVishny1997`.
+Dat is LTCM in het klein: wie zijn fonds volledig inzet, verdiept de volgende daling via de
+uitstroom van zijn eigen inleggers, en wie dat voorziet, belegt minder, zodat $p_1$ verder van
+$V$ blijft. Anomalieën overleven dus het langst in volatiele markten met trage convergentie
+{cite}`ShleiferVishny1997`.
 
 ```{code-cell} ipython3
 def sv_equilibrium(a, q, V=1.0, S1=0.2, S=0.5, F1=0.2):
@@ -594,12 +556,15 @@ def sv_equilibrium(a, q, V=1.0, S1=0.2, S=0.5, F1=0.2):
 pd.DataFrame({(a, q): sv_equilibrium(a, q) for a, q in product([1.0, 1.5, 2.0], [0.2, 0.4])}).T.rename_axis(["a", "q"]).round(3)
 ```
 
+Met $V = 1$, $S_1 = 0{,}2$, $S = 0{,}5$ en $F_1 = 0{,}2$ beleggen arbitrageurs bij $q = 0{,}2$
+ongeveer de helft van hun fondsen, bij $q = 0{,}4$ een kwart. Gevoeliger inleggers ($a$ van 1
+naar 2) betekenen minder belegging (55% naar 50%), een lagere $p_2$ ($0{,}671$ naar $0{,}643$)
+en meer versterking ($1{,}14$ naar $1{,}29$); ook bij $a = 1$ verliest het fonds op zijn positie.
+
 ### Onder- en overreactie: BSV, DHS en HS
 
-De modellen van DSSW en Shleifer-Vishny zeggen *dat* vergissingen prijzen kunnen
-verschuiven, niet *welke* vergissingen. Drie modellen uit 1998–1999 probeerden de
-cross-sectionele feiten uit [](#04-19-momentum) en de omkering hieronder uit één
-psychologisch mechanisme af te leiden. In {cite:t}`BarberisShleiferVishny1998` gelooft een
+DSSW en Shleifer-Vishny zeggen *dat* vergissingen prijzen verschuiven, niet *welke*. Drie
+modellen leidden momentum ([](#04-19-momentum)) en de omkering hieronder af uit psychologie. In {cite:t}`BarberisShleiferVishny1998` gelooft een
 representatieve belegger ten onrechte dat winstgroei wisselt tussen een regime waarin
 schokken terugvallen en een regime waarin ze trends vormen; na één verrassing reageert hij
 te weinig (*conservatisme*), na een reeks te sterk (*representativiteit*). In
@@ -608,9 +573,8 @@ privé-informatie en schrijven ze publiek nieuws dat hen gelijk geeft toe aan hu
 kunde (*biased self-attribution*): de koers schiet door en keert later terug. In
 {cite:t}`HongStein1999` verspreidt nieuws zich langzaam over *newswatchers*, en
 *momentum traders* die alleen naar de koers kijken, duwen hem voorbij de waarde. Alle drie
-voorspellen voortzetting op middellange en omkering op lange termijn. Het zijn modellen met
-één of twee vrije psychologische parameters voor twee feiten; dat maakt ze plausibel en
-tegelijk moeilijk te verwerpen.
+voorspellen voortzetting op middellange en omkering op lange termijn, met een of twee vrije
+parameters voor twee feiten: plausibel en moeilijk te verwerpen.
 
 ### De joint hypothesis: waarom risico en vergissing hetzelfde patroon geven
 
@@ -644,7 +608,7 @@ gezamenlijke verdeling, met in beide
 :::
 
 :::{prf:proof}
-In **R** geeft de Campbell-Shiller-identiteit $dp_t = \text{c} + \sum_{j \geq 0}\varrho^{j}\E_t[r_{t+1+j} - \Delta d_{t+2+j}]
+In **R** geeft de Campbell-Shiller-identiteit $dp_t = \text{c} + \sum_{j \geq 0}\varrho^{j}\E_t[r_{t+1+j} - \Delta d_{t+1+j}]
 = \text{c}' + x_t/(1-\varrho\phi)$. In **M** is $dp^{*}_t$ constant, dus
 $dp_t = \text{c}'' + u_t$, en $r_{t+1} \approx \text{k} + \varrho\,(p_{t+1} - d_{t+1}) - (p_t - d_t) + \Delta d_{t+1}$
 geeft $\E_t[r_{t+1}] = \bar r + u_t - \varrho\phi u_t = \bar r + (1-\varrho\phi)u_t$. Met
@@ -653,27 +617,21 @@ AR(1)-toestand, en zijn de rendementen via de identiteit dezelfde functie van $d
 $\Delta d$. $\square$
 :::
 
-Prijzen, dividenden en rendementen kunnen de twee dus nooit scheiden. Wat ze kan scheiden,
-ligt buiten die drie reeksen: of $x_t$ samenhangt met marginaal nut, dus met de SDF van
-[](#03-12-consumptie-capm), of juist met meetbare fouten in de verwachtingen van beleggers.
-Hetzelfde geldt in de cross-sectie: De Bondt en Thaler lezen de hoge rendementen van
-verliezers als correctie van overreactie; Fama en French lezen ze als de premie op de
-verhoogde *distress* van bedrijven die vijf jaar hebben verloren, en die premie meet HML
-{cite}`FamaFrench1996`.
+Prijzen, dividenden en rendementen scheiden de twee dus nooit; dat kan alleen een reeks
+erbuiten, zoals marginaal nut (de SDF van [](#03-12-consumptie-capm)) of gemeten fouten in
+verwachtingen.
 
 ## Simulatie: overleven noise traders, en hoe vaak kijkt een belegger?
 
 ### (a) Het vermogen van noise-trader-dynastieën
 
-DSSW beschrijven één generatie. Om te vragen of noise traders *overleven*, laten we elk
-type een dynastie vormen die haar vermogen herbelegt: het bruto rendement per generatie op
-een vermogen $p_t$ is $G^{j}_{t+1} = 1 + r + \lambda^{j}_t(r + p_{t+1} - (1+r)p_t)/p_t$, en
-het aandeel van de noise-trader-dynastie in het vermogen van beide groeit met
-$G^{n}/G^{i}$. De prijs komt uit [](#eq-behavioral-dssw-prijs) met een vaste $\mu$: elke
-generatie worden er nieuwe noise traders geboren, dus hun gewicht in de prijs hangt niet af
-van het vermogen van de dynastie. Dat is de opzet van {cite:t}`DeLongShleiferSummersWaldmann1991`,
-waar de prijs niet van het vermogen afhangt; {cite:t}`KoganRossWangWesterfield2006` lieten
-zien dat overleven en prijsinvloed in algemeen evenwicht losse vragen zijn.
+Om te vragen of noise traders *overleven*, laten we elk type een dynastie vormen die haar
+vermogen herbelegt, met bruto rendement $G^{j}_{t+1} = 1 + r + \lambda^{j}_t(r + p_{t+1} -
+(1+r)p_t)/p_t$ per generatie; het vermogensaandeel van noise traders groeit met $G^{n}/G^{i}$.
+De prijs volgt [](#eq-behavioral-dssw-prijs) met vaste $\mu$, dus zonder terugkoppeling van
+vermogen naar prijs, zoals bij {cite:t}`DeLongShleiferSummersWaldmann1991`;
+{cite:t}`KoganRossWangWesterfield2006` lieten zien dat overleven en prijsinvloed losse vragen
+zijn.
 
 We nemen $r = 1$ per generatie (ongeveer 3,5% per jaar over twintig jaar), $\mu = 0{,}25$,
 $\sigma_\rho = 0{,}3$ en $\gamma = 60$, zodat $\kappa = 0{,}675$ en noise traders volgens
@@ -748,26 +706,32 @@ plt.show()
 
 Mediaan en 10e–90e percentiel van het vermogensaandeel van een noise-trader-dynastie die
 met gelijk vermogen begint. Zonder optimisme ($\rho^{*} = 0$) of met te veel ($\rho^{*} = 0{,}6$)
-verdwijnen noise traders; bij $\rho^{*} = \kappa/2$ nemen ze de markt over. Over de eerste
-vijf generaties, een eeuw, liggen de banden van alle vier de werelden over elkaar.
+verdwijnen noise traders; bij $\rho^{*} = \kappa/2$ groeien ze in de meeste paden naar een
+meerderheid. Over de eerste vijf generaties, een eeuw, liggen de banden van alle vier de
+werelden over elkaar.
 :::
 
-SIM-A-TEKST
+Het gemiddelde verschil in geldrendement ligt in alle vier de werelden binnen een honderdste
+van [](#eq-behavioral-dssw-rendement). Bij $\rho^{*} = 0$ en $0{,}6$ verdwijnen noise traders.
+Bij $\rho^{*} = 0{,}1$ is de mediane log-groei per generatie zelfs hoger ($+0{,}023$) maar het
+gemiddelde geldrendement lager ($-0{,}049$): de meeste generaties gaan licht vooruit, een
+enkele gaat failliet, en na 100 generaties heeft nog 1,8% van de paden een aandeel boven de
+helft, tegen 87% bij $\rho^{*} = \kappa/2$. Faillissementen (0,15% tot 5,7% van de paden) treffen
+alleen noise traders.
+
+Dan motief 1. Na vijf generaties, ruwweg een eeuw, is het noise-traderaandeel in de beste
+wereld in 69% van de paden boven de helft, in de slechtste nog in 20%, en de standaardfout van
+het gemiddelde rendementsverschil over 100 generaties is even groot als het verschil zelf. Of
+irrationele beleggers worden weggeselecteerd, vraagt meer geschiedenis dan er bestaat.
 
 ### (b) Hoe gevoelig is de evaluatieperiode voor de premie?
 
-Benartzi en Thaler vinden de horizon $h^{*}$ waarbij de CPT-waarde van aandelen gelijk is
-aan die van obligaties. [](#eq-behavioral-bt) zegt dat $h^{*}$ met het *kwadraat* van de
-premie daalt. Motief 1 zegt dat die premie met een eeuw data een standaardfout van ongeveer
-twee procentpunt heeft. Samen voorspellen ze dat $h^{*}$ slecht gemeten is.
-
-We laten maandelijkse log-rendementen van aandelen en obligaties normaal verdeeld zijn, met
-de momenten van de Amerikaanse data over 1926–1990 (aandelen 9,3% gemiddeld log-rendement en
-20,3% volatiliteit per jaar, obligaties 4,5% en 7,5%). Voor elke horizon van 1 tot 60
-maanden berekenen we de CPT-waarde van beide op een raster van 400 even waarschijnlijke
-kwantielen, en zoeken we de horizon waar ze gelijk worden. Eerst als functie van de ware
-premie; daarna voor 1000 steekproeven van 65 jaar, waarin de belegger de momenten schat en
-met die schattingen rekent.
+Volgens [](#eq-behavioral-bt) daalt $h^{*}$ met het *kwadraat* van de premie, en die premie
+heeft een standaardfout van ongeveer twee procentpunt. We laten maandelijkse log-rendementen
+normaal verdeeld zijn met de momenten van 1926–1990 (aandelen 9,3% gemiddeld en 20,3%
+volatiliteit per jaar, obligaties 4,5% en 7,5%), berekenen de CPT-waarde op 400 kwantielen
+voor horizons van 1 tot 60 maanden, en zoeken de kruising: eerst als functie van de ware
+premie, dan voor 1000 steekproeven van 65 jaar met geschatte momenten.
 
 ```{code-cell} ipython3
 N_GRID, H_MAX = 400, 60
@@ -848,11 +812,18 @@ plt.show()
 
 Links: de evaluatieperiode waarbij een CPT-belegger onverschillig is tussen aandelen en
 obligaties daalt steil met de premie; binnen twee standaardfouten van de premie van
-1926–1990 ligt alles tussen een paar maanden en jaren. Rechts: dezelfde spreiding als
-verdeling van de schatter over 1000 steekproeven van 65 jaar.
+1926–1990 bedekt de grijze band van twee standaardfouten het hele getoonde bereik, van 17
+maanden bij 2% tot 2,4 maanden bij 10%. Rechts: dezelfde onzekerheid als verdeling van de
+schatter over 1000 steekproeven van 65 jaar; de stippellijn is één jaar.
 :::
 
-SIM-B-TEKST
+Bij de momenten van 1926–1990, met een log-premie van aandelen boven obligaties van 4,87%
+per jaar, is $h^{*} = 6{,}8$ maanden. Maar die premie is over 65 jaar geschat met een
+standaardfout van 2,7 procentpunt, en een verschuiving van die grootte verplaatst $h^{*}$ over
+de hele grafiek. Over 1000 steekproeven is de mediaan van de geschatte $h^{*}$ 6,8 maanden,
+het 10e en 90e percentiel liggen op 3,1 en 20 maanden, en in 1,8% van de steekproeven halen
+aandelen obligaties binnen vijf jaar niet in. "Ongeveer een jaar" wordt door de data
+toegestaan, niet afgedwongen.
 
 ## Replicatie op echte data
 
@@ -865,23 +836,29 @@ SIM-B-TEKST
 Finance 1985 {cite}`DeBondtThaler1985`; voor de risicolezing Fama en French 1996
 {cite}`FamaFrench1996`.
 
-**Wat.** DBT-GETALLEN
+**Wat.** De kernuitkomst op p. 799: over zestien niet-overlappende testperioden van drie
+jaar tussen januari 1933 en december 1980 verslaan portefeuilles van de 35 grootste
+verliezers de markt na 36 maanden met gemiddeld 19,6%, terwijl de 35 grootste winnaars
+ongeveer 5,0% achterblijven, een verschil van 24,6% ($t = 2{,}20$). Het effect is
+asymmetrisch (vooral verliezers) en valt grotendeels in januari: in maand 1, 13 en 25 behalen
+de verliezers 8,1%, 5,6% en 4,0% excess rendement. Fama en French (1996) melden dat de
+lange-termijnomkering in het driefactormodel grotendeels verdwijnt.
 
 **Data hier.** Kenneth French Data Library: de LT-reversalfactor (`F-F_LT_Reversal_Factor`),
 de tien waarde- en gelijkgewogen decielen op prior 60-13 (`10_Portfolios_Prior_60_13`), de
 zes size-portefeuilles waaruit de factor is gebouwd (`6_Portfolios_ME_Prior_60_13`) en de
 FF3-factoren, maandelijks 1931-01 t/m 2026-07, via `hap.data.french(...)`.
 
-**Verschil met het origineel.** DBT gebruikten NYSE-aandelen, vormden elke drie jaar
-portefeuilles van de 35 of 50 extreemste aandelen op basis van 36 maanden marktgecorrigeerd
-rendement en hielden die drie jaar vast. French sorteert elke maand alle NYSE-, AMEX- en
-NASDAQ-aandelen op het rendement van maand $t-60$ tot $t-13$, met NYSE-breekpunten en
-waardegewogen decielen; zijn extreme portefeuilles zijn dus veel groter en minder
-extreem, en ze worden maandelijks herbalanceerd.
+**Verschil met het origineel.** DBT vormden elke drie jaar portefeuilles van de 35 of 50
+extreemste NYSE-aandelen op 36 maanden marktgecorrigeerd rendement en hielden die drie jaar
+vast. French sorteert elke maand NYSE-, AMEX- en NASDAQ-aandelen op het rendement van $t-60$
+tot $t-13$ met NYSE-breekpunten: grotere, minder extreme, maandelijks herbalanceerde
+portefeuilles.
 
 **Verwachte afwijking.** Over 1933–1980 een positief verliezers-min-winnaarsrendement, groter
 bij gelijk- dan bij waardeweging, en een positieve CAPM-alfa; een FF3-alfa die niet
-significant van nul verschilt, met een positieve lading op HML; na 1980 een kleinere premie.
+significant van nul verschilt voor de LT-reversalfactor en het waardegewogen verschil, met
+een positieve lading op HML; na 1980 een kleinere premie.
 Is het teken van de HML-lading of van het ruwe verschil negatief, dan zit er een fout in de
 code.
 ```
@@ -956,7 +933,22 @@ en er blijft over de hele eeuw niets over: wat De Bondt en Thaler als overreacti
 statistisch grotendeels de waardepremie.
 :::
 
-REPL-DBT-TEKST
+De factor van French is tot op afronding van de gepubliceerde procenten het verschil tussen
+de gemiddelde verliezers- en winnaarsportefeuilles uit de zes size-portefeuilles. Over de
+periode van De Bondt en Thaler verdient het gelijkgewogen verschil tussen het verliezers- en
+het winnaarsdeciel 1,36% per maand ($t = 3{,}45$), het waardegewogen verschil 0,72%
+($t = 2{,}09$) en de LT-reversalfactor 0,38% ($t = 1{,}95$). Samengesteld over hun zestien
+driejaarsperioden levert het gelijkgewogen verschil gemiddeld 81% op, met $t = 2{,}20$ over
+de zestien perioden, toevallig hun $t$-waarde; het grotere getal is een samengesteld
+long-short-rendement van decielen, geen marktgecorrigeerd residu van 35 aandelen. Teken en
+significantie kloppen, de omvang is niet vergelijkbaar. En motief 1: 0,38% per maand met
+$t = 1{,}95$ betekent een standaardfout van 2,3 procentpunt per jaar.
+
+Dan de risicolezing. Verliezers hebben hier een hogere marktbèta, dus de CAPM-alfa's zijn
+kleiner, en FF3 neemt de rest: de alfa van de factor is $-0{,}03\%$ ($t = -0{,}30$) bij een
+HML-lading van 0,78, die van het waardegewogen verschil 0,01%. Alleen het gelijkgewogen
+verschil houdt 0,41% over ($t = 1{,}99$). Na 1980 is de factor 0,15% per maand ($t = 1{,}08$);
+de gehedgede reeks in [](#fig-behavioral-ltrev) is over de hele eeuw vlak.
 
 ### Benartzi-Thaler: de evaluatieperiode op historische rendementen
 
@@ -966,13 +958,25 @@ REPL-DBT-TEKST
 **Bron.** Shlomo Benartzi en Richard Thaler, *Myopic Loss Aversion and the Equity Premium
 Puzzle*, Quarterly Journal of Economics 1995 {cite}`BenartziThaler1995`.
 
-**Wat.** BT-GETALLEN
+**Wat.** De evaluatieperiode waarbij de CPT-waarde van aandelen gelijk is aan die van
+obligaties. Benartzi en Thaler trokken met teruglegging uit de maandrendementen van CRSP over
+1926–1990 en vergeleken de aandelenindex met schatkistpapier en vijfjaarsobligaties, nominaal
+en reëel, bij de parameters van Tversky en Kahneman (1992). De break-evenperiode lag
+"always between 9 and 12 months, or roughly one year" (in de inleiding: 9 tot 13 maanden),
+met 11–12 maanden voor hun voorkeursvergelijking, nominale aandelen tegen vijfjaarsobligaties.
+Met een lineaire waardefunctie en ongewogen kansen werd het 8 maanden. Deze getallen komen uit
+de NBER-werkversie (w4369, 1993, p. 13–16); de tijdschriftversie kan in formulering afwijken.
 
 **Data hier.** Goyal-Welch, maandelijks 1926-01 t/m 2025-12, via
 `hap.data.goyal_welch("monthly")`: `CRSP_SPvw` (S&P 500 met dividend) voor aandelen, `ltr`
 (rendement op langlopende staatsobligaties) voor obligaties en `infl` voor reële rendementen.
 
-**Verschil met het origineel.** BT-VERSCHIL
+**Verschil met het origineel.** BT gebruikten CRSP-reeksen voor schatkistpapier en
+vijfjaarsobligaties; de gratis data bevatten alleen langlopende staatsobligaties (`ltr`), die
+volatieler zijn. Dat verlaagt de CPT-waarde van obligaties en verkort $h^{*}$. We trekken zoals
+zij maanden met teruglegging (20 000 trekkingen per horizon, dezelfde voor elke variant), maar
+rekenen de CPT-waarde exact uit in plaats van op twintig punten van de verdeling. Reëel
+betekent hier gedefleerd met `infl`.
 
 **Verwachte afwijking.** Een evaluatieperiode in de orde van één jaar (tussen ruwweg een
 halfjaar en anderhalf jaar) over 1926–1990 bij $\lambda = 2{,}25$; een kortere periode bij een
@@ -1042,16 +1046,67 @@ halen aandelen obligaties in. De stippellijn is de evaluatieperiode waarbij de b
 onverschillig is.
 :::
 
-REPL-BT-TEKST
+Over 1926–1990 halen nominale aandelen de langlopende obligaties na 7,5 maanden in, reëel na
+5,7; tot en met 2025 na 5,6 en 4,7. Dat is korter dan de 9 tot 13 maanden van Benartzi en
+Thaler, in de richting die de volatielere obligatiereeks voorspelt; met $\lambda = 2{,}5$ wordt
+het 9,6 maanden. De orde van grootte klopt. Maar de premie van 6,7% heeft een standaardfout van
+2,55 procentpunt, en twee standaardfouten lager of hoger geeft 41 of 2,5 maanden: wie $h^{*}$
+meet, meet vooral de premie.
 
 ```{note}
 De individuele accountgegevens achter het disposition effect en overconfidence zijn niet
-gratis en kunnen hier niet worden gerepliceerd. De gepubliceerde getallen: BARBER-ODEAN-NOTE
+gratis en kunnen hier niet worden gerepliceerd; we noemen de gepubliceerde getallen.
+{cite:t}`Odean1998` volgde 10 000 rekeningen bij een grote discountbroker, januari 1987 tot
+december 1993. Het aandeel gerealiseerde winsten (*proportion of gains realized*, PGR) was over
+het hele jaar 0,148, het aandeel gerealiseerde verliezen (PLR) 0,098; alleen in december, als
+een verlies belastingvoordeel oplevert, was PLR hoger (0,128 tegen 0,108). Verkochte winnaars
+deden het in het jaar erna 3,4 procentpunt beter dan aangehouden verliezers (tabel VI).
+{cite:t}`BarberOdean2000` bekeken 66 465 huishoudens bij een grote discountbroker over
+1991–1996: "those that trade most earn an annual return of 11.4 percent, while the market
+returns 17.9 percent"; het gemiddelde huishouden verdiende 16,4% per jaar en had een
+omloopsnelheid van 75%. {cite:t}`BarberOdean2001` vonden bij ruim 35 000 huishoudens
+(februari 1991 tot januari 1997) dat mannen 45% meer handelen dan vrouwen, en dat handelen het
+netto rendement van mannen met 2,65 en dat van vrouwen met 1,72 procentpunt per jaar verlaagt;
+alleenstaande mannen handelen 67% meer dan alleenstaande vrouwen.
 ```
 
 ## Wat er brak, en wat daarna kwam
 
-BREAK-TEKST
+**Wat het model verklaart.** Behavioral finance gaf de feiten uit de vorige lectures een
+mechanisme: excess volatility en voorspelbaarheid via traag sentiment, momentum en omkering
+via BSV, DHS en HS, de equity premium via myopic loss aversion, handelspatronen van
+particulieren via prospect theory en overconfidence, tweelingaandelen en carve-outs via
+limits of arbitrage. En het weerlegde het argument dat irrationele beleggers vanzelf
+verdwijnen. In DSSW verdienen ze onder voorwaarden meer, en bij Shleifer en
+Vishny is arbitrage het zwakst wanneer ze het meest nodig is, zoals LTCM in 1998 liet zien
+([](#04-22-risk-management)).
+
+**Waar het breekt.** Bij de toets. Onze replicatie vindt de omkering van De Bondt en Thaler
+terug (1,36% per maand gelijkgewogen over 1933–1980, $t = 3{,}45$), maar voor de factor valt ze
+vrijwel geheel in januari (3,35% per januarimaand, 0,11% in de andere maanden, zie
+[](#ex-behavioral-3)), ze is na 1980 zwak, en het driefactormodel slokt haar op: een FF3-alfa
+van $-0{,}03\%$ bij een HML-lading van 0,78. De evaluatieperiode van Benartzi en Thaler ligt
+binnen twee standaardfouten van de premie ergens tussen 2,5 en 41 maanden. Een gedragsmodel
+met een vrije parameter per feit verklaart veel en verbiedt weinig.
+
+**Risico of vergissing?** De Chicago-lezing: verliezers van vijf jaar zijn bedrijven in
+*distress* (financiële nood) met een hoge boek-marktwaarde, de omkering is de waardepremie, en
+HML beprijst een risico dat in slechte tijden uitkomt {cite}`FamaFrench1996`. De equity premium
+is dan een risicopremie waarvoor een beter model van marginaal nut nodig is, en daarover gaat
+[](#05-27-drie-antwoorden). De Yale- en Harvard-lezing: de waardepremie *is* de overreactie.
+{cite:t}`LakonishokShleiferVishny1994` lazen haar als extrapolatie van groei, en HML slokt de
+omkering op omdat HML dezelfde verkeerd geprijsde aandelen bevat. {prf:ref}`prop-behavioral-joint`
+zegt waarom prijzen en rendementen dit niet beslissen; marginaal nut, gemeten verwachtingen
+of shortingkosten zouden het kunnen, maar die data kwamen later en besliste ook niet. Het
+praktijkmotief van
+Santa-Clara maakt het concreet: wie verliezers koopt, draagt ofwel beprijsd distress-risico,
+ofwel denkt hij de vergissing van anderen te zien. En DSSW en Shleifer-Vishny voegen eraan toe
+dat ook wie gelijk heeft, failliet kan gaan voordat de prijs hem gelijk geeft.
+
+**Wat er daarna kwam.** Noise traders bleven, maar als bouwsteen: in het model van Kyle zijn
+zij degenen die geïnformeerde handel mogelijk maken, en de vraag verschuift van *of* prijzen
+fout zijn naar *hoe* informatie via orders in prijzen terechtkomt, zie
+[](#04-24-microstructuur).
 
 ## Oefeningen
 
@@ -1073,7 +1128,8 @@ $\sigma_\rho = 0{,}3$, $\gamma = 60$).
 :class: dropdown
 
 **(1)** De wortels van $(\rho^{*})^{2} - \kappa\rho^{*} + \sigma_\rho^{2} = 0$ met $\kappa = 0{,}675$
-en $\sigma_\rho^{2} = 0{,}09$; het maximum is $\kappa/2 - (\kappa^{2}/4 + \sigma_\rho^{2})/\kappa$.
+en $\sigma_\rho^{2} = 0{,}09$ zijn $0{,}183$ en $0{,}492$; het maximum in $\rho^{*} = \kappa/2$ is
+$\kappa/2 - (\kappa^{2}/4 + \sigma_\rho^{2})/\kappa = 0{,}0354$.
 
 **(2)** Er is een kruising als $\kappa > 2\sigma_\rho$, dus
 $\mu > (1+r)^{2}/(\gamma\sigma_\rho) = 4/18 = 0{,}222$. Met weinig noise traders is het
@@ -1090,10 +1146,8 @@ pd.Series({rs: dssw_dynasties(rs)["dR"].mean() for rs in [0.15, 0.20, 0.45, 0.55
           name="gem. dR (simulatie)").round(4)
 ```
 
-Binnen het interval is het gesimuleerde verschil positief, erbuiten negatief. De oefening
-laat zien dat "noise traders verdienen meer" geen algemene uitkomst is maar een smal
-gebied: genoeg noise traders om risico te creëren, en optimisme dat groot genoeg is om de
-premie op te halen maar niet zo groot dat de prijs die premie wegdrukt.
+Binnen het interval is het gesimuleerde verschil positief, erbuiten negatief: "noise traders
+verdienen meer" geldt alleen in een smal gebied van genoeg noise traders en gematigd optimisme.
 :::
 
 :::{exercise}
@@ -1128,11 +1182,10 @@ h_of = lambda mu_e, lam=LAMBDA: 2 * sigma**2 / np.pi / (rf + mu_e * (lam + 1) / 
 print("h* (maanden) bij premie 4%, 6%, 8%:", np.round([12 * h_of(m) for m in (0.04, 0.06, 0.08)], 1))
 ```
 
-**(3)** Bij $\lambda = 2{,}25$ is een premie van 6% verenigbaar met een jaarlijkse evaluatie;
-bij vijf jaar is de benodigde $c$ kleiner dan de premie en bestaat er geen $\lambda$ die
-volstaat. De evaluatieperiode bij 4% en 8% verschilt een factor vier. Met een premie die op
-twee procentpunt nauwkeurig is, is "ongeveer één jaar" dus alles tussen een halfjaar en
-twee jaar; de theorie is flexibel omdat het gemiddelde slecht gemeten is.
+**(1) en (3)** Bij een jaar volstaat $\lambda = 2{,}34$; bij vijf jaar is $\lambda \approx 89$
+nodig. Bij $\lambda = 2{,}25$ is $h^{*}$ 23,5, 11,1 en 6,4 maanden bij 4%, 6% en 8%: een factor
+3,7, iets minder dan (2) voorspelt omdat $r^{f} > 0$. De theorie is flexibel omdat het
+gemiddelde slecht gemeten is.
 :::
 
 :::{exercise}
@@ -1163,5 +1216,11 @@ for p, (a, b) in {"1933-1980": ("1933-01", "1980-12"), "1981-2026": ("1981-01", 
 pd.DataFrame(rows).T.round(3)
 ```
 
-EX3-TEKST
+Over 1933–1980 verdient de factor in januari gemiddeld 3,35% ($t = 4{,}63$) en in de andere
+elf maanden 0,11% ($t = 0{,}54$); voor het gelijkgewogen decielverschil is dat 9,78% tegen
+0,59%. Na 1980 blijft het januari-effect (1,37% en 6,76%) terwijl de overige maanden rond nul
+of negatief liggen, en de FF3-alfa's van de niet-januarimaanden zijn nergens significant.
+Waarom zou de correctie van overreactie op januari wachten? Belastingverkopen van verliezers
+in december en het terugveren in januari passen beter: één gedragsfeit kan uit meer dan één
+gedrag bestaan.
 :::
