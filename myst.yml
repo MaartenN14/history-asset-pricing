@@ -54,46 +54,46 @@ project:
     # --- Deel 0 — Toolkit ---
     - title: Deel 0 — Toolkit
       children:
-        - file: lectures/00_00_setup.md
-        - file: lectures/00_01_rendementen.md
+        - file: lectures/00_00_setup.ipynb
+        - file: lectures/00_01_rendementen.ipynb
 
     # --- Deel I — Voordat er een vakgebied was (1863–1959) ---
     - title: Deel I — Voordat er een vakgebied was
       children:
-        - file: lectures/01_02_bachelier.md
-        - file: lectures/01_03_williams_ddm.md
-        - file: lectures/01_04_markowitz.md
+        - file: lectures/01_02_bachelier.ipynb
+        - file: lectures/01_03_williams_ddm.ipynb
+        - file: lectures/01_04_markowitz.ipynb
 
     # --- Deel II — Het Chicago-MIT-decennium (1960–1973) ---
     - title: Deel II — Het Chicago-MIT-decennium
       children:
-        - file: lectures/02_05_crsp_tape.md
-        - file: lectures/02_06_efficiente_markten.md
-        - file: lectures/02_07_event_studies.md
-        - file: lectures/02_08_capm.md
-        - file: lectures/02_09_black_scholes.md
+        - file: lectures/02_05_crsp_tape.ipynb
+        - file: lectures/02_06_efficiente_markten.ipynb
+        - file: lectures/02_07_event_studies.ipynb
+        - file: lectures/02_08_capm.ipynb
+        - file: lectures/02_09_black_scholes.ipynb
 
     # --- Deel III — Theorie en eerste barsten (1973–1985) ---
     - title: Deel III — Theorie en eerste barsten
       children:
-        - file: lectures/03_10_merton_icapm.md
-        - file: lectures/03_11_apt_no_arbitrage.md
-        - file: lectures/03_12_consumptie_capm.md
-        - file: lectures/03_13_equity_premium_puzzle.md
-        - file: lectures/03_14_roll.md
-        - file: lectures/03_15_shiller_excess_volatility.md
-        - file: lectures/03_16_vroege_anomalieen.md
-        - file: lectures/03_17_termijnstructuur_real_options.md
+        - file: lectures/03_10_merton_icapm.ipynb
+        - file: lectures/03_11_apt_no_arbitrage.ipynb
+        - file: lectures/03_12_consumptie_capm.ipynb
+        - file: lectures/03_13_equity_premium_puzzle.ipynb
+        - file: lectures/03_14_roll.ipynb
+        - file: lectures/03_15_shiller_excess_volatility.ipynb
+        - file: lectures/03_16_vroege_anomalieen.ipynb
+        - file: lectures/03_17_termijnstructuur_real_options.ipynb
 
     # --- Deel IV — De empirische wending (1985–2000) ---
     - title: Deel IV — De empirische wending
       children:
-        - file: lectures/04_18_fama_french.md
-        - file: lectures/04_19_momentum.md
-        - file: lectures/04_20_voorspelbaarheid.md
-    #     - file: lectures/04_21_volatiliteit.md
-    #     - file: lectures/04_22_risk_management.md
-    #     - file: lectures/04_23_behavioral.md
+        - file: lectures/04_18_fama_french.ipynb
+        - file: lectures/04_19_momentum.ipynb
+        - file: lectures/04_20_voorspelbaarheid.ipynb
+        - file: lectures/04_21_volatiliteit.ipynb
+        - file: lectures/04_22_risk_management.ipynb
+        - file: lectures/04_23_behavioral.md
     #     - file: lectures/04_24_microstructuur.md
     #     - file: lectures/04_25_industrie.md
 
@@ -130,10 +130,15 @@ project:
     # --- Appendix (niet in de leesvolgorde) ---
     - title: Appendix
       children:
-        - file: lectures/_template.md
+        - file: lectures/_template.ipynb
 
 site:
-  template: book-theme
+  # Officieel QuantEcon-thema voor MyST/Jupyter Book 2, met alleen een
+  # kleine lokale correctie voor de tekstbreedte.
+  template: https://github.com/QuantEcon/quantecon-theme.mystmd/releases/download/v2.2.0/quantecon-theme.zip
+  parts:
+    footer: footer.md
   options:
     favicon: null
     logo_text: Geschiedenis van asset pricing
+    style: custom.css

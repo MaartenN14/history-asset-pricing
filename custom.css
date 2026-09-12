@@ -1,0 +1,38 @@
+/* Houd de QuantEcon-layout intact, maar gebruik ongeveer dezelfde
+   tekstbreedte als de huidige python-advanced.quantecon.org-site. */
+.simple-center-grid {
+  grid-template-columns:
+    [screen-start] 1fr
+    [body-start] minmax(300px, 880px) [body-end]
+    1fr [screen-end];
+}
+
+@media (min-width: 1280px) {
+  .simple-center-grid {
+    grid-template-columns:
+      [screen-start] 1fr 200px 20px
+      [body-start] 880px [body-end]
+      20px [margin-start] 200px [margin-end]
+      1fr [screen-end];
+  }
+}
+
+/* Het thema is MIT-gelicentieerd, maar de QuantEcon-merkidentiteit hoort
+   niet bij dit onafhankelijke boek. Vervang daarom het vaste woordmerk in
+   de werkbalk door de eigen boektitel en verberg de vaste zijbalklogo's. */
+li:has(> a[href="https://quantecon.org/"]) > a[href="https://quantecon.org/"] {
+  display: none !important;
+}
+
+li:has(> a[href="https://quantecon.org/"])::after {
+  content: "Geschiedenis van asset pricing";
+  color: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+nav > div:has(img[src="/logos/qe-logo.png"]),
+nav > div:has(img[src="/logos/quantecon-logo-transparent.png"]) {
+  display: none !important;
+}

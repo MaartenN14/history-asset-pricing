@@ -57,7 +57,10 @@ lecture met `# TODO: naar hap.stats` en meld het in je rapport. Installeer geen 
 uv run jupytext --sync lectures/<slug>.md
 set HAP_OFFLINE=1   # PowerShell: $env:HAP_OFFLINE="1" ; bash: HAP_OFFLINE=1 uv run ...
 uv run jupytext --execute --to ipynb lectures/<slug>.md     # foutloos, geen warnings in de output
-uv run jupyter book build --html                             # geen ⛔ en geen ⚠ die uit jóuw bestand komen
+uv run jupyter book build --execute --html                   # voert Python-cellen uit en toont hun uitvoer in de HTML
+Copy-Item custom.css _build\html\myst-theme.css -Force      # QuantEcon-thema neemt custom CSS nog niet zelf over
+Copy-Item THIRD_PARTY_NOTICES.md _build\html\THIRD_PARTY_NOTICES.md -Force
+uv run python -m http.server 8080 --bind 127.0.0.1 --directory _build\html  # open http://localhost:8080, niet via file:///...
 ```
 
 Faalt de build door een bestand van een andere agent, negeer dat en meld het. Loop daarna STYLE.md §10
