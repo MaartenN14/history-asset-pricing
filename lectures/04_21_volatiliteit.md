@@ -72,11 +72,9 @@ vonden ze een risicoaversie van 2,6 met een zeer hoge $t$-waarde
 GARCH is een statistische beschrijving van een feit, het ICAPM een theorie met een
 toets, en de toets blijkt het moeilijke deel.
 
-We repliceren GARCH en GJR-GARCH op een eeuw dagrendementen, inclusief de crash van
-1987; de voorspelkracht van HAR-RV tegenover GARCH voor de maandvariantie; en de
-MIDAS-schatting van de risico-rendementsrelatie op de steekproef van het paper en tot
-heden. Die laatste replicatie lukt op onze data niet, en de simulatie die eraan
-voorafgaat legt uit waarom dat minder vreemd is dan het lijkt.
+We repliceren GARCH en GJR-GARCH op een eeuw dagrendementen, HAR-RV tegenover GARCH,
+en de MIDAS-schatting van de risico-rendementsrelatie. Die laatste lukt op onze data
+niet; de simulatie legt uit waarom dat minder vreemd is dan het lijkt.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -113,11 +111,9 @@ verhoudingsgewijs meer schuld en dus riskanter eigen vermogen. Dat laatste is de
 asymmetrie die in de data zit: volatiliteit stijgt meer na een daling dan na een even
 grote stijging.
 
-Dat de variantie wél en het gemiddelde niet voorspelbaar is, is economie en
-statistiek tegelijk. Een voorspelbaar rendement is geld op straat, en beleggers ruimen
-het op; een voorspelbare variantie zegt niets over de richting en dus niets over winst.
-En Mertons argument zegt dat een maand dagdata de variantie al redelijk meet, terwijl
-een eeuw het gemiddelde nog niet vastlegt.
+Dat de variantie wél en het gemiddelde niet voorspelbaar is, is geen toeval: een
+voorspelbaar rendement is geld op straat dat beleggers opruimen, een voorspelbare
+variantie zegt niets over de richting.
 
 Op maandag 19 oktober 1987 daalde de S&P 500 met 20,47% en de Dow Jones Industrial
 Average met 22,6%, voor beide de grootste daling op één dag. Een deel van de verkopen
@@ -337,12 +333,10 @@ de log-likelihood per waarneming en $B$ de verwachte buitenproductmatrix van de 
 {cite}`BollerslevWooldridge1992`.
 :::
 
-De kern is één regel. De score naar een parameter die via $h$ binnenkomt, is evenredig
-met $(\varepsilon_{t+1}^2/h_{t+1} - 1)\,\partial \ln h_{t+1}/\partial\theta$, en die heeft
+De score naar een parameter die via $h$ binnenkomt, is evenredig met
+$(\varepsilon_{t+1}^2/h_{t+1} - 1)\,\partial \ln h_{t+1}/\partial\theta$ en heeft
 verwachting nul zodra $\E_t[\varepsilon_{t+1}^2] = h_{t+1}$, welke verdeling $z$ ook
-heeft. Een eerste-ordevoorwaarde met verwachting nul in het ware punt geeft
-consistentie. Alleen de informatiematrix-identiteit $A = B$ vervalt; vandaar de sandwich,
-die we hieronder voor alle QML-schattingen gebruiken.
+heeft; dat geeft consistentie. Alleen $A = B$ vervalt, vandaar de sandwich.
 
 ### Asymmetrie: leverage, EGARCH en GJR
 
@@ -503,11 +497,9 @@ $-\E^{\mathbb Q}[\ln(S_T/F)] = e^{rT}\int_0^\infty Q(K)/K^2\, dK$. Invullen en d
 $T$. $\square$
 :::
 
-De formule gebruikt geen Black-Scholes, alleen dat de koers niet springt. Het gewicht
-$1/K^2$ telt diepe puts zwaar mee, zodat de smirk de VIX boven de
-at-the-money-volatiliteit tilt; dat de VIX gemiddeld boven de daarna gerealiseerde
-volatiliteit ligt, is de variance risk premium uit [](#fig-black-scholes-vrp).
-[](#ex-volatiliteit-3) rekent de formule na.
+De formule gebruikt geen Black-Scholes, alleen dat de koers niet springt; het gewicht
+$1/K^2$ laat de smirk de VIX optillen. Dat de VIX boven de latere volatiliteit ligt, is de
+variance risk premium uit [](#fig-black-scholes-vrp); [](#ex-volatiliteit-3) rekent na.
 
 ### De risico-rendementsrelatie en het meetfoutprobleem
 
@@ -699,12 +691,10 @@ onderen convergeert. Rechts: de geschatte GARCH volgt de ware volatiliteit; het 
 venster loopt achter en vlakt pieken af.
 :::
 
-Tien jaar dagdata leggen $\alpha$ en $\beta$ vast tot op één à twee honderdste, en de
-geschatte GARCH voorspelt de ware variantie met een fout van 0,2% van haar spreiding.
-Het beste rollende venster, 22 dagen, heeft een ruim twintig keer grotere fout, en
-langere vensters zijn slechter omdat ze achterlopen. In [](#04-20-voorspelbaarheid)
-waren zestig jaar niet genoeg om te zien of een voorspeller van het *rendement* het
-historische gemiddelde verslaat.
+Tien jaar dagdata leggen $\alpha$ en $\beta$ vast tot op één à twee honderdste; de
+geschatte GARCH voorspelt de ware variantie met een fout van 0,2% van haar spreiding, het
+beste rollende venster met een ruim twintig keer grotere. In [](#04-20-voorspelbaarheid)
+waren zestig jaar niet genoeg voor een voorspeller van het *rendement*.
 
 ### (b) Risico en rendement: hoeveel jaar data vraagt γ?
 
@@ -1249,13 +1239,11 @@ over 1928–2000 een ander profiel, met relatief veel gewicht aan het einde van 
 in 1964–2000 lijkt het meer op het gepubliceerde.
 :::
 
-De replicatie slaagt niet, en het loont om precies te zeggen waar. Over 1928–2000 is de
-MIDAS-$\gamma$ op de French-data positief maar klein: 0,19 met $t = 0{,}2$. Zelfs met de
-gepubliceerde gewichten, zodat alleen $\mu$ en $\gamma$ geschat worden, komt er
-$\gamma = 0{,}83$ met $t = 0{,}8$ uit. Het teken klopt; grootte en significantie niet. De
-rollende vensters geven hetzelfde beeld: één maand 0,45, twee tot zes maanden 0,75 à 1,0,
-alle $t$-waarden onder één; de rangorde uit tabel 4 is er zwak, de piek bij drie à vier
-maanden niet. In 1964–2000 komen we dichter bij het paper ($\gamma = 2{,}85$, $t = 1{,}5$,
+De replicatie slaagt niet. Over 1928–2000 is de MIDAS-$\gamma$ op de French-data
+positief maar klein: 0,19 met $t = 0{,}2$; met de gepubliceerde gewichten $0{,}83$ met
+$t = 0{,}8$. Het teken klopt, grootte en significantie niet. Rollende vensters geven één
+maand 0,45 en twee tot zes maanden 0,75 à 1,0, alle met $t < 1$: de rangorde uit tabel 4
+is er zwak, de piek bij drie à vier maanden niet. In 1964–2000 komen we dichter bij het paper ($\gamma = 2{,}85$, $t = 1{,}5$,
 tegenover $3{,}748$ met $t = 8{,}612$), in 1928–1963 is $\gamma$ negatief, en over de hele
 eeuw tot 2026 is ze weer klein en insignificant.
 
@@ -1271,11 +1259,9 @@ het bijzonder zonder de Grote Depressie en de kredietcrisis {cite}`GhyselsPlazzi
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** GARCH en zijn opvolgers verklaren met drie parameters drie
-stylized facts: rendementen zonder geheugen, kwadraten met een lang geheugen, en dikke
-staarten. Op een eeuw French-data zien we een persistentie van 0,98 à 0,99 en een
-asymmetrie die bijna de hele reactie op schokken aan dalingen toeschrijft, zoals Black en
-Glosten, Jagannathan en Runkle beschreven. Met parameters uit 1969 verklaren
+**Wat het model verklaart.** GARCH en zijn opvolgers verklaren met drie parameters
+rendementen zonder geheugen, kwadraten met een lang geheugen en dikke staarten; op een
+eeuw French-data met een persistentie van 0,98 à 0,99 en een sterke asymmetrie. Met parameters uit 1969 verklaren
 GARCH-voorspellingen tot 2026 bijna een kwart van de variatie in de maandvariantie en
 bijna de helft van haar logaritme. Realized variance maakte de variantie meetbaar, de VIX
 maakte de verwachte variantie verhandelbaar. Dat volatiliteit voorspelbaar is en
@@ -1296,18 +1282,15 @@ is uitstekend te meten, de *prijs* ervan, die in het eerste moment zit, niet.
 die de verwachte volatiliteit verhoogt, verhoogt de discontovoet en verlaagt de prijs
 vandaag; dat is de negatieve samenhang tussen onverwachte rendementen en onverwachte
 volatiliteit die French, Schwert en Stambaugh als indirect bewijs voor een positieve premie
-lazen, de asymmetrie in GJR, en de variance risk premium uit [](#02-09-black-scholes). Dat
-de relatie buiten crises wel standhoudt, past daarbij als crises toestanden zijn waarin
-beleggers naar veiligheid vluchten. De Yale-lezing: in 1987 verkochten
+lazen, de asymmetrie in GJR, en de variance risk premium uit [](#02-09-black-scholes). De Yale-lezing: in 1987 verkochten
 portefeuilleverzekeraars mechanisch in een dalende markt, en in paniek eisen beleggers geen
 premie maar vergissen ze zich; wie na een volatiliteitspiek bijkoopt, oogst dan de correctie
 van een overreactie, en een VIX boven de latere volatiliteit is een te hoge prijs voor
 verzekering. Scheiden vraagt het verwachte rendement in precies de toestanden waarin de
 variantie extreem is, en daarvan heeft een eeuw er vier of vijf. Voor Santa-Clara's
-praktijkmotief: de strategieën die in deze reeks werken — risico schalen in
-[](#04-19-momentum), variantie verkopen in [](#02-09-black-scholes) — leven van het tweede
-moment; wie uit volatiliteit het rendement denkt te voorspellen, meent iets te weten wat de
-prijs niet weet.
+praktijkmotief: risico schalen ([](#04-19-momentum)) en variantie verkopen leven van het
+tweede moment; wie uit volatiliteit het rendement denkt te voorspellen, meent iets te weten
+wat de prijs niet weet.
 
 **Wat er daarna kwam.** Een voorspelbare volatiliteit met dikke staarten is precies wat een
 risicomanager nodig heeft; ze werd het fundament van Value-at-Risk en RiskMetrics, en van de
@@ -1369,12 +1352,10 @@ pd.DataFrame(
 ).round(3)
 ```
 
-Met $\phi^2 + 2\alpha^2 = 0{,}91$ liggen simulatie en theorie dicht bij elkaar. Hierboven is
-$\phi^2 + 2\alpha^2 = 0{,}98$: het vierde moment bestaat net, het achtste niet, zodat de
-steekproefautocorrelatie van $\varepsilon^2$ geen eindige variantie heeft en langzaam en van
-onderen convergeert. De oefening leert dat GARCH dikke staarten maakt uit normale schokken,
-en dat realistische parameters dicht bij de grens liggen waar klassieke momenten ophouden te
-bestaan.
+Met $\phi^2 + 2\alpha^2 = 0{,}91$ klopt de simulatie; hierboven is het 0,98, het achtste
+moment bestaat niet en de steekproefautocorrelatie convergeert traag en van onderen. De
+oefening leert dat GARCH dikke staarten maakt uit normale schokken, met realistische
+parameters vlak bij de grens waar momenten ophouden te bestaan.
 :::
 
 :::{exercise}
@@ -1410,11 +1391,9 @@ for name, res in (("normaal", fits["GJR-GARCH(1,1)"]), ("Student-t", gjr_t)):
 pd.DataFrame(comparison).T
 ```
 
-De Student-$t$-versie wint ruim achthonderd punten log-likelihood en schat ongeveer zes
-vrijheidsgraden; de dynamiek ($\alpha$, $\delta$, $\beta$) verandert nauwelijks. De
-gestandaardiseerde schok van 19 oktober blijft rond $-7$, maar de kans erop verschuift van
-eens in tien miljard jaar naar ruwweg eens in een halve eeuw — een getal waarmee een
-risicomanager kan rekenen. De oefening leert dat GARCH de klontering vangt, maar dat de staart
+De Student-$t$-versie wint ruim achthonderd punten log-likelihood met ongeveer zes
+vrijheidsgraden en vrijwel dezelfde dynamiek. De schok van 19 oktober blijft rond $-7$, maar
+de kans verschuift van eens in tien miljard jaar naar ruwweg eens in een halve eeuw. De oefening leert dat GARCH de klontering vangt, maar dat de staart
 van de voorwaardelijke verdeling een aparte keuze is, en in [](#04-22-risk-management) is dat
 de keuze die ertoe doet.
 :::
@@ -1464,11 +1443,10 @@ vix_rows["smirk, K van 40 tot 250"] = vix_formula(K, bs_otm_price(K, F0, T0, smi
 pd.Series(vix_rows, name="modelvrije volatiliteit").round(4)
 ```
 
-Met een vlakke implied volatility en een brede keten geeft de formule 20,05%: de modelvrije
-variantie is de Black-Scholes-variantie op een discretisatiefout van de gehele
-uitoefenprijzen na. Een keten van 95 tot 105 mist de staarten en onderschat de variantie
-fors. Met een smirk ligt de modelvrije volatiliteit boven de at-the-money 20%, omdat het
-gewicht $1/K^2$ de dure puts zwaarder laat meetellen dan de goedkope calls. De oefening leert
+Met een vlakke implied volatility en een brede keten geeft de formule 20,05%, op een
+discretisatiefout na de Black-Scholes-volatiliteit. Een keten van 95 tot 105 mist de staarten
+en geeft 18,35%. Met de smirk komt er 20,43% uit, boven de at-the-money 20%, omdat
+$1/K^2$ de dure puts zwaar laat meetellen. De oefening leert
 dat de VIX de risiconeutrale verwachte variantie over de hele verdeling meet, inclusief de
 crashstaart, en dat een keten met te weinig uitoefenprijzen haar systematisch te laag
 schat.
@@ -1509,9 +1487,8 @@ for label, drop in (("1952-2026, MIDAS", ()), ("1952-2026, MIDAS zonder 2008-09 
 pd.DataFrame(results).T.round(3)
 ```
 
-Over 1928–1984 geeft het venster van één maand op de French-data een kleine positieve
-$\gamma$ van ongeveer 0,5 ($t \approx 0{,}5$): het teken van $-0{,}349$ komt niet terug, de
-insignificantie wel, en vier maanden verandert daar weinig aan. Over 1952–2026 is de
+Over 1928–1984 geeft één maand $\gamma \approx 0{,}5$ ($t \approx 0{,}5$) en vier maanden
+0,64: het teken van $-0{,}349$ komt niet terug, de insignificantie wel. Over 1952–2026 is de
 MIDAS-$\gamma$ ongeveer 1,3 ($t \approx 1{,}4$); zonder elf crisismaanden van de
 eenentwintigste eeuw stijgt ze naar ongeveer 2,1 met $t \approx 2{,}0$. De oefening leert dat
 de geschatte prijs van variantierisico geen vast getal is maar afhangt van welke extreme
