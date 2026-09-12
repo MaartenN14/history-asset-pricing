@@ -95,14 +95,14 @@ project:
         - file: lectures/04_22_risk_management.ipynb
         - file: lectures/04_23_behavioral.md
         - file: lectures/04_24_microstructuur.md
-    #     - file: lectures/04_25_industrie.md
+        - file: lectures/04_25_industrie.md
 
     # --- Deel V — Het pluralistische vakgebied (2000–2013) ---
-    # - title: Deel V — Het pluralistische vakgebied
-    #   children:
-    #     - file: lectures/05_26_sdf_unificatie.md
-    #     - file: lectures/05_27_drie_antwoorden.md
-    #     - file: lectures/05_28_termijnstructuur_premies.md
+    - title: Deel V — Het pluralistische vakgebied
+      children:
+        - file: lectures/05_26_sdf_unificatie.md
+        - file: lectures/05_27_drie_antwoorden.md
+        - file: lectures/05_28_termijnstructuur_premies.md
     #     - file: lectures/05_29_opties_crashrisico.md
     #     - file: lectures/05_30_wisselkoersen.md
     #     - file: lectures/05_31_portfolio_choice.md
