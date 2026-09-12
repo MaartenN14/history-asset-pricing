@@ -83,13 +83,13 @@ project:
         - file: lectures/03_14_roll.md
         - file: lectures/03_15_shiller_excess_volatility.md
         - file: lectures/03_16_vroege_anomalieen.md
-    #     - file: lectures/03_17_termijnstructuur_real_options.md
+        - file: lectures/03_17_termijnstructuur_real_options.md
 
     # --- Deel IV — De empirische wending (1985–2000) ---
-    # - title: Deel IV — De empirische wending
-    #   children:
-    #     - file: lectures/04_18_fama_french.md
-    #     - file: lectures/04_19_momentum.md
+    - title: Deel IV — De empirische wending
+      children:
+        - file: lectures/04_18_fama_french.md
+        - file: lectures/04_19_momentum.md
     #     - file: lectures/04_20_voorspelbaarheid.md
     #     - file: lectures/04_21_volatiliteit.md
     #     - file: lectures/04_22_risk_management.md
