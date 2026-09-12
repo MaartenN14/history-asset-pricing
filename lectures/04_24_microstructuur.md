@@ -66,16 +66,10 @@ vergoeding voor een kost die beleggers slecht inschatten. Santa-Clara's
 stelling nummer negen in zijn lijst van wat we weten luidt: *"Liquidity is
 priced, and it disappears when you need it"* {cite}`SantaClara2026`.
 
-We beginnen met twee handberekeningen (Glosten-Milgrom en Kyle met één
-handelsronde), leiden het Kyle-evenwicht, de spreadformule, de Roll-maat en de
-relatie tussen Amihud's maat en Kyle's $\lambda$ af, en simuleren daarna de
-meerperiode-Kyle-markt, een Glosten-Milgrom-sessie en de Roll-schatter in
-eindige steekproeven. Aan het eind repliceren we op dagdata van vijftig grote
-Amerikaanse aandelen dat illiquiditeit piekt in 2008 en maart 2020 en dat
-innovaties in illiquiditeit samengaan met lage marktrendementen
-{cite}`Amihud2002`, en op de gepubliceerde reeks van Pástor en Stambaugh dat
-marktliquiditeit instort in de bekende crisismaanden en dat hun verhandelbare
-liquiditeitsfactor een premie had.
+Aan het eind repliceren we op dagdata van vijftig grote Amerikaanse aandelen dat
+illiquiditeit piekt in 2008 en maart 2020 en dat innovaties in illiquiditeit
+samengaan met lage marktrendementen {cite}`Amihud2002`, en op de reeks van Pástor
+en Stambaugh dat marktliquiditeit instort in de bekende crisismaanden.
 
 ```{code-cell} ipython3
 import io
@@ -96,14 +90,12 @@ rng = np.random.default_rng(20240101)
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-Stel je een handelaar voor die de hele dag achter een scherm zit en iedereen die
-wil kopen of verkopen bedient. De meeste klanten handelen om redenen die niets
-met de waarde van het aandeel te maken hebben: een pensioenfonds dat geld nodig
-heeft, een belegger die herbalanceert, iemand die een bonus belegt. Maar een
-klein deel weet iets: een analist die de kwartaalcijfers beter heeft ingeschat,
-een bestuurder, een fonds met een beter model. De handelaar kan de twee groepen
-niet uit elkaar houden. Hij weet alleen dat een koopopdracht iets waarschijnlijker
-van iemand met goed nieuws komt dan van iemand met slecht nieuws.
+Stel je een handelaar voor die iedereen bedient die wil kopen of verkopen. De
+meeste klanten handelen om redenen die niets met de waarde van het aandeel te maken
+hebben: een pensioenfonds dat geld nodig heeft, een belegger die herbalanceert.
+Een klein deel weet iets. De handelaar kan de groepen niet uit elkaar houden; hij
+weet alleen dat een koopopdracht iets waarschijnlijker van iemand met goed nieuws
+komt.
 
 Daaruit volgt de spread. Als de handelaar aan elke koper verkoopt tegen de
 gemiddelde waarde, verliest hij systematisch aan de geïnformeerde kopers: die
@@ -128,23 +120,16 @@ ronde komt er een even groot stuk bij, en aan het eind zit alles erin. De
 ongeïnformeerde handelaren betalen de winst van de insider; de market maker
 speelt quitte.
 
-Een belegger die de handelaar niet ziet, ziet alleen de gevolgen: koersen die bij
-grote volumes meer bewegen, een bied-laatkoers waartussen de transacties heen en
-weer springen, en dagen waarop een kleine order een grote koersbeweging
-veroorzaakt. Die gevolgen zijn meetbaar met gewone dagkoersen. Roll zag dat het
-heen-en-weer springen tussen bied en laat een negatieve autocorrelatie in
-koersveranderingen achterlaat, waaruit je de spread kunt terugrekenen. Amihud
-deelde de absolute dagkoersbeweging door de omzet in dollars: een ruwe maat voor
-hoeveel een dollar handel de prijs verschuift.
+Wie de handelaar niet ziet, ziet de gevolgen in gewone dagkoersen: transacties die
+tussen bied en laat heen en weer springen (Roll rekende daaruit de spread terug),
+en koersen die bij weinig omzet veel bewegen (Amihud's maat).
 
 En dan de stap naar asset pricing. Als handelen geld kost, eisen beleggers voor
-illiquide aandelen een hoger rendement, net zoals een huis in een dunne markt
-goedkoper moet zijn om een koper te vinden. Maar liquiditeit is ook iets dat
-*verdwijnt*. In oktober 1987, in de herfst van 1998 toen LTCM omviel (zie
-[](#04-22-risk-management)), in de herfst van 2008 en in maart 2020 werd handelen
-voor iedereen tegelijk duur, precies op het moment dat beleggers moesten
-verkopen. Een aandeel dat juist dan illiquide wordt, of juist dan slecht
-rendeert, is een slechtere verzekering en moet meer opleveren. Dat is Santa-Clara's
+illiquide aandelen een hoger rendement. Maar liquiditeit *verdwijnt* ook: in
+oktober 1987, in de herfst van 1998 toen LTCM omviel (zie
+[](#04-22-risk-management)), in 2008 en in maart 2020 werd handelen voor iedereen
+tegelijk duur, precies toen beleggers moesten verkopen. Een aandeel dat juist dan
+illiquide wordt of slecht rendeert, moet meer opleveren. Dat is Santa-Clara's
 *fair-weather friend*: liquiditeit is *"abundant when nobody needs it and gone in
 every crisis on record"* {cite}`SantaClara2026`.
 
@@ -269,14 +254,12 @@ schrijft $x$, maar dat symbool is bij ons de payoff), de order van de noise
 traders $u$ en de totale order flow $y = \theta + u$. Alle handelaren zijn
 risiconeutraal, de rente is nul en er is geen discontering binnen de handelsdag.
 
-Twee handelsmechanismen. Bij *Glosten-Milgrom* komen handelaren één voor één,
-elk met één eenheid, en de market maker noemt vooraf een bied- en een laatkoers.
-Bij *Kyle* dienen alle handelaren tegelijk een marktorder (een order zonder
-limietprijs) in, ziet de market maker alleen de som, en zet hij één prijs
-waartegen alles wordt uitgevoerd. Het eerste model levert spreads, het tweede
-prijsimpact. Het mechanisme onder beide is hetzelfde: concurrentie tussen market
-makers dwingt de prijs naar de voorwaardelijke verwachting van $v$ gegeven de
-*order flow*, en order flow is informatief omdat de insider erin zit.
+Bij *Glosten-Milgrom* komen handelaren één voor één met één eenheid, en noemt de
+market maker vooraf een bied- en laatkoers. Bij *Kyle* dienen alle handelaren
+tegelijk een marktorder (een order zonder limietprijs) in en zet de market maker
+één prijs op basis van de som. Het eerste model levert spreads, het tweede
+prijsimpact; in beide dwingt concurrentie de prijs naar de voorwaardelijke
+verwachting van $v$ gegeven de *order flow*.
 
 ### Glosten-Milgrom: de spread als adverse selectie
 
@@ -335,18 +318,13 @@ $\E[p_{n+1}\mid\mathcal{F}_n] = \E\bigl[\E[V\mid\mathcal{F}_{n+1}]\mid\mathcal{F
 = \E[V\mid\mathcal{F}_n] = p_n$. $\square$
 :::
 
-Drie dingen vallen op. De spread bestaat zonder voorraadkosten, orderkosten of
-risicoaversie: het is zuiver een *adverse selection*-component (het verlies aan
-beter geïnformeerde tegenpartijen), het mechanisme dat O'Hara's leerboek
-{cite}`OHara1995` als uitgangspunt van de hele informatie-microstructuur neemt. De
-spread is het grootst als de onzekerheid het grootst is ($\pi = \tfrac12$) en
-krimpt naarmate de prijs de informatie opneemt. En de martingaaleigenschap geldt
-ten opzichte van de *publieke* informatie, niet ten opzichte van de insider: voor
-wie weet dat $V = V_H$, loopt de prijs voorspelbaar op. Dat is de Samuelson-stelling
-uit [](#02-06-efficiente-markten) met een precieze informatieverzameling erbij.
-Is $\mu$ zo groot dat de spread de ongeïnformeerde handelaren wegjaagt, dan valt
-de markt stil; Glosten en Milgrom lieten zien dat zo'n *market breakdown* in hun
-model kan optreden.
+De spread bestaat zonder voorraadkosten of risicoaversie: het is zuiver
+*adverse selection* (het verlies aan beter geïnformeerde tegenpartijen), het
+uitgangspunt van O'Hara's leerboek {cite}`OHara1995`. Hij is het grootst bij de
+grootste onzekerheid en krimpt naarmate de prijs de informatie opneemt. De
+martingaaleigenschap geldt ten opzichte van de *publieke* informatie: voor wie weet
+dat $V = V_H$, loopt de prijs voorspelbaar op. Dat is de Samuelson-stelling uit
+[](#02-06-efficiente-markten) met een precieze informatieverzameling erbij.
 
 ### Kyle: het evenwicht met één handelsronde
 
@@ -431,32 +409,19 @@ Die van de noise traders is $\E[u(v - p)] = -\lambda\E[u^2] = -\lambda\sigma_u^2
 $v - \E[v\mid y]$ ongecorreleerd is met $y$. $\square$
 :::
 
-Het evenwicht bevat de hele microstructuur in drie formules. De *diepte* van de
-markt, $1/\lambda$, stijgt met de hoeveelheid ruis en daalt met de hoeveelheid
-private informatie. De insider handelt agressiever als er meer ruis is
-($\beta \propto \sigma_u$), en precies zoveel agressiever dat het
-informatiegehalte van de prijs niet verandert: de helft van de variantie
-verdwijnt, of $\sigma_u$ nu honderd of een miljoen aandelen is. Meer noise traders
-maken de markt dieper en de insider rijker, niet de prijs dommer. Dat is ook de
-uitweg uit de paradox van Grossman en Stiglitz uit [](#02-06-efficiente-markten):
-ruis betaalt de informatieverzamelaar, en de prijs is informatief maar niet
-volledig informatief.
-
-```{prf:remark} Uitwerking van de toy
-Met $\sigma_v = 4$ en $\sigma_u = 10\,000$ geeft [](#eq-microstructuur-kyle)
-$\beta = 2500$, $\lambda = 0{,}0002$ en een verwachte insiderwinst van
-$20\,000$ euro, zoals in de codecel hierboven.
-```
+De *diepte* van de markt, $1/\lambda$, stijgt met de ruis en daalt met de private
+informatie. De insider handelt agressiever als er meer ruis is, en precies zoveel
+dat het informatiegehalte van de prijs niet verandert: de helft van de variantie
+verdwijnt, ongeacht $\sigma_u$. Meer noise traders maken de markt dieper en de
+insider rijker, niet de prijs dommer. Dat is de uitweg uit de paradox van Grossman
+en Stiglitz ([](#02-06-efficiente-markten)): ruis betaalt de informatieverzamelaar.
 
 ### Kyle met vele handelsronden
 
-*Waarom zou dit waar zijn?* Een insider die over $N$ rondes mag handelen, heeft
-een afweging die in één ronde ontbreekt: wat hij nu verraadt, kan hij later niet
-meer uitbuiten. Hij houdt dus een deel van zijn informatie achter, en de market
-maker, die dat weet, prijst elke order lager in dan in de eenperiodemarkt.
-Omdat de insider elke ronde onverschillig moet zijn tussen nu en later handelen,
-wordt het tempo waarin de informatie in de prijs komt gelijkmatig. Anders zou hij
-winst kunnen maken door handel van een snelle naar een langzame ronde te
+*Waarom zou dit waar zijn?* Een insider met $N$ rondes weet dat wat hij nu verraadt,
+later niet meer uit te buiten is; hij houdt informatie achter. Omdat hij in elke
+ronde onverschillig moet zijn tussen nu en later handelen, komt de informatie in een
+gelijkmatig tempo in de prijs; anders zou hij handel naar een langzamere ronde
 verschuiven.
 
 Kyle's Theorem 2 geeft het lineaire evenwicht van de markt met $N$ rondes op
@@ -523,13 +488,11 @@ $\lambda_n\sigma_u^2 = \beta_n\Sigma_n$. De limiet $N\to\infty$ is Kyle's Theore
 we controleren hem hieronder numeriek. $\square$
 :::
 
-De recursie loopt achteruit in $\alpha_n$ maar vooruit in $\Sigma_n$, en is dus een
-randwaardeprobleem. De truc is dat het stelsel homogeen is: vermenigvuldig alle
-$\Sigma_n$ met $k$, dan schalen $\lambda_n$ en $\delta_n$ met $\sqrt{k}$ en
-$\beta_n$ en $\alpha_n$ met $1/\sqrt{k}$. We kunnen dus beginnen met $\Sigma_N = 1$,
-achteruit rekenen, en aan het eind alles herschalen zodat $\Sigma_0$ klopt. In elke
-stap is $\lambda_n$ de wortel van een derdegraadsvergelijking die volgt uit de
-eerste twee vergelijkingen.
+De recursie loopt achteruit in $\alpha_n$ maar vooruit in $\Sigma_n$. Omdat het
+stelsel homogeen is ($\Sigma_n \to k\Sigma_n$ geeft $\lambda_n,\delta_n \to
+\sqrt{k}\,\lambda_n,\sqrt{k}\,\delta_n$ en $\beta_n,\alpha_n \to
+\beta_n/\sqrt{k},\alpha_n/\sqrt{k}$), beginnen we met $\Sigma_N = 1$ en herschalen
+we aan het eind.
 
 ### Roll: de spread uit de autocovariantie
 
@@ -569,25 +532,18 @@ ongelijk aan nul. Evenzo $\Var(\Delta p_t) = \sigma_e^2 + \tfrac{s^2}{4}\cdot 2$
 $\square$
 :::
 
-{cite:t}`Roll1984b` leidde dit af, schatte de maat voor NYSE- en AMEX-aandelen
-en vond dat ze sterk samenhangt met de omvang van de onderneming. Op
-rendementen in plaats van prijsveranderingen geeft dezelfde formule de *relatieve*
-spread. Twee kanttekeningen maken de maat in de praktijk lastig. De afleiding
-laat geen ruimte voor andere bronnen van autocorrelatie: een positieve
-autocovariantie (bijvoorbeeld door trage aanpassing aan nieuws) maakt de wortel
-ongedefinieerd, een negatieve door overreactie en herstel wordt ten onrechte als
-spread gelezen. En de spread is een klein signaal in een grote ruis: bij een
-megacap met een spread van één basispunt en een dagvolatiliteit van 1,5% is
-$|\rho_1|$ in de orde van $10^{-5}$. Hoe dat in steekproeven uitpakt, simuleren we
-hieronder.
+Volgens de samenvatting van {cite:t}`Roll1984b` hangt de maat empirisch sterk samen
+met de omvang van de onderneming; op rendementen geeft dezelfde formule de
+*relatieve* spread. Het model laat geen ruimte voor andere autocorrelatie: een
+positieve autocovariantie maakt de wortel ongedefinieerd, een negatieve door
+overreactie wordt ten onrechte als spread gelezen. En het signaal is klein: bij een
+megacap met een spread van één basispunt en 1,5% dagvolatiliteit is $|\rho_1|$ in
+de orde van $10^{-5}$.
 
-In het Kyle-model is er geen spread maar prijsimpact, en het is die impact die
-{cite:t}`Hasbrouck1991` op transactiedata mat met een vectorautoregressie van
-koersherzieningen en getekende orders. Hij vond dat de volledige prijsimpact van een
-transactie pas met vertraging aankomt, concaaf is in de ordergrootte, en groter is
-bij kleinere ondernemingen, waar informatieasymmetrie zwaarder weegt. Dezelfde
-methoden, en de afweging tussen spread-, impact- en dagdatamaten, zijn uitgewerkt
-in {cite:t}`Hasbrouck2007`.
+Prijsimpact in Kyle's zin mat {cite:t}`Hasbrouck1991` op transactiedata met een
+vectorautoregressie van koersherzieningen en getekende orders: de volledige impact
+komt met vertraging aan, is concaaf in de ordergrootte en groter bij kleine
+ondernemingen. De methoden zijn uitgewerkt in {cite:t}`Hasbrouck2007`.
 
 ### Amihud: prijsimpact uit dagdata, en de relatie met $\lambda$
 
@@ -635,15 +591,13 @@ hangen van de verhouding tussen nieuws- en ordergedreven variantie en van de
 handelsstructuur af, en die verschillen tussen aandelen en in de tijd. $\square$
 :::
 
-Dat ILLIQ desondanks werkt, is een empirisch feit, geen stelling. Amihud rapporteert
-in de werkversie van zijn artikel (NYU, augustus 2000, p. 10) een doorsnederegressie
-voor 1984 van ILLIQ op de microstructuurschattingen van Kyle's $\lambda$ en van de
-vaste handelskosten van Brennan en Subrahmanyam, met $t$-waarden van 13,78 en
-17,33 en $R^2 = 0{,}30$. {cite:t}`AcharyaPedersen2005` noemen in hun werkversie
-(NBER w10814, p. 19) een Spearman-correlatie van 0,737 tussen ILLIQ en een op
-transactiedata geschatte $\lambda$, afkomstig van Hasbrouck. De gepubliceerde
-tijdschriftversies hebben we niet kunnen inzien; de getallen kunnen daar licht
-afwijken.
+Dat ILLIQ desondanks werkt, is een empirisch feit. Amihud regresseert in de
+werkversie van zijn artikel (NYU, augustus 2000, p. 10) ILLIQ voor 1984 op
+microstructuurschattingen van Kyle's $\lambda$ en de vaste handelskosten, met
+$t$-waarden van 13,78 en 17,33 en $R^2 = 0{,}30$; {cite:t}`AcharyaPedersen2005`
+noemen in hun werkversie (NBER w10814, p. 19) een Spearman-correlatie van 0,737 met
+een op transactiedata geschatte $\lambda$. De tijdschriftversies hebben we niet
+kunnen inzien; de getallen kunnen daar licht afwijken.
 
 ### Liquiditeit in de prijs: het niveau
 
@@ -654,11 +608,10 @@ evenwicht komen de aandelen met hoge spreads bij de langetermijnbeleggers terech
 die er het minst om geven, en de rendementscompensatie groeit daardoor minder dan
 evenredig met de spread.
 
-{cite:t}`AmihudMendelson1986` werkten dit *clientèle*-argument uit en toetsten de
-voorspelling dat *"market-observed expected return is an increasing and concave
-function of the spread"* (samenvatting), op NYSE-aandelen, met resultaten die met
-het model in overeenstemming waren. {cite:t}`Amihud2002` bracht de vraag naar de
-tijdreeks. In een Fama-MacBeth-regressie over 408 maanden (1964–1997) van
+{cite:t}`AmihudMendelson1986` werkten dit *clientèle*-argument uit en vonden steun
+voor de voorspelling dat *"market-observed expected return is an increasing and
+concave function of the spread"* (samenvatting). {cite:t}`Amihud2002` bracht de
+vraag naar de tijdreeks. In een Fama-MacBeth-regressie over 408 maanden (1964–1997) van
 maandrendementen van NYSE-aandelen op het voor de gemiddelde illiquiditeit
 geschaalde ILLIQ van het vorige jaar vond hij een coëfficiënt van 0,163 met
 $t = 6{,}90$, en 0,131 met $t = 5{,}73$ zonder januari (werkversie 2000, tabel 2,
@@ -690,10 +643,10 @@ r^e_{i,d+1,t} = \theta_{i,t} + \phi_{i,t}\, r_{i,d,t} + \gamma_{i,t}\,
 \operatorname{sign}(r^e_{i,d,t})\, v_{i,d,t} + \epsilon_{i,d+1,t},
 ```
 
-met $r^e$ het rendement boven de marktportefeuille en $v$ de dollaromzet. Het idee:
-getekende omzet benadert order flow, en in een illiquide markt wordt een door order
-flow veroorzaakte koersbeweging de volgende dag deels teruggedraaid, dus
-$\gamma_{i,t} < 0$ en groter in absolute waarde bij lagere liquiditeit. Het
+met $r^e$ het rendement boven de marktportefeuille en $v$ de dollaromzet (hier dus
+níet de liquidatiewaarde). Getekende omzet benadert order flow, en in een illiquide
+markt wordt een ordergedreven koersbeweging deels teruggedraaid, dus
+$\gamma_{i,t} < 0$. Het
 marktgemiddelde, geschaald voor de groei van de dollarwaarden en ontdaan van
 voorspelbaarheid met een AR-regressie, levert innovaties $\mathcal{L}_t$; de
 *liquiditeitsbèta* $\beta_{i,\mathcal{L}}$ is de helling op $\mathcal{L}_t$ in een
@@ -729,9 +682,8 @@ p. 4–5), met ILLIQ als proxy voor $c_i$ en NYSE- en AMEX-aandelen over 1963–
 schatten ze dat liquiditeitsrisico onder de modelrestricties ongeveer 1,1% per jaar
 bijdraagt aan het verschil in verwacht rendement tussen de meest en minst illiquide
 aandelen: 0,08% via $\Cov(c_i,c_m)$, 0,16% via $\Cov(r_i,c_m)$ en 0,82% via
-$\Cov(c_i,r_m)$, samen met het niveau-effect 4,6% per jaar. Dat is veel minder dan
-de 7,5% van Pástor en Stambaugh, en de auteurs wijzen er zelf op dat de drie bèta's
-sterk collineair zijn en los van de modelrestricties onnauwkeurig geschat worden.
+$\Cov(c_i,r_m)$, samen met het niveau-effect 4,6% per jaar. De auteurs wijzen er
+zelf op dat de bèta's sterk collineair zijn.
 
 ### Marktontwerp: van specialist naar batchveiling
 
@@ -742,14 +694,10 @@ makers zijn algoritmen. {cite:t}`BudishCramtonShim2015` lieten met
 millisecondedata van beurzen zien dat correlaties tussen nauw verwante instrumenten
 op die tijdschaal volledig wegvallen, dat dit mechanische arbitragekansen oplevert,
 en dat concurrentie de omvang van die kansen niet verkleint maar alleen de vereiste
-snelheid opvoert. Hun verklaring is een Glosten-Milgrom-argument met publieke in plaats
-van private informatie: wie een koers heeft staan, wordt na elk publiek signaal
-"afgeschoten" door de snelste handelaar, en dat verlies prijst de liquiditeitsverschaffer
-in zijn spread in. Hun ontwerpvoorstel is *frequent batch auctions*: uniforme
-dubbele veilingen, bijvoorbeeld elke tiende seconde, die concurrentie op snelheid
-omzetten in concurrentie op prijs. Een markt is dus niet vanzelf een efficiënte
-informatieverwerker; het mechanisme bepaalt welke informatie tegen welke kosten in
-de prijs komt.
+snelheid opvoert. In Glosten-Milgrom-termen: wie een koers heeft staan, wordt na elk publiek signaal
+door de snelste handelaar "afgeschoten", en dat verlies zit in de spread. Hun
+voorstel is *frequent batch auctions*: uniforme dubbele veilingen, bijvoorbeeld elke
+tiende seconde, die concurrentie op snelheid omzetten in concurrentie op prijs.
 
 ## Simulatie: meerperiode-Kyle, een Glosten-Milgrom-sessie en de Roll-schatter
 
@@ -803,13 +751,9 @@ pd.DataFrame(
 ).round(4)
 ```
 
-Bij $N = 1$ reproduceert de recursie [](#thm-microstructuur-kyle): $\lambda = 0{,}5$,
-de helft van de variantie blijft over, en de verwachte winst is $0{,}5$. Naarmate
-$N$ groeit, gaat $\lambda$ in de vroege rondes naar $\sigma_v/\sigma_u = 1$, gaat de
-restvariantie aan het eind naar nul, en nadert de verwachte winst
-$\sigma_v\sigma_u = 1$. Alleen in de laatste rondes stijgt de prijsimpact niet meer
-mee: de insider heeft dan geen reden meer om informatie achter te houden en
-handelt agressiever, wat de market maker in een lagere $\lambda$ vertaalt.
+Bij $N = 1$ reproduceert de recursie [](#thm-microstructuur-kyle). Naarmate $N$
+groeit, gaat $\lambda$ naar $\sigma_v/\sigma_u = 1$, de restvariantie aan het eind
+naar nul en de verwachte winst naar $\sigma_v\sigma_u = 1$.
 
 ```{code-cell} ipython3
 kyle50 = solutions[50]
@@ -875,16 +819,15 @@ vrijwel constant, behalve in de laatste rondes, waarin de insider zijn resterend
 informatie opgebruikt.
 :::
 
-De simulatie laat twee dingen zien die de theorie belooft en één ding dat ze niet
-noemt. De restvariantie volgt het theoretische pad, en opeenvolgende
-prijsveranderingen zijn ongecorreleerd: de prijs is een martingaal ten opzichte van
-de order flow, ook al handelt er iemand die de uitkomst kent. Wat de theorie niet
-noemt, is de spreiding: de standaarddeviatie van de insiderwinst per markt is
-ongeveer twee derde van haar gemiddelde. Een insider met twintig onafhankelijke
-handelsdagen heeft een $t$-waarde rond $\sqrt{20}/0{,}7 \approx 6$, maar een fonds
-dat een klein informatievoordeel heeft, met veel meer ruis rond elke
-positie, ziet zijn voordeel pas na jaren in de cijfers. Dat is het 2%-motief in
-microstructuurvorm: zelfs wie werkelijk iets weet, kan dat moeilijk bewijzen.
+De restvariantie volgt het theoretische pad en opeenvolgende prijsveranderingen zijn
+ongecorreleerd: de prijs is een martingaal ten opzichte van de order flow, ook al
+handelt er iemand die de uitkomst kent. Wat de theorie niet noemt, is de spreiding:
+de standaarddeviatie van de insiderwinst per markt is ongeveer even groot als haar
+gemiddelde. Een insider met perfecte informatie heeft na twintig onafhankelijke
+handelsdagen een $t$-waarde van ongeveer $\sqrt{20} \approx 4{,}5$; wie een klein
+voordeel heeft met veel ruis rond elke positie, ziet het pas na jaren. Dat is het
+2%-motief in microstructuurvorm: zelfs wie werkelijk iets weet, kan dat moeilijk
+bewijzen.
 
 ### Een Glosten-Milgrom-sessie
 
@@ -960,12 +903,10 @@ plt.show()
 :label: fig-microstructuur-gm-spread
 :width: 100%
 
-Links: de spread begint op $\mu(V_H - V_L) = 0{,}80$ en krimpt gemiddeld tot onder
-de helft na twintig orders. De mediaan loopt eerst achter het gemiddelde en haalt
-het daarna in: in een typische sessie duurt het even voordat de orders duidelijk één
-kant op wijzen, maar dan gaat het snel. Het brede percentielband laat zien hoe
-toevallig de snelheid van prijsontdekking in één sessie is. Rechts: de middenkoers
-zwerft eerst en convergeert dan naar de werkelijke waarde.
+Links: de spread begint op $\mu(V_H - V_L) = 0{,}80$ en krimpt naarmate de orders
+één kant op wijzen; de brede percentielband laat zien hoe toevallig de snelheid van
+prijsontdekking in één sessie is. Rechts: de middenkoers zwerft eerst en
+convergeert dan naar de werkelijke waarde.
 :::
 
 ### De Roll-schatter in eindige steekproeven
@@ -1037,12 +978,10 @@ factor $\sqrt{T}$: van een kwartaal naar een jaar verschuift de curve nauwelijks
 een halve decade.
 :::
 
-Dit is motief 1 in een onverwachte vorm. Varianties zijn goed meetbaar, maar niet als
-het deel dat je zoekt een honderdduizendste is van het totaal. Een schatter die in
-bijna de helft van de jaren geen antwoord geeft, geeft in de andere helft een
-antwoord dat vooral ruis is, en die ruis is niet symmetrisch: we rapporteren alleen
-de jaren met een negatieve covariantie. Wie de Roll-maat alleen voor die jaren
-middelt, overschat de spread systematisch.
+Dit is motief 1 in een onverwachte vorm: varianties zijn goed meetbaar, maar niet als
+het deel dat je zoekt een honderdduizendste van het totaal is. En de ruis is niet
+symmetrisch: wie de Roll-maat alleen middelt over de jaren waarin ze bestaat,
+overschat de spread systematisch.
 
 ## Replicatie op echte data
 
@@ -1065,16 +1004,13 @@ French-marktfactor en momentumfactor via `hap.data.french(...)`; de door Stambau
 bijgehouden liquiditeitsreeksen 1962-08 t/m 2025-12 (niveau, innovatie en
 verhandelbare factor) van zijn Wharton-pagina, gecachet met een kleine lokale loader.
 
-**Verschil met het origineel.** Amihud gebruikte alle NYSE-aandelen 1963–1997 met
-jaargemiddelden en een jaarlijkse regressie; wij hebben vijftig aandelen die we
-kiezen omdat ze vandaag groot zijn (survivorship, zie [](#02-05-crsp-tape)), en
-werken met maanden. Yahoo's gecorrigeerde slotkoers is ook voor dividenden
-gecorrigeerd, zodat de dollaromzet in de vroege jaren enkele procenten te laag is.
-Roll gebruikte CRSP-aandelen over 1963–1982. Voor Pástor-Stambaugh repliceren we
-de liquiditeitsmaat zelf niet (daarvoor zijn alle NYSE- en AMEX-aandelen nodig),
-maar gebruiken we hun eigen, bijgewerkte reeks; de verhandelbare factor sorteert op
-historische in plaats van voorspelde bèta's en is dus niet de 10-1-spread uit hun
-tabel 4.
+**Verschil met het origineel.** Amihud en Roll gebruikten alle NYSE- (en AMEX-)
+aandelen uit CRSP; Amihud werkte met jaren. Wij hebben vijftig aandelen die vandaag
+groot zijn (survivorship, zie [](#02-05-crsp-tape)) en werken met maanden; Yahoo's
+slotkoers is ook voor dividenden gecorrigeerd, zodat de vroege dollaromzet enkele
+procenten te laag is. De Pástor-Stambaugh-maat bouwen we niet zelf na; hun
+verhandelbare factor sorteert op historische in plaats van voorspelde bèta's en is
+dus niet de 10-1-spread uit hun tabel 4.
 
 **Verwachte afwijking.** Illiquiditeit piekt in de herfst van 2008 en in maart
 2020. De innovatie in marktbrede illiquiditeit hangt *negatief* samen met het
@@ -1127,16 +1063,14 @@ print(f"aandeel-jaren met positieve autocovariantie: {(autocov_year >= 0).sum().
 per_stock.iloc[[0, 1, 2, 3, 4, -5, -4, -3, -2, -1]].round(3)
 ```
 
-De ordening van ILLIQ is plausibel: Alphabet, Bank of America en Walmart zijn het
-diepst, de kleinere namen in de lijst het ondiepst, en het verschil tussen de
-uitersten is ruim twee ordes van grootte. De Roll-maat vertelt een ander verhaal.
-Ruim een derde van alle aandeel-jaren heeft een positieve autocovariantie, in lijn
-met de simulatie. Waar de maat bestaat, geeft ze spreads van tientallen basispunten
-voor aandelen waarvan de genoteerde spread een of twee basispunten is. Wat Roll's
-formule hier meet, is niet de bid-ask bounce maar alle negatieve autocorrelatie in
-dagrendementen, inclusief kortetermijnomkeringen na overreactie; zijn eigen model
-laat daar geen ruimte voor. De verwachte afwijking in de orde van grootte is dus
-bevestigd, en ze is geen fout in de code.
+De ordening van ILLIQ is plausibel: Apple, Tesla, Amazon, Nvidia en Alphabet zijn
+het diepst, de kleinere namen (Super Micro, W. R. Berkley, Copart) het ondiepst, met
+ruim twee ordes van grootte ertussen. De Roll-maat vertelt een ander verhaal. Ruim
+een derde van de aandeel-jaren heeft een positieve autocovariantie, in lijn met de
+simulatie, en waar de maat bestaat, geeft ze spreads van zestig tot bijna
+tweehonderd basispunten voor aandelen met een genoteerde spread van een of twee
+basispunten. Roll's formule meet hier alle negatieve autocorrelatie in
+dagrendementen, inclusief kortetermijnomkeringen, niet de bid-ask bounce.
 
 ```{code-cell} ipython3
 by_year = pd.DataFrame(
@@ -1149,11 +1083,10 @@ by_year = pd.DataFrame(
 by_year.round(3)
 ```
 
-In de tijd pikt de Roll-maat de crises wel op: de mediane "spread" is het hoogst in
-2008 en 2020. Maar dat komt vooral doordat de dagvolatiliteit en de omkeringen dan
-toenemen. De mediane ILLIQ daalt over de hele periode met ongeveer een factor
-tien, omdat deze vijftig aandelen zo sterk in marktwaarde en omzet zijn gegroeid;
-een marktbrede tijdreeks moet die trend eerst verwijderen.
+In de tijd pikt de Roll-maat de crises wel op (de mediane "spread" is het hoogst in
+2020 en 2008), vooral omdat volatiliteit en omkeringen dan toenemen. De mediane
+ILLIQ daalt met ongeveer een factor dertig, omdat deze vijftig aandelen zo sterk
+zijn gegroeid; een marktbrede tijdreeks moet die trend eerst verwijderen.
 
 ### Marktbrede illiquiditeit en het marktrendement
 
@@ -1209,25 +1142,22 @@ plt.show()
 :label: fig-microstructuur-amihud-tijd
 :width: 100%
 
-Boven: de illiquiditeit van deze vijftig aandelen daalt over 25 jaar met ruim twee
-log-punten, een weerspiegeling van hun groei. Onder: ten opzichte van hun eigen
-recente verleden zijn maart 2020 en oktober–november 2008 de twee grootste
-uitschieters, gevolgd door de rest van de winter van 2008–2009, augustus 2011 (de
-verlaging van de Amerikaanse kredietwaardigheid) en juni 2022. Liquiditeit verdwijnt
-precies in de maanden waarin beleggers moesten verkopen.
+Boven: de illiquiditeit van deze vijftig aandelen daalt sterk over 25 jaar, een
+weerspiegeling van hun groei. Onder: ten opzichte van hun eigen recente verleden
+zijn maart 2020 en oktober–december 2008 de grootste uitschieters, gevolgd door
+april 2020 en januari 2009. Liquiditeit verdwijnt precies in de maanden waarin
+beleggers moesten verkopen.
 :::
 
 Het teken van Amihud's $g_2$ is gerepliceerd: een onverwachte stijging van de
 marktilliquiditeit met één log-punt gaat samen met een overrendement dat ruim
 13 procentpunt lager ligt in dezelfde maand, met een $t$-waarde van bijna $-8$. Dat
-is een gelijktijdig verband en geen causaal bewijs; een koersdaling verhoogt
-$|r|$ en verlaagt de dollaromzet mechanisch, zodat een deel van de samenhang in de
-constructie van ILLIQ zit. Het tweede deel van zijn resultaat, dat verwachte
-illiquiditeit het *toekomstige* rendement verhoogt ($g_1 > 0$), repliceren we niet:
-de coëfficiënt op de vertraagde illiquiditeit is klein, negatief en insignificant.
-Dat is geen verrassing. Een voorspellend verband voor het marktrendement vergt
-decennia om zichtbaar te worden ([](#04-20-voorspelbaarheid)), en onze 24 jaar van
-vijftig overlevers zijn daar het verkeerde instrument voor.
+is een gelijktijdig verband, en een deel zit mechanisch in de constructie: een
+koersdaling verhoogt $|r|$ en verlaagt de dollaromzet. Dat verwachte illiquiditeit
+het *toekomstige* rendement verhoogt ($g_1 > 0$), repliceren we niet: de coëfficiënt
+op de vertraagde illiquiditeit is klein, negatief en insignificant. Een voorspellend
+verband voor het marktrendement vergt decennia om zichtbaar te worden
+([](#04-20-voorspelbaarheid)); 24 jaar van vijftig overlevers is daarvoor te weinig.
 
 ### Pástor-Stambaugh
 
@@ -1274,11 +1204,10 @@ ps["agg_liq"].nsmallest(6).rename("laagste liquiditeitsniveau").round(3).to_fram
 De drie maanden die het werkdocument als diepste noemt, oktober 1987, november 1973 en
 september 1998, staan in de bijgewerkte reeks op plaats één, twee en vijf; december
 2008 en oktober 2002 zijn erbij gekomen. De correlatie met het marktrendement over
-1966–1999 ligt dicht bij de gepubliceerde 0,36, ook al gebruiken wij de
-French-marktfactor in plaats van de NYSE-AMEX-index. En onze grove
-Amihud-innovatie van vijftig aandelen correleert negatief met hun
-liquiditeitsinnovatie, zoals het hoort voor een *il*liquiditeitsmaat, zij het maar
-matig: de twee maten meten verschillende dimensies van liquiditeit.
+1966–1999 is 0,35 tegen de gepubliceerde 0,36, met de French-marktfactor in plaats
+van de NYSE-AMEX-index. Onze Amihud-innovatie correleert negatief met hun
+liquiditeitsinnovatie, zoals het hoort voor een *il*liquiditeitsmaat, maar matig: de
+maten meten verschillende dimensies van liquiditeit.
 
 ```{code-cell} ipython3
 momentum = hap_data.french("F-F_Momentum_Factor")
@@ -1325,40 +1254,33 @@ waarin ze verdwijnt, is precies wat van liquiditeit een risico maakt en niet all
 een kost.
 :::
 
-De verhandelbare liquiditeitsfactor had over 1968–2025 een vierfactor-alpha van
-ruim 3,5% per jaar met een $t$-waarde net boven twee, kleiner dan de 7,5% uit het
-artikel, wat past bij de eenvoudigere sortering. De tabel zegt echter vooral iets
-over de tijd. Tot 2003, het jaar van publicatie, was de alpha ruim 5% per jaar met
-$t \approx 2{,}7$; sinds 2004 is ze nul, met een standaardfout van 3% per jaar. Dat
-laatste getal is motief 1 in zijn zuiverste vorm: met 22 jaar data kunnen we een
-premie van 5% per jaar noch aantonen noch uitsluiten. Stambaugh schrijft in de kop
+De verhandelbare factor had over 1968–2025 een vierfactor-alpha van 3,6% per jaar
+($t = 2{,}06$), minder dan de 7,5% uit het artikel, passend bij de eenvoudigere
+sortering. Tot 2003, het jaar van publicatie, was de alpha 5,4% ($t = 2{,}72$);
+sinds 2004 is ze $-0{,}8\%$ met een standaardfout van 3% per jaar. Dat laatste getal
+is motief 1 in zijn zuiverste vorm: met 22 jaar data kunnen we een premie van 5% per
+jaar noch aantonen noch uitsluiten. Stambaugh schrijft in de kop
 van zijn bestand dat de factor *"a positive and significant alpha through 2025"*
 heeft; dat klopt over de volledige periode, maar het rust op de eerste helft.
 
 ## Wat er brak, en wat daarna kwam
 
-De microstructuurtheorie verklaart meer dan ze bij haar ontstaan beloofde. Ze
-verklaart waarom er een spread is zonder dat iemand kosten maakt, waarom grote
-orders de prijs bewegen, waarom prijzen een martingaal zijn ten opzichte van
-publieke informatie terwijl insiders winst maken, en hoeveel van private informatie
-in de prijs komt: de helft in één ronde, alles bij doorlopende handel, in een
-constant tempo. Ze gaf de efficiënte-marktgedachte een mechanisme en de paradox van
-Grossman en Stiglitz een oplossing: ruis betaalt de informatieverzamelaar. En via
-Amihud, Pástor-Stambaugh en Acharya-Pedersen verbond ze de handelsvloer met de
-cross-sectie van verwachte rendementen. De feiten zijn robuust: illiquiditeit piekt
+De microstructuurtheorie verklaart waarom er een spread is zonder dat iemand kosten
+maakt, waarom grote orders de prijs bewegen, waarom prijzen een martingaal zijn ten
+opzichte van publieke informatie terwijl insiders winst maken, en hoeveel private
+informatie in de prijs komt: de helft in één ronde, alles bij doorlopende handel, in
+een constant tempo. Ze gaf de efficiënte markt een mechanisme en Grossman-Stiglitz
+een oplossing, en via Amihud, Pástor-Stambaugh en Acharya-Pedersen verbond ze de
+handelsvloer met verwachte rendementen. De feiten zijn robuust: illiquiditeit piekt
 in 2008 en maart 2020, en innovaties in illiquiditeit gaan samen met lage
-gelijktijdige rendementen, met een $t$-waarde van bijna $-8$ in onze eigen
-steekproef van vijftig aandelen.
+gelijktijdige rendementen ($t$ bijna $-8$ in onze steekproef).
 
-Waar het breekt, is de meting. De maten die op gewone dagdata werken, meten niet
-waar de theorie over gaat. De Roll-maat is in ruim een derde van de aandeel-jaren
-ongedefinieerd en geeft elders spreads die een orde van grootte te hoog zijn; ILLIQ
-is pas een schatting van Kyle's $\lambda$ onder aannames die in echte markten niet
-gelden; en de premie op liquiditeitsrisico die Pástor en Stambaugh vonden, is in de
-twee decennia na publicatie in hun eigen factor niet meer zichtbaar, met een
-standaardfout die te groot is om iets uit te sluiten. De drie bèta's van
-Acharya-Pedersen zijn zo collineair dat hun afzonderlijke premies nauwelijks te
-schatten zijn.
+Waar het breekt, is de meting. De Roll-maat is in ruim een derde van de aandeel-jaren
+ongedefinieerd en elders een orde van grootte te hoog; ILLIQ schat Kyle's $\lambda$
+alleen onder aannames die in echte markten niet gelden; en de premie op
+liquiditeitsrisico van Pástor en Stambaugh is in de twee decennia na publicatie in
+hun eigen factor niet meer zichtbaar, met een standaardfout die te groot is om iets
+uit te sluiten.
 
 Is de liquiditeitspremie een risico of een vergissing? De Chicago-lezing is dat
 illiquiditeit een kost is die rationele beleggers inprijzen, en liquiditeitsrisico een
@@ -1370,11 +1292,9 @@ De Yale-lezing is dat illiquiditeit juist de *limits of arbitrage* uit
 arbitrageurs de posities niet kunnen innemen of volhouden, en de premie verdwijnt
 zodra genoeg kapitaal de kans ziet, zoals McLean en Pontiff voor gepubliceerde
 anomalieën in het algemeen vonden (zie [](#06-34-factor-zoo)). Data die de lezingen
-zou scheiden, bestaat in principe: een risicopremie zou in crises moeten worden
-*betaald* (lage rendementen als liquiditeit verdwijnt, hoge daarna), een vergissing
-zou na publicatie moeten verdwijnen en niet samenhangen met slechte tijden. Onze
-tabel laat beide zien, het eerste in figuur en regressie, het tweede in de
-subperiodes, en daarmee is de vraag niet beslecht. Santa-Clara's praktijkles past op
+zou scheiden, bestaat in principe: een risicopremie wordt in crises *betaald*, een
+vergissing verdwijnt na publicatie. Onze replicatie laat beide zien, het eerste in de
+regressie, het tweede in de subperiodes, en beslecht de vraag dus niet. Santa-Clara's praktijkles past op
 beide lezingen: wie illiquide activa houdt, *"should not assume he can sell them at
 the price in the last valuation report"* {cite}`SantaClara2026`.
 
@@ -1402,12 +1322,10 @@ $V_L = 98$ en prior $\pi_0 = \tfrac12$.
 :::{solution} ex-microstructuur-1
 :class: dropdown
 
-**(1)** De teller $4\mu\pi(1-\pi)$ is maximaal bij $\pi = \tfrac12$, en de noemer
-$1 - \mu^2(2\pi-1)^2$ is daar ook maximaal; de afgeleide van de breuk naar $\pi$ is
-op $\pi = \tfrac12$ nul en de functie is symmetrisch rond $\tfrac12$ en neemt naar
-beide kanten af (teller gaat naar nul, noemer blijft $\ge 1-\mu^2 > 0$). Bij
-$\pi = \tfrac12$ is de spread $\mu\Delta V$: $0{,}80$ voor $\mu = 0{,}2$ en $2{,}00$
-voor $\mu = 0{,}5$.
+**(1)** Schrijf $z = (2\pi-1)^2$; dan is $4\pi(1-\pi) = 1 - z$ en de spread
+$\mu\Delta V(1-z)/(1-\mu^2 z)$, dalend in $z$ omdat $\mu^2 < 1$. Het maximum ligt bij
+$z = 0$, dus $\pi = \tfrac12$, met spread $\mu\Delta V$: $0{,}80$ voor $\mu = 0{,}2$
+en $2{,}00$ voor $\mu = 0{,}5$.
 
 **(2)** Bij $\mu = 0{,}5$ is $q_H = 0{,}75$ en $q_L = 0{,}25$, dus de likelihoodratio
 van een koop is 3. De odds $\pi/(1-\pi)$ worden per koop verdrievoudigd: 1, 3, 9,
@@ -1481,12 +1399,9 @@ for s_u in (10_000.0, 20_000.0):
 pd.DataFrame(rows).round(5)
 ```
 
-De winst van de insider schaalt met $\sigma_u$, maar haar standaarddeviatie ook, zodat
-de $t$-waarde na twintig dagen niet van $\sigma_u$ afhangt; ze is ongeveer
-$\sqrt{20}\cdot\tfrac12\sigma_v\sigma_u/\SD(\text{winst})$, en die verhouding is een
-vast getal. Een insider in een drukke markt verdient meer, maar valt statistisch niet
-meer op dan in een stille. Dat verklaart waarom handel met voorkennis in de praktijk
-vooral met andere informatie dan rendementsstatistiek wordt opgespoord.
+De winst van de insider en haar standaarddeviatie schalen allebei met $\sigma_u$,
+zodat de $t$-waarde na twintig dagen (ongeveer 2,6) niet van $\sigma_u$ afhangt. Een
+insider in een drukke markt verdient meer, maar valt statistisch niet meer op.
 :::
 
 :::{exercise}
@@ -1525,10 +1440,10 @@ print(f"residuele volatiliteit: {resid_vol_ann:.1%} per jaar; jaren nodig voor t
 windows.iloc[::5].round(2)
 ```
 
-De betrouwbaarheidsintervallen van tien jaar zijn ongeveer tien procentpunt breed,
-en slechts een minderheid van de vensters ligt volledig boven nul. Met de residuele
-volatiliteit van de factor zijn er enkele decennia nodig om een premie van 3% per
-jaar met $t = 2$ te zien. De oefening laat zien dat "liquiditeitsrisico is geprijsd"
+De betrouwbaarheidsintervallen van tien jaar zijn ongeveer vijftien procentpunt
+breed, en slechts een vijfde van de vensters ligt volledig boven nul. Met de
+residuele volatiliteit van de factor is ruim zeventig jaar nodig om een premie van
+3% per jaar met $t = 2$ te zien. De oefening laat zien dat "liquiditeitsrisico is geprijsd"
 een uitspraak is die op het gemiddelde van een halve eeuw rust, en dat geen enkel
 decennium op zich haar kan bevestigen of weerleggen.
 :::
