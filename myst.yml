@@ -82,7 +82,7 @@ project:
         - file: lectures/03_13_equity_premium_puzzle.md
         - file: lectures/03_14_roll.md
         - file: lectures/03_15_shiller_excess_volatility.md
-    #     - file: lectures/03_16_vroege_anomalieen.md
+        - file: lectures/03_16_vroege_anomalieen.md
     #     - file: lectures/03_17_termijnstructuur_real_options.md
 
     # --- Deel IV — De empirische wending (1985–2000) ---
