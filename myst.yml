@@ -110,9 +110,9 @@ project:
     #     - file: lectures/05_33_fama_vs_shiller.md
 
     # --- Deel VI — De factor zoo en de machines (2011–2026) ---
-    # - title: Deel VI — De factor zoo en de machines
-    #   children:
-    #     - file: lectures/06_34_factor_zoo.md
+    - title: Deel VI — De factor zoo en de machines
+      children:
+        - file: lectures/06_34_factor_zoo.md
     #     - file: lectures/06_35_machine_learning.md
     #     - file: lectures/06_36_inelastische_markten.md
 
