@@ -25,7 +25,7 @@ Jensen, Kelly en Pedersen.
 met twee theorieën voor dezelfde feiten: discontovoeten die variëren, door risico of
 door vergissing. In de cross-sectie was het beeld nog rommeliger. Sinds
 [](#03-16-vroege-anomalieen) stapelden de kenmerken die rendementen voorspellen zich
-op, [](#04-25-industrie) liet zien hoe je met duizenden gelijktijdige toetsen omgaat
+op, [](#04-25-industrie) liet zien hoe met duizenden gelijktijdige toetsen om te gaan
 als het om fondsen gaat, en [](#05-26-sdf-unificatie) gaf de taal om te vragen of een
 nieuwe factor iets toevoegt *gegeven* de oude.
 
@@ -59,17 +59,13 @@ model dat "the majority of asset pricing factors (i) can be replicated". Santa-C
 zet de vraag die daartussen openligt op zijn lijst van dingen die we niet weten:
 "why published anomalies decay, and by how much" {cite}`SantaClara2026`.
 
-De epistemische status is die van motief 3 op zijn scherpst. Er is geen theorie meer die
-wordt getoetst; er is een verzameling feiten, en de discussie gaat over de vraag hoeveel
-van die feiten er zijn. De vijffactormodellen van {cite:t}`FamaFrench2015` en
-{cite:t}`HouXueZhang2015` zijn pogingen om de dierentuin met een handvol factoren te
-beschrijven, en elk van hen is een keuze voor de SDF uit [](#05-26-sdf-unificatie).
-We rekenen eerst tien kandidaat-signalen met de hand door, bewijzen de
-meervoudige-toetsprocedures, het effect van publicatieselectie en de
-Bayesiaanse shrinkage, simuleren een vakgebied zonder één echte anomalie, en
-repliceren tot slot op de 212 voorspellers van Chen en Zimmermann de
-post-publicatie-verzwakking van McLean en Pontiff, de drempels van Harvey, Liu en Zhu,
-en het aantal signalen dat een alfa houdt ten opzichte van vijf factoren plus momentum.
+De epistemische status is motief 3 op zijn scherpst: geen theorie die wordt getoetst, maar
+een verzameling feiten waarover de discussie gaat hoeveel het er zijn. De factormodellen
+van {cite:t}`FamaFrench2015` en {cite:t}`HouXueZhang2015` beschrijven de dierentuin met een
+handvol factoren, elk een keuze voor de SDF uit [](#05-26-sdf-unificatie). Na een
+handberekening, de theorie en een simulatie repliceren we op de 212 voorspellers van Chen
+en Zimmermann de verzwakking van McLean en Pontiff, de drempels van Harvey, Liu en Zhu, en
+de alfa's ten opzichte van vijf factoren plus momentum.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -86,7 +82,7 @@ rng = np.random.default_rng(20240101)
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-Stel je een vakgebied voor met driehonderd onderzoekers. Elk van hen heeft een
+Neem een vakgebied met driehonderd onderzoekers. Elk van hen heeft een
 database met rendementen en een idee, en elk idee laat zich op tien manieren
 uitwerken: een andere definitie van winst, een andere herbalanceringsmaand, gelijk of
 naar marktwaarde gewogen. Stel verder dat geen enkel idee iets voorspelt. Toch vindt
@@ -101,15 +97,12 @@ gemiddeld nul. Voor de lezer ziet dat eruit als een anomalie die "verdwenen" is,
 er nooit iets was. Dat is de *winner's curse* (de vloek van de winnaar: wie selecteert
 op een hoge schatting, selecteert ook op een gunstige meetfout).
 
-Nu de andere kant. Stel dat een voorspeller echt is: een patroon dat beleggers
-systematisch over het hoofd zien. Na publicatie lezen hedgefondsen het artikel, kopen de
-aandelen die de strategie aanwijst en verkopen de andere. Hun handel drukt het
-rendement, net zo lang tot het niet meer loont. Ook dan zakt het gemiddelde rendement na
-publicatie, maar nu omdat de markt heeft geleerd. En een derde lezing: het patroon is
-een beloning voor risico, en na publicatie willen meer beleggers dat risico dragen, zodat
-de prijs ervan daalt.
+Is een voorspeller wél echt, een patroon dat beleggers over het hoofd zien, dan lezen
+hedgefondsen het artikel en handelen erop tot het niet meer loont: ook dan zakt het
+rendement na publicatie, maar omdat de markt heeft geleerd. Is het een beloning voor
+risico, dan kan de premie dalen doordat meer beleggers dat risico willen dragen.
 
-McLean en Pontiff zagen dat je deze verhalen deels kunt scheiden met de klok. Tussen het
+McLean en Pontiff zagen dat de klok deze verhalen deels scheidt. Tussen het
 einde van de steekproef van een artikel en de publicatie ervan kent de markt het
 resultaat nog niet, maar het toeval uit de steekproef is al weg. Een daling in die
 tussenperiode is dus statistiek; een extra daling na publicatie is leren. Santa-Clara
@@ -119,16 +112,13 @@ we de verdeling tussen arbitrage en datamining niet kennen, terwijl de consequen
 verschillen: "if it is arbitrage, factor investing is self-defeating at scale; if it is
 mining, most of the literature is noise" {cite}`SantaClara2026`.
 
-Wat doe je als onderzoeker met die kennis? Twee dingen. Je verhoogt de drempel: als je
-weet dat er honderden pogingen zijn gedaan, zegt een $t$-waarde van twee weinig. En je
-trekt elke gemeten premie terug naar een redelijk vermoeden van wat premies gewoonlijk
-zijn: een gemeten rendement van één procent per maand is waarschijnlijk een echte
-premie van een half procent met een gunstige meetfout. Dat terugtrekken heet
-*shrinkage* (krimpen: een schatting naar een gemeenschappelijk gemiddelde trekken, met
-een gewicht dat afhangt van hoe ruisig ze is). Hoe meer factoren je kent, hoe beter je
-weet wat een redelijk vermoeden is. Daarom kan de omvang van de dierentuin, anders dan
-het eerste verhaal suggereert, het bewijs voor de afzonderlijke factoren ook sterker
-maken.
+Wat volgt daaruit voor het onderzoek? Een hogere drempel, omdat een t-waarde van twee na
+honderden pogingen weinig zegt. En *shrinkage* (krimpen: een schatting naar een
+gemeenschappelijk gemiddelde trekken, met een gewicht dat afhangt van hoe ruisig ze is):
+een gemeten rendement van één procent per maand is waarschijnlijk een kleinere echte
+premie met een gunstige meetfout. Hoe meer factoren bekend zijn, hoe beter bekend is wat
+een redelijk vermoeden is; daarom kan de omvang van de dierentuin het bewijs voor
+afzonderlijke factoren ook sterker maken.
 
 ## Toy-voorbeeld: tien kandidaat-signalen en één verwacht rendement
 
@@ -153,9 +143,9 @@ van klein naar groot, met rang $j$:
 | 5 | E | 2,20 | 0,02781 | 0,00500 | 0,00833 | 0,025 | 0,00854 |
 | 6 | F | 1,60 | 0,10960 | 0,00500 | 0,01000 | 0,030 | 0,01024 |
 | 7 | J | −1,30 | 0,19360 | 0,00500 | 0,01250 | 0,035 | 0,01195 |
-| 8 | G | 1,10 | 0,27130 | 0,00500 | 0,01667 | 0,040 | 0,01366 |
-| 9 | H | 0,80 | 0,42370 | 0,00500 | 0,02500 | 0,045 | 0,01537 |
-| 10 | I | −0,50 | 0,61710 | 0,00500 | 0,05000 | 0,050 | 0,01707 |
+| 8 | G | 1,10 | 0,27133 | 0,00500 | 0,01667 | 0,040 | 0,01366 |
+| 9 | H | 0,80 | 0,42371 | 0,00500 | 0,02500 | 0,045 | 0,01537 |
+| 10 | I | −0,50 | 0,61708 | 0,00500 | 0,05000 | 0,050 | 0,01707 |
 
 **Naïef** ($p \le 0{,}05$, dus $|t| > 1{,}96$): A tot en met E, vijf ontdekkingen, waarvan vier
 onterecht. **$t > 3$**: alleen A. **Bonferroni** vergelijkt elke $p$ met $0{,}05/10 = 0{,}005$,
@@ -168,11 +158,10 @@ grens meer. Vier ontdekkingen, A tot en met D. **BHY** deelt die grenzen door
 $c(10) = 1 + \tfrac12 + \dots + \tfrac1{10} = 2{,}929$: A haalt $0{,}00171$, maar geen enkele
 hogere rang haalt zijn grens, dus één ontdekking.
 
-De procedures beantwoorden verschillende vragen. Bonferroni en Holm beperken de kans op
-*ook maar één* onterechte ontdekking; Benjamini-Hochberg beperkt het verwachte *aandeel*
-onterechte ontdekkingen, en accepteert daarom in deze trekking drie nulsignalen om er
-geen echte te missen. BHY doet hetzelfde als Benjamini-Hochberg, maar blijft geldig als de
-signalen onderling afhankelijk zijn, zoals varianten van één idee altijd zijn.
+Bonferroni en Holm beperken de kans op *ook maar één* onterechte ontdekking;
+Benjamini-Hochberg beperkt het verwachte *aandeel* onterechte ontdekkingen en accepteert
+hier drie nulsignalen; BHY doet hetzelfde, maar blijft geldig als signalen afhankelijk
+zijn, zoals varianten van één idee altijd zijn.
 
 ```{code-cell} ipython3
 def multiple_testing(t, q=0.05):
@@ -210,7 +199,7 @@ def multiple_testing(t, q=0.05):
 
 
 t_toy = pd.Series([4.10, 2.79, 2.70, 2.45, 2.20, 1.60, 1.10, 0.80, -0.50, -1.30], index=list("ABCDEFGHIJ"))
-p_hand = pd.Series([0.00004, 0.00527, 0.00693, 0.01429, 0.02781, 0.10960, 0.27130, 0.42370, 0.61710, 0.19360],
+p_hand = pd.Series([0.00004, 0.00527, 0.00693, 0.01429, 0.02781, 0.10960, 0.27133, 0.42371, 0.61708, 0.19360],
                    index=t_toy.index)
 p_code = pd.Series(2 * stats.norm.sf(t_toy.abs()), index=t_toy.index)
 
@@ -294,13 +283,12 @@ $\mathrm{FDR} \le \mathrm{FWER}$: wie de FWER beheerst, beheerst ook de FDR.
 
 ### Bonferroni en Holm: de kans op één vergissing
 
-*Waarom zou dit waar zijn?* Als je twintig loten koopt met elk een kans van één op
-twintig, heb je hooguit kans één op een lot met prijs, wat er ook tussen de loten
-samenhangt. De kans op een vereniging van gebeurtenissen is nooit groter dan de som van
-de kansen. Wie elke toets op niveau $q/M$ doet, houdt de kans op een onterechte
-ontdekking dus onder $q$, zonder iets over afhankelijkheid te hoeven weten. Holm merkte op
-dat die som te ruim is zodra je een paar hypothesen al hebt verworpen: die kunnen geen
-onterechte ontdekking meer opleveren en hoeven niet mee te tellen.
+*Waarom zou dit waar zijn?* De kans op een vereniging van gebeurtenissen is nooit groter
+dan de som van de kansen, hoe ze ook samenhangen. Wie elke toets op niveau $q/M$ doet,
+houdt de kans op een onterechte ontdekking dus onder $q$, zonder iets over afhankelijkheid
+te weten. Holm merkte op dat die som alleen over de ware nulhypothesen hoeft te lopen, en
+dat er daarvan hoogstens $M - j + 1$ over zijn zolang de eerste $j - 1$ verwerpingen
+terecht waren.
 
 :::{prf:theorem} Bonferroni en Holm
 :label: thm-factor-zoo-holm
@@ -332,10 +320,9 @@ Holm-grens halen. $\square$
 
 *Waarom zou dit waar zijn?* De procedure van Benjamini en Hochberg uit
 {prf:ref}`thm-industrie-bh` beperkt het aandeel onterechte ontdekkingen tot $q$, maar het
-bewijs gebruikte onafhankelijkheid. Signalen in de cross-sectie zijn niet onafhankelijk:
-twintig varianten van waarde zijn in wezen één signaal, en ze worden tegelijk
-"significant" of niet. In het ergste geval komen de nulsignalen in klonten, en een klont
-kan de stapsgewijze procedure over een grens duwen. Benjamini en Yekutieli lieten zien dat
+bewijs gebruikte onafhankelijkheid. Twintig varianten van waarde worden echter tegelijk
+"significant" of niet, en zo'n klont nulsignalen kan de stapsgewijze procedure over een
+grens duwen. Benjamini en Yekutieli lieten zien dat
 het ergste geval te beheersen is door $q$ te delen door een logaritmische factor.
 
 :::{prf:theorem} Benjamini-Hochberg-Yekutieli
@@ -380,17 +367,12 @@ Sommeren over de $M_0$ ware nulhypothesen geeft $\mathrm{FDR} \le qM_0/M$. $\squ
 :::
 
 De prijs van robuustheid is groot: bij $M = 316$ is $c(M) = 6{,}33$. Harvey, Liu en Zhu
-kozen BHY om die reden, naast Bonferroni en Holm. Hun aanpak was verder een kwestie van
-tellen. Ze catalogiseerden 316 factoren uit 313 artikelen, waarvan 250 gepubliceerd, en
-berekenden voor elk jaar sinds 1967 welke drempel de procedures zouden hebben opgelegd als
-alle factoren tot dan toe de verzameling toetsen waren. Hun conclusies staan in de
-bespreking van hun figuur 3: "For Bonferroni, the benchmark t-statistic starts at 1.96
-and increases to 3.78 by 2012"; BHY met een FDR van 1% stabiliseert rond 3,39, en met
-5% is de drempel 2,78 in 2012. Daaruit volgt hun vuistregel: "we believe the minimum
-threshold t-statistic for 5% significance is about 2.8", en in de samenvatting de ronde
-eis van een $t$-waarde boven 3,0 {cite}`HarveyLiuZhu2016`. Omdat niet-gepubliceerde
-toetsen niet in de catalogus staan, noemen ze hun eigen verzameling een onderschatting,
-en hun drempels dus een ondergrens.
+catalogiseerden 316 factoren uit 313 artikelen en berekenden per jaar sinds 1967 welke
+drempel de procedures hadden opgelegd. In de bespreking van hun figuur 3: "For Bonferroni,
+the benchmark t-statistic starts at 1.96 and increases to 3.78 by 2012"; BHY stabiliseert
+rond 3,39 bij een FDR van 1% en ligt op 2,78 bij 5%. Hun vuistregel is "about 2.8", in de
+samenvatting afgerond tot een $t$-waarde boven 3,0 {cite}`HarveyLiuZhu2016`. Omdat
+ongepubliceerde toetsen ontbreken, zijn dat ondergrenzen.
 
 ### Publicatieselectie en truncatie
 
@@ -478,8 +460,8 @@ ook arbitrage bevat.
 ```{warning}
 De dummies in [](#eq-factor-zoo-mp-regressie) meten ook kalendertijd: post-publicatiemaanden
 liggen gemiddeld later dan in-sample maanden. Als markten in het algemeen efficiënter en
-handelen goedkoper is geworden, verschijnt dat als "publicatie-effect". McLean en Pontiff
-controleren daarvoor; [](#ex-factor-zoo-2) laat zien hoe.
+handelen goedkoper is geworden, verschijnt dat als "publicatie-effect". [](#ex-factor-zoo-2)
+controleert daarvoor, en in onze data maakt het uit.
 ```
 
 ### Bayesiaanse shrinkage van alfa's
@@ -529,32 +511,26 @@ $p(\alpha_i \mid \hat\alpha_i, \hat\alpha_i \in S) \propto p(\hat\alpha_i \mid \
 en de indicator is voor gegeven $\hat\alpha_i$ een constante. $\square$
 :::
 
-Het corollarium is subtieler dan het lijkt. De winner's curse verdwijnt niet; hij zit in de
-krimpfactor, mits de prior de verdeling beschrijft van *alle* geprobeerde signalen. Schat
-je $\mu$ en $\tau$ uit alleen de gepubliceerde, dan is de prior zelf geselecteerd en te
-optimistisch. Dat is precies het meningsverschil tussen Harvey, Liu en Zhu (de onbekende
-ongepubliceerde toetsen tellen mee) en Jensen, Kelly en Pedersen (een zorgvuldig gekozen
-prior maakt de meeste gepubliceerde factoren geloofwaardig).
+De winner's curse verdwijnt dus niet; hij zit in de krimpfactor, mits de prior de
+verdeling van *alle* geprobeerde signalen beschrijft. Een prior die uit alleen
+gepubliceerde signalen is geschat, is zelf geselecteerd en te optimistisch. Dat is het
+meningsverschil tussen Harvey, Liu en Zhu en Jensen, Kelly en Pedersen.
 
 *Empirical Bayes* (de prior uit de data zelf schatten) gebruikt het laatste deel van de
 stelling: $\hat\tau^2 = \max\big(0, \tfrac1M\sum_i(\hat\alpha_i - \hat\mu)^2 - \tfrac1M\sum_i s_i^2\big)$.
-Dat is het 2%-motief in de cross-sectie: de gemiddelde $s_i^2$ is de ruis die van de
-spreiding in schattingen moet worden afgetrokken om de spreiding in premies over te
-houden. {cite:t}`JensenKellyPedersen2023` bouwen dit hiërarchisch op: alfa's van factoren
-binnen een van hun 13 thema's delen een thema-gemiddelde, dat zelf naar nul wordt
-getrokken, en elke factor leent kracht van zijn thema. Zo kan hun vierde conclusie waar
-zijn dat het bewijs "strengthened (not weakened) by the large number of observed factors"
-wordt: meer factoren binnen een thema maken het thema-gemiddelde preciezer. De prior is
-gecentreerd op nul, dus de procedure is een correctie voor publicatie-optimisme, geen
-vrijbrief.
+Dat is het 2%-motief in de cross-sectie: de meetruis $s_i^2$ moet van de spreiding in
+schattingen af om de spreiding in premies over te houden.
+{cite:t}`JensenKellyPedersen2023` bouwen dit hiërarchisch: factoren binnen een van hun
+13 thema's delen een thema-gemiddelde, dat zelf naar nul wordt getrokken. Meer factoren
+per thema maken dat gemiddelde preciezer, en zo kan het bewijs "strengthened (not
+weakened) by the large number of observed factors" worden.
 
 ### FF5 en q-factoren als keuzes voor de SDF
 
-*Waarom zou dit waar zijn?* Als er driehonderd voorspellers zijn maar maar een handvol
-onafhankelijke bronnen van verwacht rendement, dan moet een klein aantal factoren de
-rest prijzen. Welke? Twee groepen kwamen tegelijk met een antwoord uit de boekhouding
-van de onderneming, de een vanuit de waardering, de ander vanuit de investeringsbeslissing,
-en kwamen ongeveer bij dezelfde factoren uit.
+*Waarom zou dit waar zijn?* Als driehonderd voorspellers maar een handvol onafhankelijke
+bronnen van verwacht rendement hebben, moet een klein aantal factoren de rest prijzen. Twee
+groepen zochten die factoren in de boekhouding van de onderneming, de een via de
+waardering, de ander via de investeringsbeslissing, en kwamen ongeveer bij dezelfde uit.
 
 **Waardering.** {cite:t}`FamaFrench2015` herschreven het dividendkortingsmodel uit
 [](#01-03-williams-ddm) met *clean surplus* (dividend is winst min groei van het eigen
@@ -605,46 +581,36 @@ $\Pi_{t+1}I_t$, dus $R_{t+1} = \Pi_{t+1}/(1 + aI_t/A_t)$, en $\E_t[m_{t+1}R_{t+1
 uit de eerste-ordevoorwaarde. $\square$
 :::
 
-Ondernemingen die veel investeren, doen dat omdat hun kostenvoet laag is: de marginale
-investering levert hun lage verwachte rendement op. Ondernemingen met hoge verwachte
-winstgevendheid moeten bij gegeven investering een hoge kostenvoet hebben. Het q-model van
-Hou, Xue en Zhang heeft daarom vier factoren: markt, size, investeringen (I/A) en
-winstgevendheid (ROE). Vier of zes factoren, afgeleid uit waardering of uit
-investeringen: in de taal van [](#05-26-sdf-unificatie) zijn het concurrerende keuzes voor
-$m = 1 - \mathbf{b}'(\mathbf{f} - \E\mathbf{f})$, en ze verklaren anomalieën alleen in de
-zin dat de alfa ten opzichte van die $m$ klein is. Of RMW en CMA risicofactoren of
-vergissingsfactoren zijn, zegt de identiteit niet: [](#eq-factor-zoo-ff5-waardering) geldt
-voor elke discontovoet, rationeel of niet.
+Wie veel investeert, doet dat omdat zijn kostenvoet laag is; wie bij gegeven investering
+hoge winst verwacht, moet een hoge kostenvoet hebben. Het q-model van Hou, Xue en Zhang
+heeft daarom vier factoren: markt, size, investeringen (I/A) en winstgevendheid (ROE). In
+de taal van [](#05-26-sdf-unificatie) zijn FF5 en q concurrerende keuzes voor
+$m = 1 - \mathbf{b}'(\mathbf{f} - \E\mathbf{f})$, en ze "verklaren" een anomalie alleen in de
+zin dat haar alfa ten opzichte van die $m$ klein is. Of RMW en CMA risico of vergissing
+meten, zegt [](#eq-factor-zoo-ff5-waardering) niet: de identiteit geldt voor elke
+discontovoet.
 
-**Een nieuwe factor gegeven honderden oude.** De vraag "voegt factor $g$ iets toe?" is de
-vraag of $b_g \ne 0$ gegeven de andere factoren $\mathbf{h}$. Met honderden kandidaten voor
-$\mathbf{h}$ is die regressie niet te schatten zonder selectie, en een LASSO die de
-controlefactoren selecteert, laat soms precies de factor weg die met $g$ correleert; de
-geschatte $b_g$ krijgt dan een omitted-variable-bias. {cite:t}`FengGiglioXiu2020`
-gebruiken daarom *double selection* (dubbele selectie): selecteer controlefactoren die de
-gemiddelde rendementen verklaren, selecteer daarnaast controlefactoren waarvan de
-covarianties met de testactiva samenhangen met die van $g$, en schat $b_g$ op de vereniging.
-Hun conclusie: "While most of these new factors are found to be redundant relative to the
+**Een nieuwe factor gegeven honderden oude.** De vraag is of $b_g \ne 0$ gegeven de andere
+factoren. Een LASSO die de controlefactoren kiest, laat soms precies de factor weg die met
+$g$ correleert, en dan krijgt $\hat b_g$ een omitted-variable-bias.
+{cite:t}`FengGiglioXiu2020` selecteren daarom dubbel (*double selection*):
+controlefactoren die gemiddelde rendementen verklaren, én controlefactoren waarvan de
+covarianties met de testactiva samenhangen met die van $g$. Hun conclusie: "While most of these new factors are found to be redundant relative to the
 existing factors, a few—such as profitability—have statistically significant explanatory
 power beyond the hundreds of factors proposed in the past."
 
-**Na kosten.** Een papieren long-short-portefeuille betaalt geen spreads. {cite:t}`NovyMarxVelikov2016`
-bestudeerden "the performance of a large number of anomalies after accounting for
-transaction costs": strategieën met weinig omzet blijven na kosten significant, veel
-strategieën met hoge omzet verliezen het grootste deel van hun rendement, en een
-*buy/hold spread* (niet handelen tenzij een aandeel ver genoeg over de breekpunten gaat) is
-de doeltreffendste manier om kosten te beperken. De kosten van [](#04-24-microstructuur)
-zijn dus een tweede filter, naast de statistiek.
+**Na kosten.** {cite:t}`NovyMarxVelikov2016` bestudeerden "the performance of a large
+number of anomalies after accounting for transaction costs": strategieën met weinig omzet
+blijven na kosten significant, en een *buy/hold spread* (pas handelen als een aandeel ver
+genoeg over de breekpunten gaat) beperkt de kosten het best. De kosten uit
+[](#04-24-microstructuur) zijn een tweede filter naast de statistiek.
 
-**Smart beta.** Intussen werd de dierentuin een product. Wat DFA en AQR in
-[](#04-25-industrie) als institutionele strategie verkochten, werd na 2010 in
+**Smart beta.** Wat DFA en AQR in [](#04-25-industrie) institutioneel verkochten, werd in
 beursgenoteerde fondsen voor iedereen verpakt als *smart beta* (regelgebaseerde
-portefeuilles die systematisch naar factoren als value, momentum, kwaliteit of lage
-volatiliteit kantelen). Het paste bij de verschuiving naar passief beleggen die in 2019 het
-moment bereikte waarop indexfondsen evenveel van de Amerikaanse beurs bezaten als actieve
-aandelenfondsen {cite}`ICI2020`. Voor McLean en Pontiffs decompositie is dat geen
-detail: als de daling na publicatie arbitrage is, dan is elke euro in een factorfonds een
-euro die de premie verder uitholt.
+portefeuilles die naar factoren als value, momentum of kwaliteit kantelen), terwijl passief
+beleggen groeide tot indexfondsen eind 2019 evenveel van de Amerikaanse beurs bezaten als
+actieve aandelenfondsen {cite}`ICI2020`. Is de daling na publicatie arbitrage, dan holt
+elke euro in zo'n fonds de premie verder uit.
 
 ## Simulatie: een vakgebied zonder anomalieën, en shrinkage die helpt
 
@@ -688,7 +654,12 @@ print(f"{published.sum()} van {published.size} signalen gepubliceerd "
 null_summary.round(3)
 ```
 
-**[RESULTAAT-SIM-A]**
+Van de 6000 nulsignalen worden er 142 gepubliceerd (137 verwacht), met een gemiddelde $t$
+van 2,33 tegen 2,37 uit [](#eq-factor-zoo-truncatie); het verschil komt van de geschatte
+standaardfout en de kleine steekproef van 142. In-sample verdienen ze 0,44% per maand (SE
+0,005 procentpunt), tussen steekproefeinde en publicatie $-0{,}05\%$ (SE 0,03), na
+publicatie $0{,}015\%$ (SE 0,02). De daling is 100%, zonder dat iemand iets heeft
+gearbitreerd.
 
 Nu dezelfde selectie op signalen met een echte verwachte $t$-waarde $\delta$. Omdat alleen
 de schatting telt, trekken we de $t$-waarden direct uit $\mathcal{N}(\delta, 1)$ en
@@ -756,8 +727,8 @@ Links: in een markt zonder anomalieën volgen de gepubliceerde $t$-waarden de af
 normale verdeling, en na publicatie liggen dezelfde signalen weer rond nul. Rechts: de
 daling die puur uit de selectie $t > 2$ volgt, als functie van de ware sterkte van het
 signaal. De 26% van McLean en Pontiff past bij signalen met een ware verwachte $t$ rond
-twee; hun 58% na publicatie zou, als alleen selectie meespeelde, signalen vereisen die
-bijna even vaak ruis als echt zijn.
+2,1; hun 58% na publicatie zou, als alleen selectie meespeelde, signalen vereisen met een
+ware verwachte $t$ rond één, die de drempel meestal niet eens halen.
 :::
 
 ### (b) Empirical Bayes herstelt de ware premies
@@ -803,7 +774,13 @@ last = pd.DataFrame({"waar": alpha_true, "ruw": alpha_hat, "EB": alpha_eb, "gese
 ).round(4)
 ```
 
-**[RESULTAAT-SIM-B]**
+Empirical Bayes verlaagt de RMSE van 0,196 naar 0,154 procentpunt per maand, in alle 500
+universa. Onder de signalen met $t > 2$ overschat de ruwe schatting de ware premie met
+gemiddeld 0,082 procentpunt; de EB-schatting *onder*schat haar met 0,037 en zit in 89% van
+de universa dichter bij nul. De tekenwissel is de prijs van een verkeerde prior: één
+normale verdeling moet nulsignalen en premies rond 0,4% tegelijk beschrijven, en trekt de
+laatste te hard terug. Motief 1 zit in de gewichten: signalen met een korte steekproef en
+hoge volatiliteit worden het sterkst teruggetrokken.
 
 ```{code-cell} ipython3
 :label: cel-factor-zoo-eb
@@ -839,8 +816,9 @@ plt.show()
 Links: ruwe schattingen van signalen met een grote standaardfout liggen ver van de
 waarheid; empirical Bayes trekt ze naar het gemiddelde van de dierentuin en laat de
 precies gemeten signalen vrijwel staan. Rechts: onder de signalen die $t > 2$ halen,
-overschat de ruwe schatting de premie systematisch, de EB-schatting veel minder. Het
-restje bias komt doordat de normale prior de puntmassa op nul mist.
+overschat de ruwe schatting de premie systematisch; de EB-schatting zit er in absolute
+waarde dichter bij, maar onderschat, omdat de normale prior de mengverdeling van nulsignalen
+en echte premies niet kan volgen.
 :::
 
 ## Replicatie op echte data
@@ -955,7 +933,20 @@ mp.loc["post - oos (publicatie-effect)"] = [
 mp.round(3)
 ```
 
-**[RESULTAAT-1]**
+De rangorde van McLean en Pontiff komt uit. Gemiddeld over de 212 signalen is het
+long-short-rendement in-sample 0,69% per maand, tussen steekproefeinde en publicatie
+0,41% (40% lager) en na publicatie 0,30% (57% lager), met standaardfouten over de
+signalen van 0,03 tot 0,05 procentpunt. Na publicatie is het rendement dus nog steeds
+duidelijk positief. De gepoolde regressie met vaste effecten per signaal geeft een daling
+van 0,25 procentpunt out-of-sample ($t = -3{,}85$, 36% van het gemiddelde in-sample
+rendement) en 0,37 procentpunt na publicatie ($t = -6{,}49$, 54%); het verschil, het
+publicatie-effect, is 18%. De regressie weegt signalen naar hun aantal maanden, en komt
+daarom iets anders uit dan de gewone gemiddelden. Tegenover 26%, 58% en 32% bij McLean en
+Pontiff is onze daling na publicatie vergelijkbaar, maar ligt meer ervan al vóór publicatie.
+
+Motief 1 staat in de kolom "gem. SE per signaal": in zijn tussenperiode van gemiddeld 55
+maanden heeft een signaal een standaardfout van 0,48% per maand, groter dan het rendement
+zelf. Alleen door over 212 signalen te middelen wordt de daling meetbaar.
 
 ### (2) De verdeling van $t$-waarden en de drempels van Harvey, Liu en Zhu
 
@@ -1012,10 +1003,25 @@ plt.show()
 :label: fig-factor-zoo-osap
 :width: 100%
 
-**[RESULTAAT-FIG]**
+Links: in-sample liggen de $t$-waarden ver rechts van elke drempel; na publicatie is de
+verdeling naar links geschoven en haalt nog maar een klein deel de Bonferroni-drempel.
+Rechts: signalen die in-sample sterk waren, blijven gemiddeld de sterkste, maar met een
+helling van 0,61 en een negatieve intercept verliezen ze meer naarmate hun in-sample
+rendement hoger was; de puntenwolk ligt gemiddeld ruim onder de 45-gradenlijn.
 :::
 
-**[RESULTAAT-2]**
+In-sample haalt 186 van de 212 signalen $|t| > 1{,}96$ (88%). Voor de 188 signalen met een
+gerapporteerde $t$ is de rangcorrelatie met onze in-sample $t$ 0,62, en ook daar haalt 88%
+de drempel: replicatie in de oorspronkelijke constructie werkt grotendeels (het abstract
+van {cite:t}`ChenZimmermann2022` konden we niet inzien, dus hun eigen percentages citeren
+we niet). De 65% mislukkingen van Hou, Xue en Zhang zijn geen tegenspraak: zij wogen naar
+marktwaarde met NYSE-breekpunten, OSAP volgt het artikel, voor 184 signalen gelijkgewogen.
+
+De drempels van Harvey, Liu en Zhu schrappen een substantieel deel: met $t > 3$ vallen 64
+van de 186 significante signalen af (34%). Bonferroni ($|t| > 3{,}68$ bij $M = 212$) houdt er
+85 over, Holm 93, BHY 137 en Benjamini-Hochberg 184. Na publicatie haalt 66 signalen
+$|t| > 1{,}96$, 24 $t > 3$ en 11 Bonferroni; die daling komt deels doordat de
+post-publicatieperiode korter is.
 
 ### (3) Shrinkage: hoeveel overleeft, en hoeveel van de daling is statistiek?
 
@@ -1041,7 +1047,13 @@ survive = pd.Series({
 survive.round(3)
 ```
 
-**[RESULTAAT-3A]**
+De geschatte spreiding van premies is $\hat\tau = 0{,}80\%$ per maand, tegen een gemiddelde
+standaardfout van 0,19%; de gemiddelde krimpfactor is daardoor 0,94 en de gemiddelden
+krimpen maar 9%. Van de 186 ruw significante signalen blijven er 181 over, en als
+voorspeller van post-publicatierendementen is de EB-schatting (helling 0,61) niet beter
+dan de ruwe. Met een prior uit de gepubliceerde dierentuin verklaart statistiek dus minder
+dan een kwart van de daling van 40% vóór publicatie, maar deze prior kent de
+ongepubliceerde signalen niet.
 
 Die prior is geschat op gepubliceerde signalen en daardoor te optimistisch
 ({prf:ref}`cor-factor-zoo-selectie`). Een zuiverder schatting gebruikt de $t$-waarden zoals
@@ -1081,7 +1093,20 @@ truncation = pd.Series({
 truncation.round(3)
 ```
 
-**[RESULTAAT-3B]**
+Van de gerapporteerde $t$-waarden liggen er 183 boven 1,96, met een gemiddelde van 4,69.
+De schatting convergeert naar $\hat\mu_\delta = -7{,}4$ en $\hat\omega = 6{,}1$: de
+rechterstaart van een zeer brede verdeling ver links van nul. Als beschrijving van de
+geprobeerde signalen is dat ongeloofwaardig (onderzoekers kiezen het teken zelf), en het
+laat zien hoe slecht de ligging uit een afgeknotte steekproef te schatten is. Voor de
+posterior telt vooral het gewicht $\hat\omega^2/(1 + \hat\omega^2) = 0{,}97$: de verwachte
+ware $t$ is gemiddeld 4,37, een voorspelde daling door selectie van 7%.
+
+Beide benaderingen geven hetzelfde: een publicatiedrempel van 1,96 verklaart zo'n 7 tot 9%
+van de daling van 40% vóór publicatie, terwijl 26% volgens [](#ex-factor-zoo-1) ware
+$t$-waarden rond 2,1 zou vereisen. Overblijvende verklaringen: gerapporteerde $t$-waarden
+zijn sterker opgeblazen dan afknotting beschrijft (de ongepubliceerde varianten van
+Harvey, Liu en Zhu), de tussenperiode bevat al arbitrage op werkdocumenten, of
+anomalierendementen dalen in het algemeen door de tijd ([](#ex-factor-zoo-2)).
 
 ### (4) Alfa's ten opzichte van FF5 plus momentum
 
@@ -1119,11 +1144,55 @@ alpha_table.loc["gem. alfa (% p.m.)"] = [100 * alphas[k.split(",")[0]]["alfa"].m
 alpha_table.round(3)
 ```
 
-**[RESULTAAT-4]**
+Over 1963–2024 heeft 167 van de 212 signalen een alfa met $|t| > 1{,}96$ ten opzichte van
+FF5 plus momentum, 164 daarvan positief; de gemiddelde alfa is 0,42% per maand, nauwelijks
+lager dan het ruwe rendement. Na correctie blijven er 99 over bij Bonferroni, 106 bij Holm,
+131 bij BHY en 161 bij Benjamini-Hochberg. Na publicatie zijn het er 10 (Bonferroni), 11
+(Holm), 15 (BHY) en 62 (Benjamini-Hochberg), bij een gemiddelde alfa van 0,30% per maand.
+
+Dit wijkt deels af van het replicatieblok. Na publicatie blijft bij elke procedure een
+minderheid over, maar over de hele periode alleen bij Bonferroni (99, 47%) en op het
+randje bij Holm (106, precies de helft); bij BHY en Benjamini-Hochberg houdt een
+meerderheid een significante alfa. Drie redenen liggen voor de hand: 1963–2024 bevat de
+in-sample jaren waarop de signalen zijn geselecteerd; de meeste OSAP-portefeuilles zijn
+gelijkgewogen en worden gedreven door kleine aandelen die value-weighted factoren slecht
+bereiken; en B/M, winstgevendheid en momentum zitten zelf in de dierentuin. Opvallend is
+dat de gemiddelde post-publicatie-alfa van 0,30% gelijk is aan het ruwe
+post-publicatierendement: de zes factoren verklaren niet wat er na publicatie over is.
 
 ## Wat er brak, en wat daarna kwam
 
-**[RESULTAAT-BRAK]**
+**Wat het kader verklaart.** Meervoudig toetsen, publicatieselectie en shrinkage maken van
+"is dit significant?" een vraag waarvan het antwoord van het aantal pogingen afhangt, en
+dat antwoord is streng maar niet vernietigend: 88% van de 212 voorspellers haalt in de
+oorspronkelijke constructie $|t| > 1{,}96$ en BHY houdt er 137 over. De replicatiecrisis is
+grotendeels een verschil in weging en drempels, zoals Chen en Zimmermann en Jensen, Kelly
+en Pedersen betoogden, en vijf of zes factoren uit de boekhouding van de onderneming
+beschrijven een groot deel van de cross-sectie.
+
+**Waar het breekt.** Bij de verzwakking. In onze replicatie ligt het gemiddelde
+rendement na publicatie 57% onder het in-sample niveau, en na publicatie overleeft nog 11
+van de 212 signalen Bonferroni. Publicatieselectie verklaart daar met beide
+shrinkage-benaderingen hoogstens een tiende van, en de zes factoren van FF5 plus momentum
+verklaren het gemiddelde rendement dat na publicatie over is niet. Het kader zegt hoeveel
+we moeten wantrouwen, maar niet waarom de premies kleiner worden.
+
+**Risico of vergissing?** McLean en Pontiff kozen zelf: "Our findings suggest that investors
+learn about mispricing from academic publications" {cite}`McLeanPontiff2016`. Dat is de
+Yale-lezing. De Chicago-lezing is even consistent: kenmerken meten blootstelling aan
+risico, en zodra meer kapitaal (factorfondsen, smart beta) dat risico wil dragen, daalt de
+prijs ervan; een lagere premie is dan betere risicodeling. Daarnaast staat datamining, de
+lezing waarin er nooit iets was. Scheiden zou kunnen met een daling die precies samenvalt
+met de publicatiedatum, maar [](#ex-factor-zoo-2) laat zien dat die in onze data niet te
+onderscheiden is van een algemene daling door de tijd, en die kan zelf arbitrage of
+risicodeling zijn. Voor een belegger is het Santa-Clara's vraag: "Everything I made that
+lasted came from bearing risk that was priced. Everything I lost came from thinking I knew
+something the price did not" {cite}`SantaClara2026`. Wie in 2015 een factorfonds kocht,
+kocht een van beide, en de data zeggen niet welke.
+
+**Wat er daarna kwam.** Als honderden ruisige signalen elk een beetje informatie bevatten, ligt
+het voor de hand ze niet één voor één te toetsen maar door een machine te laten
+combineren: [](#06-35-machine-learning).
 
 ## Oefeningen
 
@@ -1157,12 +1226,10 @@ print(f"daling bij delta = 4: {decline_formula(4.0):.3%};  lambda(x) > x op [-3,
       f"{np.all(inverse_mills(np.linspace(-3, 3, 61)) > np.linspace(-3, 3, 61))}")
 ```
 
-Een daling van 26% vereist ware verwachte $t$-waarden rond 2,1, en 58% waarden rond 1.
-Als de gepubliceerde signalen zo sterk zijn als hun $t$-waarden van rond vier suggereren,
-voorspelt selectie alleen een daling van ruim één procent. De oefening laat zien dat
-McLean en Pontiffs 26% alleen "statistiek" is als de gerapporteerde $t$-waarden flink
-zijn opgeblazen, door ongepubliceerde varianten en specificatiekeuzes die de eenvoudige
-drempel $t > 2$ niet vangt.
+Een daling van 26% vereist ware verwachte $t$-waarden rond 2,1, en 58% waarden rond 1. Bij
+$\delta = 4$ voorspelt selectie een daling van 1,4%. De oefening laat zien dat McLean en
+Pontiffs 26% alleen "statistiek" is als de gerapporteerde $t$-waarden flink zijn
+opgeblazen, door varianten en specificatiekeuzes die de drempel $t > 2$ niet vangt.
 :::
 
 :::{exercise}
@@ -1185,7 +1252,13 @@ with_time = mp_regression(long, extra=five_year.iloc[:, 1:]).loc[["oos", "post"]
 with_time.assign(**{"t.o.v. gem. in-sample": with_time["coef (% p.m.)"] / in_sample_mean}).round(3)
 ```
 
-**[RESULTAAT-OEF2]**
+Met vaste effecten voor vijfjaarsperioden is de daling out-of-sample 0,29 procentpunt
+($t = -5{,}05$, 42% van het in-sample gemiddelde) en na publicatie 0,28 ($t = -3{,}26$, 41%).
+Het publicatie-effect van 18% verdwijnt. OOS en POST worden nu alleen geïdentificeerd
+doordat signalen in dezelfde vijf jaar in verschillende fasen zitten. De oefening laat
+zien dat de decompositie van McLean en Pontiff gevoelig is voor wat kalendertijd mag
+verklaren: in onze data overschaduwt een algemene daling van anomalierendementen de
+publicatiedatum.
 :::
 
 :::{exercise}
