@@ -1,32 +1,25 @@
-# Voortgang lectures (stand 2026-09-12)
+# Voortgang lectures (stand 2026-09-13)
 
-Bedoeld om na een onderbreking (tokenlimiet) het werk op te pakken, ook vanuit een nieuwe sessie.
+## Status
 
-## Gecommit en gecontroleerd (offline uitgevoerd)
-
-L0, L1, L2, L3, L4, L5, L6, L7, L10.
-
-## In bouw bij een agent op het moment van schrijven
-
-| Lecture | Bestand | Stand op schijf |
-|---|---|---|
-| L8 CAPM | `lectures/02_08_capm.md` | gedeeltelijk of volledig geschreven |
-| L9 Black-Scholes | `lectures/02_09_black_scholes.md` | gedeeltelijk of volledig geschreven |
-| L11 APT/no-arbitrage | `lectures/03_11_apt_no_arbitrage.md` | gedeeltelijk of volledig geschreven |
-| L12 Consumptie-CAPM | `lectures/03_12_consumptie_capm.md` | gedeeltelijk of volledig geschreven |
-| L13 Equity premium puzzle | `lectures/03_13_equity_premium_puzzle.md` | mogelijk nog niet aanwezig |
-| L14 Roll | `lectures/03_14_roll.md` | mogelijk nog niet aanwezig |
-| L15 Shiller excess volatility | `lectures/03_15_shiller_excess_volatility.md` | mogelijk nog niet aanwezig |
-| L16 Vroege anomalieën | `lectures/03_16_vroege_anomalieen.md` | mogelijk nog niet aanwezig |
-
-## Hervatten
-
-- **Zelfde sessie:** de gestopte agents worden hervat vanuit hun eigen transcript; hun bronnenonderzoek blijft behouden.
-- **Nieuwe sessie:** start per lecture uit de tabel een bouw-agent met BOUW.md en de opdracht "rond af wat op schijf staat, anders bouw volgens PLAN.md §3". Controleer eerst `git status` voor ongecommitte bestanden en cachebestanden.
-- Ongecommitte wijzigingen in `myst.yml`, `references.bib` en `data/cache/` horen bij deze lectures; commit ze samen met de betreffende lecture.
+Alle 40 lectures (L0–L39) zijn geschreven, offline uitgevoerd (`HAP_OFFLINE=1`) en gecommit, elk met de
+cachebestanden die ze gebruiken.
 
 ## Openstaande punten
 
-- Lengte: meerdere lectures (L2, L7, L8, L10) liggen boven de richtlijn van 6000 woorden. Beslissing gebruiker nodig: inkorten of accepteren.
-- Volledige sitebuild aan het eind van de batch opnieuw draaien; parallelle builds van agents botsen in `_build/`.
-- Kandidaten voor `hap.stats`: runs-test (L2), event-study-toetsen (L7), VAR-schatter (L10), Sharpe-ratio-toets en rollende backtest (L4). Loader voor splitsingen/dividenden in `hap.data.yahoo` (L7).
+- **Inhoudsopgave `.md` vs `.ipynb`.** `myst.yml` verwijst voor L0–L22 naar `.ipynb` en vanaf L23 naar `.md`.
+  Met `.ipynb` breken verwijzingen naar oefeningen waarvan de uitwerking codecellen bevat. Advies: overal `.md`.
+  Beslissing gebruiker nodig.
+- **Volledige build.** Aan het eind één keer `jupyter book build --execute --html` draaien en warnings nalopen;
+  parallelle builds gaven MemoryErrors.
+- **Lengte.** Diverse lectures liggen boven 6000 woorden als tabellen, bijschriften en oefeningen meetellen.
+- **Achteraf aangepaste verwachting.** L25 (indexfondsen): de "verwachte afwijking" is na de eerste run herschreven;
+  advies: oorspronkelijke voorspelling terugzetten en VFINX als afwijking bespreken. L36: verwachting van de
+  S&P 500-inclusie-event-study geschreven na een prototype-run.
+- **Citaten Santa-Clara.** In L37–L39 deels via samenvattende WebFetch geverifieerd; controleer tegen de post.
+- **Kandidaten voor `hap`.** `hap.stats`: runs-test (L2), event-study-toetsen (L7, L37), VAR (L10), Sharpe-SE en
+  rollende backtest (L4, L30, L29), Shanken-correctie en lineaire SDF-GMM (L8, L26, L32), Hodrick-SE (L20, L32),
+  Kupiec/Christoffersen (L22), multiple testing en empirical Bayes (L25, L34), panel met vaste effecten (L30, L34),
+  OOS R²/Diebold-Mariano (L35). Snellere `fama_macbeth`. `hap.data`: splits/dividenden via yahoo (L7),
+  Pástor-Stambaugh-liquiditeit (L24), CFO-enquête (L33), Svensson-helper bij `gsw` (L28).
+- **Onderzoeksnotities** in `notes/` (L4, L34, L35) zijn verwerkt en kunnen weg.
