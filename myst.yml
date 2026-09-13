@@ -125,7 +125,7 @@ project:
     - title: Synthese
       children:
         - file: lectures/08_38_wat_we_weten.md
-    #     - file: lectures/08_39_wat_we_niet_weten.md
+        - file: lectures/08_39_wat_we_niet_weten.md
 
     # --- Appendix (niet in de leesvolgorde) ---
     - title: Appendix
