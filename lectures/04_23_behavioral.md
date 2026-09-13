@@ -742,10 +742,13 @@ MOMENTS_1926_1990 = {"m_s": 0.0935 / 12, "s_s": 0.2032 / np.sqrt(12), "m_b": 0.0
 
 def cpt_lognormal(m, s):
     """CPT value (rows: parameter sets, columns: horizons) of exp(m h + s sqrt(h) z) - 1."""
-    m, s = np.atleast_1d(m)[:, None, None], np.atleast_1d(s)[:, None, None]
-    x = np.expm1(m * H_MONTHS[None, :, None] + s * np.sqrt(H_MONTHS)[None, :, None] * Z_GRID)
-    n_sets = x.shape[0]
-    return cpt_equal(x.reshape(-1, N_GRID), is_sorted=True).reshape(n_sets, H_MAX)
+    m, s = np.broadcast_arrays(np.atleast_1d(m), np.atleast_1d(s))
+    out = []
+    for i in range(0, len(m), 50):  # blocks of 50 parameter sets keep memory use small
+        mi, si = m[i:i + 50, None, None], s[i:i + 50, None, None]
+        x = np.expm1(mi * H_MONTHS[None, :, None] + si * np.sqrt(H_MONTHS)[None, :, None] * Z_GRID)
+        out.append(cpt_equal(x.reshape(-1, N_GRID), is_sorted=True).reshape(x.shape[0], H_MAX))
+    return np.concatenate(out)
 
 
 def crossing_horizon(v_stock, v_bond):

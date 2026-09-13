@@ -682,17 +682,25 @@ def simulate_events(reps, n_events, rho=0.0, L1=250, half=10, sig_m=0.01, sig_e=
         beta = rng.uniform(0.5, 1.5, (1, n_events, 1))
         e = np.sqrt(1 - rho) * sig_e * t_shocks((r, n_events, T))
         e += np.sqrt(rho) * sig_e * t_shocks((r, 1, T))
-        R = 0.0003 + beta * m + e
+        R = 0.0003 + beta * m  # built in place, same arithmetic as 0.0003 + beta * m + e
+        R += e
+        del e  # free the large arrays as soon as possible to limit peak memory
         m_est, R_est = m[..., :L1], R[..., :L1]
         m_bar = m_est.mean(-1, keepdims=True)
         s_mm = ((m_est - m_bar) ** 2).sum(-1, keepdims=True)
-        b = ((m_est - m_bar) * (R_est - R_est.mean(-1, keepdims=True))).sum(-1, keepdims=True) / s_mm
+        dev = R_est - R_est.mean(-1, keepdims=True)
+        b = ((m_est - m_bar) * dev).sum(-1, keepdims=True) / s_mm
+        del dev
         a = R_est.mean(-1, keepdims=True) - b * m_bar
-        resid = R_est - a - b * m_est
-        z = resid / np.sqrt((resid**2).sum(-1, keepdims=True))
-        rho_hat = ((z.sum(1) ** 2).sum(-1) - n_events) / (n_events * (n_events - 1))
         out["ar"].append(R[..., L1:] - a - b * m[..., L1:])
-        out["s2"].append((resid**2).sum(-1) / (L1 - 2))
+        resid = R_est - a - b * m_est
+        del R, R_est
+        ss = (resid**2).sum(-1)
+        z = resid / np.sqrt(ss[..., None])
+        del resid
+        rho_hat = ((z.sum(1) ** 2).sum(-1) - n_events) / (n_events * (n_events - 1))
+        del z
+        out["s2"].append(ss / (L1 - 2))
         out["m_evt"].append(m[:, 0, L1:])
         out["m_bar"].append(m_bar[:, 0, 0])
         out["s_mm"].append(s_mm[:, 0, 0])
