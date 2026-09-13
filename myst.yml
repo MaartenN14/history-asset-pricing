@@ -113,18 +113,18 @@ project:
     - title: Deel VI — De factor zoo en de machines
       children:
         - file: lectures/06_34_factor_zoo.md
-    #     - file: lectures/06_35_machine_learning.md
-    #     - file: lectures/06_36_inelastische_markten.md
+        - file: lectures/06_35_machine_learning.md
+        - file: lectures/06_36_inelastische_markten.md
 
     # --- Deel VII — De machines, opnieuw (2026) ---
-    # - title: Deel VII — De machines, opnieuw
-    #   children:
-    #     - file: lectures/07_37_llms_en_efficientie.md
+    - title: Deel VII — De machines, opnieuw
+      children:
+        - file: lectures/07_37_llms_en_efficientie.md
 
     # --- Synthese ---
-    # - title: Synthese
-    #   children:
-    #     - file: lectures/08_38_wat_we_weten.md
+    - title: Synthese
+      children:
+        - file: lectures/08_38_wat_we_weten.md
     #     - file: lectures/08_39_wat_we_niet_weten.md
 
     # --- Appendix (niet in de leesvolgorde) ---
