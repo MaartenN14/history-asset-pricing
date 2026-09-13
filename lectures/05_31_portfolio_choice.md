@@ -4,6 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
+    jupytext_version: 1.19.5
 kernelspec:
   display_name: Python 3
   language: python
@@ -36,16 +37,13 @@ uitvergroot — en welk risico telt daarbij eigenlijk mee?
 
 ## Overzicht
 
-Rond de eeuwwisseling zat de portefeuilletheorie klem tussen twee waarheden.
-De theorie van [](#01-04-markowitz) en [](#03-10-merton-icapm) zei dat een
-belegger zijn gewichten moet afleiden uit verwachte rendementen en
-covarianties van *alle* activa, eventueel als functie van de toestand van de
-economie. De empirie van Deel IV zei dat die verwachte rendementen samenhangen
-met een handvol eigenschappen — grootte, boek-marktwaarde, recent rendement —
-en met een handvol voorspellers in de tijd. Wie het eerste letterlijk nam,
-moest duizenden gemiddelden schatten en kreeg ruis; wie het tweede letterlijk
-nam, sorteerde portefeuilles zonder te weten hoeveel hij van elke sortering
-moest kopen.
+Rond de eeuwwisseling zat de portefeuilletheorie klem. De theorie van
+[](#01-04-markowitz) en [](#03-10-merton-icapm) vroeg om verwachte rendementen en
+covarianties van *alle* activa, eventueel per toestand van de economie; de empirie van
+Deel IV zei dat verwachte rendementen samenhangen met een handvol eigenschappen en een
+handvol voorspellers. Wie het eerste letterlijk nam, schatte duizenden gemiddelden en
+kreeg ruis; wie het tweede nam, sorteerde portefeuilles zonder te weten hoeveel hij van
+elke sortering moest kopen.
 
 Pedro Santa-Clara schreef met Michael Brandt en Rossen Valkanov twee artikelen
 die die klem oplosten door het probleem anders te *parameteriseren*. In
@@ -56,27 +54,24 @@ keer een vaste mix. In {cite:t}`BrandtSantaClaraValkanov2009` gebeurt hetzelfde
 in de cross-sectie: het gewicht van een aandeel is het marktgewicht plus een
 lineaire functie van zijn gestandaardiseerde karakteristieken, en de drie
 coëfficiënten van die functie worden rechtstreeks geschat door het gerealiseerde
-nut van de belegger te maximaliseren. Duizend activa, drie parameters. Die twee
-artikelen definiëren dit stuk van het tijdvak omdat ze de vraag verschuiven van
-"wat zijn de verwachte rendementen?" naar "welke regel voor gewichten had het
-best gewerkt?" — een verschuiving die de schattingsfout van Markowitz niet
-oplost maar wel indamt.
+nut van de belegger te maximaliseren. Duizend activa, drie parameters — in Santa-Clara's woorden een
+poging "to rescue portfolio choice from the curse of dimensionality"
+{cite}`SantaClara2026`. De vraag verschuift van "wat zijn de verwachte rendementen?" naar
+"welke regel voor gewichten had het best gewerkt?", en daarmee wordt de schattingsfout van
+Markowitz niet opgelost maar ingedamd.
 
-Het tweede spoor van deze lecture is een feit op zoek naar een theorie.
-{cite:t}`GoyalSantaClara2003` vonden dat de gemiddelde variantie van
-individuele aandelen — die grotendeels idiosyncratisch is — het marktrendement
-voorspelt, en de variantie van de markt zelf niet. Dat is een directe botsing
-met [](#02-08-capm), waar idiosyncratisch risico gratis weg te diversifiëren is
-en dus niet beprijsd mag worden. Het resultaat overleefde latere steekproeven
-niet {cite}`BaliCakiciYanZhang2005,WeiZhang2005`, maar het vraagstuk bleef:
+Het tweede spoor is een feit op zoek naar een theorie.
+{cite:t}`GoyalSantaClara2003` vonden dat de gemiddelde variantie van individuele
+aandelen — grotendeels idiosyncratisch — het marktrendement voorspelt en de
+marktvariantie niet: een botsing met [](#02-08-capm), waar idiosyncratisch risico
+gratis weg te diversifiëren is. Het resultaat overleefde latere steekproeven niet
+{cite}`BaliCakiciYanZhang2005,WeiZhang2005`, maar het vraagstuk bleef:
 idiosyncratische volatiliteit steeg decennialang {cite}`CampbellLettauMalkielXu2001`,
-aandelen met hoge idiosyncratische volatiliteit rendeerden raadselachtig slecht
-{cite}`AngHodrickXingZhang2006`, en idiosyncratische volatiliteit blijkt een
-sterke gemeenschappelijke factor te hebben
-{cite}`HerskovicKellyLustigVanNieuwerburgh2016`. Epistemisch zitten we hier
-middenin motief 3: de parametrische portefeuille is een instrument dat feiten
-gebruikt zonder ze te verklaren, en de idiosyncratische-volatiliteitsfeiten zijn
-feiten met meer concurrerende theorieën dan data.
+aandelen met hoge idiosyncratische volatiliteit rendeerden slecht
+{cite}`AngHodrickXingZhang2006`, en die volatiliteit heeft een sterke gemeenschappelijke
+factor {cite}`HerskovicKellyLustigVanNieuwerburgh2016`. Epistemisch zitten we middenin
+motief 3: de parametrische portefeuille gebruikt feiten zonder ze te verklaren, en de
+volatiliteitsfeiten hebben meer concurrerende theorieën dan data.
 
 We repliceren aan het eind de parametrische policy van Brandt, Santa-Clara en
 Valkanov op de 100 size/BM-portefeuilles en de 25 size-momentumportefeuilles van
@@ -99,48 +94,36 @@ rng = np.random.default_rng(20240101)
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-Neem een belegger die gelooft dat kleine, goedkope aandelen met een goed
-afgelopen jaar beter renderen dan de rest. De Markowitz-route vraagt hem voor
-elk van de duizenden aandelen een verwacht rendement op te schrijven, een
-covariantiematrix van een miljoen elementen te schatten, en die in te voeren in
-een optimalisator die — zo zagen we in [](#01-04-markowitz) — precies de
-richtingen opzoekt waarin de schattingen het slechtst zijn. De route van
-Brandt, Santa-Clara en Valkanov stelt een veel bescheidener vraag: *hoeveel* wil
-hij afwijken van de markt per eenheid "klein", per eenheid "goedkoop" en per
-eenheid "goed jaar"? Dat zijn drie getallen. En omdat elk van die drie getallen
-wordt geschat uit het gedrag van alle aandelen tegelijk, middelt de
-bedrijfsspecifieke ruis grotendeels weg voordat de schatter hem ziet.
+Neem een belegger die gelooft dat kleine, goedkope aandelen met een goed afgelopen
+jaar beter renderen. De Markowitz-route vraagt hem een verwacht rendement voor elk van
+duizenden aandelen en een covariantiematrix van een miljoen elementen, en voert die in
+een optimalisator die precies de slechtst geschatte richtingen opzoekt. De route van
+Brandt, Santa-Clara en Valkanov vraagt alleen *hoeveel* hij van de markt wil afwijken
+per eenheid "klein", "goedkoop" en "goed jaar". Dat zijn drie getallen, geschat uit alle
+aandelen tegelijk, zodat de bedrijfsspecifieke ruis grotendeels wegmiddelt voordat de
+schatter hem ziet.
 
-Er zit een tweede gedachte in die even belangrijk is. De regel "marktgewicht
-plus $\theta$ maal karakteristiek" is niets anders dan: houd de markt, plus
-$\theta$ eenheden van een long-short-portefeuille die long gaat in aandelen met
-een hoge karakteristiek en short in aandelen met een lage. Een parametrische
-policy is dus een keuze tussen een klein aantal *portefeuilles* in plaats van
-tussen een groot aantal *aandelen*. Precies dezelfde truc werkt in de tijd. Een
-belegger die meer aandelen wil houden als de dividendopbrengst hoog is, kiest
-impliciet een vaste positie in twee dingen: in de markt, en in "de markt
-geschaald met de dividendopbrengst". Dat tweede ding is gewoon een activum met
-een rendementsreeks, en een vaste mix van vaste activa kiezen is het oudste
-probleem uit de portefeuilletheorie. Het dynamische probleem van Merton wordt
-een statisch probleem van Markowitz, met meer activa.
+Er zit een tweede gedachte in. De regel "marktgewicht plus $\theta$ maal
+karakteristiek" betekent: houd de markt, plus $\theta$ eenheden van een
+long-short-portefeuille die long gaat in aandelen met een hoge karakteristiek en short
+in aandelen met een lage. Een parametrische policy kiest dus tussen een paar
+*portefeuilles*, niet tussen duizenden *aandelen*. Dezelfde truc werkt in de tijd: wie
+meer aandelen houdt als de dividendopbrengst hoog is, houdt een vaste positie in de
+markt en in "de markt geschaald met de dividendopbrengst", en dat laatste is gewoon een
+activum met een rendementsreeks. Het dynamische probleem van Merton wordt een statisch
+probleem van Markowitz, met meer activa.
 
-Waarom zou dit de schattingsfout helpen? Omdat de parameterisatie een sterke
-prior oplegt: alleen verschillen in karakteristieken mogen tot verschillen in
-gewichten leiden, en twee aandelen met dezelfde karakteristieken krijgen hetzelfde
-gewicht, wat hun historische gemiddelde ook was. Die prior is op zijn minst
-verdedigbaar, en hij haalt de optimalisator weg van de ruis in de afzonderlijke
-gemiddelden. Het is dezelfde reden dat 1/N wint van mean-variance: niet meer
-weten dan je kunt weten. De parametrische portefeuille zit tussen de twee in —
-iets meer durven dan 1/N, veel minder dan Markowitz.
+Dat helpt tegen schattingsfout omdat de parameterisatie een sterke prior oplegt: twee
+aandelen met dezelfde karakteristieken krijgen hetzelfde gewicht, wat hun historische
+gemiddelde ook was. Het is dezelfde reden dat 1/N wint van mean-variance; de
+parametrische portefeuille zit tussen de twee in.
 
-Goyal en Santa-Clara stelden een andere, oudere vraag: welk risico telt? Als elke
-belegger gediversifieerd is, doet de eigen variantie van een aandeel er niet toe,
-alleen zijn bèta. Maar de meeste huishoudens houden een handvol aandelen, en voor
-hen is idiosyncratisch risico gewoon risico. Stijgt de gemiddelde onzekerheid
-over individuele bedrijven, dan zouden zij een hogere premie op de markt kunnen
-eisen. Of dat mechanisme bestaat, is een empirische vraag — en omdat het
-gemiddelde marktrendement slecht gemeten is en de gemiddelde variantie zeer
-persistent, is het een vraag waarop je gemakkelijk een te zeker antwoord krijgt.
+Goyal en Santa-Clara stelden een oudere vraag: welk risico telt? Voor een
+gediversifieerde belegger alleen bèta. Maar de meeste huishoudens houden een handvol
+aandelen, en voor hen is idiosyncratisch risico gewoon risico; stijgt de gemiddelde
+onzekerheid over individuele bedrijven, dan eisen zij misschien een hogere premie op de
+markt. Omdat het gemiddelde marktrendement slecht gemeten is en de gemiddelde variantie
+zeer persistent, is een te zeker antwoord op die vraag gemakkelijk te krijgen.
 
 ## Toy-voorbeeld: een voorspeller met twee waarden, drie aandelen met één karakteristiek
 
@@ -186,9 +169,8 @@ $$
 
 De policy die daarbij hoort, is $w_t = \theta_0 + \theta_1 x_t$: in de lage toestand
 $0{,}24950 - 0{,}15050 = 0{,}09901$ en in de hoge $0{,}24950 + 0{,}15050 = 0{,}40$.
-Precies de conditionele oplossing. De belegger die niets van dynamische
-programmering weet en alleen een vaste mix van twee rendementsreeksen kiest, doet
-exact wat de conditioneel optimaliserende belegger doet.
+Precies de conditionele oplossing: een vaste mix van twee rendementsreeksen doet exact
+wat de conditioneel optimaliserende belegger doet.
 
 Wat levert het op? Het verwachte nut van de conditionele strategie is
 $\sum_x \tfrac12\,\mu(x)^2/(2\gamma s(x)) = \tfrac12(0{,}00099 + 0{,}02) = 0{,}010495$;
@@ -247,18 +229,14 @@ $0{,}3(0{,}01) + 0{,}7(0{,}06) = 4{,}5\%$. Met CRRA-nut $u(R) = R^{1-\gamma}/(1-
 en $\gamma = 5$ is het gerealiseerde nut $u(1{,}000) = -0{,}25$ en
 $u(1{,}045) = -1/(4 \cdot 1{,}045^4) = -1/(4 \cdot 1{,}19252) = -0{,}20964$.
 
-De structuur is belangrijker dan de getallen. Het portefeuillerendement is
-$R_p(\theta) = \bar R + \theta\, r^{x}$ met
+Het portefeuillerendement is $R_p(\theta) = \bar R + \theta\, r^{x}$ met
 $r^{x} = \tfrac1N \sum_i \hat{x}_i r_i = \tfrac13(0{,}03 + 0 + 0{,}06) = 3\%$: het
-rendement van een long-short-*karakteristiekportefeuille*. Elke $\theta$ is een
-positie in die ene portefeuille. Met één periode is het nut dus stijgend in
-$\theta$ zolang $r^x > 0$ — de schatter zou oneindig ver gaan. Pas meer perioden
-maken het probleem interessant. Voeg een tweede periode toe met dezelfde $\hat{x}$
-en rendementen $4\%$, $1\%$ en $-5\%$: dan is $\bar R = 1{,}3\%$ en $r^x = -3\%$.
-Het gemiddelde nut $\tfrac12[u(1 + 0{,}03\theta) + u(1{,}013 - 0{,}03\theta)]$ is
-maximaal waar de twee brutorendementen gelijk zijn (de afgeleide is
-$0{,}03[(1+0{,}03\theta)^{-5} - (1{,}013-0{,}03\theta)^{-5}]/2$), dus bij
-$\theta^{\ast} = 0{,}013/0{,}06 = 0{,}2167$.
+rendement van een long-short-*karakteristiekportefeuille*. Met één periode stijgt het nut
+dus onbeperkt in $\theta$ zolang $r^x > 0$; pas meer perioden maken het probleem
+interessant. Neem een tweede periode met dezelfde $\hat{x}$ en rendementen $4\%$, $1\%$ en
+$-5\%$: dan is $\bar R = 1{,}3\%$ en $r^x = -3\%$, en het gemiddelde nut
+$\tfrac12[u(1 + 0{,}03\theta) + u(1{,}013 - 0{,}03\theta)]$ is maximaal waar de twee
+brutorendementen gelijk zijn, bij $\theta^{\ast} = 0{,}013/0{,}06 = 0{,}2167$.
 
 ```{code-cell} ipython3
 w_bar = np.array([0.5, 0.3, 0.2])
@@ -283,7 +261,7 @@ rows = {th: {"w1": toy_policy(th)[0], "w2": toy_policy(th)[1], "w3": toy_policy(
 two_period = optimize.minimize_scalar(
     lambda th: -(crra(1 + toy_policy(th) @ returns_1) + crra(1 + toy_policy(th) @ returns_2)) / 2,
     bounds=(-5, 5), method="bounded")
-print(f"x_hat = {x_hat},  r^x = {x_hat @ returns_1 / 3:.4f}")
+print(f"x_hat = {np.round(x_hat, 4) + 0.0},  r^x = {x_hat @ returns_1 / 3:.4f}")
 print(f"theta* over twee perioden = {two_period.x:.4f}   (hand: 0.013/0.06 = {0.013 / 0.06:.4f})")
 pd.DataFrame(rows).T.rename_axis("theta").round(5)
 ```
@@ -295,14 +273,11 @@ $-0{,}25$ en $-0{,}20964$ en $\theta^{\ast} = 0{,}2167$, zoals met de hand.
 
 ### Brandt en Santa-Clara: het dynamische probleem als statisch probleem
 
-*Waarom zou dit waar zijn?* Een conditionele strategie is een regel die
-vandaag, afhankelijk van wat de belegger ziet, een gewicht kiest. Als die regel
-lineair is in wat hij ziet, is het rendement van de strategie een vaste lineaire
-combinatie van producten "signaal maal rendement". Die producten zijn betalingen
-die je kunt opschrijven en waarvan je momenten kunt schatten, net als die van een
-aandeel. Een vaste mix kiezen over vaste betalingen is Markowitz. De enige vraag is
-of je daarmee de beste conditionele regel vindt, en het antwoord is ja zodra de
-regel rijk genoeg is.
+*Waarom zou dit waar zijn?* Een conditionele strategie die lineair is in wat de
+belegger ziet, heeft als rendement een vaste combinatie van producten "signaal maal
+rendement". Die producten zijn betalingen met schatbare momenten, net als aandelen, en
+een vaste mix over vaste betalingen kiezen is Markowitz. De vraag is alleen of dat de
+beste conditionele regel oplevert; het antwoord is ja zodra de regel rijk genoeg is.
 
 Laat er $N$ risicovolle activa zijn met excess rendementen
 $\mathbf{r}_{t+1} \in \mathbb{R}^N$, en een vector conditioneringsvariabelen
@@ -369,19 +344,16 @@ Uniciteit volgt uit de positieve definietheid van $\E[\tilde{\mathbf{R}}\tilde{\
 strikt concaaf in $\boldsymbol{\theta}$; [](#eq-portfolio-choice-bsc-theta) is de eerste-ordevoorwaarde. $\square$
 :::
 
-In het toy-voorbeeld is $\mathbf{A} = \begin{pmatrix}1 & 1\\ -1 & 1\end{pmatrix}$:
-de constante is de som van de twee indicatoren, $x_t$ het verschil. Drie
-opmerkingen maken de propositie bruikbaar. Ten eerste is
-[](#eq-portfolio-choice-bsc-theta) de coëfficiënt van een regressie van de
-constante 1 op $\tilde{\mathbf{R}}_{t+1}$ zonder intercept, zodat de gewone
-regressiestandaardfouten de onzekerheid over de gewichten meten
-{cite}`BrittenJones1999`. Ten tweede herhaalt het resultaat zich over meerdere
-perioden: Brandt en Santa-Clara voegen *timing portfolios* toe die alleen op één
-van de toekomstige data beleggen, zodat ook een meerperiodeprobleem één statische
-keuze wordt. Ten derde is dit geen gratis lunch: elke conditioneringsvariabele
-vermenigvuldigt het aantal activa, en met $N$ activa en $K$ variabelen is het
-statische probleem een Markowitz-probleem in $NK$ activa, met alle schattingsfout
-die daarbij hoort. {{BSC2006-TOEPASSING}}
+In het toy-voorbeeld is $\mathbf{A} = \begin{pmatrix}1 & 1\\ -1 & 1\end{pmatrix}$. Drie
+opmerkingen. [](#eq-portfolio-choice-bsc-theta) is de coëfficiënt van een regressie van
+de constante 1 op $\tilde{\mathbf{R}}_{t+1}$ zonder intercept, zodat
+regressiestandaardfouten de onzekerheid over de gewichten meten {cite}`BrittenJones1999`.
+Over meerdere perioden voegen Brandt en Santa-Clara *timing portfolios* toe die op één
+toekomstige datum beleggen, zodat ook dat probleem één statische keuze wordt; volgens hun
+abstract benadert die keuze "the optimal dynamic strategy for horizons up to 5 years"
+{cite}`BrandtSantaClara2006`. En het is geen gratis lunch: met $N$ activa en $K$
+variabelen is het statische probleem een Markowitz-probleem in $NK$ activa, met alle
+schattingsfout van dien.
 
 ### Brandt, Santa-Clara en Valkanov: de cross-sectie in drie parameters
 
@@ -403,10 +375,8 @@ De policy is
 w_{i,t}(\boldsymbol{\theta}) = \bar w_{i,t} + \frac{1}{N_t}\,\boldsymbol{\theta}'\hat{\mathbf{x}}_{i,t} .
 ```
 
-Twee keuzes zitten in die regel. De deling door $N_t$ houdt de totale afwijking
-van de markt constant als het aantal aandelen groeit. De standaardisatie maakt
-$\boldsymbol{\theta}$ stationair als de verdeling van de ruwe karakteristieken in
-de tijd verschuift. Omdat $\sum_i \hat{\mathbf{x}}_{i,t} = \mathbf{0}$ tellen de
+De deling door $N_t$ houdt de totale afwijking van de markt constant als het aantal
+aandelen groeit; de standaardisatie houdt $\boldsymbol{\theta}$ stationair. Omdat $\sum_i \hat{\mathbf{x}}_{i,t} = \mathbf{0}$ tellen de
 gewichten op tot één, en het portefeuillerendement is
 
 ```{math}
@@ -431,8 +401,7 @@ u\!\left(\bar R_{t+1} + \boldsymbol{\theta}'\mathbf{r}^{x}_{t+1}\right),
 \qquad u(R) = \frac{R^{1-\gamma}}{1-\gamma} .
 ```
 
-Er komt geen verwacht rendement, geen covariantiematrix en geen verdelingsaanname
-aan te pas. Het nut ziet alle momenten van het portefeuillerendement tegelijk,
+Er komt geen verwacht rendement of covariantiematrix aan te pas, en het nut ziet
 ook scheefheid en dikke staarten.
 
 :::{prf:proposition} Eerste-ordevoorwaarden en asymptotische verdeling
@@ -481,22 +450,16 @@ martingaalverschillen. Vermenigvuldigen met $-\mathbf{G}^{-1}$ geeft
 $\mathbf{V}$. $\square$
 :::
 
-Vergelijking [](#eq-portfolio-choice-foc) verdient een tweede lezing. Schrijf
-$m_{t+1} \propto u'(R_{p,t+1})$: dan zegt zij $\E[m_{t+1}\mathbf{r}^{x}_{t+1}] = 0$.
-De geschatte policy is de policy waarvoor het marginale nut van de belegger
-zelf de $K$ karakteristiekportefeuilles precies op nul prijst. Dat is $p = \E[mx]$
-uit [](#05-26-sdf-unificatie), toegepast op zero-cost betalingen, met als SDF het
-marginale nut van de optimale portefeuille. Zolang een karakteristiekportefeuille
-een positieve prijsfout heeft onder die SDF, loont het om $\theta_k$ te verhogen.
+Met $m_{t+1} \propto u'(R_{p,t+1})$ zegt [](#eq-portfolio-choice-foc)
+$\E[m_{t+1}\mathbf{r}^{x}_{t+1}] = 0$: de geschatte policy is de policy waarvoor het
+marginale nut van de belegger zelf de $K$ karakteristiekportefeuilles op nul prijst —
+$p = \E[mx]$ uit [](#05-26-sdf-unificatie), toegepast op zero-cost betalingen.
 
 ### Waarom drie parameters het dimensieprobleem van Markowitz omzeilen
 
-*Waarom zou dit waar zijn?* De schade in [](#01-04-markowitz) kwam uit twee
-bronnen: elk van de $N$ verwachte rendementen had een standaardfout van de orde
-$\sigma_i/\sqrt{T}$, en de optimalisator vergrootte die fout langs de
-slechtst bepaalde richtingen van $\boldsymbol{\Sigma}^{-1}$. De parametrische policy
-schat $K$ getallen, en elk daarvan hangt aan een portefeuille die over alle
-aandelen middelt.
+*Waarom zou dit waar zijn?* De schade in [](#01-04-markowitz) kwam uit $N$ slecht
+geschatte gemiddelden, uitvergroot door $\boldsymbol{\Sigma}^{-1}$. De parametrische
+policy schat $K$ getallen, elk aan een portefeuille die over alle aandelen middelt.
 
 Twee berekeningen maken dat concreet. Laat
 $R_{i,t+1} = \beta_i f_{t+1} + \boldsymbol{\lambda}'\hat{\mathbf{x}}_{i,t} + \varepsilon_{i,t+1}$ met
@@ -519,12 +482,8 @@ die in [](#01-04-markowitz) van de orde $N/T$ was
 om ruis in te vinden in plaats van $N$. Met duizend aandelen en drie
 karakteristieken is dat een factor driehonderd.
 
-De prijs is een aanname. De policy kan alleen verschillen tussen aandelen
-uitbuiten die in $\hat{\mathbf{x}}$ zitten, en alleen lineair. Als de ware
-verwachte rendementen afhangen van dingen die niet in de karakteristieken
-staan, laat de policy die liggen; als de relatie niet-lineair is, benadert zij
-haar. In ruil daarvoor is de schatter stabiel, en dat blijkt in de praktijk
-het betere deel van de ruil.
+De prijs is een aanname: de policy benut alleen verschillen die lineair in
+$\hat{\mathbf{x}}$ zitten. In ruil daarvoor is de schatter stabiel.
 
 Eén benadering maakt het verband met Markowitz exact. Vervang het CRRA-nut door
 mean-variance in $R_p$: maximaliseer
@@ -537,11 +496,9 @@ is
 \qquad \boldsymbol{\mu}_x = \E[\mathbf{r}^{x}],\ \boldsymbol{\Sigma}_x = \Var(\mathbf{r}^{x}) :
 ```
 
-een Markowitz-vraag naar $K$ activa, plus een hedgeterm die de benchmark
-corrigeert (oefening [](#ex-portfolio-choice-1)). Waar
-[](#01-04-markowitz) een $N\times N$-matrix omkeerde, keert de parametrische
-policy een $K\times K$-matrix om van portefeuillerendementen die weinig ruis
-hebben.
+een Markowitz-vraag naar $K$ activa plus een hedgeterm voor de benchmark (oefening
+[](#ex-portfolio-choice-1)): een $K\times K$-matrix van weinig ruisende
+portefeuillerendementen in plaats van de $N\times N$-matrix van [](#01-04-markowitz).
 
 ### Beperkingen: short posities, kosten en tijdsvariatie
 
@@ -554,40 +511,43 @@ af en normaliseert,
 w^{+}_{i,t} = \frac{\max(0, w_{i,t})}{\sum_j \max(0, w_{j,t})} ,
 ```
 
-en schat $\boldsymbol{\theta}$ opnieuw met die afgekapte gewichten in het doel. Het
-rendement is dan niet meer lineair in $\boldsymbol{\theta}$ en het doel niet meer
-glad, maar met drie parameters is een numerieke zoektocht zonder afgeleiden
-eenvoudig. Transactiekosten gaan op dezelfde manier in het doel: trek van
-$R_{p,t+1}$ de kosten $c\sum_i |w_{i,t+1} - w^{\mathrm{drift}}_{i,t}|$ af, met
-$w^{\mathrm{drift}}$ het gewicht na de koersbeweging, en de schatter kiest vanzelf
-voor karakteristieken die weinig omzet vragen. Ten slotte kan $\boldsymbol{\theta}$
+en schat $\boldsymbol{\theta}$ opnieuw met die gewichten in het doel; dat is niet meer
+glad, maar met drie parameters is een zoektocht zonder afgeleiden eenvoudig.
+Transactiekosten gaan ook in het doel: trek $c\sum_i |w_{i,t+1} - w^{\mathrm{drift}}_{i,t}|$
+af, met $w^{\mathrm{drift}}$ het gewicht na de koersbeweging. En $\boldsymbol{\theta}$ kan
 zelf van de toestand afhangen, $\boldsymbol{\theta}_t = \boldsymbol{\Theta}\mathbf{z}_t$:
-dat is Brandt-Santa-Clara in de tijd bovenop Brandt-Santa-Clara-Valkanov in de
-cross-sectie, en het blijft een statisch probleem in $K$ maal $\dim(\mathbf{z})$
-parameters. {{BSV-UITBREIDINGEN}}
+Brandt-Santa-Clara in de tijd bovenop de cross-sectie.
+{cite:t}`BrandtSantaClaraValkanov2009` vinden dat een transactiekost van 0,5% hun
+certainty equivalent nauwelijks raakt (hun tabel 6) en dat een no-trade-grens de omzet
+"by up to 50%" verlaagt "with only marginal deterioration in performance".
 
 ```{note}
 De parametrische aanpak is één antwoord op de schattingsfout van Markowitz;
 twee andere uit hetzelfde jaar houden de gewone gewichten maar veranderen de
-beslisregel. {cite:t}`KanZhou2007` {{KANZHOU}} {cite:t}`GarlappiUppalWang2007`
-{{GUW}} Beide werken op het niveau van $\boldsymbol{\mu}$ en $\boldsymbol{\Sigma}$; de
+beslisregel. {cite:t}`KanZhou2007` laten zien dat de plug-in-portefeuille "can lead to very
+poor out-of-sample performance", en dat een optimale combinatie van de risicovrije
+rente, de steekproef-tangentportefeuille en de steekproef-minimumvariantieportefeuille
+de gewone tweefondsregel domineert: schattingsfout rechtvaardigt een derde fonds. {cite:t}`GarlappiUppalWang2007`
+geven de belegger meerdere priors over de verwachte
+rendementen en aversie tegen die ambiguïteit; zijn portefeuilles zijn "more stable
+over time" en halen out-of-sample een hogere Sharpe-ratio dan klassieke en
+Bayesiaanse portefeuilles. Beide werken op het niveau van $\boldsymbol{\mu}$ en $\boldsymbol{\Sigma}$; de
 parametrische policy stapt over die objecten heen.
 ```
 
 ### Goyal en Santa-Clara: welk risico voorspelt de markt?
 
-*Waarom zou dit waar zijn?* In het CAPM en het ICAPM is de premie op de markt
-een beloning voor marktrisico, dus als iets de premie voorspelt, zou het de
-marktvariantie moeten zijn. Maar als beleggers niet gediversifieerd zijn, is
-het risico dat zij dragen het risico van hun paar aandelen, en dat is vooral
-idiosyncratisch. Stijgt de idiosyncratische onzekerheid in de hele economie,
-dan eisen zij meer — en dan voorspelt de gemiddelde variantie van aandelen het
+*Waarom zou dit waar zijn?* In het CAPM is de marktpremie een beloning voor
+marktrisico, dus zou de marktvariantie haar moeten voorspellen. Maar wie niet
+gediversifieerd is, draagt vooral idiosyncratisch risico; stijgt dat in de hele economie,
+dan eisen zulke beleggers meer, en dan voorspelt de gemiddelde variantie van aandelen het
 marktrendement, ook als de marktvariantie dat niet doet.
 
 Laat $R_{i,t}$ de rendementen van de aandelen in maand $t$ zijn, $w_{i}$ gewichten
 die optellen tot één en $R_{m,t} = \sum_i w_i R_{i,t}$ de marktportefeuille. De
 maandvariantie wordt gemeten met dagrendementen,
-$\hat\sigma^2_{i,t} = \sum_{d \in t} R_{i,d}^2$ {{GSC-VARIANTIE}}. De
+$\hat\sigma^2_{i,t} = \sum_{d \in t} R_{i,d}^2$ (in de replicatie gebruiken we de eenvoudige som van
+gekwadrateerde dagrendementen). De
 toets van {cite:t}`GoyalSantaClara2003` is
 
 ```{math}
@@ -618,11 +578,15 @@ $\Var(R_i) = \Var(R_m) + \Var(R_i - R_m) + 2\Cov(R_m, R_i - R_m)$. Weeg met $w_i
 de kruisterm wordt $2\Cov\!\big(R_m, \sum_i w_i R_i - R_m\big) = 2\Cov(R_m, 0) = 0$. $\square$
 :::
 
-Dit is de marktcorrectie van {cite:t}`CampbellLettauMalkielXu2001`, die het
-factormodel omzeilt door elk aandeel een bèta van één te geven: over de hele
-cross-sectie tellen de fouten in die aanname op tot nul. Zij vonden
-{{CLMX}} Voor individuele aandelen is de tweede term in
-[](#eq-portfolio-choice-clmx) veel groter dan de eerste; {{GSC-AANDEEL}}
+Dit is de marktcorrectie van {cite:t}`CampbellLettauMalkielXu2001`, die elk aandeel een
+bèta van één geeft; over de cross-sectie tellen de fouten in die aanname op tot nul. Zij
+vonden dat de bedrijfsspecifieke component tussen 1962 en 1997 "more than doubled",
+terwijl markt- en industriecomponent "by only about one-third" stegen; waar in 1963–1985
+twintig aandelen volstonden voor een excess standaarddeviatie van ongeveer vijf procent,
+waren daar in 1986–1997 bijna vijftig voor nodig. Voor individuele aandelen domineert de
+tweede term in [](#eq-portfolio-choice-clmx): Goyal en Santa-Clara noemen idiosyncratisch
+risico in een gestileerde kalibratie "almost 85 percent" van de gemiddelde
+aandeelvariantie.
 
 Er is een direct gevolg voor wie geen aandelendata heeft. Vervang aandelen door
 portefeuilles van elk $n$ aandelen met idiosyncratische variantie $s^2$. De
@@ -633,21 +597,27 @@ portefeuilles meet dus een andere grootheid dan Goyal en Santa-Clara, met veel
 meer marktvariantie en veel minder idiosyncratische.
 
 De latere literatuur maakte er drie verhalen van. {cite:t}`BaliCakiciYanZhang2005`
-{{BCYZ}} {cite:t}`WeiZhang2005` {{WZ}} In de cross-sectie vonden
-{cite:t}`AngHodrickXingZhang2006` het tegenovergestelde van wat een
-onderdiversificatieverhaal voorspelt: {{AHXZ}} En
-{cite:t}`HerskovicKellyLustigVanNieuwerburgh2016` lieten zien dat de
-idiosyncratische volatiliteit van aandelen een sterke gemeenschappelijke
-factor heeft: {{HKLV}} Santa-Clara zet dit in zijn terugblik op de lijst van wat
-het vak niet weet {cite}`SantaClara2026`: {{SC-WDK10}}
+lieten zien dat het resultaat "is driven by small stocks traded on the Nasdaq, and is in
+part due to a liquidity premium" en niet standhoudt tot december 2001;
+{cite:t}`WeiZhang2005` dat het "mainly driven by the data in the 1990s" is. In de
+cross-sectie vonden {cite:t}`AngHodrickXingZhang2006` het omgekeerde van een premie:
+aandelen met hoge idiosyncratische volatiliteit hebben "abysmally low average returns",
+in de NBER-werkpaperversie van hun tabel VI een verschil in FF3-alfa van −1,31% per maand
+($t = -7{,}00$) tussen het hoogste en het laagste kwintiel — de *IVOL puzzle*. En
+{cite:t}`HerskovicKellyLustigVanNieuwerburgh2016` vonden een sterke gemeenschappelijke
+factor in idiosyncratische volatiliteit (*common idiosyncratic volatility*, CIV):
+aandelen met de laagste CIV-bèta verdienen 5,4% per jaar meer dan die met de hoogste, en
+de factor hangt samen met het inkomensrisico van huishoudens — een ICAPM-argument als in
+[](#03-10-merton-icapm). Santa-Clara zet het op zijn lijst van wat het vak niet weet
+{cite}`SantaClara2026`, punt 10: "What idiosyncratic volatility is telling us. [...] Two
+decades of papers have established that something about firm-level volatility is priced
+and no agreement about what or why."
 
 ```{warning}
-$V_t$ is een zeer persistente reeks en haar innovaties zijn negatief
-gecorreleerd met het marktrendement (bij een koersval stijgt de volatiliteit).
-Dat zijn precies de twee voorwaarden voor de Stambaugh-bias uit
-[](#04-20-voorspelbaarheid). Wie bovendien de horizon verlengt met overlappende
-waarnemingen, telt dezelfde maand meerdere keren en krijgt te kleine
-standaardfouten. De simulatie hieronder laat zien hoe groot die effecten zijn.
+$V_t$ is zeer persistent en haar innovaties zijn negatief gecorreleerd met het
+marktrendement: de voorwaarden voor de Stambaugh-bias uit [](#04-20-voorspelbaarheid).
+Overlappende horizonnen tellen bovendien dezelfde maand meermaals en geven te kleine
+standaardfouten. De simulatie hieronder meet beide effecten.
 ```
 
 ## Simulatie: drie parameters tegen vijfhonderd, en een variantie zonder informatie
@@ -664,14 +634,13 @@ R^{e}_{i,t+1} = \beta_i f_{t+1} + \boldsymbol{\lambda}'\mathbf{x}_{i,t} + \varep
 $$
 
 met een marktfactor van 0,5% gemiddeld en 4,5% volatiliteit per maand,
-$\beta_i \sim \mathcal{N}(1;\ 0{,}3^2)$ en idiosyncratische ruis van 12% per maand.
-De ware premie is klein: één standaarddeviatie in een karakteristiek is 0,36%
-per jaar waard, tegenover een idiosyncratische volatiliteit van 42% per jaar. Een
-belegger schat op $T$ maanden en belegt de volgende 240 maanden met drie regels:
-1/N; de parametrische policy met $\gamma = 5$; en mean-variance met
-$\gamma = 5$ op de 500 steekproefgemiddelden. Omdat de steekproefcovariantie bij
-$T < N$ niet eens inverteerbaar is, geven we Markowitz een handje: zijn
-covariantiematrix komt uit een geschat éénfactormodel.
+$\beta_i \sim \mathcal{N}(1;\ 0{,}3^2)$ en idiosyncratische ruis van 12% per maand. De
+premie is klein: één standaarddeviatie in een karakteristiek is 0,36% per jaar waard,
+tegen 42% idiosyncratische volatiliteit per jaar. Een belegger schat op $T$ maanden en
+belegt de volgende 240 maanden met 1/N, met de parametrische policy ($\gamma = 5$), of
+met mean-variance ($\gamma = 5$) op de 500 steekproefgemiddelden. Omdat de
+steekproefcovariantie bij $T < N$ niet inverteerbaar is, krijgt Markowitz een
+covariantiematrix uit een geschat éénfactormodel.
 
 ```{code-cell} ipython3
 N_STOCKS, K_CHAR, RF_M, T_TEST, GAMMA = 500, 3, 0.003, 240, 5.0
@@ -776,7 +745,7 @@ plt.show()
 :width: 100%
 
 Links: mediaan en interkwartielafstand van de out-of-sample Sharpe-ratio over
-{{N_WORLDS}} gesimuleerde werelden per venster. Mean-variance op 500 gemiddelden
+80 gesimuleerde werelden per venster. Mean-variance op 500 gemiddelden
 blijft bij elke realistische steekproeflengte ver onder 1/N; de parametrische
 policy begint op het niveau van 1/N en loopt weg zodra het venster lang genoeg is
 om drie kleine premies te zien. Rechts: de schatter van $\theta$ voor size, ver
@@ -784,20 +753,28 @@ van nul af bij vijftig jaar data, maar met een verdeling die bij tien jaar data
 nog ruim over nul heen loopt.
 :::
 
-{{SIM-A-TEKST}}
+De tabel en [](#fig-portfolio-choice-sim-a) laten drie dingen zien. Mean-variance op
+500 gemiddelden is kansloos: een mediane Sharpe-ratio tussen 0,09 en 0,15, en een
+certainty equivalent tegen de ondergrens van de berekening (−1203% per jaar bij
+$T = 120$), omdat de CRRA-belegger in vrijwel elke wereld ergens zijn vermogen verliest —
+[](#01-04-markowitz) met $N/T$ tussen 0,8 en 4. De parametrische policy wint niet
+vanzelf: bij tien jaar data is haar mediane Sharpe-ratio 0,38 tegen 0,37 voor 1/N, wint
+zij in 55% van de werelden en is haar certainty equivalent lager (−2,5% tegen −0,2%), want
+de standaarddeviatie van $\hat\theta_{\text{size}}$ is 3,7. Bij vijftig jaar is die 1,7,
+de Sharpe-ratio 0,50 tegen 0,41 en het certainty equivalent 0,8% tegen 0,3%. En de
+mediaan van 1/N zelf schommelt tussen 0,33 en 0,41: de standaardfout van een
+Sharpe-ratio over 240 maanden is ongeveer $\sqrt{12/240} = 0{,}22$. Motief 1 zit in de
+hele tabel, ook in de benchmark.
 
 ### (b) Gemiddelde variantie zonder informatie
 
-Nu Goyal en Santa-Clara, in een wereld waarin hun hypothese per constructie
-onwaar is. Het marktexcessrendement is onafhankelijk en identiek verdeeld
-(0,6% gemiddeld, 4,5% volatiliteit per maand). De gemiddelde variantie volgt
-$\log V_{t+1} = 0{,}74\log V_t + 0{,}50\,\eta_{t+1}$, met
-$\Corr(\eta_{t+1}, R^{e}_{m,t+1}) = -0{,}31$. De drie getallen zijn de
-persistentie, de innovatievolatiliteit en de correlatie die we hieronder op de
-49 industrieportefeuilles meten. Elke steekproef heeft 437 maanden, de lengte
-van augustus 1963 tot december 1999, en we regresseren het cumulatieve
-rendement over $h$ maanden op $V_t$, met gewone OLS-standaardfouten en met
-Newey-West-standaardfouten.
+Nu Goyal en Santa-Clara in een wereld waarin hun hypothese per constructie onwaar is. Het
+excess marktrendement is i.i.d. (0,6% gemiddeld, 4,5% volatiliteit per maand) en
+$\log V_{t+1} = 0{,}74\log V_t + 0{,}50\,\eta_{t+1}$ met
+$\Corr(\eta_{t+1}, R^{e}_{m,t+1}) = -0{,}31$, dicht bij wat we hieronder op de 49
+industrieportefeuilles meten (0,74; 0,47; −0,31). Elke steekproef heeft 437 maanden
+(augustus 1963 – december 1999); we regresseren het cumulatieve rendement over $h$
+maanden op $V_t$, met OLS- en Newey-West-standaardfouten.
 
 ```{code-cell} ipython3
 T_GSC, N_GSC = 437, 5000
@@ -875,10 +852,16 @@ niets voorspelt. Links: bij een horizon van één maand verwerpt de toets ongeve
 zo vaak als hij hoort; met overlappende jaarhorizonnen en gewone standaardfouten
 vindt een op de vijf onderzoekers een "significante" positieve helling.
 Newey-West haalt het grootste deel van die overdrijving weg, niet alles. Rechts:
-de OLS-verdeling is bij $h = 12$ ruim twee keer zo breed als ze zou moeten zijn.
+de OLS-verdeling is bij $h = 12$ ruim anderhalf keer zo breed als die met Newey-West.
 :::
 
-{{SIM-B-TEKST}}
+Bij één maand verwerpt de eenzijdige toets in 2,8% (OLS) en 3,6% (Newey-West) van de
+steekproeven, dicht bij de nominale 2,5%. Het probleem is de horizon: met overlappende
+twaalfmaandsrendementen en OLS-standaardfouten vindt 18,8% een "significant positieve"
+helling op een variabele die niets voorspelt, met Newey-West nog 6,7%, en wie de beste van
+vier horizonnen rapporteert, vindt in 25,8% van de werelden iets. Goyal en Santa-Clara
+zelf rapporteerden maandregressies met Newey-West-$t$-waarden en bootstrap-$p$-waarden —
+het deel van de tabel dat zich goed gedraagt.
 
 ## Replicatie op echte data
 
@@ -889,7 +872,18 @@ de OLS-verdeling is bij $h = 12$ ruim twee keer zo breed als ze zou moeten zijn.
 Portfolio Policies: Exploiting Characteristics in the Cross-Section of Equity
 Returns*, Review of Financial Studies 2009 {cite}`BrandtSantaClaraValkanov2009`.
 
-**Wat.** {{BSV-WAT}}
+**Wat.** Hun tabel 1: de lineaire policy met size (log ME),
+boek-marktwaarde en momentum, $\gamma = 5$, geschat vanaf januari 1964, met
+statistieken over januari 1974 tot december 2002, op "all stocks in the CRSP–Compustat
+data set" (gemiddeld 3680 per maand, na weglating van de kleinste 20%). In-sample
+$\hat\theta_{\text{me}} = -1{,}451$ (standaardfout 0,548), $\hat\theta_{\text{btm}} =
+3{,}606$ (0,921) en $\hat\theta_{\text{mom}} = 1{,}772$ (0,743); Sharpe-ratio 1,048
+tegen 0,438 voor de waardegewogen markt; certainty equivalent 17,5% tegen 6,4% per
+jaar; een gemiddelde som van negatieve gewichten van −128%, 47% negatieve gewichten en
+een omzet van 99% per jaar. Out-of-sample, met elk jaar herschatte $\theta$ op een
+groeiende steekproef: Sharpe-ratio 0,941 en certainty equivalent 11,8%. De
+long-only-versie (hun tabel 3) haalt in-sample 0,690 en 10,3%, met
+$\hat\theta = (-1{,}277;\ 3{,}215;\ 1{,}416)$.
 
 **Data hier.** Individuele aandelen uit CRSP en Compustat zijn niet gratis. We
 gebruiken daarom portefeuilles als "activa": de 100 portefeuilles op size en
@@ -900,15 +894,19 @@ en het eigen rendement over maand $t-11$ tot en met $t-1$; en als controle de 25
 size-momentumportefeuilles (`"25_Portfolios_ME_Prior_12_2"`) met log ME en het
 gemiddelde voorgaande rendement van de aandelen erin. Benchmark: de
 waardegewogen portefeuille van dezelfde activa. Risicovrije rente uit
-`hap.data.market_monthly()`. In-sample 1964–2002, $\gamma = 5$; out-of-sample met
-een jaarlijks herschat expanding window, 2003 tot het einde van de snapshot.
+`hap.data.market_monthly()`. $\theta$ geschat op 1964–2002 met $\gamma = 5$,
+statistieken over 1974–2002 zoals in het paper; out-of-sample met een elk jaar
+herschatte $\theta$ op alle data vanaf 1964, van 1974 tot het einde van de
+snapshot, apart gerapporteerd voor 1974–2002 en 2003–2026.
 
 **Verschil met het origineel.** Het paper heeft duizenden aandelen per maand,
 wij honderd portefeuilles. Portefeuilles hebben een veel kleinere spreiding in
 karakteristieken en veel minder idiosyncratisch risico, en hun karakteristieken
 zijn deels de sorteringsvariabele zelf. De momentumkarakteristiek van de
 size/BM-portefeuilles is het rendement van de portefeuille, niet het gemiddelde
-van haar aandelen. {{BSV-VERSCHIL}}
+van haar aandelen. De omzet is bij portefeuilles niet vergelijkbaar met
+die bij aandelen, en de samenstelling van de French-portefeuilles wijzigt elk jaar in
+juni.
 
 **Verwachte afwijking.** De tekens moeten die van het paper zijn:
 $\theta_{\text{size}} < 0$, $\theta_{\text{B/M}} > 0$, $\theta_{\text{mom}} > 0$. In-sample
@@ -982,7 +980,8 @@ size_mom = characteristic_panel(*load_size_momentum())
  for name, p in [("100 size/BM", size_bm), ("25 size/momentum", size_mom)]}
 ```
 
-{{DATA-TEKST}}
+Gemiddeld zijn 98 van de 100 size/BM-portefeuilles per maand bruikbaar (niet elke cel is
+altijd gevuld); de 25 size-momentumportefeuilles zijn altijd compleet.
 
 ```{code-cell} ipython3
 def theta_standard_errors(theta, rbar, rx, gamma=GAMMA):
@@ -1018,7 +1017,13 @@ theta_table = pd.DataFrame(theta_rows).T
 theta_table.round(3)
 ```
 
-{{THETA-TEKST}}
+De tekens zijn die van het paper en de grootte ligt er dicht bij: op de 100
+size/BM-portefeuilles $\hat\theta_{\text{size}} = -1{,}37$ (0,76) tegen −1,451,
+$\hat\theta_{\text{B/M}} = 5{,}00$ (0,86) tegen 3,606 en $\hat\theta_{\text{mom}} = 2{,}18$
+(0,75) tegen 1,772 — size en momentum binnen een halve standaardfout, B/M 1,6
+standaardfout hoger. Na 39 jaar data is size met $t = -1{,}8$ niet op 5% significant,
+zoals de simulatie liet verwachten. Op de size-momentumportefeuilles verdwijnt size
+($-0{,}10$, standaardfout 0,78) en blijft momentum ($2{,}91$, $t = 4{,}2$).
 
 ```{code-cell} ipython3
 def weights(panel, theta):
@@ -1080,23 +1085,36 @@ print("theta long-only (1964-2002):", theta_lo.round(3))
 in_sample.round(3)
 ```
 
-{{INSAMPLE-TEKST}}
+Over 1974–2002 haalt de policy een Sharpe-ratio van 1,11 tegen 0,39 (paper: 1,048
+tegen 0,438) en een certainty equivalent van het totale rendement van 19,0% tegen 5,7% per
+jaar (paper: 17,5% tegen 6,4%). De positie is extreem: gemiddeld −180% short (paper
+−128%), 39% negatieve gewichten (paper 47%) en een omzet van negen keer het vermogen per
+jaar (paper 0,99). Die omzet komt vrijwel geheel uit de momentumterm — zonder
+$\theta_{\text{mom}}$ is zij 2,8 — omdat het momentum van een portefeuille elke maand
+verschuift terwijl haar size en B/M nauwelijks bewegen; ook de benchmark draait door de
+jaarlijkse herindeling van de portefeuilles 0,61 per jaar om.
+
+Long-only haalt het grootste deel van de omzet weg: Sharpe-ratio 0,68 (paper 0,690),
+certainty equivalent 10,0% (paper 10,3%), omzet 1,4. De long-only-$\hat\theta =
+(2{,}38;\ 19{,}24;\ 5{,}31)$ lijkt niet op die van het paper, maar met afgekapte
+gewichten is het doel vlak: vier startpunten geven hetzelfde optimum, en het gemiddelde
+nut bij de $\theta$ van het paper verschilt pas in de vierde decimaal.
 
 ```{code-cell} ipython3
 def expanding_oos(panel, start="1974-01", long_only_too=False):
-    """Re-estimate theta every January on all data before it; return OOS gross returns and theta path."""
+    """Re-estimate theta every January on all data from IN_START until then; return OOS gross returns."""
     rbar, rx = policy_returns(panel)
     out = subset(panel, start, "2100-12")
     years = sorted(set(out["date"].year))
     gross, gross_lo, path = [], [], {}
     for year in years:
-        past = panel["date"] < pd.Timestamp(f"{year}-01-01")
+        past = (panel["date"] >= pd.Timestamp(IN_START)) & (panel["date"] < pd.Timestamp(f"{year}-01-01"))
         now = panel["date"].year == year
         theta = fit_theta(rbar[past], rx[past])
         path[year] = theta
         gross.append(rbar[now] + rx[now] @ theta)
         if long_only_too:
-            sub_past, sub_now = subset(panel, "1900-01", f"{year - 1}-12"), subset(panel, f"{year}-01", f"{year}-12")
+            sub_past, sub_now = subset(panel, IN_START, f"{year - 1}-12"), subset(panel, f"{year}-01", f"{year}-12")
             th_lo = fit_theta_long_only(sub_past, theta)
             gross_lo.append(1 + (long_only(weights(sub_now, th_lo)) * sub_now["r"]).sum(axis=1))
     result = {"date": out["date"], "policy": np.concatenate(gross), "bench": rbar[panel["date"] >= pd.Timestamp(start)],
@@ -1107,6 +1125,7 @@ def expanding_oos(panel, start="1974-01", long_only_too=False):
 
 
 oos_bm = expanding_oos(size_bm, long_only_too=True)
+oos_bm["theta"].iloc[[0, 8, 16, 29, -1]].round(2)
 ```
 
 ```{code-cell} ipython3
@@ -1149,10 +1168,25 @@ plt.show()
 :label: fig-portfolio-choice-bsv
 :width: 100%
 
-{{FIG-BSV-CAPTION}}
+Links: cumulatief log brutorendement vanaf 1974 van de benchmark, de
+parametrische policy en de long-only-versie, telkens met een $\theta$ die alleen op
+data van 1964 tot het begin van het jaar is geschat. Tot 2003 (stippellijn) loopt de
+policy duidelijk weg; daarna niet meer. Rechts: de jaarlijks herschatte $\theta$.
+Size blijft tot 2003 tussen −1,0 en −1,4 en kruipt daarna naar −0,30; de
+B/M-coëfficiënt loopt op van 3,5 (1974) naar 5,0–5,2 rond 1990–2003 en zakt naar 2,7;
+momentum blijft tussen 2,2 en 3,2.
 :::
 
-{{OOS-TEKST}}
+Out-of-sample over 1974–2002 haalt de policy een Sharpe-ratio van 1,02 tegen 0,39 en een
+certainty equivalent van 16,3% tegen 5,7% (paper: 0,941 en 11,8%); de
+size-momentumpolicy 0,88 tegen 0,38. Na 2002, buiten elke steekproef die het paper kon
+zien, draait het teken om: op de 100 size/BM-portefeuilles 0,62 tegen 0,72 en een
+certainty equivalent van 0,9% tegen 6,6%, want 23% volatiliteit voor 14% excess
+rendement is voor een belegger met $\gamma = 5$ een slechte ruil; long-only 0,64 en 4,3%;
+size-momentum 0,65 tegen 0,74. Met een standaardfout van ongeveer 0,21 is geen van die
+verschillen van nul te onderscheiden, maar het teken is overal hetzelfde. Dat ligt aan de
+rand van wat het replicatieblok verwachtte ("een klein voordeel of geen"): het werd een
+klein nadeel.
 
 ### Managed portfolios op de markt
 
@@ -1162,14 +1196,23 @@ plt.show()
 **Bron.** Michael Brandt en Pedro Santa-Clara, *Dynamic Portfolio Selection by
 Augmenting the Asset Space*, Journal of Finance 2006 {cite}`BrandtSantaClara2006`.
 
-**Wat.** {{BSC-WAT}}
+**Wat.** Hun empirische toepassing in de werkpaperversie (NBER
+w10372): aandelen, langlopende staatsobligaties en kasgeld, geconditioneerd op
+dividendopbrengst, relatieve T-bill-rente, term spread en default spread, 1945–2000. De
+maandelijks herbalancerende conditionele policy haalt volgens de tekst een Sharpe-ratio
+van 0,92, "twice that of the unconditional policy of 0.46" (tabel 2 van hetzelfde
+werkpaper drukt 0,589 en 0,882 af). Deze getallen konden we niet in het gepubliceerde
+artikel controleren.
 
 **Data hier.** Goyal-Welch maanddata via `hap.data.goyal_welch("monthly")`: het
 CRSP value-weighted S&P 500-rendement min de T-bill-rente, de log
 dividend-prijsratio `dp` en de term spread `tms`, beide op $t$ bekend en
 gestandaardiseerd met het gemiddelde en de standaarddeviatie tot dan toe.
 
-**Verschil met het origineel.** {{BSC-VERSCHIL}} Wij schatten met CRRA-nut en
+**Verschil met het origineel.** Het origineel heeft drie activa, vier
+conditioneringsvariabelen en kwadratisch nut met risicoaversie 4; wij hebben één
+risicovol activum, twee variabelen, en een in-sampleperiode 1945–2002. Out-of-sample
+herschatten we elk jaar vanaf 2003. Wij schatten met CRRA-nut en
 $\gamma = 5$ via dezelfde code als de parametrische policy: de managed portfolios
 $\mathbf{x}_t \otimes r^{e}_{t+1}$ spelen de rol van $\mathbf{r}^x$, de risicovrije
 rente die van de benchmark.
@@ -1228,7 +1271,13 @@ pd.DataFrame({
 }).T.round(3)
 ```
 
-{{BSC-TEKST}}
+In-sample (1945–2002) krijgt de dividendopbrengst $\hat\theta_{dp} = 0{,}45$
+(standaardfout 0,17) en de term spread 0,32 (0,17), bovenop een constante positie van
+1,13. De managed-strategie verhoogt de Sharpe-ratio van 0,52 naar 0,65 en het certainty
+equivalent van 7,3% naar 9,0% per jaar. Out-of-sample vanaf 2003 keert het om: 0,48 tegen
+0,70, en 3,5% tegen 6,1%. Dat is [](#04-20-voorspelbaarheid) in portefeuillevorm: de
+methode lost de schattingsfout in de voorspeller niet op, maar maakt zichtbaar hoeveel
+ervan in de gewichten terechtkomt.
 
 ### Gemiddelde variantie en het marktrendement
 
@@ -1238,7 +1287,13 @@ pd.DataFrame({
 **Bron.** Amit Goyal en Pedro Santa-Clara, *Idiosyncratic Risk Matters!*,
 Journal of Finance 2003 {cite}`GoyalSantaClara2003`.
 
-**Wat.** {{GSC-WAT}}
+**Wat.** Hun tabel II: regressies van het maandelijkse
+waardegewogen excess marktrendement op de variantie van de vorige maand, augustus 1963 –
+december 1999, 437 waarnemingen, met Newey-West-$t$-waarden. De gemiddelde
+aandeelvariantie alleen: coëfficiënt 0,336 ($t = 2{,}57$, $\bar R^2 = 1{,}19\%$). De
+marktvariantie alleen: −0,597 ($t = -1{,}07$, $\bar R^2 = 0{,}02\%$). Samen: 0,478
+($t = 3{,}86$) voor de gemiddelde variantie en −1,449 ($t = -2{,}70$) voor de
+marktvariantie, $\bar R^2 = 2{,}17\%$.
 
 **Data hier.** Dagrendementen van de 49 industrieportefeuilles van French
 (`hap.data.french("49_Industry_Portfolios", "daily")`) voor de gemiddelde
@@ -1247,12 +1302,10 @@ voor de marktvariantie, en het maandelijkse excess marktrendement uit
 `hap.data.market_monthly()`. Steekproef augustus 1963 – december 1999 en
 augustus 1963 – december 2025.
 
-**Verschil met het origineel.** Goyal en Santa-Clara middelen over alle
-aandelen van CRSP; wij middelen over 49 industrieën. Een industrieportefeuille
-bevat tientallen tot honderden aandelen, dus volgens [](#eq-portfolio-choice-clmx)
-en de opmerking erna is het grootste deel van de idiosyncratische variantie al
-weggediversifieerd voordat wij gaan middelen. Onze $V_t$ is dus een maat voor
-*industrie*-specifieke variantie plus marktvariantie, niet voor
+**Verschil met het origineel.** Goyal en Santa-Clara middelen over alle aandelen van
+CRSP, wij over 49 industrieën van tientallen tot honderden aandelen. Volgens
+[](#eq-portfolio-choice-clmx) en de opmerking erna is het meeste idiosyncratische risico
+dan al weggediversifieerd: onze $V_t$ meet industrie-specifieke plus marktvariantie, niet
 bedrijfsspecifieke variantie.
 
 **Verwachte afwijking.** Omdat onze $V_t$ weinig idiosyncratisch is, verwachten
@@ -1336,14 +1389,70 @@ plt.show()
 :label: fig-portfolio-choice-gsc
 :width: 90%
 
-{{FIG-GSC-CAPTION}}
+Volatiliteit op jaarbasis, als twaalfmaands voortschrijdend gemiddelde van de
+maandvariantie uit dagrendementen, met NBER-recessies in grijs. De gemiddelde variantie
+van de 49 industrieën ligt steeds boven die van de markt; de afwijkingsterm (ten
+opzichte van het gelijkgewogen gemiddelde van de industrieën) is het industrie-specifieke
+deel uit [](#eq-portfolio-choice-clmx). De drie reeksen bewegen grotendeels samen: bij
+industrieportefeuilles is het "idiosyncratische" deel voor een groot deel een schaduw
+van het marktrisico.
 :::
 
-{{GSC-TEKST}}
+Met industrieportefeuilles is er van het resultaat niets over. Over 1963–1999 is
+de helling op $V_t$ alleen −0,25 ($t = -0{,}33$) tegen 0,336 ($t = 2{,}57$) bij Goyal
+en Santa-Clara, en de marktvariantie alleen geeft −0,46 ($t = -0{,}52$). Samen hebben
+de coëfficiënten wel de tekens van het paper — 1,39 op $V_t$ en −2,16 op de
+marktvariantie — maar met $t$-waarden van 0,52 en −0,63. Over de hele steekproef tot
+2025 en over 2000–2025 zijn alle $t$-waarden in absolute waarde kleiner dan één. De
+afwijkingsterm is gemiddeld 59% van $V_t$ (1963–1999), tegen "almost 85 percent"
+idiosyncratisch voor individuele aandelen in het paper; het verschil is de
+diversificatie binnen een industrie.
+
+Wat bewijst dat? Weinig, in beide richtingen. Goyal en Santa-Clara gaat het om
+bedrijfsspecifieke variantie, en die hebben wij grotendeels weggemiddeld. Wat de
+replicatie laat zien, is dat industrie-specifieke onzekerheid niets voorspelt, en dat het
+tekenpatroon van de gezamenlijke regressie ook zonder significantie opduikt bij twee
+regressoren die voor 0,96 gecorreleerd zijn. Oefening [](#ex-portfolio-choice-3) laat zien
+hoe gemakkelijk dezelfde data met overlappende horizonnen wél "significant" worden.
 
 ## Wat er brak, en wat daarna kwam
 
-{{WAT-ER-BRAK}}
+**Wat het model verklaart.** De parametrische portefeuille is geen evenwichtstheorie
+maar een beslisregel, en als beslisregel doet zij wat Markowitz niet kon: een handvol
+feiten omzetten in gewichten zonder dat de schattingsfout van duizenden gemiddelden de
+portefeuille overneemt. Op honderd portefeuilles gaf zij de tekens en ruwweg de grootte
+van de coëfficiënten van het paper, een in-sample Sharpe-ratio van 1,11 tegen 1,05, en
+out-of-sample over 1974–2002 een ruime voorsprong. Het idee van Brandt en Santa-Clara
+maakt voorspellers en karakteristieken tot gewone activa; Santa-Clara noemt de policy
+"closer to what quantitative managers actually do than anything else in the literature"
+{cite}`SantaClara2026`.
+
+**Waar het breekt.** Een parametrische policy is zo goed als de premies die zij uitbuit,
+en die zijn slecht gemeten en niet stabiel. Na 2002 haalt de policy op de 100
+size/BM-portefeuilles een Sharpe-ratio van 0,62 tegen 0,72 voor de benchmark en een
+certainty equivalent van 0,9% tegen 6,6%; op de size-momentumportefeuilles 0,65 tegen
+0,74; de managed portfolio op de dividendopbrengst 0,48 tegen 0,70. De methode dempt de
+schattingsfout door $N$ tot $K$ terug te brengen, maar zij kan niet zien of de premie van
+gisteren morgen nog bestaat. Het tweede spoor brak harder: het resultaat van Goyal en
+Santa-Clara hield in latere steekproeven geen stand, en op onze portefeuilledata is er
+zelfs in hun eigen periode niets van te zien.
+
+**Risico of vergissing?** Beide feiten laten beide lezingen toe. Chicago: size, waarde
+en momentum belonen risico's die het CAPM mist, de policy draagt die met hefboom, en het
+certainty equivalent is de vergoeding; de krimp na 2002 is pech of een lagere prijs van
+risico. Yale: de karakteristieken meten vergissingen, de policy verdiende aan de
+correctie, en na publicatie kopen arbitrageurs die weg. Bij idiosyncratische volatiliteit
+is de tegenstelling scherper: in de risicolezing eisen onvolledig gediversifieerde
+huishoudens een premie en is CIV een beprijsde toestandsvariabele; in de vergissingslezing
+worden volatiele aandelen als loten overgewaardeerd en renderen ze daarom slecht. Wat de
+lezingen zou scheiden — of de rendementen samenhangen met marginaal nut in slechte tijden
+— is met portefeuilledata niet te meten. Santa-Clara's praktijkmotief laat de vraag over
+die elke belegger met zo'n policy moet stellen: draagt zij beprijsd risico, of denkt zij
+iets te weten wat de prijs niet weet?
+
+**Wat er daarna kwam.** In 2008 bleek dat de hefboom waarmee zulke strategieën worden
+uitgevoerd van intermediairs komt, en dat hun balans zelf een beprijsde factor is: zie
+[](#05-32-intermediaries).
 
 ## Oefeningen
 
@@ -1382,7 +1491,13 @@ theta_mv = np.linalg.solve(Sigma_x, rx_in.mean(axis=0) / GAMMA - cov_bench)
 pd.DataFrame({"CRRA": theta_in, "mean-variance": theta_mv}, index=size_bm["names"]).round(3)
 ```
 
-{{EX1-TEKST}}
+**(3)** De mean-variance-benadering geeft $(-1{,}18;\ 4{,}64;\ 2{,}47)$ tegen
+$(-1{,}37;\ 5{,}00;\ 2{,}18)$ met CRRA-nut: dezelfde tekens en ordegrootte. Het verschil
+komt uit de hogere momenten die CRRA-nut wel ziet: de karakteristiekportefeuilles zijn
+scheef en dikstaartig, en een belegger met $\gamma = 5$ straft een linkerstaart zwaarder
+af dan de variantie doet. Momentum, met de crashes uit [](#04-19-momentum), krijgt bij
+CRRA daarom een kleiner gewicht. De oefening laat zien dat de parametrische policy in de
+kern een Markowitz-probleem in drie activa is, met een correctie voor staartrisico.
 :::
 
 :::{exercise}
@@ -1395,9 +1510,8 @@ size/BM-portefeuilles.
    de policy en van de benchmark.
 2. Trek kosten van $c \in \{0;\ 0{,}25;\ 0{,}5;\ 1\}\%$ per eenheid omzet af en
    rapporteer Sharpe-ratio en certainty equivalent.
-3. Bij welke $c$ is de policy in-sample (1964–2002) niet meer beter dan de benchmark?
-   Wat zegt dat over de vraag of een schatter die kosten negeert de goede
-   $\boldsymbol{\theta}$ kiest?
+3. Bij welke $c$ is de policy out-of-sample (1974 tot nu) niet meer beter dan de
+   benchmark? Wat zegt dat over een schatter die kosten negeert?
 :::
 
 :::{solution} ex-portfolio-choice-2
@@ -1420,6 +1534,17 @@ def net_of_costs(panel, theta, cost):
 oos_panel = subset(size_bm, "1974-01", "2100-12")
 theta_oos_path = oos_bm["theta"].reindex(oos_panel["date"].year).to_numpy()
 W_oos = oos_panel["wbar"] + np.einsum("tnk,tk->tn", oos_panel["X"], theta_oos_path) / oos_panel["n"][:, None]
+turn_policy = turnover_series(W_oos, oos_panel["r"])
+turn_bench = turnover_series(oos_panel["wbar"], oos_panel["r"])
+
+
+def oos_sharpe_gap(c):
+    """OOS Sharpe ratio of the policy minus that of the benchmark, both net of costs c."""
+    net = 1 + (W_oos * oos_panel["r"]).sum(axis=1) - c * turn_policy
+    bench = 1 + (oos_panel["wbar"] * oos_panel["r"]).sum(axis=1) - c * turn_bench
+    return evaluate(net, oos_panel["rf"])["Sharpe (p.j.)"] - evaluate(bench, oos_panel["rf"])["Sharpe (p.j.)"]
+
+
 cost_rows = {}
 for c in (0.0, 0.0025, 0.005, 0.01):
     gross_in, bench_in = net_of_costs(ins, theta_in, c)
@@ -1428,13 +1553,19 @@ for c in (0.0, 0.0025, 0.005, 0.01):
         "Sharpe in-sample policy": evaluate(gross_in, ins["rf"])["Sharpe (p.j.)"],
         "Sharpe in-sample benchmark": evaluate(bench_in, ins["rf"])["Sharpe (p.j.)"],
         "Sharpe OOS policy": evaluate(net_oos, oos_panel["rf"])["Sharpe (p.j.)"],
+        "Sharpe OOS benchmark": evaluate(net_oos, oos_panel["rf"])["Sharpe (p.j.)"] - oos_sharpe_gap(c),
         "CE OOS policy (% p.j.)": evaluate(net_oos, oos_panel["rf"])["CE (% p.j.)"]}
-print(f"gem. omzet per maand: policy {turnover_series(W_oos, oos_panel['r']).mean():.3f}, "
-      f"benchmark {turnover_series(oos_panel['wbar'], oos_panel['r']).mean():.3f}")
+print(f"gem. omzet per maand: policy {turn_policy.mean():.3f}, benchmark {turn_bench.mean():.3f}")
+print(f"break-evenkosten out-of-sample: {100 * optimize.brentq(oos_sharpe_gap, 0.0, 0.05):.2f}% per eenheid omzet")
 pd.DataFrame(cost_rows).T.round(3)
 ```
 
-{{EX2-TEKST}}
+De policy zet gemiddeld 0,81 van haar vermogen per maand om, de benchmark 0,048.
+In-sample (1964–2002) blijft de policy bij elke kostenpost ruim boven de benchmark: bij 1%
+per eenheid omzet is de Sharpe-ratio 0,67 tegen 0,29. Out-of-sample vanaf 1974 is de
+voorsprong zonder kosten 0,84 tegen 0,53; zij verdwijnt bij 0,79% per eenheid omzet, en
+bij 1% is het certainty equivalent negatief. Een schatter die kosten negeert, kiest $\theta$ alsof omzet gratis is; daarom nemen
+Brandt, Santa-Clara en Valkanov de kosten op in het doel zelf.
 :::
 
 :::{exercise}
@@ -1468,7 +1599,12 @@ sim_ratio = {h: np.median(np.abs(t_ols[h]) / np.abs(t_nw[h])) for h in HORIZONS_
 pd.DataFrame(overlap_rows).T.assign(**{"verhouding in simulatie (mediaan)": pd.Series(sim_ratio)}).round(3)
 ```
 
-{{EX3-TEKST}}
+Bij één maand is er niets: $t = -0{,}43$ met OLS en $-0{,}30$ met Newey-West. Bij
+drie en zes maanden geeft OLS 2,44 en 2,70 — twee keer "significant" — en Newey-West 1,60
+en 1,53. De verhouding tussen de twee $t$-waarden (1,5 tot 1,8 bij $h \geq 3$) ligt in de
+buurt van wat de simulatie voor dezelfde horizonnen geeft (mediaan 1,25 tot 1,69). Een
+onderzoeker die in 2003 alleen de twaalfmaandsregressie met OLS had gerapporteerd, had
+$t = 1{,}83$ gevonden — een waarde die volgens de simulatie niets bewijst.
 :::
 
 <!-- Referenties verschijnen automatisch onderaan de pagina. -->
