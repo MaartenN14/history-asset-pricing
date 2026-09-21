@@ -22,6 +22,12 @@ jobs:
       - run: uv run jupyter book build --execute --html
         env:
           BASE_URL: /history-asset-pricing
+      # MyST zet BASE_URL niet voor myst-theme.css, de favicon en de
+      # "back to top"-links; zonder dit mist de site haar eigen thema.
+      - run: >
+          find _build/html -name '*.html' -exec sed -i -E
+          's#(href|src)="/(myst-theme\.css|favicon\.ico)#\1="/history-asset-pricing/\2#g;
+           s#href="/([^"/][^"]*\#top)"#href="/history-asset-pricing/\1"#g' {} +
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _build/html
