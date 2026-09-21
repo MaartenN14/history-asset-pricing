@@ -32,7 +32,9 @@ li:has(> a[href="https://quantecon.org/"])::after {
   white-space: nowrap;
 }
 
-nav > div:has(img[src="/logos/qe-logo.png"]),
-nav > div:has(img[src="/logos/quantecon-logo-transparent.png"]) {
+/* Suffix-selectors: bij publicatie op een submap krijgen de paden er een
+   voorvoegsel bij, en een exacte match zou dan niet meer aanslaan. */
+nav > div:has(img[src$="/logos/qe-logo.png"]),
+nav > div:has(img[src$="/logos/quantecon-logo-transparent.png"]) {
   display: none !important;
 }

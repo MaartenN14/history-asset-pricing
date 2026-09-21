@@ -22,9 +22,10 @@ jobs:
       - run: uv run jupyter book build --execute --html
         env:
           BASE_URL: /history-asset-pricing
-      # Op een schone build schrijft MyST een lege myst-theme.css in plaats
-      # van custom.css, waardoor de site haar eigen opmaak mist.
-      - run: cp custom.css _build/html/myst-theme.css
+      # De MyST-app zet de link naar myst-theme.css bij het laden zelf terug
+      # naar de domeinroot, waar op een submap niets staat. Daarom gaat de
+      # eigen opmaak mee in de css van het thema, die wel goed wordt geladen.
+      - run: for f in _build/html/build/_assets/app-*.css; do cat custom.css >> "$f"; done
       # MyST zet BASE_URL niet voor myst-theme.css, de favicon en de
       # "back to top"-links; zonder dit mist de site haar eigen thema.
       - run: >
