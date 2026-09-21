@@ -1,5 +1,5 @@
 /* Houd de QuantEcon-layout intact, maar gebruik ongeveer dezelfde
-   tekstbreedte als de huidige python-advanced.quantecon.org-site, maar
+   tekstbreedte als de huidige python-advanced.quantecon.org-site,
    links uitgelijnd in plaats van gecentreerd. */
 .simple-center-grid {
   grid-template-columns:
