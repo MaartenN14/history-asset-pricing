@@ -1,6 +1,5 @@
 /* Houd de QuantEcon-layout intact, maar gebruik ongeveer dezelfde
-   tekstbreedte als de huidige python-advanced.quantecon.org-site.
-   Smalle schermen: tekstkolom gecentreerd, geen navigatie in beeld. */
+   tekstbreedte als de huidige python-advanced.quantecon.org-site. */
 .simple-center-grid {
   grid-template-columns:
     [screen-start] 1fr
@@ -8,35 +7,11 @@
     1fr [screen-end];
 }
 
-/* Vanaf 1280px drie kolommen, zoals gebruikelijk op documentatiesites:
-   inhoudsopgave links, tekst in het midden, paginaoverzicht rechts. Het
-   thema schuift die inhoudsopgave standaard uit beeld en zet hem achter
-   het hamburgermenu; hier staat hij vast open en vervalt die knop.
-   De linkermarge is de breedte van de lade plus 20px ademruimte. */
 @media (min-width: 1280px) {
-  div.fixed.h-screen {
-    transform: none !important;
-  }
-
-  button.w-6.h-6.opacity-90 {
-    display: none !important;
-  }
-
   .simple-center-grid {
     grid-template-columns:
-      [screen-start] 270px
-      [body-start] minmax(560px, 880px) [body-end]
-      20px [margin-start] 200px [margin-end]
-      1fr [screen-end];
-  }
-}
-
-/* Vanaf 1536px maakt het thema de lade zelf breder: 350px in plaats van 250. */
-@media (min-width: 1536px) {
-  .simple-center-grid {
-    grid-template-columns:
-      [screen-start] 370px
-      [body-start] minmax(560px, 880px) [body-end]
+      [screen-start] 1fr 200px 20px
+      [body-start] 880px [body-end]
       20px [margin-start] 200px [margin-end]
       1fr [screen-end];
   }
