@@ -20,6 +20,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
       - run: uv run jupyter book build --execute --html
+        env:
+          BASE_URL: /history-asset-pricing
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _build/html
