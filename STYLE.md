@@ -19,9 +19,9 @@ frontmatter (jupytext + kernelspec)
 (label)=
 # Titel van de lecture
 {admonition} Waar we zijn in het verhaal          ← :class: important
-## Overzicht                                      ← incl. imports-cel
+## Overzicht                                      ← vraag, lijst, geschiedenis (§11.7)
 ## Intuïtie: waarom zou dit waar zijn?
-## Toy-voorbeeld: <korte beschrijving>            ← laag 1 van de trap
+## Toy-voorbeeld: <korte beschrijving>            ← begint met de imports-cel (§11.7)
 ## Theorie
 ## Simulatie: <korte beschrijving>                ← laag 2 van de trap
 ## Replicatie op echte data                       ← laag 3 van de trap
@@ -43,7 +43,7 @@ drie vetgedrukte onderdelen:
 
 ### Overzicht
 
-Twee tot vier alinea's, en dan de imports-cel (zie §5). Noem de hoofdreferentie
+Vraag en antwoord, lijst, één alinea geschiedenis (§11.7); geen code. Noem de hoofdreferentie
 met `{cite}` en zeg in één zin waarom dat werk het tijdvak definieert. Zeg ook
 welk resultaat aan het eind wordt gerepliceerd.
 
@@ -82,7 +82,7 @@ code mag vertrouwen.
 duizenden paden, honderden activa, of tienduizend steekproeven. Laat zien wat er
 in *steekproeven* gebeurt en niet in de populatie: schattingsfout, bias
 (Stambaugh, survivorship, look-ahead), datamining, de verdeling van de schatter.
-Minstens één figuur. Dit is de plek waar het 2%-motief bijna altijd terugkomt.
+Minstens één figuur. Dit is de plek waar het motief "de standaardfout van 2%" bijna altijd terugkomt.
 
 **Laag 3 — `## Replicatie op echte data`.** Pas hier komt `hap.data` in beeld.
 Begin met het replicatieblok (§6).
@@ -110,7 +110,7 @@ Twee tot vier alinea's, met deze vier elementen expliciet:
    tijdvak gedomineerd.
 2. **Waar het breekt.** Eén concreet, meetbaar feit. Bij voorkeur het feit dat
    je hierboven zelf hebt gerepliceerd.
-3. **Risico of vergissing?** Geef beide lezingen (motief 2, §2). Kies niet voor
+3. **Risico of vergissing?** Geef beide lezingen (§2). Kies niet voor
    de lezer.
 4. **Wat er daarna kwam.** Eén zin, met een cross-ref naar de volgende lecture.
 
@@ -405,7 +405,7 @@ expressie van een codecel.
 
 ## 5. Code-conventies
 
-**Eén imports-cel**, aan het eind van `## Overzicht`. Daarna wordt er nergens
+**Eén imports-cel**, aan het begin van `## Toy-voorbeeld` (§11.7). Daarna wordt er nergens
 meer geïmporteerd.
 
 ```python
@@ -634,7 +634,7 @@ Per lecture. Alles moet aangevinkt zijn.
 
 **Rode draad**
 
-- [ ] Het 2%-motief komt terug waar rendementen worden geschat: standaardfouten
+- [ ] Het motief "de standaardfout van 2%" komt terug waar rendementen worden geschat: standaardfouten
       staan erbij.
 - [ ] Risico versus vergissing: beide lezingen staan er, en de tekst kiest niet
       voor de lezer.
@@ -659,7 +659,7 @@ Per lecture. Alles moet aangevinkt zijn.
 
 **Code**
 
-- [ ] Eén imports-cel bovenaan; nergens anders imports.
+- [ ] Eén imports-cel aan het begin van het toy-voorbeeld; nergens anders imports.
 - [ ] `np.random.default_rng(seed)` met vaste seed; geen `np.random.seed`.
 - [ ] Geen `!pip`, geen downloads buiten `hap.data`.
 - [ ] Draait met `HAP_OFFLINE=1`; gebruikte cachebestanden zijn gecommit.
@@ -683,3 +683,258 @@ Per lecture. Alles moet aangevinkt zijn.
 - [ ] Elke `{cite}`-key staat in `references.bib`; nieuwe entries volgen §8.
 - [ ] De lecture staat in de TOC in `myst.yml`, op de plek uit PLAN.md §3.
 - [ ] Labels volgen §4 (koppeltekens, met de lecture-slug erin).
+
+---
+
+## 11. Taal en didactiek (aanvulling 2026-09-23)
+
+Bron en toelichting: `plannen/verbeterplan-didactiek.md`. Deze paragraaf is bindend
+voor nieuwe en herziene lectures. Waar zij afwijkt van §1, §5 of §7 gaat §11 voor.
+`uv run python tools/prose_stats.py --check lectures/<slug>.md` meet wat meetbaar is en
+moet PASS geven vóór oplevering.
+
+### 11.1 Zinnen en alinea's
+
+- Eén gedachte per zin. Richtlengte 12 tot 20 woorden, nooit boven 40.
+- Een zin met een puntkomma wordt bijna altijd twee zinnen. Puntkomma's alleen in
+  opsommingen van korte, gelijksoortige delen.
+- Het gedachtestreepje is geen bindmiddel. "X — en dat is Y" wordt "X. Dat is Y."
+  Hoogstens tien per lecture, alleen voor een echte terzijde.
+- Een alinea heeft één idee en drie tot zes zinnen (richtwaarde 45 woorden).
+- Geen telegramstijl ("Nu de econometrie.", "Terug:", "Nu rijen maal kolom:").
+- Drie of meer parallelle items (kritieken, aannames, replicaties) worden een lijst.
+
+### 11.2 Aanspreekvorm en stopwoorden
+
+- Geen "u" en geen "je/jij/jouw" in de lopende tekst. Gebruik "we" voor de gezamenlijke
+  afleiding, de onpersoonlijke vorm ("wie sorteert op bèta", "een belegger die"), of de
+  zaak zelf als onderwerp. "Stel u een eiland voor" wordt "Denk aan een eiland".
+- In oefeningen de gebiedende wijs: "Bereken", "Laat zien", "Simuleer".
+- Verboden: verrassend, eenvoudigweg, zoals bekend, triviaal, eenvoudig te zien.
+- Stopwoorden: "precies", "ruwweg", "inderdaad", "in feite", "letterlijk" samen hoogstens
+  zes keer per lecture. "Precies" alleen als het "exact" betekent. Per alinea hoogstens één
+  "dus".
+
+### 11.3 Projectjargon
+
+- De drie motieven heten in elke lecture letterlijk zo: **de standaardfout van 2%**,
+  **risico of vergissing**, **theorie of feit**. Niet "motief 1/2/3", niet "het
+  2%-motief", niet "epistemische status" of "epistemische wending". De zin die het motief
+  aanroept zegt wat het hier betekent.
+- Geen "L4", "L26", "Deel V", "de trap", "laag 1" in de tekst. Altijd een cross-ref met
+  titel of omschrijving.
+- Vooruitverwijzingen: hoogstens twee per lecture buiten "Wat er daarna kwam", als
+  belofte in één bijzin. Geen inhoud uit een latere lecture gebruiken.
+
+### 11.4 Vertaald Engels
+
+Veel zinnen in de eerste versie zijn Engels gedacht en woord voor woord vertaald. Dat
+leest als Nederlands maar is het niet. De lijst hieronder is niet volledig; de toets is
+"zou een Nederlandse econoom dit zo zeggen?".
+
+| niet zo (calque) | wel zo |
+|---|---|
+| de nul (verwerpt de nul) | de nulhypothese |
+| de omvang van de toets | het werkelijke significantieniveau; hoe vaak de toets een waar model verwerpt |
+| marginaal significant | net wel / net niet significant |
+| Noteer dat ... | weglaten, of "Let wel:" (spaarzaam) |
+| Onthoud dat ... | weglaten, of "Bedenk dat" |
+| Twee dingen zijn hier te zien. / Drie dingen staan er ook. | Deze figuur laat twee dingen zien. / Er valt nog iets op. |
+| Dit is de reden dat ... | Daarom ... |
+| Dat is wat "een theorie van $r$" betekent | Dat betekent "een theorie van $r$" |
+| in de taal van Cochrane | in de termen van Cochrane; zoals Cochrane het zegt |
+| het hart van deze lecture | de kern van deze lecture |
+| tot vandaag | nog altijd; tot op de dag van vandaag |
+| Leg dit naast tabel 4 | Vergelijk dit met tabel 4 |
+| de hele inhoud van Regnaults wet | meer zegt Regnaults wet niet |
+| het punt is | waar het om gaat is |
+| aan het eind van de dag | uiteindelijk |
+| Les: | Wat dit leert: |
+| Neem nu de data. | Kijk nu naar de data. |
+| het interessante deel | daar zit het interessante |
+| de vraag is of ... (als stoplap) | gewoon de vraag stellen |
+| Het is X dat Y (cleft) | X Y |
+| Wat X doet, is Y | X Y |
+| de afwezigheid van dividendvoorspelbaarheid (nominale stijl) | dat dividenden niet voorspelbaar zijn |
+| bestaansobject, restpost, vastgeknoopt | iets waarvan alleen het bestaan is bewezen; sluitpost; gekoppeld aan |
+| Cochrane's, Merton's, Sharpe's | Cochranes, Mertons, Sharpes (apostrof alleen na a, i, o, u, y en na een s-klank: Santa-Clara's, Lucas') |
+
+Beeldspraak die een Engelse vaste uitdrukking vertaalt ("de hond die niet blafte") mag
+één keer, met uitleg, als eigennaam van een argument. Daarna een gewone omschrijving.
+
+### 11.5 Citaten, vaktermen en getallen
+
+- Een Engels citaat staat niet midden in een Nederlandse zin. Parafraseer in het
+  Nederlands met de bron erbij. Alleen als de bewoording ertoe doet (Santa-Clara, Fama,
+  een beroemde formulering): één Nederlandse zin die zegt wat er staat, dan het citaat
+  als blokcitaat (`> ...`).
+- Vaktermen volgens §3; dat geldt ook voor Nederlandse termen die een PhD-student niet
+  vanzelf kent (affiene combinatie, harmonisch gemiddelde, MA(4)-proces, Wishart-verdeeld).
+- Hoogstens drie getallen per alinea in lopende tekst. Meer getallen horen in een tabel.
+  Elke vergelijking origineel/hier is een tabel met kolommen "origineel", "hier" en waar
+  zinvol "verschil" of "SE". Het oordeel eronder begint met "Geslaagd", "Gedeeltelijk
+  geslaagd" of "Niet geslaagd" en verwijst naar de "verwachte afwijking".
+
+### 11.6 Afleidingen
+
+- `## Theorie` begint met een routekaart van drie tot vijf regels: wat we afleiden, in
+  welke volgorde, en wat de kern is.
+- Vast ritme per stap: één of twee zinnen waarom we de stap zetten, de vergelijking, één
+  zin die de vergelijking in woorden leest. Twee vergelijkingen direct achter elkaar alleen
+  als de tweede een herschrijving van de eerste is.
+- "*Waarom zou dit waar zijn?*" is een economisch beeld van twee tot vijf zinnen, geen
+  samenvatting van de bewijsstappen. Toets: wie de wiskunde overslaat, moet het teken en
+  de richting van het resultaat kunnen raden.
+- Hoogstens drie `{prf:theorem}`/`{prf:proposition}` met open bewijs. Elk bewijs langer
+  dan zes regels gaat in `{prf:proof}` met `:class: dropdown`; de hoofdtekst houdt de
+  stelling en één alinea bewijsidee.
+- Nevenresultaten worden een `{note}` met `:class: dropdown` en sprekende titel, of een
+  oefening.
+- Na de laatste theorie-subsectie, vóór `## Simulatie`, staat een blok
+  `{admonition} Samengevat` met `:class: tip`: drie tot vijf regels, één per resultaat,
+  met het label van de vergelijking; de laatste regel zegt wat de simulatie hierna toetst.
+
+### 11.7 Structuur binnen de vaste kopjes
+
+De kopjes van §1 blijven. Binnen de kopjes geldt:
+
+- **Overzicht** heeft een vaste micro-opbouw: (1) de vraag en het antwoord van deze
+  lecture in twee zinnen; (2) een lijst van drie tot vijf punten met wat we afleiden,
+  simuleren en repliceren; (3) één alinea geschiedenis: wie, wanneer, waarom dit werk het
+  tijdvak definieert, met de citaties. Geen code.
+- **De imports-cel** staat aan het begin van `## Toy-voorbeeld`, niet meer aan het eind
+  van `## Overzicht` (wijzigt §1 en §5). De eerste drie secties zijn dan lopende tekst.
+- **Theorie** volgt waar mogelijk deze `###`-volgorde: Opzet en aannames → Het
+  kernresultaat → Wat het voorspelt → Hoe het getoetst wordt. Een numerieke oplossing van
+  het model hoort in Theorie ("### Numerieke oplossing"), niet in Simulatie.
+- **Toy-voorbeeld**: hoogstens één formule die nog niet is afgeleid, gegeven als recept
+  in woorden en symbolen; Theorie leidt precies die formule als eerste af. Vorm: opzet in
+  een tabel, stappen met getallen (één regel per stap), één codecel, een tabel "met de
+  hand / code" als laatste expressie, één zin die zegt wat de lezer nu weet. Handrekenbaar
+  betekent: geen matrixinversie boven 2×2, geen noemers boven 100.
+- **Simulatie** beantwoordt één vraag over steekproeven. Een tweede simulatie wordt een
+  oefening of een dropdown-note.
+- **Replicatieblok**: hoogstens 250 woorden, elk van de vijf onderdelen hoogstens twee
+  zinnen. Reekscodes en datumdetails horen in de codecel.
+- **Waar we zijn in het verhaal**: "Wat we al weten" verwijst naar hoogstens twee eerdere
+  lectures.
+- **Oefeningen**: oefening 1 is een instap (varieer het toy-voorbeeld, één of twee
+  deelvragen); oefening 2 een afleiding; oefening 3 een uitbreiding van de replicatie.
+  Elke uitwerking eindigt met een zin die begint met "Wat dit leert:".
+
+### 11.8 Code en cellen
+
+- Elke codecel krijgt één zin ervoor (wat we gaan doen) en één zin erna (wat we zien).
+  Geen drie cellen achter elkaar zonder tekst.
+- Leesbaar boven kort: geen `argsort(argsort())`, geen `np.eye(n)[idx]`-trucs, geen
+  meerregelige comprehensions om een tabel te bouwen. Tussenresultaten krijgen een naam
+  die zegt wat ze zijn. Rekenwerk en presentatie in aparte cellen. Cel boven 25 regels
+  splitsen, tenzij het één functie is.
+- Lussen die de lezer moet zien (fixed-point-iteratie, Fama-MacBeth per maand, expanding
+  window) blijven lussen.
+- Modelparameters in een kleine `dataclass` of dict met benoemde velden, niet als losse
+  globale variabelen met suffixen.
+- Kolomnamen in presentatietabellen Nederlands en volledig.
+
+### 11.9 Aanvulling op de afvinklijst van §10
+
+- [ ] `tools/prose_stats.py --check` geeft PASS (words mag met reden in het rapport).
+- [ ] Geen "u", "je", "motief N", "L<nr>", "Deel <n>", "epistemisch".
+- [ ] Geen calque uit de tabel in §11.4; "precies" en co hoogstens zes keer.
+- [ ] Elk Engels citaat geparafraseerd of als blokcitaat met Nederlandse inleiding.
+- [ ] Overzicht: vraag en antwoord, lijst, één alinea geschiedenis; imports-cel bij het
+      toy-voorbeeld.
+- [ ] Routekaart aan het begin van Theorie; "Samengevat" aan het eind.
+- [ ] Elke genummerde vergelijking heeft een lees-zin.
+- [ ] ≤ 3 stellingen met open bewijs; bewijzen boven zes regels in dropdown.
+- [ ] Toy: opzet-tabel, stappen, één cel, tabel hand/code, hoogstens één niet-afgeleide
+      formule.
+- [ ] Eén simulatie, één steekproefvraag.
+- [ ] Replicatieblok ≤ 250 woorden; oordeel begint met "Geslaagd" / "Gedeeltelijk
+      geslaagd" / "Niet geslaagd" en staat onder een tabel origineel/hier.
+- [ ] Elke codecel heeft een zin ervoor en erna.
+- [ ] Oefening 1 is een instap; elke uitwerking eindigt met "Wat dit leert:".
+- [ ] Hoogstens twee vooruitverwijzingen buiten "Wat er daarna kwam".
+
+### 11.10 Helderheidsregels (H1 tot H12)
+
+De regels hierboven maken de tekst leesbaar; deze twaalf maken de uitleg helder. Ze
+gelden voor de schrijver, en de koude lezer van taak C (plan §5) vinkt ze af. Elke regel
+heeft een controlevraag die de lezer beantwoordt met een lijst van vindplaatsen.
+
+**H1. Het waarom is een handeling, geen bewijsschets.** Elke "*Waarom zou dit waar
+zijn?*" beschrijft iemand die iets doet (een belegger koopt een klein beetje extra; een
+onderzoeker sorteert op bèta) en wat er daardoor met een prijs of rendement gebeurt, met
+een richting: stijgt, daalt, blijft gelijk. Woorden als "lineair", "meetkunde", "stap 3"
+en "matrix" horen er niet in.
+*Controle:* heeft de alinea een handelend onderwerp en een richting? Is na de alinea het
+teken van het resultaat te raden?
+
+**H2. Elk symbool en elk geleend resultaat wordt hier uitgelegd.** Een symbool krijgt
+bij de eerste keer een naam, een betekenis en een orde van grootte ("$\rho$, ongeveer
+0,96 bij een gemiddelde prijs-dividendratio van 25"). Een resultaat uit een eerdere
+lecture wordt in één regel herhaald, niet alleen aangehaald: "iedereen houdt dezelfde
+risicoportefeuille, de separatiestelling uit [](#01-04-markowitz)".
+*Controle:* lijst van symbolen en cross-refs waarvoor de lezer een andere lecture zou
+moeten openen.
+
+**H3. Eén stelling, één bewering.** Een `{prf:theorem}` bevat één uitspraak die in één
+zin is samen te vatten. Een tweede uitspraak wordt een gevolg of een opmerking.
+Bewijsstappen hebben een kop die zegt wat de stap oplevert ("*Stap 2: de markt ligt op
+de rand*"), niet alleen een nummer.
+*Controle:* vat elke stelling in één zin samen. Lukt dat niet, dan is de stelling te vol.
+
+**H4. Het getal staat naast de formule.** Elke formule waarvan de betekenis van de
+grootte afhangt (een bias, een standaardfout, een premie, een $R^2$) krijgt in de tekst
+direct één uitgerekend getal met de kalibratie erbij, niet alleen in code.
+*Controle:* lijst van formules waarvan niet duidelijk is of ze groot of klein uitpakken.
+
+**H5. Aannames worden genoemd waar ze werken.** Bij de bewijsstap die een aanname
+gebruikt staat welke ("volgens aanname 2, homogene verwachtingen"). Een aanname die
+nergens wordt aangeroepen, hoort niet in de lijst.
+*Controle:* bij welke stappen is niet te zeggen welke aanname is gebruikt?
+
+**H6. Elk vergelijkend resultaat wordt in beide richtingen gelezen.** Als een parameter
+stijgt: wat gebeurt er, en waarom, in economische termen. "Bij $\gamma > 1$ daalt de
+ratio, omdat het rente-effect wint van het groei-effect."
+*Controle:* is voor elke parameter in "Samengevat" te zeggen wat er gebeurt als hij
+stijgt, en waarom?
+
+**H7. Eén naam per begrip per lecture.** Dividend-prijsratio, dividendopbrengst, $dp$ en
+$D/P$ zijn niet vier dingen. De eerste keer staat de alias tussen haakjes; daarna één
+naam. Hetzelfde voor excess rendement, premie, risicopremie en marktpremie.
+*Controle:* lijst van woorden die volgens de lezer hetzelfde betekenen.
+
+**H8. "Dat", "dit", "die vorm" en "het patroon" verwijzen naar de vorige zin, of worden
+vervangen door het ding zelf.** "Dat is precies het patroon" wordt "Een te vlakke lijn
+met een te hoog intercept is precies het patroon".
+*Controle:* bij elke zin die met "Dat is" of "Dit is" begint: wat is "dat"?
+
+**H9. De conclusie staat vooraan.** De eerste zin na een tabel of figuur zegt wat erin
+te zien is; de zin vóór een figuur zegt waar de lezer op moet letten (welke lijn, welke
+richting). De eerste zin van elke `###` is de vraag die de subsectie beantwoordt of de
+bewering die zij bewijst. Bewijs volgt na de conclusie.
+*Controle:* zegt de eerste zin na elke tabel wat de tabel laat zien? Is van elke `###`
+alleen op grond van de eerste zin te zeggen waar hij over gaat?
+
+**H10. Abstracties krijgen een exemplaar.** Elke abstracte term (instrument, factor,
+toestandsvariabele, momentvoorwaarde, testactivum) krijgt bij de eerste keer één concreet
+voorbeeld in dezelfde zin: "een instrument $z_t$, bijvoorbeeld de consumptiegroei van
+vorig kwartaal".
+*Controle:* lijst van abstracte termen zonder voorbeeld.
+
+**H11. De toy-getallen komen terug.** Minstens één getal uit het toy-voorbeeld keert
+terug in de theorie (als illustratie) en in de simulatie (als kalibratie), zodat de drie
+lagen aan elkaar geknoopt zijn.
+*Controle:* welke toy-getallen zag de lezer terug, en waar?
+
+**H12. De intuïtie doet een voorspelling die de theorie inlost.** De intuïtiesectie
+eindigt met wat we dus verwachten (teken, richting). De theorie zegt expliciet waar die
+verwachting wordt bevestigd of verfijnd ("zoals de intuïtie voorspelde, maar met een
+factor $\gamma$ ervoor").
+*Controle:* wat voorspelde de intuïtie, en waar werd dat ingelost?
+
+**De navertel-toets.** Naast de twaalf controles schrijft de koude lezer na elke
+`##`-sectie (en in Theorie na elke `###`) in twee of drie zinnen op wat hij heeft
+geleerd en wat de sectie beweert. Wijkt die samenvatting af van wat de schrijver
+bedoelde, dan was de uitleg niet helder, ongeacht de regels.

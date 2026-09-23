@@ -3,6 +3,10 @@
 Je bouwt precies één lecture uit `PLAN.md` §3. Andere agents bouwen tegelijkertijd andere lectures in
 dezelfde repo. Werk daarom uitsluitend in je eigen bestanden en volg de regels hieronder letterlijk.
 
+**Herzie je een bestaande lecture** (taal en didactiek), dan geldt de werkorder in
+`plannen/verbeterplan-didactiek.md` §5 in plaats van §1 en §4 hieronder. STYLE.md §11 is daarbij bindend;
+`uv run python tools/prose_stats.py --check lectures/<slug>.md` moet PASS geven vóór oplevering.
+
 ## 0. Omgeving
 
 - Project: `C:\Users\Maarten\Desktop\projects\history-asset-pricing` (Windows). Alle Python/Jupyter-commando's via `uv run ...`.
