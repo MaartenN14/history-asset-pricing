@@ -9,10 +9,14 @@ steekproeven uit L2, L34 en `index.md`, een meting over alle 40 lectures
 (`lucas_model`, `markov_asset`).
 
 Dit plan verandert de **vorm** van de lectures: zinnen, alinea's, ordening binnen de
-vaste kopjes, code-leesbaarheid. Het verandert **niet** de inhoud: welke papers, welke
-replicaties, welke getallen, welke notatie, welke vaste kopjes. Resultaten in tabellen en
-figuren moeten na de herziening identiek zijn, tenzij een taak hieronder expliciet iets
-toevoegt.
+vaste kopjes, code-leesbaarheid. Daarnaast wordt geschrapt volgens de schraptoets van
+STYLE §11.11, en boven 6.000 woorden gesplitst. Getallen die de tekst of een tabel
+aanhaalt, blijven reproduceerbaar en gelijk, tenzij het rapport het verschil verklaart.
+Presentatie mag veranderen (STYLE §11.11, uitvoerregel).
+*Oorspronkelijk (2026-09-23, vervallen 2026-09-23 avond):* ~~Het verandert niet de
+inhoud: welke papers, welke replicaties, welke getallen, welke notatie, welke vaste
+kopjes. Resultaten in tabellen en figuren moeten na de herziening identiek zijn, tenzij
+een taak hieronder expliciet iets toevoegt.~~
 
 ---
 
@@ -217,7 +221,7 @@ reden is dat de reeks bestaat; het werkt zodra het toy-voorbeeld écht elementai
 hoogstens één formule als recept gebruikt. (b) Een samenvatting aan het einde van de
 lecture. Afgewezen omdat "Wat er brak" die rol al vervult; de samenvatting hoort na de
 theorie, waar de lezer hem nodig heeft. (c) Leerdoelen bovenaan. Afgewezen omdat "Welke
-vraag staat open" dat al doet. (d) Lectures splitsen. Uitgesteld tot na de pilot van L8.
+vraag staat open" dat al doet. (d) Lectures splitsen. Toegestaan boven 6.000 woorden (STYLE §11.11; besluit 2026-09-23 avond).
 
 ### 1.5 Wat QuantEcon anders doet
 
@@ -239,12 +243,21 @@ Bekeken: *Lucas model* (advanced) en *Asset Pricing: Finite State Models* (inter
 
 ## 2. Uitgangspunten
 
-1. **Inhoud blijft.** Geen paper, replicatie, stelling of getal verdwijnt. Wat te veel is
-   voor de hoofdlijn, verhuist naar een `{note}` met `:class: dropdown`, naar een
-   oefening, of naar een `{prf:proof}` met `:class: dropdown`.
-2. **Uitvoer blijft identiek.** Tabellen en getallen in de output veranderen niet door
-   deze herziening. Code mag herschreven worden voor leesbaarheid, maar `tools/nb_outputs.py`
-   moet vóór en na dezelfde tekstuitvoer geven, op de toevoegingen na die het plan noemt.
+1. **Schrappen volgens de schraptoets.** Een passage blijft alleen als de vraag van de
+   lecture haar nodig heeft, als een andere lecture haar aanhaalt, of als ze het motief
+   draagt. De rest wordt geschrapt of een oefening. Richtlengte 4.000 tot 5.500 woorden,
+   bindend; boven 6.000 woorden na schrappen wordt gesplitst. Zie STYLE §11.11.
+   *Oorspronkelijk (2026-09-23, vervallen 2026-09-23 avond):* ~~Inhoud blijft. Geen
+   paper, replicatie, stelling of getal verdwijnt. Wat te veel is voor de hoofdlijn,
+   verhuist naar een `{note}` met `:class: dropdown`, naar een oefening, of naar een
+   `{prf:proof}` met `:class: dropdown`.~~
+2. **Uitvoer volgens de uitvoerregel.** Getallen die de tekst of een tabel aanhaalt,
+   blijven reproduceerbaar en gelijk, tenzij het rapport het verschil verklaart.
+   Presentatie mag veranderen. Zie STYLE §11.11.
+   *Oorspronkelijk (2026-09-23, vervallen 2026-09-23 avond):* ~~Uitvoer blijft identiek.
+   Tabellen en getallen in de output veranderen niet door deze herziening. Code mag
+   herschreven worden voor leesbaarheid, maar `tools/nb_outputs.py` moet vóór en na
+   dezelfde tekstuitvoer geven, op de toevoegingen na die het plan noemt.~~
 3. **De vaste kopjes blijven.** STYLE §1 blijft bindend. Er komt één nieuw blok bij
    ("Samengevat") en de imports-cel verhuist (§3.13).
 4. **Één lecture, één agent.** Agents raken alleen hun eigen `lectures/<slug>.md` en
@@ -497,7 +510,7 @@ De kopjes van STYLE §1 blijven. Binnen de kopjes gelden deze afspraken (STYLE �
 8. **Oefeningen**: instap, afleiding, uitbreiding (§3.10).
 
 Overwogen en afgewezen: toy ná de theoriekern; samenvatting aan het einde; leerdoelen
-bovenaan; lectures splitsen (uitgesteld tot na de pilot van L8). Zie §1.4.
+bovenaan; lectures splitsen (boven 6.000 woorden, STYLE §11.11). Zie §1.4.
 
 ### 3.14 Helderheidsregels (STYLE.md §11.10)
 
@@ -693,7 +706,10 @@ In deze volgorde, zodat er geen tekst wordt gepolijst die daarna verhuist:
 8. **Tabellen (§3.5, §3.8).** Getallenalinea's in simulatie en replicatie worden tabel
    plus oordeel. Replicatieblok inkorten tot 250 woorden. Replicatie-oordeel begint met
    "Geslaagd" / "Gedeeltelijk geslaagd" / "Niet geslaagd".
-9. **Code (§3.9).** Herschrijf voor leesbaarheid. Uitvoer moet identiek blijven.
+9. **Code (§3.9).** Herschrijf voor leesbaarheid. Voor de uitvoer geldt de uitvoerregel
+   van STYLE §11.11: aangehaalde getallen blijven gelijk, presentatie mag veranderen,
+   elk verschil staat in het rapport. *Oorspronkelijk:* ~~Uitvoer moet identiek
+   blijven.~~
 10. **Oefeningen (§3.10).** Oefening 1 wordt een instap; elke uitwerking eindigt met
     "Wat dit leert:".
 
@@ -822,8 +838,17 @@ Niets is gecommit; de eigenaar beslist over de commit van de voorbereiding.
 
 **Besluiten van de eigenaar (2026-09-23).** Alle aanbevelingen zijn overgenomen:
 
-1. Stofreductie: taal plus verplaatsen naar dropdowns en oefeningen; niets schrappen.
-2. Lectures niet splitsen; na de pilot van L8 opnieuw bekijken.
+1. Stofreductie: schrappen volgens de schraptoets (STYLE §11.11) (besluit eigenaar,
+   2026-09-23 avond). *Oorspronkelijk:* ~~taal plus verplaatsen naar dropdowns en
+   oefeningen; niets schrappen.~~
+2. Splitsen boven 6.000 woorden na schrappen (STYLE §11.11) (besluit eigenaar,
+   2026-09-23 avond). *Oorspronkelijk:* ~~Lectures niet splitsen; na de pilot van L8
+   opnieuw bekijken.~~
+
+*Aanleiding voor de wijziging van besluit 1 en 2 (2026-09-23 avond).* De vier herziene
+pilots groeiden van ongeveer 5.000 naar 7.000 tot 8.100 woorden, omdat schrappen
+verboden was. De rubriek trekt voortaan niet af voor projectkeuzes (rubriek, "Wat niet
+meetelt").
 3. Aanspreekvorm: geen "u", geen "je"; "we" en de onpersoonlijke vorm.
 4. Engelse citaten: parafrase; blokcitaat alleen waar de bewoording telt.
 5. "Samengevat"-blok als vast element.
@@ -852,7 +877,7 @@ Drempels van `tools/prose_stats.py --check`, per lecture:
 
 | metriek | maximum | hard of richtwaarde |
 |---|---|---|
-| words (lopende tekst) | 5500 | richtwaarde; overschrijding met reden in rapport |
+| words (alle lezerstekst, ook dropdowns en uitwerkingen) | 5500 | hard (STYLE §11.11); geen overschrijding met reden. *Tot 2026-09-23 avond:* ~~richtwaarde; overschrijding met reden in rapport~~ |
 | sent_mean | 17 | richtwaarde |
 | sent_p90 | 28 | richtwaarde |
 | sent_gt40 | 2 | hard |

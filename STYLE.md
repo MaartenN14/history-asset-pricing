@@ -788,8 +788,9 @@ Beeldspraak die een Engelse vaste uitdrukking vertaalt ("de hond die niet blafte
 - Hoogstens drie `{prf:theorem}`/`{prf:proposition}` met open bewijs. Elk bewijs langer
   dan zes regels gaat in `{prf:proof}` met `:class: dropdown`; de hoofdtekst houdt de
   stelling en één alinea bewijsidee.
-- Nevenresultaten worden een `{note}` met `:class: dropdown` en sprekende titel, of een
-  oefening.
+- Nevenresultaten worden geschrapt volgens de schraptoets van §11.11. Blijft een
+  nevenresultaat, dan wordt het een `{note}` met `:class: dropdown` en sprekende titel,
+  of een oefening.
 - Na de laatste theorie-subsectie, vóór `## Simulatie`, staat een blok
   `{admonition} Samengevat` met `:class: tip`: drie tot vijf regels, één per resultaat,
   met het label van de vergelijking; de laatste regel zegt wat de simulatie hierna toetst.
@@ -812,8 +813,8 @@ De kopjes van §1 blijven. Binnen de kopjes geldt:
   een tabel, stappen met getallen (één regel per stap), één codecel, een tabel "met de
   hand / code" als laatste expressie, één zin die zegt wat de lezer nu weet. Handrekenbaar
   betekent: geen matrixinversie boven 2×2, geen noemers boven 100.
-- **Simulatie** beantwoordt één vraag over steekproeven. Een tweede simulatie wordt een
-  oefening of een dropdown-note.
+- **Simulatie** beantwoordt één vraag over steekproeven. Een tweede simulatie wordt
+  geschrapt volgens de schraptoets van §11.11, anders een oefening of een dropdown-note.
 - **Replicatieblok**: hoogstens 250 woorden, elk van de vijf onderdelen hoogstens twee
   zinnen. Reekscodes en datumdetails horen in de codecel.
 - **Waar we zijn in het verhaal**: "Wat we al weten" verwijst naar hoogstens twee eerdere
@@ -838,7 +839,9 @@ De kopjes van §1 blijven. Binnen de kopjes geldt:
 
 ### 11.9 Aanvulling op de afvinklijst van §10
 
-- [ ] `tools/prose_stats.py --check` geeft PASS (words mag met reden in het rapport).
+- [ ] `tools/prose_stats.py --check` geeft PASS, ook op words (§11.11).
+- [ ] Onder 5.500 woorden; elke schrapping in het rapport met reden.
+- [ ] Elk getal in de tekst herleidbaar.
 - [ ] Geen "u", "je", "motief N", "L<nr>", "Deel <n>", "epistemisch".
 - [ ] Geen calque uit de tabel in §11.4; "precies" en co hoogstens zes keer.
 - [ ] Elk Engels citaat geparafraseerd of als blokcitaat met Nederlandse inleiding.
@@ -938,3 +941,37 @@ factor $\gamma$ ervoor").
 `##`-sectie (en in Theorie na elke `###`) in twee of drie zinnen op wat hij heeft
 geleerd en wat de sectie beweert. Wijkt die samenvatting af van wat de schrijver
 bedoelde, dan was de uitleg niet helder, ongeacht de regels.
+
+### 11.11 Lengte, schrappen en splitsen (besluit eigenaar, 2026-09-23 avond)
+
+Deze paragraaf gaat voor op de lengte in §7 en op elke eerdere regel die zegt dat inhoud
+alleen verplaatst mag worden.
+
+**Lengte.** Richtlengte 4.000 tot 5.500 woorden volgens `tools/prose_stats.py`.
+Dropdowns en uitwerkingen tellen mee. De drempel van 5.500 woorden is bindend: `words`
+mag niet meer met reden falen.
+
+**Schraptoets.** Een passage blijft alleen als ze aan één van drie eisen voldoet:
+
+1. de vraag van de lecture kan zonder haar niet beantwoord worden; of
+2. ze draagt een stelling, replicatie, figuur of citatie die een andere lecture aanhaalt
+   (controleer met grep op de labels en op de titel); of
+3. ze draagt het motief van de lecture.
+
+Al het andere wordt geschrapt of wordt een oefening. Een dropdown is geen uitweg: hij
+telt mee. Elke geschrapte passage staat in het rapport, met één regel reden.
+
+**Splitsen.** Is een lecture na schrappen nog boven 6.000 woorden, dan wordt ze
+gesplitst op de natuurlijke naad. Meestal ligt die tussen "Wat het voorspelt" en "Hoe
+het getoetst wordt", of vóór de replicatie. Beide helften krijgen de volledige structuur
+van §1. De helft die de oude slug houdt, houdt ook de labels. De nieuwe helft krijgt een
+nieuwe slug en een nieuwe label-kern. De schrijver meldt welke labels verhuisd zijn; de
+orkestrator werkt `myst.yml` en de cross-refs in andere lectures bij.
+
+**Uitvoer.** Getallen die de tekst of een tabel aanhaalt, blijven reproduceerbaar en
+gelijk, tenzij het rapport het verschil verklaart. Presentatie mag veranderen:
+kolomnamen, figuurtitels, volgorde van cellen. Deze regel vervangt "uitvoer identiek".
+
+**Feiten.** Elk getal in de lopende tekst is terug te voeren op een codecel, een
+getoonde handberekening of een citatie. Een bewering over een andere lecture is
+gecontroleerd tegen die lecture.
