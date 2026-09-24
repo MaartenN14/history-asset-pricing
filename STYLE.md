@@ -226,7 +226,7 @@ een korte uitleg tussen haakjes.
 > valuta met hoge rente) ...
 
 Daarna gewoon de Engelse term, zonder cursief. Engels blijven onder meer:
-stochastic discount factor, momentum, carry, value, size, hedge, spread,
+stochastic discount factor, alpha (niet "alfa"), momentum, carry, value, size, hedge, spread,
 mispricing, limits of arbitrage, event study, sorts, factor zoo, smart beta,
 market maker, order flow. Nederlands wordt in elk geval: rendement (niet
 *return*), rente, prijs, dividend, consumptie, risicoaversie, discontovoet,
