@@ -1,199 +1,157 @@
-# Rapport L4 01_04_markowitz (taak 0, A, B; niet gecommit, niet gebouwd)
+STATUS 01_04_markowitz F6b words=5387 prose=PASS open=1 cijfer=- min=-
 
-**1. Meting (prose_stats)**
-- Vóór: `words 6360 | sent_mean 20.4 | p90 37 | gt40 18 | para 65 | dash 59 | semicol 25 | motief 3 | u 27 | je 2 | stopw 9 | calque 1 | engquote 16` (13× FAIL)
-- Na: `words 6140 | sent_mean 14.0 | p90 23 | gt40 0 | para 39 | dash 0 | semicol 12 | motief 0 | u 0 | je 0 | stopw 0 | calque 0 | engquote 0` → alleen `FAIL: words=6140`. `--where`: geen treffers.
-- Reden voor words: de regels vragen nieuwe tekst (handstappen toy en tangent, aannamelijst, lees-zinnen, routekaart, Samengevat, instap-oefening, vier keer "Wat dit leert:", ca. 700 woorden). Dropdowns tellen mee. Verder inkorten lukt alleen door inhoud te schrappen. Netto 220 woorden minder dan vóór.
+# Rapport 01_04_markowitz (workflow-herziening)
 
-**2. Top-5 uit taak 0 en wat ermee gebeurde**
-1. Toy (§3.7): drie formules vooruit (min-var, rand, tangent), drie cellen, geen tabel hand/code. Nu één mechanisme (veiligste portefeuille, recept w ∝ Σ⁻¹1, noemer 41), vijf stappen, één cel, tabel hand/code. Theorie leidt het recept als eerste af (λ = 0 in eq-markowitz-foc). A, B, C, D, rand bij 10%, tangent en de figuur staan nu als illustratie in Theorie (H11), met eigen tabellen hand/code.
-2. Taal (§3.1/§3.2): 27× u, 59 streepjes, 18 zinnen boven 40 woorden. Alles herschreven.
-3. Projectjargon/citaten (§3.3/§3.4): "motief 1" 3×, "epistemische status", "praktijkmotief", 16 lange aanhalingen. Nu de vaste namen; Friedman als blokcitaat met Nederlandse inleiding; Markowitz 1999, DGU-abstract en "de markt is de optimale portefeuille" geparafraseerd.
-4. Overzicht/structuur (§3.13): geschiedenis vooraan, imports in het Overzicht, 7 theorie-subsecties, geen routekaart of Samengevat. Nu vraag+antwoord, lijst, één alinea geschiedenis, alinea theorie of feit. Imports bij het toy. Routekaart, 5 subsecties (Opzet → Kernresultaat → Tobin/Roy → Wat het voorspelt → Hoe het toegepast wordt), Samengevat.
-5. Replicatie (§3.5/§3.8): blok van ca. 400 woorden met DGU-getallen inline; oordeel na 180 woorden getallen. Blok nu onder 250 woorden, tabel origineel/hier (nieuwe cel), oordeel "Geslaagd" + voorbehoud (SE 0,04).
+## F0
 
-**3. Verplaatst (niets geschrapt)**
-- Bewijs twee-fondsenstelling → `{prf:proof}` dropdown; bewijsidee in hoofdtekst.
-- Cauchy-Schwarz (D > 0) → note-dropdown. Notatie E/V van Markowitz → note-dropdown. Tobin liquidity preference → note-dropdown. Friedman-anekdote → note-dropdown. Markowitz' erkenning van Roy, kritieke lijn en semi-variantie → note-dropdown.
-- Roy-subsectie samengevoegd met Tobin ("Een risicovrij activum: Tobin en Roy"); eq-markowitz-roy blijft in de hoofdtekst.
-- DGU-getallen uit het replicatieblok → tabel origineel/hier. Breakeven "N = 50: meer dan 6000 maanden" → opgave oefening 2.
-- Toy-getallen voor rand en tangent → Theorie (zie 2.1). Aannames nu genummerd in Opzet en aangeroepen waar ze werken (H5).
-- Nieuwe instap `ex-markowitz-instap` (correlatie A–B op nul; 9/49, 4/49, 36/49; σ = 8,57%). `ex-markowitz-1` (zero-beta, door de CAPM-lecture aangehaald) staat nu tweede, met dezelfde inhoud.
-- Vooruitverwijzing CAPM in de covariantiesectie is weggelaten (belofte staat al in het Overzicht). Twee vooruitverwijzingen blijven: CAPM (Overzicht) en SDF/HJ.
+**Nulmeting.** `01_04_markowitz.md  words 7510  sent_mean 14.7  sent_p90 24  sent_gt40 0  para_mean 45  dash 0  semicol 13  motief 0  Lnum 0  deel 0  u_form 0  je_form 0  taboo 0  stopw 1  calque 0  engquote 0`. `--where`: geen treffers. Enige overschrijding: words (7510 > 5500).
 
-**4. nb_outputs-diff (vóór ↔ na)**: alle getallen gelijk, drie figuren byte-gelijk (63132/41776/77112).
-- Bedoeld: toy-cel en theorie-cellen tonen nu tabellen "met de hand / code" in plaats van de twee oude tabellen (zelfde waarden, 4 decimalen). Nieuwe cel: tabel origineel/hier DGU. Nieuwe cel: instap-oefening. Kolomnamen voluit Nederlands in de Sharpe-tabel en de positietabel. Celnummers verschoven.
-- rng-volgorde ongewijzigd: nieuwe cellen trekken geen random getallen.
-- Tussenstand A: `$TEMP/01_04_markowitz-na-A.txt`. Verschil A→B: één handwaarde 0,1560 → 0,1559 (was afgerond) en `.astype(float)` op de DGU-tabel, zodat die op 4 decimalen toont.
-- Execute-log (laatste regels): `[jupytext] Executing notebook with kernel python3` / `[jupytext] Warning: Notebook is not trusted` / `[jupytext] Writing lectures/01_04_markowitz.ipynb (destination file replaced ...)`, exit 0. Geen stderr of errors in de cellen. De enige waarschuwing is de IPKernel-TCP-melding van de omgeving.
+Woorden per sectie (prose_stats-telling): top 87, Overzicht 301, Intuïtie 638, Toy 303, Theorie-intro 86, Opzet 325, Kernresultaat 1128, Risicovrij activum 1052, Wat het voorspelt 303, Hoe toegepast 582, Simulatie 449, Replicatie 926, Wat er brak 360, Oefeningen 970.
 
-**5. Afvinklijst §11.9**: alles voldoet, behalve:
-- words (zie 1).
-- H11: de toy-getallen komen terug in Theorie en Replicatie (min-var), niet in de Simulatie. Dat kan niet zonder de uitvoer te veranderen.
-- Oefeningen: vier in plaats van drie (instap, afleiding, simulatie, replicatie). Er is geen oefening geschrapt.
-- Overige punten: ok.
-- Tekstcorrecties: bijschrift simulatie zei "tienduizend-en-een steekproeven", het zijn er 2000. DGU-recept: "rendement van maand t+1" → "maand t", zoals de code doet.
+**Vijf grootste problemen.**
+1. Lengte 7510 woorden; de zwaarste blokken zijn *Het kernresultaat* (r. 333–571), *Een risicovrij activum* (r. 573–811, drie dropdown-notes), *Oefeningen* (r. 1435–1698) en *Replicatie* (r. 1120–1393).
+2. *Replicatie*, r. 1139–1144 en 1281–1295: de tekst beschrijft DGU's Industry-dataset, de tabel toont hun S&P-sectoren; "geen verschil groter dan twee SE" klopt niet; "ver boven 1/N" klopt niet voor de industrieën (feiten 2–4).
+3. *Intuïtie*, r. 99–145: geschiedenis (bibliotheek, Friedman, Roys oorlogsverleden, Tobin) en mechanisme door elkaar; de voorspellingen komen pas op r. 147.
+4. *Theorie*, r. 409–442 e.v.: $A,B,C$ zijn zowel activa als scalars; ook $d$ naast $D$ en $\delta$, $a$ (dosis) naast $a_i$ (intercept) (feit 12).
+5. Onherleidbare of foute beweringen: 14 pagina's en vier grafieken (r. 57), Roy in de oorlog (r. 126), Sharpe noemde de ratio (r. 591), marktsharpe 0,4 (r. 660), Hansen-Jagannathan-note (r. 635), "maximum-Sharpefondsen niet" (r. 1302), Bayes-Stein (r. 1384), Santa-Clara-parafrase (r. 1425) (feiten 5–9, 13, 15–17). Daarnaast code: einsum drie keer, rollende lus dubbel, `tail(3)`-cel zonder functie.
 
-**8. Open punten**
-- `words` blijft boven 5500. Beslissing eigenaar: drempel voor deze lecture accepteren of stof naar een andere lecture verplaatsen.
-- Santa-Clara-parafrase in "Risico of vergissing" heeft geen `{cite}` (had hij vóór ook niet). Er is geen bib-key toegevoegd.
-- Tijdens het werk heeft een ander proces `tools/prose_stats.py` aangepast (motief-regex). Die wijziging is niet van mij en ik heb niets teruggedraaid.
-- Taak A en B zijn in één schrijfronde uitgevoerd. De structuur stond vast vóór het polijsten. De tussenstand van de uitvoer na A is bewaard.
+**Eis 2 (grep in `lectures/`).** Elders aangehaald: `01-04-markowitz` (tien lectures), `eq-markowitz-foc` (02_08, 03_14), `eq-markowitz-tangent` (02_08, 05_26), `eq-markowitz-abcd` en `eq-markowitz-probleem` (03_14), `thm-markowitz-tweefonds`, `cor-markowitz-separatie`, `ex-markowitz-1` (02_08). Niet aangehaald: `eq-markowitz-1n/-frontier/-roy/-sharpe`, alle `fig-`/`cel-`, `ex-markowitz-instap/-2/-3`. 02_08 gebruikt de activa A, B, C (zelfde toy) en 03_14 de scalars $A,B,C,D$; beide namen blijven dus.
 
-## Lezersronde (taak C)
+**Schraplijst (schraptoets STYLE §11.11; eis 1 vraag, 2 aangehaald, 3 motief).**
 
-**Per H-regel (opgelost / afgewezen)**
-- H1 5/1. Opgelost: Roy (Intuïtie), kernresultaat, twee fondsen, Tobin en 1/N; elk waarom beschrijft nu een handeling met een richting. Afgewezen: de Roy-zin in het Overzicht. Dat is geschiedenis, geen waarom-alinea.
-- H2 11/0. De standaardfout van 2% staat nu in één regel in het Overzicht en in de 2%-sectie, met verwijzing naar de lecture over rendementen. Verder uitgelegd: de bèta-vorm van het CAPM; $m$ (SDF); bruto of netto (toy en $R^f$ zijn netto); $\Phi$; $\beta_{i,p}$; de risicotolerantie van 50; Bayes-Stein; Santa-Clara (wiens terugblik de reeks volgt); Chicago- en Yale-lezing.
-- H3 2/0. "Twee fondsen volstaan" staat nu buiten de stelling. De bewijsstappen hebben een kop. De omgekeerde richting blijft in de stelling, omdat het CAPM-bewijs zich via thm-markowitz-tweefonds op precies die richting beroept.
-- H4 5/0. Toy-getallen toegevoegd voor $\lambda$ en $\delta$ (0,368 en −0,0125) en voor de Roy-grens (17% tegen 0,8% onder normaliteit). Verder: $N/T = 0{,}083$ tegen $S^2 = 0{,}021$, de betekenis van de risicotolerantie, en de bias in de simulatie ($N/T = 10/120$).
-- H5 5/0. Aanname 4 toegevoegd (onbeperkt lenen en uitlenen). Aanname 2 staat bij de tangent en bij de uniciteit. Homogene verwachtingen zijn benoemd, en "onafhankelijke jaren" staat bij $\sigma/\sqrt{T}$.
-- H6 3/0. Nu in beide richtingen gelezen: $R^f$ stijgt of daalt (7,24% bij $R^f = 0$, 8,22% bij 2%), de correlatie stijgt of daalt, en $\sqrt{T}$ en $N/T$ staan in Samengevat.
-- H7 9/1. Eén naam per begrip: rand, minimum-variantieportefeuille (alias één keer ingevoerd), premie, turnover, risicovrij activum, idiosyncratisch risico (alias eigen risico), mean-variance-portefeuille, 1/N. Risico/volatiliteit/standaarddeviatie is één keer gelijkgesteld; ware optimum is gedefinieerd. Afgewezen: "raakpunt" en "efficient frontier" blijven, als meetkundige omschrijving en als eenmalig ingevoerde vakterm.
-- H8 5/0. "Dat" vervangen door het ding zelf: de kern, de verhoudingen, de rangorde, de bias bij één $N/T$, de schade in de posities.
-- H9 6/0. Elke `###` opent nu met een bewering. Na de opzettabel van het toy en na de parametertabel van de simulatie staat eerst wat de tabel laat zien.
-- H10 7/0. Voorbeelden toegevoegd bij: tweede-orde benadering (Taylor), $D$ = 0 bij gelijke $\mu$, de richting van $\Sigma^{-1}\mathbf{1}$ in het toy, semi-variantie, impliciete prior, risk parity en beprijsd risico.
-- H11 1/1. De replicatie noemt nu 8,83% tegen 10%. Afgewezen: een toy-getal in de simulatiekalibratie, omdat dat de uitvoer zou veranderen.
-- H12 2/0. De eerste voorspelling wordt in de Theorie expliciet ingelost. "Wat het voorspelt" verwijst terug naar de intuïtie.
+| kopje | passage | ≈ woorden | haalt geen eis omdat |
+|---|---|---|---|
+| Overzicht | pagina's/grafieken, dubbele theorie-of-feit-uitleg | 60 | detail, deels onherleidbaar |
+| Intuïtie | bibliotheek-alinea (naar één zin in Overzicht) | 55 | geschiedenis, geen mechanisme |
+| Intuïtie | note Friedman bij de promotie | 110 | anekdote, niet nodig voor de vraag |
+| Intuïtie | Roys oorlogsverleden, Roy/Tobin ingekort | 120 | onherleidbaar; Theorie doet Roy en Tobin |
+| Opzet | note Notatie van Markowitz; bruto/netto-uitweiding; derde lezing ingekort | 110 | nevenzaak |
+| Kernresultaat | metazin, bèta-vorm-alinea, inefficiënte tak, note "Waarom $D$ positief is", praktisch/theoretisch-alinea's ingekort | 300 | nevenresultaten; CAPM citeert alleen de vergelijking |
+| Risicovrij activum | notes Hansen-Jagannathan, Tobin schreef over geld, Roy/Markowitz/erkenning; zin marktsharpe 0,4 | 340 | anekdote/vooruitblik; HJ-note bovendien onjuist (feit 17) |
+| Wat het voorspelt | inkorten | 40 | herhaling |
+| Hoe toegepast | Michaud-enigma-zin, warning ingekort | 110 | herhaling van punt 3 |
+| Simulatie | inkorten | 70 | herhaling |
+| Replicatie | `tail(3)`-zin, S&P/internationaal-vergelijking, productcategorie-claim, posities en tip ingekort | 250 | geen functie, of onherleidbaar |
+| Wat er brak | inkorten | 40 | herhaling |
+| Oefeningen | ex-markowitz-2 geheel; ex-3 tussengebied ingekort | 380 | tweede simulatie (§11.7), niet aangehaald |
+| **totaal** | | **≈ 1.985** | |
 
-**Navertel-afwijkingen**
-- *Het kernresultaat*: de lezer zag de parabool en de twee fondsen als kern. Bedoeld was de eerste-ordevoorwaarde: in het optimum is de covariantie met de portefeuille evenredig met het verwachte rendement. Veranderd:
-  - de routekaart noemt die voorwaarde als kern;
-  - de subsectie opent met die bewering;
-  - de tekst noemt eq-markowitz-foc nu "het kernresultaat";
-  - vóór $A, B, C, D$ staat een schakelzin: de voorwaarde zegt hoe een optimum eruitziet, en voor de rand moeten $\lambda$ en $\delta$ nog vast;
-  - Samengevat begint met deze voorwaarde.
-- *De standaardfout van 2%*: de lezer zag alleen 6,3 procentpunt. Bedoeld was de naam uit de lecture over rendementen: $20/\sqrt{100} = 2$ procentpunt over honderd jaar. Die regel staat nu in het Overzicht en in de sectie. De 6,3 staat daarna als toepassing op tien jaar.
-- Spoor 3 (Risico of vergissing): er staat nu een brugzin. Markowitz heeft geen evenwicht, maar zijn schattingsprobleem vraagt waarom geschatte gemiddelden zo weinig opleveren; daarvoor zijn de twee vaste lezingen.
+**Verwachte lengte:** 7.510 − 1.985 ≈ 5.525; met taalherziening (taak B) naar 5.000 tot 5.200. Onder 6.000 zonder de kern te raken: geen splitsing.
 
-**Verificatie**
-- prose_stats `--check`: `words 6935 | sent_mean 14.5 | p90 25 | gt40 0 | para 42 | dash 0 | semicol 15 | overige 0`. Alleen `words` faalt; die grens is door de coördinator geaccepteerd. `--where`: geen treffers.
-- sync en execute (HAP_OFFLINE=1): exit 0, laatste regel `[jupytext] Writing lectures/01_04_markowitz.ipynb (...)`.
-- nb_outputs: na-B → na-C is leeg; er is alleen tekst veranderd, geen code. Tegen na-A staan alleen de twee bekende verschillen uit taak B: de handwaarde 0,1560 → 0,1559 en de DGU-tabel op 4 decimalen.
+## F1
 
-## Lezersronde 2
+**Eindmeting.** `words 5303  sent_mean 14.9  sent_p90 24  sent_gt40 0  para_mean 40  dash 0  semicol 4  stopw 1  calque 0` → **PASS**. Sync en `HAP_OFFLINE=1 jupytext --execute` foutloos, geen warnings in de uitvoer.
 
-**Kern omgedraaid (coördinator).** De kern is nu de efficiënte rand met de twee-fondsenstelling. De eerste-ordevoorwaarde is de stap ernaartoe. Aangepast: de routekaart, de openingsbewering van de subsectie en de zin na eq-markowitz-foc ("de stap naar de rand"). Ook aangepast: de schakelzin vóór $A, B, C, D$ en Samengevat (eerst de kern met thm-markowitz-tweefonds, dan de weg ernaartoe). De labels zijn ongewijzigd.
+**Geschrapt** (reden: schraptoets, geen eis gehaald tenzij anders vermeld): notes Friedman, Notatie van Markowitz, Waarom $D$ positief is, Hansen-Jagannathan (ook onjuist, feit 17), Tobin schreef over geld, Roy/Markowitz/erkenning (anekdote of vooruitblik); Roys oorlogsverleden en paginatelling (onherleidbaar); bèta-vorm-alinea en inefficiënte tak (nevenresultaat); marktsharpe 0,4 (onherleidbaar, vervangen door Sharpe-ratio's per activum); `tail(3)`-cel (geen functie); S&P- en internationale DGU-rijen (horen niet bij onze data); claim over maximum-Sharpefondsen (onherleidbaar); ex-markowitz-2 (tweede simulatie, §11.7; nergens aangehaald); Michaud-enigma-zin, metazinnen en herhalingen.
 
-**Gekozen namen (H7); de alias staat één keer tussen haakjes**
-- *tangentportefeuille* (raakpunt): alle andere "raakpunt" vervangen.
-- *mean-variance-portefeuille* (de tangentportefeuille uit geschatte momenten): vervangt "geschatte optimale" en "voorgeschreven portefeuille".
-- *minimum-variantieportefeuille*: de alias "veiligste portefeuille" is geschrapt.
-- *idiosyncratisch risico* (eigen risico): de alias staat in de Intuïtie.
-- *1/N* (gelijkgewogen portefeuille).
-- *Sharpe-ratio* (verhouding tussen premie en risico): vervangt "hoogste opbrengst per eenheid risico" en "meer premie per eenheid risico".
-- *netto* rendement (enkelvoudig).
-- *schattingsfout*: vervangt "invoerfouten".
-- *efficiënte rand* / *rand* (efficient frontier).
-- *verschil* in plaats van "spreiding" waar geen diversificatie bedoeld is.
-- Separatiestelling uitgelegd als "de twee-fondsenstelling met één risicovrij fonds". Indexfondsen hangen nu expliciet aan dat ene fonds (ook spoor 2).
+**Verplaatst/herschreven.** Geschiedenis uit Intuïtie naar Overzicht; antwoord Overzicht noemt nu de schattingsfout; `### Hoe het toegepast wordt` heet `### Hoe het getoetst wordt`; "Samengevat" gecorrigeerd (lineair, niet evenredig).
 
-**Per H-regel (opgelost / afgewezen)**
-- H1 3/0. Twee fondsen en Tobin zijn nu een handeling zonder matrixrichting of meetkunde. De kernbewering bevat alleen nog wat de waarom-alinea uitlegt.
-- H2 5/0. Uitgelegd: waarom tweede momenten goed meetbaar zijn, welke les uit 00_00 bedoeld is, de betekenis van $m$ (≈ $1/R^f$) en van de HJ-grens, Santa-Clara (met ref naar 00_00) en het kritieke-lijn-algoritme.
-- H3 1/0. De stelling bevat nu de formule plus één zin in woorden. Stap 2 van het bewijs is herschreven en de kapotte zin gerepareerd. De inhoud waar het CAPM op leunt, blijft staan.
-- H4 3/1. Toegevoegd: $D$ tegenover $AC = 65{,}5$, $2\lambda$ als de kosten van rendement in variantie (0,0074 per procentpunt), en $S_{\max}$ 0,529 tegenover de markt (≈ 0,4). Afgewezen: of een risicotolerantie van 50 voorzichtig of agressief is. De lecture heeft geen bron om dat te kwalificeren.
-- H5 2/0. Bij de tangentportefeuille staat nu aanname 4. De ε-splitsing is benoemd als definitie (projectie), niet als aanname.
-- H6 3/0. Uitgelegd: waarom een hogere $R^f$ de tangentportefeuille riskanter maakt, waarom de bias groeit met $N$ (meer kansen op toevallig hoge gemiddelden), en wat er gebeurt als één $\mu_i$ stijgt.
-- H7 8/1. Zie de namenlijst. Afgewezen: de legenda "tangent" en de tabelnamen "ware optimale portefeuille"/"ware optimum" in de uitvoer, omdat de uitvoer identiek moet blijven. In de tekst staat het ware optimum gedefinieerd.
-- H8 3/0. "Dat" bij indexfondsen verwijst nu naar het ene fonds. "Het" is vervangen door "die rangorde". "Kern van het argument" staat nog maar één keer (bijschrift DGU).
-- H9 1/0. De 2%-subsectie opent met haar bewering.
-- H10 5/0. Voorbeelden toegevoegd: $\Sigma^{-1}\mu = (1{,}94; 1{,}13; 4)'$; de inefficiënte tak (3% bij 11,4%); $m$ en HJ; de kritieke lijn; het factormodel (marktbèta) en resampling.
-- H11 0/1. Afgewezen: een toy-getal in de simulatiekalibratie zou de uitvoer veranderen.
-- Spoor 1: de zin "eigen variantie speelt geen rol" was onjuist (de rij bevat $w_i\sigma_i^2$). Die zin is gecorrigeerd.
+**nb_outputs-diff** (alle aangehaalde getallen gelijk):
+- cel 4: drie rijen Sharpe-ratio per activum toegevoegd (0,40/0,40/0,20, handberekening in de tekst).
+- cel 6: kolom "volatiliteit" heet "standaarddeviatie" (één naam per begrip, H7).
+- cel 8/9: celkop anders (helper `draw_moments`, matmul i.p.v. einsum); getallen en figuurgrootte identiek.
+- cel 11: `tail(3)` vervangen door tabel maanden buiten de steekproef (637, vanaf 1973-07).
+- cel 12: kolom "Sharpe-ratio mean-variance in de steekproef" weg uit de samenvatting (staat in de vergelijking), tabel nu echt afgerond op 4 decimalen.
+- cel 13: vergelijking alleen met DGU FF-vierfactor; S&P, internationaal en lege minimum-variantiekolom weg.
+- cel 15 en ex-3: "turnover" heet "omzet"; posities uit bewaarde gewichten, getallen gelijk.
+- cel 17: celkop anders (gebruikt `Sinv_mu`, `Sinv_1`); uitvoer gelijk.
+- cel 18 (oud: breakeven, ex-markowitz-2) verdwenen.
 
-**Navertel-afwijkingen**
-- *Het kernresultaat*: de lezer twijfelde tussen de rand, de eerste-ordevoorwaarde en de twee fondsen. Nu is de kern expliciet de rand met de twee-fondsenstelling, en de voorwaarde de weg ernaartoe (zie boven).
-- *Wat er brak*: de lezer begreep niet waarom Chicago/Yale hier staan en kon de Santa-Clara-zin niet terugkoppelen. Bedoeld was: waarom 1/N wint, is een vraag of prijzen juist zijn, en de replicatie toont dat een weddenschap op geschatte gemiddelden verliest. De alinea opent nu met die vraag. De Santa-Clara-zin is herschreven als "wedt erop dat haar geschatte gemiddelden meer weten dan de prijs, en de replicatie laat zien dat die weddenschap verliest", met een ref naar 00_00. De alinea heeft ongeveer 120 woorden.
+**Feitenlijst (18).** Verwerkt: 1 (teller 0,580694/0,069444), 2 (alleen MV−1/N: 0,077 en 0,055 < 0,08), 3 (alleen FF-vierfactorrij, expliciet gezegd; Industry-kolom staat niet in bib of notitie), 4 ("net" bij industrieën, "ruim" bij 25), 5 en 6 (paginatelling en grafieken geschrapt), 7, 8 (Sharpe gebruikte de maat in 1966, `Sharpe1966`), 9, 10 (helft in SD, driekwart in variantie), 11, 13 (als toepassing van Santa-Clara's les), 14 ("altijd"), 15, 16 (krimpen naar gemeenschappelijk gemiddelde, geen "Bayes-Stein"), 17 (note geschrapt).
+Deels: 12, $d \to R_{\min}$ en $a_i \to k_i$ gedaan; $A,B,C$ niet hernoemd, omdat 02_08 de activa A, B, C en 03_14 de scalars $A,B,C,D$ uit `eq-markowitz-abcd` gebruikt; wel een zin "Let wel" bij de definitie. 18: Sharpe-ratio's per activum staan nu in L4; dat 02_08 $R^f$ bruto neemt, is voor 02_08.
 
-**Verificatie**
-- prose_stats `--check`: words 7274 | sent_mean 14.6 | p90 24 | gt40 0 | para 44 | dash 0 | semicol 14 | stopw 1 ("precies" = exact) | overige 0. Alleen `words` faalt. Dat komt door de uitleg die de lezers vroegen: +339 woorden ten opzichte van ronde 1.
-- `--where`: geen treffers.
-- sync en execute (HAP_OFFLINE=1): exit 0.
-- nb_outputs: na-C → na-D is leeg. Tegen na-A staan alleen de twee bekende verschillen uit taak B.
+**Afvinklijst §11.9, niet voldaan.** Geen. (Imports-cel heeft een zin ervoor, geen zin erna; de opzet-tabel volgt direct.)
 
-## Naar een 9 (na beoordeling 7,7)
+**Labels.** Verdwenen: `ex-markowitz-2` (nergens aangehaald). Alle aangehaalde labels bestaan met dezelfde inhoud; `ex-markowitz-1` vraagt nu af te leiden uit `eq-markowitz-foc` (het bewijs deed dat al), zero-beta = $R^f$ ongewijzigd.
 
-**1. Helderheid**
+**Open punten.**
+1. DGU tabel 3, kolom Industry (en minimum-variantie): niet in bib of `notes/l4_markowitz_research.md`; nakijken in het paper als de industrieën een origineel moeten krijgen.
+2. 02_08 r. 132: $R^f$ bruto tegen netto in L4 (feit 18), en 02_08 r. 298 "L4" (projectjargon): herstel in 02_08.
 
-*Gedaan:*
-- **Netto of bruto.** Opzet: $\mathbf{R}$ en $R^f$ zijn nu overal netto. Er staat bij dat bruto rendementen $\Sigma$ en $A$ laten staan, maar $B$ en $C$ veranderen. De notatie-note is daarop aangepast.
-- **Verwijzingen.** Twee verwijzingen naar `#00-00-setup` wijzen nu naar `#00-01-rendementen`: tweede momenten (met de stelling van Merton) en oefening 3.
-- **Santa-Clara** wordt voorgesteld in een bijzin.
-- **Taylor.** Het "dus" bij de Taylor-benadering is vervangen door "een derde, algemenere lezing".
-- **Bèta-vorm.** Die zin wijst nu vooruit: het CAPM geeft de vorm later een economische betekenis.
-- **Replicatieniveau.** De verklaring achteraf ("twintig jaar langer") is geschrapt. Nu staat er eerlijk dat het blok het niveau openliet en dat we geen verklaring hebben.
-- **HJ-grens.** $E[m]$ is verbeterd tot $1/(1+R^f)$.
+## F4
 
-*Niet gedaan:* de Santa-Clara-verwijzing blijft `#00-00-setup`. Zijn terugblik staat daar, niet in 00_01. De coördinator noemde drie verwijzingen; alleen deze wijst terecht naar setup.
+**Meting.** words 5432, sent_gt40 1, semicol 8 → PASS. Sync en offline execute foutloos. De nb_outputs-diff tegen `voor` is gelijk aan die van F1 (geen codewijziging in F4). Aangehaalde labels (`eq-markowitz-tangent/-foc/-abcd/-probleem`, `thm-markowitz-tweefonds`, `cor-markowitz-separatie`, `ex-markowitz-1`) staan er nog.
 
-**2. Opbouw**
+**Feitenrijen (5, alle opgelost).** $R^f$: "netto, dus 2% is 0,02; andere lectures schrijven $R^f$ soms bruto (1,02)". $\Sigma_{\mathrm{AB}}$ rechtop. "hoe groter dat getal in absolute waarde". Williams-anekdote: citatie `Markowitz1999` weg, de zin is nu een argument ("Het stond haaks op Williams ..."). Middelen van gewichten plus `Michaud1989` uit de tip geschrapt.
 
-*Gedaan:*
-- De HJ-vooruitblik staat nu in een dropdown-note.
-- Roy in de Intuïtie is ingekort; Tchebycheff staat alleen nog in de Theorie.
+**Lezerspunten.**
+1, 8. Twee fondsen concreet: $\Sigma^{-1}\mathbf 1/A$ en $\Sigma^{-1}\mu/B$ (7,24%), met toy-gewichten $(0,274; 0,159; 0,566)$, en "welke twee maakt niet uit".
+2. Overzicht, replicatie ("De winnaar is dus niet 1/N maar de minimum-variantieportefeuille"), tip en Wat er brak ("Waarom verliest mean-variance?") zeggen nu hetzelfde.
+3. "De standaardfout van 2%" alleen nog bij $20/\sqrt{100}$. Weg uit de simulatie, uit Wat er brak en uit de kop.
+4. $S^2_{\max} = (0,50/\sqrt{12})^2 = 0,021$, en "Sharpe-eenheden" in woorden uitgelegd.
+5. Wat het voorspelt: "geen reden om ervoor betaald te worden"; dat de markt het niet doet, volgt uit het CAPM. Bewering en slotzin zijn nu gelijk.
+6. FF-vierfactor: komt qua bron, begin en aantal reeksen het dichtst bij.
+7. ×√12: 0,158 per maand is 0,55 per jaar.
+9. $0 \le D \le AC$, hier bijna een kwart.
+10. Kop wordt "Waar het strandt: de schattingsfout in de invoer"; de routekaart telt niet meer.
+11. $1/\sqrt{T}$ bij een kleine Sharpe-ratio.
+12. Afgewezen: de schaal van de risicotolerantie van Chopra-Ziemba staat niet in bib of notitie.
+13. Santa-Clara-zin herschreven.
+14. "Theorie of feit" in één bijzin uitgelegd.
+15. Omzet in de tekst gedefinieerd.
 
-*Niet gedaan:* Samengevat blijft aan het eind van Theorie. Dat volgt uit STYLE §11.6 en de instructie van de coördinator.
+**Navertel-toets, afwijkende secties.** *Wat het voorspelt*: tegenspraak over "onbetaald" opgelost (zie 5). *Hoe het getoetst wordt*: kop hernoemd, want de sectie is een schattingsargument (zie 10). *Replicatie*: minimum-variantie expliciet als winnaar, 1/N als maatstaf (zie 2).
 
-**3. Taal**
+**Betaald.** +129 woorden, binnen ≤ 5.500. Geschrapt: de resampling-clausule, de metazin "We leiden vier dingen af" en de Williams-bronzin.
 
-*Gedaan:*
-- **Roy-zin in het Overzicht** gesplitst.
-- **Chopra-Ziemba-fragment** herschreven tot twee gewone zinnen.
-- **Nederlandse termen**, met de Engelse term één keer tussen haakjes:
+**Open.** DGU tabel 3, Industry-kolom (ongewijzigd uit F1). 02_08/L8 en de setup-tabel ($R^f$ bruto) zijn niet van deze lecture.
 
-  | was | nu |
-  |---|---|
-  | in-sample / out-of-sample | in / buiten de steekproef |
-  | bruto exposure | brutopositie |
-  | excess rendement | overrendement |
-  | breakeven-venster | omslagvenster |
-  | risk parity | risicopariteitsfondsen |
-  | safety-first-belegger | veiligheid-eerst-belegger |
+## F5-1
 
-- "snapshot" vervangen door "juli 2026".
-- Trema's hersteld in de zichtbare uitvoer: "efficiënte rand" in legenda en titel, "10 industrieën" in alle tabellen en figuren.
+**Meting.** words 5395 → PASS. Sync en offline execute foutloos, geen warnings. Alle aangehaalde labels staan er nog, ook `eq-markowitz-abcd` voor 03_14.
 
-*Niet gedaan:* labels zonder trema blijven zoals ze zijn.
+**Helderheid.**
+- *Letters: gedaan.* De activa heten nu aandelen, kleine aandelen en obligaties, ook in de tabellen, figuurlabels en oefeningen. De scalairen $A,B,C,D$ en het label `eq-markowitz-abcd` blijven, want 03_14 gebruikt ze. De "Let wel"-zin vervalt. Naad: 02_08 r. 128–129 en 298 noemt de activa nog A, B, C.
+- *Voorbehoud: gedaan.* Nieuwe kolom "verschil met 1/N buiten". De tekst noemt twee keer de SE van één Sharpe-ratio een ruwe drempel, omdat de SE van een verschil afhangt van de samenhang tussen de strategieën.
+- *Risicotolerantie 50: gedaan.* Het getal staat nu bij de richting: hoe hoger, hoe minder variantie weegt en hoe duurder een fout in de gemiddelden. Een schaal staat niet in bib of notitie.
 
-**4. Toy**
+**Opbouw.**
+- *Roy als zijtak: deels.* Roy komt terug in "Wat het model verklaart" ("ook de voorzichtige van Roy"). De Roy-alinea blijft, want Roy staat in de titel en draagt `eq-markowitz-roy`.
+- *Replicatie te lang: gedaan.* De tip is teruggebracht tot twee zinnen.
 
-*Gedaan:*
-- De accolades in de opzettabel zijn weg ("10,0%").
-- De regel voor de 2×2-inverse staat erbij, met twee uitgerekende elementen: 28,125 en −6,25.
+**Taal.**
+- *"definieert het tijdvak": gedaan*, nu "Dit werk verplaatste de vraag".
+- *FF-zin: gedaan*, gesplitst.
+- *Minder Engels: deels.* "long/short positie" is nu "positieve/negatieve gewicht", "short verkopen" is "negatieve gewichten verbieden", "turnover" is "omzet". "Mean-variance-portefeuille" blijft: H7 vraagt één naam per begrip, en de naam is in het Overzicht gedefinieerd.
 
-**5. Code en figuren**
+**Code.**
+- *Simulatie: gedaan.* De lus loopt nu per steekproef (`one_sample`: trekken en schatten; `tangency`; `sharpe_true` met `w @ Sigma @ w`). Geen `einsum`, `broadcast_to` of `[..., None]` meer.
+- *Kolomnamen simulatie: gedaan.* Ze luiden nu "gemiddelden en covarianties geschat", "alleen covarianties geschat" en "alleen gemiddelden geschat".
+- *Oefening 3: gedaan.* Er staat nu een zin vóór de cel.
+- *Bijschrift "meestal onder 1/N": gedaan*, nu "in deze figuur ook onder 1/N".
 
-*Gedaan:*
-- **Commentaar bij elke `einsum`:** in de simulatie, de figuur en oefening 2.
-- **rf.** De replicatie gebruikt nu `rf_monthly`, zodat de `rf = 0,02` uit de theorie niet meer wordt overschreven.
-- **NaN-kolom.** Die is verklaard in code-commentaar en in de tekst: de minimum-variantiegetallen van DGU zijn niet overgenomen.
-- **"Wilder".** De uitspraak steunt nu op de standaarddeviaties in de volgende tabel (14,5% tegen 4,3% per maand).
+**Replicatie: getallen naar de tabellen, gedaan.** Het oordeel noemt alleen het gat 0,10 naar 0,30. Het voorbehoud en de winnaar verwijzen naar de kolommen, en de positiealinea noemt alleen "meer dan twintig maal". Er staan definities van brutopositie en omzet bij.
 
-*Niet gedaan:* `tail(3)` blijft staan. Een andere maat zou nieuwe getallen in de uitvoer geven. De tekst noemt de drie rijen nu alleen een controle.
+**nb_outputs-diff sinds F4.**
+- cel 2, 4 en 16: rijnamen "gewicht aandelen", "gewicht kleine aandelen", "gewicht obligaties".
+- cel 8 en 9: nieuwe celkop en kolomnamen. De medianen zijn identiek (0,1606 … 0,5035) en het figuurbestand ook (43100 bytes).
+- cel 13: kolom "verschil met 1/N buiten" toegevoegd (−0,0774; −0,1784; −0,0553).
+- cel 15: kolomnamen "grootste positieve/negatieve gewicht".
 
-**6. Replicatie**
+**Open.** DGU Industry-kolom (ongewijzigd). De activanamen in 02_08 volgen voortaan niet meer uit L4.
 
-*Gedaan:*
-- Het blok noemt de tegenhangers: S&P-sectoren ↔ 10 industrieën, FF-vierfactor ↔ 25 size/BM.
-- De vergelijkingstabel zet elk origineel naast zijn tegenhanger en heeft een nieuwe kolom "gat: in minus buiten". Die toont 0,10 en 0,30 tegen DGU 0,31 en 0,54.
-- Het oordeel verwijst naar die kolom.
+**Nazorg F5-1.** Voorbehoud beperkt tot de eigen rijen (−0,077 en −0,055 onder 0,08), met de bijzin dat de DGU-rij (−0,178) er wel boven ligt; PASS, sync en offline execute foutloos.
 
-**7. Oefeningen**
+## F6-1
 
-*Gedaan:*
-- Oefening 2, les (3): steunt nu op de $N/T$-bias bij vaste $T$ (0,294 → 0,149). De onjuiste bewering "vijf keer zoveel data" is eruit.
-- Oefening 2, (2): de robuustheidsclaim is afgezwakt.
-- Oefening 3: verwijzing hersteld.
+**Meting.** words 5387, PASS. Sync en offline execute foutloos. Uitvoer identiek aan F5b (geen codewijziging). Alle labels die 02_08 en 03_14 aanhalen, staan er nog.
 
-**Eigen leesronde:** twee kleine formuleringen verbeterd ("het inzicht dat", "werkt die grens uit").
+**Feitelijke fout: gedaan.** De bijzin "andere lectures schrijven $R^f$ soms bruto" is geschrapt.
 
-**Verificatie**
-- prose_stats `--check`: words 7510 | sent_mean 14.7 | p90 24 | gt40 0 | para 45 | dash 0 | semicol 13 | stopw 1 | overige 0. Alleen `words` faalt; daarvoor geldt geen grens meer. `--where`: geen treffers.
-- sync en execute (HAP_OFFLINE=1): exit 0.
-- nb_outputs tegen na-A: alle getallen gelijk. Er zijn alleen bedoelde verschillen:
-  - kolom- en indexnamen (trema's, Nederlandse termen);
-  - de vergelijkingstabel is anders geordend en heeft de gat-kolom;
-  - de drie figuren zijn van grootte veranderd (tekst in legenda, titel en as);
-  - de broncoderegel van cel 10 (`rf_monthly`);
-  - de twee bekende verschillen uit taak B.
+**Verbetering 1, notatie: gedaan.** De Opzet zegt nu in één zin, met [](#00-00-setup) als referentie, dat $r$ netto is, $R = 1 + r$ bruto en $R^f$ netto. Netto rendementen heten overal $r$: $\mathbf r_{t+1}$, $r_i$, $r_p$, $r_{\min}$ (Roy), $r_1$, $r_2$, $r_v$, $r_{\mathrm{tan}}$. Dat raakt ook de vergelijkingen `eq-markowitz-roy` en `eq-markowitz-1n`; die worden nergens aangehaald. In "Waar het strandt" betekent $T$ nu overal het aantal waarnemingen ("tien jaarwaarnemingen", "$T = 120$ maandwaarnemingen").
+
+**Verbetering 2, Chopra-Ziemba: gedaan.** De zin is teruggebracht tot de verhoudingen elf en eenentwintig, "in een van hun rekenvoorbeelden". Het getal 50 is weg, omdat bib en notitie er geen schaal voor geven.
+
+**Verbetering 3, vooruitverwijzingen: gedaan.** Er blijven er twee over buiten "Wat er daarna kwam": [het CAPM](#02-08-capm) in het Overzicht en [](#04-20-voorspelbaarheid). Geschrapt: de CAPM-link in "Wat het voorspelt", [](#05-31-portfolio-choice) en de twee losse CAPM-vermeldingen ("eerste stap naar een evenwichtsmodel"; "vraagt een evenwicht, en dat heeft Markowitz niet").
+
+**Naadpunten.**
+- 3 en 4: zie verbetering 1 en de fout.
+- 6: $T$ is één eenheid, $N$ is het aantal activa (gedefinieerd in de Opzet).
+- 7 ($\kappa$): raakt L4 niet.
+- 8: bijzin toegevoegd dat $\lambda$ hier een Lagrange-multiplicator is, niet de $\lambda_f$ uit de setup. Hernoemen kan niet, want 02_08 haalt $\lambda$ uit `eq-markowitz-foc` aan.
+- 10: "Waar we zijn" zegt nu dat schommelingen in $r$ meer van de prijsbeweging verklaren dan de dividenden.
+
+**Niet gedaan, geen top-drie of naadpunt:**
+- "De bewering:" als opening van vier subsecties.
+- De figuurcel trekt nieuwe steekproeven.
+- De Industry-kolom van DGU ontbreekt nog (open).
