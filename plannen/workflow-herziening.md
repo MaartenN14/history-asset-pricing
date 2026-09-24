@@ -456,3 +456,12 @@ gepushte versie, 16 / 23 / 15 / 18 punten) en `notes/rating2-<slug>.md`. De schr
 krijgt die lijsten in F0 als invoer en verwerkt ze in F1, samen met het schrappen. F2 draait
 daarna opnieuw op de nieuwe tekst en overschrijft `notes/feiten-<slug>.md`; de oude lijst
 is dan verwerkt en hoeft niet bewaard te blijven.
+
+## 8. Modelkeuze per rol (besluit 2026-09-24)
+
+Schrijver, beoordelaar en eindbeoordelaar draaien op Opus. Koude lezer (F3) en
+diff-controles (F5c, F6, mini-rondes) draaien op Sonnet: lezen en mechanisch nakijken
+verliezen daar geen kwaliteit, en het ontlast de Opus-sessielimiet. De volledige
+feitencontrole (F2) gaat vanaf Deel III op proef naar Sonnet; de beoordelaar houdt zijn
+eigen lijst "Feitelijke fouten". Vindt hij vanaf dan meer feitelijke fouten dan in Deel I
+en II, dan gaat F2 terug naar Opus.
