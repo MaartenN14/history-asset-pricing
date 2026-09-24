@@ -1,260 +1,291 @@
-# Beoordeling: 01_02_bachelier — Regnault, Bachelier en de random walk
+STATUS 01_02_bachelier F5c words=5453 prose=PASS open=0 cijfer=9,0 min=9
 
-Maatstaf: `plannen/rubriek-didactiek.md`. Lezer: eerstejaars PhD-student die
-de eerdere lectures heeft gelezen maar niet paraat heeft.
+# Beoordeling: 01_02_bachelier (F5a)
 
-## Eindcijfer: 7,0
+Gelezen als eerstejaars PhD-student die L0 en L1 heeft gelezen. Ter controle van de
+aansluiting: "Waar we zijn" en "Wat er brak" van 00_01_rendementen en 01_03_williams_ddm.
+De aansluiting klopt: L1 sluit af met Regnault in 1863, "37 jaar vóór Bachelier", en deze
+lecture opent daarmee; L3 opent met "prijsveranderingen zijn vrijwel onvoorspelbaar ...
+Cowles ... Kendall ... een theorie van de ruis, maar geen theorie van het koersniveau",
+precies wat hier in "Waar het breekt" staat.
+
+`prose_stats`: 5.407 woorden (onder 5.500, maar krap), gemiddelde zinslengte 15,3, geen
+zin boven 40 woorden, 15 puntkomma's, één stopwoord, één Engels citaat, PASS.
+
+## Eindcijfer: 8,2
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 7 |
-| 2 | Opbouw en rode draad | 20% | 7 |
-| 3 | Taal | 15% | 6 |
-| 4 | Toy-voorbeeld | 10% | 8 |
-| 5 | Code en figuren | 10% | 7 |
-| 6 | Replicatie en empirie | 10% | 7 |
-| 7 | Oefeningen | 5% | 8 |
+| 1 | Helderheid van de uitleg | 30% | 8 |
+| 2 | Opbouw en rode draad | 20% | 8 |
+| 3 | Taal | 15% | 8 |
+| 4 | Toy-voorbeeld | 10% | 9 |
+| 5 | Code en figuren | 10% | 8 |
+| 6 | Replicatie en empirie | 10% | 8 |
+| 7 | Oefeningen | 5% | 9 |
 
-Gewogen: 0,3·7 + 0,2·7 + 0,15·6 + 0,1·8 + 0,1·7 + 0,1·7 + 0,05·8 = 7,00 → 7,0.
-Geen deelcijfer onder 5 op criterium 1 of 2, dus geen plafond.
+Gewogen: 0,3·8 + 0,2·8 + 0,15·8 + 0,1·9 + 0,1·8 + 0,1·8 + 0,05·9 = 8,15, afgerond 8,2.
 
----
+## 1. Helderheid van de uitleg: 8
 
-## 1. Helderheid van de uitleg — 7
+*Goed*
+- **Opzet en aannames**: de notatiewissel ("*Vanaf hier zijn kleine letters logs*") en de
+  Bachelier-volatiliteit $v$ krijgen naam, eenheid en orde van grootte ("bij een aandeel
+  van 100 met 20% volatiliteit ongeveer 20 euro").
+- **Het kernresultaat**: $\E|Z| = \sqrt{2/\pi}$ wordt in één regel afgeleid en direct
+  teruggekoppeld aan het toy ("vier stappen zitten nog 6% onder de limiet").
+- **Hoe het getoetst wordt**: de standaardfout van $VR(q)$ wordt voor $q = 2, 4, 8, 16$
+  uitgerekend bij de 1216 weken van Lo en MacKinlay; het motief "de standaardfout van 2%"
+  wordt ter plekke uitgelegd ("Een toets die alleen varianties vergelijkt, heeft daardoor
+  scherpte").
 
-**Goed**
-- *Wat het voorspelt: de kans om een niveau te raken*: de stelling krijgt een
-  economisch exemplaar (verkooporder 10 euro boven 100, 31% tegen 62%) én een
-  telling op de zestien toy-paden.
-- *Wat het voorspelt: Bacheliers optieprijs*: na de formule direct 7,98 euro, en
-  een expliciete waarschuwing dat $\sigma$ hier een bedrag is ("Voor een aandeel
-  van 100 met 20% volatiliteit per jaar is $\sigma \approx 20$ euro per
-  $\sqrt{\text{jaar}}$").
-- *Simulatie*: de vuistregel $T^* = (1{,}96/\rho)^2$ met een tabel van drie
-  uitgerekende gevallen.
+*Aanmerkingen*
+- **Het kernresultaat, *Waarom zou dit waar zijn?***: "De uitschieters van losse dagen
+  middelen weg, en zijn maandrendement wordt normaal verdeeld, hoe scheef de dagrendementen
+  ook zijn." Dat klopt alleen bij onafhankelijke dagrendementen; L1 liet zien dat
+  maandrendementen een extra kurtosis van 6,5 hebben, en deze lecture zegt zelf in de
+  replicatie dat "wisselende volatiliteit ... maandveranderingen dikke staarten" geeft (zie
+  Feitelijke fouten).
+- **Replicatie Regnault, oordeel**: "Dan is de gemiddelde absolute afwijking klein ten
+  opzichte van de standaarddeviatie: bij één maand is $\E|\cdot|/\SD$ gelijk aan $0{,}71$,
+  bij twaalf maanden $0{,}73$ ... Zo start de extrapolatie van Regnault te laag." De
+  redenering waarom een *stijgende* verhouding de extrapolatie te laag laat starten, moet de
+  lezer zelf afmaken.
+- **Overzicht / Intuïtie**: "afwijking" wordt losjes gebruikt ("de afwijking groeit met de
+  wortel van de tijd", "1,41 keer zo veel afwijking"), terwijl Stap 3 afspreekt dat
+  $\E|\cdot|$ de gemiddelde absolute afwijking is en "spreiding" de standaarddeviatie.
 
-**Aanmerkingen**
-- *Intuïtie*: "Bij de helft van de periode verhoudt de *écart* zich als 1 tot
-  1,41; bij een derde als 1 tot 1,73; bij een kwart als 1 tot 2." Onduidelijk
-  wat zich tot wat verhoudt; de lezer moet de richting raden.
-- *Het kernresultaat*, en elders: $\sigma$ heeft drie betekenissen (5% per maand
-  in de Opzet, de stap-SD in Donsker, euro's per $\sqrt{\text{jaar}}$ bij
-  Bachelier). De waarschuwing staat er, maar pas halverwege de optiesectie.
-- *Bacheliers optieprijs*: "de optie is na te maken met het aandeel en kas, en
-  daarom mag men rekenen alsof de verwachte koerswinst nul is." De sprong van
-  repliceerbaarheid naar verwachting nul krijgt de lezer niet mee.
-- *Bacheliers eigen notatie*: "Daarmee voorspelde hij voor een maand een *écart
-  probable* van $\pm 46$ centimes". Uit $k = 5$ per $\sqrt{\text{dag}}$ is 46
-  niet na te rekenen zonder het aantal dagen en de factor 0,6745.
-- *Hoe het getoetst wordt*: "Dat is de standaardfout van 2% uit
-  [](#00-00-setup)" — dat resultaat werd afgeleid in [](#00-01-rendementen).
-- *Simulatie*, warning: "is groot genoeg om ruis van 0,06 te produceren." Waar
-  0,06 vandaan komt (twee keer $1/\sqrt{1216} \approx 0{,}029$) staat er niet.
-- *Replicatie*, eerste blok: "2,73 frank per maand," gevolgd door een lege regel
-  en dan "maal $\sqrt{3}$ en $\sqrt{12}$, gaf 4,73 en 9,45". De zin breekt in
-  twee alinea's.
-- *Replicatie Kendall*: de originele waarde "0.13" voor Kendalls gemiddelde
-  $\rho_1$ staat alleen in de code; in de tekst staat nergens waarover gemiddeld
-  is.
-- *Replicatie Kendall*: "De runs-test kijkt alleen naar de tekens en is daardoor
-  gevoelig voor positieve autocorrelatie die de dikke staarten verbergen." Het
-  mechanisme (dikke staarten domineren de correlatiecoëfficiënt) blijft impliciet.
+*Beter uitleggen*
+- De kurtosis-kanttekening bij de intuïtie: één bijzin dat de benadering geldt bij
+  onafhankelijke stappen, en dat clusterende volatiliteit haar vertraagt.
+- De Regnault-afwijking: één zin die de twee getallen aan elkaar knoopt (bij één maand
+  ligt $\E|\cdot|$ relatief lager dan bij twaalf, dus maal $\sqrt{12}$ onderschat).
 
-**Beter uitleggen**
-- Regnaults verhoudingen: "de écart over de hele periode is 1,41 keer die over
-  de helft".
-- Martingaalconditie: één zin dat een optie die met aandeel en kas na te maken is
-  dezelfde prijs moet hebben ongeacht de verwachte koerswinst, en dat men die
-  daarom op nul mag zetten; of expliciet naar [](#02-09-black-scholes) verwijzen.
-- *Écart probable*: $0{,}6745 \times 5 \times \sqrt{2\pi} \times \sqrt{30}
-  \approx 46$ uitschrijven.
-- De ruis van 0,06 herleiden tot $2/\sqrt{T}$.
+*Voor een 9*
+- Het kernresultaat, *Waarom zou dit waar zijn?*: "wordt normaal verdeeld" beperken tot
+  onafhankelijke stappen.
+- Replicatie Regnault: de laatste stap van de redenering uitschrijven, met de juiste
+  0,70.
+- Overzicht en Intuïtie: "afwijking" en "spreiding" gebruiken zoals Stap 3 ze vastlegt.
 
-## 2. Opbouw en rode draad — 7
+## 2. Opbouw en rode draad: 8
 
-**Goed**
-- *Overzicht* stelt de vraag ("Hoe beweegt een koers als niemand de volgende
-  stap kan voorspellen?") en geeft het antwoord in de volgende zin.
-- *Intuïtie* doet drie voorspellingen, en de theorie lost elk ervan expliciet in
-  ("Zoals de intuïtie voorspelde"; "De derde voorspelling uit de intuïtie").
-- De toy van vier stappen komt terug in het reflectieprincipe en in de oefening
-  met de scheve munt.
+*Goed*
+- **Overzicht**: vraag ("Hoe beweegt een koers als niemand de volgende stap kan
+  voorspellen?") en antwoord (wortel van de tijd, optie uit de afwijking, niets over het
+  niveau) in drie zinnen.
+- **Intuïtie → Theorie → Replicatie**: drie voorspellingen, waarvan de theorie er twee
+  zichtbaar inlost ("Zoals de intuïtie voorspelde") en de replicatie de derde ("De
+  voorspelling uit de intuïtie, autocorrelaties van nul, houdt dus bijna stand").
+- **Dezelfde getallen**: de 1216 weken van Lo en MacKinlay lopen van theorie via simulatie
+  naar replicatie; het toy wordt ook gebruikt voor het reflectieprincipe (0,375).
 
-**Aanmerkingen**
-- De theorie draagt vijf lijnen (Donsker, diffusievergelijking, reflectie,
-  optieprijs met Black-Scholes-vergelijking, drie toetsen). Reflectie en
-  optieprijs komen in simulatie en replicatie niet meer terug; de draad
-  √t → toets wordt twee keer onderbroken.
-- Het *Samengevat*-blok staat aan het eind van *Theorie*, niet aan het eind van
-  de lecture.
-- Theoriesecties openen met een vraag, niet met de conclusie: "Wat blijft er van
-  de wandeling over als de stappen kleiner en talrijker worden?", "Hoe groot is
-  de kans dat de koers vóór een bepaalde datum ooit een niveau $a$ raakt?".
-- Twee replicaties (Regnault; Kendall plus Lo-MacKinlay) met elk eigen blok en
-  oordeel; de lezer moet zelf de koppeling maken met de simulatievraag.
-- *Wat er brak*: "Er is dus een theorie van de ruis en geen theorie van de
-  waarde." De belangrijkste breuk wordt pas hier voor het eerst genoemd; de
-  lecture heeft haar nergens voorbereid.
+*Aanmerkingen*
+- **Wat het voorspelt: de kans om een niveau te raken**: het reflectieprincipe heeft een
+  stelling, een bewijs en een codecel, maar komt in simulatie, replicatie en "Wat er brak"
+  alleen als opsomming terug. Het is een zijtak.
+- **Replicatie op echte data**: twee replicaties met elk een admonition, oordeel, tabel en
+  figuur. Samen met de lengte van 5.407 woorden, net onder de grens, maakt dat de
+  empirie het zwaarste deel; de kern (de random walk als feit zonder niveau) komt pas in
+  "Wat er brak" terug.
+- **Hoe het getoetst wordt**: opent met "De random walk toetsen we op twee manieren", een
+  aankondiging, niet de conclusie van de subsectie.
 
-**Beter uitleggen**
-- Eén zin aan het eind van de optiesectie die zegt waarom de lecture nu naar
-  toetsen overstapt (de optieformule is niet toetsbaar zonder optieprijzen).
-- Een *Samengevat* aan het eind met de replicatiegetallen (helling 0,51; VR(2)
-  0,950 na 1985).
+*Beter uitleggen*
+- Waarom de raakkans in deze lecture staat: één zin die haar aan de replicatie of aan
+  Bacheliers barrièreopties koppelt, of haar inkorten.
 
-## 3. Taal — 6
+*Voor een 9*
+- Reflectieprincipe: inkorten tot resultaat plus toy-controle, of een rol geven in de
+  rest van de lecture.
+- Hoe het getoetst wordt: openen met de conclusie (de variance ratio bundelt kleine
+  autocorrelaties en gebruikt alleen varianties).
 
-**Goed**
-- *Intuïtie*: korte, concrete zinnen met de muntworp.
-- Franse citaten zijn vertaald of met inleiding als blokcitaat gezet.
-- Vaktermen krijgen bij eerste gebruik uitleg (*barrièreopties*, *maximale
-  drawdown*, *onderscheidend vermogen*).
+## 3. Taal: 8
 
-**Aanmerkingen**
-- Spelfout, meermaals: "*arithmetische Brownse beweging*" (Nederlands:
-  aritmetische).
-- Engels meervoud en wisselende namen: "horizons" (*Toy-voorbeeld*, *Replicatie*)
-  naast "horizonnen" in de vorige lecture; "lags" ("over veel lags") naast
-  "vertraging".
-- *Overzicht*: "Bachelier definieert het tijdvak, omdat alleen hij een model
-  leverde waaruit het feit volgt, en meteen ook optieprijzen." Het tweede deel
-  hangt grammaticaal los.
-- *Toy-voorbeeld*: "Eerst de imports-cel, de enige van de lecture." Zinsfragment
-  en anglicisme.
-- *Wat er brak*: "De tweede breuk is kleiner en empirisch, en zelf gemeten" en
-  "Eerst het gat, niet de barst." Projectjargon (barst/gat) dat de lezer niet kan
-  plaatsen.
-- *Oefening 3, uitwerking*: "De afwijking is zichtbaar verdwenen, en tegelijk
-  statistisch niet te onderscheiden van: er is niets veranderd." Kromme zin.
-- *Risico of vergissing?*: "Later heet dit de *joint hypothesis*" — Engelse term
-  zonder Nederlandse naam.
-- Veel Franse termen zonder vaste Nederlandse naam naast elkaar (*écart*,
-  *écart probable*, *options à prime*, *coefficient d'instabilité*, *employé*).
+*Goed*
+- Korte zinnen (gemiddeld 15,3, geen boven 40 woorden), geen u/je, geen calques.
+- Franse citaten staan als blokcitaat of cursief met Nederlandse inleiding of uitleg
+  (Regnaults wet, *l'espérance mathématique du spéculateur est nulle*).
+- **Simulatie**: "*onderscheidend vermogen*, de kans dat de toets de foute nulhypothese
+  verwerpt" voert een Nederlandse term in en houdt hem vast.
 
-**Beter uitleggen**
-- Eén Nederlandse naam kiezen voor *écart* na de eerste vermelding (de lecture
-  doet dat half: "gemiddelde absolute afwijking") en die consequent gebruiken.
+*Aanmerkingen*
+- **Overzicht**: "Bachelier definieert het tijdvak, omdat hij als enige een model gaf
+  waaruit de meting volgt." Projecttaal, dezelfde als in L3.
+- **Wat er brak**: "**Waar het breekt.** Vooral hier: de random walk zegt iets over
+  *veranderingen*". "Vooral hier" is een stopwoord zonder verwijzing.
+- 15 puntkomma's, twee keer zoveel als in L1 en L3; bijvoorbeeld "Het recept. ... nadert
+  die verhouding $\sqrt{2/\pi} \approx 0{,}798$; de theorie leidt dat als eerste af" en "De
+  afwijking is verdwenen; een omgekeerd teken is niet aangetoond".
+- "afwijking" voor twee begrippen (zie criterium 1).
 
-## 4. Toy-voorbeeld — 8
+*Voor een 9*
+- Overzicht: "definieert het tijdvak" vervangen door wat er gebeurt.
+- Wat er brak: "Vooral hier:" schrappen.
+- De puntkomma's in Toy, Replicatie en Wat er brak vervangen door punten.
 
-**Goed**
-- Vier stappen, zestien paden, met de hand in vijf minuten te tellen; tabel van
-  de verdeling.
-- Eén mechanisme: variantie telt op, dus SD groeit met $\sqrt n$.
-- Tabel hand/code en een slotzin ("De lezer weet nu dat ...").
+## 4. Toy-voorbeeld: 9
 
-**Aanmerkingen**
-- "Op dezelfde manier is $\E|S_1| = 1$, $\E|S_2| = 1$ en $\E|S_3| = 1{,}50$."
-  Drie van de vier waarden worden niet met de hand voorgedaan.
-- "**Het recept.** Voor lange wandelingen nadert die verhouding
-  $\sqrt{2/\pi} \approx 0{,}798$" staat ná de stappen in plaats van ervoor, en
-  voegt een tweede grootheid (de écart) toe naast de variantie.
+*Goed*
+- Zestien paden, in vijf minuten met de hand te tellen; variantie en $\E|S_n|$ per stap.
+- Eén nog niet afgeleide formule ($\sqrt{2/\pi}$), als zodanig aangekondigd.
+- Tabel hand/code en één zin wat de lezer nu weet; het toy keert terug bij het
+  reflectieprincipe en bij de Donsker-limiet.
 
-**Beter uitleggen**
-- $\E|S_2| = (2 \cdot 1 + 0 \cdot 2 + 2 \cdot 1)/4 = 1$ in één regel voordoen.
+*Aanmerkingen*
+- De kolom `E|S_n| / sqrt(n)` staat in de code-tabel maar niet in de handkolommen; de
+  handwaarden staan alleen in Stap 4. Klein.
 
-## 5. Code en figuren — 7
+## 5. Code en figuren: 8
 
-**Goed**
-- `ar1_paths` toont de AR(1)-recursie als zichtbare lus.
-- De reflectie-cel telt letterlijk na wat de stelling zegt, met commentaar
-  ("raakt het pad ooit +2?").
-- Vóór de figuren staat een leeswijzer ("Let op de bundel, niet op één pad";
-  "Let op waar de lijnen de verticale lijn van Lo en MacKinlay kruisen").
+*Goed*
+- Elke cel heeft een zin ervoor en erna; vóór elke figuur staat waarop te letten ("Let op
+  de bundel, niet op één pad", "Let op waar de lijnen de verticale lijn van Lo en MacKinlay
+  kruisen").
+- `ar1_paths` toont de AR(1)-recursie als zichtbare lus; `bachelier_call` leest als
+  [](#eq-bachelier-call).
+- Het bijschrift bij de power-figuur trekt een les ("Wie beweert dat een markt efficiënt
+  is, zegt dus altijd: met de data die ik heb").
 
-**Aanmerkingen**
-- *Replicatie Kendall*: `def runs_test(r):  # TODO: naar hap.stats` —
-  werkaantekening in lecturecode.
-- *Simulatie*, figuurcel: `ax.axvline(23.4, ...)` — hardgecodeerd getal in plaats
-  van `T_lm / 52`.
-- *Replicatie*: de cel `comparison_lm` bouwt kolommen door lijsten aan elkaar te
-  plakken (`[0.13] + [1.08, 1.16, 1.22, 1.22] + [1.42, 1.28, 1.14]`); welke waarde
-  bij welke rij hoort, is moeilijk te zien.
-- Kolomnamen in het Engels of als code (`E|dev|`, `SD(dev)`, `nobs`) zonder
-  toelichting.
+*Aanmerkingen*
+- **Replicatie Regnault, tabel**: kolomnamen `"E|dev|"`, `"SD(dev)"`, `"nobs"`,
+  `"Regnault: E|dev|(1)*sqrt(h)"` zijn code-notatie in een presentatietabel.
+- **Replicatie Kendall, tabel**: `"rho_1"` ... `"rho_5"`, `"SE onder H0"`, `"nobs"`.
+- **Vergelijkingscel Lo-MacKinlay**: tupels `(origineel, hier, z origineel, z hier)` in
+  een dict met regels van meer dan 100 tekens; leest als een truc, niet als een tabel.
 
-**Beter uitleggen**
-- De originele waarden als woordenboek met rijnaam → waarde schrijven.
+*Voor een 9*
+- Regnault- en Kendall-tabel: kolomnamen in woorden ("gem. absolute afwijking",
+  "standaarddeviatie", "waarnemingen", "$\rho_1$").
+- Vergelijkingscel: de originelen als eigen kleine tabel of lijst per kolom.
 
-## 6. Replicatie en empirie — 7
+## 6. Replicatie en empirie: 8
 
-**Goed**
-- Twee volledige blokken met falsifieerbare eis ("binnen een factor twee,
-  waar een lineaire wet een factor acht zou geven"; "VR(2) daalt van het kleinste
-  naar het grootste kwintiel").
-- Tabellen origineel/hier, voor Regnault en voor Lo-MacKinlay.
-- Oordelen beginnen met **Geslaagd.** en verwijzen naar de verwachting.
+*Goed*
+- Beide admonitions zijn compleet en noemen een falsifieerbare eis (factor twee; de
+  rangorde over kwintielen).
+- Beide oordelen beginnen met "Geslaagd ... gedeeltelijk geslaagd" en koppelen aan de
+  verwachte afwijking.
+- Tabel origineel/hier bij beide; de naoorlogse en interbellum-steekproef geven context
+  zonder het oordeel te verwateren.
 
-**Aanmerkingen**
-- *Replicatie Regnault*: "zijn overeenstemming van een half procent halen we
-  niet. Voor French voorspelt de maandwaarde maal $\sqrt{12}$ een jaarwaarde die
-  ruim tien procent te laag is." Op Regnaults eigen toets is de replicatie dus
-  hooguit gedeeltelijk, terwijl het oordeel onvoorwaardelijk **Geslaagd** is.
-- *Replicatie Regnault*: "Zonder $h = 1$ zakt de Shiller-helling naar ongeveer
-  0,54" en "Tussen twaalf en zestig maanden is de Shiller-helling 0,475" — getallen
-  die in geen tabel staan.
-- *Replicatie Kendall/Lo-MacKinlay*: het blok verwacht "$z$-waarden rond de twee";
-  de uitkomst is "tussen 1,2 en 2,0". Het oordeel noemt dat "iets onder de hunne"
-  zonder het aan de verwachting te toetsen.
-- Kendalls 0,13 tegen onze 0,030 is een factor vier verschil; het blok voorspelde
-  over Kendall niets, en "Ook Kendalls orde van grootte houdt stand" is ruim.
+*Aanmerkingen*
+- **Replicatie Regnault, oordeel**: "De French-helling van 0,511 ... De Shiller-helling van
+  0,577 ... ($0{,}0529 \cdot \sqrt{12} \approx 0{,}183$ tegen $0{,}199$) ... $0{,}71$, bij
+  twaalf maanden $0{,}73$, tegen $0{,}80$". Acht getallen in één alinea.
+- **Replicatie Kendall**: "Onze eerste weekautocorrelatie is $0{,}030$, onder de ongeveer
+  $0{,}13$ ... $0{,}085$ bij een standaardfout van $0{,}029$ ... 0,7%" en in de VR-alinea
+  "$VR(2) = 0{,}950$ met $z = -1{,}2$". Getallen die in de tabellen staan, herhaald in
+  proza.
 
-**Beter uitleggen**
-- In het Regnault-oordeel onderscheiden: helling geslaagd, eigen
-  extrapolatietoets gedeeltelijk.
-- De verwachte afwijking voor Kendall in het blok zetten (sectorindices, dun
-  verhandeld → hoger).
+*Voor een 9*
+- Beide oordelen: naar de tabel verwijzen en hoogstens de getallen noemen die het oordeel
+  dragen (helling; rangorde).
+- Regnault: de verhouding $\E|\cdot|/\SD$ als kolom in de tabel in plaats van in proza.
 
-## 7. Oefeningen — 8
+## 7. Oefeningen: 9
 
-**Goed**
-- Instap is een variatie op de toy (scheve munt) met code die de zestien paden
-  herweegt.
-- Oefening 1 (VR van een AR(1)) en 2 (putprijs, impliciete Bachelier-volatiliteit)
-  zijn echte afleidingen; oefening 3 breidt de replicatie uit na 1985.
+*Goed*
+- Instap varieert het toy (scheve munt) en verbindt de uitkomst met een keuze in de
+  replicatie (gemiddelde aftrekken).
+- Oefening 1 is een afleiding (gesloten $VR(q)$ voor een AR(1)); oefening 3 breidt de
+  replicatie uit naar na 1986.
 - Elke uitwerking eindigt met "Wat dit leert".
 
-**Aanmerkingen**
-- *Oefening 1, uitwerking*: "De geschatte waarden liggen boven de theoretische,
-  en de $z$-waarde daalt met $q$." De vaste tekst beschrijft één willekeurige
-  trekking alsof het een regel is.
-- *Oefening 3, uitwerking*: "hier loopt een vraag voor het eerst in deze reeks
-  niet stuk op de data, maar op het ontbreken ervan" — de les gaat over de reeks,
-  niet over de oefening.
+*Aanmerkingen*
+- Geen die het cijfer drukken.
 
-**Beter uitleggen**
-- In oefening 1 zeggen dat het om één pad gaat en dat een ander zaad andere
-  getallen geeft.
+## De drie verbeteringen met het meeste effect
 
----
-
-## De drie verbeteringen met het meeste effect op het cijfer
-
-1. **Helderheid (7 → 8):** de sprong repliceerbaarheid → verwachting nul in één
-   zin, de écart-verhoudingen en de 46 centimes uitrekenen, de ruis van 0,06
-   herleiden, de juiste verwijzing voor de standaardfout van 2%, en de gebroken
-   zin in het replicatieblok herstellen. Effect op het eindcijfer ≈ +0,3.
-2. **Taal (6 → 7):** "aritmetische", "horizonnen", "vertraging", projectjargon
-   (barst/gat) eruit, en de krommen zinnen in *Overzicht* en oefening 3
-   herschrijven. Effect ≈ +0,15.
-3. **Opbouw (7 → 8):** reflectie en optieprijs expliciet als zijstap markeren of
-   aan de toetsen koppelen, een *Samengevat* aan het eind, en de breuk
-   "theorie van de ruis, geen theorie van de waarde" al in *Overzicht* of
-   *Intuïtie* aankondigen. Effect ≈ +0,2.
+1. **Helderheid (8 → 9)**: "wordt normaal verdeeld" in de intuïtie van het kernresultaat
+   beperken tot onafhankelijke stappen, de Regnault-redenering over $\E|\cdot|/\SD$
+   afmaken (met 0,70), en "afwijking" en "spreiding" gebruiken zoals Stap 3 ze
+   vastlegt. Eindcijfer +0,3.
+2. **Opbouw (8 → 9)**: het reflectieprincipe inkorten of een rol geven, en "Hoe het
+   getoetst wordt" met de conclusie openen. Eindcijfer +0,2.
+3. **Taal (8 → 9)**: "definieert het tijdvak" en "Vooral hier:" weg, puntkomma's naar
+   punten. Eindcijfer +0,15.
 
 ## Navertelling in vijf zinnen
 
 Regnault mat in 1863 dat de koersafwijking met de wortel van de tijd groeit, en
-Bachelier bewees in 1900 dat dat volgt uit een random walk, die in de limiet een
-Brownse beweging wordt. Uit dat model volgen ook de kans om een koersniveau te
-raken (twee keer de kans om erboven te eindigen) en een optieprijs die alleen van
-de spreiding afhangt, $0{,}4\,\sigma\sqrt\tau$ op het geld. De random walk is
-toetsbaar via autocorrelaties, runs en vooral de variance ratio, maar kleine
-afwijkingen vragen decennia data. Op Amerikaanse data klopt de $\sqrt t$-wet
-(helling 0,51), en de variance ratios van Lo en MacKinlay repliceren, met grotere
-afwijkingen bij kleine aandelen, die na 1985 verdwenen of van teken wisselden.
-Het model zegt niets over het niveau van een prijs, en daarom is een theorie van
-waarde nodig.
+Bachelier gaf daar in 1900 een model voor: de random walk, die in de limiet een Brownse
+beweging wordt. Daaruit volgen de kans om een niveau te raken en een optieprijs die
+evenredig is met $v\sqrt{\tau}$ en voor korte looptijden nauwelijks van Black-Scholes
+verschilt. De toets is de variance ratio, die kleine autocorrelaties bundelt maar, zoals
+de simulatie laat zien, tientallen jaren data nodig heeft. Op echte data houdt de
+$\sqrt{t}$-wet stand (helling 0,51) en zijn autocorrelaties klein; de variance ratios van
+Lo en MacKinlay boven één, sterker bij kleine ondernemingen, repliceren en zijn na 1985
+grotendeels verdwenen. Het model zegt niets over het niveau van de koers, en of de
+afwijkingen risico of vergissing zijn, beslissen de gratis data niet.
 
-Wijkt niet af van het Overzicht, behalve dat de laatste zin (geen theorie van het
-niveau) daar niet staat.
+Dit komt overeen met het Overzicht.
+
+## Feitelijke fouten
+
+Nagerekend met `uv run python` op `hap.data`, met dezelfde toevalsgenerator in dezelfde
+volgorde als de lecture. Kloppen: toy (Var 4; $\E|S_n|$ = 1; 1; 1,5; 1,5; verhoudingen
+1,000 / 0,707 / 0,866 / 0,750; $\sqrt{8/\pi} = 1{,}60$), reflectie (0,375 geteld en
+gespiegeld; 31% en 62%), optie (7,98; maand hooguit 0,027 verschil; jaar 110: −0,34 op
+3,96), $1/\sqrt{1200} = 0{,}029$, $VR(4) = 1{,}15$, LM-standaardfouten (0,029 / 0,054 /
+0,085 / 0,126), simulatie onder H0 (1,000; 0,0281; 0,0287; 4,3%), power (grootste afwijking
+bij vijf jaar 2,8 pp; $T^*$ 96 / 1537 / 9604), Regnault (2,73·√3 = 4,73, 2,73·√12 = 9,46;
+hellingen 0,511 en 0,577; French-kolom 0,037–0,042; jaar 11,5% te laag; 0,183 tegen
+0,199), autocorrelaties (week 0,030 op 5223 weken; maand 0,085), VR op LM-steekproef
+(1,066 / 1,150 / 1,219 / 1,211, $z$ 1,63 / 2,00 / 1,84 / 1,22), na 1986 (0,950, $z = -1{,}2$),
+interbellum (574 weken), kwintielen (1,205 → 1,016, monotoon ook bij $q$ = 4 en 8), Wat
+er brak (91 maanden; 4270 weken), oefening 1 (1,222; 1,4151; $z$ 4,51 en 3,29), oefening 3
+(1,143 → 1,017; $z$ 2,50; max $t$ 1,28; 280 en 487 maanden; 0,075).
+
+1. **Replicatie Regnault, oordeel**: "bij één maand is $\E|\cdot|/\SD$ gelijk aan
+   $0{,}71$". Nagerekend: $0{,}0373/0{,}0529 = 0{,}7048$, afgerond **0,70**. (Bij twaalf
+   maanden klopt 0,73.)
+2. **Het kernresultaat, *Waarom zou dit waar zijn?***: "zijn maandrendement wordt normaal
+   verdeeld, hoe scheef de dagrendementen ook zijn." Voor echte maandrendementen onjuist:
+   de extra kurtosis van het maandelijkse logrendement is 6,5 (L1, nagerekend op
+   `market_monthly`), omdat dagrendementen niet onafhankelijk zijn (clusterende
+   volatiliteit, die deze lecture zelf in de replicatie noemt).
+
+Niet nagegaan: Kendalls gemiddelde eerste weekautocorrelatie van "ongeveer 0,13" en de
+originelen uit Lo en MacKinlay tabel 1a en 2 (niet in de repository).
+
+## Controle 1
+
+Alleen de eigen punten nagekeken, op de huidige `lectures/01_02_bachelier.md`.
+`prose_stats`: 5.453 woorden, 0 puntkomma's, PASS. De `engquote`-telling (2) komt van
+kolomnamen tussen aanhalingstekens in code, niet van Engelse citaten.
+
+| crit. | punt | status | vindplaats nu |
+|---|---|---|---|
+| 1 | "maandrendement wordt normaal verdeeld" (feitelijke fout 2) | opgelost | Het kernresultaat: "Zijn die onafhankelijk, dan ... bij benadering normaal verdeeld. Clusterende volatiliteit vertraagt dat, zoals de replicatie laat zien." |
+| 1 | E\|·\|/SD 0,71 (feitelijke fout 1) en onafgemaakte redenering | opgelost | Replicatie Regnault, oordeel: "stijgt van 0,70 bij één maand naar 0,73 ... Regnault neemt die lage maandverhouding mee naar de jaarhorizon, waar ze hoger ligt. Daardoor valt zijn jaarwaarde te laag uit." |
+| 1/3 | "afwijking" en "spreiding" door elkaar | opgelost | Overzicht, Intuïtie en oefeningen gebruiken nu "spreiding" voor de standaarddeviatie en "gemiddelde absolute afwijking" voor E\|·\| |
+| 2 | reflectieprincipe is een zijtak | deels | het krijgt nu een rol ("het eerste resultaat dat de verdeling van het hele pad nodig heeft ... Daarom vroeg de stelling van Donsker meer"); stelling, bewijs en codecel staan er nog volledig |
+| 2 | "Hoe het getoetst wordt" opent met aankondiging | opgelost | "De hoofdtoets is de variance ratio. Ze bundelt veel kleine autocorrelaties en gebruikt alleen varianties" |
+| 3 | "definieert het tijdvak" | opgelost | "Zonder Bachelier was Regnaults regel een meting gebleven." |
+| 3 | "Vooral hier:" | opgelost | "De zwaarste breuk:" |
+| 3 | 15 puntkomma's | opgelost | 0 |
+| 5 | kolomnamen Regnault-tabel | deels | "waarnemingen", "standaarddeviatie", "gem. abs. afwijking" zijn beter; "Regnault: maand x sqrt(h)" en "gem. abs. afw. / sqrt(h)" blijven afgekort |
+| 5 | kolomnamen Kendall-tabel | opgelost | "waarnemingen", "standaardfout bij random walk", "ρ(1)" ... |
+| 5 | vergelijkingscel met tupels | opgelost | originelen als lijsten `original`, `original_z` per kolom |
+| 6 | getallen in Regnault-oordeel | deels | 0,183 tegen 0,199 is weg, $\E\|\cdot\|/\SD$ staat nu als kolom in de tabel; de hellingen en 0,70 / 0,73 / 0,80 staan nog in de tekst, maar dragen het oordeel |
+| 6 | getallen in Kendall- en VR-alinea's | opgelost | 0,030 en "$VR(2) = 0{,}950$ met $z = -1{,}2$" zijn weg; alleen 0,085 en Kendalls 0,13 blijven |
+
+Geen verslechteringen en geen nieuwe feitelijke fouten. De drie punten die deels zijn
+opgelost, gaan over details binnen een criterium dat verder in orde is. Ze drukken de
+deelcijfers niet onder 9. Zo is ook in L1 met een punt dat deels was opgelost omgegaan.
+
+### Deelcijfers na controle 1
+
+| nr | criterium | gewicht | was | nu |
+|---|---|---|---|---|
+| 1 | Helderheid van de uitleg | 30% | 8 | 9 |
+| 2 | Opbouw en rode draad | 20% | 8 | 9 |
+| 3 | Taal | 15% | 8 | 9 |
+| 4 | Toy-voorbeeld | 10% | 9 | 9 |
+| 5 | Code en figuren | 10% | 8 | 9 |
+| 6 | Replicatie en empirie | 10% | 8 | 9 |
+| 7 | Oefeningen | 5% | 9 | 9 |
+
+**Eindcijfer: 9,0** (was 8,2). Laagste deelcijfer 9. Open feitelijke fouten: 0 (beide opgelost).

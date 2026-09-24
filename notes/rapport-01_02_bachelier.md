@@ -1,187 +1,178 @@
-# Rapport L2 01_02_bachelier (taak 0, A, B; niet gecommit, niet gebouwd)
+STATUS 01_02_bachelier F6b words=5457 prose=PASS open=1 cijfer=8,3 min=8
 
-**1. prose_stats** (words sent_mean p90 gt40 para dash semicol motief u stopw calque engquote)
-- vóór: 6692 20.8 36 21 62 59 38 2 7 16 4 17. FAIL op 12 metrieken.
-- ná: 6722 14.6 23 0 39 0 9 0 0 1 0 0. `--check`: FAIL alleen `words=6722 (max 5500)`. `--where`: geen treffers.
-- Waarom words blijft: prose_stats telt dropdowns en uitwerkingen mee, dus verplaatsen haalt niets weg. Er kwamen ook ~600 verplichte woorden bij: routekaart, Samengevat, instap-oefening, zinnen rond elke cel, twee oordelen. Verder inkorten kan alleen door inhoud te schrappen.
+# Rapport L2 01_02_bachelier
 
-**2. Top-5 uit taak 0 en wat ermee gebeurde**
-1. Theorie te vol (§3.6/3.11): 7 subsecties, 4 stellingen met open bewijs, geen routekaart of Samengevat. Nu 5 `###` (Opzet → Kernresultaat → 2× Wat het voorspelt → Hoe getoetst). Alle bewijzen in dropdown, routekaart en Samengevat toegevoegd.
-2. Overzicht begon met geschiedenis, imports-cel stond erin, "motief 3" en "epistemische status" (§3.13/3.3). Nu vraag+antwoord, lijst van 5, één alinea geschiedenis, "theorie of feit". Imports staan bij het toy-voorbeeld.
-3. Zinnen en alinea's (§3.1): 21 zinnen >40 woorden, 59 streepjes, 38 puntkomma's. Opgelost (zie 1).
-4. Engelse citaten midden in zinnen (§3.4), 17 stuks: Working, Kendall, Lo-MacKinlay, Cowles, Osborne. Geparafraseerd. Bacheliers Franse zinnen staan als blokcitaat met Nederlandse inleiding.
-5. Replicatie (§3.5/3.8): getallenalinea's, tweede blok ~330 woorden, geen tabel origineel/hier en geen oordeel. Blokken zijn nu 201 en 175 woorden. Twee tabellen origineel/hier, elk met oordeel "Geslaagd". Ook opgelost: "u"-vorm (7) in Intuïtie.
+## F0
 
-**3. Verplaatsingen (niets geschrapt)**
-- Naar dropdown (`prf:proof`): Donsker-schets, bewijs reflectieprincipe, bewijs optieformule, bewijs VR-stelling.
-- Naar dropdown-note: diffusievergelijking plus de Kolmogorov-note ("vijf jaar vóór Einstein"); Bacheliers eigen notatie en toets; Cowles' cijfers (uit Wat er brak); Osborne (uit Wat er brak).
-- Uit de stellingen gehaald (H3): de Brownse limiet van de reflectie staat nu als tekst na de stelling; [](#eq-bachelier-atm) staat als tekst na de stelling, met hetzelfde label.
-- Naar een nieuwe cel in Theorie: de reflectietelling (0,375) uit het toy-voorbeeld. Het toy heeft nu één mechanisme.
-- Naar code-commentaar: datumdetails van Regnault, Kendall en Lo-MacKinlay (§3.8).
-- De subsectie Black-Scholes-vergelijking is opgegaan in de optieprijs-subsectie.
-- Vooruitverwijzingen teruggebracht tot 2 (Black-Scholes, factor zoo). De links naar efficiënte markten (Overzicht), voorspelbaarheid (replicatie) en Black-Scholes/factor zoo (uitwerkingen) zijn nu tekst zonder link.
-- Code: tabellen die met een comprehension werden gebouwd zijn nu lussen (Kendall, hellingen); `frequencies`-dict hergebruikt; het AR(1)-power-blok heeft benoemde tussenresultaten. Volgorde van `rng` ongewijzigd.
-- Nieuwe oefening `ex-bachelier-instap` (scheve munt). `ex-bachelier-1..3` behouden, elk eindigt met "Wat dit leert:". Geen label weg; geen andere lecture gebruikt `bachelier-`-labels.
+**prose_stats (vóór):** words 8092, sent_mean 15.3, p90 24, gt40 0, para 45, dash 0,
+semicol 13, motief 0, Lnum 0, deel 0, u 0, je 0, taboo 0, stopw 1, calque 0, engquote 3.
+`--check`: FAIL alleen op `words=8092 (max 5500)`. `--where`: geen treffers.
 
-**4. nb_outputs-diff (vóór → ná)**: alle getallen identiek en alle figuren byte-gelijk. Cellen zijn hernummerd door nieuwe cellen. Bedoelde verschillen:
-- cel 2 (toy): tabel met kolommen "met de hand" en "code" (zelfde waarden). De twee `print`-regels (0.3750) staan nu in de nieuwe cel 4 (reflectie, Series van 0.375).
-- cel 10: de hellingtabel (0.511/0.577) is opgegaan in een tabel origineel/hier, met Regnaults voorspeld/waargenomen-verhoudingen (0.998/0.995 tegenover French 0.965/0.885 en Shiller 0.834/0.705).
-- nieuwe cel 16: origineel/hier voor Kendall ρ₁ (0.13 vs 0.030), markt-VR(2..16) en de kwintielen. Alle "hier"-getallen komen uit bestaande uitvoer.
-- nieuwe cel 18: instap-oefening (0.80/3.84).
-- Taak A → B: diff leeg.
+**Vijf grootste problemen**
+1. Lengte: 8092 woorden, vier dropdown-notes (diffusie, Bacheliers notatie, Cowles, Osborne:
+   samen ~1.050) en een tweede toetsfamilie (runs) die geen kernvraag draagt (§11.11).
+2. *Wat er brak*: "pas na dertig jaar weekdata zichtbaar" volgt niet uit de eigen getallen
+   (feiten 18; H4, §11.11 Feiten).
+3. *Waar we zijn* / *Overzicht*: "veertig jaar", "spreiding" voor Regnaults écart, en de
+   verklaring in 1900 tegenover 1965 spreken elkaar tegen (feiten 1–3; H7).
+4. *Replicatie Kendall/Lo-MacKinlay* (~840 woorden): runs, drie steekproeven, kwintielen en
+   de gelijkgewogen index in lopende tekst, getallen in proza (§11.5), ongetoetste claims
+   (tekenwissel na 1985, feiten 17).
+5. *Bacheliers optieprijs*: de vergelijking met Black-Scholes (tekst, tabel, oefening 2)
+   neemt ~650 woorden stof over die [](#02-09-black-scholes) behandelt (§11.11 eis 1).
 
-**Execute-log (na B)**, laatste regels:
-```
-[jupytext] Reading lectures/01_02_bachelier.md in format md
-[jupytext] Executing notebook with kernel python3
-[jupytext] Warning: Notebook is not trusted
-[jupytext] Writing lectures/01_02_bachelier.ipynb (destination file replaced [use --update to preserve cell outputs and ids])
-```
-Geen warnings in de celuitvoer. Sync is foutloos. Tussenstand na A staat in `$TEMP/01_02_bachelier-na-A.txt`.
+**Eis 2 (grep op labels in `lectures/`):** buiten deze lecture wordt alleen het paginalabel
+`01-02-bachelier` aangehaald (02_06, 02_09, 08_39, 00_01, 01_03). Geen `eq-`, `thm-`, `fig-`,
+`ex-bachelier-*` elders. Inhoudelijk leunen 02_09 op Bacheliers optieformule en Regnaults wet,
+02_06 op autocorrelaties, variance ratios en $z_2$; die blijven.
 
-**5. Afvinklijst, wat niet voldoet**
-- words 6722 > 5500 (zie 1).
-- H11: de toy-getallen komen terug in de theorie (1,50 tegen √(8/π) = 1,60; 0,375), niet in de simulatie. Die is gekalibreerd op Lo en MacKinlay.
-- Simulatie: één vraag (hoeveel data), in twee stappen (niveau onder de nulhypothese, dan onderscheidend vermogen). Beide cellen bewust in de hoofdtekst gehouden, omdat het de rng-volgorde van de uitvoer bewaart en beide nodig zijn voor het antwoord.
-- Na een Donsker-figuur staat alleen het bijschrift, geen aparte zin.
-- Overige: ok.
+**Schraplijst (schraptoets §11.11)**
 
-**8. Open punten**
-- De lecture is nog te vol. Een natuurlijke splitsing: (a) Regnault en Bachelier: toy, Donsker, reflectie, diffusie, optieformule, replicatie van Regnault; (b) De random walk getoetst: autocorrelatie, runs, variance ratio, simulatie van het onderscheidend vermogen, replicatie van Kendall en Lo-MacKinlay. Het knippunt is "### Hoe het getoetst wordt". Beide helften zitten dan rond 3300 woorden.
-- `runs_test` blijft lokaal (`# TODO: naar hap.stats`).
-- Geen build gedraaid, dus MyST-rendering van `:::{note}` met `:class: dropdown` en geneste `{math}` is ongetest. Losse lijsten (lege regel tussen items) zijn gebruikt zodat prose_stats lijstitems als aparte zinnen telt.
-- Andere lectures en bestanden in `git status` zijn door parallelle agents gewijzigd, niet door mij.
+| kopje / passage | woorden | eis die ze niet haalt |
+|---|---|---|
+| note Diffusievergelijking | 320 | 1, 2, 3: niet nodig voor de vraag; label nergens aangehaald |
+| note Bacheliers eigen notatie en toets | 230 | 1, 2: historisch detail, geen kernstap |
+| BS-vergelijking na de optieformule (drie verschillen, BS-afleiding) → 1 alinea | 180 | 1: stof van 02_09 |
+| oefening 2 Bachelier tegen Black-Scholes + uitwerking | 246 | 1: stof van 02_09; oefening 2 wordt de AR(1)-afleiding |
+| note Cowles' telling | 190 | 1: één zin met citatie volstaat |
+| note Osborne | 120 | 1: 02_09 noemt Osborne zelf; één zin volstaat |
+| note Poincaré (Intuïtie) → één zin in Overzicht | 70 | 1 |
+| runs-test (theorie + replicatie + cel) | 300 | 1: VR en autocorrelatie dragen de toets; 02_06 citeert runs niet |
+| Working-alinea (Hoe getoetst) → één zin | 60 | 1 |
+| Shiller-hellingtabel zonder cel + uitleg | 100 | 1; bovendien niet herleidbaar (feiten 12) |
+| Lo-MacKinlay: getallen in proza, gelijkgewogen-alinea, dubbele oordeelzinnen | 150 | 1 |
+| inkorten Overzicht, Intuïtie, Theorie-zijpaden, oefeningen, simulatietekst | 450 | 1 (herhaling) |
+| **totaal geschrapt** | **~2.420** | |
 
-## Lezersronde (taak C)
+**Verwachte lengte:** 8092 − 2420 ≈ 5.670 na schrappen; taak B (taal) haalt daar naar
+verwachting nog 400–600 af, doel ≈ 5.100–5.300.
 
-**Per H-regel (opgelost/afgewezen):** H1 2/0 · H2 8/0 · H3 0/0 · H4 1/0 · H5 3/0 · H6 2/0 · H7 8/0 · H8 1/0 · H9 6/0 · H10 7/0 · H11 0/1 · H12 1/0. Totaal: 39 opgelost, 1 afgewezen. Daarnaast drie plekken waar de lezer het spoor kwijtraakte, alle drie opgelost.
-- **H1:** het waarom bij Donsker is nu een handeling: twintig dagrendementen optellen tot een maandrendement. Bij de reflectie gaat het nu om een verkooporder op niveau $a$ (hoe vaak wordt die uitgevoerd?).
-- **H2:** $\mu$ heeft een ordegrootte gekregen en de reden waarom hij er niet toe doet; $\mathcal F_t$, martingaalconditie, $\delta$, de Kolmogorov-vergelijkingen, factor zoo en $z^*$ (= $z_2$) worden nu uitgelegd. De standaardfout van 2% wordt nu uitgerekend ($20\%/\sqrt{100}$) en terugverwezen naar de setup-lecture.
-- **H4:** bij de runs-formule staat nu een getal: ongeveer 12 900 verwachte runs, SE ongeveer 80, dus duizend te weinig is 13 SE.
-- **H5:** er staat nu dat Donsker meer eist dan de nulhypothese (i.i.d. met verwachting nul, dus eerst $\mu$ aftrekken). De optieformule rust op één aanname, de martingaalconditie. Het woord "martingaalmaat" is vervangen.
-- **H6:** Samengevat zegt nu voor de raakkans wat een hoger niveau en een langere horizon doen, en voor $VR(q)$ wat een grotere $q$ doet.
-- **H7:** vaste namen vastgelegd: "gemiddelde absolute afwijking" (= écart/uitslag), "spreiding" (= SD), "op het geld", "koersverandering" (= log-rendement, behalve in de optieformule), "positieve autocorrelatie" (= tekens plakken), "onderscheidend vermogen" gedefinieerd. "Nulmodel" is nu "nulhypothese". Het raaktijdstip in het reflectiebewijs heet nu $\kappa$ in plaats van $\tau$.
-- **H8, H9, H10:** "Dat" is vervangen door het ding zelf. Bij de Opzet, de toy-tabel, twee figuren en twee oefentabellen staat de conclusie of een kijkaanwijzing nu vooraan. Voorbeelden toegevoegd bij martingaal, covariantie-stationair, barrièreoptie, termijnkoers, spread, convergentie van het hele pad en involutie.
-- **H12:** de nulhypothese van de toetsen en de Kendall-uitkomst verwijzen nu terug naar de derde voorspelling uit de intuïtie.
-- **H11 afgewezen:** de simulatie moet op Lo en MacKinlay gekalibreerd zijn (weekdata, $T=1216$). Vier muntstappen passen daar niet als kalibratie. Wel keert het toy-resultaat terug ("de variantie groeit lineair, dus $VR(2)=1$").
+**Oordeel:** schrappen volstaat. De kern (random walk → √t → Brownse beweging, raakkans,
+optieprijs, variance ratio, replicaties Regnault, Kendall, Lo-MacKinlay) blijft volledig;
+alleen randstof en een tweede toetsfamilie gaan eruit. Geen splitsvoorstel.
 
-**Navertel-afwijkingen**
-- **Overzicht.** De lezer begreep "theorie of feit" niet als vaste vraag van de reeks. Bedoeld was: de random walk is een feit dat op een verklaring wacht. De zin legt de vraag nu zelf uit ("is dit een theorie die getoetst wordt, of een feit dat op een verklaring wacht?").
-- **Hoe het getoetst wordt.** De lezer zag niet hoe de alinea met "de standaardfout van 2%" aansloot. Bedoeld was: gemiddelden zijn slecht meetbaar, varianties goed, en daarom werkt een toets op varianties. De alinea begint nu met die vraag en rekent de 2% uit.
-- **Wat er brak.** De lezer kon de zin "Of ze bestaan ..." niet navertellen. Bedoeld was: afwijkingen die pas na dertig jaar zichtbaar zijn, zijn economisch te klein om aan te verdienen. De zin zegt dat nu zo.
-- **Spoor kwijt, diffusie-note:** de note stond onder de raakkans. Ze staat nu achter het kernresultaat, met een openingszin ("dezelfde limiet, via de dichtheid"). Verplaatst, niet gewijzigd.
-- **Spoor kwijt, optiegrond:** de alinea over Black, Scholes en Merton vervangt de reden nu expliciet: de formule rust op de martingaalconditie, en replicatie geeft die conditie later een betere grond.
+## F1
 
-**Verificatie na de lezersronde**
-- `prose_stats --check`: words 7282, sent_mean 15, p90 24, gt40 0, para 42, dash 0, semicol 14, stopw 1, calque 0, engquote 3. Alleen FAIL op `words=7282 (max 5500)`: de uitleg die de lezer vroeg kost ~560 woorden. `--where`: geen treffers.
-- `jupytext --sync` en `HAP_OFFLINE=1 jupytext --execute` zijn foutloos. Laatste regel van het log: `[jupytext] Writing lectures/01_02_bachelier.ipynb (destination file replaced ...)`.
-- nb_outputs-diff tegen `$TEMP/01_02_bachelier-na-A.txt`: leeg.
+**Eindmeting.** words 5279, sent_mean 15.1, p90 24, gt40 0, para 39, dash 0, semicol 13, stopw 1,
+calque 0, engquote 1. `--check`: PASS. `--where`: geen treffers. Sync en `--execute` met
+HAP_OFFLINE=1 foutloos, geen warnings in de uitvoer.
 
-## Lezersronde 2
+**Geschrapt** (zie F0-lijst): note diffusievergelijking (nevenresultaat, label nergens aangehaald);
+note Bacheliers notatie en toets (historisch detail); BS-vergelijking ingekort tot één alinea
+(stof van 02_09); oefening 2 Bachelier tegen BS (idem); notes Cowles, Osborne, Poincaré (elk één
+zin in de tekst); runs-test in theorie en replicatie (tweede toetsfamilie, draagt de kern niet);
+Working-alinea (één zin); Shiller-hellingtabel (niet herleidbaar); warning-zin over factor zoo
+(vooruitverwijzing); print-cel limiet ex-1 (nu handberekening 1,1/0,9).
 
-**Per H-regel (opgelost/afgewezen):** H1 1/0 · H2 5/0 · H4 3/0 · H5 3/0 · H6 2/0 · H7 6/1 · H8 2/0 · H10 4/0 · H11 0/1 · H12 1/0. Totaal: 27 opgelost, 2 afgewezen. De drie plekken waar de lezer het spoor kwijtraakte, zijn alle drie opgelost.
+**nb_outputs-diff.** Alle aangehaalde getallen gelijk. Verschillen: cel 8 png 83900→83904 bytes
+(tekstpositie label via `lm_years * 1.05` i.p.v. vaste 24.5); celkoppen 9 en 12 (commentaar
+ingekort); runs-cel weg; print-cel ex-1 weg; ex-2 (impliciete σ, figuur) weg; celnummers
+verschoven. `brentq`-import vervallen.
 
-**H7, vaste namen die nu in de hele lecture gelden:**
-- "gemiddelde absolute afwijking" (= *écart*). "Uitslag" en "koersafwijking" komen niet meer voor, behalve in één figuurtitel; die blijft staan, omdat een nieuwe titel de figuuruitvoer verandert.
-- Bacheliers ±46 centimes heet nu *écart probable* (een mediaangrens).
-- "random walk" (Workings term *random-difference series* als aliasnaam).
-- "positieve/negatieve autocorrelatie". "Plakken", "volgen elkaar", "corrigeren elkaar", "trends zetten zich voort" en "terugkeer naar het gemiddelde" zijn weg.
-- $\rho_1 = \rho$ staat nu expliciet in de simulatie.
-- "op het geld" in Samengevat; $z_2$ overal, met $z^*$ als alias.
-- $\sigma$ krijgt een waarschuwing in de optie-subsectie (bedrag per wortel-tijd) en een koppeling aan de 5% bij Donsker.
+**Feitenpunten.** Verwerkt: 1 (37 jaar), 2 (1900 model, 1965 economische verklaring), 3 (gemiddelde
+absolute afwijking), 4 (1,41), 5 (stuifmeel weg, "zwevende deeltjes"), 6 (Cowles-Jones-zin weg),
+7 (runs weg), 8 (note weg), 9 (simulatie wijkt bij vijf jaar iets af, gezegd), 10 (185 jaar tegen
+155 jaar Shiller, 1868 maanden), 12 (tabel weg), 13 (aantal "22" weg), 14 ("486" weg), 16 (elf
+jaar), 17 (geen tekenwissel, z = −1,2), 18 (handberekening: kwintiel 1 ≈ 91 maanden ≈ 8 jaar,
+week-ρ₁ ≈ 4270 weken), 19 (CRSP betaald, niet afwezig), 20 (vier kleinste kwintielen),
+21 (Samengevat: discrete vorm plus "in de limiet exact twee"), 23 (Osborne-data weg).
+Afgewezen of open: 11 (9,45 staat nu als "volgens hem"; tegen de bron nagaan, code blijft 9,45);
+15 (bereik −0,013 tot 0,301 nu "in zijn tabel 3"; niet in de repo te controleren);
+22 (L3 zegt "Kendall dat weekkoersen geen patroon hebben"; fout zit in 01_03, niet in mijn bestanden).
 
-**Afgewezen**
-- H7 *coefficient d'instabilité*: dat is Bacheliers historische naam en staat alleen in de note over zijn eigen notatie, met de uitleg "de volatiliteit" erbij.
-- H11: zelfde reden als in ronde 1. De simulatie moet de steekproef van Lo en MacKinlay nabootsen; het principe uit het toy-voorbeeld keert terug.
+**STYLE §11.9, wat niet voldoet.** Elk getal herleidbaar: behalve 9,45 (punt 11) en Kendalls
+bereik (punt 15). Overige: ok. Vooruitverwijzingen buiten "Wat er daarna kwam": één (02-09).
 
-**Overige oplossingen**
-- **H1:** het waarom bij Donsker gaat nu over een belegger die langer vasthoudt.
-- **H2:** de routekaart gebruikt geen $W$ meer; AR(1) is uitgeschreven; Chicago = Fama, Yale = Shiller; CRSP wordt uitgelegd.
-- **H4:** de raakkans is uitgerekend (verkooporder 10 boven 100: eindigt erboven 31%, wordt geraakt 62%). De SE van $VR(q)$ staat er nu ook voor $q = 4, 8, 16$ (0,054; 0,085; 0,126). Voorbeeld $VR(4) = 1{,}15$ bij $\rho_1 = 0{,}1$.
-- **H5:** voor runs staat de aanname erbij (onafhankelijke tekens). De SE onder het alternatief is bij kleine $\rho$ gelijk. De martingaalconditie is de random walk met $\mu = 0$ in niveaus.
-- **H6:** er staat nu waarom $a$ en de horizon werken zoals ze werken, en wat de uitoefenprijs in beide richtingen doet (in/uit het geld).
-- **H8:** "Dit is de warmtevergelijking" verwijst nu naar de vergelijking zelf.
-- **H10:** voorbeelden toegevoegd bij eindig-dimensionale verdeling, operator, joint hypothesis en volatility smile.
-- **H12:** de intuïtie voorspelt nu de evenredigheid met de spreiding; de factor 0,4 laat ze expliciet aan de theorie.
+**Labels.** Verdwenen: `eq-bachelier-diffusie`, `ex-bachelier-2` (beide nergens in `lectures/`
+aangehaald). Alle overige labels blijven; niets verhuisd.
 
-**Spoor kwijt**
-1. De vraag "Waarom varianties en niet gemiddelden?" stond los. Ze is nu het tweede van twee benoemde redenen waarom de variance ratio de hoofdtoets is.
-2. Runs tegenover variance ratio: "krachtigste" is geschrapt. Bij de runs staat nu dat de runs-test scherper is dan de eerste autocorrelatie, en dat de variance ratio de hoofdtoets blijft voor afhankelijkheid over meerdere perioden.
-3. De helling in het toy-voorbeeld: de reden is nu dat een verhouding tussen twee horizons toevallig kan afwijken.
+**Open punten.**
+1. Feit 11: Regnaults gedrukte 9,45 (of 9,46) nagaan in Regnault 1863 §83–84.
+2. Feit 15: Kendall 1953 tabel 3, bereik en gemiddelde 0,13 nagaan.
+3. Feit 22: 01_03 r. 26–27 spreekt deze lecture tegen (orkestrator/naadcontrole).
+4. Kendall-periode 1928–1938 is ons venster, niet zeker het zijne (feit 14).
+5. Werkmap bevat ook wijzigingen in 00_01, 01_03, 01_04 en hun rapporten; die zijn niet van mij.
 
-**Navertel-afwijking, Hoe het getoetst wordt.** De lezer wist niet of "bundelen" of "varianties zijn goed meetbaar" de kernbewering was. Bedoeld waren beide. De sectie noemt ze nu als twee benoemde redenen in een lijst, na $VR(2)-1=\rho_1$.
+## F4
 
-**Verificatie na ronde 2**
-- `prose_stats --check`: words 7649, sent_mean 15.3, p90 24, gt40 0, para 43, dash 0, semicol 14, stopw 1, calque 0, engquote 3. Alleen FAIL op `words`. `--where`: geen treffers.
-- `jupytext --sync` en `HAP_OFFLINE=1 jupytext --execute` zijn foutloos.
-- nb_outputs-diff tegen `$TEMP/01_02_bachelier-na-A.txt`: leeg.
+**Meting.** words 5407, `--check` PASS. Sync en execute met HAP_OFFLINE=1 foutloos. Diff tegen
+voor: als F1, plus de rij "Kendall-periode 1928-1938", die nu "interbellum 1928-1938" heet. De
+Regnault-kolom komt uit de eigen rekensom 2,73·√k; de uitvoer blijft 0,998 en 0,995.
 
-## Naar een 9 (na beoordeling 7,0)
+**Fouten (4/4).** "na hun publicatie" wordt "na hun steekproef" (twee plekken); de z-waarden
+"tussen 1,2 en 2,0, het laagst bij q = 16"; het bijschrift zegt "lopen op tot q = 8"; bij de
+simulatie staat "bij vijf jaar tot drie procentpunt af".
+**Niet herleidbaar (5).** Regnault: "ongeveer 2,73 … geeft 4,73 en 9,46 [rekensom] tegen ongeveer
+4,74 en 9,50"; 9,45 is weg. Het codecommentaar 1825–1862 is weg. Kendall: "tabel 3", "negentien"
+en het bereik zijn weg; "ongeveer 0,13" blijft staan. Het venster heet nu "interbellum, ongeveer
+de tijd van Kendalls reeksen".
 
-**1. Helderheid**
-- Gedaan:
-  - de écart-verhoudingen staan nu als "de hele periode is 1,41 keer de helft";
-  - σ krijgt vooraf één overzicht van zijn drie betekenissen (Opzet), en de dubbele waarschuwing in de optie-subsectie is weg;
-  - de stap van repliceerbaarheid naar een verwachting van nul is uitgeschreven: de optieprijs hangt niet af van de verwachte koerswinst, dus kies nul;
-  - de 46 centimes zijn uitgerekend: $5\sqrt{2\pi} \approx 12{,}5$ per dag, $\cdot\sqrt{30} \approx 69$, $\cdot 0{,}6745 \approx 46$;
-  - de ruis van 0,06 staat nu als $2/\sqrt{1216}$;
-  - de verwijzing voor de standaardfout van 2% wijst nu naar `#00-01-rendementen`;
-  - de gebroken zin in het replicatieblok is hersteld;
-  - Kendalls 0,13 staat nu in de tekst, met waarover gemiddeld is;
-  - het mechanisme van de runs-test is uitgelegd: een correlatie rekent met kwadraten, een extreme dag weegt dus zwaar; de runs-test telt alleen tekens.
-- Niet gedaan: niets.
+**Lezerspunten 1–10.** 1: de Bachelier-volatiliteit heet nu v, het prijsniveau P_t, de
+vervaldag t+τ; σ, S_n en T hebben elk één betekenis. De raakkans staat in W, met de
+handberekening 1−Φ(0,5). 2: het Regnault-mechanisme met tabelgetallen (SD 0,183 tegen 0,199;
+E|·|/SD 0,71 en 0,73 tegen 0,80). 3: de standaardfout van 2% met de grootheid erbij. 4: de
+definitie van de Brownse beweging staat vóór de stelling. 5: E|Z| = 2φ(0) = √(2/π). 6: "geen
+risicoaversie" als gevolg van de martingaalconditie. 7: wat Regnault mat staat in het blok.
+8: de LM-index is waardegewogen. 9: de Kendall-alinea begint met de week. 10: 5223 weken
+volstaan net, en 1,205 staat in de tekst. Ook 11–13 en deels 14. Afgewezen: 15 (de middeling
+staat al in het blok). Betaald met een kortere routekaart, een kortere simulatie-opening en
+oefening 3(3).
+**Navertel-toets.** De afwijking zat in Replicatie (Regnault). De zin over de staatsobligatie is
+vervangen door de twee oorzaken met getallen uit de eerste tabel.
+**Open (1).** Feit 22 zit in 01_03 r. 26–27, buiten mijn bestanden.
 
-**2. Opbouw**
-- Gedaan:
-  - het Overzicht kondigt nu de breuk aan (theorie van de ruis, niet van de waarde);
-  - de routekaart noemt raakkans en optieprijs toepassingen, en zegt dat simulatie en replicatie alleen de kern toetsen;
-  - de optiesectie eindigt met waarom we nu naar toetsen overstappen (geen gratis optieprijzen);
-  - elke theorie-subsectie opent nu met haar conclusie in plaats van een vraag.
-- Niet gedaan: Samengevat blijft aan het eind van Theorie (STYLE §11.6, op aanwijzing). Een apart Samengevat met de replicatiegetallen aan het eind is om dezelfde reden niet toegevoegd.
+## F5-1
 
-**3. Taal**
-- Gedaan:
-  - "aritmetische", "horizonnen" en "vertragingen";
-  - barst/gat vervangen door gewone taal;
-  - "employé" is nu "beambte";
-  - *options à prime* (premieopties), *écart probable* (waarschijnlijke afwijking), en *joint hypothesis* als "het probleem van de gezamenlijke hypothese";
-  - de zinnen over het tijdvak in het Overzicht, de imports-zin en de zin in oefening 3 zijn herschreven;
-  - *écart* heet na de eerste vermelding overal "gemiddelde absolute afwijking".
-- Niet gedaan: de Engelse docstring "arithmetic Brownian motion" blijft; code en docstrings zijn Engels (STYLE §3).
+**Meting.** words 5453, 0 puntkomma's, `--check` PASS. Sync en execute met HAP_OFFLINE=1
+foutloos. Diff tegen voor: geen aangehaald getal veranderd. Nieuw zijn de handkolom
+E|S_n|/√n in het toy en de kolom "gem. abs. afw. / SD" in de Regnault-tabel (0,7048 en
+0,7340). Kolomnamen zijn nu Nederlands (Regnault, Kendall, vr_table).
 
-**4. Toy-voorbeeld**
-- Gedaan: $\E|S_2|$ en $\E|S_3|$ zijn met de hand voorgedaan; de Opzet kondigt de twee grootheden (variantie en gemiddelde absolute afwijking) vooraf aan.
-- Niet gedaan: niets.
+**Feitelijke fouten.** 1 gedaan: 0,70 in plaats van 0,71, nu uit de nieuwe tabelkolom.
+2 gedaan: "bij benadering normaal" geldt alleen bij onafhankelijke dagrendementen;
+clusterende volatiliteit vertraagt dat.
+**Helderheid.** Gedaan:
+- de Regnault-redenering loopt nu tot het eind: de verhouding stijgt van 0,70 naar 0,73, de
+  lage maandverhouding gaat mee naar de jaarhorizon, dus de jaarwaarde valt te laag uit;
+- "afwijking" betekent alleen nog E|·| en "spreiding" de standaarddeviatie, in Overzicht,
+  Intuïtie, toy, Kernresultaat, replicatieblok en instapoefening.
+**Opbouw.** Gedaan:
+- reflectie korter (waarom-alinea, barrièrezin weg) en met een rol: het eerste resultaat dat
+  de verdeling van het hele pad vraagt, en daarom meer dan de CLT;
+- "Hoe het getoetst wordt" opent met de conclusie.
+Afgewezen: de twee replicaties inkorten. STYLE §1 en §6 schrijven het replicatieblok voor,
+en de opdracht noemt Regnault, Kendall en Lo-MacKinlay als kern.
+**Taal.** Gedaan: "definieert het tijdvak" wordt "Zonder Bachelier was Regnaults regel een
+meting gebleven"; "Vooral hier:" is weg; alle 15 puntkomma's zijn weg.
+**Code.** Gedaan: Nederlandse kolomnamen in de Regnault- en Kendall-tabel; de
+vergelijkingscel bouwt nu vier benoemde lijsten in plaats van tupels.
+**Replicatie.** Gedaan: minder getallen in proza. Kendall 0,030, SE 0,029 en VR 0,950/z −1,2
+staan alleen nog in de tabel; Regnault 0,183/0,199 zijn weg, E|·|/SD staat als tabelkolom.
+**Toy.** Gedaan: handkolom voor E|S_n|/√n.
+**Open (1).** Feit 22, over 01_03 r. 26–27, valt buiten mijn bestanden.
+- F5-1 vervolg: `{cite}`Kendall1953`` in de zinnen over "ongeveer 0,13" en "1928–1938, ongeveer de tijd van Kendalls reeksen"; --check PASS, execute ok.
 
-**5. Code en figuren**
-- Gedaan:
-  - `comparison_lm` is nu een woordenboek met per rij (origineel, hier, z origineel, z hier), met dezelfde uitvoer;
-  - `axvline(round(T_lm / 52, 1))` vervangt 23.4; figuur byte-gelijk;
-  - de kolomnamen `E|dev|`, `SD(dev)` en `nobs` zijn in de tekst uitgelegd.
-- Niet gedaan:
-  - de kolommen zelf niet hernoemd, want dat verandert de tabeluitvoer en de figuurcode;
-  - `# TODO: naar hap.stats` blijft, want STYLE §5/§3.9 schrijft dat voor;
-  - de figuurtitel met "koersafwijking" blijft, want een andere titel verandert de figuur.
+## F6-1
 
-**6. Replicatie**
-- Gedaan:
-  - het Regnault-oordeel is gesplitst: geslaagd op de helling, gedeeltelijk op Regnaults eigen toets (0,885);
-  - de hellingen per deelbereik (0,577 / 0,54 / 0,475) staan in een tabel;
-  - de verwachting voor Kendall staat nu in het blok;
-  - het L-M-oordeel toetst de $z$-waarden expliciet aan "rond de twee": gedeeltelijk.
-- Niet gedaan: niets.
-
-**7. Oefeningen**
-- Gedaan: in oefening 1 staat nu "één gesimuleerd pad, een ander zaad geeft andere getallen"; de les van oefening 3 gaat nu over de oefening zelf.
-- Niet gedaan: niets.
-
-**Eigen herlezing met de rubriek**
-- Dubbele σ-waarschuwing verwijderd.
-- "Het is de random walk" is nu "Die aanname is".
-- De runs-uitleg staat nog maar één keer.
-- Overzicht en Wat er brak gebruiken dezelfde term: "theorie van de ruis".
-
-**Verificatie**
-- prose_stats `--check`: words 8092, sent_mean 15.3, p90 24, gt40 0, para 45, dash 0, semicol 13, stopw 1, calque 0, engquote 3. Alleen `words` faalt, en daarvoor gold geen grens meer. `--where`: geen treffers.
-- sync en `HAP_OFFLINE=1` execute zijn foutloos.
-- nb_outputs-diff tegen `$TEMP/01_02_bachelier-na-A.txt`: leeg.
+**Meting.** words 5460, `--check` PASS. Sync en execute met HAP_OFFLINE=1 foutloos, uitvoer gelijk aan F5.
+**Verbetering 1 (opbouw), gedaan.** Het bewijs van het reflectieprincipe is weggehaald; er staat
+nu een bewijsidee van drie zinnen. Daarmee verdwijnt ook κ. De routekaart noemt nu de variance
+ratio als doel, en zegt welke twee resultaten de replicatie toetst en welke niet.
+**Verbetering 2 (helderheid), gedaan.** De Opzet noemt nu de wissel van T tegenover 00_01
+(daar N waarnemingen, T jaren). De MAD/SD-uitleg bij Regnault opent met 0,70 / 0,73 tegen 0,80.
+**Verbetering 3 (replicatie), gedaan.** De verwachte afwijking in het Regnault-blok zegt nu dat
+zijn verhouding van bijna één niet te verwachten is. Het Lo-MacKinlay-oordeel luidt nu
+"gedeeltelijk geslaagd voor de z-waarden (1,2 tot 2,0, onder de verwachte twee)". Het tweede
+blok is ingekort.
+**Overig, gedaan.** "Hij" in het Overzicht wordt "Bachelier". De martingaalaanname heeft nu een
+regel met de BS-reden. De vergelijkingscel werkt met een helper `compare()` per benoemde rij.
+De Working-herhaling in "Hoe getoetst" is geschrapt; Working blijft geciteerd in het Overzicht.
+**Naadpunten.** 1 en 2: L2 klopt al met de setup (P_t in niveaus, overgang naar logs
+aangekondigd). Er staat nu één zin bij dat r in de setup het simpele rendement is en hier een
+logrendement. 3: R komt in L2 niet voor. 6: T-wissel genoemd (zie boven). 7: κ is weg.
+9: geen wijziging nodig. L2 noemt de random walk "een feit met een statistisch model, maar
+zonder economische verklaring", en dat spreekt de setup ("één model dat werd getoetst, het
+CAPM") niet tegen.
+**Afgewezen.** "Kendall en post-1985 in lopende tekst": elk staat al in een tabel, en de tekst
+noemt alleen de getallen die het oordeel dragen (STYLE §11.5).
+- F6-1 vervolg: ontbinding Regnault-kloof gecorrigeerd: ongeveer 2/3 door SD sneller dan √h (log 0,922 = −0,081), 1/3 door MAD/SD 0,70 → 0,73 (log = −0,041), samen log 0,885 = −0,122.
