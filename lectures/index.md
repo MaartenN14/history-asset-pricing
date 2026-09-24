@@ -37,7 +37,7 @@ puzzle, momentum, de factor zoo. Elke lecture bevat:
 - een klein voorbeeld dat met pen en papier na te rekenen is, en een simulatie die
   laat zien wat er in een steekproef van dat voorbeeld overblijft;
 - een replicatie van het kernresultaat van één of twee originele papers, op
-  gratis data (Kenneth French, Shiller, FRED, Goyal-Welch, GSW, Open Source Asset
+  gratis data (Kenneth French, Shiller, FRED, Goyal-Welch, GSW, He-Kelly-Manela, Open Source Asset
   Pricing, Yahoo Finance) of via simulatie waar geen data bestaat;
 - twee tot vier oefeningen, met uitwerkingen in opklapbare blokken.
 
