@@ -1,249 +1,313 @@
-# Beoordeling: 01_03_williams_ddm — Williams en het dividend discount model
+STATUS 01_03_williams_ddm F5c words=5446 prose=PASS open=0 cijfer=9,0 min=9
 
-Maatstaf: `plannen/rubriek-didactiek.md`. Lezer: eerstejaars PhD-student die
-de eerdere lectures heeft gelezen maar niet paraat heeft.
+# Beoordeling: 01_03_williams_ddm (F5a)
 
-## Eindcijfer: 7,2
+Gelezen als eerstejaars PhD-student die L1 en L2 heeft gelezen. Ter controle van de
+aansluiting: "Waar we zijn" en "Wat er brak" van 01_02_bachelier en 01_04_markowitz.
+De aansluiting klopt aan beide kanten: Bachelier sluit af met "een theorie van wat een
+prijs *hoort* te zijn", Markowitz opent met "Williams had geen theorie van $r$, en hij
+bekeek elk aandeel apart". Beide staan zo in deze lecture.
+
+`prose_stats`: 5.365 woorden (onder 5.500), gemiddelde zinslengte 14,8, één zin boven 40
+woorden, 7 puntkomma's, PASS.
+
+## Eindcijfer: 8,2
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 6 |
+| 1 | Helderheid van de uitleg | 30% | 8 |
 | 2 | Opbouw en rode draad | 20% | 8 |
-| 3 | Taal | 15% | 7 |
-| 4 | Toy-voorbeeld | 10% | 8 |
+| 3 | Taal | 15% | 8 |
+| 4 | Toy-voorbeeld | 10% | 9 |
 | 5 | Code en figuren | 10% | 8 |
-| 6 | Replicatie en empirie | 10% | 7 |
-| 7 | Oefeningen | 5% | 8 |
+| 6 | Replicatie en empirie | 10% | 8 |
+| 7 | Oefeningen | 5% | 9 |
 
-Gewogen: 0,3·6 + 0,2·8 + 0,15·7 + 0,1·8 + 0,1·8 + 0,1·7 + 0,05·8 = 7,15 → 7,2.
-Geen deelcijfer onder 5 op criterium 1 of 2, dus geen plafond.
+Gewogen: 0,3·8 + 0,2·8 + 0,15·8 + 0,1·9 + 0,1·8 + 0,1·8 + 0,05·9 = 8,15, afgerond 8,2.
 
----
+## 1. Helderheid van de uitleg: 8
 
-## 1. Helderheid van de uitleg — 6
+*Goed*
+- **Opzet en aannames / Van de definitie van rendement naar de contante waarde**: het
+  onderscheid tussen identiteit (neemt niets aan) en model (constante $r$) wordt
+  expliciet gemaakt en draagt de hele lecture. De wet van iteratieve verwachtingen krijgt
+  een regel uitleg ("wat we vandaag verwachten dat we morgen zullen verwachten").
+- **Het kernresultaat**: de rationele bel krijgt naam, definitie en twee uitgerekende
+  getallen (verdubbeling in 7,3 tegen 14,2 jaar). De notatiewissel ten opzichte van L2
+  (kleine letters zijn hier bedragen, geen logs) wordt benoemd.
+- **Replicatie**: "Wat betekent één log-punt? Een prijs-dividend-ratio van 54 in plaats
+  van 20" maakt een abstracte coëfficiënt concreet.
 
-**Goed**
-- *Wat het voorspelt: het Gordon-groeimodel*: de gevoeligheidstabel met vier
-  uitgerekende gevallen en de zin "Een fout van één procentpunt in $r$ of $g$ is
-  een fout van twintig procent in dat verschil".
-- *Het kernresultaat*: de rationele bel krijgt een getal ("Bij $r = 10\%$
-  verdubbelt de bel in ruim zeven jaar, terwijl een dividend dat met 5% groeit
-  daar veertien jaar over doet").
-- *Van de definitie van rendement naar de contante waarde*: de wet van iteratieve
-  verwachtingen wordt in één zin herhaald ("wat we vandaag verwachten dat we
-  morgen zullen verwachten, verwachten we vandaag al").
+*Aanmerkingen*
+- **Opzet en aannames**: "Voor Amerikaanse aandelen is hij reëel 7 tot 8% per jaar: de
+  simulatie meet 6,8% als gemiddeld logrendement, en dat is als gewoon gemiddelde
+  ongeveer 8,4%." Beide gemeten getallen vallen buiten het genoemde bereik (zie
+  Feitelijke fouten).
+- **Replicatie, warning**: "Een onverwachte koersstijging verhoogt namelijk tegelijk de
+  ratio en het rendement van dat jaar, zodat de fouten in regressor en rendement samen
+  bewegen." Samen bewegende fouten alleen geven geen bias; de tweede schakel (de
+  persistentie 0,89 wordt in een kleine steekproef te laag geschat, en die fout lekt via
+  de correlatie in de helling) ontbreekt. De lezer weet daarna niet waarom de helling
+  juist *te groot* is.
+- **Replicatie, na het oordeel**: "De rest, ongeveer $1 - 0{,}15 - 0{,}38 = 0{,}47$
+  log-punt, zit volgens de identiteit vooral in de prijs-dividend-ratio aan het eind van
+  de tien jaar ... In logs geldt die optelling bij benadering." De getoonde identiteit is
+  een som van breuken in niveaus; waarom de drie hellingen samen 1 moeten zijn, wordt
+  nergens gezegd.
+- **PVGO**: "Deze $b$ is een andere dan de bel $b_t$ hierboven, maar we volgen de gangbare
+  notatie." Het wordt gemeld, maar de lezer moet in dezelfde lecture twee betekenissen
+  van $b$ vasthouden.
 
-**Aanmerkingen**
-- *Replicatie*: "Eén log-punt hogere prijs-dividend-ratio gaat samen met
-  anderhalve tiende procentpunt extra groei per jaar." Een coëfficiënt van 0,015
-  op een jaargroei in decimalen is 1,5 procentpunt per jaar, niet 0,15. De
-  volgende zin ("Over tien jaar is dat samen nog geen 0,15 log-punt") en de
-  rendementszin ("bijna vier procentpunt per jaar") rekenen wel met de juiste
-  schaal. Een lezer die narekent, raakt hier het spoor kwijt.
-- *Opzet en aannames*: "Zoals overal in de reeks is $R$ bruto en $r$ netto".
-  [](#01-02-bachelier) schreef juist "*Vanaf hier zijn kleine letters logs*:
-  $p_t = \log P_t$", en gebruikte $r$ voor het logrendement. Hier zijn $p_t$ en
-  $d_t$ niveaus en is $r$ de discontovoet. De notatiewissel wordt niet benoemd.
-- *Simulatie*: "Die onzekerheid heet in deze reeks de standaardfout van 2%
-  ([](#01-02-bachelier) mat haar al)." Het resultaat werd afgeleid in
-  [](#00-01-rendementen).
-- *Simulatie*: $g$ en $r$ worden gekalibreerd op *log*-gemiddelden (1,61% en
-  6,82%) en in de Gordon-formule gezet, die simpele verwachte groei en rendement
-  vraagt. Na [](#00-01-rendementen) weet de lezer dat dat een halve variantie
-  scheelt (bij rendement ongeveer 1,6 procentpunt); de lecture zegt er niets over.
-- *Het kernresultaat*, warning: "de decompositie van Campbell en Shiller verderop
-  in deze lecture rusten er allebei op." De decompositie komt niet in deze
-  lecture; *Hoe het getoetst wordt* verwijst haar naar [](#04-20-voorspelbaarheid).
-- *Toy-voorbeeld*: "Bij deze discontovoet en groeivoet ligt het zwaartepunt van een
-  aandelenwaardering twintig tot dertig jaar in de toekomst." Getal zonder
-  berekening.
-- *Simulatie*: "Een analist met een gunstige steekproef zit niet 25% maar 100% te
-  hoog." Waar 25% vandaan komt, staat nergens.
-- *PVGO*: "Wat rekenwerk geeft $\mathrm{PVGO} = \dots$" — de tussenstap ontbreekt.
-- *Hoe het getoetst wordt*: "Blijkt de dividendgroei onvoorspelbaar, dan moet
-  volgens de boekhoudkundige identiteit het *rendement* voorspelbaar zijn." De
-  kernstap van de lecture rust op een identiteit in gerealiseerde rendementen; de
-  zin die dat naar verwachtingen vertaalt, ontbreekt.
+*Beter uitleggen*
+- Waarom de hellingen optellen tot één: één zin dat de log-versie van de identiteit
+  zegt "log PD vandaag ≈ som dividendgroei − som rendementen + log PD over tien jaar",
+  en dat regressie van elk van die termen op log PD dus hellingen geeft die samen 1 zijn.
+- Stambaugh-bias: de ontbrekende schakel in één zin, met richting: $\hat\rho$ is naar
+  beneden vertekend, de fouten correleren positief, dus de rendementshelling wordt
+  negatiever.
 
-**Beter uitleggen**
-- De dividendcoëfficiënt als "1,5 procentpunt per jaar" lezen.
-- Eén zin bij de *Opzet* die de notatie ten opzichte van [](#01-02-bachelier)
-  vastlegt (hier: kleine letters zijn niveaus, $r$ is de discontovoet).
-- Eén zin bij de kalibratie dat log-gemiddelden de ware $r - g$ onderschatten,
-  of kalibreren op rekenkundige gemiddelden.
-- Het zwaartepunt: de gewogen gemiddelde looptijd $(1+r)/(r-g) = 22$ jaar
-  uitrekenen.
-- Waar 25% vandaan komt: het spiegelbeeld van −33% aan de onderkant, of die zin
-  vervangen door de percentielen (13 en 40 rond 19,5).
+*Voor een 9*
+- Opzet en aannames: het bereik "7 tot 8%" gelijktrekken met de gemeten 6,8% (log) en
+  8,4% (gewoon gemiddelde), of één van beide als het bedoelde getal noemen.
+- Replicatie, warning: de schakel "te lage geschatte persistentie → vertekende helling"
+  toevoegen.
+- Replicatie, alinea "Wat betekent één log-punt?": één zin die zegt waarom 0,15 + 0,38 +
+  rest = 1.
 
-## 2. Opbouw en rode draad — 8
+## 2. Opbouw en rode draad: 8
 
-**Goed**
-- De voorspelling uit *Intuïtie* ("Een hoge prijs-dividend-ratio ... moet dan
-  gevolgd worden door snel stijgende dividenden") wordt in de theorie afgeleid en
-  in de replicatie getoetst en verworpen. Voorspelling, theorie en toets vormen
-  één lijn.
-- Dezelfde getallen lopen door: de toy ($r = 10\%$, $g = 5\%$) komt terug in de
-  gevoeligheidstabel, en de simulatie merkt op dat haar $r - g = 5{,}2$ "bijna de
-  5 procentpunt van het toy-voorbeeld" is.
-- Het onderscheid boekhoudkundige identiteit / model van Williams wordt in het
-  *Overzicht* aangekondigd, in de theorie gemaakt en in *Wat er brak* gebruikt.
+*Goed*
+- **Overzicht**: vraag ("Wat is een aandeel waard?") en antwoord ("niet de verwachte
+  dividenden maar de discontovoet beweegt") staan in de eerste vier zinnen.
+- **Intuïtie → Theorie → Replicatie**: de intuïtie doet een voorspelling (hoge ratio →
+  snelle dividendgroei), de theorie leidt haar af in "Hoe het getoetst wordt", de
+  replicatie toetst en verwerpt haar. De rode draad is volledig gesloten.
+- **Dezelfde getallen**: toy ($r = 10\%$, $g = 5\%$), gevoeligheidstabel (de eindwaarde van
+  het toy als zelfstandig aandeel, 21,00), PVGO ($r = 10\%$, $g = 5\%$) en simulatie
+  ($r - g = 5{,}2$, "bijna de 5 procentpunt van het toy-voorbeeld").
 
-**Aanmerkingen**
-- Het *Samengevat*-blok staat aan het eind van *Theorie*, niet aan het eind van
-  de lecture.
-- *PVGO*: "Deze subsectie is een zijstap ... Simulatie en replicatie gebruiken
-  haar niet." Eerlijk gemarkeerd, maar een zijstap midden in de theorie.
-- De simulatie (onzekerheid in $g$) en de replicatie (variatie in $r$) beantwoorden
-  verschillende vragen; de overgang tussen de twee wordt niet gemaakt.
-- *Hoe het getoetst wordt*: de alinea over Campbell en Shiller introduceert $\rho
-  \approx 0{,}96$ en een variantiedecompositie die de lecture daarna niet
-  gebruikt.
-- De Gordon- en transversaliteitssecties openen met "*Waarom zou dit waar zijn?*"
-  in plaats van met hun conclusie.
+*Aanmerkingen*
+- **Simulatie**: de conclusie (een waardering uit geschatte $g$ zit tot een factor twee
+  naast) wordt nergens meer gebruikt. "Wie vindt dat de prijs-dividend-ratio niet bij de
+  dividenden past, moet eerst weten hoeveel ruis er al zit" belooft een koppeling met de
+  replicatie, maar Replicatie en "Wat er brak" komen er niet op terug.
+- **Hoe het getoetst wordt**: begint met een vraag, "Waar in het model zit iets wat de data
+  kunnen tegenspreken?", niet met de conclusie van de subsectie.
+- **Replicatie, slot**: na figuur en oordeel volgt nog een CAPE-regressie met eigen
+  getallen. Het slot van de replicatie is daardoor een uitbreiding, niet het oordeel.
+- Lengte 5.365 woorden: onder de grens, maar er is weinig ruimte.
 
-**Beter uitleggen**
-- Eén zin na de simulatie die zegt dat de replicatie de andere onbekende, $r$,
-  bekijkt.
+*Beter uitleggen*
+- De lezer krijgt niet mee waarom de simulatie in deze lecture staat en niet in een
+  lecture over schatten; één zin in de replicatie of in "Wat er brak" die de breedte van
+  12,5–40,8 terugkoppelt aan het lezen van de prijs-dividend-ratio volstaat.
 
-## 3. Taal — 7
+*Voor een 9*
+- Simulatie → Replicatie/Wat er brak: de simulatieconclusie één keer terug laten komen,
+  of de brugzin "Voor het hoofdargument doet dat ertoe" waarmaken.
+- Hoe het getoetst wordt: de subsectie openen met haar conclusie (bij constante $r$ moet
+  een hoge ratio door snelle dividendgroei gevolgd worden).
+- Replicatie: de CAPE-uitbreiding korter of vóór het oordeel, zodat de sectie op het
+  oordeel eindigt.
 
-**Goed**
-- Eén naam per begrip, expliciet vastgelegd: "we noemen hem verder alleen de
-  discontovoet"; "boekhoudkundige identiteit" en "model van Williams" worden
-  consequent gescheiden.
-- Sterke korte zinnen: "Waarderen met dit model is delen door een klein getal dat
-  niemand kent."
-- Engelse termen krijgen een Nederlandse glossering (*rational bubble*,
-  *retention ratio*, PVGO, CAPE).
+## 3. Taal: 8
 
-**Aanmerkingen**
-- *Waar we zijn*: "Bachelier, Cowles (adviseurs verslaan de markt niet) en Kendall
-  (weekkoersen zonder patroon) wisten dat de koers van morgen niet uit die van
-  vandaag volgt, maar niet waarom de koers van vandaag is wat hij is." Stapelzin
-  met twee tussenzinnen.
-- *Waar we zijn*: "De barst die het tijdvak achterliet, is dus een gat" en
-  *Intuïtie*: "Williams zag het gat en liep eromheen." Projectjargon (barst/gat).
-- *PVGO*: "Wat rekenwerk geeft" — calque van "some algebra gives".
-- *Replicatie*: "Eén log-punt hogere prijs-dividend-ratio gaat samen met
-  anderhalve tiende procentpunt extra groei per jaar." Ook los van de rekenfout
-  een moeilijke zin.
-- *Replicatie*: "Neem dat verschil niet te serieus." Spreektaal.
+*Goed*
+- Korte zinnen (gemiddeld 14,8 woorden), geen u/je, geen calques gevonden door de tool.
+- **Intuïtie**: "Een aandeel is een stuk papier. Het geeft geen nut, het gaat niet stuk,
+  en niemand kan erin wonen." Natuurlijk, beeldend Nederlands.
+- "discontovoet" wordt consequent gebruikt; de gelijkstelling met verwacht rendement wordt
+  eenmaal gemaakt en daarna niet meer gewisseld ("We noemen hem verder alleen de
+  discontovoet").
 
-**Beter uitleggen**
-- De barst/gat-metafoor vervangen door wat bedoeld wordt ("een theorie van
-  koersveranderingen, geen theorie van het koersniveau").
+*Aanmerkingen*
+- **Simulatie**: "Die rij kiest $r$." Te gecomprimeerd; "die rij" verwijst naar een
+  tabelrij twee zinnen terug.
+- **Overzicht**: "Het werk definieert het tijdvak omdat een prijs voor het eerst uit een
+  model volgt en niet uit een gewoonte." Projecttaal ("definieert het tijdvak").
+- **Hoe het getoetst wordt**: "In woorden: een hoge prijs-dividend-ratio vandaag wordt,
+  langs het pad dat werkelijk komt, gevolgd door snelle dividendgroei (in de tellers),
+  door lage rendementen (in de noemers), of door een ratio die over $K$ jaar nog steeds
+  hoog is." Stapelzin met twee tussenvoegingen, de langste van de lecture.
+- **PVGO**: $b$ voor twee begrippen (zie criterium 1).
 
-## 4. Toy-voorbeeld — 8
+*Beter uitleggen*
+- Geen inhoudelijk gat; het gaat om drie zinnen die de lezer twee keer moet lezen.
 
-**Goed**
-- Met de hand na te rekenen in vijf minuten, met een slim gekozen groei gelijk
-  aan de discontovoet ("elke term gelijk aan één").
-- Eén mechanisme (verdisconteren met eindwaarde) en precies één nog niet afgeleide
-  formule ($d/(r-g)$), expliciet als recept aangekondigd.
-- Tabel hand/code met negen regels.
+*Voor een 9*
+- Simulatie: "Die rij kiest $r$" uitschrijven (welk getal, waarvoor).
+- Overzicht: "definieert het tijdvak" vervangen door wat er gebeurt.
+- Hoe het getoetst wordt: de stapelzin in twee of drie zinnen splitsen.
 
-**Aanmerkingen**
-- De slotzin is een zin over de code ("De twee kolommen zijn gelijk, dus de code
-  doet wat de handberekening doet"), niet over wat de lezer nu weet. De les
-  (87,5% zit na jaar 3) staat er wel, maar zonder "wat de lezer nu weet".
-- De toy eindigt met een onbewezen getal ("twintig tot dertig jaar", zie criterium 1).
+## 4. Toy-voorbeeld: 9
 
-**Beter uitleggen**
-- Eén zin: "Wie dit narekent, weet nu dat de prijs vooral uit de eindwaarde komt,
-  en dat die van $r - g$ afhangt."
+*Goed*
+- In vijf minuten na te rekenen: de keuze groei = discontovoet in de eerste fase maakt elke
+  term 1,00, en $1{,}331 \times 21 = 27{,}951$ is exact.
+- Precies één nog niet afgeleide formule, $d/(r-g)$, en die wordt als zodanig aangekondigd.
+- Tabel hand/code en een zin wat de lezer nu weet (87,5% van de prijs komt uit de
+  eindwaarde; delen door een klein getal).
 
-## 5. Code en figuren — 8
+*Aanmerkingen*
+- Geen die het cijfer drukken. De PD van 24 uit Stap 6 wordt later niet meer gebruikt.
 
-**Goed**
-- De toy-cel leest als de wiskunde, met commentaar per regel (`# d_4`,
-  `# eindwaarde op t = 3 (het recept)`).
-- Het Gordon-rooster is een zichtbare dubbele lus.
-- Vóór de figuren staat een leeswijzer ("Let links op de lange staart naar rechts,
-  en rechts op hoe steil de hyperbool wordt"; "Let op de helling in het rechter
-  paneel"), erna een bijschrift en een zin.
+*Beter uitleggen*
+- Niets nodig.
 
-**Aanmerkingen**
-- *Oefening 1*: `kruispunt = next(t for t in range(200) if ...)` — compacte truc.
-- *Replicatie*, figuurcel: `b, a = np.polyfit(...)` overschrijft de $b$ uit de
-  PVGO-sectie (en in de tekst is $b$ al tweemaal bezet).
-- *Simulatie*: de figuurcel trekt nieuwe steekproeven in plaats van de $T = 50$
-  uit de tabel te hergebruiken; de histogram hoort dus bij andere getallen dan de
-  tabel erboven.
-- Variabelenamen wisselen tussen Nederlands en Engels (`kalibratie`,
-  `resultaten`, `kolom` naast `rows`, `growth`, `finite`).
+## 5. Code en figuren: 8
 
-**Beter uitleggen**
-- De `next(...)`-regel als gewone lus met `break` schrijven.
+*Goed*
+- Elke cel heeft een zin ervoor en erna; de hoofdtekstcellen lezen als de wiskunde
+  (`dividends`, `discounted`, `terminal`, `terminal_pv`).
+- **Simulatie**: vóór de figuur staat waarop te letten ("links op de lange staart naar
+  rechts, en rechts op hoe steil de hyperbool wordt"), de figuur hergebruikt dezelfde
+  20 000 steekproeven als de tabel.
+- **Replicatie**: de cel met de drie kolommen "Williams / verwacht / hier" maakt het
+  oordeel controleerbaar.
 
-## 6. Replicatie en empirie — 7
+*Aanmerkingen*
+- **Replicatie, vergelijkingscel**: `"rond 0.10"` in een Nederlandse presentatietabel met
+  decimale punt, terwijl de tekst "rond tien procent" en elders komma's gebruikt.
+- **Simulatie, tabellen**: kolomnamen `"SE van g-dak"`, `"PD 5e pct"`, `"std.dev."`,
+  `"aandeel g-dak > r"` zijn afkortingen die de lezer moet ontcijferen.
+- **Simulatie, figuur rechts**: drie hyperbolen voor $r$ = 6%, 6,82% en 8%, maar de tekst
+  vóór de figuur zegt niet waarom drie waarden van $r$ en wat hun verschil laat zien.
 
-**Goed**
-- Blok met bron, wat, data, verschil en verwachte afwijking, onder 250 woorden,
-  inclusief een verwachte $R^2$ ("rond tien procent") die de uitkomst (0,12) haalt.
-- Tabel "onder constante $r$ (Williams)" / "hier".
-- Eerlijke waarschuwing over overlap en Stambaugh-bias met een getal
-  ("ongeveer veertien onafhankelijke stukken data").
+*Beter uitleggen*
+- Bij de rechterfiguur: één zin dat de extra krommen tonen hoe de asymptoot meeschuift
+  met $r$ (en dus dat een onzekere $r$ hetzelfde doet als een onzekere $g$).
 
-**Aanmerkingen**
-- "**Niet geslaagd** voor Williams' lezing, en wel zoals het replicatieblok
-  verwachtte". Het oordeel gaat over het model, niet over de replicatie; de
-  lezer weet niet of de replicatie gelukt is. Het blok zelf formuleert geen
-  verwachting maar een beslisregel ("Het teken beslist ... Draait dat om, dan
-  ...").
-- *Replicatie*: de rekenfout "anderhalve tiende procentpunt" (zie criterium 1)
-  zit in de interpretatie van het hoofdresultaat.
-- *CAPE*: "de coëfficiënt is $-0{,}059$ met een $t$-waarde van $-4{,}5$ en een
-  $R^2$ van 0,24" — herhaalt de tabel in proza; "De steekproef begint pas in
-  1881" staat niet in de tabel.
+*Voor een 9*
+- Replicatie, vergelijkingscel: "rond 0,10" of "rond 10%".
+- Simulatie: kolomnamen voluit ("standaardfout van $\hat g$", "5e percentiel", ...).
+- Simulatie, zin vóór de figuur: zeggen waarom drie waarden van $r$.
 
-**Beter uitleggen**
-- Het oordeel splitsen: "Geslaagd als toets: de uitkomst valt zoals verwacht.
-  Williams' constante $r$ is verworpen."
+## 6. Replicatie en empirie: 8
 
-## 7. Oefeningen — 8
+*Goed*
+- Admonition compleet (bron, wat, data, verschil, verwachte afwijking) en ruim onder 250
+  woorden; eerlijk dat het boek geen tijdreekstoets bevat.
+- Oordeel begint met "**Geslaagd.**" en koppelt elk getal aan de verwachting.
+- De warning over overlap (≈14 onafhankelijke perioden) en persistentie is terecht en
+  concreet.
 
-**Goed**
-- Instap is een variatie op de toy (4% in plaats van 5%), met de les in één zin.
-- Oefening 1 (bel) en 2 (PVGO, optimale $b$) vragen afleidingen; oefening 3
-  breidt de replicatie uit (naoorlogs, vijf jaar).
+*Aanmerkingen*
+- **Oordeel**: "de dividendcoëfficiënt (0,015, $t = 1{,}63$, $R^2$ 0,05) is niet
+  significant, de rendementscoëfficiënt ($-0{,}038$, $t = -2{,}21$) is negatief en
+  significant, en de $R^2$ van 0,12 ligt rond tien procent." Zes getallen in lopende tekst
+  die al in de tabel erboven staan.
+- **CAPE-alinea**: "de helling is $-0{,}059$ met $t = -4{,}52$, en de $R^2$ van 0,24" herhaalt
+  de tabel in proza.
+- **Wat er brak**: dezelfde getallen een derde keer ("$R^2 \approx 5\%$, $t = 1{,}63$ ...
+  $R^2 \approx 12\%$ ... $t = -2{,}21$").
+
+*Beter uitleggen*
+- Niets inhoudelijks; het gaat om waar de getallen staan.
+
+*Voor een 9*
+- Oordeel en CAPE-alinea: naar de tabel verwijzen in plaats van de getallen te herhalen;
+  in "Wat er brak" hoogstens één getal per kanaal.
+
+## 7. Oefeningen: 9
+
+*Goed*
+- Instap is een variatie op het toy (4% in plaats van 5%), met hand- en codecontrole.
+- Oefening 1 bevat een afleiding (de bel lost dezelfde vergelijking op), oefening 3 is een
+  uitbreiding van de replicatie (naoorlogs, vijf jaar).
 - Elke uitwerking eindigt met "Wat dit leert".
 
-**Aanmerkingen**
-- *Instap, uitwerking*: "Terugrekenen met $1{,}331$ geeft $1{,}04/0{,}06 =
-  17{,}3333$." De vereenvoudiging ($d_4/1{,}331 = 1{,}04$) wordt niet uitgelegd.
-- *Oefening 2, uitwerking*: bij ROE = 9% "wijst het raster een willekeurig punt als
-  optimum aan" — de tabel toont dan een zinloos getal.
+*Aanmerkingen*
+- **Instap, uitwerking (2)**: "de eindwaarde is omgekeerd evenredig met dat verschil" klopt
+  niet helemaal, want ook $d_4$ daalt (1,04 in plaats van 1,05); de eindwaarde daalt 17,5%,
+  niet de 16,7% die omgekeerde evenredigheid geeft. Klein.
 
-**Beter uitleggen**
-- In de instap één zin: "$1{,}331 \times 1{,}04 / 1{,}331 = 1{,}04$".
+## De drie verbeteringen met het meeste effect
 
----
-
-## De drie verbeteringen met het meeste effect op het cijfer
-
-1. **Helderheid (6 → 8):** de rekenfout "anderhalve tiende procentpunt"
-   herstellen, de notatie tegenover [](#01-02-bachelier) vastleggen, de juiste
-   verwijzing voor de standaardfout van 2%, "verderop in deze lecture" schrappen,
-   de log/simpel-kalibratie benoemen, en "twintig tot dertig jaar" en "25%"
-   uitrekenen. Effect op het eindcijfer ≈ +0,6.
-2. **Taal (7 → 8):** barst/gat-jargon, "Wat rekenwerk geeft" en de stapelzin in
-   *Waar we zijn* vervangen. Effect ≈ +0,15.
-3. **Replicatie (7 → 8):** het oordeel over de replicatie scheiden van het oordeel
-   over het model, en de verwachte afwijking als verwachting formuleren.
-   Effect ≈ +0,1.
+1. **Helderheid (8 → 9)**: het bereik "7 tot 8%" in Opzet en aannames rechtzetten, de
+   Stambaugh-schakel (te laag geschatte persistentie) in de warning toevoegen, en in één
+   zin uitleggen waarom 0,15 + 0,38 + 0,47 = 1. Eindcijfer +0,3.
+2. **Opbouw (8 → 9)**: de simulatieconclusie terug laten komen in replicatie of "Wat er
+   brak", "Hoe het getoetst wordt" met de conclusie openen, en de replicatie op het oordeel
+   laten eindigen (CAPE korter of eerder). Eindcijfer +0,2.
+3. **Taal (8 → 9)**: "Die rij kiest $r$", "definieert het tijdvak" en de stapelzin in "Hoe het
+   getoetst wordt" herschrijven. Eindcijfer +0,15.
 
 ## Navertelling in vijf zinnen
 
-Williams stelde in 1938 dat een aandeel de contante waarde is van alle verwachte
-dividenden, wat volgt uit de definitie van rendement plus een constante
-discontovoet en de eis dat er geen bel in de prijs zit. Gordon en Shapiro maakten
-daarvan $p = d_1/(r-g)$, een formule die uiterst gevoelig is voor het kleine
-verschil $r - g$, zodat een geschatte groeivoet de waardering een factor twee tot
-drie laat zwerven. Onder een constante discontovoet moet een hoge
-prijs-dividend-ratio worden gevolgd door snelle dividendgroei. Op Shillers data
-sinds 1871 voorspelt de prijs-dividend-ratio echter vooral lage rendementen en
-nauwelijks dividendgroei, dus de discontovoet is geen constante. Of die bewegende
-discontovoet risico of vergissing is, laat de lecture open.
+Uit de definitie van rendement volgt een identiteit: de prijs is de verdisconteerde som van
+dividenden plus een eindwaarde, en die kan niet fout zijn. Williams voegde een constante
+discontovoet toe; met de transversaliteitsvoorwaarde (geen bel) is de prijs dan de contante
+waarde van alle verwachte dividenden, en bij constante groei het Gordon-model
+$\E_t[d_{t+1}]/(r-g)$. Omdat $r - g$ klein is, is elke waardering zeer gevoelig voor $g$ en
+$r$, en groei voegt alleen waarde toe als het rendement op investeringen boven $r$ ligt. Bij
+constante $r$ moet een hoge prijs-dividend-ratio door snelle dividendgroei gevolgd worden,
+maar op Shillers data voorspelt de ratio vooral lage rendementen. Dus is $r$ geen constante
+maar een tijdreeks, en of dat risico of vergissing is, laten de data open.
 
-Wijkt niet af van het Overzicht.
+Dit komt overeen met het Overzicht.
+
+## Feitelijke fouten
+
+Nagerekend met `uv run python` op `hap.data.shiller()` en de formules uit de tekst.
+Kloppen: toy (24,00; 21,00; 87,5%), gevoeligheidstabel en rooster (26,25; 26,50; 17,50;
+20,80–21,20; 14,86–35,33), bel-verdubbeling (7,3 en 14,2 jaar), PVGO-voorbeeld (40; 27,27;
+−2,73) en PVGO-formule, kalibratie (n = 154; 1,61%, 11,5%, SE 0,93; 6,82%, SE 1,42; std
+17,6%), halve-variantiecorrectie (2,3%; 8,4%; ratio ≈ 17), ware ratio 19,5, simulatie-
+percentielen (T = 50: 12,5 / 19,5 / 40,8; T = 100: 14,1 / 30,8) en afgeleide verhoudingen
+(2,1; −36%; +109%), PD-uitersten (9,9 in 1917; 86,2 in 2025), panel (145 waarnemingen,
+1871–2015, autocorrelatie 0,89), regressies (0,015, t 1,63, R² 0,05; −0,0375, t −2,21,
+R² 0,12), CAPE (−0,059, t −4,52, R² 0,24, start 1881), oefening 1 (41,20; PD 25,6 / 28,6 /
+37,0 / 74,1; jaar 30), oefening 2 (55,56; 41,67; −13,89; 83,33; 27,78; 111,11; 37,04),
+oefening 3 (−0,063, t −3,50; 0,026, t 2,02; −0,045; n = 71).
+
+1. **Opzet en aannames**: "Voor Amerikaanse aandelen is hij reëel 7 tot 8% per jaar: de
+   simulatie meet 6,8% als gemiddeld logrendement, en dat is als gewoon gemiddelde
+   ongeveer 8,4%." Het genoemde bereik bevat geen van beide gemeten getallen (6,82% en
+   6,82 + 17,6²/200 = 8,37%). Het bereik moet ruwweg 7 tot 8,5% zijn, of de zin moet één
+   van beide maatstaven kiezen.
+
+Geen fout maar het noemen waard: in de Intuïtie is "ongeacht wat de buurman voor de
+zijne betaalde" als uitleg van Williams' boomgaardbeeld een toevoeging van de lecture; het
+vers dat Williams aanhaalde ("An orchard for fruit ...") noemt geen buurman. De zin leest
+alsof het Williams' eigen beeld is.
+
+## Controle 1
+
+Alleen de eigen punten nagekeken, op de huidige `lectures/01_03_williams_ddm.md`.
+`prose_stats`: 5.446 woorden, PASS.
+
+| crit. | punt | status | vindplaats nu |
+|---|---|---|---|
+| 1 | "7 tot 8%" tegen 6,8% en 8,4% (feitelijke fout 1) | opgelost | Opzet en aannames: "reëel ongeveer 8,4% per jaar als gewoon gemiddelde. De simulatie meet 6,8% als gemiddeld logrendement." |
+| 1 | Stambaugh: ontbrekende schakel persistentie → helling | opgelost | Warning: "In een korte steekproef wordt die persistentie te laag geschat ... lekt de te lage persistentie in de helling: de rendementshelling valt negatiever uit" |
+| 1 | waarom 0,15 + 0,38 + 0,47 = 1 | opgelost | Replicatie, alinea na "Wat betekent één log-punt?": identiteit in logs, drie hellingen tellen op tot ongeveer één |
+| 1/3 | $b$ voor bel en inhoudingspercentage | opgelost | bel heet nu $B_t$, ook in oefening 1 (de Engelse variabelenaam `b_t` in de code telt niet mee) |
+| 2 | simulatieconclusie niet hergebruikt | opgelost | Wat er brak: "Ruis in de schatting van $g$ verklaart dat niet: ... tot een factor twee naast ... de ratio liep van 10 tot 86" |
+| 2 | "Hoe het getoetst wordt" opent met vraag | opgelost | opent nu met "Het model wordt toetsbaar in de prijs-dividend-ratio: ..." |
+| 2 | replicatie eindigt op CAPE, niet op oordeel | opgelost | volgorde nu: regressies, figuur, CAPE, log-punt, warning, vergelijkingstabel, **Geslaagd.** |
+| 3 | "Die rij kiest $r$" | opgelost | "Dat getal nemen we als $r$." |
+| 3 | "definieert het tijdvak" | opgelost | "Daarom begint het tijdvak hier." |
+| 3 | stapelzin "langs het pad dat werkelijk komt" | opgelost | in vier zinnen gesplitst |
+| 5 | "rond 0.10" | opgelost | "rond 10%" |
+| 5 | afgekorte kolomnamen simulatie en kalibratie | opgelost | "standaardfout geschatte g", "PD 5e percentiel", "standaarddeviatie", "standaardfout gemiddelde" |
+| 5 | waarom drie waarden van $r$ in de figuur | opgelost | zin vóór de figuur: "de asymptoot schuift mee met $r$, dus een onzekere $r$ doet hetzelfde als een onzekere $g$" |
+| 6 | getallen in oordeel, CAPE-alinea en Wat er brak | opgelost | oordeel verwijst naar de tabel; CAPE-alinea zonder getallen; Wat er brak alleen $R^2$ |
+| 7 | instap (2): "omgekeerd evenredig" negeert lagere $d_4$ | opgelost | "De eindwaarde daalt 17,5% ... en $d_4$ wordt iets kleiner" (nagerekend: 17,33/21,00 = 0,825) |
+
+Geen verslechteringen en geen nieuwe feitelijke fouten. Klein restpunt, zonder aftrek: in
+Opzet en aannames staan 8,4% en 6,8% nu naast elkaar zonder de zin die zegt dat het
+verschil de halve variantie is; die staat pas in de simulatie.
+
+### Deelcijfers na controle 1
+
+| nr | criterium | gewicht | was | nu |
+|---|---|---|---|---|
+| 1 | Helderheid van de uitleg | 30% | 8 | 9 |
+| 2 | Opbouw en rode draad | 20% | 8 | 9 |
+| 3 | Taal | 15% | 8 | 9 |
+| 4 | Toy-voorbeeld | 10% | 9 | 9 |
+| 5 | Code en figuren | 10% | 8 | 9 |
+| 6 | Replicatie en empirie | 10% | 8 | 9 |
+| 7 | Oefeningen | 5% | 9 | 9 |
+
+**Eindcijfer: 9,0** (was 8,2). Laagste deelcijfer 9. Open feitelijke fouten: 0.

@@ -1,235 +1,207 @@
-# Rapport L3 01_03_williams_ddm (taak 0, A, B; niet gecommit, niet gebouwd)
+STATUS 01_03_williams_ddm F6b words=5470 prose=PASS open=0 cijfer=- min=-
 
-1. **prose_stats** (words sent_mean p90 gt40 para dash semicol motief Lnum deel u je taboo stopw calque engquote)
-   - vóór: `5123 19.5 34 11 64 50 24 0 0 0 39 4 0 19 6 4` FAIL op 10 metrieken
-   - ná:   `5478 14.0 22 0 44 0 8 0 0 0 0 0 0 0 0 2` PASS; `--where`: geen treffers
+# Rapport 01_03_williams_ddm
 
-2. **Top-5 uit taak 0, en wat ermee gebeurde**
-   - Aanspreekvorm 39x "u", 4x "je", overal (§3.2). Alles naar "we", onpersoonlijk of de koper/analist als onderwerp.
-   - Lange zinnen, 50 gedachtestreepjes, alinea's van 64 woorden, vooral in Intuïtie, Theorie en Replicatie (§3.1). Gesplitst; nu 0 streepjes, 0 zinnen boven 40.
-   - Overzicht begon met geschiedenis, imports-cel stond in Overzicht, "epistemische status" (§3.13, §3.3). Nu vraag/antwoord, lijst, één alinea geschiedenis. Imports-cel staat aan het begin van het toy. "theorie of feit" onder die naam.
-   - Toy: prints en een dividendtabel in plaats van hand/code-tabel. De gevoeligheidscel was een tweede mechanisme met een eigen `###` (§3.7). Nu opzet-tabel, zes stappen, één cel, tabel "met de hand / code". Eén recept ($d/(r-g)$), dat Theorie afleidt.
-   - Theorie zonder routekaart of Samengevat. Gordon-bewijs open, 5 vooruitverwijzingen, "2%-motief" 2x, calques ("Onthoud dat", "Twee dingen", "Dat is de reden dat", "Noteer", "Merk op") (§3.6, §3.3, §3.12). Routekaart, Samengevat en `###` in de vaste volgorde toegevoegd. Gordon-bewijs in dropdown, lees-zin bij elke genummerde vergelijking, calques weg.
+## F0
 
-3. **Verplaatst (niets geschrapt)**
-   - De `###` "De gevoeligheid die alles bepaalt" ging van het toy naar Theorie, onder Gordon. De handgetallen staan nu in een tabel.
-   - Het Gordon-bewijs staat in een `{prf:proof}` met dropdown.
-   - Verwijzing naar vroege anomalieën (PVGO): naar "Wat het model verklaart".
-   - Verwijzing naar voorspelbaarheid in de Stambaugh-waarschuwing: naar "Waar het breekt".
-   - Verwijzing naar Shiller (scheefheid, einde Simulatie): naar "Risico of vergissing". In de hoofdtekst staan nu 2 vooruitverwijzingen (bel naar 03-15, Campbell-Shiller naar 04-20).
-   - Replicatieblok ingekort van ongeveer 330 naar 165 woorden. Over Gordon (1959) en de $R^2$-verwachting staat nu een alinea onder het blok. De reeksnamen staan als commentaar in de panelcel. De opmerking over Newey-West staat in de zin vóór de regressiecel.
-   - De slotalinea over "epistemische status" staat nu als alinea "theorie of feit" vóór "Wat er daarna kwam". Het Nobelprijs-zinnetje staat daar ook, zodat "Risico of vergissing" onder de 120 woorden blijft.
-   - Nieuw: oefening `ex-williams-ddm-instap` (toy met 4% in plaats van 5% eindgroei), vóór de bestaande drie. De labels ex-1/2/3 zijn ongewijzigd, maar de weergegeven nummering schuift één op.
+`prose_stats`: words=6838, sent_mean 14,6, sent_p90 23, sent_gt40 0, para_mean 45,
+dash 0, semicol 14, stopw 0, calque 0, engquote 3. `--check`: FAIL words=6838 (max 5500).
+`--where`: geen treffers.
 
-4. **nb_outputs-diff** (vóór = HEAD tegen ná). Alleen bedoelde verschillen, geen enkel getal veranderd, figuren byte-gelijk:
-   - cel 2 (toy): de drie prints en de dividendtabel zijn vervangen door de tabel "met de hand / code", met dezelfde getallen (27.951, 24.0, 0.875, 1.39755, d_1..d_3).
-   - cel 3: drie prints weg (21.00, 26.25, 26.50). Die getallen staan in het rooster, dat identiek is gebleven. Het rooster wordt nu met een zichtbare lus gebouwd in plaats van een geneste comprehension.
-   - cel 8: de eerste regel is nu een commentaarregel; de uitvoer is identiek.
-   - nieuwe cel 12 (instap): 17.3333 / 20.3333 / 0.8525 / -0.1528. Daardoor schuiven de volgende celnummers één op.
-   - PVGO-cel: de inline-berekening heeft nu een eigen naam (`p_low_roe`); de uitvoer is identiek. De volgorde van de rng-trekkingen is ongewijzigd.
-   - Na A is gelijk aan na B.
-   - Execute-log (laatste regels): `Executing notebook with kernel python3` / `Warning: Notebook is not trusted` / `Writing lectures/01_03_williams_ddm.ipynb`. Exit 0, 0 stderr- of error-outputs.
+Woorden per sectie: kop 116, Overzicht 323, Intuïtie 495, Toy 340, Theorie-inleiding 69,
+Opzet 235, Van definitie naar contante waarde 344, Kernresultaat 482, Gordon 571,
+PVGO 370, Hoe getoetst 580, Simulatie 786, Replicatie 935, Wat er brak 444,
+Oefeningen 768.
 
-5. **Afvinklijst §11.9**, wat niet volledig voldoet:
-   - `words` = 5478, net onder 5500.
-   - Het toy gebruikt twee dingen die nog niet zijn afgeleid: de som van de verdisconteerde dividenden (de intuïtie van Williams) en het recept $d/(r-g)$. Theorie leidt eerst de som af en daarna het recept als propositie.
-   - De replicatie heeft geen "origineel" om mee te vergelijken. De tabel zet "onder constante $r$ (Williams)" naast "hier". Het oordeel luidt "Niet geslaagd voor Williams' lezing, zoals het blok verwachtte".
-   - De CAPE-variant blijft in de hoofdtekst: geen lecture zet codecellen in een `{note}`-dropdown, dus dat is niet getest zonder build.
-   - Overige: ok.
-   - Kleine correctie in het bijschrift van de hyperboolfiguur. "rechts ervan explodeert hij" is nu "vlak ervoor explodeert hij", omdat rechts van $g = r$ geen curve staat.
+**Vijf grootste problemen**
+1. Lengte 6.838 (§11.11): Replicatie (935) en Simulatie (786) dragen herhalingen en
+   zijpaden; Intuïtie (495) heeft een anekdote-note en een CAPM-uitweiding.
+2. Feitelijke fouten (feitenlijst): Kendall in "Waar we zijn" spreekt L2 tegen;
+   "factor drie" in Simulatie; tip "ruim 3% naar rond 1,5%" in Hoe het getoetst wordt;
+   85,6 in december 1999 is niet het maximum; 03-15 en 03-16 worden beweringen
+   toegedicht die daar niet staan (Wat er brak).
+3. Onherleidbare getallen (§11.11 Feiten): 0,91 (warning Replicatie) en 26 (note
+   Campbell-Shiller) komen uit geen cel.
+4. Het "model van Williams" heeft één aanname (Theorie-inleiding, Opzet r. 297, Wat
+   er brak) en elders twee (Overzicht, Opzet r. 255, Samengevat): H7.
+5. Taal en presentatie (§11.3, §11.4, §11.8): calques "meer dan het krediet krijgt",
+   "doet het meeste werk", "het werk doen", "neem verwachtingen", "vergeeflijk",
+   "earnings yield"; "heet in deze reeks de standaardfout van 2%" als label; PVGO-cel
+   met zeven `print`-regels; vergelijkingstabel Replicatie met de hand overgetypt.
 
-8. **Open punten**
-   - Niet gebouwd (volgens opdracht), dus MyST-warnings zijn niet gecontroleerd. Dat geldt met name voor de tabel met lege cel onder Gordon en voor de losse lijsten (lege regel tussen de items, nodig voor de zinsmeting van prose_stats).
-   - Tijdens mijn werk wijzigden andere agents 01_02 en 01_04 (git status). De aansluiting is gecontroleerd tegen hun stand van dat moment. 01_04 "Wat we al weten" klopt nog (niveau, $r$, replicatie: vooral $r$).
-   - prose_stats telt "2%-motief" niet als `motief`. Hier handmatig opgelost; aanpassen van de regex valt buiten mijn bevoegdheid.
+**Controle eis 2 (grep in `lectures/`).** Van buiten aangehaald: paginalabel,
+`eq-williams-ddm-ddm` (03_12), `eq-williams-ddm-pd` (04_20). Inhoudelijk aangehaald:
+de iteratie naar de contante waarde (03_15), de PD-regressies (03_12, 03_15, 04_20),
+het Gordon-model (03_16), de CAPE-regressie (05_33 §3, 08_39) en bubbels (08_39,
+tabelrij "Bubbels"). Geen ander label van deze lecture wordt elders aangehaald.
 
-## Lezersronde (taak C)
+**Schraplijst (schraptoets §11.11)**
 
-**Per H-regel: 33 punten opgelost, 0 afgewezen.**
-- H1 1/0: het waarom bij Gordon is nu een handeling (een analist kiest $g$ en $r$), met richting.
-- H2 8/0:
-  - de standaardfout van 2% wordt in de Simulatie en in oefening 3 in één zin uitgelegd;
-  - $e_1$ wordt vóór gebruik gedefinieerd;
-  - $\rho$ krijgt zijn betekenis;
-  - Newey-West wordt uitgelegd, met de reden voor negen vertragingen;
-  - variantiegrens en decompositie worden in de warning benoemd;
-  - Miller-Modigliani wordt in één regel herhaald;
-  - $b$ tegen $b_t$: er staat nu een opmerking. De letter is niet gewijzigd, omdat oefening 2 en de code ook $b$ gebruiken.
-- H4 2/0:
-  - $\sigma_g = 11{,}5\%$ staat nu in de tekst;
-  - de groeisnelheid van de bel staat er nu ook: verdubbeling in ruim 7 jaar bij $r = 10\%$, tegen 14 jaar voor 5% dividendgroei.
-- H5 2/0: het bewijs van de DDM noemt nu niet-negatieve dividenden en een eindige prijs. Ze staan in het bewijs, niet in de stelling.
-- H6 2/0: Samengevat geeft de reden achter de richting van $r$ en $g$, en het effect van een hogere $b$ bij ROE > r en ROE < r.
-- H7 4/0:
-  - "discontovoet" overal. Alleen bij de eerste invoering staan nog "tarief" en "*interest rate*".
-  - "eindwaarde" = verwachte verkoopprijs op $t=3$; "staart" en "restterm" zijn weg.
-  - "inhoudingspercentage" overal.
-  - "fundamentele waarde" in de tekst. De kolomnaam "fundamenteel" in oefening 1 blijft, anders verandert de uitvoer.
-- H8 5/0: noot, slot van het toy-voorbeeld, CAPE-overgang, "probleem met de noemer" (nu uitgelegd: uitkeringsbeleid en inkoop) en oefening 3.
-- H9 5/0: de conclusie staat nu vooraan na het rooster, vóór de figuur, na de regressie, na CAPE en bij PVGO. PVGO opent nu met de bewering.
-- H10 4/0:
-  - de identiteit krijgt een voorbeeld ("bezit is schuld plus eigen vermogen");
-  - persistentie wordt concreet: autocorrelatie 0,91 van de log-PD. Die is buiten de lecture berekend en staat alleen in de tekst;
-  - bij de warning worden de voorbeelden genoemd;
-  - Newey-West, zie H2.
+| kopje | passage | ~woorden | eis niet gehaald |
+|---|---|---|---|
+| Intuïtie | note "Williams verkocht nauwelijks exemplaren" (feit 13, onbronneerbaar) | 70 | 1, 2, 3 |
+| Intuïtie | CAPM-uitweiding "prijs van risico" inkorten tot één zin | 60 | 1 |
+| Intuïtie | alinea "waar zonder iets te zeggen" inkorten | 30 | 1 (herhaalt Theorie) |
+| Toy | zwaartepunt 22 jaar (tweede resultaat in toy) | 55 | 1 |
+| Gordon | duration-afleiding en toepassing | 110 | 1 |
+| Gordon | note dividend per aandeel en inkoop (staat ook in het replicatieblok) | 65 | 1 |
+| Gordon | alinea "tweede vorm is in de praktijk de nuttigste" inkorten | 30 | 1 |
+| Kernresultaat | warning transversaliteit is een aanname (vooruitverwijzingen) | 50 | 1 |
+| Kernresultaat | 1999-internetalinea inkorten tot één zin | 30 | 1 |
+| Hoe getoetst | note Campbell-Shiller (26 onherleidbaar; afleiding staat in 04-20) | 90 | 1, 2 |
+| Hoe getoetst | tip dividendrendement sinds 1990 (feit 3 fout) | 70 | 1 |
+| Hoe getoetst | dubbele uitleg identiteit/lineariseren | 60 | 1 |
+| Simulatie | "Wat deze figuur over het vak zegt" | 40 | 1 |
+| Simulatie | log/rekenkundige correctie tot twee zinnen | 50 | 1 |
+| Simulatie | dubbele inleiding (twee alinea's over wat de simulatie isoleert) | 60 | 1 |
+| Replicatie | alinea na het blok die het blok herhaalt + $R^2$-alinea | 110 | 1 |
+| Replicatie | CAPE-tekst inkorten (cel blijft: eis 2, 05_33) | 90 | — (inkorten) |
+| Replicatie | handgetypte vergelijkingstabel wordt celuitvoer | 0 | — |
+| Wat er brak | scheefheid-als-verweer (feit 8), PVGO in 03-16 (feit 15), inkorten per element | 130 | 1 |
+| Overzicht | lijst en geschiedenis inkorten | 80 | 1 |
+| Oefeningen | ex-2 (2)/(3) vervangen door één richtingvraag; uitwerkingen korter | 150 | 1 |
+| overal | taal, dubbele lees-zinnen, herhaling | 250 | — |
 
-**Navertel-afwijking.** In "Wat er brak" wist de lezer niet welke "identiteit" bedoeld was: onder transversaliteit, of zonder aanname over $r$. Dit viel samen met spoor 1: [](#eq-williams-ddm-pd) bevat een constante $r$ en is toch "de identiteit".
-- Na het DDM-bewijs staat nu een alinea met de identiteit zonder aanname over $r$, als ongenummerde vergelijking: $p_t = \sum_j d_{t+j}/(R_{t+1}\cdots R_{t+j})$, met gerealiseerde rendementen. Daarbij staat dat [](#eq-williams-ddm-ddm) het bijzondere geval met constante verwachte $r$ is.
-- Dezelfde verduidelijking staat nu in "Hoe het getoetst wordt", in de conclusie van de replicatie, in "Wat het model verklaart" ("geschreven met gerealiseerde rendementen, en onder de transversaliteitsvoorwaarde") en in "Waar het breekt" ("de aanname van constante $r$").
-- Andere secties weken niet af.
+Som ≈ 1.770 woorden. Verwachte lengte na F1 ≈ 6.840 − 1.770 + ≈ 80 (toegevoegde
+lees-zinnen en cel-zinnen) ≈ 5.150. Onder 6.000 zonder de kern te raken; geen split.
 
-**Waar de lezer het spoor kwijtraakte.**
-- Spoor 1 is opgelost zoals hierboven.
-- Spoor 2: de tekst zegt nu dat de rendementsrij $r$ kalibreert. $r$ is daarna in de simulatie bekend, dus de werkelijke onzekerheid is groter dan de simulatie laat zien. Ook staat erbij waar de standaardfout van 2% vandaan komt.
-- Spoor 3: de tekst zegt nu waarom CAPE winst gebruikt: het dividend hangt af van het uitkeringsbeleid, inkoop van eigen aandelen telt niet mee, en de winst wordt over tien jaar gemiddeld.
+## F1
 
-**Verificatie.**
-- `prose_stats --check`: `6010 14.4 22 0 45 0 11 0 0 0 0 0 0 0 0 3`, met alleen FAIL op words (6010 > 5500).
-  - Reden: de ruim 530 woorden erbij zijn de verduidelijkingen waar de lezer om vroeg. Verplaatsen naar een dropdown verlaagt de telling niet, en schrappen mag niet.
-- `--where`: geen treffers.
-- sync en execute: exit 0, geen stderr- of error-uitvoer. Log eindigt met `Writing lectures/01_03_williams_ddm.ipynb`.
-- nb_outputs-diff tegen de tussenstand na taak A: leeg.
+**Eindmeting.** words=5243, sent_mean 14,6, sent_p90 24, sent_gt40 1 (de Overzicht-lijst,
+telartefact), para_mean 44, dash 0, semicol 7, calque 0, stopw 0, engquote 1: PASS.
+`--where` leeg. Sync en `HAP_OFFLINE=1 --execute` foutloos, geen warnings in de uitvoer.
 
-## Lezersronde 2 (tweede koude lezer)
+**Geschrapt** (reden: schraptoets eis 1, niet nodig voor de vraag, tenzij anders vermeld):
+note "Williams verkocht nauwelijks" (onbronneerbaar, feit 13); CAPM-uitweiding (één zin
+over); zwaartepunt 22 jaar in toy en de duration-afleiding in Gordon (tweede resultaat,
+niet nodig); note dividend per aandeel en inkoop (staat in het replicatieblok);
+warning transversaliteit is een aanname (vooruitverwijzingen); note Campbell-Shiller
+(26 onherleidbaar, afleiding staat in 04-20; één zin blijft); tip dividendrendement
+sinds 1990 (feit 3 fout); "Wat deze figuur over het vak zegt" (één zin over); dubbele
+inleiding Simulatie; alinea's na het replicatieblok die het blok herhaalden en de
+$R^2$-alinea; "Dat is geen programmeerfout"-alinea (ingekort); ex-2 deelvragen over het
+optimale $b$ (rasterartefact, vervangen door één richtingvraag); scheefheid als verweer
+in 03-15 en PVGO in 03-16 (feit 8 en 15, onjuist). CAPE ingekort, cel blijft (eis 2: 05_33, 08_39).
 
-**Twee vaste namen.**
-- *De boekhoudkundige identiteit*: de som met gerealiseerde rendementen, direct uit de definitie van rendement. Ze neemt niets aan en kan niet worden verworpen.
-- *Het model van Williams*: dezelfde som met een constante verwachte discontovoet (`eq-williams-ddm-eindig`, `eq-williams-ddm-ddm`). Het model kan wel door de data worden verworpen.
+**nb_outputs-diff**, elk verschil bedoeld: cel 4 (PVGO) is nu een tabel hand/code in plaats
+van zeven prints, zelfde getallen 0,05 / 2 / 40 / 30 / 10 / −2,73; cel 8 print twee nieuwe
+regels (PD-uitersten 9,9 in 1917 en 86,2 in 2025; autocorrelatie 0,885); cel 9 bouwt de
+resultatentabel zonder indexnaam, getallen gelijk; nieuwe cel 10 zet de vergelijkingstabel
+Williams/verwacht/hier uit de regressie (was handgetypt markdown); cellen daarna een
+nummer opgeschoven; ex-2-cel (nu 15) toont prijs bij $b = 0{,}6$ in plaats van optimale $b$
+(0,94 / 0,745 / 2125 vervallen, ook uit de tekst). Figuren byte-gelijk. Geen aangehaald getal veranderd.
 
-Wat er in de tekst veranderde:
-- "Van de definitie" leidt nu eerst de identiteit af (eindig, ongenummerd) en daarna het model. Bij de eerste keer staat in één alinea wat het verschil is en waarom het ertoe doet: de replicatie toetst het model, niet de identiteit.
-- De losse alinea "Welk deel hiervan is een identiteit" na het DDM-bewijs is opgegaan in die afleiding.
-- Elke "identiteit" is nagelopen met grep en vervangen door een van de twee namen. Dat geldt voor het Overzicht, de routekaart, "Hoe het getoetst wordt", Campbell-Shiller (loglinearisatie *van de identiteit*), Samengevat, de conclusie van de replicatie, CAPE en "Wat er brak".
-- De labels staan er allemaal nog en de vergelijkingen hebben dezelfde inhoud.
+**Feitenlijst** (15 punten): verwerkt 1 (86,2 in 2025, uit cel), 2 ("tot een factor twee
+naar boven", 40,8/19,5 = 2,1), 3 (tip geschrapt), 4 (Kendall zoals L2: samenhang te zwak
+om mee te voorspellen), 5 (0,89 uit cel, panelsteekproef), 6 (note geschrapt), 7 (overal
+12,5 en 40,8), 8 en 15 (bewering geschrapt), 9 (verwijzing naar 00-00-setup), 10 (orde
+van grootte nu "ongeveer 8%", met 8,4% uit de simulatie), 11 ("zwakke, niet-significante
+stijgende lijn"), 12 (model = identiteit + constante $r$; transversaliteit voor beide
+opgelegd, overal zo), 13 (note weg; Overzicht zegt nu "brachten in de praktijk"),
+14 ("schreef vrijwel niets" vervangen door "nam hem in zijn waarderingen als gegeven").
+Afgewezen: geen.
 
-**Per H-regel: 27 opgelost, 3 afgewezen.**
-- H1 3/0:
-  - "Van de definitie" heeft nu een richting: hogere dividenden geven een hogere prijs, een hogere discontovoet een lagere.
-  - Het waarom bij het kernresultaat begint nu met een koper die een aandeel koopt om het door te verkopen.
-  - Bij Gordon is de reeks-reden uit het waarom gehaald; die staat nu alleen in het bewijsidee.
-- H2 4/0:
-  - Cowles en Kendall krijgen elk een bijzin.
-  - De $R$/$r$-notatie wordt ter plekke uitgelegd.
-  - De standaardfout van 2% wordt in de Simulatie en in oefening 3 in de zin zelf uitgelegd.
-- H3 1/0: de tweede vorm van Gordon heet nu "dezelfde bewering, omgeschreven naar $r$". De propositie zelf is niet gewijzigd, omdat label en nummering blijven.
-- H4 0/2, afgewezen: hoe groot het Newey-West-tekort en de Stambaugh-bias zijn, vraagt een eigen simulatie. Die hoort bij de lecture over voorspelbaarheid, en een getal zonder codecel verzin ik niet. Wel toegevoegd: de richting en het mechanisme van de Stambaugh-bias.
-- H5 4/0:
-  - Niet-negatieve dividenden en een eindige prijs staan nu in de opzet.
-  - "Eén aanname" is "twee aannames" geworden (constante $r$ en transversaliteit).
-  - Bij $r > 0$ staat nu waar het nodig is.
-  - De aannames achter $g = b\cdot\mathrm{ROE}$ worden genoemd.
-- H6 2/0: Samengevat geeft nu de reden voor het effect van $b$, en de richting bij een hoge prijs-dividend-ratio.
-- H7 4/1:
-  - "discontovoet": in de opzet vastgelegd als gelijk aan het verwachte rendement, en "rendement eist" vervangen;
-  - "eindwaarde" overal, "staart" en "laatste term" zijn weg;
-  - "prijs-dividend-ratio" in plaats van "de ratio". De kolomnaam "PD-ratio" in oefening 1 blijft, omdat de uitvoer gelijk moet blijven;
-  - "identiteit": zie de twee vaste namen hierboven.
-  - Afgewezen: $b$ voor bel én inhoudingspercentage. Oefening 2 en de code gebruiken $b$, en de dubbele betekenis staat al aangekondigd.
-- H8 3/0: "Die oneindige waarde", de standaardfout van 2% (geen "dat" meer over een alineagrens), en "Dezelfde steile hyperbool".
-- H9 3/0: Opzet en "Van de definitie" openen nu met een bewering. Na de scatterfiguur staat eerst wat de figuur laat zien.
-- H10 3/0:
-  - "prijs van risico" krijgt een voorbeeld;
-  - de loglinearisatie wordt concreet: benadering rond een gemiddelde prijs-dividend-ratio van ongeveer 26, buiten de lecture berekend;
-  - de variantiedecompositie wordt in een bijzin uitgelegd;
-  - de Stambaugh-bias krijgt een voorbeeld.
+**Afvinklijst §11.9, wat niet voldoet.** Geen. Overige: ok. Vooruitverwijzingen buiten
+"Wat er brak": twee (03-15 bij de bel, 04-20 bij Campbell-Shiller).
 
-**Navertel-afwijkingen.**
-- "Van de definitie": het "eindige versie van de identiteit" bevatte een constante $r$. Opgelost: die vergelijking heet nu "eindige versie van het model van Williams", en de identiteit gaat eraan vooraf.
-- "Kernresultaat": het was onduidelijk wat eerder "identiteit" heette. Opgelost met de twee vaste namen.
+**Labels.** Geen verdwenen of verhuisd; `eq-williams-ddm-ddm` en `eq-williams-ddm-pd`
+ongewijzigd.
 
-**Sporen.**
-- Spoor 1 (de formule kwam onverwacht): opgelost door de nieuwe volgorde.
-- Spoor 2 (PVGO): PVGO heet nu in één zin een zijstap die simulatie en replicatie niet gebruiken.
-- Spoor 3 (Simulatie):
-  - de tekst zegt nu expliciet dat de simulatie alleen de onzekerheid in $g$ isoleert;
-  - de belofte in het toy luidt nu "hoe zwaar een schattingsfout in de groeivoet weegt".
+**Open punten.** (1) Niet te verifiëren met projectbronnen: Williams' boomgaardbeeld en
+"honderden bladzijden, tabellen met de hand" (stonden er al; F2 kan Williams 1938 nalezen).
+Rubriekronde: rating2-punten verwerkt (calques, label "standaardfout van 2%", simulatie
+gekoppeld aan het hoofdargument, CAPE-oordeel, bel-uitwerking noemt jaar 30 en de ratio's).
 
-**Verificatie.**
-- `prose_stats --check`: `6351 14.5 22 1 44 0 14 0 0 0 0 0 0 0 0 3`, met alleen FAIL op words.
-  - Reden: de twee lezersrondes hebben verduidelijkingen toegevoegd. Verplaatsen naar een dropdown verlaagt de telling niet, en schrappen mag niet.
-- `--where`: geen treffers.
-- sync en execute: exit 0, geen stderr- of error-uitvoer.
-- nb_outputs-diff tegen de tussenstand na taak A: leeg.
+## F4
 
-## Naar een 9 (beoordeling 7,2)
+**Meting.** words=5364 (was 5243), semicol 7, sent_gt40 1 (lijst, telartefact): PASS.
+Sync en `HAP_OFFLINE=1 --execute` foutloos. nb_outputs-diff tegen de F0-uitvoer is gelijk
+aan die van F1 (41+/21−, dezelfde bedoelde verschillen); in F4 is geen codecel gewijzigd.
 
-**1. Helderheid (was 6).**
+**Feitenlijst F2 (5 fout, alle opgelost).** Tabellen: replicatieblok zegt nu "geen
+tijdreekstoets die we kunnen herhalen". 8,4%: Opzet noemt 6,8% log (simulatie) en ≈ 8,4%
+rekenkundig, plus dat het toy 10% gebruikt. Bel-verwijzing: 03-15 vervangen door 05-33
+(Cochranes decompositie met de bel als restterm). $e$: "$20 \times 2{,}72$". Miller-Modigliani:
+NCW-nul-argument, MM als verwant maar niet hetzelfde.
 
-Gedaan:
-- **Rekenfout hersteld.** De dividendcoëfficiënt 0,015 staat nu als 1,5 procentpunt per jaar, over tien jaar 0,15 log-punt. Daarnaast staat 0,38 log-punt minder rendement: het rendement draagt ruim twee keer zoveel.
-- **Notatiewissel benoemd.** De Opzet zegt nu dat in [](#01-02-bachelier) kleine letters logs waren en hier niveaus zijn, en dat $r$ hier de discontovoet is.
-- **Verwijzing standaardfout van 2%.** Die wijst nu naar [](#00-01-rendementen), in de Simulatie en in oefening 3.
-- **"verderop in deze lecture"** is geschrapt.
-- **Log-kalibratie benoemd.** Rekenkundige verwachtingen liggen een halve variantie hoger: $g \approx 2{,}3\%$, $r \approx 8{,}4\%$, $r - g$ 6,1 in plaats van 5,2, ware ratio ongeveer 17. De tekst zegt waarom de log-kalibratie blijft.
-- **"twintig tot dertig jaar" vervangen** door de duration $(1+r)/(r-g) = 22$ jaar. De afleiding in één regel staat bij Gordon, het toy noemt alleen het getal.
-- **"25%" vervangen** door de percentielen: −36% en +109% bij $T = 50$.
-- **PVGO:** de algebraïsche tussenstap staat erbij.
-- **Identiteit naar verwachtingen:** de zin die de identiteit in gerealiseerde rendementen vertaalt naar verwachtingen ("neem $\E_t$ aan beide kanten") staat in "Hoe het getoetst wordt".
+**Lezerspunten 1–10, alle gedaan.** 1 zie 8,4%. 2 identiteit gedeeld door $d_t$ over $K$
+jaar toegevoegd in "Hoe het getoetst wordt", met lees-zin (groei, rendement of ratio op
+$t+K$). 3 identiteit blijft eindig en neemt niets aan; transversaliteit hoort alleen bij het
+model. 4 rest 0,47 log-punt genoemd, bij benadering, gekoppeld aan de identiteit.
+5 standaardfout van 2% uitgerekend ($20/\sqrt{100}$) en onderscheiden van 0,93. 6 waarom
+weglaten verdedigbaar is: elke $b_0$ geeft een andere prijs. 7 $R^2$ 0,05 in het oordeel.
+8 waarom-alinea transversaliteit is nu een koper met een richting. 9 theorie-of-feit-vraag
+eerst gesteld. 10 wat de variantiedecompositie ontleedt.
+Ook: 13 ($\E_t$ uitgelegd), 15 (via MM-fix), H6 in Samengevat (lage ratio), H8
+Theorie-inleiding. Niet gedaan: 11 (orde van grootte Stambaugh-bias vraagt een nieuwe
+simulatie, buiten het woordbudget), 12 (dividendrendement is de vaste term uit §3), 14
+(bbp-groei: getal zonder cel of bron).
 
-Niet gedaan: niets.
+**Betaling.** Geschrapt: "Een debat over de vraag of aandelen duur zijn" en de
+log-kalibratie-bijzin in de simulatie (samen ≈ 40 woorden); netto +121, onder 5.500.
 
-**2. Opbouw (was 8).**
+**Navertel-toets, afwijkingen.** "Hoe het getoetst wordt": stap identiteit → lage
+rendementen ontbrak; nu staat de identiteit in PD-vorm met lees-zin. "Kernresultaat":
+tegenspraak identiteit/transversaliteit; opgelost door de identiteit eindig te houden.
+"Opzet": verwarring over $r$; opgelost met één zin over 10%, 6,8% en 8,4%.
 
-Gedaan:
-- Het Overzicht geeft nu ook het antwoord: de data verwerpen de vaste discontovoet.
-- Kernresultaat en Gordon openen met hun conclusie.
-- Na de simulatie staat de overgang naar de replicatie: $g$ onzeker, nu de vraag of $r$ beweegt.
-- De Campbell-Shiller-details ($\rho$, decompositie) staan nu in een dropdown-note.
-- PVGO is ingebed als "waar komt $g$ vandaan", in plaats van "zijstap".
+**Labels.** Ongewijzigd. Vooruitverwijzingen buiten "Wat er brak": twee (05-33, 04-20).
 
-Niet gedaan:
-- Samengevat blijft aan het eind van Theorie (STYLE §11.6, op instructie).
-- PVGO blijft op zijn plek. Verplaatsen naar achter "Hoe het getoetst wordt" breekt de vaste `###`-volgorde van §11.7.
+## F5-1
 
-**3. Taal (was 7).**
+**Meting.** words=5446, para_mean 45, semicol 7: PASS. Sync en `HAP_OFFLINE=1 --execute`
+foutloos, geen warnings. nb_outputs-diff tegen F0: als F4, plus alleen presentatie
+(kolomnamen kalibratie en simulatie voluit, "rond 10%" in de vergelijkingstabel, die cel
+nu na de CAPE-cel). Geen getal veranderd.
 
-Gedaan:
-- De stapelzin in "Waar we zijn" is gesplitst.
-- Het jargon barst/gat is vervangen door "een theorie van koersveranderingen, geen theorie van het koersniveau".
-- "Wat rekenwerk geeft" is weg.
-- "Neem dat verschil niet te serieus" is nu "Dat sterkere verband zegt weinig".
-- De zin met de rekenfout is herschreven.
+**Feitelijke fout.** Gedaan: Opzet noemt nu 8,4% (gewoon gemiddelde) en 6,8% (log), geen bereik.
 
-**4. Toy (was 8).**
+**Helderheid.** Stambaugh-schakel: gedaan (persistentie te laag geschat, schokken bewegen
+samen, helling negatiever). 0,15 + 0,38 + 0,47 = 1: gedaan, met de identiteit in logs en
+de drie hellingen. Dubbele $b$: gedaan, de bel heet nu $B_t$ (tekst en oefening 1; codenamen
+ongewijzigd, Engelse code telt niet mee).
+**Opbouw.** Simulatieconclusie komt terug in "Waar het breekt" (factor twee tegen een ratio
+van 10 tot 86, en de beweging voorspelt rendementen). "Hoe het getoetst wordt" opent met de
+conclusie. Replicatie herordend: regressies, figuur, CAPE, log-punt en identiteit, warning,
+vergelijkingstabel, oordeel als slot. Lengte: 5.446, onder de grens.
+**Taal.** "Die rij kiest $r$" wordt "Dat getal nemen we als $r$"; "definieert het tijdvak"
+vervangen; stapelzin in drie zinnen; $b$ dubbel opgelost.
+**Code en figuren.** "rond 10%": gedaan. Kolomnamen voluit: gedaan. Zin vóór de figuur over
+drie waarden van $r$: gedaan.
+**Replicatie.** Oordeel en CAPE-alinea verwijzen naar de tabel in plaats van getallen te
+herhalen; "Wat er brak" houdt één getal per kanaal ($R^2$).
+**Oefeningen.** Instap (2): eindwaarde daalt 17,5% (21,00 → 17,33), met beide oorzaken.
+**Overig.** Boomgaard: het buurman-beeld is niet meer aan Williams toegeschreven.
+Afgewezen: geen.
 
-Gedaan:
-- Er staat nu een slotzin over wat de lezer weet: de prijs komt vooral uit de eindwaarde, en die hangt af van $r - g$.
-- Het getal 22 jaar is onderbouwd. De formule ervoor staat in Theorie, zodat het toy bij één niet-afgeleide formule blijft.
+**Rubriekronde.** Nagelezen: elke cel heeft een zin ervoor en erna (de vergelijkingscel
+wordt direct gevolgd door het oordeel); Samengevat en vooruitverwijzingen (twee) ongewijzigd.
 
-**5. Code en figuren (was 8).**
+## F6-1
 
-Gedaan:
-- `next(...)` is een gewone lus met `break` geworden.
-- `b, a = np.polyfit` heet nu `slope, intercept`.
-- Nederlandse variabelenamen zijn Engels geworden: `calibration`, `results`, `column`, `title`, `bubble`, `g_early`/`g_late`, `g_late_alt`.
-- De simulatiefiguur trekt geen nieuwe steekproeven meer, maar hergebruikt `pd_hat_by_T[50]` uit de tabel. Er wordt verder nergens meer uit `rng` getrokken, dus de tabellen blijven gelijk.
+**Meting.** words=5470, semicol 6: PASS. Sync en `HAP_OFFLINE=1 --execute` foutloos, geen
+warnings. nb_outputs identiek aan F5 (codecellen lezen de helling nu als
+`params["log_pd"]` / `["log_cape"]`, zelfde uitvoer).
 
-Niet gedaan: niets.
+**Fouten.** (1) "verklaart het grootste deel van de beweging" wordt "draagt ruim twee keer
+zoveel van de beweging als de dividendgroei" (0,38 tegen 0,15). (2) "De simulatie meet
+6,8%" wordt "Shillers data, waarop de simulatie kalibreert, geven 6,8%".
 
-**6. Replicatie (was 7).**
+**Top drie.** (1) Log-identiteit: benadering benoemd (latere jaren wegen iets onder één,
+kleine dividendrendementterm; 0,47 is een orde van grootte). (2) Vooruitverwijzingen van
+vier naar twee (bel → 05-33 en $t$-waarden → 04-20 geschrapt; blijven: 04-20 bij
+Campbell-Shiller, 05-33 bij risico of vergissing). PVGO had al de zin "waar $g$ vandaan
+komt"; CAPE niet ingekort maar kreeg een verwachting en een oordeel. (3) Log-punt-uitsplitsing
+in een tabel (0,15 / 0,38 / 0,47 / 1). Ook: puntkomma-zin in Theorie gesplitst, helling
+benoemd in de code.
 
-Gedaan:
-- De verwachte afwijking is nu een verwachting: dividendcoëfficiënt niet significant, rendementscoëfficiënt negatief en significant, $R^2$ rond 0,10.
-- De tabel heeft drie kolommen: Williams, verwacht, hier.
-- Het oordeel is gesplitst: "**Geslaagd**" als replicatie, en daarna de verwerping van het model van Williams.
-- De CAPE-getallen staan niet meer in proza. De tekst zegt nu "steilere helling, twee keer zo hoge $R^2$".
+**Naadpunten.** 2: Opzet zegt in één zin dat $p_t$, $d_t$ niveaus zijn, met reden (de som telt
+bedragen op) en de wissel ten opzichte van L2. Let wel: de setup zoals die nu in de werkmap
+staat, gebruikt zelf $p_t$ en $d_t$ als niveaus ("Zonder aankondiging zijn alle grootheden
+niveaus"); L3 volgt dus de setup en ik heb geen afwijking van de setup gemeld, omdat die
+er niet is. Staat de setup straks op $P_t$, $D_{t+1}$, dan moet deze zin mee. 3: $R = 1 + r$
+bruto, $r$ netto simpel staat expliciet; L3 gebruikt geen $R^f$. 9: "Wat er brak" zegt nu
+dat het model pas na het CAPM zo getoetst werd, in lijn met de setup. 10: opgelost via
+fout (1); L4 "vooral doordat $r$ beweegt" is niet van mij.
 
-**7. Oefeningen (was 8).**
-
-Gedaan:
-- De instap legt nu uit dat de factor 1,331 wegvalt.
-- Bij oefening 2 staat dat de 0,94 bij ROE = r betekenisloos is.
-
-Niet gedaan: in de tabel van oefening 2 die 0,94 door NaN vervangen. Dat verandert de uitvoer.
-
-**Zelf nagelezen met de rubriek.**
-- Het Overzicht gaf het antwoord nog niet; toegevoegd.
-- Het toy gebruikte met de duration een tweede niet-afgeleide formule; die afleiding staat nu bij Gordon.
-- "Dat verschil" was dubbelzinnig; opgelost.
-
-**Verificatie.**
-- `prose_stats --check`: `6838 14.6 23 0 45 0 14 0 0 0 0 0 0 0 0 3`, met alleen FAIL op words (geen grens meer). `--where`: geen treffers.
-- sync en execute: exit 0, geen stderr- of error-uitvoer.
-- nb_outputs-diff tegen de stand na taak A: geen enkel getal veranderd. De diff is niet leeg, maar alle verschillen zijn bedoeld:
-  - drie celkopregels, door de hernoemde variabelen (cellen 2, 9 en 12);
-  - de simulatie-png (71404 → 71276 bytes), omdat de histogram nu dezelfde steekproeven toont als de tabel.
+**Afgewezen.** Geen. Stambaugh-getal niet toegevoegd (geen cel; buiten de top drie).

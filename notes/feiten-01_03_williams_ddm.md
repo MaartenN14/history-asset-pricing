@@ -1,90 +1,55 @@
-# Feitencontrole: 01_03_williams_ddm
+STATUS 01_03_williams_ddm F2 words=5470 prose=PASS open=0 cijfer=- min=-
 
-Bronnen: `lectures/01_03_williams_ddm.md`, notebookuitvoer (`tools/nb_outputs.py`),
-eigen herberekening op `hap.data.shiller()` (maandreeks 1871-01 t/m 2026-09,
-decemberwaarnemingen 1871–2025), en de lectures 00_00, 00_01, 01_02, 01_04, 03_15,
-03_16, 04_20, 05_33.
+| vindplaats (kopje) | bewering, letterlijk | bron | status | correct |
+|---|---|---|---|---|
+| Waar we zijn / Overzicht / Intuïtie | √t, Cowles, Kendall "samenhang ... te zwak om mee te voorspellen", 1938–1959, Schumpeter/Harvard, Gordon en Shapiro, "een kwarteeuw later, met het CAPM" | L2 r. 56–66, 956–967; citaties; 1938 → 1964 = 26 jaar | ok | – |
+| Intuïtie / Replicatieblok | "Williams werkte de dividenden in honderden bladzijden uit, met tabellen die hij met de hand uitrekende" tegenover "Het boek is een afleiding zonder tabel." | interne tegenspraak binnen L3 | fout | Eén van beide aanpassen; het boek bevat wel tabellen (uitgewerkte waarderingen). Bijvoorbeeld: "Het boek bevat geen tijdreekstoets die we kunnen herhalen." |
+| Toy-voorbeeld | 1,10; 1,21; 1,331; 3,00; 1,39755; 27,951; 21,00; 24,00; PD 24; 87,5%; $r-g$ = 5 procentpunt | cel 2, handberekening | ok | – |
+| Opzet en aannames | "De kalibratie in de simulatie geeft 8,4%." | cel 5/6: de simulatie gebruikt $r = 6{,}82\%$ (log); 8,4% is de rekenkundige omrekening $6{,}82 + 17{,}6^2/200 = 8{,}37$, die de simulatie uitdrukkelijk niet gebruikt | fout | "De kalibratie hieronder geeft 6,8% als gemiddeld logrendement, rekenkundig ongeveer 8,4%." |
+| Opzet en aannames / Van definitie naar contante waarde | "$R$ is bruto en $r$ netto, zoals in [](#00-00-setup)"; wissel t.o.v. L2 (kleine letters logs); afleiding identiteit en eindig model; toy = geval $K=3$ | 00_00_setup r. 167–168; L2 r. 212–214; algebra | ok | – |
+| Kernresultaat | theorema en bewijs; "$\ln 2/\ln 1{,}10 = 7{,}3$", "$\ln 2/\ln 1{,}05 = 14{,}2$" | nagerekend: 7,27 en 14,21 | ok | – |
+| Kernresultaat | "Zonder verdere aannames kunnen de data die twee niet scheiden. We komen daar in [](#03-15-shiller-excess-volatility) op terug." | label bestaat, maar 03-15 bespreekt geen rationele bel en niet het scheiden van bel en dividendverwachtingen; bellen staan wel in 04_23, 04_24, 05_33, 06_35 | fout | Verwijzen naar een lecture die de bel behandelt (bijv. 05-33 of 04-23), of de zin beperken tot wat 03-15 doet (koersbeweeglijkheid tegen dividenden). |
+| Gordon-groeimodel | proposition en bewijs; tabel 21,00 / 26,25 (+25%) / 26,50 (+26,2%) / 17,50 (−16,7%); "twintig procent in dat verschil"; "van 20,80 naar 21,20", "van 14,86 tot 35,33"; rooster bevat de tabelgetallen | cel 3; +25,0%, +26,19%, −16,67%; 1/5 | ok | – |
+| PVGO | PVGO-formule; $g = 5\%$, $d_1 = 2$, $p = 40$, 30, PVGO 10; $g = 2{,}67\%$, 27,27, −2,73; "een kwart van de prijs"; "op twee decimalen"; $b$ dubbel (bel en inhoudingspercentage) door de tekst zelf gemeld | cel 4; algebra nagerekend; 10/40 | ok | – |
+| Prijs-dividend-ratio | "van 9,9 in 1917 tot 86,2 in 2025"; variantiedecompositie "die [](#04-20-voorspelbaarheid) afleidt" | cel 8; 04_20 r. 309–344 | ok | – |
+| Simulatie | standaardfout van 2% "zoals [](#00-01-rendementen) afleidde"; 154 waarnemingen, 1,61%, 11,5%, 0,93, 6,82% (1,42); $r-g$ = 5,2; 19,5; ≈ 2,3% en ≈ 8,4%; "ongeveer 17"; 20 000 analisten; SE 1,6; 12,5 tot 40,8; 2,1; 14,1 tot 30,8; 36% en 109%, "ongeveer drie keer"; figuurbijschrift | 00_01 r. 362–399; cel 5, 6, 7; nagerekend 5,21; 19,50; 2,27; 8,37; 16,8; 0,641; 2,090; 3,0 | ok | – |
+| Replicatie | Management Science 1956; vanaf 1871; 145 waarnemingen 1871–2015; negen vertragingen; 0,015 ($t = 1{,}63$), −0,038 ($t = −2{,}21$), $R^2$ 0,12; $20 \times e \approx 54$; 0,38 en 0,15 log-punt, "ruim twee keer"; veertien perioden; 0,89; Stambaugh-richting; figuur 1871–2015; CAPE −0,059, $t = −4{,}52$, $R^2$ 0,24, "twee keer zo hoog", vanaf 1881 | cel 8–12; 54,37; 0,375; 0,150; 2,5; 14,5; 0,885; 2,06; n = 135 | ok | – |
+| Replicatie (symbolen) | $e$ als winst per aandeel ($e_1$, $e_{t+1}$ in de PVGO) en als getal van Euler in "$20 \times e \approx 54$" | tekst; niet gemeld | fout | "$20 \times 2{,}72 \approx 54$" of "$20 \times \mathrm{e}$ (e = 2,718)". |
+| Wat er brak | $R^2 \approx 5\%$, $t = 1{,}63$; $R^2 \approx 12\%$, ≈ −0,04, $t = −2{,}21$; [](#04-20-voorspelbaarheid) behandelt de $t$-waarden; Nobelprijs 2013, [](#05-33-fama-vs-shiller); Markowitz, [](#01-04-markowitz) | cel 9; 04_20 r. 457–521; 05_33 r. 40–43; L4 r. 60–70 | ok | – |
+| Oefeningen | instap 23,0707 / 17,3333 / 20,33 / 85,2% / "ruim 15%" / "een vijfde"; bel 41,20 / 20,6 / 25,6 / 28,6 / 37,0 / 74,1 / jaar 30; PVGO 55,56 / 41,67 / −13,89 / 83,33 / 27,78 / 111,11 / 37,04; oefening 3: −0,063 ($t = −3{,}50$), 0,026 ($t = 2{,}02$), ≈ 0,13 en ≈ 0,22, 71 waarnemingen, "nog geen acht" | cel 13–16; jaar 30: 100,6 > 100,0, jaar 29: 93,2 < 97,1; 71/10 = 7,1 | ok | – |
+| Oefening 2 (PVGO) | "Bij $\mathrm{ROE} = r$ maakt $b$ niets uit: dat is de irrelevantiestelling van Miller en Modigliani" | MillerModigliani1961: dividendbeleid is irrelevant *bij gegeven investeringsbeleid*; hier verandert $b$ juist de investering, en is $b$ irrelevant omdat de investering netto contante waarde nul heeft | fout | "Bij $\mathrm{ROE} = r$ maakt $b$ niets uit: een investering tegen de discontovoet heeft netto contante waarde nul. Dat is verwant aan de irrelevantiestelling van Miller en Modigliani, maar niet hetzelfde." |
+| Consistentie L2 en L4 | Kendall (L2: samenhang te zwak om mee te voorspellen, geen nulcorrelaties), Cowles, jaartallen, L2-slot "Williams ... 1938", Shiller 155 jaar maandreeks tegen 154 jaarlijkse verschillen; L4: "prijzen bewegen vooral doordat $r$ beweegt", "elk aandeel apart", Markowitz met het boek van Williams; notatie $R$ bruto (L3) tegen $R$ netto (L4), door L4 zelf gemeld (t.o.v. 00-01, niet t.o.v. L3); verwijzingen naar L3 in 03_15 r. 218–220, 04_20 r. 24–26 en 1207, 05_33 r. 906 | L2 r. 64–66, 956–967, 1129–1133; L4 r. 23–27, 60–63, 230–234 | ok | – |
 
-| nr | kopje | zin (letterlijk) | wat er staat | wat klopt (met berekening of bron) | ernst |
-|---|---|---|---|---|---|
-| 1 | Hoe het getoetst wordt: de prijs-dividend-ratio | "in de Amerikaanse data van 9,9 in december 1917 tot 85,6 in december 1999." | maximum PD = 85,6 in dec 1999 | 85,6 is het maximum van het regressiepanel (t/m 2015; exp(4,4497) = 85,6). In de volledige decemberreeks die het notebook laadt, is het maximum 86,2 in **december 2025** (80,3 in 2024). Het minimum 9,86 in dec 1917 klopt. Het Overzicht ("van 10 tot 86") klopt met 9,9–86,2. | fout |
-| 2 | Simulatie | "Met een halve eeuw data zit een analist er dus tot een factor drie naast, zonder iets fout te doen." | fout t.o.v. de waarheid tot factor 3 | Bij T = 50: 5e pct 12,51, 95e pct 40,75, waarheid 19,50. Fout naar boven 40,75/19,50 = 2,09; naar beneden 19,50/12,51 = 1,56. Factor ≈3 (40,75/12,51 = 3,26) is de breedte van het interval, niet de afstand van een analist tot de waarheid. (Bevestigt rating2.) | fout |
-| 3 | Theorie, tip na Campbell-Shiller | "Het dividendrendement van de Amerikaanse markt daalde sinds 1990 van ruim 3% naar rond 1,5%. Onder Williams' lezing is $g$ dan met anderhalf procentpunt gestegen." | D/P 1990 ≈ 3%, nu ≈ 1,5%; daling 1,5 pp | Shiller-data: dec 1990 3,68% (jaar 1990: 3,24–3,88%); dec 2025 1,16%, 2026 1,10–1,21%. Daling ≈ 2,5 procentpunt, niet 1,5. "Rond 1,5%" gold rond 2020–2023, niet aan het eind van de reeks. | fout |
-| 4 | Waar we zijn in het verhaal | "Cowles liet zien dat beleggingsadviseurs de markt niet verslaan, Kendall dat weekkoersen geen patroon hebben." | Kendall: geen patroon | L2 (01_02_bachelier, r. 1235–1238): "Dat Kendall nulcorrelaties vond, is een hardnekkig misverstand: zijn waarden liepen van −0,013 (olie) tot 0,301 (beleggingsfondsen)", gemiddeld ≈ 0,13; hij schreef alleen dat ze te zwak waren om mee te voorspellen (ook L2 r. 64–65). (Bevestigt rating2.) | inconsistent |
-| 5 | Replicatie, warning | "de log-prijs-dividend-ratio van het ene jaar hangt met een autocorrelatie van 0,91 samen met die van het volgende." | AR(1) = 0,91 | Niet in het notebook. Nagerekend: 0,908 op de volledige decemberreeks 1871–2025, maar 0,885 op 1871–2015, de steekproef van de regressie waar de warning over gaat. | onherleidbaar |
-| 6 | Hoe het getoetst wordt, note Campbell-Shiller | "rond de gemiddelde prijs-dividend-ratio, die ongeveer 26 is." | gemiddelde PD ≈ 26 | Niet in het notebook. Decemberreeks 1871–2025: rekenkundig gemiddelde 29,7, meetkundig (exp van gem. log) 26,2, mediaan 23,7; regressiesteekproef 1871–2015: 27,4 resp. 24,7. Alleen het meetkundig gemiddelde over de hele reeks geeft 26. ρ = 26/27 = 0,963 ≈ 0,96 klopt dan (en sluit aan bij 04_20, ρ = 0,96). | onherleidbaar |
-| 7 | Simulatie | "Toch loopt het interval tussen het 5e en het 95e percentiel van ongeveer 13 tot ongeveer 40" | 13 tot 40 | Uitvoer 12,508 en 40,752; 40,75 rondt af op 41, niet 40. Twee alinea's later staan dezelfde getallen als 12,5 en 40,8. (Bevestigt rating2.) | inconsistent |
-| 8 | Wat er brak, en wat daarna kwam | "Ook de scheefheid uit de simulatie speelt in dat debat mee: in [](#03-15-shiller-excess-volatility) is zij een verweer tegen Shillers variantiegrenzen." | 03-15 gebruikt de scheefheid als verweer | 03_15 bevat geen scheefheid of convexiteit (grep op "scheef", "convex", "skew", "hyperbool": geen treffers). De drie kritieken daar zijn Flavin (kleine steekproeven), Kleidon (niet-stationariteit) en Marsh-Merton (dividend smoothing). | inconsistent |
-| 9 | Opzet en aannames | "$R$ is bruto en $r$ netto, zoals in de notatie van de [inleiding](#index)." | notatie staat in index | `index.md` bevat geen notatietabel; de tabel ($R$ bruto, $r$ netto) staat in `00_00_setup.md` (label `00-00-setup`), r. 158–170. | inconsistent |
-| 10 | Opzet en aannames | "Voor Amerikaanse aandelen ligt hij rond 7% per jaar, reëel." | discontovoet = verwacht netto rendement ≈ 7% | 7% is het log-gemiddelde (6,82%). De lecture definieert $r$ als verwacht *netto* (simpel) rendement en zegt zelf in de Simulatie dat dat ≈ 8,4% is (6,82 + 17,6²/200). | inconsistent |
-| 11 | Replicatie, figuurbijschrift en zin erna | "De linkerwolk heeft geen richting" / "links geen helling, rechts een duidelijk dalende." | geen helling in het dividendpaneel | Coëfficiënt +0,015 (t = 1,63); de tekst zegt zelf (r. 998): "Het teken van de dividendcoëfficiënt wijst wel de kant op die Williams nodig heeft", en op 5 jaar is hij significant (t = 2,02). "Zwakke, niet-significante positieve helling" klopt; "geen helling" niet. | inconsistent |
-| 12 | Theorie (inleiding en Opzet), Wat er brak | "daaruit met één aanname het model van Williams" (r. 233) / "Het model van Williams voegt er twee aannames aan toe" (r. 255) / "Het *model van Williams* voegt de aanname van een constante discontovoet toe" (r. 297) | aantal aannames van het model | Overzicht, Opzet (r. 255) en Samengevat noemen twee aannames (constante $r$ én transversaliteit); r. 233, r. 297 en r. 1145 ("voegt er een constante $r$ aan toe") noemen er één. De vaste naam "model van Williams" dekt zo niet steeds hetzelfde. | inconsistent |
-| 13 | Intuïtie, note | "Het boek werd in de jaren vijftig herontdekt, toen Gordon en Shapiro de oneindige som tot één breuk samentrokken." | de gesloten vorm is van Gordon en Shapiro | Williams (1938) gaf zelf al gesloten vormen voor een eeuwig constant groeiend dividend; de gangbare toeschrijving is dat Gordon het model populariseerde, niet dat hij de breuk als eerste afleidde. Ook "Williams verkocht in 1938 nauwelijks exemplaren" staat zonder bron. Niet te controleren met de bronnen in het project; te verifiëren in Williams (1938). | onherleidbaar |
-| 14 | Intuïtie | "Over de discontovoet schreef hij vrijwel niets: hij nam hem als gegeven." | Williams zweeg over de discontovoet | Williams (1938) besteedt zover ik weet hoofdstukken aan de rente en haar verwachte verloop, en bespreekt een risico-opslag (die hij bij spreiding overbodig achtte). "Nam hem als gegeven in de waardering" klopt; "schreef vrijwel niets" is waarschijnlijk te sterk. Geen citatie; te verifiëren. | onherleidbaar |
-| 15 | Wat er brak, en wat daarna kwam | "De PVGO liet zien dat groei en waarde niet hetzelfde zijn, een onderscheid dat in [](#03-16-vroege-anomalieen) empirisch terugkomt." | 03-16 behandelt het PVGO-onderscheid | 03_16 noemt PVGO niet; het gebruikt het Gordon-model uit deze lecture (Berk: marktwaarde als maat voor de discontovoet) en E/P- en B/M-portefeuilles. Het value-effect komt terug, het PVGO-mechanisme niet. | inconsistent |
+## Diff 1
 
-Buiten deze lecture, ter informatie: 04_20 r. 26 spreekt van "de identiteit van
-Williams"; deze lecture houdt "boekhoudkundige identiteit" en "model van
-Williams" gescheiden.
+Gecontroleerd: `git diff --no-index scratchpad/01_03_williams_ddm-ijk-1.md lectures/01_03_williams_ddm.md`. De notebookuitvoer is bijgewerkt: nieuwe kolomnamen in cel 5 en 6, de vergelijkingscel is nu cel 12 met "rond 10%". De vijf open punten hierboven komen in de nieuwe tekst niet meer voor: "Het boek bevat geen tijdreekstoets die we kunnen herhalen" (r. 767) spreekt de tabellen op r. 83 niet meer tegen; de 8,4% is herschreven; de verwijzing gaat nu naar 05-33, waar het schema de ratioterm voor $k\to\infty$ als bel benoemt (05_33 r. 260); Miller-Modigliani is gecorrigeerd (r. 1156–1159); er staat $20 \times 2{,}72$.
 
-## Beoordeling van eerdere aanmerkingen (alleen feitelijk)
+| vindplaats (kopje) | bewering, letterlijk | bron | status | correct |
+|---|---|---|---|---|
+| Opzet en aannames | "reëel ongeveer 8,4% per jaar als gewoon gemiddelde. De simulatie meet 6,8% als gemiddeld logrendement." | cel 5: 6,82%; $6{,}82 + 17{,}6^2/200 = 8{,}37$ | ok | – |
+| Kernresultaat / Oefening 1 | bel hernoemd naar $B_t$, $B_0$; de opmerking over de dubbele $b$ is geschrapt. In de rest van L3 geen andere $B$; de code van oefening 1 gebruikt nog `b_t` en `b0` als variabelenamen, niet in de tekst | tekst r. 336–356, 1053–1067; code r. 1080–1089 | ok | – |
+| Prijs-dividend-ratio | "bij constante $r$ moet een hoge ratio gevolgd worden door snelle dividendgroei"; identiteit in woorden (tellers, noemers, ratio over $K$ jaar) | vergelijking in de tekst | ok | – |
+| Simulatie | "Het gemiddelde reële logrendement is 6,82%"; tekst bij de figuur met "drie waarden van $r$: de asymptoot schuift mee met $r$" | cel 5; cel 7 tekent $r$ = 6%, 6,82% en 8% | ok | – |
+| Replicatie | CAPE "$R^2$ twee keer zo hoog", vanaf 1881; 54, 0,38 en 0,15 log-punt; "Samen is dat 0,53 ... ongeveer 0,47", identiteit in logs bij benadering | cel 9 en 11: 0,2404/0,1165 = 2,06; 1 − 0,150 − 0,375 = 0,475; restpost, uitdrukkelijk als benadering gepresenteerd | ok | – |
+| Replicatie (waarschuwing) | persistentie te laag geschat, schokken bewegen samen, "de rendementshelling valt negatiever uit dan de ware" | Stambaugh1999: bias $= (\sigma_{uv}/\sigma_v^2)\,\E[\hat\rho-\rho]$ met $\sigma_{uv}>0$ voor log PD en $\hat\rho$ neerwaarts vertekend, dus negatief | ok | – |
+| Replicatie (Geslaagd) | "Alle drie de verwachtingen ... komen uit (tabel hierboven)"; "ruim twee keer zoveel"; "De laatste cel" | cel 12; replicatieblok noemt drie verwachtingen; 0,375/0,150 = 2,5; cel 12 is de laatste cel van de sectie | ok | – |
+| Wat er brak | $R^2 \approx 5\%$ en $\approx 12\%$; "tot een factor twee naast"; "de ratio liep van 10 tot 86" | cel 9; cel 6 (2,1); cel 8 (9,9 en 86,2) | ok | – |
+| Oefening instap (2) | "De eindwaarde daalt 17,5%, van 21,00 naar 17,33", "$r-g$ een vijfde groter, en $d_4$ wordt iets kleiner" | cel 13: 17,3333/21 − 1 = −17,46%; $1{,}2 \times 1{,}05/1{,}04 = 1{,}2115$ | ok | –
 
-- rating2, Kendall: bevestigd (nr 4).
-- rating2, factor drie: bevestigd (nr 2).
-- rating2, 13/40 tegenover 12,5/40,8: bevestigd (nr 7).
-- rating2, 0,91 niet berekend: bevestigd; het getal hoort bij de volledige reeks,
-  niet bij de regressiesteekproef (nr 5).
-- rating2, 0,15 + 0,38 log-punt telt niet op tot 1: geen fout. De rest zit in de
-  verdisconteerde prijs-dividend-ratio na tien jaar; "ruim twee keer zoveel"
-  (0,375/0,150 = 2,5) klopt.
-- rating (eerste ronde): "anderhalve tiende procentpunt", de onbenoemde
-  notatiewissel, de verwijzing naar L2 voor de standaardfout van 2%, "verderop in
-  deze lecture" bij Campbell-Shiller, "twintig tot dertig jaar", "niet 25% maar
-  100%" en de log-kalibratie zijn in de huidige tekst hersteld; ze gelden niet
-  meer.
+## Diff 2
 
-## Gecontroleerd en in orde
+Gecontroleerd: `git diff --no-index scratchpad/01_03_williams_ddm-ijk-2.md lectures/01_03_williams_ddm.md`. Notebookuitvoer opnieuw opgehaald met `tools/nb_outputs.py`; de regressiecoëfficiënten van cel 17 en 21 zijn met een los scriptje op volledige precisie nagerekend (dividendgroei 0,015022; rendement −0,037520; CAPE −0,059...; $R^2$ 0,05427 / 0,11648 / 0,24041).
 
-- Toy: $d_1..d_3$ = 1,10 / 1,21 / 1,331; contante waarde 3,00; $d_4$ = 1,39755;
-  eindwaarde 27,951 (t=3) en 21,00 (t=0, exact: 1,331 × 21 = 27,951);
-  $p_0$ = 24,00; aandeel 87,5%. Alles gelijk aan de uitvoer.
-- Duration: $(1+r)/(r-g)$ = 1,10/0,05 = 22; $(1+2+3+21\times25)/24$ = 22,1 ≈ 22.
-- Gevoeligheidstabel: 21,00; 26,25 (+25%); 26,50 (+26,2%); 17,50 (−16,7%); een
-  fout van 1 pp is 20% van $r-g$ = 5 pp. Rooster: diagonaal 20,80–21,00–21,20,
-  bereik 14,86–35,33 (uitvoer).
-- Bel: ln 2/ln 1,10 = 7,3 jaar ("ruim zeven"); ln 2/ln 1,05 = 14,2 ("veertien").
-- CAPM "zesentwintig jaar later": 1938 + 26 = 1964 (Sharpe).
-- PVGO: $g$ = 5%, $d_1$ = 2, prijs 40, $e_1/r$ = 30, PVGO 10 = een kwart; bij
-  ROE 8%: −2,73.
-- Kalibratie: 154 waarnemingen, 1,61% (sd 11,5%, SE 0,93 pp), 6,82% (SE 1,42 pp);
-  $r-g$ = 5,21 pp; PD = 1,0161/0,0521 = 19,50. Rekenkundige correctie:
-  1,61 + 0,66 = 2,27 ≈ 2,3; 6,82 + 1,55 = 8,37 ≈ 8,4; verschil 6,10; ratio
-  1,0227/0,061 = 16,8 ≈ 17.
-- Standaardfout van 2%: 20/√100 = 2 pp, zoals afgeleid in 00_01 (r. 465–509).
-- Simulatie: SE van $\hat g$ bij T = 50 = 1,63 pp; T = 100: 14,10–30,77 ("14,1
-  tot 30,8", verhouding 2,18 = "ruim een factor twee"); scheefheid 35,9% onder
-  tegen 109% boven (verhouding 3,0).
-- Replicatie: 145 waarnemingen 1871–2015; dividendgroei 0,0150 (t = 1,63,
-  R² 0,054); rendement −0,0375 (t = −2,21, R² 0,117); tabel en tekst (0,015; 0,05;
-  −0,038; 0,12; R² ≈ 5% en 12%) kloppen. 10 × 0,015 = 0,15 en 10 × 0,0375 = 0,375
-  log-punt; 20 × e = 54,4; 145/10 ≈ 14 en 71/10 ≈ 7 onafhankelijke perioden.
-- Oordeel "Geslaagd": de verwachting (dividend niet significant, rendement
-  negatief en significant, R² rond 0,10) komt uit.
-- CAPE: −0,0592, t = −4,52, R² 0,240 (2,06 × die van de PD-regressie), n = 135,
-  dus start 1881.
-- Oefeningen: instap 17,3333 / 20,3333 / 85,2% / −15,3%; $r-g$ van 0,05 naar
-  0,06 is een vijfde groter. Bel: $p^f_0$ = 41,20, PD 20,6; kruising in jaar 30
-  (10 × 1,08³⁰ = 100,6 > 99,0; jaar 29: 93,2 < 96,1). PVGO: −13,89; $e_1/r$ =
-  55,56; asymptoot $b$ = 0,09/0,12 = 0,75 (raster 0,745). Oefening 3: −0,063
-  (t = −3,50), 0,026 (t = 2,02), 5 × 0,026 = 0,13 en 5 × 0,0446 = 0,22.
-- Verwijzingen: de labels 01-02-bachelier, 00-01-rendementen,
-  03-15-shiller-excess-volatility, 03-16-vroege-anomalieen,
-  04-20-voorspelbaarheid, 05-33-fama-vs-shiller, 01-04-markowitz en index
-  bestaan. 01_02 gebruikt kleine letters als logs en $r$ als logrendement
-  (r. 244), zoals hier staat. 04_20 bevat de Campbell-Shiller-afleiding
-  (ρ = 0,96) en de kritiek op de $t$-waarden (Stambaugh, Hodrick, Valkanov).
-  05_33: Nobelprijs oktober 2013 voor Fama, Hansen en Shiller. 01_04 zegt, net
-  als deze lecture, dat prijzen vooral bewegen doordat $r$ beweegt, en dat
-  Williams elk aandeel apart bekeek.
-- Gordon (1959): cross-sectie van vier bedrijfstakken in 1951 en 1954; klopt
-  met de gangbare beschrijving van het artikel.
+| vindplaats (kopje) | bewering, letterlijk | bron | status | correct |
+|---|---|---|---|---|
+| Opzet en aannames | "Shillers data, waarop de simulatie kalibreert, geven 6,8% als gemiddeld logrendement" | cel 5: gemiddelde 0,0682; cel 6 gebruikt $r_{\text{true}} = 0{,}0682$ als kalibratie van de simulatie | ok | – |
+| Opzet en aannames | notatie "die van [](#00-00-setup)": $R=1+r$ bruto, $r$ netto en simpel, $p_t$ en $d_t$ niveaus in euro; wissel t.o.v. [](#01-02-bachelier), waar kleine letters logs waren | 00_00_setup r. 172–173, 211–212 ("zonder aankondiging zijn alle grootheden niveaus"); 01_02_bachelier r. 216 ("Vanaf hier zijn kleine letters logs") | ok | – |
+| Kernresultaat | verwijzing naar de bel in [](#05-33-fama-vs-shiller) geschrapt, niet vervangen | label 05-33-fama-vs-shiller bestaat en wordt verderop (r. 1001) nog gebruikt; geen wees-verwijzing ontstaan | ok | – |
+| Replicatie | "de helling ... is de parameter van de regressor, `log_pd`" (i.p.v. "de tweede parameter, na het intercept"); code gebruikt nu `fit.params["log_pd"]` | nagerekend: `log_pd` is de kolomnaam die aan `hap.newey_west` wordt meegegeven; `fit.params["log_pd"]` geeft dezelfde 0,0150 / −0,0375 als voorheen `.iloc[1]` | ok | – |
+| Replicatie | verwijzing naar [](#04-20-voorspelbaarheid) voor de $t$-waarden geschrapt, vervangen door de "ruim twee keer zoveel"-uitspraak die verderop in Wat er brak terugkomt | label 04-20-voorspelbaarheid bestaat en wordt op r. 987 nog gebruikt; geen wees-verwijzing | ok | – |
+| Replicatie | "we verwachten dezelfde richting, een negatieve helling, en een hogere $R^2$" en, na de codecel, "Zo komt het uit: de helling is negatief en de $R^2$ twee keer zo hoog" | cel 17: rendement-coëfficiënt −0,0375, $R^2 = 0{,}1165$; cel 21: CAPE-coëfficiënt −0,0592, $R^2 = 0{,}2404$; $0{,}2404/0{,}1165 = 2{,}06$ | ok | – |
+| Replicatie | tabel: "$10 \times 0{,}015$" → 0,15; "$10 \times 0{,}0375$" → 0,38; "$1-0{,}15-0{,}38$" → 0,47; totaal 1 | nagerekend uit cel 17: $10 \times 0{,}015022 = 0{,}1502$ → 0,15; $10 \times 0{,}037520 = 0{,}3752$ → 0,38; $1-0{,}150-0{,}375 = 0{,}475$ → 0,47; som exact 1,00 | ok | – |
+| Replicatie | "Het rendement draagt ruim twee keer zoveel als de dividendgroei" | $0{,}375/0{,}150 = 2{,}50$ (via $R^2$: $0{,}1165/0{,}0543 = 2{,}15$); beide "ruim twee keer" | ok | – |
+| Replicatie (Geslaagd) | "Het teken van de dividendcoëfficiënt klopt wel met Williams" | dividendgroei-coëfficiënt +0,015, positief, de richting die constante $r$ voorspelt; de rendementscoëfficiënt −0,038 is wat het model verwerpt | ok | – |
+| Wat er brak | "Het enige symbool dat Williams als gegeven nam, draagt ruim twee keer zoveel van de beweging als de dividendgroei" | zelfde $2{,}50\times$ / $2{,}15\times$ als hierboven | ok | – |
+| Wat er brak | "Zo getoetst en verworpen werd het pas decennia later, na het CAPM, dat [](#00-00-setup) het eerste getoetste model van het vak noemt" | 00_00_setup r. 107: "Het vak begon met één model dat werd getoetst, het CAPM"; label 00-00-setup bestaat | ok | – |
