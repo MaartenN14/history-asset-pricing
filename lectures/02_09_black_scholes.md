@@ -20,44 +20,85 @@ kernelspec:
 
 **Jaartal.** 1961–1973.
 
-**Wat we al weten.** In [](#01-02-bachelier) leidde Bachelier de eerste
-optieformule af door een verwachting te nemen, zonder te kunnen zeggen waarom juist
-die verwachting de prijs is. Osborne en Samuelson verplaatsten de Brownse beweging
-naar de logaritme van de prijs, en het CAPM uit [](#02-08-capm) gaf een prijs van
-risico. De barst was praktisch: wie een optie wilde waarderen, moest het verwachte
-rendement van het aandeel kennen — het slechtst meetbare getal van de reeks — en
-een discontovoet kiezen voor een contract waarvan het risico met elke koersbeweging
-verandert.
+**Wat we al weten.** Bachelier leidde in [](#01-02-bachelier) de eerste
+optieformule af door een verwachting te nemen. Waarom een verwachting zonder
+correctie voor risico de prijs is, kon hij niet zeggen. Het CAPM uit [](#02-08-capm) gaf een prijs van
+risico, maar vroeg daarvoor het verwachte rendement, het slechtst meetbare getal
+van de reeks.
 
-**Welke vraag staat open.** Kan men een optie prijzen zonder te weten welk
+**Welke vraag staat open.** Kan een optie geprijsd worden zonder te weten welk
 rendement het aandeel verwacht en hoe risicoavers beleggers zijn?
 ```
 
 ## Overzicht
 
-Op 26 april 1973 opende de Chicago Board Options Exchange, de eerste beurs voor
-gestandaardiseerde opties. In het mei/juni-nummer van de *Journal of Political
-Economy* verscheen *The Pricing of Options and Corporate Liabilities* van Fischer
-Black en Myron Scholes {cite}`BlackScholes1973`, en in het voorjaarsnummer van de
-*Bell Journal* Robert Mertons *Theory of Rational Option Pricing*
-{cite}`Merton1973`. Dit werk definieert het tijdvak omdat het de eerste
-waarderingstheorie is zonder voorkeursparameter — geen risicoaversie, geen
-verwacht rendement — en daarmee het eerste resultaat dat niet uit evenwicht maar
-uit *replicatie* volgt.
+Wat is een optie waard als niemand weet welk rendement het aandeel verwacht? Wat
+het kost om haar na te maken met aandeel en obligatie. Die kosten hangen van de
+volatiliteit af, niet van het verwachte rendement en niet van de risicoaversie.
+In deze lecture:
 
-De epistemische status verschilt van die van het CAPM (motief 3). Black-Scholes
-is een *relatieve* waarderingsregel: zij zegt niet wat een aandeel waard is, alleen
-wat een optie waard is *gegeven* het aandeel. Daarom breekt ze ook anders: niet in
-het gemiddelde, maar in de tweede momenten — en die zijn goed meetbaar.
+- maken we in een binomiale boom van drie stappen een call na, en zien we dat de
+  kans op een stijging nergens in de prijs voorkomt;
 
-We beginnen met een binomiale boom van drie stappen, waarin de werkelijke kans op
-een stijging nergens in de prijs voorkomt. De theorie loopt via Itô's lemma naar
-de delta-hedge-afleiding van de PDE, de risiconeutrale oplossing, put-call-pariteit,
-de Greeks en implied volatility. De simulatie repliceert de hedgefouttabel van
-Derman en Kamal {cite}`DermanKamal1999`. De replicatie op echte data bouwt het
-implied-volatility-oppervlak van SPY-opties, vindt de *smirk* (een implied volatility die daalt naarmate de uitoefenprijs stijgt) die Rubinstein
-{cite}`Rubinstein1994` na 1987 beschreef, en zet de VIX naast de daarna
-gerealiseerde volatiliteit.
+- leiden we met Itô's lemma de partiële differentiaalvergelijking af, en daaruit
+  de Black-Scholes-formule als verdisconteerde verwachting;
+
+- berekenen we wat een handelaar verdient die met de verkeerde volatiliteit hedget;
+
+- simuleren we hoe groot de spreiding van de P&L (winst of verlies) is als niet continu maar dagelijks,
+  wekelijks of maandelijks wordt gehedgd;
+
+- repliceren we de *smirk* van Rubinstein {cite}`Rubinstein1994` (opties met een
+  lage uitoefenprijs zijn relatief duur) op opties op SPY, een beursfonds dat de
+  S&P 500 volgt. Daarna zetten we de VIX, de volatiliteitsindex die de CBOE uit
+  indexopties afleidt, naast de daarna gerealiseerde volatiliteit.
+
+In de jaren zestig rekenden Sprenkle {cite}`Sprenkle1961`, Boness
+{cite}`Boness1964` en Samuelson {cite}`Samuelson1965b` de verwachte opbrengst van
+een optie uit. Ze bleven alle drie zitten met een verwacht rendement of een
+discontovoet die niemand kon meten. In 1973 verschenen het artikel van Fischer
+Black en Myron Scholes {cite}`BlackScholes1973` en dat van Robert Merton
+{cite}`Merton1973`. In april van dat jaar opende in Chicago de CBOE, de eerste
+beurs voor gestandaardiseerde opties. Met dit werk begint een nieuw tijdvak: het is de
+eerste waarderingsregel die niet uit evenwicht volgt maar uit *replicatie*
+(namaken met andere effecten).
+
+Op de vraag theorie of feit is Black-Scholes een theorie die getoetst wordt, maar
+een relatieve. Ze zegt niet wat een aandeel waard is, alleen wat een optie waard is
+*gegeven* het aandeel. Daarom breekt ze ook anders dan het CAPM: niet in het
+gemiddelde, maar in de volatiliteit, en die is goed meetbaar.
+
+## Intuïtie: waarom zou dit waar zijn?
+
+Black legde het idee zelf uit met een getal {cite}`Black1989`. Stel dat een call
+vijftig cent stijgt als het aandeel een euro stijgt, en vijftig cent daalt als
+het een euro daalt. Een handelaar verkoopt twee calls en koopt één aandeel. Wat
+hij op het aandeel wint, verliest hij op de calls, en omgekeerd. Voor kleine
+bewegingen is die positie zonder risico.
+
+Een positie zonder risico moet de rente opleveren. Anders leent iedereen om haar op te
+zetten, of zet haar omgekeerd op. Daarmee ligt de prijs van de call vast.
+
+Belangrijk is wat er niet in de redenering zit. Niemand heeft gevraagd of het
+aandeel waarschijnlijk stijgt. Een optimistische verwachting zit al in de koers
+van het aandeel, en hoeft niet nog eens in de optie. Ook risicoaversie doet er niet
+toe, want de afgedekte positie heeft geen risico.
+
+Wat wel telt, is hoe hard het aandeel beweegt. De verhouding van twee calls op één
+aandeel klopt maar even. Na elke beweging moet de handelaar bijstellen, en hoe
+wilder het aandeel, hoe meer dat bijstellen kost. De volatiliteit is de enige
+grootheid over de toekomst die de markt moet inschatten.
+
+Dat leidt tot drie verwachtingen. De prijs van een optie stijgt met de volatiliteit
+en verandert niet als het verwachte rendement verandert. Een handelaar die vaak
+bijstelt, houdt een kleine P&L over, en die is gemiddeld vrijwel nul, ongeacht de
+drift.
+En als het model klopt, geven alle opties op hetzelfde aandeel dezelfde
+volatiliteit terug.
+
+## Toy-voorbeeld: een binomiale boom van drie stappen
+
+We beginnen met de imports-cel, de enige van deze lecture.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -72,179 +113,150 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-## Intuïtie: waarom zou dit waar zijn?
+**Opzet.** Een aandeel stijgt per stap met factor $u$ of daalt met factor $d$. Een
+Europese call (alleen op de einddatum uit te oefenen) met uitoefenprijs $K$ loopt
+na drie stappen af. De werkelijke kans
+op een stijging, $p$, laten we open.
 
-Black vertelde het in 1989 zelf, met een getal {cite}`Black1989`. Stel dat een
-call ongeveer vijftig cent stijgt als het aandeel een dollar stijgt, en vijftig
-cent daalt als het een dollar daalt. Verkoop twee opties en koop één aandeel: wat
-men op het ene verliest, wint men op het andere. Voor kleine bewegingen is die
-positie vrijwel zonder risico, en een positie zonder risico hoort de rente op te
-leveren — anders leent iedereen om haar op te zetten. "This one principle gives us
-the option formula."
+| grootheid | waarde |
+|---|---|
+| koers nu $S_0$ | 100 |
+| stijgfactor $u$ / daalfactor $d$ | 1,1 / 0,9 |
+| risicovrij bruto rendement per stap $R^{f}$ | 1,02 |
+| uitoefenprijs $K$ | 100 |
 
-Het verrassende zit in wat er *niet* in staat. Nergens is gevraagd of het aandeel
-waarschijnlijk stijgt, of hoe bang beleggers voor verlies zijn. De afgedekte positie
-heeft geen risico, dus risicoaversie doet er niet toe; en een opwaartse verwachting
-zit al in de aandelenkoers en hoeft niet nog eens in de optiekoers. Wat wél telt,
-is hoe *hard* het aandeel beweegt: de verhouding van twee opties op één aandeel
-geldt maar even en moet steeds worden bijgesteld, en hoe wilder het aandeel, hoe
-duurder dat bijstellen. De volatiliteit is de enige grootheid over de toekomst die
-de markt moet inschatten.
+De koers in elke knoop, en de payoff na drie stappen:
 
-Dat loste een probleem op dat een decennium had stilgelegen. Sprenkle rekende in
-1961 de verwachte waarde van een warrant op expiratie uit onder een lognormaal
-aandeel {cite}`Sprenkle1961`, Boness deed in 1964 hetzelfde en disconteerde met het
-verwachte rendement van het aandeel {cite}`Boness1964`, en Samuelson gaf het aandeel
-in 1965 een verwachte opbrengst $\alpha$ die afhing van "the typical investor's
-utility aversion to risk" {cite}`Samuelson1965b`. Alle drie hielden een parameter
-over die niemand kon meten. Black: "No single discount rate will do, however,
-because the risk of the warrant depends on the stock price and time."
+| stap | koersen (van veel naar weinig stijgingen) |
+|---|---|
+| 0 | 100 |
+| 1 | 110; 90 |
+| 2 | 121; 99; 81 |
+| 3 | 133,1; 108,9; 89,1; 72,9 |
+| payoff $(S_3 - K)^{+}$ | 33,1; 8,9; 0; 0 |
 
-Het verhaal van de ontdekking is kort. Black had in juni 1969 de
-differentiaalvergelijking, maar "didn't recognize the equation as a version of the
-'heat equation'". Met Scholes vond hij de uitweg: als de waarde niet van het
-verwachte rendement afhangt, mag men de rente invullen, en dan is Sprenkles formule
-het antwoord. Merton wees erop dat bij continue handel een positie "literally
-riskless" is. Het manuscript van oktober 1970 werd door het JPE teruggestuurd als
-te gespecialiseerd en door de *Review of Economics and Statistics* zonder
-referentenrapport afgewezen; pas na belangstelling van Merton Miller en Eugene Fama
-aanvaardde het JPE het in augustus 1971.
+**Het recept.** In elke knoop zoeken we $\Delta$ aandelen en $B$ euro in
+obligaties die in beide volgende knopen de waarde van de optie geven. Dan is
+$\Delta = (C_{\text{op}} - C_{\text{neer}})/(S(u-d))$: de uitslag van de optie
+gedeeld door die van het aandeel. De obligaties vullen aan tot de payoff:
+$B = (C_{\text{op}} - \Delta S u)/R^{f}$. De optie kost wat die portefeuille kost,
+$\Delta S + B$.
 
-```{note}
-De CBOE opende met calls op zestien aandelen; die eerste dag werden 911 contracten
-verhandeld, en puts kwamen er pas in 1977 bij. Black beschrijft dat Dan Galai de
-formule op de genoteerde opties van juli 1973 tot april 1974 toepaste, met, zonder
-transactiekosten, "a consistent profit of \$4.00 or \$5.00 per day" per neutrale
-spread — en dat zulke kansen verdwenen omdat "traders now use the formula and its
-variants extensively". Een theorie die de prijzen beschrijft omdat de markt haar
-gebruikt: dat wordt aan het eind belangrijk.
-```
+**Stap 1: knoop $S_2 = 121$.** $\Delta = (33{,}1 - 8{,}9)/24{,}2 = 1$ en
+$B = (33{,}1 - 133{,}1)/1{,}02 = -98{,}0392$. Waarde $121 - 98{,}0392 = 22{,}9608$.
 
-## Toy-voorbeeld: een binomiale boom van drie stappen
+**Stap 2: knoop $S_2 = 99$.** $\Delta = 8{,}9/19{,}8 = 0{,}4495$,
+$B = (8{,}9 - 0{,}4495 \cdot 108{,}9)/1{,}02 = -39{,}2647$, waarde $5{,}2353$. In $S_2 = 81$ is alles nul.
 
-Een aandeel van $S_0 = 100$ stijgt per stap met factor $u = 1{,}1$ of daalt met
-$d = 0{,}9$; het risicovrije bruto rendement per stap is $R^{f} = 1{,}02$. Een
-Europese call met $K = 100$ loopt na drie stappen af. De werkelijke kans op een
-stijging, $p$, laten we open. Na drie stappen:
+**Stap 3: een stap terug.** In $S_1 = 110$: $\Delta = (22{,}9608 - 5{,}2353)/22 =
+0{,}8057$, $B = -73{,}0681$, waarde $15{,}5594$. In $S_1 = 90$:
+$\Delta = 5{,}2353/18 = 0{,}2908$, $B = -23{,}0969$, waarde $3{,}0796$.
 
-| aantal stijgingen | 3 | 2 | 1 | 0 |
-|---|---|---|---|---|
-| $S_3$ | $133{,}1$ | $108{,}9$ | $89{,}1$ | $72{,}9$ |
-| payoff $(S_3 - K)^{+}$ | $33{,}1$ | $8{,}9$ | $0$ | $0$ |
+**Stap 4: de wortel.** $\Delta_0 = (15{,}5594 - 3{,}0796)/20 = 0{,}6240$ en
+$B_0 = -52{,}0388$, dus $C_0 = 0{,}62399 \cdot 100 - 52{,}0388 = 62{,}3991 -
+52{,}0388 = 10{,}3603$.
 
-**Eén knoop.** In de knoop $S_2 = 121$ zijn nog twee uitkomsten mogelijk. Zoek
-$\Delta$ aandelen en $B$ in obligaties die in beide precies de payoff geven:
+**Stap 5: waar $p$ bleef.** Nergens. Neem $q = (R^{f} - d)/(u - d) = 0{,}6$. Onder
+$q$ verdient het aandeel precies de rente: $0{,}6 \cdot 1{,}1 + 0{,}4 \cdot 0{,}9 =
+1{,}02$. De verdisconteerde verwachting onder $q$ geeft dezelfde prijs:
+$(0{,}216 \cdot 33{,}1 + 0{,}432 \cdot 8{,}9)/1{,}02^3 = 10{,}3603$.
 
-$$
-133{,}1\,\Delta + 1{,}02\,B = 33{,}1, \qquad 108{,}9\,\Delta + 1{,}02\,B = 8{,}9 .
-$$
+**Stap 6: de oude methode.** Sprenkle en Boness namen de verwachte payoff onder de
+werkelijke kans. Bij $p = 0{,}5$ is die $7{,}475$, verdisconteerd $7{,}0439$. Bij
+$p = 0{,}8$ is ze $20{,}3648$, verdisconteerd $19{,}1902$. Om op $10{,}3603$ uit te
+komen, is bij elke $p$ een andere discontovoet nodig. Bij $p = 0{,}8$ verwacht de
+optie per stap een bruto rendement van $(20{,}3648/10{,}3603)^{1/3} = 1{,}2527$,
+het aandeel $0{,}8 \cdot 1{,}1 + 0{,}2 \cdot 0{,}9 = 1{,}06$.
 
-Aftrekken geeft $24{,}2\,\Delta = 24{,}2$, dus $\Delta = 1$ en
-$B = (33{,}1 - 133{,}1)/1{,}02 = -98{,}0392$. De portefeuille kost
-$121 - 98{,}0392 = 22{,}9608$, en omdat ze in elke uitkomst de payoff van de optie
-geeft, *moet* de optie dat ook kosten.
-
-**Alle knopen.** Hetzelfde recept geeft in $S_2 = 99$: $\Delta = 8{,}9/19{,}8 =
-0{,}4495$ en waarde $5{,}2353$; in $S_2 = 81$: nul. Een stap terug, in $S_1 = 110$:
-$\Delta = (22{,}9608 - 5{,}2353)/22 = 0{,}8057$ en waarde $15{,}5594$; in
-$S_1 = 90$: $\Delta = 5{,}2353/18 = 0{,}2908$ en waarde $3{,}0796$. In de wortel is
-$\Delta_0 = (15{,}5594 - 3{,}0796)/20 = 0{,}6240$, $B_0 = -52{,}0388$ en
-
-$$
-C_0 = 0{,}6240 \cdot 100 - 52{,}0388 = 10{,}3603 .
-$$
-
-**Waar $p$ bleef.** Nergens gebruikt. Definieer $q = (R^{f} - d)/(u - d) = 0{,}6$,
-de kans waaronder het aandeel precies de rente verdient ($qu + (1-q)d = R^{f}$).
-Dan is elke knoopwaarde de verdisconteerde verwachting onder $q$, en in één keer:
-
-$$
-C_0 = \frac{q^3 \cdot 33{,}1 + 3q^2(1-q)\cdot 8{,}9}{(R^{f})^3}
-    = \frac{0{,}216 \cdot 33{,}1 + 0{,}432 \cdot 8{,}9}{1{,}061208} = 10{,}3603 .
-$$
-
-Doet men het zoals Sprenkle en Boness — verwachte payoff onder de werkelijke kans,
-verdisconteerd tegen de rente — dan krijgt men bij $p = 0{,}5$ de waarde
-$7{,}475/1{,}061208 = 7{,}04$ en bij $p = 0{,}8$ de waarde $19{,}19$. Om op
-$10{,}3603$ uit te komen, moet men bij elke $p$ een andere discontovoet kiezen:
-precies het probleem waar Black op vastliep.
+De code loopt de boom achteruit door en zet de handberekening ernaast.
 
 ```{code-cell} ipython3
-S0_toy, u, d, R_f, K_toy, n_toy = 100.0, 1.1, 0.9, 1.02, 100.0, 3
+toy = dict(S0=100.0, u=1.1, d=0.9, R_f=1.02, K=100.0, n=3)
+S0, u, d, R_f, K, n = toy.values()
 q_toy = (R_f - d) / (u - d)
 
-value, rows = {}, []
-for j in range(n_toy + 1):                       # terminal nodes, j = number of up-moves
-    value[(n_toy, j)] = max(S0_toy * u**j * d ** (n_toy - j) - K_toy, 0.0)
-for step in range(n_toy - 1, -1, -1):
+value, delta_at, bond_at = {}, {}, {}
+for j in range(n + 1):                          # terminal nodes, j = number of up-moves
+    value[(n, j)] = max(S0 * u**j * d ** (n - j) - K, 0.0)
+for step in range(n - 1, -1, -1):               # walk back through the tree
     for j in range(step + 1):
-        S = S0_toy * u**j * d ** (step - j)
+        S = S0 * u**j * d ** (step - j)
         up, down = value[(step + 1, j + 1)], value[(step + 1, j)]
-        delta = (up - down) / (S * (u - d))
-        bond = (up - delta * S * u) / R_f        # solves delta*S*u + R_f*B = up
-        value[(step, j)] = delta * S + bond
-        rows.append({"stap": step, "stijgingen": j, "S": S, "Delta": delta,
-                     "B": bond, "waarde": value[(step, j)]})
+        delta_at[(step, j)] = (up - down) / (S * (u - d))
+        bond_at[(step, j)] = (up - delta_at[(step, j)] * S * u) / R_f
+        value[(step, j)] = delta_at[(step, j)] * S + bond_at[(step, j)]
 
-tree = pd.DataFrame(rows).set_index(["stap", "stijgingen"]).sort_index()
-payoff_toy = np.array([value[(n_toy, j)] for j in range(n_toy + 1)])
-risk_neutral = stats.binom.pmf(np.arange(n_toy + 1), n_toy, q_toy) @ payoff_toy / R_f**n_toy
-print(f"q = {q_toy:.4f}; replicatieprijs = {value[(0, 0)]:.4f}; "
-      f"risiconeutrale verwachting = {risk_neutral:.4f}")
-tree.round(4)
+payoff_toy = np.array([value[(n, j)] for j in range(n + 1)])
+up_moves = np.arange(n + 1)
+expected_payoff = {p: stats.binom.pmf(up_moves, n, p) @ payoff_toy for p in (0.5, q_toy, 0.8)}
+
+hand = {"Delta in S2 = 121": 1.0, "B in S2 = 121": -98.0392, "Delta_0": 0.6240, "B_0": -52.0388,
+        "C_0 (replicatie)": 10.3603, "q": 0.6, "C_0 (verwachting onder q)": 10.3603,
+        "p = 0,5: E_p[payoff] / R_f^3": 7.0439, "p = 0,8: E_p[payoff] / R_f^3": 19.1902,
+        "p = 0,8: rendement optie per stap": 1.2527}
+code = {"Delta in S2 = 121": delta_at[(2, 2)], "B in S2 = 121": bond_at[(2, 2)],
+        "Delta_0": delta_at[(0, 0)], "B_0": bond_at[(0, 0)], "C_0 (replicatie)": value[(0, 0)],
+        "q": q_toy, "C_0 (verwachting onder q)": expected_payoff[q_toy] / R_f**n,
+        "p = 0,5: E_p[payoff] / R_f^3": expected_payoff[0.5] / R_f**n,
+        "p = 0,8: E_p[payoff] / R_f^3": expected_payoff[0.8] / R_f**n,
+        "p = 0,8: rendement optie per stap": (expected_payoff[0.8] / value[(0, 0)]) ** (1 / n)}
+pd.DataFrame({"met de hand": hand, "code": code}).round(4)
 ```
 
-```{code-cell} ipython3
-p_table = pd.DataFrame(
-    [
-        {
-            "p": p,
-            "E_p[bruto rendement aandeel per stap]": p * u + (1 - p) * d,
-            "E_p[payoff] / (R_f)^3": stats.binom.pmf(np.arange(4), 3, p) @ payoff_toy / R_f**3,
-            "replicatieprijs": value[(0, 0)],
-            "E_p[bruto rendement optie per stap]":
-                (stats.binom.pmf(np.arange(4), 3, p) @ payoff_toy / value[(0, 0)]) ** (1 / 3),
-        }
-        for p in (0.5, 0.6, 0.8)
-    ]
-).set_index("p")
-p_table.round(4)
-```
-
-De code reproduceert elke knoop van de handberekening tot op vier decimalen. De
-tweede tabel is het argument van deze lecture: het verwachte rendement van het
-aandeel loopt van $1{,}00$ tot $1{,}06$ per stap, dat van de optie van $0{,}90$ tot
-$1{,}25$, maar de prijs verandert niet. Hoe de boom met veel stappen naar de formule
-hieronder convergeert, is het werk van Cox, Ross en Rubinstein
-{cite}`CoxRossRubinstein1979` in [](#03-11-apt-no-arbitrage).
+De twee kolommen zijn gelijk. De lezer weet nu het argument van de lecture in het
+klein: de prijs $10{,}3603$ volgt uit namaken, en het verwachte rendement van
+aandeel en optie mag elke waarde hebben zonder dat die prijs verandert.
 
 ## Theorie
 
-### Opzet en notatie
+We leiden vier dingen af. Eerst Itô's lemma, de rekenregel voor functies van een
+Brownse beweging. Dan de kern: de delta-hedge, die in continue tijd doet wat de
+boom per knoop deed, en die een partiële differentiaalvergelijking zonder $\mu$
+oplevert. Daarna de oplossing, de Black-Scholes-formule, en wat een handelaar
+verdient die de verkeerde volatiliteit gebruikt. Tot slot de implied volatility,
+waarmee het model getoetst wordt.
 
-We wijken op één punt af van de notatietabel: de aandelenprijs heet $S_t$, zoals in
-de optieliteratuur en in [](#01-02-bachelier); $C(S,t)$ en $P(S,t)$ zijn de waarden
-van een call en een put. De rente $r$ is continu samengesteld en constant, er zijn
-geen dividenden en geen transactiekosten, en $\tau = T - t$ is de resterende
-looptijd. Het aandeel volgt een *geometrische Brownse beweging* (de logaritme van de
-prijs is een Brownse beweging met drift):
+### Opzet en aannames
+
+We
+wijken op vier punten af van de notatietabel van de reeks. De aandelenkoers heet
+$S_t$ in plaats van $p_t$, zoals in de optieliteratuur. In de boom was $R^{f}$ het
+bruto rendement per stap (1,02), niet de netto rente. En $r$ is hier de continu
+samengestelde rente, niet een netto rendement: een euro groeit in een jaar tot
+$e^{r}$. Ook $d$ is in de boom de daalfactor, niet het dividend; een dividend heet
+hier $\delta$, als rendement op de koers. $C(S,t)$ en $P(S,t)$ zijn de waarden van een call en een put, en $\tau = T - t$ is de resterende looptijd. De aannames:
+
+1. het aandeel volgt een *geometrische Brownse beweging* (de logaritme van de koers
+   is een Brownse beweging met drift), met constante volatiliteit $\sigma$;
+
+2. de rente $r$ is continu samengesteld en constant;
+
+3. handel is continu, zonder transactiekosten, en short gaan mag;
+
+4. het aandeel keert geen dividend uit.
+
+Aanname 1 in formulevorm:
 
 ```{math}
 :label: eq-black-scholes-gbm
 \mathrm{d}S_t = \mu\, S_t\, \mathrm{d}t + \sigma\, S_t\, \mathrm{d}W_t .
 ```
 
-Dit is Bacheliers proces met de reparatie van Osborne {cite}`Osborne1959` en
-Samuelson {cite}`Samuelson1965b`: de schok is evenredig met de prijs, zodat de prijs
-positief blijft en $\sigma$ een dimensieloos percentage is.
+In woorden: de koers groeit gemiddeld met $\mu$ per jaar, bijvoorbeeld 10%, en
+schommelt met $\sigma$ per jaar, bijvoorbeeld 20%. De schok $\mathrm{d}W_t$ is die
+van een Brownse beweging, evenredig met de koers. Dat is Bacheliers proces met de
+reparatie van Osborne {cite}`Osborne1959` en Samuelson {cite}`Samuelson1965b`: de
+koers blijft positief.
 
-### Itô's lemma
+### Het gereedschap: Itô's lemma
 
-*Waarom zou dit waar zijn?* In gewone analyse verwaarloost men $(\mathrm{d}S)^2$,
-omdat het een orde kleiner is dan $\mathrm{d}S$. Voor een Brownse beweging klopt dat
-niet: volgens Regnaults wet uit [](#01-02-bachelier) is de uitslag over een interval
-$h$ van orde $\sqrt{h}$, dus haar kwadraat van orde $h$ — dezelfde orde als de drift.
-Itô's lemma is Taylors formule met die ene correctie.
+*Waarom zou dit waar zijn?* Wie een functie van de koers volgt, bijvoorbeeld de
+waarde van een optie, ziet haar bij elke koersbeweging meebewegen. Voor gladde
+paden telt alleen de eerste afgeleide. Een Brownse beweging schudt echter zo hard
+dat het kwadraat van de uitslag even groot is als de drift. Volgens Regnaults wet
+uit [](#01-02-bachelier) is de uitslag over een interval $h$ van orde $\sqrt{h}$,
+dus het kwadraat van orde $h$. De kromming van de functie telt daardoor mee, en bij
+een bolle functie duwt ze de waarde omhoog.
 
 :::{prf:theorem} Itô's lemma
 :label: thm-black-scholes-ito
@@ -259,40 +271,46 @@ keer continu differentieerbaar zijn in $x$ en één keer in $t$. Dan
 ```
 :::
 
+In woorden: de verandering van $f$ is de gewone kettingregel plus een term
+$\tfrac12 b^2 f_{xx}$, de kromming maal de variantie van de schok. Het bewijsidee:
+de som van gekwadrateerde aangroeiingen van $W$ over $[0,t]$ convergeert naar de
+vaste waarde $t$, dus $(\mathrm{d}W)^2 = \mathrm{d}t$.
+
 :::{prf:proof}
 :class: dropdown
 
 Voor constante $a$, $b$: verdeel $[0,t]$ in $n$ stukjes van lengte $h = t/n$ en
 ontwikkel $f$ tot de tweede orde in elk stukje. In
-$(\Delta X_k)^2 = a^2h^2 + 2ab\,h\,\Delta W_k + b^2(\Delta W_k)^2$ verdwijnen de
+$(\delta X_j)^2 = a^2h^2 + 2ab\,h\,\delta W_j + b^2(\delta W_j)^2$ verdwijnen de
 eerste twee termen na sommatie over $n = t/h$ stukjes. Voor
-$Q_n = \sum_k (\Delta W_k)^2$ geldt $\E[Q_n] = t$ en, omdat
-$\Var((\Delta W_k)^2) = 2h^2$ en de stukjes onafhankelijk zijn,
+$Q_n = \sum_j (\delta W_j)^2$ (met $\delta W_j$ de aangroei in stukje $j$) geldt $\E[Q_n] = t$ en, omdat
+$\Var((\delta W_j)^2) = 2h^2$ en de stukjes onafhankelijk zijn,
 $\Var(Q_n) = 2th \to 0$. De som van gekwadrateerde aangroeiingen convergeert dus in
 $L^2$ naar de *deterministische* waarde $t$: $(\mathrm{d}W)^2 = \mathrm{d}t$. Met
 $f_{xx}$ als gewicht geeft hetzelfde argument
-$\sum_k f_{xx}(\Delta W_k)^2 \to \int f_{xx}\,\mathrm{d}s$, en de restterm van orde
+$\sum_j f_{xx}(\delta W_j)^2 \to \int f_{xx}\,\mathrm{d}s$, en de restterm van orde
 $h^{3/2}$ per stukje verdwijnt. $\square$
 :::
 
-Met $f = \log S$ volgt
-$\mathrm{d}\log S_t = (\mu - \tfrac12\sigma^2)\,\mathrm{d}t + \sigma\,\mathrm{d}W_t$,
-dus $S_T = S_t\exp[(\mu - \tfrac12\sigma^2)\tau + \sigma(W_T - W_t)]$. Het verwachte
-log-rendement ligt $\tfrac12\sigma^2$ onder het verwachte rendement — het verschil
-tussen rekenkundig en meetkundig gemiddelde uit [](#00-01-rendementen), en de reden
-dat bij een martingaalprijs de mediaanbelegger volgens Samuelson eindigt "with less
-than 1 cent of net worth" {cite}`Samuelson1965b`.
+Een eerste toepassing: met $f = \log S$ volgt
+$\mathrm{d}\log S_t = (\mu - \tfrac12\sigma^2)\,\mathrm{d}t + \sigma\,\mathrm{d}W_t$.
+Het verwachte log-rendement ligt dus $\tfrac12\sigma^2$ onder $\mu$, bij
+$\sigma = 20\%$ twee procentpunt. Dat is het verschil tussen rekenkundig en
+meetkundig gemiddelde uit [](#00-01-rendementen). Over een looptijd $\tau$ is
+$\log S_T$ normaal verdeeld: de koers op expiratie is lognormaal.
 
-### De delta-hedge en de partiële differentiaalvergelijking
+### Het kernresultaat: de delta-hedge
 
-*Waarom zou dit waar zijn?* De optie en het aandeel worden door dezelfde schok
-$\mathrm{d}W$ gedreven. Kies het aantal aandelen zo dat de gevoeligheid voor die
-schok nul is; wat overblijft is risicovrij en moet de rente verdienen. Omdat de
-schok is weggestreept, verdwijnt met haar ook haar verwachting, en dus $\mu$.
+*Waarom zou dit waar zijn?* Een handelaar houdt een optie en verkoopt er een aantal
+aandelen tegenover. De optie en het aandeel worden door dezelfde schok gedreven.
+Kiest hij het aantal aandelen goed, dan heft de schok zich op. Wat overblijft, is
+zonder risico en moet de rente verdienen. Met de schok verdwijnt ook haar
+verwachting, en dus $\mu$.
 
-Itô met $a = \mu S$ en $b = \sigma S$ geeft
+Itô's lemma met $a = \mu S$ en $b = \sigma S$ geeft de beweging van de call:
 $\mathrm{d}C = (C_t + \mu S C_S + \tfrac12\sigma^2S^2C_{SS})\,\mathrm{d}t +
-\sigma S C_S\,\mathrm{d}W$. Vorm $\Pi = C - \Delta S$. Over een kort interval is
+\sigma S C_S\,\mathrm{d}W$. De handelaar vormt $\Pi = C - \Delta S$. Over een kort
+interval verandert die positie met
 
 $$
 \mathrm{d}\Pi
@@ -300,9 +318,11 @@ $$
    + \sigma S\bigl(C_S - \Delta\bigr)\mathrm{d}W .
 $$
 
-Met $\Delta = C_S$ verdwijnen de $\mathrm{d}W$-term en beide termen met $\mu$:
-$\mathrm{d}\Pi = (C_t + \tfrac12\sigma^2S^2C_{SS})\,\mathrm{d}t$. Geen arbitrage
-eist $\mathrm{d}\Pi = r\Pi\,\mathrm{d}t = r(C - SC_S)\,\mathrm{d}t$, en dus
+Met $\Delta = C_S$ verdwijnen de $\mathrm{d}W$-term en beide termen met $\mu$. Dat
+is het recept uit de boom, nu met een afgeleide in plaats van een verschilquotiënt.
+Wat overblijft, $\mathrm{d}\Pi = (C_t + \tfrac12\sigma^2S^2C_{SS})\,\mathrm{d}t$,
+is zonder risico. Geen arbitrage eist dat het de rente verdient:
+$\mathrm{d}\Pi = r(C - SC_S)\,\mathrm{d}t$. Dat geeft
 
 ```{math}
 :label: eq-black-scholes-pde
@@ -311,36 +331,46 @@ eist $\mathrm{d}\Pi = r\Pi\,\mathrm{d}t = r(C - SC_S)\,\mathrm{d}t$, en dus
 \qquad C(S,T) = (S - K)^{+} .
 ```
 
-Twee beleggers die het oneens zijn over $\mu$ maar eens over $\sigma$, komen op
-dezelfde prijs. De stap "met $\Delta$ vastgehouden" vraagt formeel een
-*zelffinancierende* strategie, waarin aanpassingen van de aandelenpositie uit de
-obligatiepositie worden betaald; Merton maakte dat precies en vond dezelfde
+In woorden: tijdsverval, groei tegen de rente en kromming maal variantie heffen
+elkaar op, en $\mu$ komt er niet in voor. Zoals de intuïtie voorspelde, komen twee
+beleggers die het oneens zijn over $\mu$ maar eens over $\sigma$ op dezelfde prijs.
+De stap "met $\Delta$ vastgehouden" gebruikt aanname 3, continue handel. Formeel
+vraagt ze een *zelffinancierende* strategie (aanpassingen van de aandelenpositie
+worden uit de obligatiepositie betaald). Merton maakte dat exact en vond dezelfde
 vergelijking {cite}`Merton1973`.
 
 ```{note}
-Black en Scholes kwamen er eerst via het CAPM uit [](#02-08-capm): de bèta van de
-optie is $\beta_C = (SC_S/C)\,\beta_S$, en als men het CAPM op elk moment van het
-leven van de optie oplegt, valt de marktpremie weg en blijft
-[](#eq-black-scholes-pde) over. Merton liet zien dat arbitrage volstaat. Daarmee werd
-het resultaat onafhankelijk van precies het model waarvan de vorige lecture de
-barsten liet zien. Hij leidde bovendien modelvrij af dat een call minstens
-$\max(0, S - Ke^{-r\tau})$ waard is, dat een Amerikaanse call op een aandeel zonder
-dividend daarom nooit vroeg wordt uitgeoefend, en dat bij een stochastische rente
-de prijs van een nulcouponobligatie de plaats van $e^{-r\tau}$ inneemt.
+Black en Scholes vonden de vergelijking eerst via het CAPM uit [](#02-08-capm). De
+bèta van de optie is $\beta_{C,\text{mkt}} = (SC_S/C)\,\beta_{S,\text{mkt}}$, met "mkt" de markt (de letter $m$ is
+in de reeks de SDF). Leggen we het CAPM op elk moment
+van het leven van de optie op, dan valt de marktpremie weg. Merton liet zien dat
+arbitrage alleen volstaat. Hij bewees ook zonder model dat een call minstens
+$\max(0, S - Ke^{-r\tau})$ waard is. Een Amerikaanse call (op elk moment uit te oefenen) op
+een aandeel zonder dividend wordt daarom nooit vroeg uitgeoefend: verkopen levert
+meer op.
 ```
 
-### De oplossing als risiconeutrale verwachting
+### Wat het voorspelt: de Black-Scholes-formule
 
-*Waarom zou dit waar zijn?* [](#eq-black-scholes-pde) is de vergelijking die men zou
-krijgen in een wereld waarin het aandeel met $r$ in plaats van $\mu$ groeit. In die
-wereld is de prijs de verdisconteerde verwachte payoff, zoals in de boom onder $q$.
-Omdat de vergelijking in beide werelden dezelfde is, is de prijs het ook.
+*Waarom zou dit waar zijn?* De vergelijking [](#eq-black-scholes-pde) is dezelfde
+als in een wereld waarin het aandeel met $r$ groeit in plaats van met $\mu$. In die
+wereld is de prijs de verdisconteerde verwachte payoff, net als in de boom onder
+$q$. Omdat de vergelijking in beide werelden dezelfde is, is de prijs het ook.
+
+Die wereld heet de *risiconeutrale kansmaat* $\mathbb{Q}$ (de kansen waaronder elk
+verhandeld activum de rente verdient). Het is de maat $Q$ uit
+[](#thm-efficiente-markten-martingaal): prijzen zijn martingalen na verdisconteren
+met de rente. In de boom was dat $q = 0{,}6$ in plaats van
+de werkelijke $p$. Onder $\mathbb{Q}$ verandert alleen de drift: $\mu$ wordt $r$,
+en $\sigma$ blijft gelijk. $W^{\mathbb{Q}}_t = W_t + (\mu - r)t/\sigma$ is de
+Brownse beweging die bij die kansen hoort. De werkelijke kansen zijn niet fout. Ze
+doen er voor de prijs alleen niet toe, omdat de PDE ze niet bevat.
 
 :::{prf:proposition} Feynman-Kac (informeel)
 :label: thm-black-scholes-feynman-kac
 
-Laat onder een kansmaat $\mathbb{Q}$ gelden dat $\mathrm{d}S_u = rS_u\,\mathrm{d}u
-+ \sigma S_u\,\mathrm{d}W^{\mathbb{Q}}_u$. Als $C$ [](#eq-black-scholes-pde) oplost
+Laat onder $\mathbb{Q}$ gelden dat $\mathrm{d}S_s = rS_s\,\mathrm{d}s
++ \sigma S_s\,\mathrm{d}W^{\mathbb{Q}}_s$. Als $C$ [](#eq-black-scholes-pde) oplost
 en voldoende regelmatig is, dan
 
 ```{math}
@@ -350,23 +380,22 @@ C(S,t) = e^{-r\tau}\,\E^{\mathbb{Q}}\!\left[(S_T - K)^{+} \,\middle|\, S_t = S\r
 :::
 
 :::{prf:proof}
-Laat $M_u = e^{-r(u-t)} C(S_u, u)$. Itô onder $\mathbb{Q}$ geeft
+Laat $M_s = e^{-r(s-t)} C(S_s, s)$. Itô onder $\mathbb{Q}$ geeft
 
 $$
-\mathrm{d}M_u = e^{-r(u-t)}\Bigl(C_t + rS\,C_S + \tfrac12\sigma^2S^2 C_{SS} - rC\Bigr)\mathrm{d}u
-               + e^{-r(u-t)}\sigma S\,C_S\,\mathrm{d}W^{\mathbb{Q}}_u .
+\mathrm{d}M_s = e^{-r(s-t)}\Bigl(C_t + rS\,C_S + \tfrac12\sigma^2S^2 C_{SS} - rC\Bigr)\mathrm{d}s
+               + e^{-r(s-t)}\sigma S\,C_S\,\mathrm{d}W^{\mathbb{Q}}_s .
 $$
 
-De $\mathrm{d}u$-term is nul door [](#eq-black-scholes-pde), dus $M$ is een
+De $\mathrm{d}s$-term is nul door [](#eq-black-scholes-pde), dus $M$ is een
 martingaal en $C(S,t) = M_t = \E^{\mathbb{Q}}[M_T] = e^{-r\tau}\E^{\mathbb{Q}}[(S_T-K)^{+}]$.
 $\square$
 :::
 
-Dat is Bacheliers verwachting, maar onder de maat waarin elk verhandeld activum de
-rente verdient: Bachelier had de berekening, Black, Scholes en Merton de
-rechtvaardiging. Dat geen arbitrage equivalent is met het bestaan van zo'n maat, is
-van Harrison en Kreps {cite}`HarrisonKreps1979`. En met $x = \log S$ gaat
-[](#eq-black-scholes-pde) over in de warmtevergelijking die Black niet herkende.
+In woorden: de prijs is Bacheliers verwachting, maar onder de kansen waarin het
+aandeel de rente verdient. Bachelier had de berekening, Black, Scholes en Merton
+hadden de rechtvaardiging. De verwachting uitrekenen onder een lognormale $S_T$
+geeft de formule. Daarbij werkt aanname 1, een constante $\sigma$.
 
 :::{prf:theorem} De Black-Scholes-formule
 :label: thm-black-scholes-formule
@@ -381,9 +410,13 @@ d_{1} = \frac{\log(S/K) + (r + \tfrac12\sigma^2)\tau}{\sigma\sqrt{\tau}},
 \qquad d_2 = d_1 - \sigma\sqrt{\tau},
 ```
 
-met $\Phi$ de standaardnormale verdelingsfunctie, en de hedge-ratio is
-$\Delta = C_S = \Phi(d_1)$.
+met $\Phi$ de standaardnormale verdelingsfunctie.
 :::
+
+In woorden: de call is een aandeel maal $\Phi(d_1)$ min een lening van
+$Ke^{-r\tau}$ maal $\Phi(d_2)$. $\Phi(d_1)$ is de delta, het aantal aandelen in de
+replicerende portefeuille, en $\Phi(d_2)$ de risiconeutrale kans op uitoefening. In
+de boom was die kans $q^3 + 3q^2(1-q) = 0{,}648$ en de delta $0{,}624$.
 
 :::{prf:proof}
 :class: dropdown
@@ -403,16 +436,15 @@ Voor de delta vallen bij differentiëren de termen met $\partial d_i/\partial S$
 tegen elkaar weg, omdat $S\varphi(d_1) = Ke^{-r\tau}\varphi(d_2)$. $\square$
 :::
 
-$\Phi(d_2)$ is de risiconeutrale kans op uitoefening. En de formule is Sprenkles
-formule met $r$ ingevuld voor zijn verwachte rendement, zoals Black en Scholes haar
-in 1969 vonden.
+De formule is in beide richtingen te lezen. Stijgt $\sigma$, dan stijgt de call:
+de kans op een grote uitslag omhoog neemt toe, terwijl het verlies onder $K$ op nul
+begrensd blijft. Stijgt $r$, dan stijgt de call: de uitoefenprijs wordt later
+betaald en is vandaag minder waard. Stijgt $\mu$, dan gebeurt er niets.
 
-### Put-call-pariteit
-
-*Waarom zou dit waar zijn?* Een gekochte call plus een verkochte put met dezelfde
-$K$ en $T$ betaalt altijd $S_T - K$: hetzelfde als één aandeel plus een lening van
-$Ke^{-r\tau}$. Twee dingen met dezelfde payoff hebben dezelfde prijs, en daarvoor is
-geen model nodig.
+Een tweede voorspelling heeft geen model nodig: de put-call-pariteit. *Waarom zou
+dit waar zijn?* Een gekochte call plus een verkochte put met dezelfde $K$ en
+$T$ betaalt altijd $S_T - K$. Dat is ook de payoff van een termijncontract, en wat
+hetzelfde betaalt, kost hetzelfde. Daarvoor is geen model nodig.
 
 :::{prf:theorem} Put-call-pariteit
 :label: thm-black-scholes-pariteit
@@ -425,26 +457,31 @@ C_t - P_t = e^{-r\tau}\,(F_t - K),
 ```
 
 met $F_t$ de termijnkoers: $F_t = S_te^{r\tau}$ zonder dividend, en
-$F_t = S_te^{(r-q)\tau}$ bij een dividendrendement $q$.
+$F_t = S_te^{(r-\delta)\tau}$ bij een dividendrendement $\delta$.
 :::
 
 :::{prf:proof}
-Is de linkerkant groter, verkoop dan de call, koop de put en koop het termijncontract
-(of het aandeel met een lening). Dat levert vandaag het verschil op, en op $T$ is de
-netto payoff $-(S_T-K)^{+} + (K-S_T)^{+} + S_T - K = 0$. Omgekeerd voor een kleinere
-linkerkant. $\square$
+Is de linkerkant groter, verkoop dan de call, koop de put en koop het termijncontract.
+Dat levert vandaag het verschil op, en op $T$ is de netto payoff
+$-(S_T-K)^{+} + (K-S_T)^{+} + S_T - K = 0$. Omgekeerd voor een kleinere linkerkant.
+$\square$
 :::
 
-Hieruit volgt de put: $P = Ke^{-r\tau}\Phi(-d_2) - S\Phi(-d_1)$. Omdat de pariteit
-modelvrij is, halen we er in de replicatie de termijnkoers uit, zonder aanname over
-het dividend.
+In woorden: call min put is de contante waarde van termijnkoers min uitoefenprijs.
+De put volgt: $P = Ke^{-r\tau}\Phi(-d_2) - S\Phi(-d_1)$. Omdat de pariteit geen
+model gebruikt, halen we er in de replicatie de termijnkoers uit, zonder aanname
+over het dividend.
 
-### De Greeks en wat een hedger eigenlijk verdient
+### Wat een hedger verdient
 
-*Waarom zou dit waar zijn?* Een delta-hedger is ongevoelig voor de *richting* van de
-volgende kleine beweging, maar de optie is krom in de koers, en een kromme positie
-wint bij grote bewegingen in beide richtingen. Die kromming betaalt hij met
-tijdsverval; de PDE is de boekhouding van die ruil.
+*Waarom zou dit waar zijn?* Een handelaar verkoopt een optie en hedget met de delta.
+Tegen kleine bewegingen is hij gedekt, maar de optie is bol in de koers. Bij een
+grote beweging, omhoog of omlaag, verliest hij daarom op de optie meer dan hij op
+de aandelen wint. Daartegenover staat het tijdsverval: de optie wordt elke dag iets
+minder waard, en dat wint hij. Beweegt het aandeel harder dan de prijs aannam, dan
+verliest hij. Beweegt het rustiger, dan wint hij.
+
+De gevoeligheden van de optieprijs heten de *Greeks*:
 
 | Greek | definitie | call | put |
 |---|---|---|---|
@@ -454,64 +491,76 @@ tijdsverval; de PDE is de boekhouding van die ruil.
 | theta $\Theta$ | $\partial V/\partial t$ | $-\frac{S\varphi(d_1)\sigma}{2\sqrt{\tau}} - rKe^{-r\tau}\Phi(d_2)$ | $-\frac{S\varphi(d_1)\sigma}{2\sqrt{\tau}} + rKe^{-r\tau}\Phi(-d_2)$ |
 | rho $\rho$ | $\partial V/\partial r$ | $K\tau e^{-r\tau}\Phi(d_2)$ | $-K\tau e^{-r\tau}\Phi(-d_2)$ |
 
-met $\varphi$ de standaardnormale dichtheid. In Greeks luidt [](#eq-black-scholes-pde)
-$\Theta + rS\Delta + \tfrac12\sigma^2S^2\Gamma = rV$: tijdsverval compenseert exact
-de verwachte winst uit kromming. Wat gebeurt er als de hedger de verkeerde
-volatiliteit gebruikt?
+met $\varphi$ de standaardnormale dichtheid. In deze termen luidt
+[](#eq-black-scholes-pde) $\Theta + rS\Delta + \tfrac12\sigma^2S^2\Gamma = rV$:
+tijdsverval compenseert exact de verwachte winst uit kromming. Wat gebeurt er met
+de *P&L* (winst of verlies) van een handelaar die de verkeerde volatiliteit
+gebruikt?
 
 :::{prf:proposition} De P&L van een delta-hedge bij de verkeerde volatiliteit
 :label: thm-black-scholes-hedge-pnl
 
-Het aandeel volgt [](#eq-black-scholes-gbm) met werkelijke volatiliteit $\sigma_r$.
+Het aandeel volgt [](#eq-black-scholes-gbm) met gerealiseerde volatiliteit $\sigma_g$.
 Een handelaar verkoopt een optie tegen de Black-Scholes-prijs bij $\sigma_i$ en hedget
-continu met de delta bij $\sigma_i$. Zijn verdisconteerde winst op $T$ is
+continu met de delta bij $\sigma_i$. Zijn verdisconteerde P&L op $T$ is
 
 ```{math}
 :label: eq-black-scholes-hedge-pnl
-e^{-rT}\,\Pi_T = \frac12 \int_0^T e^{-ru}\,\bigl(\sigma_i^2 - \sigma_r^2\bigr)\,
-                 S_u^2\,\Gamma_i(S_u,u)\,\mathrm{d}u .
+e^{-rT}\,\mathrm{PL}_T = \frac12 \int_0^T e^{-rs}\,\bigl(\sigma_i^2 - \sigma_g^2\bigr)\,
+                 S_s^2\,\Gamma_i(S_s,s)\,\mathrm{d}s .
 ```
 :::
+
+In woorden: de P&L is het verschil tussen ingeprijsde en gerealiseerde variantie,
+gewogen met de gamma langs het pad. Het bewijsidee: trek de waarde van de optie af
+van die van de hedgeportefeuille $H$. De $\mathrm{d}S$-termen vallen weg, en de PDE bij
+$\sigma_i$ laat alleen het variantieverschil over.
 
 :::{prf:proof}
 :class: dropdown
 
-Laat $V$ de Black-Scholes-waarde bij $\sigma_i$ zijn en $X$ de hedgeportefeuille, met
-$X_0 = V_0$ en $\mathrm{d}X = \Delta_i\,\mathrm{d}S + r(X - \Delta_i S)\,\mathrm{d}t$.
+Laat $V$ de Black-Scholes-waarde bij $\sigma_i$ zijn en $H$ de hedgeportefeuille, met
+$H_0 = V_0$ en $\mathrm{d}H = \Delta_i\,\mathrm{d}S + r(H - \Delta_i S)\,\mathrm{d}t$.
 Itô onder de werkelijke dynamiek geeft
-$\mathrm{d}V = (V_t + \tfrac12\sigma_r^2 S^2\Gamma_i)\,\mathrm{d}t + \Delta_i\,\mathrm{d}S$,
+$\mathrm{d}V = (V_t + \tfrac12\sigma_g^2 S^2\Gamma_i)\,\mathrm{d}t + \Delta_i\,\mathrm{d}S$,
 en de PDE bij $\sigma_i$ geeft
 $V_t = rV - rS\Delta_i - \tfrac12\sigma_i^2S^2\Gamma_i$. Aftrekken:
 
 $$
-\mathrm{d}(X - V) = r(X - V)\,\mathrm{d}t
- + \tfrac12\bigl(\sigma_i^2 - \sigma_r^2\bigr)S^2\Gamma_i\,\mathrm{d}t .
+\mathrm{d}(H - V) = r(H - V)\,\mathrm{d}t
+ + \tfrac12\bigl(\sigma_i^2 - \sigma_g^2\bigr)S^2\Gamma_i\,\mathrm{d}t .
 $$
 
-De $\mathrm{d}S$-termen vallen weg — dat is de hedge. Vermenigvuldigen met $e^{-rt}$
-en integreren geeft het resultaat, met $\Pi_T = X_T - V_T$ en $V_T$ de payoff.
+De $\mathrm{d}S$-termen vallen weg: dat is de hedge. Vermenigvuldigen met $e^{-rt}$
+en integreren geeft het resultaat, met $\mathrm{PL}_T = H_T - V_T$ en $V_T$ de payoff.
 $\square$
 :::
 
-Als $\sigma_i = \sigma_r$ is de winst in elk pad nul: dat is de replicatie. Verkoopt
-de handelaar te duur, dan verdient hij gemiddeld, maar hoeveel hangt van het pad af,
-want de winst is gewogen met $S^2\Gamma$. Een gehedgde verkoper van opties is dus
-een verkoper van gerealiseerde variantie tegen de prijs $\sigma_i^2$ — de kern van
-[](#05-29-opties-crashrisico).
+Bij $\sigma_i = \sigma_g$ is de P&L in elk pad nul: dat is de replicatie. Verkoopt
+de handelaar te duur, dan verdient hij gemiddeld ongeveer de vega maal
+$\sigma_i - \sigma_g$. Dat volgt als we $S^2\Gamma$ op de beginwaarde vasthouden:
+$\sigma_i^2 - \sigma_g^2 \approx 2\sigma(\sigma_i - \sigma_g)$, en
+$\sigma S^2\Gamma\tau$ is precies de vega uit de tabel. Voor de call uit het
+voorbeeld hieronder geeft dat $19{,}7 \cdot 0{,}05 \approx 0{,}99$ euro bij vijf
+volatiliteitspunten te duur. Hoeveel precies, hangt van het pad af. Een gehedgde verkoper
+van opties verkoopt dus gerealiseerde variantie tegen de prijs $\sigma_i^2$.
 
-### Implied volatility
+### Hoe het getoetst wordt: implied volatility
 
-*Waarom zou dit waar zijn?* Van de vijf invoergrootheden is alleen $\sigma$ niet
-waarneembaar. Omdat de prijs strikt stijgt in $\sigma$ (de vega is positief), hoort
-bij elke prijs binnen de arbitragegrenzen precies één $\sigma$.
+*Waarom zou dit waar zijn?* Van de vijf invoergrootheden van de formule zijn er vier
+op het scherm af te lezen: koers, uitoefenprijs, looptijd en rente. Alleen $\sigma$
+niet. Wie de marktprijs van een optie kent, kan $\sigma$ dus terugrekenen. Omdat de
+prijs stijgt in $\sigma$, hoort bij elke prijs precies één waarde.
 
-De *implied volatility* $\sigma^{\text{imp}}(K,T)$ lost
-$C^{\text{BS}}(S,K,T,r,\sigma) = C^{\text{markt}}$ op. Klopt het model, dan is ze
-voor elke $K$ en $T$ op hetzelfde aandeel gelijk — een scherpe, falsifieerbare
-voorspelling. Zodra handelaren in implied volatility quoteren, is de formule
-bovendien een *conventie*: een meetlat waarop afwijkingen van het model zelf worden
-uitgedrukt. De code implementeert [](#eq-black-scholes-call), de put via pariteit,
-de Greeks en de inverse (bisectie, wat werkt omdat de prijs monotoon is in $\sigma$).
+De *implied volatility* $\sigma^{\text{imp}}(K,T)$ is de $\sigma$ die
+$C^{\text{BS}}(S,K,T,r,\sigma) = C^{\text{markt}}$ oplost. Klopt het model, dan is
+ze voor elke $K$ en $T$ op hetzelfde aandeel gelijk. Dat is een scherpe,
+falsifieerbare voorspelling. Zodra handelaren hun prijzen in implied volatility
+opgeven, is de formule bovendien een meetlat, waarop ook afwijkingen van het model worden
+uitgedrukt.
+
+De code implementeert [](#eq-black-scholes-call), de put via de pariteit en de
+Greeks uit de tabel.
 
 ```{code-cell} ipython3
 def bs_price(S, K, T, r, sigma, kind="call"):
@@ -536,8 +585,12 @@ def bs_greeks(S, K, T, r, sigma, kind="call"):
         "theta": -S * pdf * sigma / (2 * np.sqrt(T)) - sign * r * disc * stats.norm.cdf(sign * d2),
         "rho": sign * T * disc * stats.norm.cdf(sign * d2),
     }
+```
 
+De inverse zoekt $\sigma$ met bisectie. Dat werkt omdat de prijs monotoon stijgt in
+$\sigma$: is de prijs bij het midden te laag, dan ligt de oplossing erboven.
 
+```{code-cell} ipython3
 def implied_vol(price, S, K, T, r, kind="call", n_iter=60):
     """Invert Black-Scholes for sigma by bisection on arrays; NaN outside the no-arbitrage bounds."""
     lo = np.full(np.shape(price), 1e-4)
@@ -549,46 +602,75 @@ def implied_vol(price, S, K, T, r, kind="call", n_iter=60):
         lo, hi = np.where(below, mid, lo), np.where(below, hi, mid)
     sigma = np.where(inside, 0.5 * (lo + hi), np.nan)
     return float(sigma) if sigma.ndim == 0 else sigma
+```
 
+We prijzen een *at-the-money* call en put (uitoefenprijs gelijk aan de koers) op
+drie maanden, bij 20% volatiliteit en 4%
+rente, en controleren pariteit, PDE en inverse.
 
-S_ex, K_ex, T_ex, r_ex, sigma_ex = 100.0, 100.0, 0.25, 0.04, 0.20
+```{code-cell} ipython3
+example = dict(S=100.0, K=100.0, T=0.25, r=0.04, sigma=0.20)
 greeks = pd.DataFrame(
-    {kind: {"prijs": bs_price(S_ex, K_ex, T_ex, r_ex, sigma_ex, kind),
-            **bs_greeks(S_ex, K_ex, T_ex, r_ex, sigma_ex, kind)}
+    {kind: {"prijs": bs_price(**example, kind=kind), **bs_greeks(**example, kind=kind)}
      for kind in ("call", "put")}
 )
 call_g = greeks["call"]
-print(f"pariteit C - P - (S - K e^(-rT)) = "
-      f"{call_g['prijs'] - greeks.loc['prijs', 'put'] - (S_ex - K_ex * np.exp(-r_ex * T_ex)):.2e}")
-print(f"PDE-residu Theta + rS Delta + 0.5 sigma^2 S^2 Gamma - rC = "
-      f"{call_g['theta'] + r_ex * S_ex * call_g['delta'] + 0.5 * sigma_ex**2 * S_ex**2 * call_g['gamma'] - r_ex * call_g['prijs']:.2e}")
-print(f"implied vol teruggevonden uit de callprijs = {implied_vol(call_g['prijs'], S_ex, K_ex, T_ex, r_ex):.6f}")
-greeks.round(4)
+S_ex, K_ex, T_ex, r_ex, sigma_ex = example.values()
+parity_gap = call_g["prijs"] - greeks.loc["prijs", "put"] - (S_ex - K_ex * np.exp(-r_ex * T_ex))
+pde_gap = (call_g["theta"] + r_ex * S_ex * call_g["delta"]
+           + 0.5 * sigma_ex**2 * S_ex**2 * call_g["gamma"] - r_ex * call_g["prijs"])
+recovered_sigma = implied_vol(call_g["prijs"], S_ex, K_ex, T_ex, r_ex)
+checks = pd.DataFrame({"call": {"pariteitsresidu": parity_gap, "PDE-residu": pde_gap,
+                                "teruggevonden sigma": recovered_sigma}})
+pd.concat([greeks, checks]).round(4)
 ```
 
-Een at-the-money call op drie maanden bij 20% volatiliteit en 4% rente kost
-$4{,}49$, met delta $0{,}56$ en vega $19{,}7$: één volatiliteitspunt is ongeveer
-twintig cent waard. Pariteit en PDE-residu zijn nul op afrondingsfouten na, en de
-inverse vindt $\sigma = 0{,}20$ terug.
+De call kost $4{,}49$, met delta $0{,}56$ en vega $19{,}7$. Eén volatiliteitspunt is
+dus ongeveer twintig cent waard. De drie controlerijen onderaan tonen dat pariteit en PDE-residu nul zijn en dat
+de inverse $\sigma = 0{,}20$ terugvindt.
+
+```{admonition} Samengevat
+:class: tip
+
+- Een delta-hedge met $\Delta = C_S$ verwijdert het risico en daarmee $\mu$; de prijs
+  volgt [](#eq-black-scholes-pde). In de boom was $\Delta_0 = 0{,}624$.
+
+- De prijs is de verdisconteerde verwachte payoff onder de risiconeutrale kansen,
+  [](#eq-black-scholes-rn), en uitgerekend [](#eq-black-scholes-call): $4{,}49$ voor
+  de at-the-money call op drie maanden bij $\sigma = 20\%$.
+
+- Wie met de verkeerde volatiliteit verkoopt, verdient het variantieverschil gewogen
+  met gamma, [](#eq-black-scholes-hedge-pnl).
+
+- Het model voorspelt één implied volatility per aandeel, voor elke $K$ en $T$.
+
+- De simulatie hierna vraagt: hoe groot is de fout als niet continu maar $N$ keer
+  wordt gehedgd, en laat de drift een spoor na?
+```
 
 ## Simulatie: discreet hedgen van een verkochte optie
 
-De theorie belooft exacte replicatie bij *continu* hedgen, en niemand hedget
-continu. Boyle en Emanuel analyseerden in 1980 als eersten de hedgefout bij discreet
-aangepaste hedges {cite}`BoyleEmanuel1980`; hun tabellen hebben wij niet kunnen
-raadplegen. We volgen de latere analyse van Derman en Kamal {cite}`DermanKamal1999`,
-met hun vuistregel
+Wie niet continu maar $N$ keer hedget, houdt een P&L over waarvan de spreiding
+daalt met $1/\sqrt{N}$, en de drift van het aandeel laat daarin vrijwel geen spoor
+na. Dat laat deze simulatie zien. Boyle en Emanuel analyseerden die spreiding als eersten
+{cite}`BoyleEmanuel1980`. Hun tabellen hebben we niet kunnen raadplegen. We volgen
+de latere analyse van Derman en Kamal {cite}`DermanKamal1999`. Hun vuistregel voor
+de spreiding van de P&L luidt als volgt.
 
 ```{math}
 :label: eq-black-scholes-dk
-\SD\bigl(\text{P\&L}\bigr) \;\approx\; \sqrt{\frac{\pi}{4}}\;\frac{\nu\,\sigma}{\sqrt{N}},
+\SD\bigl(\text{P\&L}\bigr) \;\approx\; \sqrt{\frac{\pi}{4}}\;\frac{\nu\,\sigma}{\sqrt{N}} .
 ```
 
-met $\nu$ de vega en $N$ het aantal hedgemomenten. Hun intuïtie is motief 1 in
-spiegelbeeld: wie $N$ keer hedget, meet de volatiliteit effectief uit $N$
-waarnemingen, met standaardfout $\sigma/\sqrt{2N}$; maal de vega is dat de
-hedgefout. De functie hieronder boekt premie, delta, financiering en payoff; het
-aandeel groeit met $\mu$, niet met $r$.
+In woorden: de spreiding van de P&L daalt met de wortel van het aantal
+hedgemomenten, en is evenredig met de vega. Wie $N$ keer hedget, meet de
+volatiliteit in feite uit $N$ waarnemingen, met een standaardfout van ongeveer
+$\sigma/\sqrt{2N}$. Maal de vega is dat, op een factor $\sqrt{\pi/2}$ na, de
+spreiding van de P&L. Bij de call uit de vorige
+cel en dagelijks hedgen ($N = 63$) geeft de regel $0{,}44$ euro.
+
+De functie boekt premie, delta, financiering en payoff. Het aandeel groeit met
+$\mu$, niet met $r$.
 
 ```{code-cell} ipython3
 def delta_hedge_pnl(n_hedges, n_paths, S0, K, T, r, mu, sigma_true,
@@ -612,20 +694,15 @@ def delta_hedge_pnl(n_hedges, n_paths, S0, K, T, r, mu, sigma_true,
     return cash + delta * S - payoff
 ```
 
-Eerst hun tabel 1: een at-the-money-optie op één maand ($S_0 = K = 100$, $r = 5\%$,
-$\sigma = 20\%$, aandeel groeit met de rente), $N = 21$ en $N = 84$, 50 000 paden.
-Zij rapporteren een gemiddelde P&L van $0{,}001$ en $0{,}000$, een
-standaarddeviatie van $0{,}41$ en $0{,}20$ ($16{,}3\%$ en $8{,}1\%$ van de premie),
-en uit de vuistregel $0{,}443$ en $0{,}222$. Hun tekst noemt de optie een put, maar
-de opgegeven premie van $2{,}512$ is die van de call (de put kost $2{,}10$); voor de
-hedgefout maakt dat niet uit, want gamma en vega zijn gelijk, en we rekenen met de
-call.
+Eerst controleren we de code op het voorbeeld van Derman en Kamal: een at-the-money
+call op één maand ($S_0 = K = 100$, $r = 5\%$, $\sigma = 20\%$), een aandeel dat met
+de rente groeit, $N = 21$ en $N = 84$, en 50 000 paden.
 
 ```{code-cell} ipython3
 dk_rows = []
 premium_dk = bs_price(100.0, 100.0, 1 / 12, 0.05, 0.20)
 vega_dk = bs_greeks(100.0, 100.0, 1 / 12, 0.05, 0.20)["vega"]
-for n, published_sd in ((21, 0.41), (84, 0.20)):
+for n in (21, 84):
     pnl = delta_hedge_pnl(n, 50_000, 100.0, 100.0, 1 / 12, 0.05, 0.05, 0.20, 0.20)
     dk_rows.append({
         "N": n,
@@ -634,27 +711,22 @@ for n, published_sd in ((21, 0.41), (84, 0.20)):
         "SD P&L": pnl.std(ddof=1),
         "SD / premie": pnl.std(ddof=1) / premium_dk,
         "vuistregel": np.sqrt(np.pi / 4) * vega_dk * 0.20 / np.sqrt(n),
-        "Derman-Kamal SD": published_sd,
     })
-print(f"callpremie = {premium_dk:.3f}; vega = {vega_dk / 100:.4f} per volatiliteitspunt")
-pd.DataFrame(dk_rows).set_index("N").round(4)
+dk_table = pd.DataFrame(dk_rows).set_index("N")
+dk_table["callpremie"] = premium_dk
+dk_table["vega per volatiliteitspunt"] = vega_dk / 100
+dk_table.round(4)
 ```
 
-De vuistregel geeft exact hun $0{,}443$ en $0{,}222$, dus we bekijken dezelfde optie.
-De gesimuleerde spreiding is $0{,}430$ en $0{,}219$ tegen hun $0{,}41$ en $0{,}20$
-($17{,}1\%$ en $8{,}7\%$ van de premie): vijf à tien procent hoger dan hun simulatie,
-en vrijwel op hun vuistregel. Steekproefruis verklaart dat niet (de standaardfout
-van een geschatte standaarddeviatie is hier ongeveer $0{,}001$); een andere telling
-van de openingshedge ($N+1$ intervallen) brengt $N = 21$ naar $0{,}42$, maar laat
-$N = 84$ ongemoeid. De note noemt haar conventie niet, en we laten het verschil
-staan. Wat identiek moet zijn, is het: vier keer zo vaak hedgen halveert de fout
-(verhouding $1{,}96$ bij ons, $2{,}05$ bij hen), en het gemiddelde ligt binnen
-anderhalve standaardfout van nul.
+Dit is een controle van de code, geen replicatie: de getallen van Derman en Kamal
+zijn niet tegen de bron te houden. De gesimuleerde spreiding ligt 1 à 3% onder de
+vuistregel ($0{,}4295$ tegen $0{,}4432$). Vier keer zo vaak hedgen halveert haar:
+$0{,}4295/0{,}2190 = 1{,}96$. Het gemiddelde ligt binnen anderhalve standaardfout
+van nul.
 
-Nu dagelijks, wekelijks en maandelijks hedgen ($N = 63$, $13$, $3$) van een
-verkochte call op drie maanden ($S_0 = K = 100$, $r = 4\%$, $\sigma = 20\%$), met
-een aandeel dat met $\mu = 10\%$ groeit, zodat een effect van de drift zichtbaar
-zou zijn.
+Nu de eigenlijke vraag. We verkopen de call uit de theorie (drie maanden,
+$\sigma = 20\%$, $r = 4\%$) en hedgen dagelijks, wekelijks of maandelijks. Het
+aandeel groeit met $\mu = 10\%$, zodat een effect van de drift zichtbaar zou zijn.
 
 ```{code-cell} ipython3
 T_sim, r_sim, mu_sim, sigma_sim, n_paths = 0.25, 0.04, 0.10, 0.20, 50_000
@@ -681,23 +753,47 @@ hedge_table = pd.DataFrame(
 hedge_table.round(4)
 ```
 
-```{code-cell} ipython3
-:label: cel-black-scholes-hedgefout
-:tags: [hide-input]
+De spreiding daalt van $1{,}86$ euro bij maandelijks via $0{,}92$ naar $0{,}43$ bij
+dagelijks hedgen. Bij dagelijks hedgen
+is het gemiddelde $-0{,}002$, met een standaardfout van $0{,}002$. Bij wekelijks en
+maandelijks hedgen is het klein maar statistisch niet nul: $-0{,}019$ bij maandelijks,
+met $t \approx -2{,}3$. Dat is minder dan een half procent van de premie van
+$4{,}49$. Of het van de drift of van het discrete hedgen komt, scheidt deze
+simulatie niet. Het echte risico zit in de staart: het 5%-kwantiel van de
+maandelijkse hedger ligt op $-3{,}25$, bijna driekwart van de premie.
 
+Hoe snel daalt de spreiding? We herhalen de simulatie met 10 000 paden voor zeven
+frequenties en schatten de helling van log-spreiding op log-$N$.
+
+```{code-cell} ipython3
 n_grid = np.array([3, 6, 13, 26, 63, 126, 252])
 sd_grid = np.array([
     delta_hedge_pnl(n, 10_000, 100.0, 100.0, T_sim, r_sim, mu_sim, sigma_sim, sigma_sim).std(ddof=1)
     for n in n_grid
 ])
 slope_sd = np.polyfit(np.log(n_grid), np.log(sd_grid), 1)[0]
+grid_table = pd.DataFrame(
+    {"SD P&L": sd_grid, "vuistregel": np.sqrt(np.pi / 4) * vega_sim * sigma_sim / np.sqrt(n_grid)},
+    index=pd.Index(n_grid, name="N"),
+)
+grid_table.loc["helling log-log", "SD P&L"] = slope_sd
+grid_table.round(4)
+```
+
+De helling is $-0{,}48$, dicht bij de $-0{,}5$ van de vuistregel. De figuur toont
+links de verdelingen uit de vorige tabel en rechts deze zeven punten. Let links op
+de breedte van de verdelingen en rechts op de helling.
+
+```{code-cell} ipython3
+:label: cel-black-scholes-hedgefout
+:tags: [hide-input]
 
 fig, axes = plt.subplots(1, 2, figsize=(10.5, 4.2))
 bins = np.linspace(-6, 4, 81)
 for i, (name, pnl) in enumerate(pnl_by_freq.items()):
     axes[0].hist(pnl, bins=bins, density=True, histtype="step", lw=1.6,
                  color=hap.plotting.COLORS[i], label=f"{name} (N = {frequencies[name]})")
-axes[0].set_title("Verdeling van de hedgefout, verkochte call op 3 maanden")
+axes[0].set_title("Verdeling van de P&L, verkochte call op 3 maanden")
 axes[0].set_xlabel("P&L op expiratie (euro per optie)")
 axes[0].set_ylabel("Dichtheid")
 axes[0].legend()
@@ -716,57 +812,26 @@ plt.show()
 :label: fig-black-scholes-hedgefout
 :width: 95%
 
-Links: de hedgefout is gemiddeld nul bij elke frequentie, maar bij maandelijks
-hedgen is haar spreiding ruim veertig procent van de optiepremie. Rechts: over bijna
-twee decaden in $N$ volgt de spreiding de $1/\sqrt{N}$-wet. De drift van 10% per
-jaar is nergens terug te zien.
+Links: de P&L is bij elke frequentie gemiddeld vrijwel nul, maar bij maandelijks
+hedgen is haar spreiding ruim veertig procent van de premie. Rechts: over bijna twee
+decaden in $N$ volgt de spreiding de $1/\sqrt{N}$-wet. De drift van 10% per jaar
+verschuift de verdelingen niet zichtbaar.
 :::
 
-De spreiding daalt van $1{,}86$ (maandelijks) via $0{,}92$ naar $0{,}43$ euro
-(dagelijks), en over $N = 3$ tot $252$ is de log-log-helling $-0{,}48$. De
-vuistregel overschat bij weinig hedgemomenten iets ($2{,}02$ tegen $1{,}86$), zoals
-een benadering voor grote $N$ doet. De drift van 10% laat bij dagelijks hedgen een
-gemiddelde van $-0{,}002$ na, met een standaardfout van $0{,}002$; bij maandelijks
-hedgen $-0{,}019$ ($t \approx -2{,}3$), minder dan een half procent van de premie van
-$4{,}49$. De staart is het echte risico: het 5%-kwantiel van de maandelijkse hedger
-ligt op $-3{,}25$, bijna driekwart van de premie.
+Zoals $p$ in de boom, doet $\mu$ er in de simulatie vrijwel niet toe.
 
-Hier keert motief 1 terug. Een handelaar die tien jaar lang elke maand één optie
-verkoopt tegen één volatiliteitspunt te veel, verwacht per optie ongeveer de vega
-maal $0{,}01$, dus $0{,}20$ euro. Hedget hij dagelijks, dan is de standaardfout van
-zijn gemiddelde na 120 opties $0{,}43/\sqrt{120} = 0{,}04$: het voordeel is met
-$t \approx 5$ zichtbaar. Hedget hij maandelijks, dan is die standaardfout
-$1{,}86/\sqrt{120} = 0{,}17$ en is het voordeel na tien jaar niet van ruis te
-onderscheiden. Een voordeel in *volatiliteit* is meetbaar op een manier waarop een
-voordeel in *gemiddeld rendement* dat bijna nooit is — mits de hedgeruis klein
-blijft, en in deze gestileerde wereld zonder onzekerheid over de volatiliteit zelf.
-
-Tot slot de verkeerde $\sigma$: het aandeel beweegt met 20%, de handelaar verkoopt
-tegen 15% of 25% en hedget dagelijks, óf met die implied volatility, óf met de
-werkelijke 20%. [](#eq-black-scholes-hedge-pnl) voorspelt gemiddeld ongeveer
-$\nu(\sigma_i - \sigma_r)$.
-
-```{code-cell} ipython3
-wrong_rows = []
-for sigma_i in (0.15, 0.25):
-    premium_gap = (bs_price(100.0, 100.0, T_sim, r_sim, sigma_i)
-                   - bs_price(100.0, 100.0, T_sim, r_sim, sigma_sim)) * np.exp(r_sim * T_sim)
-    for label, sigma_h in (("hedge bij implied", sigma_i), ("hedge bij werkelijke", sigma_sim)):
-        pnl = delta_hedge_pnl(63, n_paths, 100.0, 100.0, T_sim, r_sim, mu_sim,
-                              sigma_sim, sigma_i, sigma_hedge=sigma_h)
-        wrong_rows.append({"sigma_i": sigma_i, "hedge": label, "gemiddelde P&L": pnl.mean(),
-                           "SD P&L": pnl.std(ddof=1), "premieverschil": premium_gap,
-                           "vega x (sigma_i - sigma_r)": vega_sim * (sigma_i - sigma_sim)})
-pd.DataFrame(wrong_rows).set_index(["sigma_i", "hedge"]).round(4)
-```
-
-Wie tegen 15% verkoopt, verliest gemiddeld $0{,}98$ euro, wie tegen 25% verkoopt,
-wint $1{,}00$, beide binnen enkele centen van het premieverschil en de
-vega-benadering ($\mp 0{,}99$). Het verschil tussen de hedgekeuzes zit in de
-spreiding. Wie met de werkelijke volatiliteit hedget, legt het premieverschil vast
-met een spreiding van $0{,}43$ — alleen de discretisatiefout. Wie met de implied
-volatility hedget, heeft $0{,}61$ (bij 15%) en $0{,}55$ (bij 25%): zijn winst hangt,
-zoals de propositie zegt, af van waar de koers zich ophoudt.
+Hier komt de standaardfout van 2% uit [](#00-01-rendementen) terug: bij 20%
+volatiliteit ligt een gemiddeld rendement na een eeuw data maar op twee
+procentpunt nauwkeurig vast. Voor volatiliteit ligt dat anders. Een handelaar verkoopt tien jaar lang elke maand één optie, telkens één
+volatiliteitspunt te duur. Per optie verwacht hij de vega maal $0{,}01$, dus
+$0{,}20$ euro. Hedget hij dagelijks, dan is de standaardfout van zijn gemiddelde na
+120 opties $0{,}43/\sqrt{120} = 0{,}04$, en is zijn voordeel met $t \approx 5$
+zichtbaar. Hedget hij maandelijks, dan is die standaardfout $1{,}86/\sqrt{120} =
+0{,}17$, en is het voordeel na tien jaar niet van ruis te onderscheiden. Een
+voordeel in volatiliteit is dus meetbaar op een manier waarop een voordeel in
+gemiddeld rendement dat bijna nooit is. Er zijn twee voorbehouden: wie weinig
+hedget, verliest het voordeel in de spreiding van de P&L, en in deze simulatie is
+$\sigma$ constant, terwijl ze in werkelijkheid zelf onzeker is.
 
 ## Replicatie op echte data
 
@@ -774,37 +839,34 @@ zoals de propositie zegt, af van waar de koers zich ophoudt.
 :class: seealso
 
 **Bron.** Mark Rubinstein, *Implied Binomial Trees*, Journal of Finance 1994
-{cite}`Rubinstein1994`; Derman en Kani, *The Volatility Smile and Its Implied Tree*,
-1994 {cite}`DermanKani1994`.
+{cite}`Rubinstein1994`. Emanuel Derman en Iraj Kani, *The Volatility Smile and Its
+Implied Tree*, 1994 {cite}`DermanKani1994`.
 
-**Wat.** Rubinsteins openingszin: "Despite its success, the Black-Scholes formula
-has become increasingly unreliable over time in the very markets where one would
-expect it to be most accurate" — de S&P 500-indexopties van de CBOE. Zijn
-volledige tekst hebben wij niet kunnen inzien; Constantinides, Jackwerth en Perrakis
-vatten zijn bevinding samen als: van april 1986 tot de crash van oktober 1987 is de
-implied volatility "a moderately downward-sloping or u-shaped function of the
-strike price", en "following the crash, the volatility smile is typically more
-pronounced and downward sloping, often called a 'volatility skew'"
-{cite}`ConstantinidesJackwerthPerrakis2008`. Derman en Kani: "ever since the '87
-crash [...] out-of-the-money puts trade at higher implied volatilities than
-out-of-the-money calls", met 47-daagse opties van 31 januari 1994 waarin de implied
-volatility loopt van ongeveer 18% bij 90% van de spot tot ongeveer 8% bij 102%.
+**Wat.** De *smirk*: sinds de crash van 1987 is de implied volatility van
+S&P 500-indexopties hoger naarmate de uitoefenprijs lager is
+{cite}`ConstantinidesJackwerthPerrakis2008`. Derman en Kani beschrijven hetzelfde
+patroon voor opties uit 1994.
 
-**Data hier.** Een momentopname van de volledige SPY-optieketen (28 expiraties,
-van drie dagen tot ruim twee jaar), bied- en laatkoersen van het slot van de
-voorgaande handelsdag, via `hap.data.yahoo_options("SPY", 28)`; de rente is
-`hap.data.fred("DGS3MO")`, de termijnkoers volgt per expiratie uit pariteit.
+**Data hier.** Een momentopname van de SPY-optieketen met 28 expiraties via
+`hap.data.yahoo_options`, de rente uit FRED en de termijnkoers per expiratie uit de
+pariteit.
 
-**Verschil met het origineel.** Rubinstein had Europese SPX-opties en een tijdreeks
-rond de crash; wij hebben één dag, bijna veertig jaar later, en SPY-opties zijn
-Amerikaans en op een ETF met dividend. We gebruiken alleen out-of-the-money opties
-en midkoersen. Het "vóór 1987"-deel kunnen we met gratis data niet repliceren.
+**Verschil met het origineel.** Rubinstein had Europese indexopties rond de crash.
+Wij hebben één dag, bijna veertig jaar later, en Amerikaanse opties op een ETF met
+dividend. De periode vóór 1987 is met gratis data niet te repliceren.
 
-**Verwachte afwijking.** De niveaus hangen van de dag af. Het *teken* moet identiek
-zijn: voor elke expiratie tot één jaar ligt de implied volatility op 90% van de
-termijnkoers boven die op de termijnkoers, en de helling is het steilst bij de
-kortste looptijden. Is de kromme vlak of stijgend, dan klopt de code niet.
+**Verwachte afwijking.** Alleen teken en vorm zijn te toetsen, want de niveaus
+hangen van de dag af en de getallen van de bronnen zijn niet tegen de bron te houden.
+Tot één jaar ligt de implied volatility op 90% van de termijnkoers boven die op de
+termijnkoers, het steilst bij de kortste looptijden.
 ```
+
+We laden de keten, halen per expiratie de termijnkoers uit de pariteit, en rekenen
+voor elke *out-of-the-money* optie (een put onder of een call boven de
+termijnkoers) de implied volatility uit. Bij die opties is de premie voor vroege
+uitoefening van Amerikaanse opties het kleinst. Als onderliggende waarde nemen we de
+verdisconteerde termijnkoers, zoals in de variant van Black voor termijncontracten
+{cite}`Black1976`. Zo vraagt het dividend geen aanname.
 
 ```{code-cell} ipython3
 chain = hap_data.yahoo_options("SPY", 28)
@@ -830,6 +892,16 @@ def parity_forward(group):
 
 forwards = quotes.groupby("expiry").apply(parity_forward, include_groups=False).rename("F")
 quotes = quotes.join(forwards, on="expiry")
+forward_table = pd.DataFrame({"F": forwards, "F / spot - 1": forwards / spot - 1})
+forward_table.index = forward_table.index.date
+forward_table.iloc[[0, 9, 18, 27]].round(4)
+```
+
+De termijnkoers ligt bij korte looptijden vrijwel op de spot en ligt bij ruim twee
+jaar bijna 9% hoger: rente min dividend over die looptijd. Nu selecteren we de out-of-the-money opties
+en rekenen hun implied volatility uit.
+
+```{code-cell} ipython3
 otm = quotes[((quotes["kind"] == "put") & (quotes["strike"] < quotes["F"]))
              | ((quotes["kind"] == "call") & (quotes["strike"] >= quotes["F"]))].copy()
 otm = otm[otm["mid"] >= 0.05]
@@ -838,9 +910,15 @@ otm["k"] = np.log(otm["strike"] / otm["F"])
 otm["iv"] = implied_vol(otm["mid"].to_numpy(), (otm["DF"] * otm["F"]).to_numpy(),
                         otm["strike"].to_numpy(), otm["T"].to_numpy(), r_cc, otm["kind"].to_numpy())
 otm = otm.dropna(subset=["iv"])
-print(f"waarderingsmoment {valuation}, spot {spot:.2f}, r = {r_cc:.4f}, "
-      f"{len(otm)} OTM-opties over {otm['expiry'].nunique()} expiraties")
+pd.Series({"waarderingsmoment": str(valuation), "spot": round(spot, 2), "r (continu)": round(r_cc, 4),
+           "OTM-opties": len(otm), "expiraties": otm["expiry"].nunique()})
 ```
+
+De momentopname is van 11 september 2026 en levert 4521 bruikbare opties over 28
+expiraties. We meten de uitoefenprijs als *log-moneyness* $k = \log(K/F)$, de
+procentuele afstand tot de termijnkoers: 90% van de termijnkoers is
+$k = \log 0{,}9 \approx -0{,}105$. De tabel hieronder geeft per expiratie de implied
+volatility bij 90%, 95%, 100% en 105% van de termijnkoers.
 
 ```{code-cell} ipython3
 def iv_at(group, k):
@@ -865,28 +943,40 @@ smile_table = pd.DataFrame(
 smile_table["skew 90%-ATM"] = smile_table["IV 90%"] - smile_table["IV ATM"]
 smile_table.index = smile_table.index.date
 within_year = smile_table[smile_table["T (jaar)"] <= 1.0].dropna(subset=["skew 90%-ATM"])
-print(f"expiraties tot 1 jaar met IV(90%) > IV(ATM): "
-      f"{(within_year['skew 90%-ATM'] > 0).sum()} van {len(within_year)}")
 smile_table.round(4)
 ```
 
-Black-Scholes voorspelt één getal per rij; de tabel geeft er vier die dalen van links
-naar rechts. Voor alle negentien expiraties tot één jaar met een genoteerde put op
-90% ligt de implied volatility daar boven die op de termijnkoers, en op 105% overal
-eronder: geen glimlach maar een scheve grimas. De helling is het steilst bij de
-kortste looptijd — ruim 21 volatiliteitspunten tussen 90% en at-the-money bij een
-week, 10 bij vijf weken, 3 bij een jaar, 1 bij ruim twee jaar — en het verschil maal
-$\sqrt{T}$ ligt tussen twee weken en anderhalf jaar steeds rond $0{,}03$, een
-regelmaat die we signaleren maar niet uitwerken.
+Black-Scholes voorspelt één getal per rij, maar elke rij daalt van links naar rechts. De
+vier kortste expiraties hebben geen put op 90%. Hun at-the-money-volatiliteit is
+onbetrouwbaar laag (7 tot 12%), omdat we de looptijd in kalenderdagen tellen en er
+een weekend in zit. De tabel hieronder zet de helling op drie looptijden naast de
+verwachting uit het replicatieblok.
 
-De vergelijking met Derman en Kani is opvallend: onze expiratie op 49 dagen loopt
-van $22{,}1\%$ bij 90% via $13{,}4\%$ op de termijnkoers naar $11{,}0\%$ bij 105%,
-een helling van dezelfde orde als hun 18% naar 8% in 1994. Twee kanttekeningen. De
-vier kortste expiraties hebben geen put op 90% en een onbetrouwbaar lage
-at-the-money-volatiliteit (7 tot 12%), omdat onze looptijd in kalendertijd telt en
-er een weekend in zit. En de premie voor vroege uitoefening van Amerikaanse puts
-maakt ze in volatiliteitstermen iets duurder; dat die een helling van tien tot twintig
-punten zou maken is onwaarschijnlijk, maar met deze data niet exact te scheiden.
+```{code-cell} ipython3
+def skew_near(years):
+    """Skew IV(90%) - IV(ATM) at the expiry closest to the given maturity."""
+    return smile_table["skew 90%-ATM"].iloc[np.argmin(np.abs(smile_table["T (jaar)"] - years))]
+
+
+pd.DataFrame(
+    {
+        "verwacht": ["> 0, grootst", "> 0", "> 0, kleinst", "alle", ""],
+        "hier": [skew_near(7 / 365.25), skew_near(49 / 365.25), skew_near(1.0),
+                 (within_year["skew 90%-ATM"] > 0).sum(), len(within_year)],
+    },
+    index=["helling 90%-ATM, een week", "helling 90%-ATM, zeven weken",
+           "helling 90%-ATM, een jaar", "expiraties tot 1 jaar met helling > 0",
+           "expiraties tot 1 jaar met een put op 90%"],
+).round(4)
+```
+
+**Geslaagd.** Het teken is zoals het replicatieblok verwachtte: bij alle negentien
+expiraties tot een jaar ligt de implied volatility op 90% boven die op de
+termijnkoers. De helling daalt met de looptijd, van 21 volatiliteitspunten bij een
+week via 9 bij zeven weken naar 3 bij een jaar.
+
+De figuur toont vijf looptijden en het hele oppervlak. Let erop dat geen enkele
+kromme horizontaal loopt.
 
 ```{code-cell} ipython3
 :label: cel-black-scholes-smirk
@@ -921,39 +1011,44 @@ plt.show()
 :width: 95%
 
 Links: onder Black-Scholes zou elke kromme een horizontale lijn op dezelfde hoogte
-zijn. Alle krommen dalen — puts ver onder de termijnkoers zijn duur in
-volatiliteitstermen — en het steilst bij de kortste looptijd. Rechts: hetzelfde als
-oppervlak; de helling in de uitoefenprijs is overal aanwezig en vlakt af met de
-looptijd.
+zijn. Van diepe puts naar de termijnkoers dalen alle krommen, het steilst bij de
+kortste looptijd: puts ver onder de termijnkoers zijn duur in volatiliteitstermen. Rechts: hetzelfde als oppervlak. De
+helling in de uitoefenprijs is overal aanwezig en vlakt af met de looptijd.
 :::
+
+De tweede replicatie vraagt wat een gehedgde verkoper van opties gemiddeld verdient.
+Volgens [](#eq-black-scholes-hedge-pnl) is dat het verschil tussen ingeprijsde en
+gerealiseerde variantie.
 
 ```{admonition} Replicatie
 :class: seealso
 
 **Bron.** Robert Whaley, *The Investor Fear Gauge*, Journal of Portfolio Management
-2000 {cite}`Whaley2000`; Peter Carr en Liuren Wu, *Variance Risk Premiums*, Review
+2000 {cite}`Whaley2000`. Peter Carr en Liuren Wu, *Variance Risk Premiums*, Review
 of Financial Studies 2009 {cite}`CarrWu2009`.
 
-**Wat.** Het teken van de *variance risk premium* (het verschil tussen de in
-optieprijzen ingeprijsde variantie en de daarna gerealiseerde variantie), die volgens
-[](#eq-black-scholes-hedge-pnl) is wat een gehedgde optieverkoper verdient. Hun
-tabellen hebben we niet ingezien en we noemen er geen getallen uit; de kwantitatieve
-behandeling volgt in [](#05-29-opties-crashrisico).
+**Wat.** Het teken van de *variance risk premium* (ingeprijsde min daarna
+gerealiseerde variantie). Hun getallen zijn niet tegen de bron te houden, dus we
+toetsen teken en vorm.
 
-**Data hier.** De VIX van FRED (`hap.data.fred("VIXCLS")`, vanaf 1990) en de
-dagelijkse marktfactor van Kenneth French (`hap.data.market_daily()`), waaruit we per
-dag de gerealiseerde volatiliteit over de volgende 21 handelsdagen berekenen.
+**Data hier.** De VIX uit FRED vanaf 1990, en de dagelijkse marktfactor van Kenneth
+French, waaruit we per dag de gerealiseerde volatiliteit over de volgende 21
+handelsdagen berekenen.
 
-**Verschil met het origineel.** De VIX meet de verwachte volatiliteit van de
-S&P 500 over dertig kalenderdagen; wij vergelijken met de gerealiseerde volatiliteit
-van de hele Amerikaanse markt over 21 handelsdagen (wortel van het gemiddelde
-gekwadrateerde log-rendement, op jaarbasis).
+**Verschil met het origineel.** De VIX meet de verwachte volatiliteit van de S&P 500
+over dertig kalenderdagen. Wij vergelijken met de hele Amerikaanse markt over 21
+handelsdagen. Dertig kalenderdagen zijn ongeveer 21 handelsdagen.
 
-**Verwachte afwijking.** Het verschil moet gemiddeld positief zijn, met een
-Newey-West-$t$-waarde ruim boven twee, en op een ruime meerderheid van de dagen
-positief; in crisismaanden zoals eind 2008 en begin 2020 moet het omslaan. Een
-negatief gemiddelde betekent een fout in de code.
+**Verwachte afwijking.** Het verschil moet gemiddeld
+positief zijn, met een Newey-West-$t$-waarde ruim boven twee, positief op een ruime
+meerderheid van de dagen, en omslaan in crisismaanden zoals eind 2008 en begin 2020.
 ```
+
+We berekenen het verschil per dag en schatten het gemiddelde. Opeenvolgende dagen
+delen 20 van de 21 dagen gerealiseerde volatiliteit, dus de verschillen hangen sterk
+samen en een gewone standaardfout is te klein. De Newey-West-standaardfout corrigeert
+daarvoor. We nemen 42 vertragingen, twee keer de lengte van het venster van 21
+dagen.
 
 ```{code-cell} ipython3
 vix = (hap_data.fred("VIXCLS")["VIXCLS"].dropna() / 100).rename("VIX")
@@ -964,28 +1059,39 @@ vrp = vix.to_frame().join(realized_fwd, how="inner").dropna()
 vrp["verschil"] = vrp["VIX"] - vrp["RV volgende 21 dagen"]
 nw = hap.newey_west(vrp["verschil"], pd.Series(1.0, index=vrp.index, name="const"),
                     lags=42, add_constant=False)
-print(f"{vrp.index[0].date()} t/m {vrp.index[-1].date()}: {len(vrp)} handelsdagen")
+monthly_vrp = vrp.resample("ME").last()
+worst_months = ", ".join(f"{d:%Y-%m}" for d in monthly_vrp["verschil"].nsmallest(4).index)
+```
 
+De tabel zet de uitkomst naast de verwachting uit het replicatieblok.
+
+```{code-cell} ipython3
 pd.DataFrame(
     {
-        "waarde": [
-            vrp["VIX"].mean(), vrp["RV volgende 21 dagen"].mean(),
-            vrp["verschil"].mean(), float(nw.bse.iloc[0]), float(nw.tvalues.iloc[0]),
-            (vrp["verschil"] > 0).mean(),
-            (vrp["VIX"] ** 2 - vrp["RV volgende 21 dagen"] ** 2).mean(),
-        ]
+        "verwacht": ["", "", "", "", "> 0", "", "> 2", "meerderheid", "> 0", "2008, 2020"],
+        "hier": [
+            f"{vrp.index[0]:%Y-%m-%d} t/m {vrp.index[-1]:%Y-%m-%d}", len(vrp),
+            round(vrp["VIX"].mean(), 4), round(vrp["RV volgende 21 dagen"].mean(), 4),
+            round(vrp["verschil"].mean(), 4), round(float(nw.bse.iloc[0]), 4),
+            round(float(nw.tvalues.iloc[0]), 4), round((vrp["verschil"] > 0).mean(), 4),
+            round((vrp["VIX"] ** 2 - vrp["RV volgende 21 dagen"] ** 2).mean(), 4), worst_months,
+        ],
     },
-    index=["gemiddelde VIX", "gemiddelde RV",
+    index=["periode", "handelsdagen", "gemiddelde VIX", "gemiddelde RV",
            "gemiddeld verschil (vol)", "Newey-West SE", "Newey-West t",
-           "fractie dagen VIX > RV", "gemiddeld verschil (variantie)"],
-).round(4)
+           "fractie dagen VIX > RV", "gemiddeld verschil (variantie)",
+           "meest negatieve maandeinden"],
+)
 ```
+
+**Geslaagd.** Elke verwachting uit het replicatieblok komt uit: de VIX ligt
+gemiddeld ruim boven de daarna gerealiseerde volatiliteit, met een $t$-waarde ver
+boven twee, op de meeste dagen, en het verschil slaat om in 2008 en 2020. De
+figuur laat zien waar het omslaat.
 
 ```{code-cell} ipython3
 :label: cel-black-scholes-vrp
 :tags: [hide-input]
-
-monthly_vrp = vrp.resample("ME").last()
 
 fig, axes = plt.subplots(2, 1, figsize=(10, 6.2), sharex=True, height_ratios=[2, 1])
 axes[0].plot(monthly_vrp.index, monthly_vrp["VIX"] * 100, lw=1.2, label="VIX (implied, 30 dagen)")
@@ -1007,122 +1113,78 @@ plt.show()
 :label: fig-black-scholes-vrp
 :width: 95%
 
-De VIX ligt meestal boven de volatiliteit die daarna optreedt; opties zijn in die zin
-gemiddeld duur. De rode staven zijn zeldzaam maar groot: wie opties verkoopt,
+De VIX ligt meestal boven de volatiliteit die daarna optreedt. Opties zijn in die zin
+gemiddeld duur. De negatieve staven zijn zeldzaam maar groot: wie opties verkoopt,
 verdient in de meeste maanden een beetje en verliest in enkele maanden veel.
 :::
 
-Over 9188 handelsdagen van januari 1990 tot juli 2026 lag de VIX gemiddeld op
-$19{,}5\%$ en de daarna gerealiseerde volatiliteit op $15{,}5\%$: een verschil van
-$4{,}0$ volatiliteitspunten, met een Newey-West-standaardfout van $0{,}31$ en
-$t = 12{,}8$, positief op 85% van de dagen. De grootste negatieve maanden vallen, zoals
-verwacht, eind februari 2020 en augustus–september 2008, gevolgd door maart 2025 en
-juli 2011.
-
-Leg die $t$-waarde naast motief 1. Een equity premium van zes procent bij twintig
-procent volatiliteit haalt over 36 jaar $t = 0{,}06\sqrt{36}/0{,}20 = 1{,}8$; de
-variance risk premium haalt bijna dertien, omdat ze een verschil van tweede momenten
-is. Wat ze *betekent*, is een andere zaak: de VIX en gerealiseerde volatiliteit
-krijgen hun eigen lecture in [](#04-21-volatiliteit), en of de premie een beloning
-voor crashrisico is of een te hoge prijs voor verzekering, is de vraag van
-[](#05-29-opties-crashrisico).
+De meest negatieve maandeinden zijn februari 2020, september en augustus 2008 en
+maart 2025. Met $t = 12{,}8$ bevestigen de data wat de simulatie voor een voordeel in
+volatiliteit liet zien: een premie op tweede momenten is scherp te meten.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** Het leverde de eerste prijs zonder voorkeuren: uit één
-argument — wat zonder risico is, verdient de rente — volgt een formule met vier
-waarneembare invoergrootheden en één te schatten getal, waarmee een nieuwe markt
-zichzelf binnen enkele jaren prijsde. Het verklaart waarom Samuelsons $\alpha$ er
-niet toe doet, waarom een optie meer waard is naarmate het aandeel wilder beweegt, en
-waarom een Amerikaanse call zonder dividend nooit vroeg wordt uitgeoefend. De
-simulatie liet zien hoe robuust de kern is: de drift verdwijnt uit de uitkomst en de
-restfout volgt de $1/\sqrt{N}$-wet. En het reikte verder dan opties: de "corporate
-liabilities" uit de titel zijn aandelen en obligaties als opties op de waarde van de
-onderneming.
+**Wat het model verklaart.** Het gaf de eerste prijs zonder voorkeuren. Uit één
+argument, dat wat zonder risico is de rente verdient, volgt een formule met vier
+waarneembare invoergrootheden en één te schatten getal. Binnen enkele jaren
+gebruikten de handelaren op de nieuwe beurs de formule. Het model verklaart waarom het verwachte
+rendement er niet toe doet, en waarom een optie meer waard is als het aandeel wilder
+beweegt. De simulatie liet zien hoe robuust de kern is: de drift laat vrijwel geen
+spoor na, en de spreiding van de P&L volgt de $1/\sqrt{N}$-wet.
 
-**Waar het breekt.** Het model voorspelt één volatiliteit per aandeel; de markt geeft
-er een per uitoefenprijs en looptijd. Op onze handelsdag lag de implied volatility van
-een put op 90% van de termijnkoers bij alle negentien expiraties tot een jaar boven
-die op de termijnkoers, van ruim 21 volatiliteitspunten bij een week tot 3 bij een
-jaar — de vorm die Rubinstein en Derman en Kani in 1994 zagen. Implied volatility
-wordt zo van een parameter een *oppervlak*, en wat de meetlat meet, is een
-risiconeutrale verdeling met een dikkere linkerstaart dan de lognormale. Dit is geen
-schattingsprobleem: tweede momenten zijn goed meetbaar, en de variance risk premium
-haalde $t = 12{,}8$ waar een equity premium op $1{,}8$ blijft steken.
+**Waar het breekt.** Het model voorspelt één volatiliteit per aandeel, de markt
+geeft er een per uitoefenprijs en looptijd. Op onze handelsdag lag de implied
+volatility op 90% van de termijnkoers bij alle negentien expiraties tot een jaar
+boven die op de termijnkoers. Het verschil liep van 21 volatiliteitspunten bij een
+week tot 3 bij een jaar. Implied volatility wordt zo een oppervlak. Dure diepe puts betekenen dat de
+risiconeutrale verdeling een grote daling waarschijnlijker maakt dan de lognormale:
+een dikkere linkerstaart. Dit
+is geen schattingsprobleem, want tweede momenten zijn goed meetbaar.
 
-**Risico of vergissing?** De Chicago-lezing: koersen maken sprongen en volatiliteit
-stijgt als koersen dalen, dus een diepe put verzekert tegen de toestanden waarin een
-euro het meest waard is. Zo'n risico is niet continu weg te hedgen — de markt is niet
-compleet — en wie het draagt, eist een premie: in Santa-Clara's woorden "risk that
-was priced". De Yale-lezing: sinds 1987 is er structurele vraag naar bescherming,
-terwijl de schrijvers van puts beperkt kapitaal hebben en zich niet tegen een sprong
-kunnen indekken; de prijs ligt dan boven wat een redelijk risicomodel rechtvaardigt.
-Constantinides, Jackwerth en Perrakis vonden dat opties vóór de crash "reasonably
-well" met Black-Scholes overeenkomen, maar dat er daarna, ook na transactiekosten,
-strategieën bestaan die elke belegger met dalend marginaal nut zou verkiezen
-{cite}`ConstantinidesJackwerthPerrakis2008`, en lezen dat als mispricing. Scheiden
-vraagt de stochastic discount factor in crashtoestanden — en die komen in een eeuw
-data te weinig voor. De data van deze lecture kiezen niet.
+**Risico of vergissing?** De Chicago-lezing (de prijs is juist en beloont risico): koersen maken sprongen, en de
+volatiliteit stijgt als koersen dalen. Een diepe put verzekert dan tegen de
+toestanden waarin een euro het meest waard is. Zo'n sprong is niet weg te hedgen, en
+wie het risico draagt, eist een premie. De Yale-lezing (de prijs zit ernaast): sinds 1987 is er structurele
+vraag naar bescherming, terwijl verkopers van puts beperkt kapitaal hebben. Dan ligt
+de prijs boven wat het risico rechtvaardigt. Constantinides, Jackwerth en Perrakis
+vonden na de crash strategieën die elke risicomijdende belegger zou verkiezen, en
+lezen dat als mispricing {cite}`ConstantinidesJackwerthPerrakis2008`. Scheiden vraagt
+de *stochastic discount factor* (hoe zwaar een euro in elke toestand weegt) in
+crashtoestanden, en die komen in een eeuw data te
+weinig voor. De data van deze lecture kiezen niet.
 
-**Wat er daarna kwam.** Merton gebruikte dezelfde continue-tijdwiskunde om de
-portefeuillekeuze van beleggers en het evenwicht van de hele markt opnieuw af te
-leiden: zie [](#03-10-merton-icapm).
+**Wat er daarna kwam.** Merton had dezelfde wiskunde in continue tijd al vanaf
+1969 gebruikt voor de portefeuillekeuze van beleggers. In 1973 leidde hij er het
+evenwicht van de hele markt mee af: zie [](#03-10-merton-icapm).
 
 ## Oefeningen
 
 :::{exercise}
 :label: ex-black-scholes-1
 
-**De P&L van een gammapositie.**
+**Instap: de boom gevarieerd.** Neem het toy-voorbeeld met $K = 110$.
 
-1. Toon met [](#eq-black-scholes-pariteit) aan dat gamma en vega van call en put
-   gelijk zijn. Waarom moet dat zo zijn, zonder te rekenen?
-2. Een handelaar koopt een at-the-money call op drie maanden ($S = K = 100$,
-   $r = 4\%$) tegen 20% implied volatility en hedget dagelijks, terwijl het aandeel
-   met 25% beweegt. Benader zijn verwachte winst met
-   [](#eq-black-scholes-hedge-pnl) door $S^2\Gamma$ op de beginwaarde vast te houden,
-   en vergelijk met de vega-benadering en een simulatie.
+1. Bereken $C_0$ met de hand, met de risiconeutrale kans $q$.
+2. Maak de boom fijner, zoals Cox, Ross en Rubinstein {cite}`CoxRossRubinstein1979`:
+   $n$ stappen over $T = 0{,}25$, met $u = e^{\sigma\sqrt{T/n}}$,
+   $d = 1/u$ en $R^{f} = e^{rT/n}$, bij $S = K = 100$, $r = 4\%$ en $\sigma = 20\%$.
+   Teken het verschil met [](#eq-black-scholes-call) voor $n = 1, \dots, 200$.
 :::
 
 :::{solution} ex-black-scholes-1
 :class: dropdown
 
-**(1)** $P = C - S + Ke^{-r\tau}$, en $-S + Ke^{-r\tau}$ is lineair in $S$ en hangt
-niet van $\sigma$ af; de tweede afgeleide naar $S$ en de afgeleide naar $\sigma$
-zijn dus gelijk. Zonder rekenen: call min put is een termijncontract.
+**(1)** Alleen drie stijgingen eindigen boven 110, met payoff $23{,}1$. Dus
+$C_0 = 0{,}216 \cdot 23{,}1/1{,}061208 = 4{,}7018$.
 
-**(2)** Voor een gekochte optie keert het teken in [](#eq-black-scholes-hedge-pnl) om.
-
-```{code-cell} ipython3
-g0 = bs_greeks(100.0, 100.0, 0.25, 0.04, 0.20)
-approx = 0.5 * (0.25**2 - 0.20**2) * 100.0**2 * g0["gamma"] * 0.25
-long_pnl = -delta_hedge_pnl(63, 50_000, 100.0, 100.0, 0.25, 0.04, 0.04, 0.25, 0.20)
-print(f"benadering met vaste S^2 Gamma : {approx:.3f}")
-print(f"vega x (0.25 - 0.20)           : {g0['vega'] * 0.05:.3f}")
-print(f"simulatie, dagelijks hedgen    : {long_pnl.mean():.3f} (SE {long_pnl.std(ddof=1) / np.sqrt(50_000):.3f})")
-```
-
-De vaste-gamma-benadering ($1{,}11$) overschat de simulatie ($1{,}00$), omdat gamma
-van een at-the-money optie maximaal is en daalt zodra de koers wegloopt; de
-vega-benadering ($0{,}99$) middelt dat over de looptijd. Een gehedgde optie is een
-weddenschap op gerealiseerde variantie waarvan de inzet afhangt van waar de koers
-zich ophoudt.
-:::
-
-:::{exercise}
-:label: ex-black-scholes-2
-
-**Van de boom naar de formule.** Veralgemeen het toy-voorbeeld tot $n$ stappen over
-$T = 0{,}25$ met $u = e^{\sigma\sqrt{T/n}}$, $d = 1/u$ en $R^{f} = e^{rT/n}$, bij
-$S = K = 100$, $r = 4\%$ en $\sigma = 20\%$. Teken het verschil met
-[](#eq-black-scholes-call) voor $n = 1, \dots, 200$. Hoe snel convergeert het, en
-waarom oscilleert het?
-:::
-
-:::{solution} ex-black-scholes-2
-:class: dropdown
+**(2)** De code rekent (1) na en tekent de convergentie.
 
 ```{code-cell} ipython3
+payoff_110 = np.maximum(toy["S0"] * toy["u"] ** up_moves * toy["d"] ** (toy["n"] - up_moves) - 110.0, 0.0)
+price_110 = stats.binom.pmf(up_moves, toy["n"], q_toy) @ payoff_110 / toy["R_f"] ** toy["n"]
+print(f"C_0 bij K = 110: {price_110:.4f}")
+
+
 def crr_call(S, K, T, r, sigma, n):
     """Cox-Ross-Rubinstein binomial price of a European call."""
     dt = T / n
@@ -1135,7 +1197,7 @@ def crr_call(S, K, T, r, sigma, n):
 
 n_steps = np.arange(1, 201)
 bs_exact = bs_price(100.0, 100.0, 0.25, 0.04, 0.20)
-errors = np.array([crr_call(100.0, 100.0, 0.25, 0.04, 0.20, n) - bs_exact for n in n_steps])
+errors = np.array([crr_call(100.0, 100.0, 0.25, 0.04, 0.20, k) - bs_exact for k in n_steps])
 
 fig, ax = plt.subplots()
 ax.plot(n_steps, errors, lw=1.0)
@@ -1150,11 +1212,57 @@ plt.show()
 print(f"fout bij n = 3: {errors[2]:.4f}; n = 50: {errors[49]:.4f}; n = 200: {errors[199]:.5f}")
 ```
 
-De fout daalt ongeveer als $1/n$ en wisselt van teken, omdat de uitoefenprijs bij even
-en oneven $n$ afwisselend op en tussen eindknopen valt: $0{,}33$ bij drie stappen,
-een halve cent bij tweehonderd. De boom is dus geen benadering van een ander idee,
-maar hetzelfde idee — replicatie per knoop — met de formule als limiet; de details
-volgen in [](#03-11-apt-no-arbitrage).
+De fout blijft binnen de stippellijnen $\pm 1/n$: ze daalt ongeveer als $1/n$ en
+wisselt van teken, omdat de uitoefenprijs
+afwisselend op en tussen eindknopen valt: $0{,}33$ bij drie stappen, een halve cent
+bij tweehonderd. Wat dit leert: de boom en de formule zijn hetzelfde idee,
+replicatie per knoop, en de formule is de limiet van de boom.
+:::
+
+:::{exercise}
+:label: ex-black-scholes-2
+
+**Afleiding: verkopen tegen de verkeerde volatiliteit.**
+
+1. Toon met [](#eq-black-scholes-pariteit) aan dat gamma en vega van call en put
+   gelijk zijn.
+2. Het aandeel beweegt met 20%. Een handelaar verkoopt de call op drie maanden uit
+   de simulatie tegen 15% of 25%, en hedget dagelijks met die implied volatility of
+   met de werkelijke 20%. Voorspel met [](#eq-black-scholes-hedge-pnl) de gemiddelde
+   P&L en welke hedge de kleinste spreiding geeft. Controleer met een simulatie.
+:::
+
+:::{solution} ex-black-scholes-2
+:class: dropdown
+
+**(1)** $P = C - S + Ke^{-r\tau}$, en $-S + Ke^{-r\tau}$ is lineair in $S$ en hangt
+niet van $\sigma$ af. De tweede afgeleide naar $S$ en de afgeleide naar $\sigma$
+zijn dus gelijk. Zonder rekenen: call min put is een termijncontract.
+
+**(2)** De gemiddelde P&L is ongeveer $\nu(\sigma_i - \sigma_g) = \pm 0{,}99$.
+Wie met de werkelijke volatiliteit hedget, legt het premieverschil vast. Alleen de spreiding
+door discreet hedgen blijft over. Wie met $\sigma_i$ hedget, heeft daarnaast de padafhankelijke
+term uit de propositie.
+
+```{code-cell} ipython3
+wrong_rows = []
+for sigma_i in (0.15, 0.25):
+    premium_gap = (bs_price(100.0, 100.0, T_sim, r_sim, sigma_i)
+                   - bs_price(100.0, 100.0, T_sim, r_sim, sigma_sim)) * np.exp(r_sim * T_sim)
+    for label, sigma_h in (("hedge bij implied", sigma_i), ("hedge bij werkelijke", sigma_sim)):
+        pnl = delta_hedge_pnl(63, n_paths, 100.0, 100.0, T_sim, r_sim, mu_sim,
+                              sigma_sim, sigma_i, sigma_hedge=sigma_h)
+        wrong_rows.append({"sigma_i": sigma_i, "hedge": label, "gemiddelde P&L": pnl.mean(),
+                           "SD P&L": pnl.std(ddof=1), "premieverschil": premium_gap,
+                           "vega x (sigma_i - sigma_g)": vega_sim * (sigma_i - sigma_sim)})
+pd.DataFrame(wrong_rows).set_index(["sigma_i", "hedge"]).round(4)
+```
+
+Wie tegen 15% verkoopt, verliest gemiddeld $0{,}98$ à $1{,}00$ euro. Wie tegen 25%
+verkoopt, wint $1{,}00$. Met de werkelijke volatiliteit is de spreiding $0{,}43$, net
+als in de simulatie. Met de implied volatility is ze $0{,}61$ en $0{,}55$. Wat dit
+leert: een gehedgde optie is een weddenschap op gerealiseerde variantie, en wie met
+de eigen $\sigma_i$ hedget, laat de uitkomst afhangen van waar de koers zich ophoudt.
 :::
 
 :::{exercise}
@@ -1162,9 +1270,9 @@ volgen in [](#03-11-apt-no-arbitrage).
 
 **Is de variance risk premium stabiel?** Splits de steekproef in 1990–2007 en
 2008–heden. Bereken per periode het gemiddelde verschil tussen VIX en gerealiseerde
-volatiliteit met een Newey-West-standaardfout, en met niet-overlappende maanddata
-het aantal jaren $T^{*} = (1{,}96\,\SD/\text{gemiddelde})^2$ dat nodig is voor
-significantie. Vergelijk met een equity premium van 6% bij 20% volatiliteit.
+volatiliteit met een Newey-West-standaardfout. Bereken met niet-overlappende
+maanddata het aantal jaren $T^{*} = (1{,}96\,\SD/\text{gemiddelde})^2$ dat nodig is
+voor significantie. Vergelijk met een equity premium van 6% bij 20% volatiliteit.
 :::
 
 :::{solution} ex-black-scholes-3
@@ -1191,11 +1299,13 @@ pd.DataFrame(rows).set_index("periode").round(4)
 ```
 
 Het verschil is in beide periodes positief en scherp gemeten: $4{,}85$ punten over
-1990–2007 ($t = 15{,}0$) en $3{,}15$ punten vanaf 2008 ($t = 6{,}1$). Met maanddata is
-voor significantie een derde jaar respectievelijk twee jaar nodig; voor de equity
-premium 43 jaar — motief 1 in één regel. De kleinere premie na 2008 past bij beide
-lezingen: arbitrageurs die een bekende vergissing wegnemen, of een crashrisico dat
-blijft bestaan en dus beloond blijft.
+1990–2007 ($t = 15{,}0$) en $3{,}15$ punten vanaf 2008 ($t = 6{,}1$). Voor
+significantie is met maanddata een derde van een jaar nodig (1990–2007) en twee
+jaar (vanaf 2008). Voor de equity
+premium is dat 43 jaar. De kleinere premie na 2008 past bij beide lezingen: arbitrageurs
+die een bekende vergissing wegnemen, of een crashrisico dat blijft en dus beloond
+blijft. Wat dit leert: de standaardfout van 2% treft het gemiddelde rendement, niet
+een premie op tweede momenten.
 :::
 
 <!-- Referenties verschijnen automatisch onderaan de pagina. -->
