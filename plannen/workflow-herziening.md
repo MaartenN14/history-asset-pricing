@@ -465,3 +465,57 @@ verliezen daar geen kwaliteit, en het ontlast de Opus-sessielimiet. De volledige
 feitencontrole (F2) gaat vanaf Deel III op proef naar Sonnet; de beoordelaar houdt zijn
 eigen lijst "Feitelijke fouten". Vindt hij vanaf dan meer feitelijke fouten dan in Deel I
 en II, dan gaat F2 terug naar Opus.
+
+## 9. Versnelling (besluit eigenaar, 2026-09-25)
+
+Gemeten in Deel III, per lecture: schrijver ≈ 360k tokens, F2 ≈ 230k, F3 ≈ 170k, lus
+(F5a + F5c) ≈ 110k, eindbeoordeling met §4.2 ≈ 120k. Drie beoordelingsrondes waar twee
+volstaan; twee lezers die elk apart de lecture, STYLE, rubriek en workflow lezen; elke
+agent leest ≈ 40k tokens regels voor hij begint. Vanaf groep IIIb (L14–L17) gelden de
+volgende wijzigingen; waar ze botsen met §1, §2 of §4 gaan zij voor.
+
+1. **Eén beoordeling van record.** F5a, F5b en F5c vervallen. Na F4 leest de
+   eindbeoordelaar (prompt 2.7, per lecture `notes/eind-<slug>.md`, statusregel `F6`).
+   De schrijver lost de feitelijke fouten en de drie verbeteringen op (prompt 2.6 met
+   het eind-bestand; rapport §F6-1; statusregel `F6b`). Dezelfde beoordelaar controleert
+   één keer (prompt 2.5 controle; sectie "Controle 1" onderaan het eind-bestand;
+   statusregel `F6c`). Dat is het cijfer van record. Onder 8,5: §4.3. Geen mini-rondes
+   daarna: wat de controle nog noemt blijft staan, tenzij het een feitelijke fout is.
+2. **F2 en F3 samengevoegd tot F23.** Eén Sonnet-agent leest de lecture één keer en
+   schrijft `notes/feiten-<slug>.md` (tabel van §2.2) en `notes/lezer-<slug>.md`
+   (vorm van §2.3). Externe bronnen alleen voor de open punten van de schrijver en voor
+   een getal met bronvermelding zonder cel. De vergelijking proza tegen celuitvoer doet
+   `uv run python tools/nb_numbers.py lectures/<slug>.md`; de agent kijkt alleen de
+   gemelde getallen na. Statusregel: `STATUS <slug> F23 open=<onjuist+onzeker> punten=15`.
+3. **Rolkaart.** F23 leest `plannen/kaart-rollen.md` in plaats van STYLE, rubriek,
+   workflow en setup. De eindbeoordelaar leest de kaart en de rubriek. De schrijver
+   leest STYLE nog volledig. Bij twijfel geldt STYLE.
+4. **Fasen per lecture:** F0 → F1 → F23 → F4 → F6 → F6b → F6c → F7. Bij meer dan vijf
+   lectures per deel twee eindbeoordelaars, de tweede met anker (§2.7). De
+   eindbeoordelaar krijgt de lectures één voor één zodra ze uit F4 komen, in volgorde
+   waar dat kan, en schrijft `notes/eind-deel-<n>.md` na de laatste.
+5. **Commit** als §3.4, met in de commitregel het `F6c`-cijfer. De Sonnet-diffcontrole
+   van §3.2 blijft.
+
+### 9.1 Prompt F23 (Sonnet)
+
+> Je bent feitencontroleur én koude lezer voor `lectures/<slug>.md`. Lees eerst
+> `plannen/kaart-rollen.md`, dan de lecture volledig. Draai
+> `uv run python tools/nb_numbers.py lectures/<slug>.md` en kijk alleen de gemelde
+> getallen na tegen `uv run python tools/nb_outputs.py lectures/<slug>.ipynb`.
+> Open elke aangehaalde lecture alleen op de aangehaalde plek. Haal een externe bron
+> alleen op voor de open punten in `notes/rapport-<slug>.md` §F1 en voor een getal met
+> bronvermelding zonder cel; anders oordeel "onzeker" met reden.
+> Schrijf `notes/feiten-<slug>.md` (kaart §6) en `notes/lezer-<slug>.md` (kaart §7).
+> Wijzig de lecture niet. Tempbestanden alleen als `$TEMP/f23-<slug>-*`, redirects via
+> Bash. Eindbericht: `STATUS <slug> F23 open=<n> punten=15` en de drie ernstigste
+> punten uit beide lijsten, samen hoogstens acht regels.
+
+### 9.2 Prompt schrijver F6b
+
+> De beoordeling van record staat in `notes/eind-<slug>.md`. Los elke feitelijke fout op
+> en de drie verbeteringen met het meeste effect; daarna de punten onder "Aanmerkingen"
+> en "Voor een 9" voor zover ze binnen words ≤ 5.500 passen (elk toevoegen betaal je met
+> schrappen). Wijs een punt alleen af met een regel uit STYLE of "Wat niet meetelt".
+> Zelfde verificatie en grenzen als F1. Rapport §F6-1, hoogstens 25 regels, per punt:
+> gedaan of afgewezen met reden. Eindbericht: statusregel `F6b`.
