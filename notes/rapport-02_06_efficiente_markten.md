@@ -139,3 +139,23 @@ Woorden per sectie: top 118, Overzicht 319, Intuïtie 407, Toy 358, Drie woorden
 **Overig uit de eindbeoordeling.** Grammaticafout "verdwijnt bij … gebruikt" hersteld. De puntkomma bij 0,84 is weg. Voor de filterfiguur staat nu waar de lezer op moet letten. Bij de download staat een commentaar dat alleen SPY wordt gebruikt (de tickerlijst blijft, anders mist de offline cache). Bij Jensen staat nu de soort standaardfout (heteroskedasticiteitsrobuust). Geschrapt om te betalen: LeRoy-zin, Jensen-toevalzin, Alexander-correctiezin, staart van de Grossman-Stiglitz-zin.
 - Naadcorrectie: alle 17 keer "alfa" terug naar "alpha" (boekconventie), ook in de Jensen-tabellabels; prose_stats PASS (5457), gesynct, offline uitgevoerd, getallen gelijk.
 - Filterformule: "ruim 24% per jaar" wordt "bijna 24% per jaar" (0,175 · 0,68% · 0,80 · 252 ≈ 23,9%); prose_stats PASS, gesynct.
+
+## R9-1 (F6b, ronde 9+)
+
+Uitgangspunt: eind-02_06 (8,7). Proza 5.709 → 5.812 woorden, `--check` PASS, `nb_numbers` geen nieuwe meldingen (21, alleen verschoven door rewrap), `rewrap` gedraaid, celuitvoer identiek (nb_outputs voor/na).
+
+- **Opzet, drie woorden** (hardop 2, H1): gedaan; volgorde "van random walk naar fair game", werkwoord "voorspellen", "alleen niet" herschreven met de spreiding als voorbeeld.
+- **Opzet, variance ratio tussen haakjes**: gedaan; definitie in de zin opgenomen met "want".
+- **Filterformule, 24% tegen 13,9** (helderheid, vijf getallen in één alinea): gedaan; kalibratie in eigen alinea, voorsprong = 24% min indexrendement, bij "Geslaagd" teruggenoemd.
+- **Grossman-Stiglitz, ω en c**: gedaan; ω weggelaten, geen getal voor c (geen cel of bron), wel de richting (hogere c → minder geïnformeerden, minder informatieve prijs).
+- **Overzicht herhaalt kaderzin**: gedaan; de openingsvraag vervangen door het antwoord.
+- **Taal, hardop 1 ("zegt een filter dat ... meer dan")**: gedaan, voorstel beoordelaar.
+- **Taal, hardop 3 ("de helft kans")**: gedaan.
+- **Taal, "favoriete toets"**: gedaan ("aantrekkelijke toets", "een filter" als antecedent).
+- **Taal, "echter" in de replicatie**: gedaan; zin zegt nu waarom de kolom niet vergelijkbaar is.
+- **Taal, onderzoek B (:69, :89, :226, :1003, :1107)**: alle vijf herschreven (theorie of feit zonder "oftewel", "Dat is"-opener weg, joint hypothesis uit de haakjes, "trager dan een fonds" → slotkoersen lopen achter, formule/simulatie in de zin, "efficiëntie alleen zegt niet" → "zonder model van risico").
+- **Code, SPY-cel**: deels. Alleen `yahoo("SPY", ...)` faalt offline (CacheMissError, geen snapshot `yahoo__SPY__1993-01-01`), dus de download blijft; nu `etfs = ...; spy = etfs["SPY"]` en de cachereden in de tekst (tweede optie van de beoordelaar).
+- **Code, leeswijzers**: gedaan; beide "Let in de figuur ..." als eigen korte alinea direct vóór de figuurcel.
+- **Code, `first = held.ne(0).idxmax()`**: gedaan; hernoemd tot `first_signal` met commentaar, in beide functies.
+- **Oefening 3, "voor 1990"**: gedaan ("in de twee perioden tot 1990").
+- **Toy, Vooruitblik; replicatie, vier getallen**: niet gewijzigd, beoordelaar gaf geen aftrek.

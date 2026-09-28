@@ -1,137 +1,188 @@
-STATUS 02_06_efficiente_markten F6c words=5457 prose=PASS open=0 cijfer=8,8 min=8,5
+STATUS 02_06_efficiente_markten F6c words=5812 prose=PASS open=0 cijfer=9,0 min=8,7
+Open punt (SPY-cel zonder reden voor vijf tickers) door de orchestrator opgelost met één bijzin over de offline cache, 2026-09-28.
 
-# Eindbeoordeling (F6): Fama en de efficiënte markt
+# Ronde 9+
 
-## Eindcijfer F6: 8,3 (na controle: 8,8, cijfer van record; statusregel bovenaan)
+Vorige ronde: 8,8
 
-| nr | criterium | gewicht | deelcijfer |
-|---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 8 |
-| 2 | Opbouw en rode draad | 20% | 8 |
-| 3 | Taal | 15% | 8,5 |
-| 4 | Toy-voorbeeld | 10% | 9 |
-| 5 | Code en figuren | 10% | 8,5 |
-| 6 | Replicatie en empirie | 10% | 8,5 |
-| 7 | Oefeningen | 5% | 9 |
+Eindbeoordeling (F6) van `lectures/02_06_efficiente_markten.md` na de taalredactie.
+`prose_stats --check`: PASS (5.709 woorden, zinnen gemiddeld 16,7, p90 27, geen zin
+boven 40, alinea gemiddeld 50, 7 puntkomma's, 0 "Wie"-openers, tmpl 2). De vorige 8,8
+gold onder de oude gewichten (helderheid 30, taal 15). Onder de nieuwe gewichten en de
+strengere taaleis (hardop-toets, §11.12) komt het college op 8,7. Geen feitelijke fouten.
 
-Gewogen: 2,40 + 1,60 + 1,275 + 0,90 + 0,85 + 0,85 + 0,45 = 8,33, dus 8,3.
-Lengte: 5.444 woorden, net onder de 5.500.
+## De drie verbeteringen met het meeste effect
 
-## Feitelijke fouten
+1. **Taal (8,5 → 9): de zinnen uit de hardop-toets en de nog geldige ritmepunten
+   herschrijven.** Het gaat om ongeveer tien zinnen: 02_06:261–265, :535–536, :561–562,
+   :794–795, :904–905, :69–70, :89–90, :226–228, :1003–1004 en :1108–1109 (zie
+   criterium 3). Geen inhoud erbij; herschrijven van de bestaande zin volstaat.
+2. **Helderheid (8,5 → 9): drie plekken waar de lezer moet reconstrueren.** De volgorde
+   "steeds minder" bij de drie woorden (02_06:261), de sprong van "bijna 24% per jaar"
+   (02_06:573) naar "13,9 voorspeld" als *voorsprong* (02_06:925, met $-\mu$), en de
+   symbolen $\omega$ en $c$ van Grossman en Stiglitz zonder orde van grootte
+   (02_06:585–588).
+3. **Code en figuren (8,5 → 9): de cachetruc en de leeswijzers.** De regel
+   `hap_data.yahoo(["SPY", "TLT", "GLD", "QQQ", "IWM"], ...)["SPY"]` (02_06:981) laadt
+   vier tickers die niet gebruikt worden; de leeswijzers "Let in de figuur ..." staan
+   aan het eind van een alinea met een andere conclusie (02_06:727–730, :932–933).
 
-Nagerekend met `uv run python -c ...` en tegen de celuitvoer (`tools/nb_outputs.py`):
-het toy (116; 76; 92; 96; 4,35%, 3,45%, 5,26%; risicocorrectie 4; $q = 0{,}4$ en
-$0{,}4 \cdot 116 + 0{,}6 \cdot 76 = 92$; covariantie $1 - 1{,}0435$), de helling
-$\phi - 1 = -0{,}5$ en de uitvoer $-0{,}500$ en $-0{,}001$, de Sharpe-ratio
-$0{,}6/4{,}5 = 0{,}13$, 3,6 pp rond 7,2%, $\sigma/\mu = 7{,}5$ en de drempel 3 bij
-$\mu_t = 1{,}5\%$, $R^2 = 0{,}44\%$, $N^* = 3{,}84/0{,}004425 = 868$ (ruim 72 jaar),
-$7{,}84/R^2 = 1772$ (bijna 150 jaar), de powertabel (60% na 100 jaar; grootste
-verschil 6 punten bij 75 jaar; onder 2 bij 150; halve kans rond 80 jaar), het
-filter (12,9 pp voorsprong, voorspeld 13,9, FB 1,7; ruim acht na kosten; 48
-transacties per jaar), de deelperiodes (6, 13, 21, $-11$, SPY $-16$ pp), Jensen
-($-0{,}3\%$, $t = -0{,}7$; Contrafund 1,4%, $t = 1{,}3$; T. Rowe $t = -2{,}28$;
-bèta 1,01; 535 maanden is 44 jaar), de oefeningen ($k = 4/11$; 10%, 6,45%, 8,51%;
-33%; $2^{22} = 4.194.304$, simulatie 3,5 promille ernaast; $c^*$ 0,27% tot 0,41%,
-alleen lang 0,16% en 0,27%; 6,8% tegen 10,4%). Twee beweringen kloppen niet.
+Met deze drie: 2,25 + 1,80 + 1,80 + 0,90 + 0,90 + 0,90 + 0,45 = 9,0.
 
-1. **Replicatie, na de eerste filtertabel.** "Bij hen is de voorsprong vanaf 1%
-   weg, op de index pas vanaf 10%." Op de index ligt het 3%-filter al 1,0 pp onder
-   buy-and-hold (0,1014 tegen 0,1115); bij 5% ligt het er weer 2,9 pp boven. De
-   voorsprong verdwijnt dus niet pas bij 10%, maar wordt vanaf 3% grillig.
-2. **Overzicht.** "In 1970 bracht Fama beide samen in een overzichtsartikel. Met dat
-   artikel begint het tijdvak van deze lecture." Het kader "Waar we zijn" geeft als
-   jaartal 1965–1970, en de lecture opent met Fama (1965) en Samuelson (1965). Het
-   tijdvak begint in 1965; het artikel van 1970 sluit het af.
+## Deelcijfers
+
+| nr | criterium | gewicht | deelcijfer | bijdrage |
+|---|---|---|---|---|
+| 1 | Helderheid van de uitleg | 25% | 8,5 | 2,125 |
+| 2 | Opbouw en rode draad | 20% | 9 | 1,800 |
+| 3 | Taal | 20% | 8,5 | 1,700 |
+| 4 | Toy-voorbeeld | 10% | 9 | 0,900 |
+| 5 | Code en figuren | 10% | 8,5 | 0,850 |
+| 6 | Replicatie en empirie | 10% | 9 | 0,900 |
+| 7 | Oefeningen | 5% | 9 | 0,450 |
+| | **Eindcijfer** | | **8,7** | 8,725 |
+
+Taal is 8,5 en blokkeert dus niet; het streefcijfer 9,0 is niet gehaald.
 
 ## Per criterium
 
-### 1. Helderheid van de uitleg (8)
+### 1. Helderheid van de uitleg (8,5)
 
 *Goed*
 - Toy-voorbeeld: de SDF krijgt naam, betekenis en getallen (0,8 en 1,2) voordat hij
-  iets doet, en de risicocorrectie van 4 op 116 tegen 76 maakt voorspelbaarheid
+  iets doet, $R^f$ wordt expliciet bruto genoemd met de afwijking van de setup
+  (02_06:133–134), en de risicocorrectie van 4 op 116 tegen 76 maakt voorspelbaarheid
   zonder vergissing tastbaar.
-- "Wat het niet verbiedt": de propositie krijgt direct een getal (Sharpe-ratio 0,13,
-  SDF-schommeling 13% per maand), en de positiviteitsvoorwaarde wordt in de
-  simulatie met $\sigma/\mu = 7{,}5$ uitgerekend.
-- "Het kernresultaat": het AR(1)-voorbeeld met $\phi = 0{,}5$ laat de stelling in
-  één regel en één tabel zien.
+- "Hoe het getoetst wordt": de filterformule $\rho_1\sigma_d\sqrt{2/\pi}$ krijgt nu
+  herkomst, symboolnaam en een getal (0,095% per dag, bijna 24% per jaar).
+- "Wat het niet verbiedt": direct na de propositie de Sharpe-ratio 0,13 en de
+  SDF-schommeling van 13% per maand; de verdediger van efficiëntie die "alleen een SDF
+  hoeft te kiezen" maakt de propositie handelbaar.
 
 *Aanmerkingen*
-- Toy en Theorie: "De rente is nul, $R^f = 1$" en
-  "$\frac{1}{R^{f}_{t+1}} = \E_t[m_{t+1}]$". Hier is $R^f$ bruto; de setup-tabel
-  reserveert $R^f$ voor de netto rente. De afwijking wordt nergens genoemd.
-- Opzet, definitie 3: "Log-rendementen volgen een **random walk** als de $r_{t+1}$
-  onafhankelijk en identiek verdeeld zijn". In de setup is $r$ het netto simpele
-  rendement en krijgt een logrendement een eigen symbool ($\ell$).
-- "Hoe het getoetst wordt": "Wie steeds de richting van gisteren volgt, verdient per
-  dag ongeveer $\rho_1 \sigma \sqrt{2/\pi}$". Formule zonder herkomst en zonder
-  getal; het getal (13,9 pp) komt pas in de replicatie, en daar met een extra
-  $-\mu$.
-- Grossman en Stiglitz: "Een fractie $\lambda$ van de beleggers betaalt een bedrag
-  $c$". Twee symbolen zonder orde van grootte, en $\lambda$ botst met $\lambda_f$ uit
-  de setup.
-- Jensen-replicatie: "De regressie is het CAPM: het verwachte excess rendement van
-  een fonds is evenredig met zijn bèta op de markt." Het CAPM en de bèta komen pas
-  in [](#02-08-capm); één regel is hier de hele uitleg.
+- Opzet: drie woorden voor onvoorspelbaar. "De drie woorden zeggen steeds minder over
+  wat een handelaar met het verleden kan." De definitie noemt ze in de volgorde fair
+  game, martingaal, random walk; de zin loopt de andere kant op (random walk eerst),
+  en "wat een handelaar met het verleden kan" laat het werkwoord weg.
+- Opzet: "Bij een fair game daarentegen helpt het hem alleen niet om de afwijking van
+  het vereiste rendement te voorspellen." "Alleen niet" is dubbelzinnig: bedoeld is
+  "helpt het hem alleen bij die afwijking niet".
+- Hoe het getoetst wordt: "Een fractie $\omega$ van de beleggers betaalt een bedrag
+  $c$ voor een signaal over de waarde van het aandeel". Twee symbolen zonder orde van
+  grootte; $\omega$ komt daarna niet meer terug.
+- Hoe het getoetst wordt: "is dat $0{,}175 \cdot 0{,}68\% \cdot 0{,}80 \approx
+  0{,}095\%$ per dag, bijna 24% per jaar." In de replicatie heet de voorspelling "13,9"
+  en is ze een voorsprong op buy-and-hold ($-\mu$ in de formule van criterium 1). De
+  lezer moet zelf zien dat 24% min het marktrendement ongeveer 13,9 is.
+- Opzet, na de propositie: "autocorrelaties en variance ratios (de variantie over
+  meerdere perioden gedeeld door het aantal perioden maal de eenperiodevariantie),
+  meten eerste en tweede momenten." De definitie tussen haakjes breekt de zin
+  [onderzoek B].
 
 *Beter uitleggen*
-- De filterformule: één zin dat $\E[\operatorname{sign}(x)\,y] = \rho\sigma\sqrt{2/\pi}$
-  voor twee normale variabelen, en het getal voor 1957–1962 er meteen bij.
-- Grossman-Stiglitz: één getallenvoorbeeld (bijvoorbeeld $c$ als fractie van het
-  bruto voordeel), of het mechanisme zonder symbolen.
+- Bij de drie woorden: één zin die de volgorde van sterk (random walk) naar zwak (fair
+  game) noemt, zodat de propositie "Van sterk naar zwak" aansluit.
+- Bij de filterformule: zeg dat de 24% wat de handelaar *verdient* is en dat de
+  voorsprong op buy-and-hold daar het gemiddelde rendement van aftrekt; dan herkent de
+  lezer de 13,9 in de replicatie.
+- Grossman en Stiglitz: een orde van grootte voor $c$ (bijvoorbeeld als fractie van het
+  bruto voordeel), of het mechanisme zonder $\omega$.
 
-### 2. Opbouw en rode draad (8)
+*Voor een 9*
+- 02_06:261–265: volgorde en werkwoord ("wat een handelaar met het verleden kan
+  voorspellen").
+- 02_06:572–574 en 02_06:925: verband tussen 24% per jaar en de voorspelde voorsprong
+  van 13,9 procentpunt.
+- 02_06:585–588: orde van grootte voor $c$, of $\omega$ weglaten.
+- 02_06:289–291: de definitie van de variance ratio uit de haakjes, of vervangen door de
+  verwijzing naar [](#01-02-bachelier) [onderzoek B].
 
-*Goed*
-- Overzicht stelt de vraag en geeft het antwoord (alleen samen met een model
-  toetsbaar).
-- De drie verwachtingen uit de intuïtie worden elk met naam ingelost ("Dat is de
-  eerste verwachting uit de intuïtie", de tweede bij de premie, de derde bij
-  Grossman-Stiglitz).
-- De toestandsafhankelijke premie loopt van het toy (3,45% tegen 5,26%) naar de
-  simulatie ("Net als in het toy-voorbeeld").
-
-*Aanmerkingen*
-- De simulatie toetst een voorspellende regressie op $s_t$, de replicatie
-  filterregels op de index. Toy, simulatie en replicatie delen het idee, niet de
-  toets of de getallen.
-- De theorie draagt vijf delen, waaronder een eigen Samuelson-simulatie; met de
-  Jensen-replicatie erbij heeft de lecture twee empirische lijnen.
-- Overzicht: "Met dat artikel begint het tijdvak" (zie feitelijke fouten).
-
-*Beter uitleggen*
-- Eén zin bij de overgang naar de replicatie die zegt waarom het filter en niet de
-  regressie uit de simulatie wordt gerepliceerd (het filter omzeilt de joint
-  hypothesis bijna).
-
-### 3. Taal (8,5)
+### 2. Opbouw en rode draad (9)
 
 *Goed*
-- Korte zinnen (gemiddeld 14,4 woorden), geen u/je; *fair game*, *joint
-  hypothesis* en *limits of arbitrage* krijgen bij eerste gebruik een Nederlandse
-  uitleg; het citaat van Fama (1991) staat als blokcitaat met inleiding.
-- De motieven zeggen ter plekke wat ze betekenen ("De figuur laat risico of
-  vergissing zien in een wereld waarin het antwoord bekend is").
+- Overzicht: vraag, antwoord ("alleen te toetsen samen met een model ervan") en vijf
+  stappen; het jaartal klopt nu met het kader (1970 sluit het tijdvak af).
+- De drie verwachtingen uit de intuïtie worden elk in een andere vorm ingelost
+  (02_06:380, :453, :591), en de toy-getallen keren terug in de theorie ($p_0 = 100$,
+  $q = 0{,}4$, 4,35%) en in de simulatie (3,45% tot 5,26%).
+- De overgang naar de replicatie zegt waarom het filter en niet de regressie wordt
+  gerepliceerd (02_06:840–841). Lengte 5.709, onder de 6.000.
 
 *Aanmerkingen*
-- Risico of vergissing: "het is een meetfout door niet-synchrone handel, die
-  verdwijnt bij een verhandelbaar instrument gebruikt." Ongrammaticaal.
-- Dertien puntkomma's, onder meer "Voor 80% kans is ... nodig, bijna
-  honderdvijftig jaar; 0,84 is het 80%-kwantiel".
+- Overzicht: "Wat betekent het dat een prijs alle informatie weerspiegelt, en valt dat
+  te toetsen?" herhaalt vrijwel woordelijk de open vraag uit het kader
+  (02_06:31–32) [onderzoek B].
 
 *Beter uitleggen*
 - Geen.
 
+### 3. Taal (8,5)
+
+*Goed*
+- De taalredactie heeft de staccato-plekken uit onderzoek B grotendeels opgelost:
+  "Wat het model verklaart" en "Waar het breekt" openen nu met een volledige zin
+  (02_06:1093, :1102), de SDF-alinea na de simulatiecel verbindt met "maar" en "want"
+  (02_06:680–686), en "Met Fama en Blume delen we alleen de uitkomst ..." (02_06:928)
+  leest natuurlijk.
+- Motiefnamen elk hoogstens twee keer ("de standaardfout van 2%" op :800 en :1088,
+  "risico of vergissing" op :777 en :1111, "theorie of feit" op :69), nergens als
+  handelend onderwerp; geen "Wie"-zinnen, geen regeltaal, "In woorden:" en "Wat dit
+  leert" elk één keer.
+- Het tarwevoorbeeld bij Samuelson (02_06:300–304) en de verdediger van efficiëntie
+  (02_06:459–464) lezen als gesproken uitleg.
+
+*Aanmerkingen*
+- Theorie, Opzet: "De drie woorden zeggen steeds minder over wat een handelaar met het
+  verleden kan." (elliptisch, zie ook criterium 1).
+- Hoe het getoetst wordt: "Daarom zegt een filter dat buy-and-hold verslaat meer dan
+  een voorspellende regressie." Bij hardop lezen hoort de lezer eerst "een filter dat
+  buy-and-hold verslaat meer dan ...".
+- Hoe het getoetst wordt: "Voor de zwakke vorm is de filterregel de favoriete toets,
+  omdat die de joint hypothesis grotendeels omzeilt." "Favoriete" van wie, en "die"
+  kan de vorm of de toets zijn.
+- Simulatie: "Bij $N^*$ is de toets gemiddeld net significant, wat ongeveer de helft
+  kans op verwerping geeft." "De helft kans" is geen Nederlands.
+- Replicatie: "Hun kolom na volle commissies is echter niet vergelijkbaar met onze
+  0,1%." "Echter" contrasteert met niets in de zin ervoor; de zin leest als
+  ingeplakte reparatiezin.
+- Overzicht: "Bij de vraag theorie of feit, oftewel of we een theorie hebben die
+  getoetst wordt of een feit dat op een verklaring wacht, is het antwoord hier
+  ongewoon." Lange tussenzin met "oftewel" [onderzoek B].
+- Intuïtie: "Dat is voorspelbaarheid, en toch vergist niemand zich." "Dat is"-opener
+  [onderzoek B].
+- Toy: "Dat is de *joint hypothesis* in het klein (gezamenlijke hypothese, de stelling
+  dat elke toets van efficiëntie tegelijk een toets is van een model van het vereiste
+  rendement)." Definitie van twintig woorden tussen haakjes na de clou [onderzoek B].
+- Replicatie: "Ook een moderne index is dus iets trager dan een fonds dat werkelijk
+  wordt verhandeld." "Trager dan een fonds" [onderzoek B].
+- Wat er brak: "zeventig (formule) tot tachtig jaar (simulatie) data" hoort in een zin,
+  niet in haakjes [onderzoek B]. In dezelfde alinea: "Efficiëntie alleen zegt niet of
+  dat een inefficiëntie is of een meetfout" (efficiëntie die niet zegt of iets een
+  inefficiëntie is, leest als woordspel).
+
+*Beter uitleggen*
+- Geen inhoudelijk punt; de aanmerkingen vragen herschrijven, geen nieuwe zinnen.
+
+*Voor een 9*
+- 02_06:261–265, :535–536, :561–562, :794–795, :904–905 (hardop-toets, zie onderaan).
+- 02_06:69–70, :89–90, :226–228, :1003–1004, :1107–1109 [onderzoek B].
+- 02_06:568–576: vijf getallen in één alinea (0,175; 0,68%; 0,80; 0,095%; 24%); de
+  kalibratie kan naar een eigen zin of de tabel van de replicatie [onderzoek B].
+
 ### 4. Toy-voorbeeld (9)
 
 *Goed*
-- Twee perioden, vier dividenden, achterwaarts rekenen in drie regels; tabel hand
-  tegen code; "Wat we nu weten" koppelt het toy aan de joint hypothesis.
+- Twee perioden, vier dividenden, achterwaarts rekenen in drie regels, met de hand in
+  vijf minuten na te rekenen.
+- Tabel "met de hand" tegen "code" voor beide economieën; de slotzin maakt er de joint
+  hypothesis in het klein van.
+- De risicocorrectie van 4 op 76 tegen 116 legt de voorspelbaarheid uit met één
+  deling.
 
 *Aanmerkingen*
-- De "Vooruitblik" met $q$ voegt een tweede begrip toe dat pas in de theorie
-  (maat $Q$) betekenis krijgt.
+- Toy: "**Vooruitblik.** Met gewichten $q = \tfrac12 \cdot 0{,}8 = 0{,}4$ ..." voegt een
+  tweede begrip toe dat pas in de theorie betekenis krijgt. Het wordt daar wel
+  ingelost (02_06:432–434), dus geen aftrek onder 9.
 
 *Beter uitleggen*
 - Geen.
@@ -140,33 +191,47 @@ alleen lang 0,16% en 0,27%; 6,8% tegen 10,4%). Twee beweringen kloppen niet.
 
 *Goed*
 - `filter_positions` leest als de regel van Alexander, met een zichtbare lus en
-  benoemde toestanden.
-- Powerfiguur: vooraf "Let in de figuur links op ... rechts op", het bijschrift zegt
-  wat te zien is.
+  benoemde toestanden; `filter_performance` benoemt `held`, `gross` en `switches`.
+- De SDF-controlecel (02_06:666–677) laat de propositie numeriek zien ("moet 0 zijn",
+  "moet 1 zijn"); beide figuren hebben een bijschrift dat zegt wat te zien is.
+- Elke cel heeft een zin ervoor en erna; de robuuste standaardfouten van
+  `newey_west(..., lags=0)` worden in de tekst benoemd (02_06:1031–1032).
 
 *Aanmerkingen*
-- `hap_data.yahoo(["SPY", "TLT", "GLD", "QQQ", "IWM"], "1993-01-01")["SPY"]`: vier
-  tickers worden geladen en niet gebruikt, zonder uitleg.
-- `hap.stats.newey_west(y, X, lags=0)`: een Newey-West-aanroep zonder lags; de tekst
-  zegt niet welke standaardfout de $t$-waarden dragen.
-- Filterfiguur: vooraf alleen "De figuur zet beide reeksen naast elkaar." Geen
-  aanwijzing waarop te letten.
+- Replicatie, deelperiodes: `spy = hap_data.yahoo(["SPY", "TLT", "GLD", "QQQ",
+  "IWM"], "1993-01-01")["SPY"]  # shared cached download; only SPY is used`. Vier
+  tickers geladen om een cache te delen; de lezer ziet een truc [onderzoek B].
+- Simulatie: "zoals het hoort. Let in de figuur links op de afstand tussen de twee
+  soorten punten" staat aan het eind van een alinea over de powertabel; hetzelfde bij
+  "Let in de figuur op de afstand tussen de ronde punten en de vierkanten" na de zin
+  over de makelaar [onderzoek B].
+- `first = held.ne(0).idxmax()` is een compacte truc voor "eerste dag met een positie";
+  het commentaar redt het, een benoemde hulpregel zou beter lezen.
 
 *Beter uitleggen*
 - Geen.
 
-### 6. Replicatie en empirie (8,5)
+*Voor een 9*
+- 02_06:981: alleen `["SPY"]` laden, of de cachereden in de tekst.
+- 02_06:727–730 en 02_06:932–933: de leeswijzer als eigen korte alinea direct vóór de
+  figuurcel [onderzoek B].
+
+### 6. Replicatie en empirie (9)
 
 *Goed*
-- Fama-Blume-blok met drie toetsbare criteria, waarvan de eerste een formule is;
-  oordeel "Geslaagd op criterium 1" met 12,9 tegen voorspeld 13,9.
-- Jensen-blok met een controle (VFINX) en een tabel origineel/hier.
+- Beide blokken hebben bron, wat, data, verschil en een verwachte afwijking met
+  toetsbare criteria; het filteroordeel ("Geslaagd op criterium 1", "op criteria 2 en
+  3") verwijst naar die criteria.
+- De deelperiodes toetsen de verklaring van niet-synchrone handel in plaats van haar
+  aan te nemen: de voorsprong stijgt met $\rho_1$ en wordt negatief op SPY.
+- Jensen: tabel origineel/hier, controlefonds VFINX, en de standaardfout van één
+  procentpunt koppelt het resultaat aan de meetbaarheid van vaardigheid.
 
 *Aanmerkingen*
-- "zes procentpunt per jaar tot 1956, dertien in het venster van Fama en Blume,
-  eenentwintig in 1963–1989": getallen uit de tabel herhaald in lopende tekst, net
-  als "12,9 ... 13,9 ... 1,7" en de Jensen-alinea.
-- "op de index pas vanaf 10%" (zie feitelijke fouten).
+- Replicatie: "met 12,9 procentpunt per jaar, tegen 13,9 voorspeld en 1,7 bij Fama en
+  Blume. Na 0,1% per transactie blijft er ruim acht procentpunt over." Vier getallen
+  in lopende tekst die in de tabel van de cel ernaast staan; acceptabel omdat het
+  oordeel ze nodig heeft.
 
 *Beter uitleggen*
 - Geen.
@@ -174,81 +239,168 @@ alleen lang 0,16% en 0,27%; 6,8% tegen 10,4%). Twee beweringen kloppen niet.
 ### 7. Oefeningen (9)
 
 *Goed*
-- Instap op het toy ($k$), afleiding van het Samuelson-effect, uitbreiding van de
-  replicatie (break-even kosten); elke uitwerking eindigt met "Wat dit leert".
+- Instap op het toy ($k$), afleiding (Samuelson-effect), uitbreiding van de replicatie
+  (break-even kosten); elke uitwerking eindigt met een les.
+- Oefening 3 sluit met de zin die het college samenvat: de trend bestond alleen in een
+  index die niet te kopen was.
 
 *Aanmerkingen*
-- Geen.
+- Uitwerking 3: "Alleen lang gaan geeft een lagere $c^{*}$, 0,16% en 0,27% voor
+  1990". "Voor 1990" staat vlak na "voor kosten" en leest even als dat; "vóór 1990" of
+  "tot 1990".
 
 *Beter uitleggen*
 - Geen.
 
-## De drie verbeteringen met het meeste effect
+## Feitelijke fouten
 
-1. $R^f$ bruto en $r$ als logrendement in één zin als afwijking van de setup noemen
-   (of $\ell$ schrijven), en de filterformule met één zin herkomst en een getal
-   geven (helderheid 8 → 8,5).
-2. "pas vanaf 10%" en "begint het tijdvak" corrigeren, en één brugzin tussen
-   simulatie (regressie) en replicatie (filter) (opbouw 8 → 8,5).
-3. De deelperiodegetallen uit de lopende tekst halen en naar de tabel verwijzen
-   (replicatie 8,5 → 9).
+Geen. Nagerekend (hand en `notes/feiten-02_06_efficiente_markten.md`, celuitvoer):
+toy 116, 76, 92, 96, 4,35%, 3,45%, 5,26%, $q = 0{,}4$, covariantie $1 - 1{,}0435$;
+$0{,}175 \cdot 0{,}68\% \cdot 0{,}798 = 0{,}095\%$ per dag, maal 252 is 23,9%;
+Sharpe-ratio 0,13; $12 \cdot 0{,}3\% = 3{,}6$ pp rond 7,2%; $\sigma/\mu = 7{,}5$ en
+drempel 3 bij 1,5%; $R^2 = 0{,}09/20{,}34 = 0{,}44\%$; $3{,}84/0{,}0044 = 873 \approx
+870$ maanden (ruim 72 jaar); $7{,}84/0{,}0044 = 1782 \approx 1780$ (bijna 150 jaar);
+60% na 100 jaar; filter 12,9 tegen 13,9 en 1,7, ruim acht na kosten, 48 transacties;
+deelperiodes monotoon in $\rho_1$, SPY het grootste verlies; FB-reeks boven 1% overal
+onder hun buy-and-hold 0,0986 (bijschrift klopt); Jensen $-0{,}3\%$ ($t = -0{,}7$),
+Contrafund 1,4%/1,3 ≈ 1,1 pp, bèta 1,01 tegen 0,84, 44 jaar; oefening 1 $k = 4/11$,
+6,45%, 8,51%, 33%; oefening 2 $2^{22} \approx 4{,}2$ miljoen; oefening 3 0,27% tot
+0,41%, 6,8% tegen 10,4%. Beide fouten uit de vorige ronde (filter "pas vanaf 10%",
+"begint het tijdvak") zijn hersteld.
 
 ## Navertelling in vijf zinnen
 
-Een prijs die de verwachting van een latere uitbetaling is, verandert
-onvoorspelbaar, ook als die uitbetaling voorspelbaar is (Samuelson). Voor aandelen
-geldt dat pas na weging met de SDF, dus mag het verwachte rendement bewegen met de
-prijs van risico, en elk patroon zonder arbitrage heeft een SDF die het verklaart.
-Efficiëntie is daarom alleen samen met een model van risico te toetsen, en een
-onderzoeker met het verkeerde model heeft zo'n zeventig tot tachtig jaar data nodig
-om een rationele schommeling als inefficiëntie te zien. Filterregels verslaan
-buy-and-hold op de index van 1957–1962 ruim, maar dat komt door niet-synchrone
-handel en verdwijnt op verhandelbare instrumenten en na kosten. Fondsbeheerders
-verslaan de markt niet aantoonbaar.
+1. Een prijs die de verwachting is van een latere uitbetaling, verandert
+   onvoorspelbaar (Samuelson), maar voor aandelen geldt dat pas na weging met de SDF,
+   zodat verwachte rendementen rationeel voorspelbaar kunnen zijn.
+2. Omdat bij elk arbitragevrij patroon een SDF te vinden is die het als risicopremie
+   verklaart, is efficiëntie alleen samen met een model van risico te toetsen, en dat is
+   de joint hypothesis.
+3. Een onderzoeker met het verkeerde (constante) model vindt in een volledig rationele
+   economie na een eeuw maanddata in zes van de tien gevallen inefficiëntie, omdat een
+   $R^2$ van 0,44% zo'n zeventig tot tachtig jaar data vraagt.
+4. Het 0,5%-filter versloeg de index in 1957–1962 met bijna 13 procentpunt per jaar,
+   maar de voorsprong volgt de autocorrelatie van de index door niet-synchrone handel
+   en verdwijnt op het verhandelbare SPY.
+5. Actieve fondsen verslaan de markt niet, en of er in de jaren zestig werkelijk iets
+   te verdienen was (Chicago tegen Yale), blijft open zolang niet bekend is wie tegen
+   welke prijs kon handelen.
 
-Dit komt overeen met het Overzicht.
+De navertelling valt samen met het Overzicht.
 
-## Controle
+## Taal na de redactie
 
-Gecontroleerd tegen `notes/rapport-02_06_efficiente_markten.md` §F6-1 en de
-lecture, na de omzetting "alfa" naar "alpha".
+De redactie heeft het college duidelijk natuurlijker gemaakt: de etiketopeners in "Wat
+er brak" zijn weg, de simulatieparagrafen verbinden met voegwoorden, en de telregels
+zijn ruim gehaald. Wat overblijft zijn losse zinnen die op papier kloppen maar hardop
+haperen, vooral in "Hoe het getoetst wordt" en de Opzet van de theorie, plus vijf
+kleinere punten uit onderzoek B die de redacteur heeft laten staan.
 
-STATUS 02_06_efficiente_markten F6c words=5457 prose=PASS open=0 cijfer=8,8 min=8,5
+Hardop-toets, drie zinnen die nog niet natuurlijk klinken:
 
-| punt | status | vindplaats |
-|---|---|---|
-| Fout 1: "pas vanaf 10%" | opgelost | "op de index wordt ze vanaf 3% grillig" |
-| Fout 2: begin van het tijdvak | opgelost | "Dat artikel sluit het tijdvak af dat in 1965 begon" |
-| Verbetering 1: $R^f$, $\ell$, filterformule | opgelost | toy: "Anders dan in [](#00-00-setup) is $R^f$ in deze lecture bruto"; definitie 3 en propositie met $\ell_{t+1} = \log R_{t+1}$; herkomst en getal bij $\rho_1\sigma_d\sqrt{2/\pi}$ |
-| Verbetering 2: fouten en brugzin | opgelost | "We repliceren niet de voorspelregressie uit de simulatie maar het filter, omdat het filter de joint hypothesis bijna omzeilt" |
-| Verbetering 3: deelperiodegetallen | opgelost | het oordeel over criteria 2 en 3 verwijst naar de tabel |
-| Naadpunt 1 ($R^f$ bruto) | opgelost | zie verbetering 1 |
-| Naadpunt 2 ($r$ als log) | opgelost | zie verbetering 1 |
-| Naadpunt 5 (alfa) | opgelost | overal "alpha", in tekst, tabellen en celuitvoer |
-| Naadpunt 9 ($\lambda$) | opgelost | Grossman-Stiglitz met $\omega$ |
-| Naadpunt 12 (tijdvak) | opgelost | zie fout 2 |
+1. 02_06:561–562. "Daarom zegt een filter dat buy-and-hold verslaat meer dan een
+   voorspellende regressie."
+   → "Verslaat een filter buy-and-hold, dan zegt dat daarom meer dan een significante
+   voorspellende regressie."
+2. 02_06:261–265. "De drie woorden zeggen steeds minder over wat een handelaar met het
+   verleden kan. [...] Bij een fair game daarentegen helpt het hem alleen niet om de
+   afwijking van het vereiste rendement te voorspellen."
+   → "Van random walk naar fair game zeggen de drie woorden steeds minder over wat een
+   handelaar uit het verleden kan voorspellen. [...] Bij een fair game kan hij met het
+   verleden alleen de afwijking van het vereiste rendement niet voorspellen, de
+   spreiding bijvoorbeeld wel."
+3. 02_06:794–795. "Bij $N^*$ is de toets gemiddeld net significant, wat ongeveer de
+   helft kans op verwerping geeft."
+   → "Bij $N^*$ is de toets gemiddeld net significant, zodat hij in ongeveer de helft
+   van de economieën verwerpt."
 
-Ook opgelost: de ongrammaticale zin ("die verdwijnt bij een verhandelbaar
-instrument"), de puntkomma bij 0,84, een leeswijzer voor de filterfiguur ("Let in
-de figuur op de afstand tussen de ronde punten en de vierkanten"), de soort
-standaardfout bij Jensen, en een commentaar bij de download van vijf tickers.
+## Controle 1
 
-Geen verslechteringen en geen nieuwe feitelijke fouten. Nagerekend:
-$0{,}175 \cdot 0{,}68\% \cdot 0{,}798 = 0{,}095\%$ per dag, maal 252 is 23,9% tot
-24,0%; "ruim 24%" is een afronding naar boven, geen fout. De celuitvoer is op de
-kolomnamen na gelijk.
+Controle na R9-1 (rapport `notes/rapport-02_06_efficiente_markten.md`, sectie "R9-1
+(F6b, ronde 9+)"). `prose_stats --check`: PASS, 5.812 woorden (was 5.709), zinnen
+gemiddeld 16,9, p90 28, geen zin boven 40, 7 puntkomma's, engquote 4, tmpl 2.
+`nb_outputs` ongewijzigd volgens het rapport: alleen proza, code-commentaar en twee
+variabelenamen zijn aangepast, geen celuitvoer.
 
-| nr | criterium | was | nu |
-|---|---|---|---|
-| 1 | Helderheid | 8 | 8,5 |
-| 2 | Opbouw | 8 | 8,5 |
-| 3 | Taal | 8,5 | 9 |
-| 4 | Toy | 9 | 9 |
-| 5 | Code en figuren | 8,5 | 9 |
-| 6 | Replicatie | 8,5 | 9 |
-| 7 | Oefeningen | 9 | 9 |
+**De drie verbeteringen met het meeste effect**
+1. Taal (hardop-toets en ritmepunten): **opgelost**. Alle tien plekken (261–265,
+   535–536, 561–562, 794–795, 904–905, 69–70, 89–90, 226–228, 1003–1004,
+   1107–1109) zijn herschreven; de drie hardop-zinnen komen vrijwel woordelijk
+   overeen met het voorstel van de vorige ronde.
+2. Helderheid (drie plekken): **opgelost**. Volgorde en werkwoord bij de drie
+   woorden (261–265: "Van random walk naar fair game ... kan voorspellen"); het
+   verband 24% tegen 13,9 staat nu expliciet in de Geslaagd-zin ("13,9 (de bijna
+   24% uit de theorie min het gemiddelde rendement van de index)", 940–943); bij
+   Grossman-Stiglitz is $\omega$ weggelaten en staat de richting van $c$ er wel
+   (591–597).
+3. Code en figuren (cachetruc en leeswijzers): **deels**. De leeswijzers staan nu
+   als eigen korte alinea direct vóór de figuurcel, op beide plekken (r. 741–742
+   en 951–952): opgelost. De SPY-cel laadt nog vijf tickers (r. 1001); de tekst
+   zegt nu dat de cel "dezelfde download van vijf ETF's als [00-00-setup]"
+   gebruikt (r. 991–992), maar noemt het woord cache niet en zegt niet waarom vijf
+   tickers nodig zijn in plaats van één. Een lezer die 00-00-setup niet meer voor
+   ogen heeft, ziet nog steeds een niet-uitgelegde truc. Dit is de tweede optie uit
+   de vorige beoordeling, maar zwak uitgevoerd: geen aftrek voor de code zelf
+   (onvermijdelijk offline), wel voor de uitleg.
 
-Gewogen: 2,55 + 1,70 + 1,35 + 0,90 + 0,90 + 0,90 + 0,45 = 8,75. **Eindcijfer 8,8,
-laagste deelcijfer 8,5.** Helderheid blijft 8,5: het CAPM wordt in de
-Jensen-replicatie nog steeds in één regel ingevoerd. Opbouw blijft 8,5 om de
-theorie van vijf delen met twee empirische lijnen.
+**Voor een 9, per criterium**
+- Helderheid (4 punten): alle vier **opgelost** — volgorde/werkwoord (261–265);
+  verband 24%/13,9 (574–578, 940–943); $\omega$ weg bij Grossman-Stiglitz
+  (591–597); variance-ratio-definitie uit de haakjes, nu met "want" in de zin
+  (289–291).
+- Taal (11 punten: 5 hardop/ritme, 5 onderzoek B, 1 getallenalinea): alle elf
+  **opgelost**. "Favoriete toets" → "aantrekkelijke toets" met "een filter" als
+  helder antecedent (536); "echter" in de replicatie vervangen door een reden
+  (920–921); de vijf onderzoek-B-zinnen herschreven (68–70 zonder "oftewel",
+  87–92 zonder "Dat is"-opener, 224–227 definitie in de zin met "en ze betekent
+  dat", 1024–1025 "lopen iets achter op" in plaats van "trager dan", 1132 "zonder
+  model van risico" in plaats van het woordspel); de vijf getallen bij de
+  filterformule staan nu in een eigen alinea (574–578) en worden in de
+  Geslaagd-zin teruggenomen.
+- Code en figuren (2 punten): leeswijzers **opgelost** (741–742, 951–952);
+  SPY-cel **deels** (zie boven).
+
+**Aanmerkingen zonder eigen "Voor een 9", ter controle**
+- Opbouw, Overzicht herhaalt de kaderzin: **opgelost**, het overzicht opent nu met
+  het antwoord in plaats van de vraag (37–40). Opbouw stond al op het plafond (9)
+  en blijft 9.
+- Code, `first = held.ne(0).idxmax()`: **opgelost**, hernoemd tot `first_signal`
+  met commentaar in beide functies (891, 1261); niet vereist voor de 9, wel
+  gedaan.
+- Oefening 3, "voor 1990": **opgelost**, nu "in de twee perioden tot 1990" (1287).
+
+**Beter uitleggen**: geen resterende punten; alle voorstellen uit de vorige ronde
+vallen samen met de "Voor een 9"-lijst hierboven en zijn daar gecontroleerd.
+
+**Feitelijke fouten**: geen. Geen celuitvoer gewijzigd, geen nieuw getal in de
+proza zonder cel of bron; geen verslechtering gevonden.
+
+**Hardop-toets**: de drie aangewezen zinnen (561–563, 260–265, 807–809) zijn
+vervangen door vrijwel het voorstel van de vorige ronde en lezen nu natuurlijk. Een
+nieuwe steekproef van drie alinea's (Grossman-Stiglitz r. 591–597, de SPY-cel-zin
+r. 991–992, de Samuelson-alinea r. 299–305) leest hardop natuurlijk; geen nieuw
+punt.
+
+**Nieuwe deelcijfers**
+
+| nr | criterium | gewicht | deelcijfer | bijdrage |
+|---|---|---|---|---|
+| 1 | Helderheid van de uitleg | 25% | 9 | 2,25 |
+| 2 | Opbouw en rode draad | 20% | 9 | 1,80 |
+| 3 | Taal | 20% | 9 | 1,80 |
+| 4 | Toy-voorbeeld | 10% | 9 | 0,90 |
+| 5 | Code en figuren | 10% | 8,7 | 0,87 |
+| 6 | Replicatie en empirie | 10% | 9 | 0,90 |
+| 7 | Oefeningen | 5% | 9 | 0,45 |
+| | **Eindcijfer** | | **9,0** | 8,97 |
+
+Plafondregel toegepast: Opbouw, Toy, Replicatie en Oefeningen hadden geen "Voor
+een 9" in de vorige ronde en blijven op hun oude cijfer (9). Helderheid en Taal
+hadden elk een volledige lijst met punten die allemaal zijn opgelost en gaan naar
+het in het vooruitzicht gestelde plafond (9). Code en figuren had een plafond van
+9, maar één van de twee punten (de SPY-cel) is maar deels opgelost, dus het
+deelcijfer blijft eronder op 8,7.
+
+Taal (9) blokkeert niet. Geen deelcijfer onder 8,5. Streefcijfer 9,0 is gehaald
+(ruw 8,97, afgerond 9,0); de enige rem op een hoger cijfer is de niet-expliciete
+cachereden bij de SPY-cel.

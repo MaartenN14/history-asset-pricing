@@ -20,13 +20,13 @@ kernelspec:
 
 **Jaartal.** 1965–1970, met uitlopers naar 1978 en 1991.
 
-**Wat we al weten.** In [](#01-02-bachelier) werd de random walk gemeten:
-opeenvolgende koersveranderingen bleken vrijwel ongecorreleerd, en een kleine
-afwijking was pas na decennia data te zien. In [](#02-05-crsp-tape) kreeg Chicago
-de machine: een band met de maandrendementen van elk NYSE-aandeel sinds 1926. Daar
-bleek ook dat de constructie van zo'n database de getallen verschuift. Wat nog
-ontbrak, was een economisch argument waarom koersen onvoorspelbaar zouden
-moeten zijn.
+**Wat we al weten.** In [](#01-02-bachelier) werd de random walk gemeten,
+en daarbij bleken opeenvolgende koersveranderingen vrijwel ongecorreleerd, terwijl
+een kleine afwijking pas na decennia data te zien was. In [](#02-05-crsp-tape) kreeg
+Chicago zijn machine, een band met de maandrendementen van elk NYSE-aandeel sinds
+1926, en daar bleek ook dat de constructie van zo'n database de getallen verschuift.
+Er ontbrak nog een economisch argument waarom koersen onvoorspelbaar zouden moeten
+zijn.
 
 **Welke vraag staat open.** Wat betekent het dat een prijs *alle informatie
 weerspiegelt*, en kunnen data die uitspraak weerleggen?
@@ -34,86 +34,83 @@ weerspiegelt*, en kunnen data die uitspraak weerleggen?
 
 ## Overzicht
 
-Wat betekent het dat een prijs alle informatie weerspiegelt, en valt dat te
-toetsen? Het betekent dat niemand met die informatie een hoger rendement kan
-verwachten dan beleggers voor wachten en risico eisen. Omdat dat vereiste
+Een prijs weerspiegelt alle informatie als niemand met die informatie een hoger
+rendement kan verwachten dan beleggers voor wachten en risico eisen. Omdat dat vereiste
 rendement nergens vastligt, is efficiëntie alleen te toetsen samen met een model
-ervan.
+ervan. Dat werken we in dit college in vijf stappen uit:
 
-In deze lecture:
-
-- rekenen we met de hand een markt door waarin de prijs onder risiconeutraliteit
+- we rekenen met de hand een markt door waarin de prijs onder risiconeutraliteit
   onvoorspelbaar is en onder risicoaversie niet, zonder dat iemand zich vergist;
 
-- bewijzen we de stelling van Samuelson, en laten we zien dat elk patroon van
+- we bewijzen de stelling van Samuelson en laten zien dat elk patroon van
   voorspelbaarheid een rationele verklaring heeft;
 
-- delen we de toetsen in naar de drie vormen van Fama: zwak, semi-sterk en sterk;
+- we delen de toetsen in naar de drie vormen van Fama, de zwakke, de semi-sterke en
+  de sterke;
 
-- simuleren we een rationele economie waarin een onderzoeker met het verkeerde
+- we simuleren een rationele economie waarin een onderzoeker met het verkeerde
   model toch inefficiëntie vindt;
 
-- repliceren we de filterregels van Fama en Blume en, kort, de fondsalpha's van
+- we repliceren de filterregels van Fama en Blume en, kort, de fondsalpha's van
   Jensen.
 
 In 1965 verscheen het proefschrift van Eugene Fama in zijn geheel in het
-januarinummer van de *Journal of Business*: tweeënzeventig pagina's over de dagrendementen van
-de dertig Dow Jones-aandelen {cite}`Fama1965`. In hetzelfde voorjaar bewees Paul
-Samuelson dat goed voorziene prijzen willekeurig bewegen {cite}`Samuelson1965`.
-Fama leverde de metingen en het woord, Samuelson het bewijs dat
-onvoorspelbaarheid een eigenschap is van goed gevormde verwachtingen, niet van de
-natuur. In 1970 bracht Fama beide samen in een overzichtsartikel
-{cite}`Fama1970`. Dat artikel sluit het tijdvak af dat in 1965 begon. Het maakte van de random
-walk een hypothese over markten en informatie, met drie vormen die twintig jaar
-empirisch werk indeelden.
+januarinummer van de *Journal of Business*, tweeënzeventig pagina's over de
+dagrendementen van de dertig Dow Jones-aandelen {cite}`Fama1965`. In hetzelfde
+voorjaar bewees Paul Samuelson dat goed voorziene prijzen willekeurig bewegen
+{cite}`Samuelson1965`. Fama leverde zo de metingen en het woord, en Samuelson het
+bewijs dat onvoorspelbaarheid een eigenschap is van goed gevormde verwachtingen en
+niet van de natuur. In 1970 bracht Fama beide samen in een overzichtsartikel
+{cite}`Fama1970`, waarmee het tijdvak dat in 1965 begon, werd afgesloten. Dat
+artikel maakte van de random walk een hypothese over markten en informatie, met
+drie vormen waarin twintig jaar empirisch werk werd ingedeeld.
 
-Op de vraag theorie of feit (is dit een theorie die getoetst wordt, of een feit
-dat op een verklaring wacht?) is het antwoord hier ongewoon. De
-efficiënte-markthypothese is een theorie, maar ze verbiedt pas iets als er een
-model van risico naast staat.
+Ook de vraag theorie of feit krijgt hier een ongewoon antwoord. De
+efficiënte-markthypothese is wel een theorie die op toetsing wacht, maar ze verbiedt
+pas iets als er een model van risico naast staat.
 
 ## Intuïtie: waarom zou dit waar zijn?
 
 Fama beschreef een efficiënte markt eerst in woorden {cite}`Fama1965b`. Veel
 rationele beleggers concurreren om de toekomstige waarde van aandelen te
 voorspellen, en belangrijke informatie is voor iedereen bijna gratis. Ziet zo'n
-belegger een voorspelbare winst, dan koopt hij tot die winst weg is. Wat daarna
-nog aan prijsbeweging overblijft, komt door nieuws. Nieuws is wat nog niemand
-wist, en dus is die beweging onvoorspelbaar.
+belegger een voorspelbare winst, dan koopt hij tot die winst weg is. De
+prijsbeweging die daarna overblijft, komt door nieuws, en omdat nieuws is wat nog
+niemand wist, is die beweging onvoorspelbaar.
 
 Maar winst ten opzichte van wat? Niemand houdt een aandeel voor een verwacht
-rendement van nul. Beleggers eisen een vergoeding voor wachten en voor risico, en
-die vergoeding mag in de tijd bewegen. Stel dat beleggers in een recessie minder
-risico kunnen dragen. Dan daalt de koers tot het verwachte rendement hoog genoeg
+rendement van nul, want beleggers eisen een vergoeding voor wachten en voor risico,
+en die vergoeding mag in de tijd bewegen. Stel dat beleggers in een recessie minder
+risico kunnen dragen. Dan daalt de koers, tot het verwachte rendement hoog genoeg
 is om iemand het aandeel te laten houden.
 
-Na een daling is het verwachte rendement dan hoger dan na een stijging. Dat is
-voorspelbaarheid, en toch vergist niemand zich. Of een
-patroon een inefficiëntie is, hangt dus af van het *vereiste* rendement: het
-verwachte rendement dat het evenwicht voor het risico voorschrijft. Verwerpen de
+Na een daling is het verwachte rendement dan hoger dan na een stijging, zodat het
+rendement voorspelbaar is terwijl niemand zich vergist. Of een patroon een inefficiëntie
+is, hangt dus af van het *vereiste* rendement, het verwachte rendement dat het
+evenwicht voor het risico voorschrijft. Verwerpen de
 data "efficiëntie plus mijn model van risico", dan weet niemand welk van de twee
 faalt.
 
 Er zit ook een paradox in het mechanisme. Als prijzen alle informatie perfect
-weerspiegelen, verdient niemand iets aan het verzamelen ervan. Dan verzamelt
-niemand haar, en kan de prijs haar ook niet weerspiegelen
-{cite}`GrossmanStiglitz1980`.
+weerspiegelen, verdient niemand iets aan het verzamelen ervan, zodat niemand de
+informatie nog verzamelt en de prijs ze ook niet kan weerspiegelen
+{cite}`GrossmanStiglitz1980`. Samen leveren deze argumenten drie verwachtingen op,
+die we in de theorie een voor een nagaan:
 
-We verwachten dus drie dingen, die de theorie hierna een voor een inlost:
+- Een prijs die de verwachting van een latere uitbetaling is, verandert
+  onvoorspelbaar, ook als die uitbetaling zelf voorspelbaar is.
 
-1. Een prijs die de verwachting van een latere uitbetaling is, verandert
-   onvoorspelbaar, ook als die uitbetaling zelf voorspelbaar is.
+- Met risicoaversie is het verwachte rendement wel voorspelbaar, en hoger na
+  slecht nieuws, zonder dat iemand een fout maakt.
 
-2. Met risicoaversie is het verwachte rendement wel voorspelbaar, en hoger na
-   slecht nieuws, zonder dat iemand een fout maakt.
-
-3. Als informatie geld kost, is een markt bruto nooit helemaal efficiënt, alleen
-   na aftrek van kosten.
+- Als informatie geld kost, is een markt bruto nooit helemaal efficiënt, alleen
+  na aftrek van kosten.
 
 ## Toy-voorbeeld: één aandeel, twee perioden, één stuk nieuws
 
 Hetzelfde aandeel is een martingaal onder risiconeutraliteit en geen martingaal
-onder risicoaversie. We laden eerst de pakketten voor de hele lecture.
+onder risicoaversie. Voordat we dat nagaan, laden we de pakketten voor het hele
+college.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -131,8 +128,9 @@ rng = np.random.default_rng(20240101)
 **Opzet.** Er zijn drie tijdstippen, $t = 0, 1, 2$. Het aandeel betaalt alleen op
 $t = 2$ een dividend $d_2$. Op $t = 1$ komt publiek nieuws, goed of slecht, elk
 met kans $\tfrac12$. Het nieuws bepaalt welke twee dividenden daarna mogelijk
-zijn, elk weer met kans $\tfrac12$. De rente is nul, dus het bruto risicovrije rendement is $R^f = 1$. Anders dan
-in [](#00-00-setup) is $R^f$ in deze lecture bruto.
+zijn, elk weer met kans $\tfrac12$. De rente is nul, dus het bruto risicovrije rendement
+is $R^f = 1$. Anders dan
+in [](#00-00-setup) is $R^f$ in dit college bruto.
 
 | nieuws op $t=1$ | $d_2$ als het meezit | $d_2$ als het tegenzit | $\E_1[d_2]$ |
 |---|---|---|---|
@@ -140,20 +138,20 @@ in [](#00-00-setup) is $R^f$ in deze lecture bruto.
 | slecht | 100 |  60 |  80 |
 
 **Het recept.** De prijs is de kansgewogen som van de payoffs, elk
-vermenigvuldigd met een gewicht $m$ dat van de toestand afhangt:
-$p_t = \E_t[m_{t+1} x_{t+1}]$. Dat gewicht is de *stochastic discount factor*
+vermenigvuldigd met een gewicht $m$ dat van de toestand afhangt, zodat
+$p_t = \E_t[m_{t+1} x_{t+1}]$. Dat gewicht heet de *stochastic discount factor*
 (SDF, stochastische disconteringsfactor: hoeveel een euro in die toestand waard
 is). De payoff $x$ is $p_1$ op $t = 1$ en $d_2$ op $t = 2$.
 
-**Stap 1, risiconeutraal ($m = 1$).** $p_1(\text{goed}) = 120$,
+**Stap 1, risiconeutraal ($m = 1$).** Dan is $p_1(\text{goed}) = 120$,
 $p_1(\text{slecht}) = 80$ en $p_0 = \tfrac12 \cdot 120 + \tfrac12 \cdot 80 = 100$.
-Dus $\E_0[p_1] = 100 = p_0$: de prijs is een martingaal, en elk verwacht rendement
-is nul.
+Omdat $\E_0[p_1] = 100 = p_0$, is de prijs een martingaal en is elk verwacht
+rendement nul.
 
 **Stap 2, risicoavers.** Nu is $m = 0{,}8$ in de gunstige uitkomst van elke
 periode (goed nieuws op $t = 1$, meezitten op $t = 2$) en $m = 1{,}2$ in de
-ongunstige. Een euro is meer waard als het tegenzit. Omdat
-$\E[m] = 1$, blijft de rente nul. Achterwaarts rekenen:
+ongunstige, zodat een euro meer waard is als het tegenzit. Omdat $\E[m] = 1$,
+blijft de rente nul. We rekenen achterwaarts terug:
 
 $$
 \begin{aligned}
@@ -163,19 +161,19 @@ p_0                &= \tfrac12(0{,}8)(116) + \tfrac12(1{,}2)(76)  = 46{,}4 + 45{
 \end{aligned}
 $$
 
-**Stap 3, verwachte rendementen.** $\E_0[p_1] = \tfrac12(116 + 76) = 96 \neq 92$.
-Het verwachte rendement over de eerste periode is $96/92 - 1 = 4{,}35\%$. Na goed
+**Stap 3, verwachte rendementen.** Nu is $\E_0[p_1] = \tfrac12(116 + 76) = 96 \neq 92$,
+zodat het verwachte rendement over de eerste periode $96/92 - 1 = 4{,}35\%$ is. Na goed
 nieuws is het $120/116 - 1 = 3{,}45\%$, na slecht nieuws $80/76 - 1 = 5{,}26\%$.
 
 **Vooruitblik.** Met gewichten $q = \tfrac12 \cdot 0{,}8 = 0{,}4$ en
-$1 - q = 0{,}6$ in plaats van $\tfrac12$ is $0{,}4 \cdot 116 + 0{,}6 \cdot 76 = 92 = p_0$;
-de theorie noemt die gewichten de *risiconeutrale kansen*.
+$1 - q = 0{,}6$ in plaats van $\tfrac12$ is $0{,}4 \cdot 116 + 0{,}6 \cdot 76 = 92 = p_0$.
+In de theorie heten die gewichten de *risiconeutrale kansen*.
 
 Het verwachte rendement is dus hoger na een koersdaling. Een onderzoeker die een
-constant verwacht rendement aanneemt, ziet een patroon: koop na een daling. Toch
-vergist niemand zich. De risicocorrectie is na goed en na slecht nieuws gelijk,
-$120 - 116 = 80 - 76 = 4$. Alleen is 4 op een prijs van 76 relatief meer dan op
-116. De code rekent beide economieën door.
+constant verwacht rendement aanneemt, ziet daarin een patroon, namelijk dat kopen
+na een daling loont. Toch vergist niemand zich, want de risicocorrectie is na goed
+en na slecht nieuws gelijk, $120 - 116 = 80 - 76 = 4$. Alleen weegt 4 op een prijs
+van 76 relatief zwaarder dan op 116. De code rekent beide economieën door.
 
 ```{code-cell} ipython3
 prob = 0.5
@@ -223,25 +221,25 @@ pd.DataFrame({
 ```
 
 De handberekening en de code geven dezelfde getallen, en in de risiconeutrale
-kolom vallen alle martingaalvarianten samen. Wat we nu weten: of "de prijs is een
-martingaal" waar is, hangt af van het model van risico dat erbij hoort. Dat is
-de *joint hypothesis* (gezamenlijke hypothese: elke toets van efficiëntie is
-tegelijk een toets van een model van het vereiste rendement) in het klein.
+kolom vallen alle martingaalvarianten samen. Of "de prijs is een martingaal" waar
+is, hangt dus af van het model van risico dat erbij hoort. Die afhankelijkheid heet
+de *joint hypothesis* (gezamenlijke hypothese), en ze betekent dat elke toets van
+efficiëntie tegelijk een model van het vereiste rendement toetst.
 
 ## Theorie
 
 We leiden vijf dingen af. Eerst geven we drie woorden voor onvoorspelbaar een
-scherpe betekenis. Dan volgt de kern, de stelling van Samuelson: een prijs die
-een voorwaardelijke verwachting is, verandert onvoorspelbaar. Daarna laten we zien
-wat dat voor aandelen betekent: onvoorspelbaarheid geldt pas na weging met de
-SDF. Omdat die SDF vrij te kiezen is, past vervolgens elk patroon van
-voorspelbaarheid bij een SDF. Ten slotte laten we zien hoe het getoetst wordt: de drie vormen van Fama, de filterregel en de kosten van
-informatie.
+scherpe betekenis. Dan volgt de kern, de stelling van Samuelson, die zegt dat een
+prijs die een voorwaardelijke verwachting is, onvoorspelbaar verandert. Voor
+aandelen geldt die onvoorspelbaarheid pas na weging met de SDF, en omdat die SDF
+vrij te kiezen is, past vervolgens elk patroon van voorspelbaarheid bij een SDF.
+Ten slotte bekijken we hoe efficiëntie getoetst wordt, met de drie vormen van Fama,
+de filterregel en de kosten van informatie.
 
 ### Opzet: drie woorden voor onvoorspelbaar
 
-De vroege literatuur gebruikte drie woorden voor onvoorspelbaar door elkaar, en
-ze betekenen niet hetzelfde {cite}`Fama1970`. Laat $\mathcal{F}_t$ de informatie
+De vroege literatuur gebruikte drie woorden voor onvoorspelbaar door elkaar,
+hoewel ze niet hetzelfde betekenen {cite}`Fama1970`. Laat $\mathcal{F}_t$ de informatie
 zijn die op $t$ publiek is, bijvoorbeeld alle koersen tot en met vandaag, en
 $\E_t[\cdot] = \E[\cdot \mid \mathcal{F}_t]$. Fama schrijft $\Phi_t$ waar wij
 $\mathcal{F}_t$ schrijven.
@@ -259,11 +257,12 @@ $\mathcal{F}_t$ schrijven.
    onafhankelijk en identiek verdeeld zijn: $f(\ell_{t+1} \mid \mathcal{F}_t) = f(\ell_{t+1})$.
 :::
 
-*Waarom zou dit waar zijn?* De drie woorden zeggen steeds minder over wat een
-handelaar met het verleden kan. Bij een random walk helpt het verleden hem
-nergens bij, ook niet bij het voorspellen van de spreiding. Bij een fair game
-helpt het hem alleen niet om de afwijking van het vereiste rendement te
-voorspellen. Hoe zwakker de uitspraak, hoe meer van de werkelijkheid erin past.
+Van random walk naar fair game zeggen de drie woorden steeds minder over wat een
+handelaar uit het verleden kan voorspellen. Bij een random walk helpt het verleden
+hem nergens bij, ook niet bij het voorspellen van de spreiding. Bij een fair game kan
+hij met het verleden alleen de afwijking van het vereiste rendement niet voorspellen,
+de spreiding bijvoorbeeld wel. Hoe zwakker de uitspraak, hoe meer van de werkelijkheid
+erin past.
 
 :::{prf:proposition} Van sterk naar zwak
 :label: thm-efficiente-markten-hierarchie
@@ -286,29 +285,29 @@ $\E_t[z_{t+1}] = 0$, maar $\Var_t(z_{t+1}) = \sigma_t^2$ hangt van $z_t$ af.
 $\square$
 :::
 
-Het tegenvoorbeeld in (iii) is de werkelijkheid: volatiliteit clustert. De toetsen uit [](#01-02-bachelier),
-autocorrelaties en variance ratios (de variantie over meerdere perioden gedeeld
-door het aantal perioden maal de eenperiodevariantie), meten eerste en tweede momenten. Ze toetsen dus een gevolg van
-de fair game, deel (ii): ongecorreleerdheid met de koersgeschiedenis. Onafhankelijkheid
-toetsen ze niet. Fama
-noemde onafhankelijkheid in 1970 dan ook overbodig voor de theorie
+Het tegenvoorbeeld in (iii) beschrijft de werkelijkheid, want volatiliteit
+clustert. De toetsen uit [](#01-02-bachelier) meten eerste en tweede momenten, want
+een autocorrelatie vergelijkt het rendement met dat van eerder, en een variance ratio
+de variantie over meerdere perioden met die over één periode. Ze toetsen dus een gevolg
+van de fair game, namelijk de ongecorreleerdheid met de koersgeschiedenis uit deel
+(ii), maar geen onafhankelijkheid. Fama noemde onafhankelijkheid in 1970 dan ook overbodig
+voor de theorie
 {cite}`Fama1970`.
 
 ### Het kernresultaat: de stelling van Samuelson
 
 Een prijs die gelijk is aan de voorwaardelijke verwachting van een latere
 uitbetaling, verandert onvoorspelbaar, wat het onderliggende proces ook doet.
+Denk aan een handelaar in termijncontracten op tarwe. De termijnprijs is de beste
+schatting die de markt vandaag heeft van de spotprijs op de leverdatum. Verwacht de
+handelaar dat die schatting morgen stijgt, dan koopt hij vandaag, zodat de
+termijnprijs al vandaag stijgt. Alleen wat morgen nieuw is, kan de schatting dan
+nog verplaatsen.
 
-*Waarom zou dit waar zijn?* Denk aan een handelaar in termijncontracten op tarwe.
-De termijnprijs is de beste schatting die de markt vandaag heeft van de spotprijs
-op de leverdatum. Verwacht hij dat die schatting morgen stijgt, dan koopt hij
-vandaag, en stijgt de termijnprijs al vandaag. Alleen wat morgen nieuw is, kan de
-schatting nog verplaatsen.
-
-Samuelson formuleerde het voor een contract dat op $T$ de spotprijs $S_T$
+Samuelson formuleerde de stelling voor een contract dat op $T$ de spotprijs $S_T$
 uitbetaalt, bij een rente van nul en zonder risicopremie {cite}`Samuelson1965`.
-Die aanname maakt de termijnprijs $F_t$ een verwachting onder de werkelijke
-kansen. Het is de risiconeutrale kolom van het toy-voorbeeld, waar
+Door die laatste aanname is de termijnprijs $F_t$ een verwachting onder de
+werkelijke kansen, net als in de risiconeutrale kolom van het toy-voorbeeld, waar
 $p_0 = \E_0[p_1] = 100$ was.
 
 :::{prf:theorem} Samuelson (1965)
@@ -333,9 +332,9 @@ Het tweede deel volgt uit {prf:ref}`thm-efficiente-markten-hierarchie` (ii).
 $\square$
 :::
 
-In woorden: de verwachte verandering van de termijnprijs is nul, en geen functie
-van de informatie van vandaag voorspelt haar. Over de spotprijs is niets
-aangenomen, en die mag voorspelbaar zijn. Neem een spotprijs die naar zijn gemiddelde
+De verwachte verandering van de termijnprijs is dus nul, en geen functie van de
+informatie van vandaag kan die verandering voorspellen. Over de spotprijs is niets
+aangenomen, zodat die wel voorspelbaar mag zijn. Neem een spotprijs die naar zijn gemiddelde
 terugkeert, $S_{t+1} = \phi S_t + \nu_{t+1}$, met persistentie $\phi$
 (hier 0,5) en een schok $\nu$ met variantie 1. Dan is
 $F_t = \phi^{T-t} S_t$ en
@@ -346,9 +345,9 @@ F_{t+1} - F_t = \phi^{T-t-1}\left(S_{t+1} - \phi S_t\right)
              = \phi^{T-t-1}\,\nu_{t+1} .
 ```
 
-In woorden: de termijnprijs beweegt alleen met de schok van vandaag, niet met de
-voorspelbare terugkeer van de spotprijs. Die spotprijsverandering heeft op $S_t$
-een helling van $\phi - 1 = -0{,}5$. De cel simuleert 20 000 paden van twaalf
+De termijnprijs beweegt dus alleen met de schok van vandaag, en niet met de
+voorspelbare terugkeer van de spotprijs. De verandering van de spotprijs zelf heeft
+op $S_t$ wel een helling van $\phi - 1 = -0{,}5$. De cel simuleert 20 000 paden van twaalf
 perioden en schat beide hellingen.
 
 ```{code-cell} ipython3
@@ -378,24 +377,24 @@ pd.DataFrame(
 ).round(3)
 ```
 
-De spotprijsverandering heeft de voorspelde helling van $-0{,}5$, de
-termijnprijsverandering een helling van nul. Dat is de eerste verwachting uit de
-intuïtie: de prijs is onvoorspelbaar, ook al is wat ze voorspelt dat niet. Wel
+De spotprijsverandering heeft de voorspelde helling van $-0{,}5$ en de
+termijnprijsverandering een helling van nul. Daarmee klopt de eerste verwachting uit
+de intuïtie, want de termijnprijs is onvoorspelbaar, ook al is de spotprijs
+die hij voorspelt dat niet. Wel
 loopt de variantie van de termijnprijsverandering op naarmate de leverdatum nadert
 (oefening 2).
 
 ### Wat het voorspelt: een martingaal na weging met de SDF
 
 Voor aandelen geldt de stelling van Samuelson niet voor de prijs zelf, maar voor
-de prijs na weging met de SDF.
+de prijs na weging met de SDF. Een belegger die een aandeel koopt, legt vandaag
+geld neer en draagt risico, en eist daarvoor een vergoeding. Die vergoeding is het
+hoogst in toestanden waarin een euro schaars is, dus waarin de SDF hoog is. Als we
+de payoffs met de SDF wegen, valt de vergoeding weg, en wat er dan overblijft, moet
+weer onvoorspelbaar zijn.
 
-*Waarom zou dit waar zijn?* Wie een aandeel koopt, legt vandaag geld neer en
-draagt risico, en eist daarvoor een vergoeding. Die vergoeding is het hoogst in
-toestanden waarin een euro schaars is, dus waarin de SDF hoog is. Weeg de payoffs
-met de SDF, en de vergoeding valt weg. Wat overblijft, moet weer onvoorspelbaar
-zijn.
-
-We gebruiken het recept uit het toy-voorbeeld, nu met dividenden:
+We gebruiken daarvoor het recept uit het toy-voorbeeld opnieuw. Nu komt er
+een dividend bij, en de risicovrije rente volgt uit de verwachte SDF:
 
 ```{math}
 :label: eq-efficiente-markten-pricing
@@ -405,7 +404,7 @@ p_t = \E_t\!\left[m_{t+1}\left(p_{t+1} + d_{t+1}\right)\right],
 ```
 
 In woorden: de prijs vandaag is de met de SDF gewogen verwachting van prijs plus
-dividend morgen. De risicovrije rente is één gedeeld door de verwachte SDF. In het
+dividend morgen, en de risicovrije rente is één gedeeld door de verwachte SDF. In het
 toy-voorbeeld was $\E[m] = 1$ en dus $R^f = 1$.
 
 :::{prf:theorem} Martingaal na weging met de SDF
@@ -431,15 +430,16 @@ $\E^{Q}_t\!\left[(p_{t+1}+d_{t+1})/R^{f}_{t+1}\right]
 = \E_t\!\left[m_{t+1}(p_{t+1}+d_{t+1})\right] = p_t$. $\square$
 :::
 
-In het toy-voorbeeld is $R^f = 1$, dus de dichtheid is $m$ zelf: goed nieuws
-krijgt onder $Q$ het gewicht $\tfrac12 \cdot 0{,}8 = 0{,}4$, de $q$ uit de vooruitblik van het toy-voorbeeld. De maat $Q$ is de voorloper van de stelling van Harrison en
-Kreps: zo'n $Q$ bestaat als er geen arbitrage is {cite}`HarrisonKreps1979`.
+Omdat in het toy-voorbeeld $R^f = 1$ is, is de dichtheid daar $m$ zelf, zodat
+goed nieuws onder $Q$ het gewicht $\tfrac12 \cdot 0{,}8 = 0{,}4$ krijgt, de $q$ uit
+de vooruitblik. De maat $Q$ is de voorloper van de stelling van Harrison en Kreps,
+die zegt dat zo'n $Q$ bestaat als er geen arbitrage is {cite}`HarrisonKreps1979`.
 
-Wat betekent dit voor het verwachte rendement onder de werkelijke kansen? Deel
-[](#eq-efficiente-markten-pricing) door $p_t$ en schrijf de verwachting van een
-product als product van verwachtingen plus covariantie:
-$1 = \E_t[m_{t+1}]\E_t[R_{t+1}] + \Cov_t(m_{t+1},R_{t+1})$. Vermenigvuldigen met
-$R^{f}_{t+1}$ geeft
+Wat betekent dit voor het verwachte rendement onder de werkelijke kansen? We delen
+[](#eq-efficiente-markten-pricing) door $p_t$ en schrijven de verwachting van een
+product als product van verwachtingen plus covariantie, zodat
+$1 = \E_t[m_{t+1}]\E_t[R_{t+1}] + \Cov_t(m_{t+1},R_{t+1})$. Na vermenigvuldiging
+met $R^{f}_{t+1}$ volgt
 
 ```{math}
 :label: eq-efficiente-markten-premie
@@ -447,30 +447,29 @@ $R^{f}_{t+1}$ geeft
 = -R^{f}_{t+1}\,\Cov_t\!\left(m_{t+1}, R_{t+1}\right).
 ```
 
-In woorden: een aandeel dat weinig oplevert als de SDF hoog is, dus in slechte
-tijden, heeft een hoog verwacht excess rendement. In het toy-voorbeeld is op
+Een aandeel dat weinig oplevert als de SDF hoog is, dus in slechte tijden, heeft
+daarom een hoog verwacht overrendement. In het toy-voorbeeld is op
 $t = 0$ de covariantie $\E_0[m_1R_1] - \E_0[m_1]\E_0[R_1] = 1 - 1{,}0435$, een
 premie van 4,35%. Beweegt de covariantie in de tijd, dan beweegt het verwachte
-rendement mee. Dat is de tweede verwachting uit de intuïtie.
+rendement mee, en dat is precies de voorspelbaarheid zonder vergissing die we in
+de intuïtie verwachtten.
 
 ### Wat het niet verbiedt: elk patroon heeft een SDF
 
 Elk patroon van voorspelbaarheid zonder arbitrage is te rijmen met een SDF die
-het als risicopremie prijst.
-
-*Waarom zou dit waar zijn?* Stel dat een onderzoeker ziet dat het rendement
+het als risicopremie verklaart. Stel dat een onderzoeker ziet dat het rendement
 hoger is na een hoog dividendrendement. Een verdediger van efficiëntie kan dan
-zeggen dat beleggers in die maanden meer risico vrezen. Hij hoeft alleen een SDF
+zeggen dat beleggers in die maanden meer risico vrezen, en hij hoeft alleen een SDF
 te kiezen die in die maanden sterker tegen het rendement in beweegt. Dat lukt
-zolang de SDF positief blijft. Een negatieve SDF zou een positieve payoff een
+zolang de SDF positief blijft, want een negatieve SDF zou een positieve payoff een
 negatieve prijs geven, en dat is arbitrage.
 
 :::{prf:proposition} Elk patroon heeft een SDF
 :label: thm-efficiente-markten-elke-sdf
 
-Laat $R^{e}_{t+1}$ een excess rendement zijn met conditionele verwachting $\mu_t$
+Laat $R^{e}_{t+1}$ een overrendement zijn met conditionele verwachting $\mu_t$
 en conditionele variantie $\sigma_t^2 > 0$, beide willekeurige functies van
-$\mathcal{F}_t$. Dan prijst
+$\mathcal{F}_t$. Dan waardeert
 
 ```{math}
 :label: eq-efficiente-markten-sdf
@@ -478,7 +477,7 @@ m_{t+1} = \frac{1}{R^{f}_{t+1}}
 \left[1 - \frac{\mu_t}{\sigma_t^2}\left(R^{e}_{t+1} - \mu_t\right)\right]
 ```
 
-zowel de risicovrije belegging als het excess rendement:
+zowel de risicovrije belegging als het overrendement correct:
 $\E_t[m_{t+1}]R^{f}_{t+1} = 1$ en $\E_t[m_{t+1}R^{e}_{t+1}] = 0$. De SDF is
 positief zolang $\left|\mu_t\left(R^{e}_{t+1} - \mu_t\right)\right| < \sigma_t^2$,
 en $\SD_t(m_{t+1})/\E_t[m_{t+1}] = |\mu_t|/\sigma_t$, de conditionele
@@ -493,25 +492,25 @@ $R^{f}_{t+1}\E_t[m_{t+1}R^{e}_{t+1}]
 [](#eq-efficiente-markten-sdf). $\square$
 :::
 
-In woorden: de SDF is laag als het rendement boven zijn verwachting uitkomt, en
-des te sterker naarmate de premie per eenheid variantie, $\mu_t/\sigma_t^2$,
+De SDF is dus laag als het rendement boven zijn verwachting uitkomt, en dat
+effect is sterker naarmate de premie per eenheid variantie, $\mu_t/\sigma_t^2$,
 groter is. Met de maandgetallen uit de simulatie hierna, $\mu_t = 0{,}6\%$ en
-$\sigma_t = 4{,}5\%$, is de conditionele Sharpe-ratio $0{,}6/4{,}5 = 0{,}13$. De
-SDF hoeft dan maar 13% per maand te schommelen.
+$\sigma_t = 4{,}5\%$, is de conditionele Sharpe-ratio $0{,}6/4{,}5 = 0{,}13$,
+zodat de SDF maar 13% per maand hoeft te schommelen.
 
-De propositie is de joint hypothesis in haar scherpste vorm. Hangt het verwachte rendement
-af van het dividendrendement, van het rendement van vorige maand of van het weer
-in New York, er is altijd een SDF die dat als rationele risicopremie prijst.
-Zonder model verbiedt efficiëntie dus alleen arbitrage. Fama kwam in 1991 tot
-dezelfde slotsom: efficiëntie op zich is niet toetsbaar, alleen samen met een
-evenwichtsmodel.
+In deze propositie staat de joint hypothesis in de scherpste vorm. Of het
+verwachte rendement nu afhangt van het dividendrendement, van het rendement van
+vorige maand of van het weer in New York, er is altijd een SDF die dat als
+rationele risicopremie verklaart. Zonder model verbiedt efficiëntie dus alleen
+arbitrage. Fama kwam in 1991 tot dezelfde slotsom en schreef dat efficiëntie op
+zich niet toetsbaar is, alleen samen met een evenwichtsmodel.
 
 > Market efficiency per se is not testable. It must be tested jointly with some
 > model of equilibrium, an asset-pricing model. {cite}`Fama1991`
 
-Toetsbaar wordt efficiëntie pas als er iets over $m_{t+1}$ wordt gezegd.
-Bijvoorbeeld dat hij hoog is in slechte tijden, of dat zijn volatiliteit
-geloofwaardig is {cite}`HansenJagannathan1991`.
+Toetsbaar wordt efficiëntie pas als er iets over $m_{t+1}$ wordt gezegd. Een
+onderzoeker kan bijvoorbeeld eisen dat de SDF hoog is in slechte tijden, of dat de
+volatiliteit ervan geloofwaardig is {cite}`HansenJagannathan1991`.
 
 ```{warning}
 De joint hypothesis snijdt naar twee kanten. Een positieve alpha ten opzichte van
@@ -523,7 +522,7 @@ zwak is. De simulatie hierna laat zien hoe zwak zulke toetsen zijn.
 ### Hoe het getoetst wordt: drie vormen, de filterregel en kosten
 
 Fama deelde de toetsen in naar de informatie waartegen de prijs efficiënt moet
-zijn {cite}`Fama1970`. "Alle informatie" is te vaag om te toetsen. Het
+zijn {cite}`Fama1970`, omdat "alle informatie" te vaag is om te toetsen. Het
 onderscheid in drie vormen schreef hij in een voetnoot toe aan Harry Roberts.
 
 | vorm | informatie | typische toets | in deze reeks |
@@ -532,18 +531,16 @@ onderscheid in drie vormen schreef hij in een voetnoot toe aan Harry Roberts.
 | semi-sterk | alle publieke informatie | event studies | [](#02-07-event-studies) |
 | sterk | ook informatie waar maar enkelen bij kunnen | fondsen, insiders | hier kort, [](#04-25-industrie) |
 
-Zijn conclusie in 1970: tegen de zwakke en de semi-sterke vorm was geen
-belangrijk bewijs gevonden, tegen de sterke vorm alleen beperkt bewijs
-{cite}`Fama1970`.
+Zijn conclusie in 1970 was dat tegen de zwakke en de semi-sterke vorm geen
+belangrijk bewijs was gevonden, en tegen de sterke vorm alleen beperkt bewijs
+{cite}`Fama1970`. Voor de zwakke vorm is de filterregel een aantrekkelijke toets,
+omdat een filter de joint hypothesis grotendeels omzeilt.
 
-De filterregel is de favoriete toets van de zwakke vorm, omdat hij de joint
-hypothesis grotendeels omzeilt.
-
-*Waarom zou dit waar zijn?* Een handelaar springt in en uit een aandeel op grond
-van de koersgeschiedenis. Uitstappen levert hem alleen iets op als het verwachte
-excess rendement op dat moment negatief is. Is het nooit negatief, dan laat hij
-bij elke uitstap een premie liggen. Gemiddeld haalt hij dan minder dan wie het
-aandeel vasthoudt.
+Een handelaar springt in en uit een aandeel op grond van de koersgeschiedenis.
+Uitstappen levert hem alleen iets op als het verwachte overrendement op dat moment
+negatief is. Is het nooit negatief, dan laat hij bij elke uitstap een premie
+liggen, zodat hij gemiddeld minder haalt dan een belegger die het aandeel
+vasthoudt.
 
 :::{prf:proposition} Submartingaal en handelsregels
 :label: thm-efficiente-markten-filter
@@ -559,40 +556,49 @@ $\E[w_t R^{e}_{t+1}] = \E\!\left[w_t\,\E_t[R^{e}_{t+1}]\right]
 $\E_t[R^{e}_{t+1}] \ge 0$. $\square$
 :::
 
-In woorden: geen regel die alleen de koersgeschiedenis gebruikt, verslaat
-buy-and-hold in verwacht rendement. Dit is Fama's submartingaalvoorwaarde
-{cite}`Fama1970`. De aanname $\E_t[R^{e}_{t+1}] \ge 0$ is zelf een klein model,
-maar veel zwakker dan een constant verwacht rendement. Daarom zegt een filter dat
-buy-and-hold verslaat meer dan een voorspellende regressie.
+Geen regel die alleen de koersgeschiedenis gebruikt, verslaat dus buy-and-hold in
+verwacht rendement, en dat is Fama's submartingaalvoorwaarde {cite}`Fama1970`. De
+aanname $\E_t[R^{e}_{t+1}] \ge 0$ is zelf een klein model, maar wel veel zwakker dan
+een constant verwacht rendement. Verslaat een filter buy-and-hold, dan zegt dat
+daarom meer dan een significante voorspellende regressie.
 
-Wanneer verslaat een filter buy-and-hold dan toch? Als het verleden de richting
-van morgen voorspelt. Bij een positieve eerste autocorrelatie $\rho_1$ loopt een
+Een filter verslaat buy-and-hold alleen als het verleden de richting van morgen
+voorspelt. Bij een positieve eerste autocorrelatie $\rho_1$ loopt een
 stijging van vandaag gemiddeld morgen door, en een klein filter stapt na een
-stijging direct in. Wie steeds de richting van gisteren volgt, verdient per dag
-ongeveer $\rho_1 \sigma_d \sqrt{2/\pi}$, met $\sigma_d$ de dagvolatiliteit (de
-standaarddeviatie van één dagrendement). Dat is de verwachting van het teken van
-gisteren maal het rendement van vandaag, voor twee normale variabelen met
-correlatie $\rho_1$. Voor 1957–1962, met $\rho_1 = 0{,}175$ en $\sigma_d = 0{,}68\%$,
-is dat $0{,}175 \cdot 0{,}68\% \cdot 0{,}80 \approx 0{,}095\%$ per dag, bijna 24% per
-jaar. Zulke
-autocorrelatie kan in een index zitten zonder dat iemand zich vergist. Door
-*niet-synchrone handel* (slotkoersen van weinig verhandelde aandelen lopen achter
-op het nieuws) erft een index een autocorrelatie die niemand kan verhandelen.
+stijging direct in. Een handelaar die steeds de richting van gisteren volgt,
+verdient per dag ongeveer $\rho_1 \sigma_d \sqrt{2/\pi}$, met $\sigma_d$ de
+dagvolatiliteit (de standaarddeviatie van één dagrendement). Die uitdrukking is de
+verwachting van het teken van gisteren maal het rendement van vandaag, voor twee
+normale variabelen met correlatie $\rho_1$.
 
-Jensen definieerde efficiëntie in 1978 na kosten {cite}`Jensen1978`. Een markt is efficiënt ten opzichte
-van een informatieverzameling als handelen op die informatie niets oplevert na
+In het venster van Fama en Blume, 1957–1962, is $\rho_1 = 0{,}175$ en
+$\sigma_d = 0{,}68\%$. De handelaar verdient dan
+$0{,}175 \cdot 0{,}68\% \cdot 0{,}80 \approx 0{,}095\%$ per dag, bijna 24% per jaar.
+Zijn voorsprong op buy-and-hold is die 24% min het gemiddelde rendement van de
+index, en die voorsprong rekent de replicatie na. Zulke autocorrelatie
+kan in een index zitten zonder dat iemand zich vergist, want door *niet-synchrone
+handel* (slotkoersen van weinig verhandelde aandelen lopen achter op het nieuws)
+erft een index een autocorrelatie die niemand kan verhandelen.
+
+Jensen definieerde efficiëntie in 1978 na kosten {cite}`Jensen1978`. Volgens hem
+is een markt efficiënt ten opzichte van een informatieverzameling als handelen op die
+informatie niets oplevert na
 correctie voor risico en na aftrek van alle kosten. Een patroon dat alleen bruto
-bestaat, verwerpt efficiëntie in deze zin niet. Daarom rapporteert de replicatie
+bestaat, is in deze zin dus geen bewijs tegen efficiëntie, en daarom rapporteert de
+replicatie
 de filterregels voor en na kosten.
 
 Grossman en Stiglitz maakten van de paradox uit de intuïtie een evenwicht
-{cite}`GrossmanStiglitz1980`. Een fractie $\omega$ van de beleggers betaalt een
-bedrag $c$ voor een signaal over de waarde van het aandeel. Ruis in het aanbod
-voorkomt dat de prijs het signaal volledig verraadt. In evenwicht is geïnformeerd
-beleggen na aftrek van $c$ even aantrekkelijk als ongeïnformeerd beleggen.
+{cite}`GrossmanStiglitz1980`. Een deel van de beleggers koopt tegen kosten $c$ een
+signaal over de waarde van het aandeel, terwijl ruis in het aanbod voorkomt dat de
+prijs het signaal volledig verraadt. Beleggers blijven zich informeren tot
+geïnformeerd beleggen na aftrek van $c$ niet meer oplevert dan ongeïnformeerd
+beleggen, zodat bij hogere kosten minder beleggers het signaal kopen en de prijs minder
+verraadt.
 
-Zolang $c > 0$ is de prijs dus nooit volledig informatief: bruto verdienen de
-geïnformeerden iets, netto niet. Dat is de derde verwachting uit de intuïtie.
+Zolang $c > 0$, is de prijs dus nooit volledig informatief, want bruto verdienen
+de geïnformeerden iets en netto niet. Zo komt ook de derde verwachting uit, dat een
+markt alleen na aftrek van kosten efficiënt is.
 
 ```{admonition} Samengevat
 :class: tip
@@ -600,28 +606,28 @@ geïnformeerden iets, netto niet. Dat is de derde verwachting uit de intuïtie.
 - Een prijs die een voorwaardelijke verwachting is, verandert onvoorspelbaar, wat
   het onderliggende proces ook doet, [](#eq-efficiente-markten-samuelson).
 
-- Voor aandelen geldt dat pas na weging met de SDF. Het verwachte excess rendement
+- Voor aandelen geldt dat pas na weging met de SDF. Het verwachte overrendement
   stijgt naarmate de covariantie met de SDF negatiever is,
   [](#eq-efficiente-markten-premie).
 
-- Elk patroon van voorspelbaarheid zonder arbitrage heeft een SDF die het prijst,
+- Elk patroon van voorspelbaarheid zonder arbitrage heeft een SDF die het als risicopremie verklaart,
   [](#eq-efficiente-markten-sdf). Efficiëntie is dus alleen samen met een model te
   toetsen.
 
 - Fama's drie vormen delen de toetsen in naar informatie. De filterregel toetst
-  de zwakke vorm met het zwakste model. Kosten beslissen of een patroon telt.
+  de zwakke vorm met het zwakste model. Of een patroon telt, hangt af van de kosten.
 
-- De simulatie vraagt: hoe vaak vindt een onderzoeker met het constante model
-  inefficiëntie in een rationele economie, en na hoeveel jaar?
+- In de simulatie gaan we na hoe vaak een onderzoeker met het constante model
+  inefficiëntie vindt in een rationele economie, en na hoeveel jaar.
 ```
 
 ## Simulatie: een rationele economie en een onderzoeker met het verkeerde model
 
 Hoe lang moet een onderzoeker met het constante model (een constant verwacht
 rendement) kijken voordat hij
-in een volledig rationele economie inefficiëntie vindt? Het antwoord: na een eeuw
-maanddata vindt hij haar in zes van de tien economieën, terwijl er alleen risico
-wordt beloond. Het maandelijkse excess rendement is
+in een volledig rationele economie inefficiëntie vindt? Na een eeuw maanddata
+vindt hij ze in zes van de tien economieën, terwijl er alleen risico wordt beloond.
+Het maandelijkse overrendement is
 
 $$
 R^{e}_{t+1} = \mu_t + \sigma\,\varepsilon_{t+1},
@@ -635,7 +641,7 @@ met deze kalibratie:
 
 | symbool | betekenis | waarde per maand |
 |---|---|---|
-| $\mu$ | gemiddeld verwacht excess rendement | 0,6% |
+| $\mu$ | gemiddeld verwacht overrendement | 0,6% |
 | $s_t$ | afwijking van het verwachte rendement, bekend op $t$ | standaarddeviatie 0,3% |
 | $\phi_s$ | persistentie van $s_t$ | 0,98 |
 | $\sigma$ | volatiliteit van de onvoorspelbare schok | 4,5% |
@@ -643,15 +649,16 @@ met deze kalibratie:
 Op jaarbasis schommelt het verwachte rendement dus met ongeveer 3,6 procentpunt
 rond 7,2%. Net als in het toy-voorbeeld, waar het tussen 3,45% en 5,26% lag,
 beweegt de premie met de toestand. De schokken $\varepsilon$ en $\eta$
-zijn onafhankelijk. Zo meet de toets alleen het effect van het model, niet de
+zijn onafhankelijk, zodat de toets alleen het effect van het model meet en niet de
 bias die ontstaat als de schok van een persistente voorspeller met het rendement
 samenhangt {cite}`Stambaugh1999`.
 
-De economie is rationeel. De SDF uit [](#eq-efficiente-markten-sdf), met
-$R^f = 1$, prijst het rendement in elke maand exact, en een hoge $s_t$ is een hoge
-prijs van risico. De onderzoeker observeert $s_t$, bijvoorbeeld het
-dividendrendement. Hij toetst of het verwachte rendement constant is met de
-regressie $R^{e}_{t+1} = a + b\,s_t + u_{t+1}$. Een tweede onderzoeker kent het
+De economie is rationeel, want de SDF uit [](#eq-efficiente-markten-sdf), met
+$R^f = 1$, waardeert het rendement in elke maand exact, en een hoge $s_t$ is een
+hoge prijs van risico. De onderzoeker observeert $s_t$, bijvoorbeeld het
+dividendrendement, en toetst met de regressie
+$R^{e}_{t+1} = a + b\,s_t + u_{t+1}$ of het verwachte rendement constant is. Een tweede
+onderzoeker kent het
 juiste model en regresseert het abnormale rendement $R^{e}_{t+1} - \mu_t$ op
 dezelfde $s_t$. De cel bouwt 2000 economieën van 150 jaar en controleert de SDF.
 
@@ -680,12 +687,14 @@ pd.Series(
 ).round(5)
 ```
 
-De SDF prijst het rendement tot op de simulatieruis en is gemiddeld één. Hij is
-negatief in één op de honderdduizend maanden. Bij de gemiddelde premie vraagt dat
-een schok van $\sigma/\mu = 4{,}5/0{,}6 = 7{,}5$ standaarddeviaties, wat vrijwel
+De SDF waardeert het rendement tot op de simulatieruis correct en is gemiddeld
+één, maar hij is negatief in één op de honderdduizend maanden. Bij de gemiddelde
+premie vraagt een negatieve SDF een schok van $\sigma/\mu = 4{,}5/0{,}6 = 7{,}5$
+standaarddeviaties, wat vrijwel
 nooit voorkomt. De negatieve maanden vallen daarom in toestanden met een hoge
-premie: bij $\mu_t = 1{,}5\%$ is de drempel $4{,}5/1{,}5 = 3$ standaarddeviaties.
-Strikt genomen is dat arbitrage, maar te zelden om de toets te raken. De populatie-$R^2$ van de
+premie, want bij $\mu_t = 1{,}5\%$ is de drempel $4{,}5/1{,}5 = 3$
+standaarddeviaties. Strikt genomen is dat arbitrage, maar het komt te zelden voor
+om de toets te raken. De populatie-$R^2$ van de
 voorspelregressie is $0{,}3^2/(0{,}3^2 + 4{,}5^2) = 0{,}44\%$, en dat getal
 bepaalt alles wat volgt.
 
@@ -725,9 +734,11 @@ power = pd.DataFrame(rows).set_index("jaren")
 power.round(3)
 ```
 
-De onderzoeker met het constante model verwerpt steeds vaker naarmate de
-steekproef groeit. Die met het juiste model blijft rond 5%, zoals het hoort. Let
-in de figuur links op de afstand tussen de twee soorten punten, en rechts op de
+De onderzoeker met het constante model verwerpt zijn model steeds vaker naarmate
+de steekproef groeit, terwijl de onderzoeker met het juiste model rond het nominale
+niveau van 5% blijft.
+
+Let in de figuur links op de afstand tussen de twee soorten punten, en rechts op de
 verschuiving van de verdeling onder het constante model.
 
 ```{code-cell} ipython3
@@ -769,21 +780,22 @@ plt.show()
 
 Links: hoe vaak een onderzoeker het constante model verwerpt in een
 volledig rationele economie. Na een eeuw maanddata lukt dat in ongeveer zes van de
-tien steekproeven. Wie het juiste model kent, verwerpt in ongeveer 5% van de
-gevallen, het nominale significantieniveau. Rechts: bij dezelfde honderd jaar data
+tien steekproeven. Een onderzoeker die het juiste model kent, verwerpt het in
+ongeveer 5% van de gevallen, het nominale significantieniveau. Rechts: bij dezelfde honderd jaar data
 ligt de $t$-waarde onder het constante model naar rechts verschoven, onder het
-juiste model rond nul. De data zijn gelijk; alleen het model verschilt.
+juiste model rond nul. De data zijn gelijk, alleen het model verschilt.
 :::
 
-De figuur laat risico of vergissing zien in een wereld waarin het antwoord
-bekend is. Na honderd jaar vindt de onderzoeker met het constante model in 60%
+In de figuur is de vraag risico of vergissing te beantwoorden, omdat we in deze
+wereld weten dat het patroon een risicopremie is. Na honderd jaar vindt de onderzoeker met
+het constante model in 60%
 van de economieën inefficiëntie, terwijl er per constructie alleen risico wordt
-beloond. De onderzoeker met het juiste model ziet in dezelfde data een fair game.
-Hun meningsverschil gaat niet over de data, maar over $m_{t+1}$.
+beloond. De onderzoeker met het juiste model ziet in dezelfde data een fair game,
+zodat hun meningsverschil niet over de data gaat, maar over $m_{t+1}$.
 
 Waarom duurt het zo lang? Met een kleine $R^2$ is de verwachte $t$-waarde na $N$
 maanden ongeveer $\sqrt{N R^2}$, dezelfde rekensom als in [](#eq-bachelier-power).
-Voor een verwachte $t$ van 1,96 zijn dus
+Voor een verwachte $t$ van 1,96 zijn dan
 
 ```{math}
 :label: eq-efficiente-markten-steekproef
@@ -791,22 +803,25 @@ N^{*} \approx \frac{1{,}96^{2}}{R^{2}} \approx \frac{3{,}84}{0{,}0044} \approx 8
 \text{ maanden}
 ```
 
-nodig, ruim tweeënzeventig jaar. In woorden: de benodigde steekproef is
-omgekeerd evenredig met de voorspelbare fractie van de variantie. Bij $N^*$ is de
-toets gemiddeld net significant, wat ongeveer de helft kans op verwerping geeft.
-Voor 80% kans is $(1{,}96 + 0{,}84)^2/R^2 \approx 1780$ maanden nodig, bijna
-honderdvijftig jaar. Hier is 0,84 het 80%-kwantiel van de standaardnormale verdeling.
+nodig, ruim tweeënzeventig jaar. De benodigde steekproef is dus omgekeerd
+evenredig met de voorspelbare fractie van de variantie. Bij $N^*$ is de
+toets gemiddeld net significant, zodat hij in ongeveer de helft van de economieën
+verwerpt.
+Voor 80% kans zijn $(1{,}96 + 0{,}84)^2/R^2 \approx 1780$ maanden nodig, bijna
+honderdvijftig jaar, waarbij 0,84 het 80%-kwantiel van de standaardnormale
+verdeling is.
 
-Dit is de standaardfout van 2% uit [](#00-01-rendementen): bij 20% volatiliteit
-is een gemiddeld jaarrendement na een eeuw maar op 2 procentpunt nauwkeurig. Hier
-geldt dat voor een gemiddelde dat in de tijd beweegt. Een schommeling van 3,6 procentpunt per jaar
-in het verwachte rendement is economisch groot en statistisch bijna onzichtbaar.
+Dat is dezelfde onnauwkeurigheid als bij de standaardfout van 2% uit
+[](#00-01-rendementen), waar een gemiddeld jaarrendement bij 20% volatiliteit na een
+eeuw maar op 2 procentpunt nauwkeurig is. Hier geldt ze voor een gemiddelde dat in
+de tijd beweegt, zodat een schommeling van 3,6 procentpunt per jaar in het
+verwachte rendement economisch groot is en toch statistisch bijna onzichtbaar.
 
-De simulatie ligt enkele procentpunten onder de formule. Een persistente $s_t$
-spreidt in een eindige steekproef minder rond haar steekproefgemiddelde dan in de
-populatie, en bevat dus minder informatie. Het verschil is het grootst rond 75
+De simulatie ligt enkele procentpunten onder de formule, omdat een persistente
+$s_t$ in een eindige steekproef minder rond zijn steekproefgemiddelde spreidt dan
+in de populatie en daardoor minder informatie bevat. Het verschil is het grootst rond 75
 jaar, zes punten, en krimpt tot minder dan twee bij 150 jaar. De simulatie heeft
-daardoor ongeveer tachtig jaar nodig voor een halve kans op verwerping.
+dus ongeveer tachtig jaar nodig voor een halve kans op verwerping.
 
 ## Replicatie op echte data
 
@@ -821,27 +836,29 @@ Sidney Alexander {cite}`Alexander1961`.
 dertig Dow Jones-aandelen, voor en na commissies, eind 1957 tot september 1962,
 tegen buy-and-hold.
 
-**Data hier.** De dagelijkse Amerikaanse marktportefeuille van Kenneth French en,
-als verhandelbaar instrument, de ETF SPY vanaf 1993, beide via `hap.data`.
+**Data hier.** We gebruiken de dagelijkse Amerikaanse marktportefeuille van
+Kenneth French en, als verhandelbaar instrument, de ETF SPY vanaf 1993. Beide komen
+via `hap.data`.
 
 **Verschil met het origineel.** Fama en Blume gebruikten dertig aandelen, wij de
 index. Naast hun volledige commissies rekenen wij met hun alternatief van 0,1% per
 transactie, de clearingkosten die ook een handelaar op de beursvloer betaalde.
 
 **Verwachte afwijking.** Door niet-synchrone handel heeft een index sterkere
-autocorrelatie dan de aandelen erin (hun voetnoot 3), dus de niveaus wijken af.
+autocorrelatie dan de aandelen erin (hun voetnoot 3), zodat de niveaus afwijken.
 Criteria voor het 0,5%-filter: (1) een voorsprong van de orde
 $252\,(\rho_1\sigma_d\sqrt{2/\pi} - \mu)$, ver boven hun 1,7 procentpunt; (2) een
 voorsprong die over deelperiodes met $\rho_1$ stijgt; (3) geen voorsprong op SPY.
 ```
 
 We repliceren niet de voorspelregressie uit de simulatie maar het filter, omdat
-het filter de joint hypothesis bijna omzeilt. De regel van Alexander, in de vorm van
-Fama en Blume: stijgt de slotkoers
-$\delta$ procent boven een eerder dal, ga lang. Daalt hij $\delta$ procent onder een eerdere
-top, verkoop en ga short. We rekenen met de totaalrendementsindex, zodat de lange
-positie dividend ontvangt en de korte het betaalt. Rendementen zijn gemiddelde log-rendementen
-maal 252. De tabel zet onze index naast hun gepubliceerde waarden.
+het filter de joint hypothesis bijna omzeilt. In de vorm van Fama en Blume werkt
+de regel van Alexander zo. Stijgt de slotkoers $\delta$ procent boven een eerder dal,
+dan gaat de belegger lang, en daalt de koers $\delta$ procent onder een eerdere top,
+dan verkoopt hij en gaat hij short. We rekenen met de totaalrendementsindex, zodat
+de lange positie dividend ontvangt en de korte het betaalt. Rendementen zijn
+gemiddelde log-rendementen maal 252, en de tabel zet onze index naast hun gepubliceerde
+waarden.
 
 ```{code-cell} ipython3
 def filter_positions(level, x):
@@ -871,8 +888,8 @@ def filter_performance(returns, x, cost=0.001, periods=252):
     """Annualised log return of an x-filter, before and after a cost per transaction."""
     held = pd.Series(filter_positions((1 + returns).cumprod(), x), index=returns.index)
     held = held.shift(1).fillna(0.0)                   # position at close t earns t+1
-    first = held.ne(0).idxmax()                        # date of the first signal
-    held, r = held.loc[first:], returns.loc[first:]
+    first_signal = held.ne(0).idxmax()                 # first day with a position
+    held, r = held.loc[first_signal:], returns.loc[first_signal:]
     gross = np.log1p(held * r)
     switches = held.diff().fillna(0.0).ne(0)
     return {
@@ -900,8 +917,9 @@ pd.concat([ours.add_prefix("hier: "), published], axis=1).round(4)
 ```
 
 De kolom buy-and-hold verschilt per filter, omdat elk filter pas telt vanaf zijn
-eerste signaal. Hun kolom na volle commissies is niet vergelijkbaar met onze 0,1%.
-De cel rekent de voorspelde voorsprong van criterium 1 uit voor het venster.
+eerste signaal. Hun kolom na volle commissies rekent met de commissie van een gewone
+belegger en is daarom niet te vergelijken met onze kolom na 0,1%.
+De volgende cel rekent voor het venster de voorspelde voorsprong van criterium 1 uit.
 
 ```{code-cell} ipython3
 def predicted_lead(returns, periods=252):
@@ -919,16 +937,19 @@ pd.Series({
 }).round(4)
 ```
 
-**Geslaagd** op criterium 1. Het 0,5%-filter verslaat buy-and-hold voor kosten met
-12,9 procentpunt per jaar, tegen voorspeld 13,9 en tegen 1,7 bij Fama en Blume. Na
-0,1% per transactie blijft ruim acht over.
+**Geslaagd** op criterium 1, want het 0,5%-filter verslaat buy-and-hold voor kosten
+met 12,9 procentpunt per jaar, tegen een voorspelde voorsprong van 13,9 (de bijna
+24% uit de theorie min het gemiddelde rendement van de index) en 1,7 bij Fama en
+Blume. Na 0,1% per transactie blijft er ruim acht procentpunt over.
 
-Gedeeld met Fama en Blume is alleen dat het kleinste filter het meest verdient.
-Bij hen is de voorsprong vanaf 1% weg, op de index wordt ze vanaf 3% grillig. Kosten
-beslissen, omdat kleine filters vaak handelen: 48 keer per jaar op de index, 84
-keer per aandeel bij Fama en Blume. Bij volle commissies, concludeerden zij,
-verdiende vooral de makelaar. Let in de figuur op de afstand tussen de ronde
-punten en de vierkanten bij de kleinste filters.
+Met Fama en Blume delen we alleen de uitkomst dat het kleinste filter het meest
+verdient. Bij hen is de voorsprong vanaf 1% weg, terwijl ze op de index vanaf 3%
+grillig wordt. De kosten geven de doorslag, omdat kleine filters vaak handelen, 48
+keer per jaar op de index en 84 keer per aandeel bij Fama en Blume. Bij volle
+commissies verdiende volgens hen vooral de makelaar.
+
+Let in de figuur op de afstand tussen de ronde punten en de vierkanten bij de
+kleinste filters.
 
 ```{code-cell} ipython3
 :label: cel-efficiente-markten-filters
@@ -959,15 +980,17 @@ plt.show()
 Filterregels in het venster van Fama en Blume. De vierkanten zijn hun
 gepubliceerde gemiddelden over dertig aandelen (tabel 3, kolom 1), de ronde punten
 dezelfde regel op de marktindex. Beide zijn het hoogst bij het kleinste filter.
-Boven 1% ligt de reeks van Fama en Blume ver onder buy-and-hold. Het verschil bij de kleinste filters is de extra autocorrelatie van
-de index door niet-synchrone handel. Die zit in de meting, niet in iets wat te
+Boven 1% ligt de reeks van Fama en Blume ver onder buy-and-hold. Het verschil bij de kleinste filters komt door de extra autocorrelatie
+van de index bij niet-synchrone handel, en die zit in de meting, niet in iets wat te
 kopen was.
 :::
 
 Fama en Blume schreven die extra autocorrelatie, naar Lawrence Fisher, toe aan
-niet-synchrone handel. Criteria 2 en 3 toetsen dat: we herhalen het 0,5%-filter in vier
-deelperiodes en op SPY, met de eerste autocorrelatie van de dagrendementen
-ernaast.
+niet-synchrone handel. Met criteria 2 en 3 toetsen we die verklaring, door het
+0,5%-filter te herhalen in vier deelperiodes en op SPY, met de eerste
+autocorrelatie van de dagrendementen ernaast. De cel haalt SPY uit dezelfde download van
+vijf ETF's als [](#00-00-setup) en gebruikt alleen die ene reeks, omdat de offline cache
+alleen die gezamenlijke download bevat en een losse SPY-aanvraag daarin ontbreekt.
 
 ```{code-cell} ipython3
 periods_daily = {
@@ -976,7 +999,8 @@ periods_daily = {
     "1963 t/m 1989": market.loc["1963":"1989"],
     "1990 t/m 2026": market.loc["1990":],
 }
-spy = hap_data.yahoo(["SPY", "TLT", "GLD", "QQQ", "IWM"], "1993-01-01")["SPY"]  # shared cached download; only SPY is used
+etfs = hap_data.yahoo(["SPY", "TLT", "GLD", "QQQ", "IWM"], "1993-01-01")  # same cached download as the setup
+spy = etfs["SPY"]
 spy_returns = (spy / spy.shift(1) - 1).dropna()
 periods_daily["French, zelfde dagen als SPY"] = market.loc[spy_returns.index[0]:spy_returns.index[-1]]
 periods_daily["SPY 1993 t/m 2026 (verhandelbaar)"] = spy_returns
@@ -995,11 +1019,11 @@ subperiods = pd.DataFrame(rows).T
 subperiods.round(4)
 ```
 
-**Geslaagd** op criteria 2 en 3. In de tabel stijgt de voorsprong van het filter
+**Geslaagd** op criteria 2 en 3, want in de tabel stijgt de voorsprong van het filter
 met de eerste autocorrelatie, en na 1990, bij een negatieve autocorrelatie, wordt
 ze een verlies. Op de verhandelbare SPY verliest het filter het meest, nog voor
-kosten. Ook een moderne index is dus iets trager dan een fonds dat werkelijk wordt
-verhandeld.
+kosten. Ook de slotkoersen van een moderne index lopen dus iets achter op die van
+een fonds dat werkelijk wordt verhandeld.
 
 ```{admonition} Replicatie
 :class: seealso
@@ -1007,17 +1031,17 @@ verhandeld.
 **Bron.** Michael C. Jensen, *The Performance of Mutual Funds in the Period
 1945–1964*, Journal of Finance 1968 {cite}`Jensen1968`.
 
-**Wat.** Tabellen 2 en 4: de alpha in
+**Wat.** Tabellen 2 en 4 geven de alpha in
 $R^{e}_{j,t+1} = \alpha_j + \beta_{j,M} R^{e}_{M,t+1} + u_{j,t+1}$ voor 115
-fondsen, op jaardata; Jensen schrijft $R_{jt} - R_{Ft}$ voor het excess
-rendement.
+fondsen, op jaardata. Jensen schrijft $R_{jt} - R_{Ft}$ voor het
+overrendement.
 
-**Data hier.** Maandrendementen van zeven grote actieve Amerikaanse
+**Data hier.** We gebruiken maandrendementen van zeven grote actieve Amerikaanse
 aandelenfondsen en het indexfonds VFINX als controle, 1982–2026, via
-`hap.data.yahoo`; markt en rente van French.
+`hap.data.yahoo`. Markt en rente komen van French.
 
 **Verschil met het origineel.** Jensen nam alle fondsen met tien jaar data. Wij
-nemen zeven fondsen die vandaag groot en bekend zijn: overlevers, met de bias uit
+nemen zeven fondsen die vandaag groot en bekend zijn, dus overlevenden, met de bias uit
 [](#02-05-crsp-tape) in het voordeel van de fondsen.
 
 **Verwachte afwijking.** Het indexfonds moet een alpha hebben van ongeveer min
@@ -1057,10 +1081,12 @@ jensen.loc["gemiddelde actieve fondsen"] = active.mean()
 jensen.round(3)
 ```
 
-De regressie is het CAPM: het verwachte excess rendement van een fonds is
-evenredig met zijn bèta op de markt. De alpha meet dan wat een beheerder daarboven
-verdient, een toets van de sterke vorm uit de tabel van Fama. Het indexfonds heeft een alpha van $-0{,}3\%$ per jaar met $t = -0{,}7$: kosten
-plus het kleine verschil tussen de S&P 500 en de totale markt. De tabel hieronder
+De regressie is het CAPM, waarin het verwachte overrendement van een fonds
+evenredig is met zijn bèta op de markt. De alpha meet dan wat een beheerder
+daarboven verdient, en is daarmee een toets van de sterke vorm uit de tabel van
+Fama. Het indexfonds heeft een alpha van $-0{,}3\%$ per jaar met $t = -0{,}7$, wat
+overeenkomt met de kosten plus het kleine verschil tussen de S&P 500 en de totale markt.
+De tabel hieronder
 zet de actieve fondsen naast de getallen van Jensen.
 
 ```{code-cell} ipython3
@@ -1073,57 +1099,60 @@ pd.DataFrame({"origineel": jensen_1968, "hier": here}).round(3)
 ```
 
 **Geslaagd.** Geen van de zeven actieve fondsen haalt een $t$ boven 2, en hun
-gemiddelde alpha, $-0{,}3\%$ per jaar, ligt binnen één procentpunt van nul. De hoogste alpha, 1,4% voor
+gemiddelde alpha, $-0{,}3\%$ per jaar, ligt binnen één procentpunt van nul. De hoogste
+alpha, 1,4% voor
 Fidelity Contrafund, is niet significant, en T. Rowe Price Growth Stock blijft
-significant achter. Onze bèta's liggen rond 1,01, die van Jensen rond 0,84,
+significant achter. Onze bèta's liggen rond 1,01 en die van Jensen rond 0,84,
 waarschijnlijk omdat zijn fondsen meer kas aanhielden.
 
 De standaardfout van een alpha is na 44 jaar maanddata nog ongeveer één
-procentpunt per jaar: voor Contrafund 1,4% gedeeld door $t = 1{,}3$. Een beheerder
-die werkelijk één procent per jaar toevoegt, is na een loopbaan niet van geluk te
-onderscheiden. Dat is de standaardfout van 2% uit [](#00-01-rendementen) bij de
-sterke vorm.
+procentpunt per jaar, want voor Contrafund is dat 1,4% gedeeld door $t = 1{,}3$.
+Een beheerder die werkelijk één procent per jaar toevoegt, is daardoor na een
+loopbaan niet van geluk te onderscheiden. Bij de sterke vorm stuiten we zo opnieuw
+op de standaardfout van 2% uit [](#00-01-rendementen), omdat vaardigheid van deze
+omvang binnen één loopbaan niet te meten is.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** Veel, met één kleine aanname: concurrentie om
-informatie maakt voorspelbare winst na kosten onmogelijk. Daaruit volgen de
-bijna-nulautocorrelaties van [](#01-02-bachelier). Het verklaart waarom
-filterregels falen zodra dividenden en kosten meetellen: op de verhandelbare SPY
-verloor het filter al voor kosten. En het verklaart waarom fondsen de markt niet
-verslaan, van Jensens $-1{,}1\%$ tot gemiddeld $-0{,}3\%$ voor onze zeven actieve
-overlevers. De praktische les, dat een goedkoop
+**Wat het model verklaart.** Het model verklaart veel met één kleine aanname,
+namelijk dat concurrentie om informatie voorspelbare winst na kosten onmogelijk
+maakt. Daaruit volgen de bijna-nulautocorrelaties van [](#01-02-bachelier). Het
+verklaart ook waarom filterregels falen zodra dividenden en kosten meetellen, want
+op de verhandelbare SPY verloor het filter al voor kosten. Ten slotte verklaart het
+waarom fondsen de markt niet verslaan, van Jensens $-1{,}1\%$ tot gemiddeld $-0{,}3\%$
+voor onze zeven actieve
+overlevenden. De praktische les, dat een goedkoop
 indexfonds moeilijk te verslaan is, werd een industrie.
 
-**Waar het breekt.** Op een eigenschap die we hebben bewezen: elk patroon van
-voorspelbaarheid heeft een SDF die het rationeel maakt
-({prf:ref}`thm-efficiente-markten-elke-sdf`). Efficiëntie zonder model verbiedt
-dus bijna niets. Het meetbare feit: op de index verdiende het 0,5%-filter tussen
-1957 en 1962 bijna 13 procentpunt per jaar meer dan buy-and-hold, en na
-clearingkosten nog ruim acht. Efficiëntie alleen zegt niet of dat een
-inefficiëntie is of een meetfout.
+**Waar het breekt.** Het model breekt op een eigenschap die we zelf hebben
+bewezen, namelijk dat elk patroon van voorspelbaarheid een SDF heeft die het
+rationeel maakt ({prf:ref}`thm-efficiente-markten-elke-sdf`). Efficiëntie zonder
+model verbiedt dus bijna niets. Het meetbare feit is dat het 0,5%-filter op de
+index tussen 1957 en 1962 bijna 13 procentpunt per jaar meer verdiende dan
+buy-and-hold, en na clearingkosten nog ruim acht. Zonder model van risico valt niet
+te zeggen of dat een inefficiëntie is of een meetfout. Bovendien vraagt een rationele
+schommeling in het verwachte rendement volgens de formule zeventig en volgens de
+simulatie tachtig jaar data voor een halve kans op detectie.
 
-Bovendien vraagt een rationele schommeling in het verwachte rendement zeventig
-(formule) tot tachtig jaar (simulatie) data voor een halve kans op detectie.
-
-**Risico of vergissing?** De Chicago-lezing van het filterfeit: het is een
+**Risico of vergissing?** Volgens de Chicago-lezing is het filterfeit een
 meetfout door niet-synchrone handel, die verdwijnt bij een verhandelbaar
-instrument. Voor zover rendementen wel voorspelbaar zijn, is dat een
+instrument. Voor zover rendementen wel voorspelbaar zijn, gaat het om een
 wisselende prijs van risico, zoals na slecht nieuws in het toy-voorbeeld.
 
-De Yale-lezing: niet alleen de gemeten slotkoers, ook de werkelijke prijs van
-weinig verhandelde aandelen past zich traag aan. Dan was er echte winst te halen,
-en waren kosten de *limits of arbitrage* (grenzen aan wat arbitrageurs kunnen
+Volgens de Yale-lezing past niet alleen de gemeten slotkoers zich traag aan, maar
+ook de werkelijke prijs van weinig verhandelde aandelen. Dan was er echte winst te
+halen, en waren de kosten de *limits of arbitrage* (grenzen aan wat arbitrageurs kunnen
 wegwerken, omdat handelen geld en risico kost) die de vergissing tot na 1990 lieten
-bestaan. Op de index is het filterfeit dus een meetfout. Of er in de jaren zestig
-daarnaast iets verhandelbaars was, blijft open. Scheiden kan met data over wie wanneer tegen welke prijs kon handelen, en
-met een onafhankelijk gemeten $m_{t+1}$. Het eerste ontbreekt voor de jaren
+bestaan. Op de index is het filterfeit dus een meetfout, maar of er in de jaren
+zestig daarnaast iets verhandelbaars was, blijft open. De twee lezingen zijn te
+scheiden met data over wie wanneer tegen welke prijs kon handelen, en met een
+onafhankelijk gemeten $m_{t+1}$. Het eerste ontbreekt voor de jaren
 zestig, het tweede nog altijd.
 
-**Wat er daarna kwam.** Na de koersgeschiedenis kwam het publieke nieuws: hoe
-snel verwerkt een prijs een aandelensplitsing of een winstcijfer? Daarvoor
-ontwikkelden Fama, Fisher, Jensen en Roll in 1969 de event study
-{cite}`FamaFisherJensenRoll1969`: zie [](#02-07-event-studies).
+**Wat er daarna kwam.** Na de koersgeschiedenis kwam het publieke nieuws aan de
+beurt, met de vraag hoe snel een prijs een aandelensplitsing of een winstcijfer
+verwerkt. Daarvoor ontwikkelden Fama, Fisher, Jensen en Roll in 1969 de event study
+{cite}`FamaFisherJensenRoll1969`, die we in [](#02-07-event-studies) bespreken.
 
 ## Oefeningen
 
@@ -1154,13 +1183,13 @@ pd.Series(toy_economy((1 - k, 1 + k))).round(4)
 ```
 
 Na goed nieuws is het verwachte rendement 6,45%, op $t = 0$ 8,51%. De SDF heeft
-dan een standaarddeviatie van 36% per periode: $\SD(m)/\E(m) = k$, de verhouding
+dan een standaarddeviatie van 36% per periode, want $\SD(m)/\E(m) = k$, de verhouding
 uit {prf:ref}`thm-efficiente-markten-elke-sdf`.
 
-**(2)** Bij $k \ge 1$ is $m \le 0$ als het meezit. Een claim die alleen dan
-uitbetaalt, kost dan niets, en dat is arbitrage. Voor $k \uparrow 1$ gaat
+**(2)** Bij $k \ge 1$ is $m \le 0$ als het meezit, zodat een claim die alleen dan
+uitbetaalt niets kost, en dat is arbitrage. Voor $k \uparrow 1$ gaat
 $p_1(\text{slecht})$ naar 60 en het verwachte rendement na slecht nieuws naar
-$80/60 - 1 = 33\%$. Wat dit leert: de joint hypothesis staat elk patroon toe,
+$80/60 - 1 = 33\%$. De joint hypothesis staat dus elk patroon toe,
 maar alleen zonder arbitrage, en hoe sterker het patroon, hoe volatieler en minder
 geloofwaardig de SDF die het moet verklaren.
 :::
@@ -1187,8 +1216,7 @@ $S_T - \bar S = \phi^{T-t}(S_t - \bar S) + \sum_{j=1}^{T-t}\phi^{T-t-j}\nu_{t+j}
 dus $F_t = \bar S + \phi^{T-t}(S_t - \bar S)$ en
 $F_{t+1} - F_t = \phi^{T-t-1}\left[(S_{t+1} - \bar S) - \phi(S_t - \bar S)\right]
 = \phi^{T-t-1}\nu_{t+1}$. Omdat $\nu_{t+1}$ onafhankelijk is van
-$\mathcal{F}_t$, is $\Var(F_{t+1} - F_t) = \phi^{2(T-t-1)}\sigma_S^2$. Het
-gemiddelde $\bar S$ valt weg: het zit al in de prijs.
+$\mathcal{F}_t$, is $\Var(F_{t+1} - F_t) = \phi^{2(T-t-1)}\sigma_S^2$. Het gemiddelde $\bar S$ valt weg, omdat het al in de prijs zit.
 
 **(2)** De verhouding is $\phi^{-22} = 2^{22}$. De cel vergelijkt dat met de
 paden uit de theoriesectie.
@@ -1202,8 +1230,7 @@ pd.Series({
 ```
 
 De theorie geeft ongeveer 4,2 miljoen, en de simulatie wijkt enkele promille af.
-Wat dit
-leert: de stelling van Samuelson zegt niet alleen dat termijnprijzen
+Wat dit leert: de stelling van Samuelson zegt niet alleen dat termijnprijzen
 onvoorspelbaar zijn, maar voorspelt ook toetsbaar hoe hun onzekerheid in de tijd
 verloopt.
 :::
@@ -1224,7 +1251,7 @@ verloopt.
 :::{solution} ex-efficiente-markten-3
 :class: dropdown
 
-Kosten zijn lineair in het aantal transacties, dus
+Omdat de kosten lineair zijn in het aantal transacties, geldt
 $c^{*} = (\text{voor kosten} - \text{buy-and-hold}) / \text{transacties per jaar}$.
 
 ```{code-cell} ipython3
@@ -1232,9 +1259,9 @@ def long_only_performance(returns, rf, x, periods=252):
     """Long when the filter says long, otherwise earn the risk-free rate."""
     held = pd.Series(filter_positions((1 + returns).cumprod(), x), index=returns.index)
     held = held.shift(1).fillna(0.0)
-    first = held.ne(0).idxmax()
-    long = held.loc[first:].eq(1).astype(float)
-    r, f = returns.loc[first:], rf.reindex(returns.index).loc[first:]
+    first_signal = held.ne(0).idxmax()                 # first day with a position
+    long = held.loc[first_signal:].eq(1).astype(float)
+    r, f = returns.loc[first_signal:], rf.reindex(returns.index).loc[first_signal:]
     switches = long.diff().fillna(0.0).ne(0).sum() / (len(r) / periods)
     return periods * np.log1p(long * r + (1 - long) * f).mean(), switches
 
@@ -1255,16 +1282,16 @@ for name in ["1957-12 t/m 1962-09 (FB)", "1963 t/m 1989", "1990 t/m 2026"]:
 pd.DataFrame(rows).T.round(4)
 ```
 
-Tot 1990 ligt de break-even tussen 0,27% en 0,41% per transactie: boven de 0,1%
-van een handelaar op de beursvloer, onder de commissie van een gewone belegger.
+Tot 1990 ligt de break-even tussen 0,27% en 0,41% per transactie, dus boven de 0,1%
+van een handelaar op de beursvloer en onder de commissie van een gewone belegger.
 Na 1990 is $c^{*}$ negatief, want het filter verliest al voor kosten. Alleen lang
-gaan geeft een lagere $c^{*}$, 0,16% en 0,27% voor 1990, en na 1990 blijft ook die
+gaan geeft een lagere $c^{*}$, 0,16% en 0,27% in de twee perioden tot 1990, en na 1990 blijft ook die
 variant met 6,8% onder de 10,4% van buy-and-hold.
 
 **(3)** Toen de kosten hoog waren, bestond de trend alleen in een index die niet te
-kopen was. Toen die index te koop was, bestond de trend niet meer. Wat dit
-leert: "na alle kosten" in de definitie van Jensen is geen voetnoot, maar de helft
-van het argument.
+kopen was, en toen die index te koop was, bestond de trend niet meer. Daarom is
+"na alle kosten" in de definitie van Jensen geen voetnoot, maar de helft van het
+argument.
 :::
 
 <!-- Referenties verschijnen automatisch onderaan de pagina. -->
