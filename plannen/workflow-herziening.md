@@ -554,3 +554,59 @@ Rating-bestanden van de lus (`notes/rating-<slug>.md`, Deel I–IIIa) zijn op
 2026-09-28 verwijderd: ze logden F5a → F5c en werden voor het eindcijfer
 aangezien. Het cijfer van record staat in `notes/eind-<slug>.md` en in de
 commitregel; §3.4 voegt geen rating-bestand meer toe.
+
+## 11. Ronde 9+ (besluit eigenaar, 2026-09-28)
+
+Aanleiding: vijf onafhankelijke onderzoeken (`notes/onderzoek-A..E-*.md`) vonden
+in de herziene colleges staccato zonder verband, sjabloonzinnen uit STYLE,
+de dubbele punt als lijm, telegramzinnen, regeltaal in de tekst en nieuwe
+calques. Oorzaak: de regels kenden alleen bovengrenzen, de voorbeeldzinnen
+werden als verplichte formulering gelezen, en na F1 las niemand het college nog
+als doorlopende tekst. De regels zijn aangepast (STYLE §11.1, §11.4, §11.12,
+§3; rubriek: taal 20%, helderheid 25%, taal onder 8 blokkeert; prose_stats met
+ondergrenzen en nieuwe tellers; woordgrens 6.000).
+
+Doel per college: eindcijfer ≥ 9,0 op alle zeven criteria samen, geen
+deelcijfer onder 8,5, prose_stats PASS onder de nieuwe drempels. De ronde is
+dus geen taalronde alleen: T repareert eerst de taal, omdat die overal
+tekortschiet; daarna beoordeelt F6 het hele college op de rubriek, en F6b lost
+alles op wat een 9 in de weg staat (helderheid, opbouw, toy, code en figuren,
+replicatie, oefeningen), met de woordgrens van 6.000 als ruimte voor betere
+uitleg. F6 neemt ook de niet-taalpunten over het college uit de vijf
+onderzoeken mee (`grep -n "<slug>" notes/onderzoek-*.md`) en zet ze, voor
+zover ze kloppen, onder "Voor een 9", zodat F6b één lijst heeft. Volgorde: L0–L17 in nummervolgorde, vier
+colleges tegelijk, één commit per college, push per deel.
+
+### 11.1 Fasen (alle agents vers, budgetten uit §10)
+
+| fase | rol, model | budget | leest | schrijft |
+|---|---|---|---|---|
+| T | taalredacteur, Opus | 35 | STYLE §3, §11; kaart; het college één keer als lezer | het college (per sectie herschreven); `notes/taal-<slug>.md` |
+| C | orchestrator, geen agent | – | `$TEMP/check11.sh <slug>` | – |
+| F6 | eindbeoordelaar, Opus | 22 | kaart, rubriek, college, onderzoekspunten over dit college | `notes/eind-<slug>.md` (nieuwe versie, kop "Ronde 9+"), alle zeven criteria |
+| F6b | schrijver, Opus | 30 | eind-bestand, STYLE §11, college | college; rapport §R9-1 (per punt gedaan of afgewezen met reden) |
+| F6c | controle, Sonnet | 12 | eind-bestand, `git diff` | "Controle 1" in eind-bestand; cijfer van record |
+
+Regels voor T: leest het college in één keer, noteert per sectie wat stroef is,
+en herschrijft daarna per sectie met één Write of één Python-script per sectie.
+Verandert geen getal, label, kopje, code of cel; wel elke zin die de lezer
+ophoudt. Sluit af met `prose_stats --check` tot PASS en `nb_numbers`. Het
+taal-bestand: statusregel `STATUS <slug> T words=<n> prose=PASS`, dan per
+sectie in één regel wat er is veranderd, hoogstens 20 regels.
+
+C na T en na F6b: prose_stats PASS, nb_numbers zonder nieuwe meldingen,
+uitvoer en code gelijk aan HEAD, geen verdwenen labels, zelfde aantal secties.
+Faalt C, dan gaat de fout terug naar dezelfde fase in een verse agent met
+alleen de foutmelding.
+
+F6c onder 9,0: één extra F6b/F6c. Daarna commit als "tussenstand" met het
+behaalde cijfer en melding aan de eigenaar; de ronde gaat door met het
+volgende college.
+
+### 11.2 Commit
+
+`L<nr> <slug>: ronde 9+ (eindcijfer <x,x>)`, met de prose_stats-regel en
+`Vorig: <F6c oud>. Ronde 9+: T, F6 <x> -> F6c <y>.` Bestanden: het college
+(.md en .ipynb), `notes/taal-<slug>.md`, `notes/eind-<slug>.md`,
+`notes/rapport-<slug>.md`. Onderzoeksrapporten A–E worden één keer gecommit
+bij de start van de ronde.

@@ -1,13 +1,14 @@
 # Rolkaart voor F23 (feiten + koude lezer) en de eindbeoordelaar
 
 Samenvatting van STYLE.md, plannen/rubriek-didactiek.md, plannen/workflow-herziening.md
-en de notatie van lectures/00_00_setup.md. Bij twijfel geldt STYLE. Versie 2026-09-25.
+en de notatie van lectures/00_00_setup.md. Bij twijfel geldt STYLE. Versie 2026-09-28.
 
 ## 1. Doel
 
-Elke lecture haalt eindcijfer ≥ 8,5 met geen deelcijfer onder 8 (rubriek: helderheid 30%,
-opbouw 20%, taal 15%, toy 10%, code en figuren 10%, replicatie 10%, oefeningen 5%).
-Lengte ≤ 5.500 woorden proza (`uv run python tools/prose_stats.py --check lectures/<slug>.md`
+Elk college haalt eindcijfer ≥ 9,0 met geen deelcijfer onder 8; taal onder 8 blokkeert
+het eindcijfer (rubriek: helderheid 25%, opbouw 20%, taal 20%, toy 10%, code en figuren
+10%, replicatie 10%, oefeningen 5%). Lengte ≤ 6.000 woorden proza, en elk extra woord
+dient de uitleg of het verband (`uv run python tools/prose_stats.py --check lectures/<slug>.md`
 moet PASS geven). Bij twijfel tussen twee cijfers geldt het lagere.
 
 ## 2. Statusregel (eerste regel van elk bestand dat je schrijft, en van je eindbericht)
@@ -32,13 +33,15 @@ Fase F23 gebruikt `STATUS <slug> F23 open=<onjuist+onzeker> punten=15`.
 ## 4. Wat niet meetelt (geen aftrek, geen aanmerking)
 
 1. "Samengevat" aan het eind van Theorie; geen tweede samenvatting aan het eind.
-2. De vaste namen van de drie motieven (wel aftrek als de zin niet zegt wat het motief
-   hier betekent).
+2. De vaste namen van de drie motieven tellen niet. Wel een taalpunt bij meer dan twee
+   keer bij naam per college of een motief als handelend onderwerp, en wel aftrek als de
+   zin niet zegt wat het motief hier betekent.
 3. Engelse code, variabelen, functies en docstrings. Tabellen en figuurteksten zijn
    Nederlands.
 4. De acht vaste kopjes en de replicatie-admonition.
 5. Het weglaten van een vooruitverwijzing naar een latere lecture.
 6. `# TODO: naar hap.stats` bij een lokale implementatie (STYLE §5 schrijft dat voor).
+7. Een ontbrekende vaste wending ("In woorden:", "Wat dit leert:") als de inhoud er staat.
 
 ## 5. Helderheidsregels H1–H12 (controlevraag per regel)
 
@@ -51,29 +54,47 @@ Fase F23 gebruikt `STATUS <slug> F23 open=<onjuist+onzeker> punten=15`.
   oplevert. Controle: is elke stelling in één zin samen te vatten?
 - H4 Het getal staat naast de formule (bias, standaardfout, premie, $R^2$). Controle:
   welke formule pakt onduidelijk groot of klein uit?
-- H5 Aannames worden genoemd waar ze werken. Controle: bij welke stap is de aanname niet
-  te noemen?
-- H6 Elk vergelijkend resultaat in beide richtingen, met economische reden. Controle:
+- H5 Aannames staan bij de stap die ze gebruikt, bij naam of nummer. Controle: bij welke
+  stap is de aanname niet te noemen?
+- H6 Een vergelijkend resultaat krijgt een richting en een economische reden. Controle:
   per parameter in "Samengevat": wat als hij stijgt, en waarom?
 - H7 Eén naam per begrip per lecture; alias één keer tussen haakjes. Controle: welke
   woorden betekenen hetzelfde?
 - H8 "Dat", "dit", "die vorm" verwijzen naar de vorige zin of worden het ding zelf.
   Controle: bij elke "Dat is": wat is "dat"?
-- H9 De conclusie staat vooraan: eerste zin na tabel of figuur zegt wat erin staat;
-  eerste zin van elke `###` is de vraag of de bewering. Controle: per `###` en per tabel.
+- H9 De conclusie staat vooraan. De eerste zin na een tabel of figuur zegt wat erin staat,
+  de eerste zin van elke `###` geeft de vraag of de bewering, in een gewone zin zonder
+  vast etiket. Controle: per `###` en per tabel.
 - H10 Abstracties krijgen een exemplaar in dezelfde zin. Controle: abstracte termen
   zonder voorbeeld.
 - H11 Toy-getallen keren terug in Theorie (illustratie) en Simulatie (kalibratie).
   Controle: welke, en waar?
-- H12 De intuïtie voorspelt (teken, richting) en de theorie zegt waar dat wordt ingelost.
-  Controle: wat voorspelde de intuïtie, waar ingelost?
+- H12 De intuïtie voorspelt (teken, richting) en de theorie zegt bij het resultaat of dat
+  uitkomt, in een gewone zin, zonder genummerde verwachtingen en zonder "zoals de
+  intuïtie voorspelde" als vaste formule. Controle: wat voorspelde de intuïtie, waar
+  ingelost?
 - Navertel-toets: na elke `##` (en in Theorie elke `###`) in twee of drie zinnen wat de
   sectie beweert; afwijking van de bedoeling is een helderheidsgebrek.
+- Hardop-toets: lees drie willekeurige alinea's hardop. Controle: welke zinnen zou je zo
+  niet tegen een collega zeggen? Citeer ze letterlijk; ze tellen bij taal.
 
-Taal (STYLE §11.1–11.5): zinnen gemiddeld ≤ 17 woorden, geen zin > 40, alinea ≤ 45
-woorden gemiddeld, geen gedachtestreepjes, weinig puntkomma's, geen "u"/"je", geen
-stopwoorden (precies, eigenlijk, natuurlijk, simpelweg), geen calques uit het Engels,
-Engelse citaten geparafraseerd (≤ 5), hoogstens drie getallen per alinea.
+Taal (STYLE §3, §11.1–11.5 en §11.12): zinnen gemiddeld 15 tot 20 woorden met
+afwisseling, geen zin > 40; verband met voegwoorden, niet door knippen; alinea gemiddeld
+≤ 60 woorden, geen alinea van één zin behalve als overgang; geen telegramzinnen (ook de
+aankondiging vóór een codecel heeft een persoonsvorm); dubbele punt alleen vóór een
+opsomming, vergelijking of letterlijke verklaring (≤ 8 per 1000 woorden); geen
+gedachtestreepjes als bindmiddel, weinig puntkomma's; geen "u"/"je"; stopwoorden
+(ruwweg, inderdaad, in feite, letterlijk) samen ≤ 6, "precies" mag; geen calques (§11.4),
+vaste termen volgens §3; Engelse citaten geparafraseerd (≤ 5); hoogstens drie getallen per
+alinea. Uit §11.12: vaste wendingen en motiefnamen elk ≤ 2 per college, een motief nooit
+als handelend onderwerp, geen regeltaal, ≤ 4 "Wie …"-zinnen, "zij/haar/diens" alleen
+voor personen, elk verwijswoord eenduidig, een punt opgelost door de bestaande zin te
+herschrijven en niet door een zin erbij.
+
+- T (taalredacteur, na de inhoudelijke fasen): leest het college één keer als lezer, van
+  boven naar beneden, en herschrijft daarna per `##`-sectie op natuurlijkheid volgens
+  STYLE §11.1, §11.4 en §11.12. Verandert geen getal, label, code of cel en voegt geen
+  inhoud toe.
 
 ## 6. Feitenregel en het bestand `notes/feiten-<slug>.md`
 
