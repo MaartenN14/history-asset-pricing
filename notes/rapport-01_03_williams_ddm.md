@@ -205,3 +205,23 @@ dat het model pas na het CAPM zo getoetst werd, in lijn met de setup. 10: opgelo
 fout (1); L4 "vooral doordat $r$ beweegt" is niet van mij.
 
 **Afgewezen.** Geen. Stambaugh-getal niet toegevoegd (geen cel; buiten de top drie).
+
+## R9-1 (F6b, ronde 9+)
+
+Alle punten uit notes/eind-01_03_williams_ddm.md opgelost door bestaande zinnen te herschrijven; geen code gewijzigd.
+
+- **Codecel-aankondigingen (taal, W:150).** Alle acht "De codecel ..." afgewisseld of geschrapt (150, 440, 512 geschrapt, 673, 896, 1093, 1150, 1199).
+- **"tijdvak" (61).** Wordt "begint de moderne waarderingstheorie bij hem".
+- **Passief (49–50).** "moet op een hoge prijs-dividend-ratio snelle dividendgroei volgen".
+- **Hardop-toets 81–83, 258–260, 1013–1014.** Herschreven volgens voorstel; "Theorie of feit?" staat nu vet vooraan, parallel aan "Risico of vergissing?".
+- **"exact" (145).** "Die deling gaat precies op, want ...".
+- **Vaste wendingen.** Tweede "Waarom zou dit waar zijn?" (559) en tweede "In woorden:" (553) vervangen door een gewone opening.
+- **Verwachte afwijking (789, helderheid + replicatie).** Opent nu met wat Williams voorspelt (positieve significante dividendcoëfficiënt, grote $R^2$, rendementscoëfficiënt nul) tegenover wat we verwachten, in de termen van de vergelijkingstabel.
+- **"Het enige symbool" (1001).** "De discontovoet $r$, het enige getal dat Williams als gegeven nam, ...".
+- **8,4% (225).** Herkomst erbij: 6,8% als loggemiddelde uit Shillers data, 8,4% als gewoon gemiddelde, een halve variantie hoger, beide in de simulatie berekend.
+- **Stambaugh (947–954).** Grootte toegevoegd via de formule $(1+3\rho)/T = 3{,}67/145 \approx 0{,}025$ uit Stambaugh (1999); omdat schokken bijna één op één samen bewegen, verschuift de jaarhelling ongeveer evenveel, van dezelfde orde als de helling zelf.
+- **Opbouw Simulatie (615).** Openingszin geeft nu de conclusie vooraf (H9).
+
+**Afgewezen.** Geen.
+
+Woorden: 5.841 (was 5.774). prose_stats PASS; nb_numbers: enige nieuwe melding 0,025, een in de tekst uitgeschreven formule.

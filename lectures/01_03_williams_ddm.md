@@ -20,23 +20,23 @@ kernelspec:
 
 **Jaartal.** 1938–1959.
 
-**Wat we al weten.** Uit [](#01-02-bachelier) komt een beschrijving van koersen:
-prijsveranderingen zijn vrijwel onvoorspelbaar, en hun spreiding groeit met
-$\sqrt{t}$. Cowles liet zien dat beleggingsadviseurs de markt niet verslaan.
-Kendall vond dat de samenhang tussen opeenvolgende koersveranderingen te zwak is
-om mee te voorspellen. Dat zijn uitspraken over *veranderingen*: er was een
-theorie van de ruis, maar geen theorie van het koersniveau.
+**Wat we al weten.** Uit [](#01-02-bachelier) komt een beschrijving van koersen
+waarin prijsveranderingen vrijwel onvoorspelbaar zijn en hun spreiding met
+$\sqrt{t}$ groeit. Cowles liet zien dat beleggingsadviseurs de markt niet
+verslaan, en Kendall vond dat de samenhang tussen opeenvolgende koersveranderingen
+te zwak is om mee te voorspellen. Al die uitspraken gaan over *veranderingen*,
+zodat er wel een theorie van de ruis bestond, maar geen theorie van het koersniveau.
 
-**Welke vraag staat open.** Wat is een aandeel waard: welke grootheid maakt van
+**Welke vraag staat open.** Wat is een aandeel waard? Welke grootheid maakt van
 een koers meer dan een getal waarover mensen het toevallig eens zijn?
 ```
 
 ## Overzicht
 
-Wat is een aandeel waard? Williams antwoordde in 1938: de contante waarde van
+Wat is een aandeel waard? Volgens Williams, in 1938, is dat de contante waarde van
 alle dividenden die het ooit uitkeert, verdisconteerd tegen een vaste
-discontovoet. De data verwerpen dat antwoord in die vorm: niet de verwachte
-dividenden maar de discontovoet beweegt. In deze lecture:
+discontovoet. In die vorm houdt het antwoord geen stand, want in de data beweegt
+niet de verwachting van de dividenden maar de discontovoet. In dit college:
 
 - leiden we uit de definitie van rendement een *boekhoudkundige identiteit* af.
   Die kan niet fout zijn, net zo min als "bezit is schuld plus eigen vermogen";
@@ -47,59 +47,59 @@ dividenden maar de discontovoet beweegt. In deze lecture:
 - simuleren we hoe breed een waardering uitvalt als $g$ uit historische data
   wordt geschat;
 - toetsen we op Shillers data waar het model toetsbaar is: bij constante $r$ moet
-  een hoge prijs-dividend-ratio door snelle dividendgroei gevolgd worden.
+  op een hoge prijs-dividend-ratio snelle dividendgroei volgen.
 
 In 1938 publiceerde John Burr Williams *The Theory of Investment Value*
 {cite}`Williams1938`, een proefschrift dat hij bij Schumpeter in Harvard
-verdedigde. De kern is één zin: een investering is de contante waarde waard van
-de uitkeringen die zij ooit zal doen. De gangbare praktijk was toen om de winst
-met een gewoontegetal te vermenigvuldigen. Williams verving dat getal door een
-som, en wie het oneens was, moest voortaan zeggen *waarover*. Gordon en Shapiro
-brachten het idee in de jaren vijftig met een gesloten formule de praktijk in
-{cite}`GordonShapiro1956,Gordon1959`. Met Williams volgt een prijs voor het eerst
-uit een model en niet uit een gewoonte. Daarom begint het tijdvak hier.
+verdedigde. De kern past in één zin, namelijk dat een investering de contante
+waarde waard is van de uitkeringen die ze ooit zal doen. In de praktijk
+vermenigvuldigde men de winst toen met een getal dat uit gewoonte was ontstaan.
+Williams verving dat getal door een som, zodat wie het oneens was voortaan moest
+zeggen *waarover*. Gordon en Shapiro brachten het idee in de jaren vijftig met een
+gesloten formule de praktijk in {cite}`GordonShapiro1956,Gordon1959`. Omdat een
+prijs met Williams voor het eerst uit een model volgt en niet uit een gewoonte,
+begint de moderne waarderingstheorie bij hem.
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-Een aandeel is een stuk papier. Het geeft geen nut, het gaat niet stuk, en
-niemand kan erin wonen. Het enige wat het ooit doet, is af en toe geld uitkeren.
-Alles wat een aandeel waard is, moet dus uit die uitkeringen komen, of uit de
-prijs waarvoor de eigenaar het later verkoopt.
+Een aandeel is een stuk papier dat geen nut geeft, niet stukgaat en waar niemand
+in kan wonen. Het keert alleen af en toe geld uit. Alles wat een aandeel waard is,
+moet dus uit die uitkeringen komen, of uit de prijs waarvoor de eigenaar het later
+verkoopt.
 
-Maar de koper van later staat voor dezelfde vraag. Ook hij kan alleen rekenen op
-uitkeringen en op een nóg latere verkoopprijs. Wie die redenering doorzet, ziet
-de verkoopprijs steeds verder de toekomst in schuiven, tot hij verdwijnt. Wat
-overblijft, is de stroom dividenden.
+Maar de koper van later staat voor dezelfde vraag, want ook hij kan alleen rekenen
+op uitkeringen en op een nóg latere verkoopprijs. Als we die redenering doortrekken,
+schuift de verkoopprijs steeds verder de toekomst in, tot hij verdwijnt en alleen
+de stroom dividenden overblijft.
 
-De kracht van die gedachte zit in wat zij *uitsluit*. Een aandeel ontleent geen
-waarde aan het feit dat anderen het willen hebben. Een koers is niet hoog omdat
+De kracht van die gedachte zit in wat ze *uitsluit*. Een aandeel ontleent geen
+waarde aan het feit dat anderen het willen hebben, en een koers is niet hoog omdat
 hij de laatste jaren hoog was. Williams gebruikte zelf het beeld van een
-boomgaard, die de appels waard is die eraan komen. Wat een ander voor een
-boomgaard betaalde, doet er in die redenering niet toe.
+boomgaard, die de appels waard is die eraan komen, zodat wat een ander ooit voor
+die boomgaard betaalde, er in zijn redenering niet toe doet.
 
 Om er een getal van te maken, zijn twee dingen nodig: een verwachting over de
-dividenden, en een tarief waartegen een euro van volgend jaar wordt omgerekend
-naar een euro van vandaag. Dat tarief heet de *discontovoet*. Williams werkte de
-dividenden in honderden bladzijden uit, met tabellen die hij met de hand
-uitrekende. De discontovoet nam hij in zijn waarderingen als gegeven. Een theorie
+dividenden en een tarief dat een euro van volgend jaar omrekent naar een euro van
+vandaag. Dat tarief heet de *discontovoet*. Williams werkte de dividenden in
+honderden bladzijden uit, met tabellen die hij met de hand uitrekende, maar de
+discontovoet nam hij in zijn waarderingen als gegeven. Een theorie
 die zegt welk tarief bij welk risico hoort, kwam pas een kwarteeuw later, met het
 CAPM.
 
-Zonder zo'n theorie zegt de som op zichzelf weinig. Met dividendverwachtingen en
-discontovoet volgt de prijs, maar met prijs en dividendverwachtingen volgt net zo
-goed de discontovoet. De gedachte doet pas een voorspelling zodra de discontovoet
-vastligt. Een aandeel kan dan alleen duur zijn ten opzichte van zijn dividend
+Zonder zo'n theorie zegt de som op zichzelf weinig, want uit dividendverwachtingen
+en discontovoet volgt de prijs, maar uit prijs en dividendverwachtingen volgt net
+zo goed de discontovoet. Pas zodra de discontovoet vastligt, doet de gedachte een
+voorspelling. Een aandeel kan dan alleen duur zijn ten opzichte van zijn dividend
 omdat de markt snelle dividendgroei verwacht.
 
-We verwachten dus: een hoge
-prijs-dividend-ratio (de prijs gedeeld door het dividend) wordt gevolgd door snel
-stijgende dividenden. De theorie leidt die voorspelling af, en de replicatie
-toetst haar.
+We verwachten dus dat op een hoge prijs-dividend-ratio (de prijs gedeeld door het
+dividend) snel stijgende dividenden volgen. De theorie leidt die voorspelling af,
+en de replicatie toetst ze op Shillers data.
 
 ## Toy-voorbeeld: drie jaar dividenden, met de hand verdisconteerd
 
-Het kleinste voorbeeld van Williams' som is één aandeel met twee groeifasen. Eerst
-de imports-cel, de enige van deze lecture.
+Het kleinste voorbeeld van Williams' som is één aandeel met twee groeifasen. Voordat
+we gaan rekenen, laden we de pakketten die het hele college gebruikt.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -123,8 +123,8 @@ uitgekeerd. De discontovoet is $r = 10\%$.
 
 **Het recept.** De prijs is de som van de verdisconteerde dividenden. Voor het
 deel dat voor altijd met $g$ groeit, gebruiken we één formule die de theorie
-straks afleidt: een stroom die volgend jaar $d$ uitkeert en daarna met $g$
-groeit, is vandaag $d/(r-g)$ waard.
+straks afleidt, namelijk dat een stroom die volgend jaar $d$ uitkeert en daarna
+met $g$ groeit, vandaag $d/(r-g)$ waard is.
 
 **Stap 1.** De eerste drie dividenden zijn $d_1 = 1{,}10$, $d_2 = 1{,}21$ en
 $d_3 = 1{,}331$.
@@ -138,16 +138,17 @@ drie dividenden $3{,}00$ waard.
 $d_4 = 1{,}331 \times 1{,}05 = 1{,}39755$.
 
 **Stap 4.** Volgens het recept is die stroom op $t=3$ waard
-$d_4/(r-g) = 1{,}39755/0{,}05 = 27{,}951$. Dat is de *eindwaarde*: de verwachte
-verkoopprijs van het aandeel op $t=3$.
+$d_4/(r-g) = 1{,}39755/0{,}05 = 27{,}951$. Die waarde heet de *eindwaarde*, de
+verwachte verkoopprijs van het aandeel op $t=3$.
 
 **Stap 5.** Terugrekenen naar vandaag met $1{,}10^3 = 1{,}331$ geeft
-$27{,}951/1{,}331 = 21{,}00$. Dat is exact, want $1{,}331 \times 21 = 27{,}951$.
+$27{,}951/1{,}331 = 21{,}00$. Die deling gaat precies op, want $1{,}331 \times 21 = 27{,}951$.
 
 **Stap 6.** De prijs is $p_0 = 3{,}00 + 21{,}00 = 24{,}00$, en de
 prijs-dividend-ratio is $\mathrm{PD}_0 = 24{,}00/1{,}00 = 24$.
 
-De codecel rekent dezelfde stappen na en zet de handberekening ernaast.
+In Python lopen we dezelfde zes stappen door en zetten we de handberekening
+ernaast.
 
 ```{code-cell} ipython3
 d0, r, g_early, g_late, n = 1.00, 0.10, 0.10, 0.05, 3
@@ -182,57 +183,56 @@ code = pd.Series({
 pd.DataFrame({"met de hand": hand, "code": code}).round(5)
 ```
 
-De twee kolommen zijn gelijk, dus de code doet wat de handberekening doet. Van
-de prijs van $24{,}00$ komt $21{,}00$ uit alles na jaar 3: 87,5%.
+Omdat de twee kolommen gelijk zijn, doet de code wat de handberekening doet. Van
+de prijs van $24{,}00$ komt $21{,}00$, ofwel 87,5%, uit alles na jaar 3.
 
-Wie het toy narekent, weet nu dat de prijs vooral uit de eindwaarde komt, en dat
-die eindwaarde door een klein getal wordt gedeeld: $r - g = 5$ procentpunt. Een
-waardering is dus vooral een uitspraak over een verre toekomst waarover niemand
-iets weet.
+De prijs komt dus vooral uit de eindwaarde, en die eindwaarde ontstaat door te
+delen door een klein getal, $r - g = 5$ procentpunt. Een waardering is daardoor
+vooral een uitspraak over een verre toekomst waarover niemand iets weet.
 
 ## Theorie
 
-We leiden vier dingen af. Eerst de boekhoudkundige identiteit, die uit de
-definitie van rendement volgt, en daaruit met één aanname, een constante
-discontovoet, het model van Williams. De transversaliteitsvoorwaarde maakt er een
-oneindige som van, de kern van deze lecture. Daarna het Gordon-model, de gesloten vorm die
-het toy-voorbeeld als recept gebruikte, en de PVGO, die zegt wanneer groei waarde
-toevoegt. Ten slotte de prijs-dividend-ratio, de plek waar het model toetsbaar
-wordt.
+De afleiding begint bij de boekhoudkundige identiteit, die uit de definitie van
+rendement volgt, en maakt daar met één aanname, een constante discontovoet, het
+model van Williams van. De transversaliteitsvoorwaarde maakt van dat model een
+oneindige som, en die som is de kern van dit college. Daarna volgen het
+Gordon-model, de gesloten vorm die het toy-voorbeeld als recept gebruikte, en de
+PVGO, die zegt wanneer groei waarde toevoegt. Ten slotte laten we zien dat het
+model pas in de prijs-dividend-ratio toetsbaar wordt.
 
 ### Opzet en aannames
 
-Deze subsectie legt vast wat een rendement is en welke aanname Williams daaraan
+We leggen eerst vast wat een rendement is en welke aanname Williams daaraan
 toevoegt. Er is één aandeel dat op elk tijdstip $t$ een dividend $d_t \ge 0$
-uitkeert, en de prijs $p_t$ is eindig. De prijs is *ex dividend*: wie op $t$ voor
-$p_t$ koopt, krijgt $d_{t+1}$ en niet $d_t$. Het bruto rendement van $t$ naar
-$t+1$ is dan
+uitkeert, en de prijs $p_t$ is eindig. De prijs is *ex dividend*, zodat een koper
+die op $t$ voor $p_t$ koopt, $d_{t+1}$ krijgt en niet $d_t$. Het bruto rendement
+van $t$ naar $t+1$ is dan
 
 ```{math}
 :label: eq-williams-ddm-rendement
 R_{t+1} = \frac{p_{t+1} + d_{t+1}}{p_t}.
 ```
 
-In woorden: het rendement is wat de koper morgen terugkrijgt, dividend plus
-verkoopprijs, gedeeld door wat hij vandaag betaalde. Dit is een definitie, geen
-aanname.
+Het rendement is dus wat de koper morgen terugkrijgt, dividend plus
+verkoopprijs, gedeeld door wat hij vandaag betaalde. Omdat dat een definitie is en
+geen aanname, kan de vergelijking niet fout zijn.
 
-De aanname van Williams: er is een getal $r$ zodat voor elke periode
+Williams neemt aan dat er een getal $r$ bestaat zodat voor elke periode
 $\E_t[R_{t+1}] = 1 + r$, met $\E_t$ de verwachting op grond van wat op $t$ bekend
-is. Het *verwachte* rendement is constant, niet het gerealiseerde. In dit model
-is de discontovoet $r$ hetzelfde als het verwachte netto rendement. We noemen hem
-verder alleen de discontovoet.
+is. Constant is alleen het *verwachte* rendement, niet het gerealiseerde. In dit
+model is de discontovoet $r$ hetzelfde als het verwachte netto rendement, en we
+noemen hem verder alleen de discontovoet.
 
-Voor Amerikaanse aandelen is hij reëel ongeveer
-8,4% per jaar als gewoon gemiddelde. Shillers data, waarop de simulatie kalibreert,
-geven 6,8% als gemiddeld logrendement. Het toy-voorbeeld rekent met een rond getal,
-10%.
+Voor Amerikaanse aandelen is de discontovoet reëel ongeveer 6,8% per jaar als
+gemiddeld logrendement in Shillers data, waarop de simulatie kalibreert, en ongeveer
+8,4% als gewoon gemiddelde, dat een halve variantie hoger ligt (de simulatie rekent
+beide uit). Het toy-voorbeeld rekent met het ronde getal 10%.
 
 De notatie is die van [](#00-00-setup): $R = 1 + r$ is bruto, $r$ netto en simpel,
-en $p_t$ en $d_t$ zijn niveaus in euro. Dat is een wissel ten opzichte van
-[](#01-02-bachelier), waar kleine letters logs waren: de som van Williams telt
-bedragen op, geen logs. Logs komen pas in de replicatie terug, en daar staat het
-er steeds bij.
+en $p_t$ en $d_t$ zijn niveaus in euro. Daarmee wijken we af van
+[](#01-02-bachelier), waar kleine letters logs waren, omdat de som van Williams
+bedragen optelt en geen logs. Logs komen pas in de replicatie terug, en daar
+staat er steeds bij dat het om logs gaat.
 
 ### Van de definitie van rendement naar de contante waarde
 
@@ -240,15 +240,15 @@ De prijs van vandaag is de contante waarde van de dividenden tot een horizon $K$
 plus de verdisconteerde verkoopprijs op $K$. Dat volgt eerst uit de definitie van
 rendement alleen, en daarna, met verwachte waarden, uit het model van Williams.
 
-*Waarom zou dit waar zijn?* Een koper betaalt vandaag een prijs en krijgt morgen
-een dividend en een verkoopprijs. Wat hij vandaag betaalt, is dus de opbrengst van
-morgen, gedeeld door het rendement. De koper van morgen doet hetzelfde met de
-opbrengst van overmorgen. Zo schuift de verkoopprijs steeds verder weg, en blijven
-de dividenden over. Hoe hoger de dividenden, hoe hoger de prijs. Hoe hoger het
-rendement waarmee ze verdisconteerd worden, hoe lager.
+Een koper betaalt vandaag een prijs en krijgt daarvoor morgen een dividend en een
+verkoopprijs, zodat zijn prijs van vandaag gelijk is aan de opbrengst van morgen,
+gedeeld door het rendement. De koper van morgen doet hetzelfde met de opbrengst van
+overmorgen. Zo schuift de verkoopprijs steeds verder weg, en blijven de dividenden
+over. Hoe hoger de dividenden, hoe hoger de prijs, en hoe hoger het rendement
+waarmee ze verdisconteerd worden, hoe lager de prijs.
 
-**De boekhoudkundige identiteit.** Schrijf [](#eq-williams-ddm-rendement) als
-$p_t = (d_{t+1} + p_{t+1})/R_{t+1}$ en vul dezelfde gelijkheid in voor $p_{t+1}$,
+**De boekhoudkundige identiteit.** We schrijven [](#eq-williams-ddm-rendement) als
+$p_t = (d_{t+1} + p_{t+1})/R_{t+1}$ en vullen dezelfde gelijkheid in voor $p_{t+1}$,
 $p_{t+2}$, enzovoort. Na $K$ stappen staat er
 
 $$
@@ -256,25 +256,25 @@ p_t = \sum_{j=1}^{K} \frac{d_{t+j}}{R_{t+1} \cdots R_{t+j}}
       + \frac{p_{t+K}}{R_{t+1} \cdots R_{t+K}} .
 $$
 
-In woorden: de prijs is de som van de dividenden tot $K$ en de verkoopprijs op
-$K$, verdisconteerd met de rendementen die werkelijk worden behaald. Deze
-identiteit neemt niets aan en kan daarom door geen enkele data worden verworpen.
-Het model van Williams kan dat wel. Dat onderscheid draagt de hele lecture: de
-replicatie toetst het model, niet de identiteit.
+De prijs is dus de som van de dividenden tot $K$ en de verkoopprijs op $K$,
+verdisconteerd met de rendementen die werkelijk worden behaald. Omdat de
+identiteit niets aanneemt, kan geen enkele dataset ermee in strijd zijn, maar met het
+model van Williams wel. Om dat onderscheid draait het hele
+college, want de replicatie toetst het model en niet de identiteit.
 
-**Het model van Williams.** Neem de verwachting op $t$ van
-[](#eq-williams-ddm-rendement) en gebruik $\E_t[R_{t+1}] = 1+r$:
+**Het model van Williams.** We nemen de verwachting op $t$ van
+[](#eq-williams-ddm-rendement) en gebruiken $\E_t[R_{t+1}] = 1+r$:
 
 $$
 p_t = \frac{\E_t\!\left[d_{t+1} + p_{t+1}\right]}{1+r}.
 $$
 
-De prijs is de verwachte opbrengst van morgen, één periode verdisconteerd. Deze
-vergelijking geldt op elk tijdstip, dus ook op $t+1$. We substitueren
-$p_{t+1} = \E_{t+1}[d_{t+2} + p_{t+2}]/(1+r)$ en gebruiken de wet van iteratieve
-verwachtingen, $\E_t[\E_{t+1}[\cdot]] = \E_t[\cdot]$: wat we vandaag verwachten
-dat we morgen zullen verwachten, verwachten we vandaag al. Na $K$ stappen staat
-er de eindige versie van het model:
+De prijs is de verwachte opbrengst van morgen, één periode verdisconteerd. Omdat
+deze vergelijking op elk tijdstip geldt, dus ook op $t+1$, substitueren we
+$p_{t+1} = \E_{t+1}[d_{t+2} + p_{t+2}]/(1+r)$ en gebruiken we de wet van iteratieve
+verwachtingen, $\E_t[\E_{t+1}[\cdot]] = \E_t[\cdot]$. Die wet zegt dat onze
+verwachting van vandaag over wat we morgen zullen verwachten, gelijk is aan wat we
+vandaag al verwachten. Na $K$ stappen volgt de eindige versie van het model:
 
 ```{math}
 :label: eq-williams-ddm-eindig
@@ -282,23 +282,24 @@ p_t = \sum_{j=1}^{K} \frac{\E_t\!\left[d_{t+j}\right]}{(1+r)^{j}}
       + \frac{\E_t\!\left[p_{t+K}\right]}{(1+r)^{K}} .
 ```
 
-In woorden: de prijs is de contante waarde van de verwachte dividenden tot $K$,
-plus de verdisconteerde verwachte verkoopprijs op $K$, de eindwaarde. Het
-toy-voorbeeld is het geval $K = 3$: $3{,}00$ aan dividenden plus $21{,}00$ aan
-verdisconteerde eindwaarde.
+Volgens deze vergelijking bestaat de prijs uit de contante waarde van de verwachte
+dividenden tot $K$, plus de verdisconteerde verwachte verkoopprijs op $K$, de
+eindwaarde. Het toy-voorbeeld is het geval $K = 3$, met $3{,}00$ aan dividenden en
+$21{,}00$ aan verdisconteerde eindwaarde.
 
 ### Het kernresultaat: transversaliteit en het dividend discount model
 
-Laat de horizon $K$ naar oneindig gaan. Als de verdisconteerde eindwaarde dan
-verdwijnt, is de prijs de som van alle verwachte dividenden.
+Wat gebeurt er met de prijs als we de horizon $K$ naar oneindig laten gaan? Als de
+verdisconteerde eindwaarde dan verdwijnt, is de prijs de som van alle verwachte
+dividenden.
 
 *Waarom zou dit waar zijn?* Een koper die een aandeel over $K$ jaar
 doorverkoopt, betaalt vandaag ook voor de verdisconteerde eindwaarde. Groeit de
-verwachte verkoopprijs trager dan $r$, zoals in het toy met 5% tegen 10%, dan
-krimpt dat deel naarmate $K$ groeit, en blijven alleen de dividenden over. De
-transversaliteitsvoorwaarde eist dat. Verwacht een koper dat de prijs zelf in
-het tempo $r$ blijft stijgen, dan krimpt het deel niet, en betaalt hij meer dan
-de dividenden rechtvaardigen.
+verwachte verkoopprijs trager dan $r$, zoals in het toy-voorbeeld met 5% tegen
+10%, dan krimpt dat deel naarmate $K$ groeit, en blijven alleen de dividenden over.
+De transversaliteitsvoorwaarde legt precies dat krimpen vast. Verwacht een koper
+daarentegen dat de prijs zelf in het tempo $r$ blijft stijgen, dan krimpt het deel
+niet, en betaalt hij meer dan de dividenden rechtvaardigen.
 
 :::{prf:theorem} Dividend discount model
 :label: thm-williams-ddm-ddm
@@ -319,57 +320,61 @@ p_t = \sum_{j=1}^{\infty} \frac{\E_t\!\left[d_{t+j}\right]}{(1+r)^{j}} .
 ```
 :::
 
-[](#eq-williams-ddm-transversaliteit) zegt dat de verdisconteerde eindwaarde in de
-verre toekomst naar nul gaat. [](#eq-williams-ddm-ddm) is het model van Williams
-in zijn definitieve vorm: de prijs is de som van alle verwachte dividenden, elk
-verdisconteerd met $r$. De voorwaarde hoort bij het model. De identiteit
-gebruiken we alleen met een eindige horizon $K$, en dan neemt zij niets aan.
+Volgens [](#eq-williams-ddm-transversaliteit) gaat de verdisconteerde eindwaarde in
+de verre toekomst naar nul. Met die voorwaarde krijgt het model van Williams in
+[](#eq-williams-ddm-ddm) zijn definitieve vorm, waarin de prijs de som is van alle
+verwachte dividenden, elk verdisconteerd met $r$. De voorwaarde hoort bij het
+model, terwijl we de identiteit alleen met een eindige horizon $K$ gebruiken,
+zodat die niets aanneemt.
 
 :::{prf:proof}
 Neem in [](#eq-williams-ddm-eindig) de limiet $K \to \infty$. Omdat dividenden
-niet-negatief zijn, zijn de partiële sommen niet-dalend: de reeks convergeert of
-divergeert naar $+\infty$. De verdisconteerde eindwaarde gaat naar nul volgens
+niet-negatief zijn, zijn de partiële sommen niet-dalend, zodat de reeks convergeert
+of naar $+\infty$ divergeert. De verdisconteerde eindwaarde gaat naar nul volgens
 [](#eq-williams-ddm-transversaliteit). Omdat $p_t$ eindig is, convergeert de reeks
 dan naar $p_t$. $\square$
 :::
 
-Wat gebeurt er als [](#eq-williams-ddm-transversaliteit) niet geldt? Noem de
-som [](#eq-williams-ddm-ddm) de *fundamentele waarde* $p^{f}_t$, en bekijk
+Wat gebeurt er als [](#eq-williams-ddm-transversaliteit) niet geldt? We noemen de
+som [](#eq-williams-ddm-ddm) de *fundamentele waarde* $p^{f}_t$ en bekijken
 $p_t = p^{f}_t + B_t$ met
 
 $$
 \E_t[B_{t+1}] = (1+r)\, B_t .
 $$
 
-Zo'n $B_t$ heet een *rationele bel* (rational bubble: een deel van de prijs dat
+Zo'n $B_t$ heet een *rationele bel* (*rational bubble*, een deel van de prijs dat
 geen enkele uitkering vertegenwoordigt, maar toch de discontovoet als rendement
 oplevert). Ook $p^f_t + B_t$ voldoet aan $p_t = \E_t[d_{t+1}+p_{t+1}]/(1+r)$,
 want de bel groeit in verwachting met $1+r$ en betaalt zo zijn eigen rendement.
-Er is niets irrationeels aan: iedereen verdient wat hij eist. Alleen draagt geen
-dividend de bel, en zijn aandeel in de prijs groeit zonder grens. Bij $r = 10\%$
+Er is niets irrationeels aan, want iedereen verdient wat hij eist. Alleen staat er
+geen dividend tegenover de bel, en het aandeel van de bel in de prijs groeit
+zonder grens. Bij $r = 10\%$
 verdubbelt de bel in ruim zeven jaar ($\ln 2/\ln 1{,}10 = 7{,}3$), een dividend
 dat met 5% groeit pas in veertien ($\ln 2/\ln 1{,}05 = 14{,}2$).
 
-Williams liet de bel weg door hem niet te noemen. Dat is verdedigbaar: bij
-elke $B_0 > 0$ hoort een andere prijs die aan dezelfde vergelijking voldoet, dus
-zonder de voorwaarde legt het model de prijs niet vast. Maar het blijft een keuze.
+Williams liet de bel weg door hem niet te noemen, en dat is verdedigbaar, omdat
+bij elke $B_0 > 0$ een andere prijs hoort die aan dezelfde vergelijking voldoet.
+Zonder de voorwaarde legt het model de prijs dus niet vast, maar het weglaten van
+de bel blijft een keuze.
 
-Wie in 1999 zei dat
-internetaandelen te duur waren, zei dat er een $B_t$ in zat. Wie zei dat ze
-correct geprijsd waren, zei dat $\E_t[d_{t+j}]$ enorm was. Zonder verdere
-aannames kunnen de data die twee niet scheiden.
+Een belegger die in 1999 zei dat internetaandelen te duur waren, beweerde
+eigenlijk dat er een $B_t$ in de prijs zat. Een belegger die ze juist goed
+gewaardeerd vond, beweerde dat $\E_t[d_{t+j}]$ enorm was. Zonder verdere
+aannames zijn die twee lezingen in de data niet van elkaar te onderscheiden.
 
 ### Wat het voorspelt: het Gordon-groeimodel
 
 Groeit het dividend in verwachting met een vaste $g < r$, dan wordt de oneindige
-som één breuk: het dividend van volgend jaar gedeeld door $r - g$.
+som één breuk. Daarin staat het dividend van volgend jaar in de teller en het
+verschil $r - g$ in de noemer.
 
-*Waarom zou dit waar zijn?* De oneindige som is onbruikbaar zolang een analist
-voor elk toekomstig jaar een apart getal moet verzinnen. Gordon en Shapiro
-vervingen al die getallen door één: het dividend groeit elk jaar met hetzelfde
-percentage $g$. De analist kiest dan nog maar twee getallen, $g$ en $r$. Hoe
-dichter hij $g$ bij $r$ legt, hoe minder elk volgend dividend door het
-verdisconteren wegvalt, en hoe hoger de prijs die hij uitrekent.
+In de praktijk is de oneindige som onbruikbaar zolang een analist voor elk
+toekomstig jaar een apart getal moet verzinnen. Gordon en Shapiro vervingen al die
+getallen door één, door aan te nemen dat het dividend elk jaar met hetzelfde
+percentage $g$ groeit. De analist kiest dan nog maar twee getallen, $g$ en $r$, en
+hoe dichter hij $g$ bij $r$ legt, hoe minder elk volgend dividend door het
+verdisconteren wegvalt en hoe hoger de prijs die hij uitrekent.
 
 :::{prf:proposition} Gordon-Shapiro
 :label: prf-williams-ddm-gordon
@@ -385,11 +390,12 @@ r = \frac{\E_t[d_{t+1}]}{p_t} + g .
 :::
 
 In woorden: de prijs is het dividend van volgend jaar, gedeeld door het verschil
-tussen discontovoet en groei. Dit is het recept uit het toy-voorbeeld. Rechts
-staat dezelfde bewering omgeschreven naar $r$: het verwachte rendement is het
-*dividendrendement* (dividend gedeeld door prijs) plus de dividendgroei. Het
-bewijsidee: met constante groei is elke term in de som de vorige maal
-$(1+g)/(1+r)$, en een meetkundige reeks met die reden telt op tot de breuk.
+tussen discontovoet en groei, en dat is precies het recept uit het toy-voorbeeld.
+De rechterkant zegt hetzelfde, maar dan omgeschreven naar $r$, namelijk dat het
+verwachte rendement gelijk is aan het *dividendrendement* (dividend gedeeld door
+prijs) plus de dividendgroei. Het bewijs berust erop dat bij constante groei elke
+term in de som gelijk is aan de vorige maal $(1+g)/(1+r)$, en een meetkundige reeks
+met die reden telt op tot de breuk.
 
 :::{prf:proof}
 :class: dropdown
@@ -401,7 +407,8 @@ p_t = \sum_{j=1}^{\infty} \frac{d_t (1+g)^j}{(1+r)^j}
     = d_t \sum_{j=1}^{\infty} q^{j}, \qquad q \equiv \frac{1+g}{1+r} .
 $$
 
-Voor $g<r$ is $0 < q < 1$ en is $\sum_{j\ge1} q^j = q/(1-q)$. Invullen:
+Voor $g<r$ is $0 < q < 1$ en is $\sum_{j\ge1} q^j = q/(1-q)$. Als we dat invullen,
+volgt
 
 $$
 p_t = d_t \frac{(1+g)/(1+r)}{1 - (1+g)/(1+r)}
@@ -409,16 +416,16 @@ p_t = d_t \frac{(1+g)/(1+r)}{1 - (1+g)/(1+r)}
 $$
 :::
 
-De voorwaarde $g < r$ is geen randgeval. Groeit een dividend voor altijd sneller
-dan de discontovoet, dan is de contante waarde oneindig. Geen bedrijf groeit voor
-altijd sneller dan de economie waarin het werkt, dus op lange termijn is $g$
-begrensd door de groei van het bruto binnenlands product. Een waardering met $g$
+De voorwaarde $g < r$ is geen randgeval, want groeit een dividend voor altijd
+sneller dan de discontovoet, dan is de contante waarde oneindig. Geen bedrijf
+groeit voor altijd sneller dan de economie waarin het werkt, zodat $g$ op lange
+termijn begrensd is door de groei van het bruto binnenlands product. Een waardering met $g$
 dicht bij $r$ negeert die grens.
 
 **De gevoeligheid die alles bepaalt.** Neem de eindwaarde uit het toy-voorbeeld
 als zelfstandig aandeel: $d_0 = 1{,}00$, groei $g = 5\%$ voor altijd en
-$r = 10\%$. Dan is $p = 1{,}05/0{,}05 = 21{,}00$. Verschuif nu één parameter één
-procentpunt:
+$r = 10\%$. Dan is $p = 1{,}05/0{,}05 = 21{,}00$. In de tabel verschuift telkens
+één parameter één procentpunt:
 
 | verandering | berekening | PD | ten opzichte van 21 |
 |---|---|---|---|
@@ -427,12 +434,13 @@ procentpunt:
 | $g = 6\%$ | $1{,}06/0{,}04$ | 26,50 | +26,2% |
 | $r = 11\%$ | $1{,}05/0{,}06$ | 17,50 | −16,7% |
 
-Een lagere $r$ of een hogere $g$ maakt het aandeel duurder, een hogere $r$
-goedkoper. De prijs hangt vrijwel alleen af van het *verschil* $r - g$, en dat
-verschil is klein. Een fout van één procentpunt in $r$ of $g$ is een fout van
-twintig procent in dat verschil, en de prijs is er ongeveer omgekeerd evenredig
-mee. Waarderen met dit model is delen door een klein getal dat niemand kent. De
-codecel rekent het hele rooster uit.
+Een lagere $r$ of een hogere $g$ maakt het aandeel duurder en een hogere $r$ maakt
+het goedkoper, omdat de prijs vrijwel alleen afhangt van het *verschil* $r - g$, en
+dat verschil is klein. Een fout van één procentpunt in $r$ of $g$ is daardoor een
+fout van twintig procent in dat verschil, en de prijs is er ongeveer omgekeerd
+evenredig mee. Waarderen met dit model komt dus neer op delen door een klein getal
+dat niemand kent. Het rooster hieronder geeft de prijs voor alle negen combinaties
+van $r$ en $g$.
 
 ```{code-cell} ipython3
 def gordon(d0, r, g):
@@ -455,25 +463,25 @@ grid.round(2)
 ```
 
 Langs de diagonaal, waar $r - g$ steeds 5 procentpunt is, verandert de prijs
-nauwelijks: van 20,80 naar 21,20. Daarbuiten loopt hij van 14,86 tot 35,33. Het
-rooster bevat ook de getallen uit de tabel.
+nauwelijks, van 20,80 naar 21,20, terwijl hij daarbuiten van 14,86 tot 35,33
+loopt. Het rooster bevat ook de getallen uit de tabel hierboven.
 
 ### PVGO: wat groei toevoegt en wat het kost
 
 Groei verhoogt de prijs alleen als het bedrijf op ingehouden winst meer verdient
-dan de discontovoet. Het Gordon-model neemt $g$ als gegeven. Deze subsectie laat
-zien waar $g$ vandaan komt, en waarom een hoge $g$ niet vanzelf een hoge prijs
+dan de discontovoet. Het Gordon-model neemt $g$ als gegeven, maar hier laten we
+zien waar $g$ vandaan komt en waarom een hoge $g$ niet vanzelf een hoge prijs
 betekent.
 
-*Waarom zou dit waar zijn?* Een bedrijf dat al zijn winst uitkeert, groeit niet.
-Met een winst per aandeel $e_1$ volgend jaar is het dan een eeuwigdurende
-obligatie waard: $e_1/r$. Wil het groeien, dan moet het winst inhouden, en die
-euro's gaan niet naar de aandeelhouder. Verdient het bedrijf op een ingehouden
-euro meer dan de discontovoet, dan stijgt de prijs door te groeien. Verdient het
-minder, dan daalt de prijs.
+Een bedrijf dat al zijn winst uitkeert, groeit niet, en is met een winst per
+aandeel $e_1$ volgend jaar evenveel waard als een eeuwigdurende obligatie, $e_1/r$.
+Wil het groeien, dan moet het winst inhouden, en die euro's gaan niet naar de
+aandeelhouder. Verdient het bedrijf op een ingehouden euro meer dan de
+discontovoet, dan stijgt de prijs door de groei. Verdient het minder, dan daalt de
+prijs juist.
 
 Schrijf $e_{t+1}$ voor de winst per aandeel, $b$ voor het
-*inhoudingspercentage* (retention ratio: het deel van de winst dat het bedrijf
+*inhoudingspercentage* (*retention ratio*, het deel van de winst dat het bedrijf
 niet uitkeert) en $\mathrm{ROE}$ voor het rendement op nieuw geïnvesteerd
 vermogen. Houdt het bedrijf elk jaar hetzelfde deel $b$ in, verdient het
 daarop steeds hetzelfde $\mathrm{ROE}$ en geeft het geen nieuwe aandelen uit, dan
@@ -486,10 +494,11 @@ p_t = \frac{(1-b)\,e_{t+1}}{r - b\cdot\mathrm{ROE}}
     = \underbrace{\frac{e_{t+1}}{r}}_{\text{geen groei}} + \mathrm{PVGO}.
 ```
 
-In woorden: de prijs is de waarde zonder groei plus de waarde van wat het bedrijf
+De prijs bestaat dus uit de waarde zonder groei plus de waarde van wat het bedrijf
 met ingehouden winst nog gaat doen. Dat tweede deel heet $\mathrm{PVGO}$
-(*present value of growth opportunities*: de contante waarde van de
-groeimogelijkheden). Trek de waarde zonder groei af en breng alles op één noemer:
+(*present value of growth opportunities*, de contante waarde van de
+groeimogelijkheden). Als we de waarde zonder groei aftrekken en alles op één
+noemer brengen, krijgen we
 
 $$
 \mathrm{PVGO}
@@ -499,11 +508,11 @@ $$
 
 Het teken van $\mathrm{PVGO}$ is dus het teken van $\mathrm{ROE} - r$. Een bedrijf
 dat investeert tegen minder dan de discontovoet, *vernietigt* waarde door te
-groeien, hoe hard het ook groeit. Een voorbeeld: $e_1 = 3$, $r = 10\%$,
+groeien, hoe hard het ook groeit. Neem als voorbeeld $e_1 = 3$, $r = 10\%$,
 $\mathrm{ROE} = 15\%$ en $b = 1/3$. Dan is $g = 5\%$, $d_1 = 2$ en
 $p = 2/0{,}05 = 40$, tegen $e_1/r = 30$ zonder groei: $\mathrm{PVGO} = 10$. Bij
 $\mathrm{ROE} = 8\%$ is $g = 2{,}67\%$ en $p = 2/0{,}0733 = 27{,}27$, dus
-$\mathrm{PVGO} = -2{,}73$. De codecel rekent beide gevallen na.
+$\mathrm{PVGO} = -2{,}73$.
 
 ```{code-cell} ipython3
 e1, r_pvgo, b = 3.00, 0.10, 1 / 3
@@ -528,15 +537,15 @@ pd.DataFrame(
 ).round(4)
 ```
 
-Hand en code komen op twee decimalen overeen. Bij een $\mathrm{ROE}$ van 15% zit een kwart van de
-prijs in wat het bedrijf nog gaat doen. Bij 8% levert hetzelfde bedrijf dezelfde
-groei-inspanning, en is de aandeelhouder er slechter aan toe.
+Hand en code komen op twee decimalen overeen. Bij een $\mathrm{ROE}$ van 15% zit
+een kwart van de prijs in wat het bedrijf nog gaat doen, terwijl hetzelfde bedrijf
+bij 8% dezelfde groei-inspanning levert en de aandeelhouder er slechter van wordt.
 
 ### Hoe het getoetst wordt: de prijs-dividend-ratio
 
-Het model wordt toetsbaar in de prijs-dividend-ratio: bij constante $r$ moet een
-hoge ratio gevolgd worden door snelle dividendgroei. Deel [](#eq-williams-ddm-ddm)
-door $d_t$:
+Het model wordt toetsbaar in de prijs-dividend-ratio, omdat bij constante $r$ op
+een hoge ratio snelle dividendgroei moet volgen. Om dat te zien, delen we
+[](#eq-williams-ddm-ddm) door $d_t$:
 
 ```{math}
 :label: eq-williams-ddm-pd
@@ -544,37 +553,39 @@ door $d_t$:
   = \sum_{j=1}^{\infty} \frac{\E_t\!\left[d_{t+j}/d_t\right]}{(1+r)^{j}} .
 ```
 
-In woorden: de prijs-dividend-ratio is de verwachte groei van het dividend over
+De prijs-dividend-ratio is dus de verwachte groei van het dividend over
 alle toekomstige jaren, verdisconteerd met $r$. Links staat een grootheid die we
-*observeren* en die enorm beweegt: in Shillers decemberreeks van 9,9 in 1917 tot
-86,2 in 2025 (de replicatie berekent beide). Rechts staan twee dingen die we niet
-observeren: verwachte dividendgroei en de discontovoet.
+*observeren* en die enorm beweegt, in Shillers decemberreeks van 9,9 in 1917 tot
+86,2 in 2025 (de replicatie berekent beide). Rechts staan de verwachte
+dividendgroei en de discontovoet, twee grootheden die we niet observeren.
 
-*Waarom zou dit waar zijn?* Een belegger betaalt veel per euro dividend alleen
+Een belegger betaalt veel per euro dividend alleen
 als hij verwacht dat dat dividend hard gaat groeien, of als hij genoegen neemt met
-een laag rendement. Ligt $r$ vast, dan valt de tweede reden weg. Een hoge ratio
-moet dan gevolgd worden door snelle dividendgroei, zoals de intuïtie voorspelde.
+een laag rendement. Ligt $r$ vast, dan valt de tweede reden weg, zodat op een
+hoge ratio snelle dividendgroei moet volgen, precies wat we aan het begin van het
+college verwachtten.
 
-Die uitspraak is *falsifieerbaar*, en de replicatie toetst haar. Wat er moet
-gelden als de dividendgroei niet komt, zegt de boekhoudkundige identiteit. Deel
-haar door $d_t$ en schrijf $p_{t+K}/d_t = \mathrm{PD}_{t+K}\, d_{t+K}/d_t$:
+Die uitspraak is *falsifieerbaar*, en de replicatie toetst ze. Wat er moet gelden
+als de dividendgroei uitblijft, volgt uit de boekhoudkundige identiteit. Daarvoor
+delen we de identiteit door $d_t$ en schrijven we
+$p_{t+K}/d_t = \mathrm{PD}_{t+K}\, d_{t+K}/d_t$:
 
 $$
 \mathrm{PD}_t = \sum_{j=1}^{K} \frac{d_{t+j}/d_t}{R_{t+1} \cdots R_{t+j}}
       + \frac{(d_{t+K}/d_t)\,\mathrm{PD}_{t+K}}{R_{t+1} \cdots R_{t+K}} .
 $$
 
-In woorden: op een hoge prijs-dividend-ratio volgt snelle dividendgroei, of
-volgen lage rendementen, of blijft de ratio over $K$ jaar hoog. De groei staat in
-de tellers, de rendementen in de noemers. Dat geldt voor elk pad dat werkelijk
-komt, dus ook gemiddeld. Komt de groei niet, dan zijn de
+Op een hoge prijs-dividend-ratio volgt dus snelle dividendgroei, of volgen lage
+rendementen, of blijft de ratio over $K$ jaar hoog, want de groei staat in de
+tellers en de rendementen in de noemers. Omdat de identiteit geldt voor elk pad
+dat werkelijk komt, geldt ze ook gemiddeld. Komt de groei niet, dan zijn de
 rendementen voorspelbaar laag, en is de discontovoet geen constante maar een
 tijdreeks. Blijft de ratio voor altijd hoog, dan zit er een bel in de prijs.
 
 Campbell en Shiller {cite}`CampbellShiller1988` maakten hiervan een
-variantiedecompositie: welk deel van de schommelingen in de log-prijs-dividend-ratio
-komt uit verwachte dividendgroei, en welk deel uit verwachte rendementen.
-[](#04-20-voorspelbaarheid) leidt haar af.
+variantiedecompositie, die meet welk deel van de schommelingen in de
+log-prijs-dividend-ratio uit verwachte dividendgroei komt en welk deel uit
+verwachte rendementen. De afleiding volgt in [](#04-20-voorspelbaarheid).
 
 ```{admonition} Samengevat
 :class: tip
@@ -598,28 +609,31 @@ komt uit verwachte dividendgroei, en welk deel uit verwachte rendementen.
   discontovoet, een lage ratio het omgekeerde, [](#eq-williams-ddm-pd). Bij
   constante $r$ blijft alleen de dividendgroei over.
 
-- De simulatie hierna vraagt: hoe breed valt de waardering uit als $g$ uit een
-  steekproef wordt geschat?
+- De simulatie hierna gaat na hoe breed de waardering uitvalt als $g$ uit een
+  steekproef van $T$ jaar wordt geschat.
 ```
 
 ## Simulatie: hoe de schatting van $g$ de waardering overneemt
 
-We bouwen een wereld waarin het Gordon-model exact klopt: dividenden groeien in
-verwachting met een vaste $g$, en de discontovoet $r$ is bekend. Er is dus één
-ware prijs-dividend-ratio. De vraag over steekproeven: hoe breed is de verdeling
-van de waardering als een analist $g$ schat uit $T$ jaar data?
+Zelfs in een wereld waarin het Gordon-model exact klopt, valt een waardering met
+een geschatte $g$ veel breder uit dan de standaardfout van die schatting doet
+vermoeden. In die wereld groeien dividenden in verwachting met een vaste $g$ en is
+de discontovoet $r$ bekend. Er is dus één ware prijs-dividend-ratio, en we meten
+hoe breed de verdeling van de waardering is als een analist $g$ schat uit $T$ jaar
+data.
 
-Voor het hoofdargument doet dat ertoe. Wie vindt dat de prijs-dividend-ratio niet
-bij de dividenden past, moet eerst weten hoeveel ruis er al zit in een
-waardering waarin alleen $g$ onbekend is. Hier speelt de standaardfout van 2%:
-bij een volatiliteit van 20% per jaar is het gemiddelde van een eeuw jaarrendementen
-maar op $20/\sqrt{100} = 2$ procentpunt nauwkeurig, zoals [](#00-01-rendementen)
-afleidde. Voor de dividendgroei hieronder is die standaardfout 0,93 procentpunt.
-De simulatie laat zien wat zo'n onnauwkeurigheid doet zodra ze in de kleine
-noemer $r - g$ terechtkomt.
+Die breedte is van belang voor het hoofdargument, want een onderzoeker die vindt
+dat de prijs-dividend-ratio niet bij de dividenden past, moet eerst weten hoeveel
+ruis er al zit in een waardering waarin alleen $g$ onbekend is. Hier komt de
+standaardfout van 2% terug, want bij een volatiliteit van 20% per jaar is het
+gemiddelde van een eeuw jaarrendementen maar op $20/\sqrt{100} = 2$ procentpunt
+nauwkeurig, zoals [](#00-01-rendementen) afleidde. Voor de dividendgroei hieronder
+is die standaardfout 0,93 procentpunt, en de simulatie laat zien wat zo'n
+onnauwkeurigheid doet zodra ze in de kleine noemer $r - g$ terechtkomt.
 
-We kalibreren op Shillers jaarreeks: gemiddelde, standaarddeviatie en
-standaardfout van de reële log-dividendgroei en het reële log-rendement.
+We kalibreren op Shillers jaarreeks en berekenen daarvoor het gemiddelde, de
+standaarddeviatie en de standaardfout van de reële log-dividendgroei en het reële
+log-rendement.
 
 ```{code-cell} ipython3
 shiller_raw = hap_data.shiller()
@@ -646,22 +660,22 @@ calibration
 
 Over 154 jaarwaarnemingen groeit het reële dividend gemiddeld 1,61% per jaar,
 met een standaarddeviatie van 11,5% en een standaardfout van 0,93 procentpunt.
-Het gemiddelde reële logrendement is 6,82% (standaardfout 1,42 procentpunt). Dat
-getal nemen we als $r$. Omdat $r$ in de simulatie bekend is, onderschat de
-simulatie de werkelijke onzekerheid van een analist.
+Het gemiddelde reële logrendement is 6,82% (standaardfout 1,42 procentpunt), en
+dat getal nemen we als $r$. Omdat $r$ in de simulatie bekend is, onderschat ze de
+werkelijke onzekerheid van een analist.
 
-Het ware model is Gordon met $g = 1{,}61\%$ en $r = 6{,}82\%$. Het verschil
+In het ware model geldt dus Gordon met $g = 1{,}61\%$ en $r = 6{,}82\%$. Het verschil
 $r - g$ is 5,2 procentpunt, bijna de 5 procentpunt van het toy-voorbeeld. De ware
 prijs-dividend-ratio is $(1+g)/(r-g) = 1{,}0161/0{,}0521 \approx 19{,}5$.
 
 Strikt genomen vraagt de Gordon-formule gewone gemiddelden, die een halve
 variantie boven de log-gemiddelden liggen: $1{,}61 + 11{,}5^2/200 \approx 2{,}3\%$
 voor $g$ en $6{,}82 + 17{,}6^2/200 \approx 8{,}4\%$ voor $r$. De ware ratio wordt
-dan ongeveer 17. Voor de breedte van de verdeling maakt dat weinig uit.
+dan ongeveer 17, maar voor de breedte van de verdeling maakt dat weinig uit.
 
 Een analist ziet $T$ jaar dividendgroei, schat $\hat g$ als het
-steekproefgemiddelde en vult dat met de juiste $r$ in het Gordon-model in. De
-codecel simuleert 20 000 analisten voor $T$ gelijk aan 20, 50 en 100 jaar.
+steekproefgemiddelde en vult dat met de juiste $r$ in het Gordon-model in. We
+laten dat 20 000 analisten doen, voor $T$ gelijk aan 20, 50 en 100 jaar.
 
 ```{code-cell} ipython3
 g_true, sigma_g, r_true = 0.0161, 0.115, 0.0682
@@ -699,16 +713,16 @@ boven tot een factor twee naast ($40{,}8/19{,}5 = 2{,}1$). Met een eeuw data
 loopt het interval nog van 14,1 tot 30,8.
 
 De verdeling is ook scheef, omdat $1/(r-g)$ convex is in $g$. Bij $T = 50$ ligt
-het 5e percentiel 36% onder de waarheid en het 95e percentiel 109% erboven: de
-fout naar boven is ongeveer drie keer zo groot. In een klein deel van de
+het 5e percentiel 36% onder de waarheid en het 95e percentiel 109% erboven, zodat
+de fout naar boven ongeveer drie keer zo groot is. In een klein deel van de
 steekproeven komt $\hat g$ zelfs boven $r$ uit (de laatste kolom). De prijs is
-dan oneindig: het model meldt dat het buiten zijn geldigheidsgebied is.
+dan oneindig, een teken dat het model buiten zijn geldigheidsgebied wordt gebruikt.
 
 De figuur zet de verdeling bij $T = 50$, dezelfde 20 000 steekproeven als in de
-tabel, naast de hyperbool die haar vorm verklaart. Let links op de lange staart
-naar rechts, en rechts op hoe steil de hyperbool wordt vlak voor $g = r$. Rechts
-staan drie waarden van $r$: de asymptoot schuift mee met $r$, dus een onzekere $r$
-doet hetzelfde als een onzekere $g$.
+tabel, naast de hyperbool die de vorm ervan verklaart. Links gaat het om de lange
+staart naar rechts, en rechts om hoe steil de hyperbool wordt vlak voor $g = r$.
+Het rechterpaneel toont drie waarden van $r$, en omdat de asymptoot met $r$
+meeschuift, doet een onzekere $r$ hetzelfde als een onzekere $g$.
 
 ```{code-cell} ipython3
 :label: cel-williams-ddm-verdeling
@@ -745,16 +759,16 @@ plt.show()
 :label: fig-williams-ddm-verdeling
 :width: 100%
 
-Links: de verdeling van de prijs-dividend-ratio die volgt uit een op vijftig
+Links staat de verdeling van de prijs-dividend-ratio die volgt uit een op vijftig
 jaar geschatte groeivoet, met de ware waarde als verticale lijn. De verdeling is
-scheef naar rechts. Rechts: de verklaring. De prijs-dividend-ratio is een
+scheef naar rechts. Rechts staat de verklaring, want de prijs-dividend-ratio is een
 hyperbool in $g$ met een verticale asymptoot op $g = r$. De gestreepte lijn is de
 ware groeivoet. Ver van de asymptoot is de hyperbool vlak en doet een kleine
 schattingsfout weinig, vlak ervoor schiet hij omhoog.
 :::
 
-De simulatie hield $r$ vast en liet $g$ onzeker. De replicatie vraagt het omgekeerde: beweegt
-$r$ zelf?
+De simulatie hield $r$ vast en liet $g$ onzeker. In de replicatie gaat het om het
+omgekeerde, want daar is de vraag of $r$ zelf beweegt.
 
 ## Replicatie op echte data
 
@@ -766,7 +780,7 @@ University Press 1938 {cite}`Williams1938`, in de gesloten vorm van Gordon en
 Shapiro, Management Science 1956 {cite}`GordonShapiro1956`.
 
 **Wat.** Het boek bevat geen tijdreekstoets die we kunnen herhalen. We toetsen de empirische inhoud
-van [](#eq-williams-ddm-pd) onder constante $r$: regressies van de reële
+van [](#eq-williams-ddm-pd) onder constante $r$, met regressies van de reële
 dividendgroei en het reële rendement over tien jaar op de log-prijs-dividend-ratio.
 
 **Data hier.** Shillers maandreeks vanaf 1871 via `hap.data.shiller()`,
@@ -777,14 +791,14 @@ bedrijven, zonder index of tijdreeks. Gordons eigen toets {cite}`Gordon1959` is
 een cross-sectie waarvan de data niet gratis zijn. Shillers dividendreeks negeert
 inkoop van eigen aandelen, wat de gemeten $d_t$ na 1985 te laag maakt.
 
-**Verwachte afwijking.** We verwachten het omgekeerde van Williams: een
-dividendcoëfficiënt die niet significant van nul verschilt, en een negatieve,
-significante rendementscoëfficiënt met een $R^2$ rond tien procent. Een
-significant positieve dividendcoëfficiënt bij een rendementscoëfficiënt rond nul
-zou Williams' lezing steunen.
+**Verwachte afwijking.** Volgens Williams volgt op een hoge ratio snelle
+dividendgroei, dus een positieve, significante dividendcoëfficiënt met een grote
+$R^2$ en een rendementscoëfficiënt van nul. Wij verwachten een dividendcoëfficiënt
+die niet significant van nul verschilt, met een kleine $R^2$, en een negatieve,
+significante rendementscoëfficiënt met een $R^2$ rond tien procent.
 ```
 
-De eerste cel bouwt het panel: de log-prijs-dividend-ratio en de gemiddelde
+De eerste cel bouwt het panel met de log-prijs-dividend-ratio en de gemiddelde
 jaarlijkse dividendgroei en rendementen over de tien jaar erna. Ze meldt ook de
 uitersten van de prijs-dividend-ratio en de autocorrelatie van de regressor.
 
@@ -817,10 +831,10 @@ panel.describe().round(4)
 ```
 
 Het panel heeft 145 waarnemingen, van 1871 tot en met 2015. Twee opeenvolgende
-tienjaarsperioden delen negen jaar, dus hun residuen hangen samen. De regressies
+tienjaarsperioden delen negen jaar, zodat hun residuen samenhangen. De regressies
 gebruiken daarom Newey-West-standaardfouten (`hap.newey_west`), die voor zulke
-samenhang corrigeren, met negen vertragingen: één per gedeeld jaar. De helling
-is de parameter van de regressor, `log_pd`.
+samenhang corrigeren, met negen lags, één per gedeeld jaar. De helling is de
+parameter van de regressor, `log_pd`.
 
 ```{code-cell} ipython3
 fits = {
@@ -840,9 +854,9 @@ results = pd.DataFrame(
 results.round(4)
 ```
 
-De prijs-dividend-ratio voorspelt het rendement, niet de dividendgroei.
-De figuur toont beide regressies als puntenwolk. Let op het verschil in helling
-tussen het linker- en het rechterpaneel.
+De tabel laat zien dat de prijs-dividend-ratio het rendement voorspelt en de
+dividendgroei niet. De figuur toont beide regressies als puntenwolk, en daarin
+gaat het om het verschil in helling tussen het linker- en het rechterpaneel.
 
 ```{code-cell} ipython3
 :label: cel-williams-ddm-scatter
@@ -873,19 +887,19 @@ plt.show()
 Elk punt is één decemberwaarneming tussen 1871 en 2015. Links de gerealiseerde
 reële dividendgroei over de volgende tien jaar, rechts het gerealiseerde reële
 totaalrendement, beide tegen de log-prijs-dividend-ratio van dat moment. Links
-een zwakke, niet-significante stijgende lijn, rechts een duidelijk dalende. Als
+stijgt de lijn zwak en niet significant, rechts daalt ze duidelijk. Als
 Williams' aanname klopte, zouden de twee panelen andersom liggen.
 :::
 
-De figuur bevestigt de tabel: de rendementswolk helt naar beneden, de
-dividendwolk nauwelijks.
+De figuur bevestigt de tabel. De rendementswolk helt naar beneden, terwijl de
+dividendwolk nauwelijks helt.
 
 Shiller werkte dezelfde gedachte uit tot een eigen maatstaf: de *cyclically
 adjusted price-earnings ratio* (CAPE, de koers gedeeld door de gemiddelde reële
 winst over tien jaar) {cite}`Shiller2000`. Winst is een betere noemer dan
-dividend, omdat zij niet van het uitkeringsbeleid afhangt, en middelen over tien
-jaar voorkomt dat één slecht jaar de noemer bepaalt. De codecel herhaalt de
-rendementsregressie met log CAPE als regressor. We verwachten dezelfde richting,
+dividend, omdat ze niet van het uitkeringsbeleid afhangt, en middelen over tien
+jaar voorkomt dat één slecht jaar de noemer bepaalt. Herhalen we de
+rendementsregressie met log CAPE als regressor, dan verwachten we dezelfde richting,
 een negatieve helling, en een hogere $R^2$, omdat de noemer minder ruis bevat.
 
 ```{code-cell} ipython3
@@ -905,12 +919,14 @@ pd.DataFrame(
 ).round(4)
 ```
 
-Zo komt het uit: de helling is negatief en de $R^2$ twee keer zo hoog. De steekproef begint pas in 1881, omdat CAPE tien jaar winst nodig heeft.
-Het sterkere verband bewijst weinig, want CAPE is met kennis van de hele reeks als
-voorspeller gekozen.
+Die verwachting komt uit, want de helling is negatief en de $R^2$ is twee keer zo
+hoog. De steekproef begint pas in 1881, omdat CAPE tien jaar winst nodig heeft.
+Toch bewijst het sterkere verband weinig, want CAPE is met kennis van de hele
+reeks als voorspeller gekozen.
 
-Wat betekent één log-punt? Een prijs-dividend-ratio van 54 in plaats van 20
-($20 \times 2{,}72 \approx 54$). De identiteit in logs zegt waar dat log-punt
+Wat betekent één log-punt? Het is het verschil tussen een prijs-dividend-ratio van
+54 en een van 20 ($20 \times 2{,}72 \approx 54$). De identiteit in logs zegt waar dat
+log-punt
 heen moet. Bij benadering is de log-ratio van vandaag de som van tien jaar
 log-dividendgroei, min de som van tien jaar log-rendementen, plus de log-ratio
 over tien jaar. Regresseren we elk van die drie op de log-ratio van vandaag, dan
@@ -924,8 +940,8 @@ tien jaar.
 | hogere ratio over tien jaar (rest) | $1 - 0{,}15 - 0{,}38$ | 0,47 |
 | totaal | | 1 |
 
-Het rendement draagt ruim twee keer zoveel als de dividendgroei, en de ratio
-blijft lang hoog. De optelling is bij benadering: de exacte log-vorm van Campbell
+Het rendement verklaart ruim twee keer zoveel als de dividendgroei, en de ratio
+blijft lang hoog. De optelling is bij benadering, want de exacte log-vorm van Campbell
 en Shiller weegt latere jaren met een factor iets onder één en bevat een kleine
 term voor het dividendrendement. De 0,47 is dus een orde van grootte.
 
@@ -934,18 +950,21 @@ De 145 overlappende waarnemingen zijn samen ongeveer veertien onafhankelijke
 tienjaarsperioden. Newey-West corrigeert daar in eindige steekproeven maar
 gedeeltelijk voor.
 
-Bovendien is de regressor sterk persistent: de autocorrelatie van de
-log-prijs-dividend-ratio in het panel is 0,89. In een korte steekproef wordt die
-persistentie te laag geschat. Een onverwachte koersstijging verhoogt tegelijk de
-ratio en het rendement van dat jaar, dus de schokken in regressor en rendement
-bewegen samen. Via die samenhang lekt de te lage persistentie in de helling: de
-rendementshelling valt negatiever uit dan de ware (de Stambaugh-bias
-{cite}`Stambaugh1999`). Lees deze $t$-waarden als een aanwijzing voor de richting,
-niet als bewijs.
+Bovendien is de regressor sterk persistent, met een autocorrelatie van de
+log-prijs-dividend-ratio in het panel van 0,89. In een korte steekproef wordt die
+persistentie te laag geschat, bij 145 jaren gemiddeld met ongeveer
+$(1 + 3 \times 0{,}89)/145 \approx 0{,}025$. Een onverwachte koersstijging verhoogt
+tegelijk de ratio en het rendement van dat jaar, zodat de schokken in regressor en
+rendement bijna één op één samen bewegen. Via die samenhang lekt de te lage
+persistentie in de helling, zodat de rendementshelling van een jaarregressie
+ongeveer evenveel negatiever uitvalt dan de ware (de Stambaugh-bias
+{cite}`Stambaugh1999`). Die vertekening is van dezelfde orde als de geschatte
+helling zelf, zodat deze $t$-waarden een aanwijzing voor de richting zijn, geen
+bewijs.
 ```
 
-De laatste cel zet de uitkomst voor de prijs-dividend-ratio naast wat Williams'
-lezing eist en wat het replicatieblok verwachtte.
+De laatste cel zet de uitkomst voor de prijs-dividend-ratio naast wat er volgens
+Williams' lezing zou moeten gelden en wat we vooraf verwachtten.
 
 ```{code-cell} ipython3
 growth_fit, return_fit = results.iloc[0], results.iloc[1]
@@ -965,52 +984,54 @@ pd.DataFrame(
 )
 ```
 
-**Geslaagd.** Alle drie de verwachtingen uit het replicatieblok komen uit (tabel
-hierboven): de dividendcoëfficiënt is niet significant, de rendementscoëfficiënt
-is negatief en significant, en de $R^2$ ligt rond tien procent. Het teken van de dividendcoëfficiënt klopt
-wel met Williams. Voor het model van Williams is de uitkomst toch
-een verwerping: $r$ is geen constante maar een tijdreeks.
+**Geslaagd.** Alle drie de verwachtingen komen uit, want de dividendcoëfficiënt is
+niet significant, de rendementscoëfficiënt is negatief en significant, en de $R^2$
+ligt rond tien procent (tabel hierboven). Alleen het teken van de
+dividendcoëfficiënt past bij Williams, en toch is de uitkomst voor zijn model een
+verwerping, omdat $r$ geen constante blijkt maar een tijdreeks.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** Veel. Het dividend discount model rust op een
-identiteit die niet breekt, en legt vast dat een prijs alleen beweegt als
-verwachte uitkeringen of discontovoeten bewegen. Zo wordt elke
-waarderingsdiscussie een discussie over welke van de twee het is. Het
-Gordon-model gaf de praktijk een werkbare vuistregel: verwacht rendement is
-dividendrendement plus groei. De PVGO liet zien dat groei en waarde niet
+**Wat het model verklaart.** Het dividend discount model verklaart veel. Het rust
+op een identiteit die niet breekt, en legt vast dat een prijs alleen beweegt als
+verwachte uitkeringen of discontovoeten bewegen, zodat elke waarderingsdiscussie
+een discussie wordt over welke van de twee het is. Het Gordon-model gaf de praktijk
+een werkbare vuistregel, namelijk dat het verwachte rendement gelijk is aan
+dividendrendement plus groei, en de PVGO liet zien dat groei en waarde niet
 hetzelfde zijn.
 
-**Waar het breekt.** Niet in de boekhoudkundige identiteit maar in het model van
-Williams, in de aanname van constante $r$. De prijs-dividend-ratio voorspelt de
+**Waar het breekt.** Het model breekt niet in de boekhoudkundige identiteit, maar
+in de aanname van Williams dat $r$ constant is. De prijs-dividend-ratio voorspelt de
 tienjaarsgroei van dividenden nauwelijks ($R^2 \approx 5\%$) en het
 tienjaarsrendement wel ($R^2 \approx 12\%$). Volgens [](#eq-williams-ddm-pd)
-beweegt $r$ dus. Ruis in de schatting van $g$ verklaart dat niet: de simulatie liet
-waarderingen zien die tot een factor twee naast zitten, maar de ratio liep van 10
-tot 86, en haar beweging voorspelt rendementen, geen dividenden. Het enige symbool
-dat Williams als gegeven nam, draagt ruim twee keer zoveel van de beweging als de
-dividendgroei.
+beweegt $r$ dus. Ruis in de schatting van $g$ verklaart dat niet. De simulatie
+liet waarderingen zien die tot een factor twee naast zitten, terwijl de ratio van
+10 tot 86 liep, en de beweging van die ratio voorspelt rendementen en geen
+dividenden. De discontovoet $r$, het enige getal dat Williams als gegeven nam,
+verklaart ruim twee keer zoveel van de beweging als de dividendgroei.
 
-**Risico of vergissing?** Beide lezingen passen bij dezelfde tabel. De
-Chicago-lezing: $r$ is de vergoeding voor aandelenrisico, hoog als mensen arm en
-bang zijn, laag als ze rijk zijn. Voorspelbare rendementen zijn dan een goed
-werkende markt. De Yale-lezing: mensen extrapoleren de laatste jaren, betalen te
-veel na goede jaren en te weinig na slechte, en de voorspelbaarheid is de trage
-correctie van die vergissing. Beide voorspellen dezelfde negatieve helling. Pas
-een theorie over $r$ scheidt ze. In 2013, toen Fama en Shiller samen de
+**Risico of vergissing?** Beide lezingen passen bij dezelfde tabel. In de
+Chicago-lezing is $r$ de vergoeding voor aandelenrisico, hoog als mensen arm en
+bang zijn en laag als ze rijk zijn, zodat voorspelbare rendementen passen bij een
+goed werkende markt. In de Yale-lezing extrapoleren mensen de laatste jaren,
+betalen ze te veel na goede jaren en te weinig na slechte, en is de
+voorspelbaarheid de trage correctie van die vergissing. Omdat beide dezelfde
+negatieve helling voorspellen, kan pas een theorie over $r$ ze scheiden. In 2013, toen
+Fama en Shiller samen de
 Nobelprijs kregen, was het vak daar nog niet uit ([](#05-33-fama-vs-shiller)).
 
-Bij theorie of feit vraagt de reeks steeds: is dit een theorie die getoetst
-wordt, of een feit dat op een verklaring wacht? Bachelier leverde een *feit*,
-koersen als random walk. Williams leverde een identiteit die waar is zonder iets
-uit te sluiten, en een model met een constante $r$ dat toetsbaar is. Zo getoetst
-en verworpen werd het pas decennia later, na het CAPM, dat [](#00-00-setup) het
-eerste getoetste model van het vak noemt.
+**Theorie of feit?** Bij elke bijdrage vragen we of ze een theorie levert die
+getoetst kan worden, of een feit dat nog op een verklaring wacht.
+Bachelier leverde een *feit*, koersen als random walk, terwijl Williams een
+identiteit leverde die waar is zonder iets uit te sluiten, en een model met een
+constante $r$ dat toetsbaar is. Dat model werd pas decennia later zo getoetst en
+verworpen, na het CAPM, dat in [](#00-00-setup) het eerste getoetste model van het
+vak heet.
 
 **Wat er daarna kwam.** Williams had geen theorie van $r$, maar wel het inzicht
-dat er een nodig is. Markowitz verplaatste de vraag: niet langer wat één aandeel
-waard is, maar welke portefeuille een belegger moet houden en welk risico daarbij
-telt. Zie [](#01-04-markowitz).
+dat er een nodig is. Markowitz verplaatste de vraag van wat één aandeel waard is
+naar welke portefeuille een belegger moet houden en welk risico daarbij telt, in
+[](#01-04-markowitz).
 
 ## Oefeningen
 
@@ -1047,10 +1068,10 @@ pd.Series({
 ```
 
 **(2)** De prijs daalt met ruim 15%, van 24,00 naar 20,33. De eindwaarde daalt
-17,5%, van 21,00 naar 17,33: één procentpunt minder groei maakt $r - g$ een vijfde
-groter, en $d_4$ wordt iets kleiner. Omdat de eindwaarde het grootste deel van de prijs is, werkt
-die daling bijna volledig door. Wat dit leert: de waardering hangt vooral af van
-de groei in de verre toekomst, en juist daarover weet niemand iets.
+17,5%, van 21,00 naar 17,33, omdat één procentpunt minder groei $r - g$ een vijfde
+groter maakt en $d_4$ iets kleiner. Omdat de eindwaarde het grootste deel van de
+prijs is, werkt die daling bijna volledig door. De waardering hangt dus vooral af
+van de groei in de verre toekomst, en juist daarover weet niemand iets.
 :::
 
 :::{exercise}
@@ -1071,16 +1092,16 @@ dividendgroei $g = 3\%$.
 :::{solution} ex-williams-ddm-1
 :class: dropdown
 
-**(1)** $p^f_0 = d_0(1+g)/(r-g) = 2{,}00 \times 1{,}03/0{,}05 = 41{,}20$, dus
-$\mathrm{PD} = 20{,}6$.
+**(1)** $p^f_0 = d_0(1+g)/(r-g) = 2{,}00 \times 1{,}03/0{,}05 = 41{,}20$. Gedeeld door het dividend van
+vandaag geeft dat $\mathrm{PD} = 20{,}6$.
 
 **(2)** Vul in: $\E_t[d_{t+1} + p^f_{t+1} + B_{t+1}]/(1+r)
 = \left(\E_t[d_{t+1}+p^f_{t+1}] + (1+r)B_t\right)/(1+r) = p^f_t + B_t$, omdat
 $p^f$ per constructie aan de vergelijking voldoet. De bel is een tweede, even
 geldige oplossing van dezelfde differentievergelijking.
 
-**(3)** De codecel volgt fundament en bel en zoekt het eerste jaar waarin de bel
-groter is.
+**(3)** We volgen fundament en bel jaar voor jaar en zoeken het eerste jaar
+waarin de bel groter is.
 
 ```{code-cell} ipython3
 r_ex, d0_ex, g_ex, b0 = 0.08, 2.00, 0.03, 10.0
@@ -1115,8 +1136,8 @@ bubble
 
 De prijs-dividend-ratio loopt van 25,6 via 28,6 en 37,0 naar 74,1 na vijftig
 jaar, en vanaf jaar 30 is meer dan de helft van de prijs bel. De bel groeit met
-8% per jaar en het fundament met 3%, dus het aandeel van de bel loopt naar één.
-Wat dit leert: de transversaliteitsvoorwaarde is de aanname die verbiedt dat de
+8% per jaar en het fundament met 3%, zodat het aandeel van de bel naar één loopt.
+De transversaliteitsvoorwaarde is daarmee de aanname die uitsluit dat de
 prijs-dividend-ratio voor altijd blijft stijgen, en dat is een aanname over
 gedrag, niet over wiskunde.
 :::
@@ -1136,7 +1157,7 @@ aandeel van $e_1 = 5{,}00$. De discontovoet is $r = 9\%$.
 :::{solution} ex-williams-ddm-2
 :class: dropdown
 
-De codecel past [](#eq-williams-ddm-pvgo) toe bij beide inhoudingspercentages.
+We passen [](#eq-williams-ddm-pvgo) toe bij beide inhoudingspercentages.
 
 ```{code-cell} ipython3
 e1_ex, r_ex2 = 5.00, 0.09
@@ -1164,12 +1185,12 @@ $2{,}50/0{,}03 = 83{,}33$ en de PVGO $27{,}78$.
 
 **(2)** Meer inhouden verhoogt de prijs alleen bij $\mathrm{ROE} = 12\% > r$
 (naar 111,11) en verlaagt hem bij 6% (naar 37,04). Bij $\mathrm{ROE} = r$ maakt $b$
-niets uit: een investering tegen de discontovoet heeft een netto contante
+niets uit, want een investering tegen de discontovoet heeft een netto contante
 waarde van nul. Dat lijkt op de stelling van Miller en Modigliani
 {cite}`MillerModigliani1961` (bij gegeven investeringen raakt het uitkeringsbeleid
-de waarde niet), maar is niet hetzelfde: hier verandert $b$ juist de investering.
-Wat dit leert: groei is in dit model geen aparte
-bron van waarde, maar een herverpakking van $\mathrm{ROE} - r$.
+de waarde niet), maar het is niet hetzelfde, omdat $b$ hier juist de investering
+verandert. Groei is in dit model dus geen aparte bron van waarde, maar een
+herverpakking van $\mathrm{ROE} - r$.
 :::
 
 :::{exercise}
@@ -1185,7 +1206,7 @@ over welk van de twee kanalen beweegt?
 :::{solution} ex-williams-ddm-3
 :class: dropdown
 
-De codecel herhaalt de regressies voor vier combinaties van steekproef en horizon.
+Voor vier combinaties van steekproef en horizon herhalen we de twee regressies.
 
 ```{code-cell} ipython3
 def horizon_panel(frame, h, start=None):
@@ -1234,8 +1255,8 @@ $5 \times 0{,}026 \approx 0{,}13$ log-punt op één log-punt prijs-dividend-rati
 tegen $5 \times 0{,}045 \approx 0{,}22$ voor het rendement. De conclusie verandert
 niet.
 
-De $t$-waarden schommelen wel sterk: 71 naoorlogse waarnemingen op tien jaar zijn
-nog geen acht onafhankelijke perioden. Wat dit leert: de richting van het
-resultaat is robuust, de sterkte niet, omdat een helling met zo weinig
+De $t$-waarden schommelen wel sterk, want 71 naoorlogse waarnemingen op tien jaar
+zijn nog geen acht onafhankelijke perioden. Wat dit leert: de richting van het
+resultaat is robuust en de sterkte niet, omdat een helling met zo weinig
 onafhankelijke perioden net zo slecht te meten is als een gemiddeld rendement.
 :::
