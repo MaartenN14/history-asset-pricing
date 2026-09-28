@@ -100,3 +100,17 @@ STATUS 03_14_roll F6b words=5419 prose=PASS open=0 cijfer=- min=-
 - Toy stap 1: zin toegevoegd dat [](#01-04-markowitz) de formules voor $\lambda$ en $\delta$ afleidt uit [](#eq-markowitz-foc) en de restricties (daar hebben ze geen label).
 - Afgewezen: een toy en simulatie voor het $R^2$-deel. STYLE §11.7: het toy heeft één mechanisme en de simulatie beantwoordt één vraag; een tweede simulatie gaat volgens de schraptoets weg of wordt een oefening. Oefening 2 speelt die rol al.
 - Naadpunt deel 3a punt 6: "Waar we zijn" zegt nu dat in 1977 nog niemand de vraag had gesteld en dat het bezwaar dat later in de APT-discussie terugkwam hier begint; geen code geraakt.
+
+## R9-1 (F6b, ronde 9+)
+
+**Feitelijke fout.** Wat er brak: "vlak voor elke waarneembare proxy" wordt "vlak voor elke gangbare marktindex". Gedaan.
+**Helderheid.** Overzicht: de afspraak (efficiënt = op de minimum-variantierand, ook de onderste tak) staat nu vóór het eerste gebruik; Opzet verwijst ernaar terug. Intuïtie: "efficiënte rand" wordt "minimum-variantierand". "Bijna efficiënt" is ruim: benoemd bij $\rho^{*} = 0{,}62$; "sterk gecorreleerd" in de Overzicht-lijst wordt "duidelijk". Gedaan.
+**Opbouw.** Bij [](#eq-roll-decompositie) de $R^2$ van een los activum in de modelwereld (0,0469 uit de cel, eigen ruis 8–12% uit de opzet: 0,13 tot 0,26). Terugverwijzing r. 589 herschreven naar de redenering bij de bijna-efficiënte proxy's, zonder "hoge correlatie". "We verwachten dus drie dingen" wordt "Uit dit alles volgen drie verwachtingen". Gedaan.
+**Taal.** Standaardfout van 2% niet meer als onderwerp; "theorie of feit" één keer bij naam (Wat er brak), in het Overzicht beschreven; "steekproefkolommen overstemmen", "zodat" r. 696 en r. 28–29 herschreven (hardop-voorstellen overgenomen); titel "kritiek"; "scalars" wordt "getallen"; "omkering onzeker" wordt "rangorde onzeker". Gedaan.
+**Taal, "rand" → "grens".** Afgewezen in deze fase op aanwijzing van de orkestrator: boekbreed later (01_04, 02_08, 03_14 tegelijk).
+**Code en figuren.** Labels: "tangentportefeuille in de steekproef", "gemiddeld overrendement", "R²" in tabellen, decimale komma in de figuurtitel van de tautologie. Uitvoer voor en na vergeleken met `nb_outputs`: alleen labels verschillen. Gedaan.
+**Replicatie.** "Vlakke lijn" wordt "te vlakke, hier zelfs licht dalende lijn"; bijzin waarom de gelijkgewogen portefeuille een iets positieve helling heeft (weegt kleine en goedkope aandelen zwaarder). Gedaan.
+**Oefeningen.** Oefening 3: "richting van small en value" wordt "het overwegen van kleine en goedkope aandelen (small en value) loonde ook na 1994"; "excess rendementen" in de opgave wordt "overrendementen". Gedaan.
+**Toy.** Geen wijziging nodig (beoordelaar: geen inhoudelijk gat); "scalars" opgelost onder Taal.
+
+Woorden: 5.708 (was 5.566), `prose_stats --check` PASS, `nb_numbers` 41 meldingen (gelijk aan vóór), rewrap en sync gedraaid.

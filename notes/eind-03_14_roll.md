@@ -1,299 +1,373 @@
-STATUS 03_14_roll F6c words=5419 prose=PASS open=0 cijfer=8,9 min=8,5
+STATUS 03_14_roll F6c words=5708 prose=PASS open=1 cijfer=9,0 min=9
 
-# Eindbeoordeling (F6): Roll, de critique en de R² (03_14_roll)
+# Ronde 9+
 
-Cijfer van record, zelfde kalibratie als L13 en L15 (en het L12-anker van de
-tweede beoordelaar). Bij twijfel het lagere cijfer.
+Vorige ronde: 8,9
+
+Eindbeoordeling (F6) van `lectures/03_14_roll.md` na de taalredactie (fase T). Gewichten van
+ronde 9+: helderheid 25, opbouw 20, taal 20, toy 10, code en figuren 10, replicatie 10,
+oefeningen 5. Bij twijfel het lagere cijfer. Cijfers nagerekend tegen
+`tools/nb_outputs.py` (celuitvoer) en met de hand.
 
 ## De drie verbeteringen met het meeste effect
 
-1. **Opbouw** (8 → 8,5). Het $R^2$-deel in de eerste zin aan de vraag van de lecture
-   koppelen (wat meet een toets als het meeste van de variantie niet systematisch
-   is?), en de sinaasappelsap- en bid-ask-alinea's volgens de schraptoets schrappen
-   of in een dropdown zetten. Bij de bijna-efficiënte proxy's het "Waarom" laten
-   zeggen dat de helling eerst stijgt, of "Dat had de intuïtie voorspeld"
-   aanpassen.
-2. **Code** (8 → 9). In `tilt_to_corr` in één zin zeggen dat $c$ een wortel is van een
-   kwadratische vergelijking, en de wortel kiezen zonder comprehension; de tabellen
-   van de $R^2$-replicatie zonder geneste dict-comprehensions bouwen; in
-   `adjusted_r2` de drievoudige ontkenning weg; de simulatiecel (30 regels)
-   splitsen; kolomnamen voluit.
-3. **Replicatie** (8,5 → 9). De getallen uit de alinea's na de tautologietabel en na
-   de $R^2$-tabellen naar de tabellen verwijzen in plaats van ze te herhalen.
+1. **Taal (8,5 → 9).** De zinnen die de hardop-toets niet halen herschrijven: de
+   motiefnaam als handelend onderwerp op r. 638 ("Hier keert de standaardfout van 2% om"),
+   de stijve formule "In de termen van theorie of feit" (r. 60 en r. 1119), "De
+   steekproefkolommen overstemmen dat verschil" (r. 754), de oneigenlijke "zodat" op r. 696,
+   de dubbele betrekkelijke bijzin met vooruitblik in de verleden tijd op r. 28–29, en de
+   titel "critique" tegenover "kritiek" (r. 16, r. 55). Plus "scalars" (r. 135). De term
+   "rand" tegenover STYLE §3 "grens" boekbreed beslissen (zie Taal).
+2. **Opbouw (8,5 → 9).** Het $R^2$-deel aan dezelfde getallen hangen als de rest: bij
+   [](#eq-roll-decompositie) één uitgerekend getal uit de wereld van honderd activa
+   (bèta 1, $\sigma_m \approx 4{,}7\%$, $\sigma_\varepsilon \approx 10\%$ per maand geeft
+   $R^2 \approx 0{,}0022/(0{,}0022 + 0{,}01) \approx 0{,}18$), en de terugverwijzing op
+   r. 589–590 laten kloppen met wat de Intuïtie werkelijk voorspelde.
+3. **Helderheid (9 blijft 9, maar wordt robuust).** De afspraak dat "efficiënt" hier ook de
+   onderste tak van de minimum-variantierand omvat, al in het Overzicht of bij r. 71 laten
+   staan, en de overclaim "vlak voor elke waarneembare proxy" (r. 1121) inperken tot de
+   gangbare indices.
 
-Samen: 2,55 + 1,70 + 1,35 + 0,90 + 0,90 + 0,90 + 0,45 = 8,75, dus 8,8.
-
-## Eindcijfer: 8,5
+## Eindcijfer: 8,8
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 8,5 |
-| 2 | Opbouw en rode draad | 20% | 8 |
-| 3 | Taal | 15% | 9 |
+| 1 | Helderheid van de uitleg | 25% | 9 |
+| 2 | Opbouw en rode draad | 20% | 8,5 |
+| 3 | Taal | 20% | 8,5 |
 | 4 | Toy-voorbeeld | 10% | 9 |
-| 5 | Code en figuren | 10% | 8 |
-| 6 | Replicatie en empirie | 10% | 8,5 |
+| 5 | Code en figuren | 10% | 9 |
+| 6 | Replicatie en empirie | 10% | 9 |
 | 7 | Oefeningen | 5% | 9 |
 
-Gewogen: 2,55 + 1,60 + 1,35 + 0,90 + 0,80 + 0,85 + 0,45 = 8,50, dus 8,5.
-Lengte: 5.404 woorden volgens `prose_stats` (PASS). Replicatieblok: 196 woorden.
+Gewogen: 2,25 + 1,70 + 1,70 + 0,90 + 0,90 + 0,90 + 0,45 = 8,80, dus **8,8**, laagste
+deelcijfer 8,5. Lengte 5.566 woorden volgens `prose_stats` (PASS, zinsgemiddelde 15,6,
+dubbele punt 4,7 per 1000). Het verschil met 8,9 komt door de nieuwe weging (taal 20%) en
+het strengere hardop-oordeel, niet door achteruitgang: de redactie heeft het college beter
+gemaakt.
+
+## 1. Helderheid van de uitleg: 9
+
+*Goed*
+- Toy-voorbeeld en Theorie: de lijn tegenover de randportefeuille wordt met getallen
+  voorgerekend (λ = 0,368, μ_z = 3,39%, helling 6,61%) en in de stelling en het bewijs
+  teruggenoemd (r. 296).
+- Bijna-efficiënte proxy's: het lemma krijgt meteen een getal (correlatie 0,9 geeft 90% van
+  de Sharpe-ratio, r. 412), en $\rho^{*}$ krijgt een richting en een reden (r. 481–484).
+- Opzet: de minimum-variantierand wordt gedefinieerd, en de afspraak dat ook de onderste
+  tak "efficiënt" heet, staat er expliciet (r. 256–262). De stelling zelf noemt de
+  minimum-variantierand, dus geen stelling wordt door de termkeuze onjuist.
+
+*Aanmerkingen*
+- Overzicht, r. 38–40: "Een lineaire relatie tussen verwacht rendement en bèta is
+  wiskundig hetzelfde als efficiëntie van de portefeuille waartegen de bèta's gemeten
+  zijn." Met de gewone betekenis van efficiënt (bovenste tak) is dat te sterk: ook een
+  portefeuille op de onderste tak geeft een exacte lijn, met negatieve helling. De afspraak
+  die dit rechtzet, komt pas op r. 261.
+- Intuïtie, r. 71: "Neem een portefeuille op de efficiënte rand." Derde naam naast
+  "minimum-variantierand" en "de rand", vóór de definitie (H7).
+- Numerieke uitwerking, r. 589–590: "De intuïtie voorspelde de eerste stijging en de
+  nulhelling bij hoge correlatie." De Intuïtie (r. 92–106) voorspelt geen stijging; die
+  staat pas op r. 421–422. En 0,62 is geen hoge correlatie.
+- Wat er brak, r. 1120–1121: "Er blijft een feit over dat op een verklaring wacht, namelijk
+  dat de lijn vlak is voor elke waarneembare proxy." De in-sample tangentportefeuille is
+  waarneembaar en geeft een steile lijn; buiten de steekproef is de helling 0,98.
+
+*Beter uitleggen*
+- Wat "efficiënt" in dit college betekent, moet de lezer weten vóór de eerste bewering
+  erover; één bijzin in het Overzicht volstaat.
+- Bij "bijna-efficiënt" (r. 381, 416) wordt "bijna" gemeten in correlatie; de getallen 0,62
+  (model) en 0,885 (data) laten zien dat "bijna" hier ruim is. Eén zin die dat benoemt
+  voorkomt dat de lezer "sterk gecorreleerd" (r. 46, 95) als 0,95 leest.
+
+## 2. Opbouw en rode draad: 8,5
+
+*Goed*
+- Overzicht stelt de vraag en geeft het antwoord in de eerste twee zinnen (r. 37–41).
+- Het toy keert terug in Theorie (r. 253, 296), in de Simulatie (r. 801–802) en in
+  oefening 1 ($\rho^{*} = 0{,}785$), en de wereld van honderd activa verbindt Theorie en
+  Simulatie.
+- Routekaart aan het begin van Theorie (r. 229–235) en Samengevat aan het eind.
+
+*Aanmerkingen*
+- De tweede vraag, r. 594: "Als de lijn niet te toetsen is, wat verklaren markt en
+  industrie dan wel?" De koppeling staat er, maar het $R^2$-deel heeft geen enkel getal uit
+  toy of modelwereld; het staat als tweede college in het college.
+- Intuïtie, r. 103: "We verwachten dus drie dingen." Identiek aan 03_10 (ME:100)
+  [onderzoek E].
+- Numerieke uitwerking, r. 589–590 (zie Helderheid): de terugverwijzing naar de intuïtie
+  klopt niet met de Intuïtie-sectie.
+
+*Beter uitleggen*
+- De lezer ziet niet dat de wereld van honderd activa zelf al een $R^2$ voor losse activa
+  heeft; die ene berekening maakt van Rolls tweede vraag een voortzetting in plaats van
+  een aanhangsel.
+
+*Voor een 9*
+- lectures/03_14_roll.md:616–620: bij [](#eq-roll-decompositie) het getal uit de
+  modelwereld (bèta 1, $\sigma_m \approx 4{,}7\%$, $\sigma_\varepsilon$ 8–12% per maand,
+  dus $R^2$ tussen ongeveer 0,13 en 0,26), zodat de lezer Rolls 0,20–0,35 herkent.
+- lectures/03_14_roll.md:589–590: de zin laten verwijzen naar de redenering op r. 421–422
+  en "hoge" vervangen door het getal.
+- lectures/03_14_roll.md:103: de aankondiging "We verwachten dus drie dingen" anders
+  formuleren dan in 03_10 [onderzoek E].
+
+## 3. Taal: 8,5
+
+*Goed*
+- De redactie heeft de regeltaal weggehaald ("De imports-cel", "de steekproefvraag", "zoals
+  de verwachte afwijking eiste") en "haar/diens" voor zaken vervangen; zinsgemiddelde 15,6
+  met afwisseling, geen gedachtestreepjes, "In woorden" en "Waarom zou dit waar zijn" elk
+  twee keer.
+- "Overrendement" staat nu overal in de lopende tekst (STYLE §3); verbanden lopen via
+  want, zodat en terwijl.
+- Wat er brak leest als gesproken tekst ("Roll maakte niet het CAPM kapot, maar een manier
+  van lezen").
+
+*Aanmerkingen*
+- Theorie, r. 638: "Hier keert [de standaardfout van 2%](#00-01-rendementen) om." Motief als
+  handelend onderwerp (STYLE §11.12) [onderzoek E].
+- Overzicht, r. 59–61, en Wat er brak, r. 1119: "In de termen van theorie of feit was het
+  CAPM een theorie met toetsen" en "In de termen van theorie of feit is het CAPM geen
+  getoetste theorie meer". Twee keer dezelfde stijve formule [onderzoek E].
+- Simulatie, r. 754: "De steekproefkolommen overstemmen dat verschil." Kolommen overstemmen
+  niets [onderzoek E].
+- Simulatie, r. 696: "De nulhelling bij 0,62 valt buiten dit bereik, zodat de schade hier in
+  het intercept zit." "zodat" suggereert een oorzaak die er niet is.
+- Waar we zijn, r. 28–29: "Het bezwaar dat de markt niet waarneembaar is, dat in de
+  APT-discussie terugkwam, begint hier." Twee betrekkelijke bijzinnen, en een verleden tijd
+  voor iets dat later komt [onderzoek E].
+- Titel, r. 16: "Roll: de critique en de R²" tegenover "kritiek" op r. 55; Toy, r. 135: "de
+  vier scalars" [onderzoek E].
+- Replicatie, r. 1100: "Die omkering hadden we vooraf al onzeker genoemd." Een omkering
+  noem je niet onzeker.
+- Termen, r. 44, 71, 135–142, 256 en verder: "minimum-variantierand", "efficiënte rand",
+  "randportefeuille", "op de rand". STYLE §3 schrijft "grens" voor [onderzoek E].
+
+*Beter uitleggen*
+- Het oordeel over "rand". De redacteur liet "rand" staan omdat 01_04 en 02_08 het ook
+  gebruiken. Dat klopt half: 01_04 zegt "efficiënte rand" (en bedoelt daarmee de hele
+  parabool, 01_04:97), maar 02_08:43 zegt "de efficiënte grens van Markowitz (hierna
+  kortweg de rand)" en gebruikt daarna "minimum-variantierand". Inhoudelijk is dit college
+  consistent: de minimum-variantierand is hier nergens een alias voor de efficiënte grens,
+  en de stelling noemt de minimum-variantierand. Het lokaal omzetten naar "grens" zou alleen
+  een nieuw verschil met 01_04 maken; de omzetting (minimum-variantiegrens, efficiënte grens
+  voor de bovenste tak) hoort boekbreed te gebeuren, in 01_04, 02_08 en 03_14 tegelijk.
+  Daarbij moet 02_08:43 de alias "hierna kortweg de rand" kwijt, want daar wordt de
+  efficiënte grens wel gelijkgesteld aan de rand die later de minimum-variantierand is.
+
+*Voor een 9*
+- lectures/03_14_roll.md:638: herschrijven zonder de motiefnaam als onderwerp [onderzoek E].
+- lectures/03_14_roll.md:59–61 en 1119: één keer de motiefnaam, de andere keer zeggen wat
+  het betekent [onderzoek E].
+- lectures/03_14_roll.md:754, 696, 28–29, 1100: de zinnen uit de hardop-toets hieronder.
+- lectures/03_14_roll.md:16 en 135: "kritiek" en "getallen" [onderzoek E].
+- Boekbreed (01_04, 02_08, 03_14): "rand" → "grens" volgens STYLE §3, in één ronde.
+
+## 4. Toy-voorbeeld: 9
+
+*Goed*
+- Vijf stappen met de hand, elk met een uitkomst; de tabel "met de hand / code" is
+  identiek (λ 0,368, δ −0,0125, bèta's 1,6053 en 0,0921, $R^2$ 0,9868).
+- De slotzin zegt wat het getal betekent: een $R^2$ van 0,9868 zegt niet hoe ver de proxy
+  van de rand ligt (r. 222–225).
+- Oefening 1 zet het toy voort met een risicovrije rente en hergebruikt de afwijkingen uit
+  stap 5 (r. 1161).
+
+*Aanmerkingen*
+- Toy, r. 135: "Uit [](#01-04-markowitz) kennen we de vier scalars die de rand vastleggen".
+  Vier geleende getallen plus twee geleende formules (r. 148–150); met de hand is het net
+  geen vijf minuten.
+
+*Beter uitleggen*
+- Geen inhoudelijk gat; de lezer die A, B, C wil narekenen heeft de blokinverse nodig, die
+  in 01_04 staat.
+
+## 5. Code en figuren: 9
+
+*Goed*
+- Elke cel heeft een zin ervoor en erna; `tilt_to_corr` legt de kwadratische vergelijking
+  in commentaar uit en kiest de wortel met benoemde maskers.
+- Vóór elke figuur staat waarop te letten (r. 554–555, 766–767, 895–896, 1042), erna wat te
+  zien is.
+- `sml_fit`, `population_sml` en `adjusted_r2` lezen als de wiskunde; de simulatielus is
+  zichtbaar.
+
+*Aanmerkingen*
+- Tabel- en figuurlabels, r. 854, 876, 911–912, 1088: "in-sample tangentportefeuille",
+  "gemiddeld excess rendement (% per maand)", "R2", en in de figuurtitel "R² = 1.000" met
+  decimale punt. Tabellen en figuurteksten zijn Nederlands (STYLE §3: "in de steekproef",
+  "overrendement") [onderzoek E].
+
+*Beter uitleggen*
+- De labels zijn het enige wat de lezer van de code ziet in de tabellen; ze zouden dezelfde
+  termen moeten dragen als de proza eromheen.
+
+## 6. Replicatie en empirie: 9
+
+*Goed*
+- Admonition met bron, wat, data, verschil en verwachte afwijking, binnen 250 woorden; de
+  onzekere rangorde van dag en maand staat vooraf genoemd (r. 829–831).
+- Tabel origineel/hier (cel 17), en een oordeel dat begint met "Geslaagd … gedeeltelijk
+  geslaagd" en aan de verwachting gekoppeld is (r. 1094–1105).
+- De getallen staan in tabellen; de proza verwijst naar rijen en kolommen.
+
+*Aanmerkingen*
+- Replicatie, r. 893: "De laatste rij is de vlakke lijn van [](#02-08-capm)." De helling is
+  −0,37% per maand; "vlak" onderschat het (klein punt).
+
+*Beter uitleggen*
+- Waarom de gelijkgewogen portefeuille een helling van 0,05 heeft terwijl de CRSP-index
+  negatief is, blijft onbesproken; één bijzin volstaat.
+
+## 7. Oefeningen: 9
+
+*Goed*
+- Instap (toy met risicovrije rente), afleiding ($R^2$ en $\sigma_m$) en uitbreiding van de
+  replicatie (tautologie buiten de steekproef): precies de drie soorten.
+- Elke uitwerking eindigt met wat ze leert; oefening 3 laat zien dat de perfecte lijn een
+  eigenschap van de steekproef is (0,37 buiten tegen 1 binnen).
+
+*Aanmerkingen*
+- Oefening 3, r. 1298: "Dat wijst op een blijvende richting van small en value". "Small en
+  value" zonder uitleg en "richting" is vaag [onderzoek E].
+
+*Beter uitleggen*
+- Welke "richting" bedoeld is (overwegen van kleine en goedkope aandelen) in één
+  woordgroep noemen.
 
 ## Feitelijke fouten
 
-Nagerekend met de hand en tegen de celuitvoer (`tools/nb_outputs.py`). Correct: het
-toy ($\boldsymbol{\Sigma}^{-1}$ met blokinverse; $A = 128{,}125$, $B = 7{,}0625$,
-$C = 0{,}51125$, $D = 15{,}625$; $\lambda = 0{,}368$, $\delta = -0{,}01248$;
-covarianties 0,02432, 0,03904, 0,00224; bèta's 1; 1,6053; 0,0921; $\mu_z = 3{,}39\%$,
-helling 6,61%, 14,00% en 4,00%; gelijkgewogen 9,33%, bèta's 1; 1,8333; 0,1667,
-helling $8{,}33/1{,}389 = 6{,}0\%$, intercept 3,33%, residuen, $R^2 = 1 - 0{,}67/50{,}67 = 0{,}9868$);
-het bewijs van de stelling ($\sigma_p^2/\lambda_p = \mu_p - \mu_z$), van het lemma en
-van propositie en gevolg ($\mathbf{1}'\mathbf{u} = 1$); de wereld van honderd activa
-(0,66%, 4,69%, Sharpe 0,49, $\rho^* = 0{,}62$; hoogste helling 1,7 keer bij 0,75);
-de simulatie (0,08% en $-0{,}34\%$, $12 \times 0{,}338 = 4{,}1\%$; band 0,22 tot 1,0;
-$4{,}69/\sqrt{600} = 0{,}19$; sd 0,14 tot 0,20; mediaan 0,05 naar $-0{,}11$ en 0,14);
-de replicatie (757 maanden; 2,34%; som van absolute gewichten 13,8; 0,89 en
-$1{,}23/1{,}39 = 0{,}885$; $-0{,}37$, 1,16, 0,08; 0,60 met SE 0,16; 0,54, 0,62, 0,73;
-25, 35, 40, 33 en 41%; SE rond 0,02; 0,349 en 0,411); oefening 1 (tangent
-$(1/3, 2/9, 4/9)$ uit $\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}^e = (1{,}5;\ 1;\ 2)$;
-$\mathbf{d}$ en $\boldsymbol{\Sigma}\mathbf{d}$; $c^* = 4{,}718$, $\rho^* = 0{,}785$,
-$\mathbf{w}^*$), oefening 2 (0,15 in 2017 tot 0,56 in 2020; 24 tot 40%; 0,82),
-oefening 3 (0,37; 0,74; 0,98; 2,55; 0,11; 0,88 tegen 0,62). Cross-refs naar
-[](#01-04-markowitz) (A, B, C, $\lambda$, $\delta$, zelfde drie activa) en
-[](#02-08-capm) kloppen. De getallen van Roll (1988) zijn niet tegen de bron
-gecontroleerd.
+Nagerekend tegen de celuitvoer en met de hand. Correct: het toy (A, B, C, D; λ = 0,368,
+δ = −0,01248; covarianties en bèta's; μ_z = 3,39%, 14,00% en 4,00%; gelijkgewogen 9,33%,
+rijgemiddelden, variantie 0,02, bèta's, helling 8,33/1,389 = 6,0%, intercept 3,33%,
+residuen, $R^2$ = 0,9868); de bewijzen van stelling, lemma, propositie en gevolg; de
+kwadratische vergelijking in `tilt_to_corr`; de modelwereld (0,66%, 4,69%, 0,49, 0,62; 1,7
+bij 0,75; nul bij 0,62); de simulatie (0,08% en −0,34%; 12 × 0,338 ≈ 4,1%; band 0,22–1,0;
+4,69/√600 = 0,19; sd 0,14–0,20; mediaan 0,05 → −0,11 en 0,14; −0,11 binnen één sd); de
+replicatie (1963-07 t/m 2026-07; correlatie 0,885 = 1,233/1,393; $R^2$ CRSP 0,08;
+portefeuille-$R^2$ boven 0,5; 0,349 en 0,411; 35–40%); oefening 1 (tangent
+(1/3, 2/9, 4/9); **d** en Σ**d**; c* = 4,718; ρ* = 0,785; w*; intercept 0,07333); oefening 2
+(0,15 in 2017 tot 0,56 in 2020; volgorde 2020, 2011, 2022, 2008; 24–40%; 0,82); oefening 3
+(0,37; 0,74; 0,98; 2,55; 0,11; 0,88 tegen 0,62). Labels [](#eq-markowitz-probleem),
+[](#eq-markowitz-foc), [](#eq-markowitz-abcd), `prop-capm-beta`, `thm-capm-zerobeta`
+bestaan. De termkeuze "rand" maakt geen stelling onjuist.
 
-Geen fouten gevonden. Twijfelachtig, niet geteld:
-- Numerieke uitwerking, na de figuur: "Dat had de intuïtie voorspeld." Het "Waarom"
-  van de bijna-efficiënte proxy's zei "de bèta's van de activa met een hoge premie
-  dalen ... en de helling daalt". Het pad laat eerst een stijging tot 1,7 keer de
-  premie zien. Wat de intuïtie voorspelde (de helling kan nul worden bij hoge
-  correlatie), klopt; de richting onderweg niet.
+| nr | regel | bewering | oordeel | correctie |
+|---|---|---|---|---|
+| 1 | 1120–1121 | "dat de lijn vlak is voor elke waarneembare proxy" | onjuist als algemene bewering: de in-sample tangentportefeuille geeft helling 2,34, de vaste tangentportefeuille buiten de steekproef 0,98 | "voor elke gangbare marktindex" |
 
-## Per criterium
-
-### 1. Helderheid van de uitleg (8,5)
-
-*Goed*
-- **Toy-voorbeeld**: de geleende scalars $A$, $B$, $C$, $D$ en de randvorm van de
-  gewichten worden in één regel herhaald met vergelijkingslabel, en elke stap heeft
-  een getal. De slotzin geeft de les ("de $R^2$ van een cross-sectionele regressie
-  zegt niet hoe ver de proxy van de rand ligt").
-- **Opzet**: "Het subscript $m$ staat in deze lecture voor de marktportefeuille, niet
-  voor de stochastic discount factor" voorkomt een botsing met de vorige lecture.
-- **Bijna-efficiënte proxy's**: het lemma krijgt direct een getal ("correlatie 0,9
-  ... 90% van haar Sharpe-ratio"), en $\rho^*$ krijgt het toy-getal 0,785 en het
-  wereldgetal 0,62.
-
-*Aanmerkingen*
-- Numerieke uitwerking: "Dat had de intuïtie voorspeld." Zie twijfelachtig; de lezer
-  krijgt een niet-monotoon pad na een intuïtie die een dalende helling beschreef.
-- Simulatie: de proxy's hebben correlatie 1 tot 0,90. Daar is de ware helling juist
-  *hoger* dan de premie (0,79 tegen 0,66 bij 0,90). De nulhelling bij 0,62, het punt
-  van de propositie, komt in de simulatie niet voor; de tekst verschuift de vraag
-  naar het intercept zonder dat te zeggen.
-- Bijna-efficiënte proxy's: "Alleen een GLS-regressie ... blijft aan de positie van
-  de proxy gebonden." Eén zin zonder uitleg of vervolg.
-- De tweede vraag: "uit die correlatie schatte hij de spread". Geen formule en geen
-  getal.
-
-*Beter uitleggen*
-- Waarom de simulatie $\rho \ge 0{,}90$ kiest en wat daar met de helling gebeurt:
-  één zin bij de keuze van `rhos`.
-
-*Voor een 9*
-- De intuïtie of de conclusie na de padfiguur laten kloppen met het niet-monotone
-  pad (Bijna-efficiënte proxy's; Numerieke uitwerking).
-- In de simulatie $\rho^* = 0{,}62$ toevoegen of uitleggen waarom het ontbreekt
-  (Simulatie, eerste alinea).
-- De GLS-zin en de bid-ask-zin óf uitwerken met één getal óf schrappen.
-
-### 2. Opbouw en rode draad (8)
-
-*Goed*
-- Overzicht met vraag en antwoord ("Alleen of de gebruikte index
-  mean-variance-efficiënt is, en niet het model"), een lijst van vier punten en de
-  geschiedenis.
-- Toy, stelling, simulatie en replicatie voor de critique gebruiken dezelfde
-  bouwstenen: de drie activa van [](#01-04-markowitz), `sml_fit` in elke laag, de
-  $R^2$ van 0,9868 die aan het eind van de simulatie terugkomt.
-- De drie verwachtingen van de intuïtie komen elk terug ("Dat is de eerste
-  voorspelling van de intuïtie"; de nulhelling; "Zoals de intuïtie verwachtte, is
-  het meeste dus niet systematisch").
-
-*Aanmerkingen*
-- Intuïtie: "Los van die kritiek stelde Roll later een tweede vraag, over
-  varianties." De lecture heeft twee onderwerpen. Toy en simulatie gaan alleen over
-  het eerste; het $R^2$-deel heeft geen toy en geen simulatie.
-- De tweede vraag: de sinaasappelsap-alinea ("Die lezing ontlenen we aan ... want de
-  primaire tekst hebben we niet kunnen inzien") en de bid-ask-alinea zijn
-  nevenresultaten die de schraptoets niet halen.
-- Het pad in de numerieke uitwerking weerspreekt het "Waarom" ervoor (zie
-  criterium 1).
-
-*Beter uitleggen*
-- Geen.
-
-*Voor een 9*
-- Zie verbetering 1 (Intuïtie, vierde alinea; De tweede vraag).
-
-### 3. Taal (9)
-
-*Goed*
-- Korte zinnen (gemiddeld 14,6 woorden, p90 23), vijf puntkomma's, geen
-  gedachtestreepjes, geen u/je, geen stopwoorden of calques volgens `prose_stats`.
-- Vaktermen krijgen een uitleg bij eerste gebruik (*marktportefeuille*, *proxy*,
-  *joint hypothesis*, *minimum-variantierand*, *niet-synchrone handel*).
-- Theorie of feit zegt wat het hier betekent ("het CAPM was een theorie met toetsen
-  en werd een theorie waarvan de centrale grootheid niet te meten is").
-
-*Aanmerkingen*
-- Opzet: "niet voor de stochastic discount factor"; elders in de reeks
-  "discontofactor" of SDF.
-- De tweede vraag: "Die lezing ontlenen we aan ..., want de primaire tekst hebben we
-  niet kunnen inzien." Een werknotitie in de lopende tekst.
-- Presentatielabels in het Engels: "in-sample tangent", "max |resid|".
-
-*Beter uitleggen*
-- Geen.
-
-### 4. Toy-voorbeeld (9)
-
-*Goed*
-- Opzet-tabel, recept dat de theorie als eerste afleidt, vijf genummerde stappen,
-  één cel, tabel "met de hand"/"code" en één les.
-- Eén mechanisme met twee portefeuilles, handrekenbaar (noemers tot 15,625), en de
-  $R^2$ van 0,9868 is een scherp exemplaar van wat de lecture beweert.
-
-*Aanmerkingen*
-- Stap 1 neemt de formules voor $\lambda$ en $\delta$ over uit
-  [](#01-04-markowitz) zonder label; de randvorm krijgt er wel een.
-
-*Beter uitleggen*
-- Geen.
-
-### 5. Code en figuren (8)
-
-*Goed*
-- `sml_fit` en `make_world` lezen als de wiskunde, met benoemde tussenresultaten, en
-  `sml_fit` wordt in toy, wereld, simulatie en replicatie hergebruikt.
-- Elke figuur heeft een leeswijzer ("Let op de rode lijn tussen correlatie 1 en de
-  plek waar ze de nullijn kruist"; "Let in de figuur op de spreiding rond de lijn in
-  het rechterpaneel") en een bijschrift.
-
-*Aanmerkingen*
-- `tilt_to_corr`: "`roots = np.roots([a**2 - rho**2 * s * b, ...])`" en
-  "`valid = [r.real for r in roots if abs(r.imag) < 1e-12 and ...]`". Een
-  kwadratische vergelijking die de tekst niet noemt, en een comprehension die de
-  wortel kiest.
-- Simulatiecel: `tilt_to_corr` en de dubbele lus samen ongeveer dertig regels.
-- $R^2$-replicatie: "`portfolio_r2 = {name: pd.Series({col: adjusted_r2(...) for col
-  in panel.columns}) for name, panel in portfolio_sets.items()}`" en
-  "`pd.DataFrame({name: {...} for name, r2 in portfolio_r2.items()})`". Geneste
-  comprehensions om tabellen te bouwen (STYLE §11.8).
-- `adjusted_r2`: "`1 - (1 - (1 - resid.var() / y.var())) * (n - 1) / (n - k)`", een
-  drievoudige ontkenning in plaats van een benoemde $R^2$.
-- Kolomnamen afgekort: "pop. helling", "helling q05", "sd intercept",
-  "gem. excess (% p.m.)", "SE gem. (% p.m.)".
-
-*Beter uitleggen*
-- Geen.
-
-*Voor een 9*
-- Zie verbetering 2 (Simulatie; De $R^2$ van portefeuilles en aandelen).
-
-### 6. Replicatie en empirie (8,5)
-
-*Goed*
-- Replicatieblok van 196 woorden met vijf onderdelen, een verwachte afwijking die de
-  onzekere rangorde van dag en maand vooraf noemt, en een eindtabel
-  origineel/hier.
-- Het oordeel "Geslaagd voor de tautologie, gedeeltelijk geslaagd voor de $R^2$"
-  verwijst naar de verwachte afwijking en verklaart de omgekeerde rangorde.
-- De proxy met helling nul op echte data (correlatie 0,89, helling nul) maakt de
-  propositie tastbaar.
-
-*Aanmerkingen*
-- Na de tautologietabel: "De CRSP-index geeft een helling van −0,37% en een
-  intercept van 1,16% per maand, met $R^2 = 0{,}08$ ... 0,60% per maand, heeft een
-  standaardfout van 0,16%." Vijf getallen uit de tabel in één alinea.
-- Na de aandelentabel: "gemiddeld 25% ... 35% ... 40%. Dagelijks is het 33% ...
-  41% ... rond 0,02". Zes getallen in één alinea.
-
-*Beter uitleggen*
-- Geen.
-
-*Voor een 9*
-- Zie verbetering 3 (De tautologie; De $R^2$ van portefeuilles en aandelen).
-
-### 7. Oefeningen (9)
-
-*Goed*
-- Oefening 1 zet het toy om naar een wereld met risicovrije rente en rekent
-  $\rho^* = 0{,}785$ uit; oefening 2 is een afleiding met een empirisch vervolg;
-  oefening 3 breidt de replicatie uit buiten de steekproef. Elke uitwerking eindigt
-  met "Wat dit leert:".
-
-*Aanmerkingen*
-- Geen.
-
-*Beter uitleggen*
-- Geen.
+Onnauwkeurig, geen fout: r. 589–590 ("nulhelling bij hoge correlatie", terwijl het 0,62 is)
+en r. 38–40 (lijn ≡ efficiëntie vóór de afspraak op r. 261).
 
 ## Navertelling in vijf zinnen
 
-Een lijn tussen verwacht rendement en bèta bestaat dan en slechts dan als de
-portefeuille waartegen de bèta's zijn gemeten op de minimum-variantierand ligt, en
-dat geldt ook in elke steekproef. Een toets van het CAPM toetst dus alleen of de
-gebruikte index efficiënt is, en de ware markt is niet waarneembaar. Een proxy die
-sterk met de markt correleert, kan toch een helling van nul geven als hij in de
-ongunstige richting afwijkt, en met vijftig jaar data ziet een onderzoeker dat
-niet. Op de 25 size/BM-portefeuilles geeft de achteraf efficiënte portefeuille
-$R^2 = 1$ en de CRSP-index 0,08. Los daarvan verklaren markt en industrie maar ongeveer
-35 tot 40% van de maandelijkse variantie van grote aandelen.
+1. Een exacte lijn tussen verwacht rendement en bèta bestaat dan en slechts dan als de
+   portefeuille waartegen de bèta's gemeten zijn op de minimum-variantierand ligt, en dat
+   geldt ook met steekproefmomenten.
+2. Daarom toetst een CAPM-toets alleen of de gekozen index efficiënt is, en omdat de ware
+   markt onwaarneembaar is, is elke verwerping een gezamenlijke hypothese.
+3. Een proxy die minder belegt in activa met een hoge premie kan, met een nog behoorlijke
+   correlatie met de markt (0,62 in de modelwereld, 0,885 in de data), een helling van nul
+   geven, en met vijftig jaar data ziet de onderzoeker dat niet.
+4. Op de 25 size/BM-portefeuilles geeft de achteraf efficiënte portefeuille een perfecte
+   lijn en de CRSP-index bijna geen, zonder dat de data zeggen waarom.
+5. Markt en industrie verklaren maar zo'n 35–40% van de variantie van losse aandelen, een
+   getal dat anders dan gemiddelde rendementen scherp gemeten is.
 
-Dit komt overeen met het Overzicht, dat het $R^2$-deel als vierde punt noemt.
+Dat komt overeen met het Overzicht.
+
+## Taal na de redactie
+
+De redactie heeft het college duidelijk natuurlijker gemaakt: geen regeltaal meer, geen
+lijm-dubbelepunten, verbanden met voegwoorden. Wat overblijft zijn een handvol zinnen die
+je zo niet tegen een collega zegt.
+
+- r. 638: "Hier keert de standaardfout van 2% om." → "Bij varianties ligt het andersom dan
+  bij [de standaardfout van 2%](#00-01-rendementen), want gemiddelde rendementen zijn slecht
+  gemeten en varianties goed."
+- r. 754: "De steekproefkolommen overstemmen dat verschil." → "In de geschatte waarden
+  verdwijnt dat verschil in de ruis."
+- r. 696: "De nulhelling bij 0,62 valt buiten dit bereik, zodat de schade hier in het
+  intercept zit." → "De nulhelling ligt pas bij 0,62, dus in dit bereik zit de schade niet
+  in de helling maar in het intercept."
+
+Bij volledige oplossing van alle punten: 9,0
 
 ## Controle 1
 
-Gecontroleerd tegen `notes/rapport-03_14_roll.md` §F6-1, de lecture en de nieuwe
-celuitvoer. Vergeleken met de uitvoer van F6 zijn alle waarden gelijk; alleen
-kolom-, index- en celnummers verschillen. `prose_stats --check`: 5.419 woorden, PASS.
+Nagerekend tegen `tools/nb_outputs.py` (uitvoer in `$TEMP/F6c-03_14_roll-out.txt`) en met
+de hand, tegen R9-1 in het rapport.
 
-| punt | status | vindplaats |
-|---|---|---|
-| Verbetering 1: $R^2$-deel aan de vraag koppelen | opgelost | "Als de lijn niet te toetsen is, wat verklaren markt en industrie dan wel?" (Intuïtie en Theorie) |
-| Verbetering 1: sinaasappelsap en bid-ask | opgelost | twee zinnen, werknotitie en secundaire bron weg; spread $2\sqrt{-\Cov(\Delta p_t, \Delta p_{t-1})}$ nagerekend als Rolls schatter |
-| Verbetering 1 / twijfelpunt: intuïtie tegen pad | opgelost | "kan de helling eerst zelfs stijgen"; "De intuïtie voorspelde de eerste stijging en de nulhelling bij hoge correlatie" |
-| Verbetering 2: `tilt_to_corr` | opgelost | zin over de kwadratische vergelijking; wortel via benoemde maskers; eigen cel |
-| Verbetering 2: geneste comprehensions | opgelost | portefeuilletabel met gewone lussen |
-| Verbetering 2: `adjusted_r2` | opgelost | benoemde `r2` |
-| Verbetering 2: cel van dertig regels, kolomnamen | opgelost | simulatielus in een eigen cel; "populatie: helling", "helling: 5%-kwantiel", "% per maand" |
-| Verbetering 3: getallen in proza | opgelost | de alinea's verwijzen naar rijen en kolommen; alleen het oordeel noemt de vergeleken waarden |
-| Helderheid: waarom $\rho \ge 0{,}90$ | opgelost | "de nulhelling bij 0,62 valt buiten dit bereik, en de schade zit hier in het intercept" |
-| Helderheid: GLS-zin | opgelost | geschrapt |
-| Taal: "stochastic discount factor", werknotitie, Engelse labels | opgelost | "SDF"; notitie weg; "in-sample tangentportefeuille" |
-| Toy: formules $\lambda$, $\delta$ zonder label | opgelost | zin dat [](#01-04-markowitz) ze afleidt uit [](#eq-markowitz-foc) en de restricties |
-| Opbouw: geen toy of simulatie voor het $R^2$-deel | niet (afgewezen) | STYLE §11.7 (één mechanisme, één simulatievraag); oefening 2 draagt dat deel; reden aanvaard |
+**Feitelijke fout.** r. 1120–1121 "vlak voor elke waarneembare proxy" → "vlak voor elke
+gangbare marktindex": *opgelost* (nu r. 1132).
 
-De nieuwe naadzin in "Waar we zijn" ("Het bezwaar dat de markt niet waarneembaar
-is, dat in de APT-discussie terugkwam, begint hier") klopt: de toetsbaarheidsdiscussie
-over de APT volgde na 1977.
+**Drie verbeteringen.**
+1. Taal: *opgelost*, op "rand" → "grens" na (zie Taal hieronder).
+2. Opbouw: *opgelost*. Bij [](#eq-roll-decompositie) staat nu
+   "$0{,}0469^2/(0{,}0469^2+\sigma_\varepsilon^2)$, dus tussen 0,13 en 0,26" (r. 624–627).
+   Nagerekend: $0{,}0469^2/(0{,}0469^2+0{,}08^2) = 0{,}256 \to 0{,}26$ en
+   $0{,}0469^2/(0{,}0469^2+0{,}12^2) = 0{,}133 \to 0{,}13$, klopt. 4,69% staat in de
+   celuitvoer (marktvolatiliteit 4,6931), 8–12% staat al in de Opzet: herleidbaar, geen
+   nieuwe feitelijke claim.
+3. Helderheid: *opgelost*. Overzicht geeft de afspraak (r. 40) vóór het eerste gebruik
+   van "efficiënt"; Opzet verwijst terug (r. 262–264); Intuïtie r. 72 zegt nu
+   "minimum-variantierand" i.p.v. "efficiënte rand".
 
-Geen verslechteringen van betekenis en geen nieuwe feitelijke fouten. Kanttekening,
-geen aftrek: twee nieuwe puntkomma's in lopende tekst (Toy, stap 1: "van het
-minimum-variantieprobleem; [](#01-04-markowitz) leidt ..."; Simulatie: "boven de
-premie; de nulhelling").
+**Voor een 9.**
+- Opbouw (3/3 *opgelost*): $R^2$-getal (zie boven); terugverwijzing r. 589–590 verwijst nu
+  naar de redenering bij de bijna-efficiënte proxy's ("eerst krimpt de spreiding van de
+  bèta's, daarna verdwijnt de covariantie met de premies") zonder "hoge correlatie" als
+  kwalificatie van 0,62 — de ene overblijvende "hoge correlatie" (r. 235) is een algemene
+  zin in de Theorie-inleiding, geen herhaling van de fout; "We verwachten dus drie dingen"
+  → "Uit dit alles volgen drie verwachtingen" (r. 105).
+- Taal (4/5 *opgelost*): r. 646 motief niet meer als onderwerp; "theorie of feit" één keer
+  bij naam (Wat er brak, r. 1130), in Overzicht omschreven zonder de term (r. 60–61);
+  r. 754/696/28–29/1100 herschreven zoals in "Taal na de redactie" voorgesteld; titel
+  "kritiek" (r. 16), "getallen" (r. 137). *Niet opgelost*: "rand" → "grens" boekbreed
+  (r. 44, 71, 256 e.v.) — expliciet uitgesteld naar een boekbrede ronde (01_04, 02_08,
+  03_14 tegelijk) op aanwijzing van de orkestrator, in lijn met de eigen aanbeveling
+  hierboven dat lokaal omzetten een nieuw verschil met 01_04 zou maken. Geen taalgebrek
+  van dit college; blokkeert het deelcijfer niet.
 
-| nr | criterium | was | nu |
+**Aanmerkingen en Beter uitleggen (overig), alle *opgelost*.**
+- Helderheid: Overzicht r. 38–41 met de afspraak direct erna; "bijna-efficiënt" ruim
+  genoemd bij $\rho^{*}=0{,}62$ (r. 533); "sterk gecorreleerd" → "duidelijk" (r. 47).
+- Code en figuren: labels in het Nederlands ("tangentportefeuille in de steekproef",
+  "gemiddeld overrendement (% per maand)", "R²"); decimale komma in de figuurtitel via
+  `.replace(".", ",")` (r. 922).
+- Replicatie: r. 893 "vlak" → "te vlakke, hier zelfs licht dalende lijn" (r. 904); bijzin
+  over de gelijkgewogen portefeuille (r. 902–903).
+- Oefeningen: oefening 3 "richting van small en value" → "het overwegen van kleine en
+  goedkope aandelen (small en value)" (r. 1310–1311).
+- Toy: geen wijziging nodig, terecht (geen inhoudelijk gat); "scalars" via Taal opgelost.
+
+**Hardop-toets.** De drie herschreven zinnen (r. 646, r. 763, r. 705) staan letterlijk
+zoals voorgesteld in "Taal na de redactie" en lezen nu als gesproken tekst.
+
+**Getallencontrole.** Tegen `nb_outputs.py`: marktvolatiliteit 4,6931 (r. 532, 626),
+$\rho^{*}$/correlatie bij nulhelling 0,6225/0,623 (r. 533, 590), R² tangent 1,000
+(r. 1106), R² aandelen maand 0,349→0,35 en dag 0,411→0,41 (r. 1107–1108); oefening 3: R²
+0,367→0,37, intercept 0,743→0,74, helling 0,976→0,98, gemiddeld overrendement
+2,547→2,55, Sharpe 0,878→0,88 (r. 1302–1309); oefening 2: R² 2017 0,152→0,15, 2020
+0,564→0,56, correlatie 0,815→0,82, volatiliteitsband 24,2–40,0 → "24 tot 40%"
+(r. 1255–1258). Alles klopt. Het getal 0,13–0,26 is een handberekening uit twee al
+bevestigde grootheden (cel + Opzet), geen niet-herleidbaar getal.
+
+Geen verslechtering, geen nieuwe feitelijke fout gevonden.
+
+## Deelcijfers na Controle 1
+
+| nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
-| 1 | Helderheid | 8,5 | 9 |
-| 2 | Opbouw | 8 | 8,5 |
-| 3 | Taal | 9 | 9 |
-| 4 | Toy | 9 | 9 |
-| 5 | Code en figuren | 8 | 9 |
-| 6 | Replicatie | 8,5 | 9 |
-| 7 | Oefeningen | 9 | 9 |
+| 1 | Helderheid van de uitleg | 25% | 9 |
+| 2 | Opbouw en rode draad | 20% | 9 |
+| 3 | Taal | 20% | 9 |
+| 4 | Toy-voorbeeld | 10% | 9 |
+| 5 | Code en figuren | 10% | 9 |
+| 6 | Replicatie en empirie | 10% | 9 |
+| 7 | Oefeningen | 5% | 9 |
 
-Gewogen: 2,70 + 1,70 + 1,35 + 0,90 + 0,90 + 0,90 + 0,45 = 8,90. **Eindcijfer 8,9,
-laagste deelcijfer 8,5.** Opbouw blijft 8,5: de lecture behandelt twee vragen, en
-toy en simulatie dragen alleen de eerste.
+Gewogen: 2,25 + 1,80 + 1,80 + 0,90 + 0,90 + 0,90 + 0,45 = 9,00, dus **eindcijfer 9,0**,
+laagste deelcijfer 9. Het enige nog open punt ("rand" → "grens") is boekbreed en
+blokkeert dit deelcijfer niet.

@@ -1,0 +1,13 @@
+STATUS 03_14_roll T words=5566 prose=PASS
+Voor: FAIL op sent_mean 14,9, calque 3, colon_mid 9,6, telegram 1, tmpl 5, connect 16. Na: sent_mean 15,6, colon_mid 4,7, connect 25, calque/telegram 0, tmpl 2. nb_numbers geeft dezelfde getallen (alleen regelnummers verschoven).
+Overzicht: "dus elke toets toetst de proxy" wordt een omdat-zin; "lecture" wordt "college"; "definieert het tijdvak" wordt "Met dat werk begint een nieuw tijdvak"; dubbele punt na theorie of feit weg.
+Intuïtie: "haar" voor een portefeuille/de markt vervangen door het zelfstandig naamwoord; "Verwerpt hij, dan" krijgt een lijdend voorwerp; "Wat telt, is" wordt "want het gaat om"; staccato samengevoegd (maar, en, namelijk).
+Toy: regeltaal "De imports-cel staat hier" wordt een gewone aankondiging; "Haar covarianties/variantie" weg; celaankondiging als zin; dubbele punt in slotzin vervangen door "dus".
+Theorie: "In woorden:" van 5 naar 2, "Waarom zou dit waar zijn" van 4 naar 2 (één wordt een gewone vraag, één "Kijk eerst naar een belegger"); "Zoals de intuïtie voorspelde" gevarieerd; "hangt aan" (3x) wordt "hangt af van"; "Dus stijgt" wordt zodat-bijzin; "haar/diens" in Samengevat weg; telegramzin "Ten slotte Rolls tweede vraag" wordt hele zin; puntkomma's en lijm-dubbelepunten vervangen door want/zodat/terwijl/namelijk.
+Simulatie: regeltaal "De vraag over steekproeven" en "Het antwoord op de steekproefvraag" herschreven; motiefnaam als handelend onderwerp ("Volgens de standaardfout van 2%") weg, alleen de link in Theorie blijft; puntkomma's weg.
+Replicatie: "zoals de verwachte afwijking eiste" wordt "zoals de stelling voorspelt"; "het blok noemde" weg; "Nu de vijftig aandelen." en "Eerst de portefeuilles" worden hele zinnen; figuur als handelend onderwerp ("verwerpt") wordt "Uit de rechterfiguur volgt"; "haar Sharpe-ratio" weg.
+Wat er brak: "Wat overblijft is" wordt "Er blijft ... over"; dubbele punt na Shanken wordt bijzin.
+Oefeningen: "Uit de tabel:" wordt een zin; "Wat dit leert" van 3 naar 2; "in-sample" in de lopende tekst wordt "van de steekproef"/"zelf geschat".
+Vaste termen: "excess rendement(en)" wordt in de lopende tekst overal "overrendement(en)" (8x); code-labels ongewijzigd.
+Gemeld, niet gewijzigd: "efficiënte rand", "minimum-variantierand", "op de rand" en "randportefeuille" blijven staan. STYLE §3 wil "grens", maar 01_04_markowitz en 02_08_capm gebruiken "rand" en in dit college komt het woord meer dan 30 keer voor. Een omzetting hoort boekbreed te gebeuren.
+Gemeld: de tabellabels in code heten nog "in-sample tangentportefeuille" en "gemiddeld excess rendement"; dat is code en viel buiten fase T.
