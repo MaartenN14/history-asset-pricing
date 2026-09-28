@@ -109,3 +109,12 @@ Redirects via Bash, niet PowerShell (`>` schrijft een BOM). `PYTHONIOENCODING=ut
 als een script op de console crasht. Tempbestanden alleen met slug in de naam.
 Uitvoeren met `HAP_OFFLINE=1`. Wijzig nooit een lecture in de rol van lezer of
 beoordelaar.
+
+## 10. Zuinig (workflow §10)
+
+Je hebt een beurtbudget (staat in je opdracht). Lees het college één keer volledig
+en daarna alleen `grep -n` of `sed -n` van hoogstens 40 regels. Nooit `.ipynb`,
+nooit een pdf volledig, nooit bestanden uit de tool-results-map. Lange uitvoer
+naar `$TEMP/<rol>-<slug>-*.txt` en daarvan alleen `head`/`grep` lezen. Wijzigingen
+gebundeld (één script of één Write per sectie). Eindbericht: statusregel plus
+hoogstens acht regels.

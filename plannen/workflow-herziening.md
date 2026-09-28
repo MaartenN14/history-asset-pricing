@@ -519,3 +519,38 @@ volgende wijzigingen; waar ze botsen met §1, §2 of §4 gaan zij voor.
 > schrappen). Wijs een punt alleen af met een regel uit STYLE of "Wat niet meetelt".
 > Zelfde verificatie en grenzen als F1. Rapport §F6-1, hoogstens 25 regels, per punt:
 > gedaan of afgewezen met reden. Eindbericht: statusregel `F6b`.
+
+## 10. Zuinigheid (besluit eigenaar, 2026-09-28)
+
+Meting Deel IIIb per agent: schrijver 99–128 beurten, context tot 516k, som van
+alle input 28–45M tokens; beoordelaar tot 29M; F23 tot 19M. Kosten = beurten ×
+context, want elke beurt stuurt de hele context opnieuw mee. Daarom, bovenop §9:
+
+1. **Verse agent per fase, nooit hervatten.** F1, F23, F4, F6, F6b en F6c krijgen
+   elk een nieuwe agent met een overdracht van hoogstens vijf regels plus de
+   notes-bestanden. Een agent die door een limiet of pauze stopt, wordt niet
+   hervat; de orchestrator start een nieuwe met "controleer eerst de staat".
+   F6c is Sonnet en leest alleen `notes/eind-<slug>.md`, rapport §F6-1 en
+   `git diff -- lectures/<slug>.md`; het hele college alleen als de diff een
+   deelcijfer niet kan onderbouwen.
+2. **Beurtbudget in elke prompt.** Schrijver ≤ 30 toolaanroepen, F23 ≤ 25,
+   beoordelaar ≤ 20, naadcontrole ≤ 25. Wijzigingen gebundeld: één Python-script
+   of één Write per sectie, nooit edit voor edit.
+3. **Eén keer lezen.** Het college één keer volledig (`.md`), daarna alleen
+   `grep -n` of `sed -n` van hoogstens 40 regels. Nooit `.ipynb`, nooit een pdf
+   volledig (`pages=` of `pdftotext | grep`), nooit bestanden uit de
+   tool-results-map. Aangehaalde lectures alleen op de aangehaalde regels.
+4. **Lange uitvoer naar bestand.** prose_stats, nb_outputs, nb_numbers, jupytext
+   en de build schrijven naar `$TEMP/<rol>-<slug>-*.txt`; de agent leest daarvan
+   alleen `head`, `tail` of `grep`.
+5. **Eindbericht kort.** Statusregel plus hoogstens acht regels; geen citaten uit
+   het college.
+
+Doel: per college van ruwweg 70M naar 8–10M input. De orchestrator zet regels 2–5
+letterlijk in elke prompt en controleert het aantal beurten achteraf in het
+agenttranscript.
+
+Rating-bestanden van de lus (`notes/rating-<slug>.md`, Deel I–IIIa) zijn op
+2026-09-28 verwijderd: ze logden F5a → F5c en werden voor het eindcijfer
+aangezien. Het cijfer van record staat in `notes/eind-<slug>.md` en in de
+commitregel; §3.4 voegt geen rating-bestand meer toe.
