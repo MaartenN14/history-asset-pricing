@@ -1,0 +1,19 @@
+STATUS 02_09_black_scholes T words=5717 prose=PASS
+- Waar we zijn: "geprijsd" wordt "gewaardeerd"; de open vraag staat nu in twee gewone vragen.
+- Overzicht: het antwoord is een hele zin ("Ze is evenveel waard als ..."), "lecture" wordt "college", "Itô's lemma" wordt "het lemma van Itô"; de geschiedenis is met "maar", "en" en "omdat" verbonden; theorie of feit staat in een gewone zin.
+- Intuïtie: staccato samengevoegd (zodat, want, omdat, daarom); "haar" voor positie weg; "doet er niet toe" en "Wat wel telt, is" herschreven; "afgedekte" wordt "gehedgde"; de losse "En"-zin is weg.
+- Toy: regeltaal weg ("imports-cel", "De lezer weet nu"); de stappen 1 tot 6 zijn hele zinnen zonder dubbele punt en zonder "Waarde X."; "Nergens." is een gewone zin; de knooptabel heeft een zin ervoor.
+- Theorie/routekaart: telegramzinnen ("Eerst Itô's lemma.", "Dan de kern:") zijn hele zinnen.
+- Opzet: notatie-alinea verbonden; de losse regel "Aanname 1 in formulevorm:" is opgegaan in aanname 1 en de zin na de vergelijking; "reparatie" wordt "correctie"; "short gaan mag" wordt "short verkopen is toegestaan".
+- Itô: de "Waarom zou dit waar zijn?"-opening en de "Wie"-zin zijn weg, de alinea begint met de bewering; "Het bewijsidee:" loopt nu als bijzin; in de stelling staat "Dan geldt".
+- Delta-hedge: "Wat overblijft, is" en "Geen arbitrage eist" (calques) herschreven; "Zoals de intuïtie voorspelde" wordt "De intuïtie had dus gelijk, want ..."; "In woorden:" is weg; in de note staat "laten we het CAPM gelden".
+- Formule en Feynman-Kac: "Waarom zou" weg; "Die wereld heet de kansmaat" wordt "De kansen in die wereld heten ..."; "doen er niet toe" wordt "spelen geen rol"; twee van de drie keer "In woorden:" zijn weg; komparatieve statica met "omdat" en "want" in plaats van een dubbele punt.
+- Pariteit: "Waarom zou" en de dubbele "geen model nodig" zijn weg; de termijnkoers in de stelling staat in twee zinnen.
+- Hedger: de intuïtie begint met de bewering, zonder "Waarom zou"; "ingeprijsde" wordt "de variantie in de optieprijs"; de dubbele punten in het bewijs en in de gevolgtrekking zijn vervangen door "want" en "omdat".
+- Implied volatility: "Waarom zou" en een "Wie"-zin zijn weg, en "We prijzen" wordt "We waarderen".
+- Samengevat: de "Wie"-zin is weg, en de vraag na de dubbele punt is een gewone zin.
+- Simulatie: de werkmelding "Hun tabellen hebben we niet kunnen raadplegen" is geschrapt (hoort in het rapport). "Nu de eigenlijke vraag." en "In woorden:" zijn weg, net als twee "Wie"-zinnen. In figuurteksten staat "Links is ..." in plaats van "Links:". De losse zin over $p$ en $\mu$ heeft een tweede zin gekregen.
+- Replicatie: in de blokken staan hele zinnen met een persoonsvorm ("We gebruiken ..."), met elk hoogstens twee zinnen. "vertragingen" wordt "lags", en "dus + hoofdzin" wordt "zodat". "Geslaagd"-alinea's en figuurteksten staan zonder dubbele punt als lijm.
+- Wat er brak: de Chicago- en Yale-lezing staan in gewone zinnen, zonder etiket en dubbele punt. "De data van deze lecture kiezen niet" wordt "Uit de data van dit college valt dus niet te kiezen".
+- Oefeningen: de drie keer "Wat dit leert:" is vervangen door gewone slotzinnen. In de slotzin van oefening 3 staat de standaardfout van 2% niet meer als handelend onderwerp. "equity premium" wordt "aandelenpremie", en "Wie tegen 15%/25%" wordt "Bij verkoop tegen ...".
+- Controle: nb_numbers geeft dezelfde 46 getallen als vóór (als multiset, alleen de regelnummers zijn verschoven). Aan code, labels, kopjes, wiskunde en citaties is niets veranderd.

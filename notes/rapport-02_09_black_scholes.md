@@ -168,3 +168,25 @@ Netto +96 woorden.
 2. Replicatie. De VRP-getallen zijn uit de lopende tekst; het oordeel noemt alleen de verwachtingen, de getallen staan in de tabel. Gedaan. Een kolom "origineel" is afgewezen: geen getal van Rubinstein, Whaley of Carr-Wu is in de bib of in `notes/` herleidbaar (STYLE §11.11 "Feiten"; eerder besluit bij F4).
 3. Toy: knooptabel met alle koersen per stap vóór de stappen. Gedaan.
 - Diffcontrole: "drie punten" naar "vier punten" in Opzet (S_t, R^f, r, d/δ); `--check` PASS, sync gedaan.
+
+## R9-1 (F6b, ronde 9+)
+
+Woorden: 5.870 (was 5.717); `prose_stats --check` PASS (zin > 40: 1, `colon_mid` 1,4); `nb_numbers` geen nieuwe meldingen; `rewrap` gedraaid; notebook opnieuw uitgevoerd, uitvoer gelijk op twee figuren (labels) na.
+
+- **Helderheid, delta-hedge (:307).** Gedaan: $\mu$ verdwijnt omdat de verkochte aandelen de verwachte stijging $\mu S C_S\,\mathrm{d}t$ tegenover zich hebben.
+- **Helderheid, $\sqrt{\pi/2}$ (:669).** Gedaan, maar niet met $\E|Z|$ zoals voorgesteld: die verklaring is feitelijk onjuist. De factor komt uit de gammaweging (gemiddelde van $\Gamma^2$ langs het pad van een ATM-optie, $\int_0^T \mathrm{d}t/\sqrt{T^2-t^2} = \pi/2$); de zin zegt nu dat een ongelijk gewogen variantieschatting onnauwkeuriger is. "in feite" geschrapt.
+- **SDF (:344, :1143).** Gedaan: beide "stochastische discontofactor".
+- **"verwachtingen" (:94).** Gedaan: "voorspellingen".
+- **Opbouw, tijdvakzin (:62) en slot (:1149).** Gedaan: tijdvakformule weg; slot eindigt op wat openstaat (waarom beleggers zoveel voor crashbescherming betalen).
+- **Taal, hardop-toets :66, :1115, :723.** Gedaan volgens de voorgestelde herschrijvingen.
+- **"niet tegen de bron te houden" (:723, :855, :1024).** Gedaan: simulatie vergeleken met de vuistregel, niet met hun getallen; smirk alleen "de niveaus hangen van de dag af"; VRP noemt de reden (oude VIX op S&P 100 bij Whaley, samengestelde variantieswaps over een kortere periode bij Carr en Wu).
+- **Euro/dollar.** Gedaan overal (tekst, toy, en de labels van hedgefiguur en oefening 1 via code).
+- **Toy-cel (:102), looptijd (:345), lemma van Itô (:253, :262), wij/we (:657, :852, :1030).** Gedaan.
+- **Toy, twee precisies (Stap 4).** Gedaan: $\Delta_0 = 0{,}62399$ en $C_0 = 100\,\Delta_0 + B_0$.
+- **Code, uitpakken bij naam (:178, :619).** Gedaan, berekening ongewijzigd.
+- **Code, zin na Greeks-cel (:591).** Gedaan: wat `bs_price` en `bs_greeks` teruggeven, met de array-soort die de replicatie gebruikt.
+- **Code, leeswijzer smirkfiguur (:975).** Gedaan: helling per looptijd links, vlakke strook rechts.
+- **Replicatie, "op de meeste dagen" (:1078).** Gedaan als eigen zinsdeel.
+- **Oefening 1, omgekeerd verband (:1205).** Gedaan: "blijft binnen de lijnen en daalt dus als $1/n$".
+
+Open: 0.
