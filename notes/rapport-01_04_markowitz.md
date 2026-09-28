@@ -155,3 +155,19 @@ Deels: 12, $d \to R_{\min}$ en $a_i \to k_i$ gedaan; $A,B,C$ niet hernoemd, omda
 - "De bewering:" als opening van vier subsecties.
 - De figuurcel trekt nieuwe steekproeven.
 - De Industry-kolom van DGU ontbreekt nog (open).
+
+## R9-1 (F6b, ronde 9+)
+
+Woorden 5.889 (was 5.777), prose_stats PASS (para_one 11), nb_numbers 60 meldingen zoals vóór (geen nieuwe), celuitvoer ongewijzigd, geen code aangepast. Alle punten gedaan, geen afgewezen.
+
+- **Taal, Overzicht:** woordvolgorde bijzin 1/N (hardop-zin 1); motiefzin "In de termen van theorie of feit" herschreven tot "Markowitz levert daarmee een *theorie van keuze* …" (hardop-zin 2).
+- **Taal, Intuïtie:** "*efficiënte rand* (*efficient frontier*)" met de definitie in de zin; "mandje" wordt "risicovolle portefeuille".
+- **Taal, Theorie:** "Ook de tweede verwachting uit de intuïtie komt dus uit" herschreven zonder "intuïtie"; intuïtie nu 2× (plus kop).
+- **Taal, Replicatie:** "het het best" wordt "haalt … de hoogste Sharpe-ratio" (hardop-zin 3); "replicatieblok" wordt "vooraf"; "wij" weg; "punt 2 in de theorie" wordt het mechanisme zelf ($\Sigma^{-1}$ vergroot de ruis).
+- **Helderheid, $R^{f}$ (verbetering 2):** grens "zolang $R^{f}$ onder $B/A = 5{,}51\%$" en "bereikt ze pas als $R^{f}$ naar min oneindig gaat"; ook in Samengevat.
+- **Helderheid, Roy:** alinea herordend; het toy-getal toont alleen hoe ruim de grens is (17% tegen 0,8%), met "ook al kiest Roys belegger bij −20% een ander punt op de rand".
+- **Opbouw, √12 (verbetering 3):** omrekening naar de zin vóór de eerste Sharpe-tabel verplaatst, weggehaald na de winnaar-alinea.
+- **Code en figuren:** "**Opzet.**" na de importcel is nu een gewone zin; leeswijzer cumulatieve figuur zegt waarop te letten, niet de uitkomst; definitie brutopositie/omzet vóór de positiecel.
+- **Replicatie:** admonition "terwijl"-zin gesplitst, met reden van vergelijkbaarheid (20 size/BM-portefeuilles plus 4 factoren); winnaar-alinea zegt dat $\hat\mu$ het enige verschil met mean-variance is.
+- **Oefeningen:** tussenwaarden "nog slechter dan $\phi = 1$, met een Sharpe-ratio van nul bij $\phi = 0{,}5$" (cel 18: 0,054; 0,000; 0,031).
+- **Feitelijke fouten:** geen gemeld; de onnauwkeurigheid bij $R^{f}$ is hierboven opgelost.

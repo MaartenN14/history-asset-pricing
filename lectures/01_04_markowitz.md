@@ -21,31 +21,31 @@ kernelspec:
 **Jaartal.** 1952–1959.
 
 **Wat we al weten.** Uit [](#01-03-williams-ddm) komt een theorie van het
-*niveau* van een prijs: de contante waarde van de dividenden, verdisconteerd
-tegen een voet $r$. De replicatie daar liet zien dat schommelingen in $r$ meer van
+*niveau* van een prijs, die gelijk is aan de contante waarde van de dividenden,
+verdisconteerd tegen een voet $r$. De replicatie daar liet zien dat schommelingen in $r$ meer van
 de prijsbeweging verklaren dan de dividenden. Williams had geen theorie van $r$, en hij bekeek elk
 aandeel apart.
 
-**Welke vraag staat open.** Wat is het risico van een belegging: de schommeling
-van dat ene stuk papier, of wat het toevoegt aan de portefeuille die de belegger
-al heeft?
+**Welke vraag staat open.** Wat is het risico van een belegging? Is dat de
+schommeling van dat ene stuk papier, of wat het toevoegt aan de portefeuille die
+de belegger al heeft?
 ```
 
 ## Overzicht
 
 Welke portefeuille hoort een belegger te houden, en hoe riskant is één activum
-daarin? Het antwoord van Markowitz: een activum is zo riskant als zijn
-covariantie met de portefeuille, en de beste portefeuilles volgen exact uit de
+daarin? Markowitz antwoordt dat een activum zo riskant is als zijn
+covariantie met de portefeuille, en dat de beste portefeuilles precies volgen uit de
 verwachte rendementen $\boldsymbol{\mu}$ en de covariantiematrix
 $\boldsymbol{\Sigma}$. Maar $\boldsymbol{\mu}$ is zo slecht te schatten dat de
 geschatte optimale portefeuille in de praktijk verliest van gewoon gelijk spreiden,
 en nog duidelijker van de minimum-variantieportefeuille, die $\boldsymbol{\mu}$
 niet gebruikt.
 
-In deze lecture:
+In dit college
 
-- leiden we de efficiënte rand af: alle efficiënte portefeuilles zijn mengsels
-  van twee fondsen;
+- leiden we de efficiënte rand af en laten we zien dat alle efficiënte
+  portefeuilles mengsels zijn van twee fondsen;
 
 - voegen we met Tobin een risicovrij activum toe, waarna iedereen dezelfde
   tangentportefeuille houdt;
@@ -55,64 +55,65 @@ In deze lecture:
 - simuleren we hoeveel van de optimale Sharpe-ratio overblijft als
   $\boldsymbol{\mu}$ en $\boldsymbol{\Sigma}$ geschat moeten worden;
 
-- repliceren we {cite:t}`DeMiguelGarlappiUppal2009` op French-data: de
-  gelijkgewogen portefeuille (hierna 1/N) verslaat de mean-variance-portefeuille
-  (de tangentportefeuille uit geschatte momenten).
+- repliceren we {cite:t}`DeMiguelGarlappiUppal2009` op French-data, waarin de
+  gelijkgewogen portefeuille (hierna 1/N) de mean-variance-portefeuille, de
+  tangentportefeuille uit geschatte momenten, verslaat.
 
 Markowitz publiceerde zijn artikel in maart 1952
-{cite}`Markowitz1952`. Het stond haaks op Williams: als alleen verwachte
+{cite}`Markowitz1952`. Het stond haaks op Williams, want als alleen verwachte
 dividenden tellen, stopt een belegger alles in één aandeel, en dat doet niemand.
-In juli kwam A. D. Roy in *Econometrica*
-bij bijna dezelfde meetkunde uit {cite}`Roy1952`. Tobin voegde in 1958 het
-risicovrije activum toe {cite}`Tobin1958`, en in 1959 volgde het boek van
-Markowitz {cite}`Markowitz1959`. Dit werk verplaatste de vraag: van wat een aandeel waard is naar welke
-portefeuille een belegger wil houden. Op de vraag theorie of feit (is dit een
-theorie die getoetst wordt, of een feit dat op een verklaring wacht?) is het
-antwoord: een *theorie van keuze*, geen uitspraak over prijzen. Die komt pas in
-[het CAPM](#02-08-capm).
+In juli van hetzelfde jaar kwam A. D. Roy in *Econometrica* bij bijna dezelfde
+meetkunde uit {cite}`Roy1952`. Tobin voegde in 1958 het risicovrije activum toe
+{cite}`Tobin1958`, en in 1959 volgde het boek van Markowitz {cite}`Markowitz1959`.
+Met dit werk verschoof de vraag van wat een aandeel waard is naar welke
+portefeuille een belegger wil houden. Markowitz levert daarmee een *theorie van
+keuze*, die zegt wat een belegger hoort te kiezen en niet wat prijzen doen, en een
+toetsbare uitspraak over prijzen komt pas met [het CAPM](#02-08-capm).
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-Neem een belegger met één aandeel die een tweede overweegt. Vóór 1952 luidde de
-vraag: hoe riskant is dat tweede aandeel? Markowitz vroeg: hoe riskant wordt de
-portefeuille?
+Neem een belegger met één aandeel die een tweede overweegt. Vóór 1952 was de
+vraag hoe riskant dat tweede aandeel is, maar Markowitz vroeg hoe riskant de
+portefeuille wordt.
 
 Denk aan twee aandelen die even hard op en neer gaan, maar nooit tegelijk. Elk
-apart is riskant. Half om half is de portefeuille veel rustiger, want waar de
-een verliest, wint de ander vaak. Denk nu aan twee aandelen die even hard
-bewegen en dat altijd tegelijk doen. Samen zijn ze even riskant als elk apart.
+apart is riskant, terwijl de portefeuille half om half veel rustiger is, want waar de
+een verliest, wint de ander vaak. Nemen we daarentegen twee aandelen die even hard
+bewegen en dat altijd tegelijk doen, dan zijn ze samen even riskant als elk apart.
 
 Wie alleen de afzonderlijke aandelen bekijkt, ziet tussen die twee gevallen geen
-verschil. Het verschil zit in hoe ze samen bewegen: *diversificatie is het
-beheer van covariantie*. Honderd bankaandelen die op elkaar lijken, zijn niet
-gespreid. Drie activa die niets met elkaar te maken hebben, zijn dat wel.
+verschil, want dat zit in hoe ze samen bewegen. Anders gezegd,
+*diversificatie is het beheer van covariantie*. Honderd bankaandelen die op elkaar
+lijken, zijn niet gespreid, terwijl drie activa die niets met elkaar te maken
+hebben dat wel zijn.
 
 In een goed gespreide portefeuille hangt het risico van een extra aandeel dus
 alleen af van zijn covariantie met wat er al is. Zijn *idiosyncratische risico*
-(het eigen risico, dat met de rest niets te maken heeft) verdwijnt in de massa.
-Voor risico dat verdwijnt, hoeft niemand betaald te worden.
+(het eigen risico, dat met de rest niets te maken heeft) verdwijnt in de massa,
+en voor risico dat verdwijnt, hoeft niemand betaald te worden.
 
-Met verwacht rendement en variantie als twee grootheden ontstaat een afruil. De
-portefeuilles die niet te verslaan zijn, vormen de *efficient frontier*
-(efficiënte rand: de laagste variantie bij elk verwacht rendement). Roys belegger
-wil vooral een ramp vermijden en komt bij dezelfde portefeuilles uit.
+Omdat een belegger op twee grootheden let, verwacht rendement en variantie,
+ontstaat er een afruil. De portefeuilles met de laagste variantie bij elk verwacht
+rendement zijn niet te verslaan en vormen samen de *efficiënte rand* (*efficient
+frontier*). Roys belegger wil vooral een ramp vermijden, maar komt bij dezelfde
+portefeuilles uit.
 
-Tobin voegde schatkistpapier toe. Dan kiest een belegger eerst het risicovolle
-mandje met de beste verhouding tussen premie en risico, en daarna pas hoeveel
-geld erin gaat. Wie voorzichtig is, houdt meer schatkistpapier, wie durft, leent
-bij. Het mandje is voor beiden hetzelfde.
+Toen Tobin schatkistpapier toevoegde, viel de keuze in twee stappen uiteen. Een
+belegger kiest eerst de risicovolle portefeuille met de beste verhouding tussen
+premie en risico, en beslist daarna pas hoeveel geld erin gaat. Wie voorzichtig is,
+houdt meer schatkistpapier en wie durft, leent bij, maar de risicovolle portefeuille
+is voor beiden dezelfde.
 
-De intuïtie doet dus twee voorspellingen. Een mengsel van activa kan veiliger
-zijn dan het veiligste activum, omdat de delen niet samen bewegen. En een
-activum dat met de rest meebeweegt, krijgt weinig gewicht, ook als het veel
-oplevert.
+We verwachten dus twee dingen. Een mengsel van activa kan veiliger zijn dan het
+veiligste activum, omdat de delen niet samen bewegen. Daarnaast krijgt een activum
+dat met de rest meebeweegt weinig gewicht, ook als het veel oplevert.
 
 ## Toy-voorbeeld: de minimum-variantieportefeuille van drie activa
 
 Het kleinste voorbeeld heeft drie activa met jaarcijfers: aandelen, kleine
-aandelen en obligaties. We volgen met de hand één
-mechanisme: een mengsel van riskante activa kan veiliger zijn dan het veiligste
-activum. De eerste cel laadt de pakketten voor de hele lecture.
+aandelen en obligaties. Met de hand volgen we één mechanisme, namelijk dat een
+mengsel van riskante activa veiliger kan zijn dan het veiligste activum. De eerste
+cel laadt de pakketten voor het hele college.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -126,7 +127,9 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-**Opzet.**
+**Opzet.** Nu de pakketten geladen zijn, leggen we de drie activa vast. De tabel geeft
+per activum het verwachte rendement, de standaarddeviatie en de correlaties, alle
+per jaar.
 
 | Activum | $\mu_i$ | $\sigma_i$ | $\Corr$ met aandelen | $\Corr$ met kleine aandelen | $\Corr$ met obligaties |
 |---|---|---|---|---|---|
@@ -134,17 +137,19 @@ rng = np.random.default_rng(20240101)
 | kleine aandelen | 14,0% | 30,0% | 1/3 | 1 | 0 |
 | obligaties | 4,0% | 10,0% | 0 | 0 | 1 |
 
-Obligaties zijn het veiligst, en de twee soorten aandelen bewegen deels samen. De rendementen zijn
-netto: 10% is 0,10.
+Obligaties zijn het veiligst en de twee soorten aandelen bewegen deels samen. Alle
+rendementen zijn netto, zodat 10% staat voor 0,10.
 
 **Het recept.** De *minimum-variantieportefeuille* (de portefeuille met de
-laagste variantie) heeft gewichten evenredig met $\boldsymbol{\Sigma}^{-1}\mathbf{1}$:
-de inverse covariantiematrix maal een vector van enen, daarna geschaald zodat de
-gewichten optellen tot één. De theorie leidt dit recept als eerste af.
+laagste variantie) heeft gewichten evenredig met $\boldsymbol{\Sigma}^{-1}\mathbf{1}$,
+dat wil zeggen de inverse covariantiematrix maal een vector van enen, daarna
+geschaald zodat de gewichten optellen tot één. Dit recept is het eerste wat de
+theorie afleidt.
 
 **Stap 1: de covariantiematrix.** Elke covariantie is
-$\Sigma_{ij} = \rho_{ij}\sigma_i\sigma_j$, dus is de covariantie tussen
-aandelen en kleine aandelen $(1/3)(0{,}20)(0{,}30) = 0{,}02$:
+$\Sigma_{ij} = \rho_{ij}\sigma_i\sigma_j$. Voor aandelen en kleine aandelen is dat
+$(1/3)(0{,}20)(0{,}30) = 0{,}02$, en daarmee liggen de verwachte rendementen en de
+covariantiematrix vast:
 
 $$
 \boldsymbol{\mu} =
@@ -158,13 +163,13 @@ $$
 \end{pmatrix}.
 $$
 
-**Stap 2: de inverse.** Obligaties correleren met niets, dus $\boldsymbol{\Sigma}$
-valt uiteen in een $2\times2$-blok en een getal. Het blok heeft determinant
-$0{,}04 \cdot 0{,}09 - 0{,}02^2 = 0{,}0032$. De inverse van een
-$2\times2$-matrix ontstaat door de diagonaal te wisselen, het teken van de
-andere twee om te draaien en alles door de determinant te delen. Zo is
+**Stap 2: de inverse.** Omdat obligaties met niets correleren, valt
+$\boldsymbol{\Sigma}$ uiteen in een $2\times2$-blok en een los getal. Het blok
+heeft determinant $0{,}04 \cdot 0{,}09 - 0{,}02^2 = 0{,}0032$. Een
+$2\times2$-matrix keren we om door de diagonaal te wisselen, het teken van de
+andere twee elementen om te draaien en alles door de determinant te delen, zodat
 $0{,}09/0{,}0032 = 28{,}125$ en $-0{,}02/0{,}0032 = -6{,}25$. Voor obligaties is het
-$1/0{,}01 = 100$:
+$1/0{,}01 = 100$, en samen geeft dat
 
 $$
 \boldsymbol{\Sigma}^{-1} =
@@ -175,14 +180,16 @@ $$
 \end{pmatrix}.
 $$
 
-Het negatieve getal buiten de diagonaal zegt: hoe meer aandelen in de
-portefeuille, hoe minder kleine aandelen er nodig zijn. Twee activa die samen bewegen, vervangen elkaar.
+Het negatieve getal buiten de diagonaal betekent dat een portefeuille met meer
+aandelen minder kleine aandelen nodig heeft. Twee activa die samen bewegen, kunnen
+elkaar namelijk vervangen.
 
-**Stap 3: de rijsommen.** $\boldsymbol{\Sigma}^{-1}\mathbf{1} = (21{,}875;\;
+**Stap 3: de rijsommen.** We tellen per rij de elementen van
+$\boldsymbol{\Sigma}^{-1}$ op. Dat geeft $\boldsymbol{\Sigma}^{-1}\mathbf{1} = (21{,}875;\;
 6{,}25;\; 100)'$, met som $128{,}125$.
 
-**Stap 4: de gewichten.** Delen door die som geeft
-$\mathbf{w}_{\mathrm{mv}} = (7/41;\; 2/41;\; 32/41)' = (0{,}1707;\; 0{,}0488;\;
+**Stap 4: de gewichten.** We delen elke rijsom door die som, zodat de gewichten
+optellen tot één. Dat geeft $\mathbf{w}_{\mathrm{mv}} = (7/41;\; 2/41;\; 32/41)' = (0{,}1707;\; 0{,}0488;\;
 0{,}7805)'$.
 
 **Stap 5: het risico.** Elke rij van $\boldsymbol{\Sigma}\mathbf{w}_{\mathrm{mv}}$
@@ -192,8 +199,8 @@ gelijk: $(0{,}04 \cdot 7 + 0{,}02 \cdot 2)/41 = (0{,}02 \cdot 7 + 0{,}09 \cdot 2
 $\sigma^2_{\mathrm{mv}} = \mathbf{w}'\boldsymbol{\Sigma}\mathbf{w} = 0{,}32/41 =
 0{,}0078$, dus $\sigma_{\mathrm{mv}} = 8{,}83\%$.
 
-Obligaties alleen hebben 10,0% standaarddeviatie. Het mengsel met 22% in
-aandelen heeft 8,83%. De codecel rekent dezelfde getallen na.
+Obligaties alleen hebben een standaarddeviatie van 10,0%, terwijl het mengsel met
+22% in aandelen op 8,83% uitkomt. De codecel rekent dezelfde getallen na.
 
 ```{code-cell} ipython3
 mu = np.array([0.10, 0.14, 0.04])
@@ -216,25 +223,28 @@ pd.DataFrame(
 ).round(4)
 ```
 
-De twee kolommen zijn gelijk. Riskante aandelen toevoegen maakt het geheel
-rustiger dan obligaties alleen, omdat ze niet met obligaties meebewegen.
+De handberekening en de code geven dezelfde getallen. Door riskante aandelen toe
+te voegen wordt het geheel dus rustiger dan obligaties alleen, omdat die aandelen
+niet met obligaties meebewegen.
 
 ## Theorie
 
 We beginnen bij de eerste-ordevoorwaarde, met als eerste gevolg
-het recept uit het toy-voorbeeld. Daaruit volgt de kern: de efficiënte rand is
-een parabool, en elke portefeuille erop is een mengsel van twee vaste fondsen.
-Daarna voegen we een risicovrij activum toe (Tobin, met Roy als variant), laten
-we zien waarom in een grote portefeuille alleen covariantie overblijft, en
-waarom de theorie in de praktijk strandt op de schatting van $\boldsymbol{\mu}$.
+het recept uit het toy-voorbeeld. Daaruit volgt de kern van het college, namelijk
+dat de efficiënte rand een parabool is en dat elke portefeuille erop een mengsel is
+van twee vaste fondsen. Daarna voegen we een risicovrij activum toe (Tobin, met Roy
+als variant) en laten we zien waarom in een grote portefeuille alleen covariantie
+overblijft. We eindigen bij de reden waarom de theorie in de praktijk strandt,
+de schatting van $\boldsymbol{\mu}$.
 
 ### Opzet en aannames
 
-We werken met netto rendementen, in de notatie van [](#00-00-setup): $r$ is
-netto (10% is 0,10), $R = 1 + r$ bruto, en de risicovrije rente $R^{f}$ netto
+We werken met netto rendementen in de notatie van [](#00-00-setup), waarin $r$
+netto is (10% is 0,10), $R = 1 + r$ bruto en de risicovrije rente $R^{f}$ netto
 (2% is 0,02). Er zijn $N$ risicovolle activa met rendementen
 $\mathbf{r}_{t+1}$, verwachting $\boldsymbol{\mu} = \E[\mathbf{r}_{t+1}]$ en
-covariantiematrix $\boldsymbol{\Sigma} = \Var(\mathbf{r}_{t+1})$. Een portefeuille is een gewichtsvector
+covariantiematrix $\boldsymbol{\Sigma} = \Var(\mathbf{r}_{t+1})$. Een portefeuille is een
+gewichtsvector
 $\mathbf{w}$ met $\mathbf{w}'\mathbf{1} = 1$, met
 
 $$
@@ -243,9 +253,9 @@ $$
 = \sum_{i}\sum_{j} w_i w_j \Cov(r_i, r_j).
 $$
 
-De variantie van de portefeuille is een gewogen som van alle covarianties, met
-de varianties als het geval $i = j$. Risico betekent in deze lecture
-standaarddeviatie. De aannames:
+De variantie van de portefeuille is een gewogen som van alle covarianties, waarbij
+de varianties het geval $i = j$ zijn. Met risico bedoelen we in dit college de
+standaarddeviatie. We maken vier aannames.
 
 1. **Alleen $\mu_p$ en $\sigma_p^2$ tellen.** Een belegger wil meer verwachting
    en minder variantie, en geeft om niets anders.
@@ -260,22 +270,21 @@ standaarddeviatie. De aannames:
    vanaf Tobin.
 
 Aanname 1 is de zwakste. Ze geldt bij normaal verdeelde rendementen of
-kwadratisch nut, en anders als tweede-ordebenadering van elk nut. Die benadering
-volstaat zolang de verdeling niet te scheef is en geen dikke staarten heeft.
+kwadratisch nut. In andere gevallen is ze een tweede-ordebenadering van elk nut,
+die volstaat zolang de verdeling niet te scheef is en geen dikke staarten heeft.
 
 ### Het kernresultaat: de efficiënte rand
 
-De bewering: elke belegger die aanname 1 volgt, kiest een portefeuille op één
-vaste rand, en elke portefeuille op die rand is een mengsel van twee vaste
-fondsen.
+Elke belegger die alleen op verwachting en variantie let (aanname 1), kiest een
+portefeuille op één vaste rand, en elke portefeuille op die rand is een mengsel
+van twee vaste fondsen. Denk aan een belegger die een portefeuille ziet met
+hetzelfde verwachte rendement en minder variantie. Hij ruilt om, en bij elke ruil
+daalt zijn variantie terwijl zijn verwachte rendement gelijk blijft. Hij stopt pas
+als zo'n ruil niet meer bestaat, dus op de rand, en alleen welk punt van de rand
+hij kiest, hangt van zijn smaak af.
 
-*Waarom zou dit waar zijn?* Een belegger die een portefeuille ziet met hetzelfde
-verwachte rendement en minder variantie, ruilt om. Bij elke ruil daalt zijn
-variantie en blijft zijn verwachte rendement gelijk. Hij stopt pas als zo'n ruil
-niet meer bestaat, dus op de rand. Alleen welk punt van de rand hij kiest, hangt
-van zijn smaak af.
-
-Het probleem is
+Formeel zoeken we de gewichten met de kleinste variantie, onder de eis dat het
+verwachte rendement $\mu_p$ is en de gewichten optellen tot één. Het probleem is
 
 ```{math}
 :label: eq-markowitz-probleem
@@ -285,10 +294,8 @@ Het probleem is
 \quad \mathbf{w}'\mathbf{1} = 1 .
 ```
 
-In woorden: zoek de gewichten met de kleinste variantie, onder de eis dat het
-verwachte rendement $\mu_p$ is en de gewichten optellen tot één. De factor
-$\tfrac12$ houdt de afgeleide schoon. Omdat short verkopen mag (aanname 3), is
-een Lagrangiaan genoeg:
+De factor $\tfrac12$ maakt de afgeleide eenvoudiger. Omdat short verkopen mag
+(aanname 3), zijn er geen ongelijkheden en volstaat een Lagrangiaan:
 
 $$
 \mathcal{L} = \tfrac12\,\mathbf{w}'\boldsymbol{\Sigma}\mathbf{w}
@@ -297,8 +304,8 @@ $$
 $$
 
 Hier is $\lambda$ de schaduwprijs van de rendementseis en $\delta$ die van de
-budgeteis; deze $\lambda$ is een Lagrange-multiplicator, niet de prijs van risico
-$\lambda_f$ uit de notatie van de reeks. De eerste-ordevoorwaarde is
+budgeteis. Deze $\lambda$ is dus een Lagrange-multiplicator en niet de prijs van
+risico $\lambda_f$ uit de notatie van de reeks. De eerste-ordevoorwaarde is
 $\boldsymbol{\Sigma}\mathbf{w} - \lambda\boldsymbol{\mu} - \delta\mathbf{1} = 0$.
 Omdat $\boldsymbol{\Sigma}$ inverteerbaar is (aanname 2), volgt
 
@@ -308,20 +315,21 @@ Omdat $\boldsymbol{\Sigma}$ inverteerbaar is (aanname 2), volgt
 \left(\lambda\boldsymbol{\mu} + \delta\mathbf{1}\right).
 ```
 
-In woorden: de $i$-de rij van $\boldsymbol{\Sigma}\mathbf{w}$ is
-$\Cov(r_i, r_p)$, en in het optimum is die covariantie een vaste lineaire
-functie van het verwachte rendement, $\lambda\mu_i + \delta$. De eigen variantie
-van activum $i$ telt alleen mee via die covariantie. Stijgt het verwachte
-rendement van één activum, dan krijgt het meer gewicht, tot zijn covariantie met
-de portefeuille weer in verhouding is. Daalt het, dan omgekeerd.
+De $i$-de rij van $\boldsymbol{\Sigma}\mathbf{w}$ is $\Cov(r_i, r_p)$, zodat in
+het optimum de covariantie van elk activum met de portefeuille een vaste lineaire
+functie is van zijn verwachte rendement, $\lambda\mu_i + \delta$. De eigen
+variantie van activum $i$ telt alleen mee via die covariantie. Stijgt het
+verwachte rendement van één activum, dan krijgt het meer gewicht tot zijn
+covariantie met de portefeuille weer in verhouding is, en daalt het, dan gebeurt
+het omgekeerde.
 
 Het eerste gevolg is het recept uit het toy-voorbeeld. Zonder rendementseis is
 $\lambda = 0$, en [](#eq-markowitz-foc) geeft na normaliseren
 $\mathbf{w}_{\mathrm{mv}} = \boldsymbol{\Sigma}^{-1}\mathbf{1}/
 \mathbf{1}'\boldsymbol{\Sigma}^{-1}\mathbf{1}$. Er staat geen $\boldsymbol{\mu}$
-in, en op dat feit draait de tweede helft van deze lecture. In het toy-voorbeeld
-is deze portefeuille met 8,83% veiliger dan het veiligste activum (10%), zoals
-de eerste voorspelling van de intuïtie zei.
+in, en om dat feit draait de tweede helft van dit college. In het toy-voorbeeld
+is deze portefeuille met 8,83% veiliger dan het veiligste activum (10%), en dat
+bevestigt de eerste verwachting uit de intuïtie.
 
 Om de rand te tekenen, moeten $\lambda$ en $\delta$ voor elk vereist rendement
 $\mu_p$ vastliggen. Daarvoor zijn vier getallen nodig:
@@ -334,12 +342,12 @@ C = \boldsymbol{\mu}'\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu},\quad
 D = AC - B^2 .
 ```
 
-In woorden: $A$, $B$ en $C$ zijn de drie manieren om $\mathbf{1}$ en
+De getallen $A$, $B$ en $C$ zijn de drie manieren om $\mathbf{1}$ en
 $\boldsymbol{\mu}$ met $\boldsymbol{\Sigma}^{-1}$ te combineren. $D$ meet hoe
-sterk de verwachte rendementen uiteenlopen. Hadden alle activa hetzelfde
-verwachte rendement, dan was $D$ nul. In het toy-voorbeeld is $A = 128{,}125$,
-de som uit stap 3. $D$ ligt altijd tussen nul en $AC$, want $B^2 \le AC$; hier
-is $D = 15{,}625$ tegen $AC = 65{,}5$, bijna een kwart van het maximum.
+sterk de verwachte rendementen uiteenlopen en zou nul zijn als alle activa
+hetzelfde verwachte rendement hadden. In het toy-voorbeeld is $A = 128{,}125$,
+de som uit stap 3. Omdat $B^2 \le AC$, ligt $D$ altijd tussen nul en $AC$, en
+hier is $D = 15{,}625$ tegen $AC = 65{,}5$, bijna een kwart van het maximum.
 
 Invullen van [](#eq-markowitz-foc) in de twee restricties geeft het stelsel
 $\lambda B + \delta A = 1$ en $\lambda C + \delta B = \mu_p$. Met de regel van
@@ -351,7 +359,7 @@ $$
 \delta = \frac{C - B\mu_p}{D} .
 $$
 
-In woorden: hoe hoger het vereiste rendement, hoe zwaarder de richting
+Hoe hoger het vereiste rendement, hoe zwaarder dus de richting
 $\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}$ weegt en hoe lichter de richting
 $\boldsymbol{\Sigma}^{-1}\mathbf{1}$ van de minimum-variantieportefeuille. In het
 toy-voorbeeld wijst die laatste vooral naar obligaties, $(21{,}875;\; 6{,}25;\;
@@ -370,13 +378,13 @@ $\mathbf{w}'\boldsymbol{\Sigma}\mathbf{w}
 \sigma^2(\mu_p) = \frac{A\mu_p^2 - 2B\mu_p + C}{D} .
 ```
 
-In woorden: de laagste haalbare variantie is een parabool in het vereiste
-verwachte rendement, met het minimum bij $\mu_p = B/A$ en variantie $1/A$. In het
-toy-voorbeeld is dat 5,51% bij 8,83% standaarddeviatie: de portefeuille die we
-met de hand vonden. Wie meer eist, betaalt met variantie. Bij
-$\mu_p = 10\%$ geeft de formule $\sigma = 15{,}6\%$, terwijl aandelen alleen
-hetzelfde verwachte rendement met 20% risico levert. De codecel rekent deze
-getallen na.
+De laagste haalbare variantie is dus een parabool in het vereiste verwachte
+rendement, met het minimum bij $\mu_p = B/A$ en variantie $1/A$. In het
+toy-voorbeeld ligt dat minimum bij 5,51% verwacht rendement en 8,83%
+standaarddeviatie, precies de portefeuille die we met de hand vonden. Een hoger
+vereist rendement kost variantie, want bij $\mu_p = 10\%$ geeft de formule
+$\sigma = 15{,}6\%$, al is dat nog altijd minder dan de 20% risico waarmee aandelen
+alleen hetzelfde verwachte rendement leveren. De codecel rekent deze getallen na.
 
 ```{code-cell} ipython3
 Sinv_mu = np.linalg.solve(Sigma, mu)
@@ -394,14 +402,15 @@ pd.DataFrame(
 ).round(4)
 ```
 
-De code bevestigt de handberekening. De efficiënte portefeuille met 10%
-verwacht rendement heeft ruim een vijfde minder risico dan aandelen alleen.
+De code bevestigt de handberekening. Vooral de laatste regel is van belang, want
+de efficiënte portefeuille met 10% verwacht rendement heeft ruim een vijfde minder
+risico dan aandelen alleen.
 
-*Waarom zou de volgende stelling waar zijn?* Denk aan een fondsaanbieder met
+*Waarom zijn twee fondsen genoeg?* Denk aan een fondsaanbieder met
 klanten die verschillende rendementen eisen. Een klant die een procentpunt meer
 eist, krijgt minder obligaties en meer aandelen, en elk volgend procentpunt
 vraagt dezelfde verschuiving. Een klant met een eis tussen die van twee andere
-klanten krijgt dus een mengsel van hun portefeuilles. Twee fondsen volstaan dan
+klanten krijgt dus een mengsel van hun portefeuilles, zodat twee fondsen volstaan
 voor iedereen.
 
 :::{prf:theorem} Twee-fondsenstelling
@@ -415,15 +424,16 @@ $$
 = \alpha\,\mathbf{w}(\mu_1) + (1-\alpha)\,\mathbf{w}(\mu_2).
 $$
 
-In woorden: de portefeuilles op de rand zijn precies de mengsels van twee
+Anders gezegd zijn de portefeuilles op de rand precies de mengsels van twee
 willekeurige, van elkaar verschillende portefeuilles op die rand.
 :::
 
-Het bewijsidee: vul $\lambda$ en $\delta$ in [](#eq-markowitz-foc) in. De
-gewichten worden een vaste vector plus $\mu_p$ maal een tweede vaste vector, een
+Het idee van het bewijs is om $\lambda$ en $\delta$ in [](#eq-markowitz-foc) in
+te vullen. De gewichten worden dan een vaste vector plus $\mu_p$ maal een tweede vaste
+vector, een
 *affiene* functie van $\mu_p$ (lineair plus een constante). Een mengsel van twee
 punten op zo'n rechte ligt weer op die rechte. Welke twee randportefeuilles
-als fondsen dienen, maakt niet uit. Een handig paar is de
+als fondsen dienen, maakt niet uit, en een handig paar is de
 minimum-variantieportefeuille $\boldsymbol{\Sigma}^{-1}\mathbf{1}/A$ en
 $\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}/B$, met verwacht rendement
 $C/B = 7{,}24\%$. In het toy-voorbeeld zijn dat $(0{,}171;\; 0{,}049;\; 0{,}780)'$
@@ -432,7 +442,7 @@ en $(1{,}9375;\; 1{,}125;\; 4)'/7{,}0625 = (0{,}274;\; 0{,}159;\; 0{,}566)'$.
 :::{prf:proof}
 :class: dropdown
 
-*Stap 1: de gewichten zijn affien in $\mu_p$.* Vul $\lambda$ en $\delta$ in
+*Stap 1: de gewichten zijn affien in $\mu_p$.* We vullen $\lambda$ en $\delta$ in
 [](#eq-markowitz-foc) in:
 
 $$
@@ -447,7 +457,7 @@ met $\mathbf{g}$ en $\mathbf{h}$ onafhankelijk van $\mu_p$. Dan is
 $\mathbf{w}(\alpha\mu_1 + (1-\alpha)\mu_2)
 = \mathbf{g} + (\alpha\mu_1 + (1-\alpha)\mu_2)\mathbf{h}
 = \alpha(\mathbf{g} + \mu_1\mathbf{h}) + (1-\alpha)(\mathbf{g} + \mu_2\mathbf{h})$,
-omdat $\alpha + (1-\alpha) = 1$. Dat is de bewering.
+omdat $\alpha + (1-\alpha) = 1$, en dat is precies de bewering.
 
 *Stap 2: elk mengsel ligt op de rand.* Het mengsel
 $\alpha\mathbf{w}(\mu_1) + (1-\alpha)\mathbf{w}(\mu_2)$ telt op tot één en heeft
@@ -458,20 +468,19 @@ $\boldsymbol{\Sigma}$ positief definiet is (aanname 2). $\square$
 
 Zien alle beleggers dezelfde $\boldsymbol{\mu}$ en $\boldsymbol{\Sigma}$
 (*homogene verwachtingen*, een aanname die Markowitz niet nodig heeft), dan houdt
-ook de markt als geheel een mengsel van dezelfde twee fondsen. Dat is de eerste
-stap naar een evenwichtsmodel.
+ook de markt als geheel een mengsel van dezelfde twee fondsen. Daarmee is de
+eerste stap naar een evenwichtsmodel gezet.
 
 ### Een risicovrij activum: Tobin en Roy
 
-De bewering: met een risicovrij activum houdt iedereen dezelfde risicovolle
-portefeuille, en alleen de dosis verschilt.
-
-*Waarom zou dit waar zijn?* Een belegger verdeelt zijn geld over schatkistpapier,
+Met een risicovrij activum houdt iedereen dezelfde risicovolle portefeuille, en
+alleen de dosis verschilt. *Waarom zou dit waar zijn?* Een belegger verdeelt zijn geld
+over schatkistpapier,
 dat zeker $R^{f}$ oplevert, en een risicovolle portefeuille $p$. Zet hij meer
 geld in $p$, dan stijgen premie en standaarddeviatie in dezelfde
 verhouding. Ruilt hij $p$ in voor een portefeuille met meer premie per eenheid
-risico, dan krijgt hij bij elk risico meer rendement. Hij blijft ruilen tot er
-geen betere $p$ meer is. Dat eindpunt hangt af van $R^{f}$, $\boldsymbol{\mu}$
+risico, dan krijgt hij bij elk risico meer rendement. Hij blijft dus ruilen tot er
+geen betere $p$ meer is, en dat eindpunt hangt af van $R^{f}$, $\boldsymbol{\mu}$
 en $\boldsymbol{\Sigma}$, niet van zijn smaak.
 
 Schrijf $\boldsymbol{\mu}^{e} = \boldsymbol{\mu} - R^{f}\mathbf{1}$ voor de
@@ -485,10 +494,10 @@ S(\mathbf{w}) = \frac{\mathbf{w}'\boldsymbol{\mu}^{e}}
 {\sqrt{\mathbf{w}'\boldsymbol{\Sigma}\mathbf{w}}} .
 ```
 
-In woorden: de premie per eenheid risico, onafhankelijk van de schaal van
-$\mathbf{w}$. De afgeleide gelijk aan nul
-stellen geeft $\boldsymbol{\Sigma}\mathbf{w} \propto \boldsymbol{\mu}^{e}$: de
-covariantie van elk activum met de portefeuille is evenredig met zijn premie.
+Deze verhouding hangt niet af van de schaal van $\mathbf{w}$. Als we de afgeleide
+gelijk aan nul stellen, vinden we $\boldsymbol{\Sigma}\mathbf{w} \propto
+\boldsymbol{\mu}^{e}$, zodat de covariantie van elk activum met de portefeuille
+evenredig is met zijn premie.
 Omdat $\boldsymbol{\Sigma}$ inverteerbaar is (aanname 2), volgt na normaliseren
 
 ```{math}
@@ -507,7 +516,8 @@ gecorrigeerd voor hoe het met de andere activa meebeweegt. $S_{\max}$ is de
 helling van de *kapitaalmarktlijn* (de rechte vanuit de risicovrije rente door
 de tangentportefeuille), de hoogste Sharpe-ratio die deze activa samen halen.
 
-In het toy-voorbeeld, met een risicovrije rente van 2%, gaat dat met de hand:
+In het toy-voorbeeld, met een risicovrije rente van 2%, rekenen we dat met de hand
+na.
 
 - $\boldsymbol{\mu}^{e} = (0{,}08;\; 0{,}12;\; 0{,}02)'$, dus de Sharpe-ratio's
   per activum zijn $0{,}08/0{,}20 = 0{,}40$, $0{,}12/0{,}30 = 0{,}40$ en
@@ -521,17 +531,19 @@ In het toy-voorbeeld, met een risicovrije rente van 2%, gaat dat met de hand:
 - Het verwachte rendement is $8{,}22\%$, een premie van $6{,}22$ procentpunt, en
   $\sigma_{\mathrm{tan}} = 0{,}0622/0{,}529 = 11{,}76\%$.
 
-Het mengsel haalt 0,529, meer dan de 0,40 van het beste afzonderlijke activum.
-Kleine aandelen hebben het hoogste verwachte rendement en krijgen toch maar 22%,
-minder dan de saaie obligaties. Dat komt doordat ze met aandelen meebewegen en
-weinig toevoegen aan wat aandelen al leveren. Zo lost de theorie de tweede voorspelling van de intuïtie
-in.
+Met een Sharpe-ratio van 0,529 doet het mengsel het beter dan het beste
+afzonderlijke activum, dat op 0,40 blijft steken. Kleine aandelen hebben het hoogste
+verwachte rendement en krijgen toch maar 22%, minder dan de saaie obligaties, omdat ze met
+aandelen meebewegen en weinig toevoegen aan wat aandelen al leveren. Zo komt ook de
+tweede verwachting uit, want meebewegen kost gewicht, hoe hoog het rendement ook is.
 
 Stijgt $R^{f}$, dan bieden de veilige portefeuilles op de rand te weinig premie
-en schuift de tangentportefeuille naar riskantere: bij $R^{f} = 0$ is haar
-verwachte rendement $C/B = 7{,}24\%$, bij 2% is het 8,22%. Daalt $R^{f}$, dan
-schuift zij terug naar de minimum-variantieportefeuille. De codecel rekent de
-getallen na.
+en schuift de tangentportefeuille op naar riskantere portefeuilles, zolang $R^{f}$
+onder het rendement $B/A = 5{,}51\%$ van de minimum-variantieportefeuille blijft. Bij
+$R^{f} = 0$ heeft ze een verwacht rendement van $C/B = 7{,}24\%$, bij 2% is dat
+8,22%. Daalt $R^{f}$, dan schuift ze naar de minimum-variantieportefeuille toe, maar
+die bereikt ze pas als $R^{f}$ naar min oneindig gaat. De codecel rekent de getallen
+na.
 
 ```{code-cell} ipython3
 rf = 0.02
@@ -552,9 +564,9 @@ pd.DataFrame(
 ).round(4)
 ```
 
-Ook hier geeft de code dezelfde getallen. De figuur zet het toy-voorbeeld bij
-elkaar. Let op de afstand tussen elk activum en de rand, en op het punt waar de
-gestreepte lijn de rand raakt.
+Ook hier geeft de code dezelfde getallen. De figuur brengt het hele toy-voorbeeld
+samen, en daarin gaat het om de afstand tussen elk activum en de rand en om het
+punt waar de gestreepte lijn de rand raakt.
 
 ```{code-cell} ipython3
 :label: cel-markowitz-frontier
@@ -591,15 +603,16 @@ plt.show()
 :width: 90%
 
 De drie activa (punten), de efficiënte rand en de kapitaalmarktlijn vanaf de
-risicovrije rente van 2%. Elk activum ligt rechts van de rand: er is telkens een
-mengsel met hetzelfde verwachte rendement en minder risico. De
+risicovrije rente van 2%. Elk activum ligt rechts van de rand, omdat er telkens een
+mengsel is met hetzelfde verwachte rendement en minder risico. De
 minimum-variantieportefeuille (vierkant) ligt met 8,83% links van het veiligste
 activum. De tangentportefeuille (ruit) is het enige punt van de rand op de
 kapitaalmarktlijn.
 :::
 
 De kapitaalmarktlijn ligt overal boven de rand, behalve in de
-tangentportefeuille. Wie risico wil dragen, doet dat dus het best langs die lijn.
+tangentportefeuille. Een belegger die risico wil dragen, doet dat dus het best
+langs die lijn.
 
 :::{prf:corollary} Separatiestelling van Tobin
 :label: cor-markowitz-separatie
@@ -632,27 +645,29 @@ kans voor $\mu_p > r_{\min}$:
 \le \left(\frac{\mu_p - r_{\min}}{\sigma_p}\right)^{-2} .
 ```
 
-In woorden: de kans op een ramp is hoogstens één gedeeld door het kwadraat van
-het aantal standaarddeviaties tussen het verwachte rendement en de ramp. Die
-grens minimaliseren is $(\mu_p - r_{\min})/\sigma_p$ maximaliseren, en dat is
-[](#eq-markowitz-sharpe) met $r_{\min}$ in de rol van $R^{f}$. Een voorbeeld: de
-tangentportefeuille uit het toy-voorbeeld (8,22%, standaarddeviatie 11,76%) en
-een ramp van $r_{\min} = -20\%$ liggen 2,4 standaarddeviaties uit elkaar. De
-grens is dan $1/2{,}4^2 = 17\%$, terwijl de kans onder normaliteit 0,8% is. De
-belegger van Roy (*safety first*, veiligheid eerst) en die van Tobin kiezen dus dezelfde
-portefeuille zodra $r_{\min} = R^{f}$.
+De kans op een ramp is dus hoogstens één gedeeld door het kwadraat van het aantal
+standaarddeviaties tussen het verwachte rendement en de ramp. Die grens
+minimaliseren komt neer op het maximaliseren van $(\mu_p - r_{\min})/\sigma_p$, en
+dat is [](#eq-markowitz-sharpe) met $r_{\min}$ in de rol van $R^{f}$. De belegger
+van Roy (*safety first*, veiligheid eerst) en die van Tobin kiezen dus dezelfde
+portefeuille zodra $r_{\min} = R^{f}$. Hoe ruim de grens is, laat de
+tangentportefeuille uit het toy-voorbeeld zien (8,22%, standaarddeviatie 11,76%),
+ook al kiest Roys belegger bij een ramp van $r_{\min} = -20\%$ een ander punt op de
+rand. Die ramp ligt 2,4 standaarddeviaties onder het verwachte rendement, zodat de
+grens $1/2{,}4^2 = 17\%$ geeft, terwijl de kans onder normaliteit maar 0,8% is.
 
 ### Wat het voorspelt: alleen covariantie wordt beloond
 
-De bewering: in een grote portefeuille verdwijnt het idiosyncratische risico van
-elk activum. Daarom is er geen reden om ervoor betaald te worden. Dat de markt
-het ook niet doet, vraagt een evenwicht, en dat heeft Markowitz niet.
+In een grote portefeuille verdwijnt het idiosyncratische risico van elk activum,
+zodat er geen reden is om ervoor betaald te worden. Om te laten zien dat de markt
+er ook echt niet voor betaalt, is een evenwichtsmodel nodig, en dat heeft
+Markowitz niet.
 
-*Waarom zou dit waar zijn?* Een belegger verdeelt zijn geld gelijk over $N$
-activa met elk variantie $\bar{v}$ en onderling covariantie $\bar{c}$. Koopt hij
-er een activum bij, dan krijgt elk activum een kleiner gewicht. Het totaal van de
-eigen varianties, $\bar{v}/N$, daalt naar nul. Het totaal van de covarianties,
-$(1-1/N)\bar{c}$, stijgt licht naar $\bar{c}$.
+*Waarom verdwijnt dat risico?* Denk aan een belegger die zijn geld gelijk verdeelt
+over $N$ activa met elk variantie $\bar{v}$ en onderling covariantie $\bar{c}$.
+Koopt hij er een activum bij, dan krijgt elk activum een kleiner gewicht, zodat
+het totaal van de eigen varianties, $\bar{v}/N$, naar nul daalt. Het totaal van de
+covarianties, $(1-1/N)\bar{c}$, stijgt daarentegen licht naar $\bar{c}$.
 
 ```{math}
 :label: eq-markowitz-1n
@@ -663,10 +678,11 @@ $(1-1/N)\bar{c}$, stijgt licht naar $\bar{c}$.
 \ \xrightarrow[N\to\infty]{}\ \bar{c} .
 ```
 
-In woorden: de eigen varianties verdwijnen, de gemiddelde covariantie blijft, en
-die is de bodem van de diversificatie. Neem een maandelijkse standaarddeviatie
-van 5,5% per aandeel en een gemiddelde correlatie van 0,25. De codecel rekent de
-jaarlijkse standaarddeviatie uit voor portefeuilles van 1 tot 100 aandelen.
+De eigen varianties verdwijnen dus, terwijl de gemiddelde covariantie blijft en de
+bodem van de diversificatie vormt. Om de orde van grootte te zien, nemen we een
+maandelijkse standaarddeviatie van 5,5% per aandeel en een gemiddelde correlatie
+van 0,25. De codecel rekent daarmee de jaarlijkse standaarddeviatie uit voor portefeuilles
+van 1 tot 100 aandelen.
 
 ```{code-cell} ipython3
 vbar = 0.055**2                 # variantie per aandeel, per maand
@@ -682,44 +698,47 @@ pd.DataFrame(
 ).round(2)
 ```
 
-Eén aandeel heeft 19,0% per jaar, een oneindig grote 1/N-portefeuille 9,5%, en
-na dertig aandelen is het meeste al bereikt. In standaarddeviatie is de helft
+Eén aandeel heeft een standaarddeviatie van 19,0% per jaar en een oneindig grote
+1/N-portefeuille 9,5%, en na dertig aandelen is het meeste al bereikt. In
+standaarddeviatie is de helft
 weg te diversifiëren, in variantie driekwart, want de bodem is
 $\bar{c}/\bar{v} = 0{,}25$ van de variantie van één aandeel. Bij een hogere
-correlatie stijgt de bodem mee, bij correlatie nul verdwijnt hij.
+correlatie stijgt de bodem mee, en bij correlatie nul verdwijnt hij.
 
-De economische consequentie volgt uit een regressie. Splits het rendement van
+Het economische gevolg blijkt uit een regressie. We splitsen het rendement van
 activum $i$ in een deel dat met een grote gespreide portefeuille meebeweegt en
-een rest: $r_i = k_i + \beta_{i,p} r_p + \varepsilon_i$ met
-$\Cov(\varepsilon_i, r_p) = 0$. Dat is een definitie, geen aanname. De bijdrage
-van $i$ aan de variantie van de portefeuille is
+een rest, $r_i = k_i + \beta_{i,p} r_p + \varepsilon_i$ met
+$\Cov(\varepsilon_i, r_p) = 0$, en die splitsing is een definitie, geen aanname.
+De bijdrage van $i$ aan de variantie van de portefeuille is
 $\Cov(r_i, r_p) = \beta_{i,p}\Var(r_p)$, met $\beta_{i,p}$ de bèta van $i$
-ten opzichte van $p$, rond 1 voor een gemiddeld aandeel. Daarin komt
+ten opzichte van $p$, rond 1 voor een gemiddeld aandeel. In die bijdrage komt
 $\Var(\varepsilon_i)$ niet voor.
 
-Wie $\varepsilon_i$ draagt, draagt dus risico dat hij gratis had kunnen
-wegdiversifiëren, en geen belegger die kan spreiden, wil hem daarvoor betalen,
-zoals de intuïtie voorspelde.
+Een belegger die $\varepsilon_i$ draagt, draagt dus risico dat hij gratis had
+kunnen wegdiversifiëren. Geen belegger die kan spreiden, wil hem daarvoor betalen,
+en daarmee klopt ook wat de intuïtie zei over risico dat in de massa verdwijnt.
 
 ### Waar het strandt: de schattingsfout in de invoer
 
-De bewering: in de praktijk domineert de schattingsfout in $\boldsymbol{\mu}$
-alles wat de theorie belooft. In [de lecture over rendementen](#00-01-rendementen)
-bleek dat het gemiddelde rendement bij 20% standaarddeviatie over honderd
-jaar een standaardfout van $20/\sqrt{100} = 2$ procentpunt heeft: de
-standaardfout van 2%. Tweede momenten zijn wel scherp te meten, omdat een
-variantie nauwkeuriger wordt met meer waarnemingen per jaar. Voor de
-optimalisator is dat slecht gemeten gemiddelde om drie redenen fataal.
+In de praktijk overschaduwt de schattingsfout in $\boldsymbol{\mu}$ alles wat de
+theorie belooft. In [het college over rendementen](#00-01-rendementen) bleek dat
+het gemiddelde rendement bij 20% standaarddeviatie over honderd jaar een
+standaardfout van $20/\sqrt{100} = 2$ procentpunt heeft. Die standaardfout van 2%
+betekent hier dat de optimalisator de verwachte rendementen nauwelijks kent.
+Tweede momenten zijn wel scherp te meten, omdat een variantie nauwkeuriger wordt
+met meer waarnemingen per jaar, maar voor de optimalisator is het slecht gemeten
+gemiddelde om drie redenen fataal.
 
 1. **De fout is groot.** Met $T$ waarnemingen en standaarddeviatie $\sigma$ per
    waarneming is $\SD(\hat\mu) = \sigma/\sqrt{T}$. Tien jaarwaarnemingen bij 20%
    geven $20/\sqrt{10} = 6{,}3$ procentpunt. De verschillen in verwachte rendementen
-   tussen activa zijn een paar procentpunt, dus de rangorde van
-   $\hat{\boldsymbol{\mu}}$ is vrijwel ruis.
+   tussen activa zijn een paar procentpunt, zodat de rangorde van
+   $\hat{\boldsymbol{\mu}}$ vrijwel ruis is.
 2. **$\boldsymbol{\Sigma}^{-1}$ vergroot de ruis.** De gewichten zijn evenredig
    met $\boldsymbol{\Sigma}^{-1}\hat{\boldsymbol{\mu}}^{e}$. In het toy-voorbeeld
    zet de $-6{,}25$ in $\boldsymbol{\Sigma}^{-1}$ aandelen tegen kleine aandelen in,
-   en hoe hoger hun correlatie, hoe groter dat getal in absolute waarde. Juist voor twee sterk
+   en hoe hoger hun correlatie, hoe groter dat getal in absolute waarde. Juist voor twee
+   sterk
    gecorreleerde activa is het verschil tussen hun geschatte gemiddelden het
    slechtst bepaald. Een kleine verandering in één verwacht rendement kan de
    gewichten volledig omgooien {cite}`BestGrauer1991`.
@@ -727,12 +746,13 @@ optimalisator is dat slecht gemeten gemiddelde om drie redenen fataal.
    vertekend: $\E[\hat{S}^2_{\max}] \approx S^2_{\max} + N/T$. Elk geschat
    gemiddelde, gedeeld door zijn standaarddeviatie, heeft een steekproeffout met
    variantie ongeveer $1/T$, en de optimalisator telt $N$ van die kwadraten op
-   {cite}`JobsonKorkie1980,JobsonKorkie1981`. Bij tien activa en $T = 120$ maandwaarnemingen is
+   {cite}`JobsonKorkie1980,JobsonKorkie1981`. Bij tien activa en $T = 120$
+   maandwaarnemingen is
    $N/T = 0{,}083$ per maand, vier keer de ware $S^2_{\max}$ van de simulatie
    hierna: $(0{,}50/\sqrt{12})^2 = 0{,}021$ per maand.
 
-Hoe zwaar de drie soorten fouten wegen, is ook gemeten. In een van hun
-rekenvoorbeelden kosten fouten in de gemiddelden ongeveer elf keer zoveel als
+Chopra en Ziemba hebben ook gemeten hoe zwaar de drie soorten fouten wegen. In een
+van hun rekenvoorbeelden kosten fouten in de gemiddelden ongeveer elf keer zoveel als
 fouten in de varianties, en eenentwintig keer zoveel als fouten in de
 covarianties {cite}`ChopraZiemba1993`.
 
@@ -740,7 +760,7 @@ covarianties {cite}`ChopraZiemba1993`.
 De geschatte rand is geen belegbare uitkomst, want hij meet het rendement op
 dezelfde waarnemingen waaruit $\hat{\boldsymbol{\mu}}$ en
 $\hat{\boldsymbol{\Sigma}}$ komen. Vergelijk strategieën alleen buiten de
-steekproef, met een standaardfout bij elke Sharpe-ratio.
+steekproef, en altijd met een standaardfout bij elke Sharpe-ratio.
 ```
 
 ```{admonition} Samengevat
@@ -751,34 +771,35 @@ steekproef, met een standaardfout bij elke Sharpe-ratio.
   minimum-variantieportefeuille $\boldsymbol{\Sigma}^{-1}\mathbf{1}/A$ gebruikt
   $\boldsymbol{\mu}$ niet.
 
-- De kern: de efficiënte rand is een parabool in $(\mu_p, \sigma^2)$,
-  [](#eq-markowitz-frontier), en elke portefeuille erop is een mengsel van twee
+- De kern is dat de efficiënte rand een parabool is in $(\mu_p, \sigma^2)$,
+  [](#eq-markowitz-frontier), en dat elke portefeuille erop een mengsel is van twee
   vaste fondsen, {prf:ref}`thm-markowitz-tweefonds`.
 
 - Met een risicovrij activum houdt iedereen dezelfde tangentportefeuille
   $\propto \boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}^{e}$, [](#eq-markowitz-tangent).
-  Alleen de dosis verschilt. Een hogere $R^{f}$ schuift haar naar riskantere
-  portefeuilles.
+  Alleen de dosis verschilt, en een hogere $R^{f}$ schuift de tangentportefeuille
+  naar riskantere portefeuilles, zolang $R^{f}$ onder $B/A$ blijft.
 
 - In een grote portefeuille blijft alleen covariantie over, [](#eq-markowitz-1n).
 
 - De fout in $\hat{\boldsymbol{\mu}}$ daalt met $\sqrt{T}$, de bias in de
   geschatte Sharpe-ratio groeit met $N/T$.
 
-- De simulatie hierna vraagt: hoeveel van de beloofde Sharpe-ratio blijft over
-  als de belegger $\boldsymbol{\mu}$ en $\boldsymbol{\Sigma}$ moet schatten?
+- De simulatie hierna meet hoeveel van de beloofde Sharpe-ratio overblijft als
+  de belegger $\boldsymbol{\mu}$ en $\boldsymbol{\Sigma}$ uit $T$ maanden data moet
+  schatten.
 ```
 
 ## Simulatie: de optimale portefeuille zonder kennis van $\boldsymbol{\mu}$
 
 We bouwen een wereld met tien activa waarin we de ware momenten kennen, zodat de
-optimale portefeuille en haar Sharpe-ratio bekend zijn. De vraag over
-steekproeven: hoeveel daarvan levert een belegger die dezelfde portefeuille
-bouwt uit $T$ maanden geschatte momenten?
+optimale portefeuille en de Sharpe-ratio daarvan bekend zijn. Hoeveel van die
+Sharpe-ratio haalt een belegger die dezelfde portefeuille bouwt uit $T$ maanden
+geschatte momenten?
 
-De wereld lijkt op de tien industrieportefeuilles uit de replicatie: hoge
-onderlinge correlatie, weinig verschil in premies. We werken direct met
-overrendementen.
+De wereld lijkt op de tien industrieportefeuilles uit de replicatie, met een hoge
+onderlinge correlatie en weinig verschil in premies. We werken direct met
+overrendementen, zodat de risicovrije rente geen rol speelt.
 
 | parameter | waarde |
 |---|---|
@@ -788,7 +809,7 @@ overrendementen.
 | correlatie tussen elk paar | 0,60 |
 
 De eerste cel bouwt die wereld en meet de ware Sharpe-ratio van twee
-portefeuilles: het ware optimum (de tangentportefeuille bij de ware momenten) en
+portefeuilles, het ware optimum (de tangentportefeuille bij de ware momenten) en
 1/N. Omdat we de ware momenten kennen, meten we de Sharpe-ratio van elke
 gewichtsvector exact, zonder steekproef.
 
@@ -818,14 +839,14 @@ pd.DataFrame(
 ```
 
 Het ware optimum haalt 0,50 per jaar, dicht bij de 0,529 van het
-toy-voorbeeld. 1/N haalt 0,47. Dat kleine verschil is wat optimalisatie in deze
-wereld hooguit kan opleveren.
+toy-voorbeeld, en 1/N haalt 0,47. Meer dan dat kleine verschil kan optimaliseren
+in deze wereld niet opleveren.
 
-Nu schat de belegger. Per steekproef trekken we $T$ maanden, schatten we
+Nu moet de belegger de momenten schatten. Per steekproef trekken we $T$ maanden, schatten we
 $\hat{\boldsymbol{\mu}}$ en $\hat{\boldsymbol{\Sigma}}$, vormen we de
-portefeuille alsof die schattingen waar zijn, en meten we haar Sharpe-ratio onder
-de ware momenten. Om te zien waar de schade vandaan komt, schatten we ook telkens
-maar één van de twee.
+portefeuille alsof die schattingen waar zijn, en meten we de Sharpe-ratio van die
+portefeuille onder de ware momenten. Om te zien waar de schade vandaan komt,
+schatten we daarnaast telkens maar één van de twee.
 
 ```{code-cell} ipython3
 def one_sample(T):
@@ -861,19 +882,20 @@ for T in [60, 120, 240, 600]:
 pd.DataFrame(records).set_index("T (maanden)").round(4)
 ```
 
-Schatten kost veel meer dan optimaliseren kan opleveren. De mean-variance-portefeuille
+Uit de tabel blijkt dat schatten veel meer kost dan optimaliseren kan opleveren. De
+mean-variance-portefeuille
 uit geschatte momenten haalt een mediane Sharpe-ratio van 0,16 bij vijf jaar data
 en 0,39 bij vijftig jaar, en blijft over het hele bereik onder 1/N.
 
 De kolommen met één geschatte invoer laten zien waar de schade zit. Wie
-$\boldsymbol{\mu}$ kent en $\boldsymbol{\Sigma}$ schat, verliest bijna niets. Wie
-$\boldsymbol{\Sigma}$ kent en $\boldsymbol{\mu}$ schat, verliest bijna alles.
-De gemiddelden zijn de zwakke schakel, net als bij
-{cite:t}`ChopraZiemba1993`.
+$\boldsymbol{\mu}$ kent en alleen $\boldsymbol{\Sigma}$ schat, verliest bijna niets,
+maar wie $\boldsymbol{\Sigma}$ kent en $\boldsymbol{\mu}$ schat, verliest bijna
+alles. Net als bij {cite:t}`ChopraZiemba1993` zijn de gemiddelden dus de zwakke
+schakel.
 
 De figuur vergelijkt voor $T = 120$ wat de optimalisator *in de steekproef*
-belooft met wat hij *buiten de steekproef* levert. Let op de afstand tussen de
-twee verdelingen en op de ligging van de zwarte lijn.
+belooft met wat hij *buiten de steekproef* levert. Het belangrijkste is de afstand
+tussen de twee verdelingen en de plaats van de zwarte lijn ten opzichte van beide.
 
 ```{code-cell} ipython3
 :label: cel-markowitz-simulatie
@@ -903,16 +925,17 @@ plt.show()
 :label: fig-markowitz-simulatie
 :width: 90%
 
-Twee verdelingen uit dezelfde 2000 steekproeven van tien jaar. De rechter is wat
-de optimalisator *belooft*: de Sharpe-ratio in de steekproef, ruim boven het ware
-optimum. De linker is wat hij *levert*: dezelfde gewichten onder de ware
-momenten, altijd onder het ware optimum en in deze figuur ook onder 1/N. De afstand is
-bias: de optimalisator kiest de gewichten juist waar de schattingsfout het
-gemiddelde toevallig hoog maakte.
+Twee verdelingen uit dezelfde 2000 steekproeven van tien jaar. De rechter toont
+wat de optimalisator *belooft*, de Sharpe-ratio in de steekproef, en die ligt ruim
+boven het ware optimum. De linker toont wat hij *levert*, dezelfde gewichten onder
+de ware momenten, en die liggen altijd onder het ware optimum en in deze figuur ook
+onder 1/N. De afstand tussen beide is bias, omdat de optimalisator de gewichten
+juist daar legt waar de schattingsfout het gemiddelde toevallig hoog maakte.
 :::
 
-Elk extra activum is een extra kans op een gemiddelde dat toevallig hoog
-uitvalt. Wie honderd activa optimaliseert op tien jaar data ($N/T$ tien
+Omdat elk extra activum een extra kans is op een gemiddelde dat toevallig hoog
+uitvalt, groeit het probleem met het aantal activa. Een onderzoeker die honderd
+activa optimaliseert op tien jaar data ($N/T$ tien
 keer zo groot als hier), rapporteert een Sharpe-ratio die vrijwel volledig uit
 schattingsfout bestaat.
 
@@ -925,25 +948,26 @@ schattingsfout bestaat.
 Diversification: How Inefficient Is the 1/N Portfolio Strategy?*, Review of
 Financial Studies 2009 {cite}`DeMiguelGarlappiUppal2009`.
 
-**Wat.** Tabel 3: de Sharpe-ratio buiten de steekproef van 1/N tegenover de
+**Wat.** We repliceren tabel 3, de Sharpe-ratio buiten de steekproef van 1/N tegenover de
 mean-variance-portefeuille, geschat op een rollend venster van $M = 120$
 maanden. Geen van hun veertien modellen verslaat 1/N consequent.
 
-**Data hier.** De tien industrieportefeuilles en de 25 size/BM-portefeuilles
-(gesorteerd op beurswaarde en boek-marktwaarde) van French, als overrendement,
-vanaf juli 1963.
+**Data hier.** We gebruiken de tien industrieportefeuilles en de 25
+size/BM-portefeuilles (gesorteerd op beurswaarde en boek-marktwaarde) van French,
+als overrendement vanaf juli 1963.
 
-**Verschil met het origineel.** DGU stoppen in november 2004, wij ruim twintig
-jaar later, en we nemen drie van hun veertien schatters over: 1/N,
-minimum-variantie en mean-variance. Hun FF-vierfactordataset heeft 24 reeksen van de French-website, vanaf juli
-1963. Die dataset ligt het dichtst bij onze 25 portefeuilles.
-Voor de industrieën hebben we hun getallen niet.
+**Verschil met het origineel.** DGU stoppen in november 2004 en onze data lopen
+ruim twintig jaar langer door, en van hun veertien schatters nemen we er drie over
+(1/N, minimum-variantie en mean-variance). Hun FF-vierfactordataset, 24 reeksen van
+de French-website vanaf juli 1963, ligt het dichtst bij onze 25 portefeuilles, omdat
+twintig van die reeksen size/BM-portefeuilles zijn en de andere vier factoren. Voor
+de industrieën hebben we geen getallen van hen.
 
-**Verwachte afwijking.** Het niveau wijkt af, de ordening niet: mean-variance
-in de steekproef boven 1/N, erbuiten eronder, en het gat tussen belofte en
-levering groter bij grotere $N$. Met 637 maanden buiten de steekproef is de
-standaardfout van een maandelijkse Sharpe-ratio ongeveer 0,04, dus alleen teken
-en ordening zijn informatief.
+**Verwachte afwijking.** We verwachten dat het niveau afwijkt maar de ordening
+niet, dus mean-variance in de steekproef boven 1/N en erbuiten eronder, met een
+groter gat tussen belofte en levering bij grotere $N$. Met 637 maanden buiten de steekproef is de
+standaardfout van een maandelijkse Sharpe-ratio ongeveer 0,04, zodat alleen teken
+en ordening informatief zijn.
 ```
 
 De eerste cel laadt beide panelen en trekt de risicovrije rente af.
@@ -970,12 +994,12 @@ pd.DataFrame(
 )
 ```
 
-Beide panelen hebben 757 maanden, van juli 1963 tot juli 2026.
-
-Het recept van DGU: in elke maand $t \ge M$ schatten we $\hat{\boldsymbol{\mu}}$
-en $\hat{\boldsymbol{\Sigma}}$ uit de voorgaande $M = 120$ maanden, vormen we de
-gewichten en boeken we het rendement van maand $t$. Er komt geen informatie uit
-de toekomst in de gewichten, en de functie bewaart de mean-variance-gewichten.
+Beide panelen lopen van juli 1963 tot juli 2026 en hebben 757 maanden. Daarop passen we
+het recept van DGU toe, waarin we in elke maand $t \ge M$ de schattingen
+$\hat{\boldsymbol{\mu}}$ en $\hat{\boldsymbol{\Sigma}}$ maken uit de voorgaande
+$M = 120$ maanden, de gewichten vormen en het rendement van maand $t$ boeken. Zo
+komt er geen informatie uit de toekomst in de gewichten. De functie bewaart ook de
+mean-variance-gewichten, omdat we die later nodig hebben.
 
 ```{code-cell} ipython3
 def rolling_oos(panel, window=120):
@@ -1018,6 +1042,8 @@ pd.DataFrame(
 Na het eerste venster blijven 637 maanden buiten de steekproef over. De volgende
 cel vat de drie reeksen samen, met de standaardfout $1/\sqrt{637} = 0{,}04$ van
 de Sharpe-ratio erbij (bij een kleine Sharpe-ratio is die ongeveer $1/\sqrt{T}$).
+Alle Sharpe-ratio's hierna zijn per maand, en om ze met de jaarcijfers uit de
+simulatie te vergelijken, vermenigvuldigen we ze met $\sqrt{12}$.
 
 ```{code-cell} ipython3
 def sharpe_table(oos):
@@ -1036,8 +1062,9 @@ table = pd.concat({"10 industrieën": sharpe_table(oos_industry),
 table.astype(float).round(4)
 ```
 
-In beide datasets verliest mean-variance van 1/N, en doet minimum-variantie het
-het best. Mean-variance beweegt ook veel wilder, met bij de industrieën ruim drie keer de
+In beide datasets verliest mean-variance van 1/N, en haalt minimum-variantie de
+hoogste Sharpe-ratio. Mean-variance beweegt ook veel wilder, met bij de industrieën ruim
+drie keer de
 standaarddeviatie van 1/N. De laatste cel zet
 onze Sharpe-ratio's naast de FF-vierfactorrij uit tabel 3 van DGU, met de
 Sharpe-ratio in de steekproef erbij.
@@ -1069,28 +1096,28 @@ comparison["gat: in minus buiten"] = (comparison["mean-variance in de steekproef
 comparison.round(4)
 ```
 
-**Geslaagd.** De ordening is dezelfde als bij DGU en als het replicatieblok
-voorspelde. In de steekproef belooft mean-variance meer dan 1/N (bij de
-industrieën net, bij de 25 portefeuilles ruim), erbuiten levert zij minder. Het
-gat tussen belofte en levering (laatste kolom) groeit met $N$, van 0,10 naar
-0,30, en is bij DGU nog groter. Hun niveau buiten de steekproef is negatief en
-het onze positief, maar het blok liet het niveau open.
+**Geslaagd.** De ordening is dezelfde als bij DGU en als we vooraf verwachtten. In de
+steekproef belooft mean-variance meer dan 1/N (bij de
+industrieën net, bij de 25 portefeuilles ruim), maar erbuiten levert de
+portefeuille minder. Het gat tussen belofte en levering (laatste kolom) groeit met
+$N$, van 0,10 naar 0,30, en is bij DGU nog groter. Hun niveau buiten de steekproef
+is negatief en het onze positief, maar over het niveau deden we vooraf geen
+uitspraak.
 
-Eén voorbehoud hoort erbij. Onze eigen verschillen met 1/N (voorlaatste kolom)
-zijn kleiner dan twee keer de standaardfout van één Sharpe-ratio, terwijl de
-DGU-rij daar wel boven ligt. Dat is een ruwe
-drempel: de standaardfout van een verschil hangt af van hoe sterk de twee
-strategieën samen bewegen. De replicatie stelt een consistent teken vast over
-twee datasets, geen significant verschil in één.
+Er hoort wel een voorbehoud bij. Onze eigen verschillen met 1/N (voorlaatste
+kolom) zijn kleiner dan twee keer de standaardfout van één Sharpe-ratio, terwijl de
+DGU-rij daar wel boven ligt. Twee keer de standaardfout is bovendien een ruwe
+drempel, omdat de standaardfout van een verschil afhangt van hoe sterk de twee
+strategieën samen bewegen. De replicatie stelt dus een consistent teken vast over
+twee datasets, en geen significant verschil in één dataset.
 
-De winnaar is dus niet 1/N maar de minimum-variantieportefeuille, in de
-samenvattende tabel de hoogste Sharpe-ratio in beide datasets. Haar gewichten
-$\boldsymbol{\Sigma}^{-1}\mathbf{1}/A$ gebruiken $\hat{\boldsymbol{\mu}}$ niet.
-Wie deze maandcijfers met de simulatie vergelijkt, vermenigvuldigt ze met
-$\sqrt{12}$.
+De winnaar is dus niet 1/N maar de minimum-variantieportefeuille. De gewichten
+daarvan, $\boldsymbol{\Sigma}^{-1}\mathbf{1}/A$, gebruiken $\hat{\boldsymbol{\mu}}$
+niet, en dat is het enige verschil met mean-variance, die dezelfde
+$\hat{\boldsymbol{\Sigma}}$ gebruikt.
 
-De figuur toont de cumulatieve overrendementen van de drie strategieën. Let op
-hoe onrustig de mean-variance-lijn is.
+De figuur toont de cumulatieve overrendementen van de drie strategieën, en het gaat
+vooral om het verloop van de mean-variance-lijn naast dat van de andere twee.
 
 ```{code-cell} ipython3
 :label: cel-markowitz-cumulatief
@@ -1116,12 +1143,14 @@ plt.show()
 
 Cumulatief overrendement van de drie strategieën, gefinancierd tegen de
 risicovrije rente, met een rollend venster van 120 maanden. De
-mean-variance-portefeuille is slechter en onrustiger: haar gewichten springen
-elke maand mee met tien jaar geschatte gemiddelden.
+mean-variance-portefeuille doet het slechter en is onrustiger, omdat de gewichten
+ervan elke maand meespringen met tien jaar geschatte gemiddelden.
 :::
 
-Waarom is mean-variance zo slecht? De volgende cel meet de posities die de
-optimalisator in elk venster inneemt, uit de bewaarde gewichten.
+Waarom is mean-variance zo slecht? De volgende cel meet uit de bewaarde gewichten
+welke posities de optimalisator in elk venster inneemt. De brutopositie is daarin de
+som van de absolute gewichten en de omzet de som van de absolute
+gewichtsveranderingen per maand.
 
 ```{code-cell} ipython3
 position_stats = {}
@@ -1139,54 +1168,56 @@ for name, weights in [("10 industrieën", weights_industry),
 pd.DataFrame(position_stats).T.round(3)
 ```
 
-De optimalisator neemt enorme posities: gewichten van meer dan twintig maal het
-vermogen bij de industrieën, en een veelvoud daarvan bij de 25 portefeuilles. De
-brutopositie is de som van de absolute gewichten, de omzet de som van de
-absolute gewichtsveranderingen per maand. De optimalisator behandelt een klein verschil in geschat
-gemiddelde tussen twee sterk gecorreleerde portefeuilles als een bijna
-risicoloze arbitrage. Dat verschil is ruis: hier zit hefboom op een
-schattingsfout, het mechanisme van punt 2 in de theorie.
+De optimalisator neemt enorme posities, met gewichten van meer dan twintig maal het
+vermogen bij de industrieën en een veelvoud daarvan bij de 25 portefeuilles. Hij
+behandelt een klein verschil in geschat gemiddelde tussen twee sterk gecorreleerde
+portefeuilles als een bijna risicoloze arbitrage, terwijl dat verschil ruis is. Er
+zit dus hefboom op een schattingsfout, omdat $\boldsymbol{\Sigma}^{-1}$ juist de ruis
+tussen gecorreleerde activa uitvergroot.
 
 ```{tip}
-De bekende oplossingen houden de optimalisator weg van $\hat{\boldsymbol{\mu}}$:
-negatieve gewichten verbieden, posities begrenzen, of $\hat{\boldsymbol{\mu}}$
-krimpen naar één gemeenschappelijk gemiddelde (oefening 3). Wie niets aanneemt over
-verwachte rendementen, komt uit bij 1/N of de minimum-variantieportefeuille.
+De bekende oplossingen houden de optimalisator weg van $\hat{\boldsymbol{\mu}}$,
+bijvoorbeeld door negatieve gewichten te verbieden, posities te begrenzen of
+$\hat{\boldsymbol{\mu}}$ te krimpen naar één gemeenschappelijk gemiddelde
+(oefening 3). Een belegger die niets aanneemt over verwachte rendementen, komt uit bij 1/N of de minimum-variantieportefeuille.
 ```
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** Het is nooit weerlegd, want het is een stelling,
-geen hypothese. Het risico van een belegging is haar covariantie met de rest van
-de portefeuille. Een mengsel kan veiliger zijn dan het veiligste activum, twee
+**Wat het model verklaart.** Het model is nooit weerlegd, want het is een stelling
+en geen hypothese. Het risico van een belegging is de covariantie ervan met de rest
+van de portefeuille. Een mengsel kan veiliger zijn dan het veiligste activum, twee
 fondsen bedienen iedere belegger, ook de voorzichtige van Roy, en
-idiosyncratisch risico is gratis weg te diversifiëren. De separatiestelling geeft indexbeleggen bovendien een
+idiosyncratisch risico is gratis weg te diversifiëren. De separatiestelling geeft
+indexbeleggen bovendien een
 theoretische grond naast het kostenargument.
 
-**Waar het breekt.** Niet in de wiskunde maar in de invoer. De replicatie laat
+**Waar het breekt.** Het model breekt niet in de wiskunde maar in de invoer. De
+replicatie laat
 zien dat de mean-variance-portefeuille, geschat op tien jaar maanddata, een
 lagere Sharpe-ratio haalt dan 1/N: bij de tien industrieën 0,081 tegen 0,158 per
 maand, terwijl de optimalisatie in de steekproef 0,185 beloofde. Volgens DGU
 zijn bij $N = 25$ meer dan drieduizend maanden data nodig, ruim 250 jaar, voordat
 optimaliseren loont {cite}`DeMiguelGarlappiUppal2009`. De oorzaak is de
-schattingsfout in de gemiddelden: $\boldsymbol{\Sigma}$ is goed te schatten,
+schattingsfout in de gemiddelden, want $\boldsymbol{\Sigma}$ is goed te schatten en
 $\boldsymbol{\mu}$ niet.
 
-**Risico of vergissing?** Waarom verliest mean-variance? De Chicago-lezing: prijzen zijn
-juist, dus verwachte rendementen verschillen weinig en alleen door risico. Wie op geschatte gemiddelden jaagt, jaagt op ruis. De Yale-lezing: de
-verschillen zijn echt en groot (waarde, momentum, kleine aandelen), maar prijzen
-zitten soms ernaast en tien jaar gemiddelden tonen dat niet. Dan faalt de
-*schatter*, niet het idee. Alleen een voorspeller die buiten de steekproef werkt,
-zou de twee scheiden ([](#04-20-voorspelbaarheid)).
+**Risico of vergissing?** Waarom verliest mean-variance? In de Chicago-lezing zijn
+prijzen juist, zodat verwachte rendementen weinig verschillen en alleen door risico,
+en een belegger die op geschatte gemiddelden jaagt, jaagt dan op ruis. In de
+Yale-lezing zijn de verschillen echt en groot (waarde, momentum, kleine aandelen),
+maar zitten prijzen soms ernaast en tonen tien jaar gemiddelden dat niet. Dan faalt
+de *schatter* en niet het idee. Alleen een voorspeller die buiten de steekproef
+werkt, zou de twee lezingen kunnen scheiden ([](#04-20-voorspelbaarheid)).
 Santa-Clara ([](#00-00-setup)) verloor naar eigen zeggen geld als hij dacht
-iets te weten wat de prijs niet wist. De mean-variance-portefeuille maakt die
-fout systematisch: zij wedt dat haar geschatte gemiddelden meer weten dan de
-prijs.
+iets te weten wat de prijs niet wist, en de mean-variance-portefeuille maakt die
+fout systematisch, omdat ze ervan uitgaat dat de geschatte gemiddelden meer weten
+dan de prijs.
 
-**Wat er daarna kwam.** Markowitz beschrijft wat één belegger zou moeten doen,
-bij gegeven $\boldsymbol{\mu}$. Wat de markt werkelijk opleverde, was in 1959
-nog niet gemeten. Die meting kwam er in 1964 met de CRSP-tape: zie
-[](#02-05-crsp-tape).
+**Wat er daarna kwam.** Markowitz beschrijft wat één belegger bij gegeven
+$\boldsymbol{\mu}$ zou moeten doen, maar wat de markt werkelijk opleverde, was in
+1959 nog niet gemeten. Die meting kwam er pas in 1964, met de CRSP-tape
+([](#02-05-crsp-tape)).
 
 ## Oefeningen
 
@@ -1207,10 +1238,11 @@ laat de correlatie tussen aandelen en kleine aandelen nul zijn in plaats van 1/3
 
 **(1)** Nu is $\boldsymbol{\Sigma}$ diagonaal, dus
 $\boldsymbol{\Sigma}^{-1}\mathbf{1} = (1/0{,}04;\; 1/0{,}09;\; 1/0{,}01)'
-= (25;\; 11{,}11;\; 100)'$. Maal 9 geeft $(225;\; 100;\; 900)$, met som 1225, dus
+= (25;\; 11{,}11;\; 100)'$. Vermenigvuldigen met 9 geeft $(225;\; 100;\; 900)$, met
+som 1225, zodat
 $\mathbf{w}_{\mathrm{mv}} = (9/49;\; 4/49;\; 36/49)' = (0{,}1837;\; 0{,}0816;\;
 0{,}7347)'$. De covariantie van elk activum met de portefeuille is weer gelijk:
-$0{,}04 \cdot 9/49 = 0{,}09 \cdot 4/49 = 0{,}01 \cdot 36/49 = 0{,}36/49$. Dus
+$0{,}04 \cdot 9/49 = 0{,}09 \cdot 4/49 = 0{,}01 \cdot 36/49 = 0{,}36/49$. Daarmee is
 $\sigma^2_{\mathrm{mv}} = 0{,}36/49$ en $\sigma_{\mathrm{mv}} = 0{,}6/7 = 8{,}57\%$.
 
 ```{code-cell} ipython3
@@ -1228,10 +1260,10 @@ pd.DataFrame(
 ```
 
 **(2)** De standaarddeviatie daalt van 8,83% naar 8,57%. Kleine aandelen bewegen niet
-meer met aandelen mee, voegen dus echte diversificatie toe en krijgen 8,2% in
-plaats van 4,9%.
-Wat dit leert: minder covariantie maakt de minimum-variantieportefeuille
-veiliger, zonder dat een enkel activum minder riskant wordt.
+meer met aandelen mee, zodat ze echte diversificatie toevoegen en 8,2% krijgen in
+plaats van 4,9%. De oefening laat zien dat minder covariantie de
+minimum-variantieportefeuille veiliger maakt, zonder dat een enkel activum minder
+riskant wordt.
 :::
 
 :::{exercise}
@@ -1264,7 +1296,7 @@ $\lambda_2 = (A\mu_2 - B)/D$ en $\delta_2 = (C - B\mu_2)/D$ geeft
 $\left(A\mu_1\mu_2 - B\mu_1 - B\mu_2 + C\right)/D$, symmetrisch in $\mu_1$ en
 $\mu_2$. Voor $\mu_1 = \mu_2$ is dit [](#eq-markowitz-frontier).
 
-**(2)** Nul stellen en oplossen naar $\mu_z$ geeft
+**(2)** Als we dit nul stellen en naar $\mu_z$ oplossen, vinden we
 $\mu_z = (B\mu_{\mathrm{tan}} - C)/(A\mu_{\mathrm{tan}} - B)$. Met
 $\mu_{\mathrm{tan}} = 37/450 = 0{,}0822\overline{2}$ is de teller
 $7{,}0625 \cdot 0{,}0822\overline{2} - 0{,}51125 = 0{,}580694 - 0{,}51125
@@ -1284,15 +1316,15 @@ pd.DataFrame(
 ```
 
 **(3)** Het zero-beta-rendement is exact 2%, gelijk aan de risicovrije rente
-waarmee we de tangentportefeuille bepaalden. Dat is geen toeval. Uit
+waarmee we de tangentportefeuille bepaalden, en dat is geen toeval. Uit
 $\mathbf{w}_{\mathrm{tan}} \propto \boldsymbol{\Sigma}^{-1}(\boldsymbol{\mu} -
 R^{f}\mathbf{1})$ volgt voor elke portefeuille $\mathbf{v}$ met
 $\mathbf{v}'\mathbf{1} = 1$ dat
 $\Cov(r_v, r_{\mathrm{tan}}) \propto \mathbf{v}'(\boldsymbol{\mu} - R^{f}\mathbf{1})
-= \mu_v - R^{f}$. Nulcovariantie betekent dus $\mu_v = R^{f}$. Dit is de kern van
-{cite:t}`Black1972`: ook zonder risicovrij activum bestaat er een portefeuille
-die de rol van $R^{f}$ speelt. Wat dit leert: de risicovrije rente is in de
-meetkunde van de rand het rendement van de portefeuille die niet met de
+= \mu_v - R^{f}$. Nulcovariantie betekent dus $\mu_v = R^{f}$. Op dit resultaat
+bouwt {cite:t}`Black1972`, want ook zonder risicovrij activum bestaat er dan een
+portefeuille die de rol van $R^{f}$ speelt. Zo blijkt dat de risicovrije rente in
+de meetkunde van de rand het rendement is van de portefeuille die niet met de
 tangentportefeuille meebeweegt.
 :::
 
@@ -1343,18 +1375,18 @@ pd.DataFrame(
 ).T.rename_axis("phi").round(3)
 ```
 
-**(1) en (2)** $\phi = 0$ wint met afstand: een Sharpe-ratio van 0,239 tegen
-0,104 bij $\phi = 1$, en een brutopositie van 7,6 in plaats van 72. Bij
+**(1) en (2)** $\phi = 0$ wint met afstand, met een Sharpe-ratio van 0,239 tegen
+0,104 bij $\phi = 1$ en een brutopositie van 7,6 in plaats van 72. Bij
 $\phi = 0$ is $\tilde{\boldsymbol{\mu}}$ evenredig met $\mathbf{1}$, dus is de
 portefeuille exact de minimum-variantieportefeuille
-$\boldsymbol{\Sigma}^{-1}\mathbf{1}/A$. De tussenwaarden doen het slechter,
-omdat $\mathbf{1}'\boldsymbol{\Sigma}^{-1}\tilde{\boldsymbol{\mu}}$ soms dicht
+$\boldsymbol{\Sigma}^{-1}\mathbf{1}/A$. De tussenwaarden doen het nog slechter
+dan $\phi = 1$, met een Sharpe-ratio van nul bij $\phi = 0{,}5$, omdat $\mathbf{1}'\boldsymbol{\Sigma}^{-1}\tilde{\boldsymbol{\mu}}$ soms dicht
 bij nul komt en de normalisatie dan explodeert.
 
-**(3)** De optimalisatie is niet het probleem. Hetzelfde kwadratische programma,
-met $\hat{\boldsymbol{\mu}}$ volledig weggekrompen, levert het beste resultaat
-van deze lecture. Wat dit leert: het nuttigste wat een belegger over
-$\hat{\boldsymbol{\mu}}$ kan weten, is hoeveel hij hem *niet* moet geloven.
+**(3)** Het probleem zit dus niet in de optimalisatie, want hetzelfde kwadratische
+programma levert met $\hat{\boldsymbol{\mu}}$ volledig weggekrompen het beste
+resultaat van dit college. Het nuttigste wat een belegger over
+$\hat{\boldsymbol{\mu}}$ kan weten, is hoeveel hij ervan *niet* moet geloven.
 :::
 
 <!-- Referenties verschijnen automatisch onderaan de pagina. -->

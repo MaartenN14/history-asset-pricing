@@ -1,0 +1,15 @@
+STATUS 01_04_markowitz T words=5777 prose=PASS
+Waar we zijn: dubbele punten vervangen door bijzin en een tweede vraagzin.
+Overzicht: "Het antwoord van Markowitz:" wordt een gewone zin; "lecture" wordt "college"; lijstitems zonder dubbele punt; geschiedenis met "want"/"met dit werk verschoof"; "theorie of feit" niet meer als lijm vóór een dubbele punt.
+Intuïtie: vraagzinnen met dubbele punt worden indirecte vragen; staccato samengevoegd (terwijl, want, maar, omdat); Tobin-alinea met één "Wie"; slot "We verwachten dus twee dingen" zonder "En"-zin.
+Toy-voorbeeld: stap 1-4 als hele zinnen met persoonsvorm (geen één-zin-alinea's meer); recept en uitkomst met "dat wil zeggen", "terwijl", "zodat".
+Theorie, opzet: "De aannames:" wordt "We maken vier aannames."; aanname 1 in twee zinnen zonder hangende "Die benadering".
+Kernresultaat: "De bewering:" weg en samengevoegd met het beeld; "Het probleem is" voorafgegaan door zin in gewone taal; 6 van 7 "In woorden:" herschreven; calques "houdt de afgeleide schoon" en "op dat feit draait" weg; "Waarom zou de volgende stelling" wordt "Waarom zijn twee fondsen genoeg?"; "Het bewijsidee:" wordt een zin; puntkomma bij lambda weg.
+Tobin en Roy: bewering en "Waarom zou dit waar zijn?" in één alinea; "haar/zij" voor de tangentportefeuille wordt "ze"; "Zo lost de theorie ... in" (regeltaal) wordt "komt dus uit"; "Let op" wordt een gewone zin; "Wie risico wil dragen" wordt "Een belegger die"; Roy-voorbeeld zonder "Een voorbeeld:".
+Wat het voorspelt: "De bewering:" weg; tweede "Waarom zou dit waar zijn" wordt "Waarom verdwijnt dat risico?"; "zoals de intuïtie voorspelde" wordt een gewone slotzin; "Wie epsilon draagt" wordt "Een belegger die".
+Schattingsfout: "De bewering:" weg; motiefnaam zegt nu wat hij hier betekent; "dus" met hoofdzinvolgorde wordt "zodat"; "hun" krijgt antecedent (Chopra en Ziemba); Samengevat zonder "De kern:" en "vraagt:", "haar" wordt de tangentportefeuille.
+Simulatie: "De vraag over steekproeven:" (regeltaal) wordt een vraagzin; "haar Sharpe-ratio" wordt "de Sharpe-ratio daarvan"; "Nu schat de belegger." wordt hele zin; twee "Wie" samengevoegd; figuurtekst zonder dubbele punten; "Wie honderd activa" wordt "Een onderzoeker die".
+Replicatie: blok met persoonsvorm per onderdeel, "Verschil" en "Verwachte afwijking" elk twee zinnen; één-zin-alinea over 757 maanden samengevoegd met het recept; "zij/haar" weg; "Wie deze maandcijfers" en "Wie niets aanneemt" herschreven; "Let op" en dubbele punten in figuurtekst en positiealinea weg.
+Wat er brak: "Niet in de wiskunde maar in de invoer." wordt hele zin; Chicago- en Yale-lezing zonder dubbele punt; "zij wedt dat haar" wordt "ze gaat ervan uit dat de"; "zie [](...)" wordt verwijzing tussen haakjes.
+Oefeningen: drie "Wat dit leert:" vervangen door wisselende slotzinnen; "Maal 9" en "Dus" als zinsbegin herschreven; "(1) en (2)" zonder dubbele punt.
+Tellers na afloop: sent_mean 16,8, colon_mid 2,1, para_one 12, tmpl 1, wie_open 3, connect 31, calque 0; nb_numbers: dezelfde 60 meldingen als ervoor.
