@@ -24,7 +24,7 @@ terugblik.
 **Wat we al weten.** In [](#03-12-consumptie-capm) kreeg de stochastische discontofactor
 een theorie: $m_{t+1} = \beta (c_{t+1}/c_t)^{-\gamma}$, met $\beta$ de subjectieve
 discontofactor en $\gamma$ de relatieve risicoaversie. Met die $m$ kon de
-Euler-vergelijking de T-bill en het aandelenrendement niet tegelijk prijzen. Uit
+Euler-vergelijking de T-bill en het aandelenrendement niet tegelijk verklaren. Uit
 [](#00-01-rendementen) weten we dat een gemiddeld rendement over een eeuw een
 standaardfout van ongeveer twee procentpunt heeft.
 

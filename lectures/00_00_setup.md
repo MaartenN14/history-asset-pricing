@@ -73,7 +73,7 @@ dat het model niet aankan. Dat feit is de barst, en de barst opent het volgende
 hoofdstuk.
 
 Drie motieven lopen door de hele reeks, en waar ze spelen, komen ze onder deze
-namen terug. De standaardfout van 2% gaat over wat data kunnen meten, risico of
+namen terug. [De standaardfout van 2%](#00-01-rendementen) gaat over wat data kunnen meten, risico of
 vergissing over twee lezingen van hetzelfde feit, en theorie of feit over
 de status van een model, dat getoetst is of nog op een verklaring wacht.
 

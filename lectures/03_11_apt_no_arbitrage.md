@@ -492,7 +492,7 @@ Schrijf $\boldsymbol{\mu} = \lambda_0\mathbf{1} + \mathbf{B}\boldsymbol{\lambda}
 In woorden: verwachte rendementen liggen op een vlak in de factorbèta's. Met een
 risicovrij activum is $\lambda_0 = 1 + R^{f}$, want dat heeft bèta nul. Dan is
 $\lambda_k$ de *prijs van risico* van factor $k$: het extra verwachte rendement per
-eenheid bèta. In excess rendementen staat er
+eenheid bèta. In overrendementen staat er
 $\E[R^{e}_i] = \sum_k \beta_{i,k}\lambda_k$. Alleen de factorbèta's tellen dus mee,
 precies zoals de tweede verwachting uit de intuïtie zei.
 
@@ -831,7 +831,7 @@ componenten met een premie kan afwijken van de drie à vier van Roll en Ross, om
 testactiva op omvang en waarde gesorteerd zijn.
 ```
 
-We laden de portefeuilles en de factoren en maken excess rendementen.
+We laden de portefeuilles en de factoren en maken overrendementen.
 
 ```{code-cell} ipython3
 ports = hap_data.french("25_Portfolios_5x5")
@@ -846,7 +846,7 @@ pd.Series({"begin": f"{excess.index[0]:%Y-%m}", "eind": f"{excess.index[-1]:%Y-%
 ```
 
 De steekproef loopt van 1963-07 tot 2026-07 en telt 757 maanden. Nu ontbinden we de
-covariantiematrix van de 25 excess rendementen. Omdat een eigenvector maar op een
+covariantiematrix van de 25 overrendementen. Omdat een eigenvector maar op een
 schaalfactor na vastligt, schalen we de eerste zo dat de gewichten optellen tot één, en
 de hogere zo dat er één euro long en één euro short staat. Het teken kiezen we zo dat de
 eerste component positief correleert met de markt, de andere met HML.
@@ -947,7 +947,7 @@ of marktkapitalisaties. Ze zien alleen covarianties, en daarin zitten drie domin
 richtingen die grotendeels de ruimte opspannen van de factoren die Fama en French in
 1993 met de hand bouwden.
 
-Omdat de componenten zelf portefeuilles van excess rendementen zijn, is hun gemiddelde
+Omdat de componenten zelf portefeuilles van overrendementen zijn, is hun gemiddelde
 direct een schatting van de premie.
 
 ```{code-cell} ipython3

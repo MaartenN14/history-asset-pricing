@@ -478,7 +478,7 @@ Omdat $1 - \gamma < 0$, vraagt een hogere $J$ dan een lagere $g$, zodat $g_x < 0
 $\rho < 0$ is de hedgevraag positief, zoals in geval B van het toy-voorbeeld. Wisselt
 $\rho$ van teken, dan wordt ze negatief, zoals in geval B' (0,7909 onder 0,8333). Ook bij
 $\gamma < 1$ draait het teken om (oefening
-[](#ex-merton-icapm-1)).
+1).
 
 ### Het kernresultaat: het intertemporele CAPM
 

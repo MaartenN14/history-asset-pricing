@@ -126,6 +126,7 @@ def prose_of(t):
     p = re.sub(r"\$[^$]*\$", "X", t)
     p = re.sub(r"\{cite[^}]*\}`[^`]*`", "", p)
     p = re.sub(r"\[\]\(#[^)]*\)", "REF", p)
+    p = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", p)  # [tekst](url) -> tekst
     p = re.sub(r"^[:`]{3}.*$|^:[\w-]+:.*$", "", p, flags=re.M)
     p = re.sub(r"^#.*$", "", p, flags=re.M)
     p = re.sub(r"^\|.*$", "", p, flags=re.M)

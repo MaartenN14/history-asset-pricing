@@ -473,7 +473,7 @@ de markt $m_{t+1} = \beta(c_{t+1}/c_t)^{-\gamma}$ in, dan valt $\beta$ weg:
 \qquad R^{e}_{m,t+1} = R^m_{t+1} - (1 + R^f_{t+1}).
 ```
 
-Het excess rendement, gewogen met $(c_{t+1}/c_t)^{-\gamma}$, heeft dus verwachting nul, en
+Het overrendement, gewogen met $(c_{t+1}/c_t)^{-\gamma}$, heeft dus verwachting nul, en
 de replicatie gebruikt deze vorm om de $\gamma$ te vinden die alleen de premie
 verklaart. De stelling hieronder vertaalt [](#eq-consumptie-capm-cov) naar consumptie.
 
@@ -509,7 +509,7 @@ volatielere consumptie maakt de prijs van risico groter. Met $\gamma = 2$ en
 $\sigma = 3{,}5\%$ is $\lambda_{\Delta c} = 0{,}25\%$, hetzelfde getal als bij de
 lognormale boom, omdat de bèta van de boom daar één is.
 
-De vorm is die van het CAPM uit [](#02-08-capm), een verwacht excess rendement evenredig
+De vorm is die van het CAPM uit [](#02-08-capm), een verwacht overrendement evenredig
 met een bèta, maar de factor is anders. Omdat consumptie geen verhandelde portefeuille is,
 is $\lambda_{\Delta c}$ geen gemiddeld rendement maar $\gamma$ maal een variantie. In
 Breedens continue tijd, en voor
@@ -787,7 +787,7 @@ De tabel laat vier zwakke punten van de schatter zien.
 Dat $\hat\gamma$ zo slecht gemeten is, volgt uit de standaardfout van 2% uit
 [](#00-01-rendementen): een gemiddeld rendement is over een mensenleven nauwelijks
 te meten. Zonder voorspelbaarheid komt de informatie over $\gamma$ vooral uit
-het gemiddelde excess rendement, gedeeld door zijn covariantie met consumptie. Die
+het gemiddelde overrendement, gedeeld door zijn covariantie met consumptie. Die
 covariantie is goed gemeten, maar het gemiddelde heeft bij 16% volatiliteit een
 standaardfout van $16/\sqrt{70} \approx 1{,}9$ procentpunt, meer dan de premie zelf.
 
@@ -894,7 +894,7 @@ print(f"steekproef {main.index[0]} t/m {main.index[-1]}, {len(main)} kwartalen")
 ```
 
 De hoofdsteekproef loopt tot en met 2019, en de volgende cel vat de drie reeksen en
-het excess rendement samen.
+het overrendement samen.
 
 ```{code-cell} ipython3
 summary = pd.DataFrame(
@@ -911,11 +911,11 @@ summary.loc["excess Rm - Rf"] = [
     (main.Rm - main.Rf).std() / np.sqrt(len(main)) * 100,
     np.corrcoef(main.Rm - main.Rf, main.gc)[0, 1],
 ]
-summary.index = ["consumptiegroei", "reëel marktrendement", "reëel T-bill-rendement", "excess rendement"]
+summary.index = ["consumptiegroei", "reëel marktrendement", "reëel T-bill-rendement", "overrendement"]
 summary.round(3)
 ```
 
-In deze tabel zit het hele probleem: consumptiegroei is glad, het excess rendement
+In deze tabel zit het hele probleem: consumptiegroei is glad, het overrendement
 is zestien keer zo volatiel, en hun correlatie is laag. De covariantie die
 volgens [](#eq-consumptie-capm-ccapm) de premie moet verklaren, is dus minuscuul,
 terwijl de premie zelf groot is en onnauwkeurig gemeten.
@@ -959,7 +959,7 @@ voorkomt, maar de verwerping door $J_T$ weegt zwaarder.
 ### Wat het aandelenrendement alleen vraagt
 
 Welke $\gamma$ is nodig om alleen de gemiddelde premie te verklaren? Volgens
-[](#eq-consumptie-capm-excess) moet het met $g^{-\gamma}$ gewogen excess rendement
+[](#eq-consumptie-capm-excess) moet het met $g^{-\gamma}$ gewogen overrendement
 nul zijn. Bij $\gamma = 0$ is dat gewogen rendement gewoon de premie, en naarmate $\gamma$
 stijgt, wegen kwartalen met lage consumptiegroei zwaarder. Renderen aandelen in die
 kwartalen slecht, dan daalt
@@ -1071,7 +1071,7 @@ de tientallen vraagt.
 
 **Wat het model verklaart.** Het consumptie-CAPM gaf de discontovoet voor het
 eerst een theorie. Het verklaart waarom de rente hoog is als groei wordt
-verwacht, waarom een verzekering een negatief verwacht excess rendement heeft, en
+verwacht, waarom een verzekering een negatief verwacht overrendement heeft, en
 waarom de prijs-dividend-ratio kan bewegen zonder dat dividenden bewegen. Het bracht
 bovendien de logica van het CAPM en Mertons hedgemotieven samen in één bèta. De
 Euler-vergelijking [](#eq-consumptie-capm-euler) komt terug in elk later model,
@@ -1201,8 +1201,8 @@ pd.Series(
         "linkerlid": lhs,
         "rechterlid": rhs,
         "rechterlid, theorie": tree["gamma"] * tree["leverage"] * tree["sigma"] ** 2,
-        "gemiddeld excess rendement": excess.mean(),
-        "SD excess rendement": excess.std(),
+        "gemiddeld overrendement": excess.mean(),
+        "SD overrendement": excess.std(),
         "jaren nodig voor t = 2": years_needed,
     }
 ).round(5)
@@ -1210,7 +1210,7 @@ pd.Series(
 
 De bèta is 3. Het linkerlid ($0{,}0145$) en het rechterlid ($0{,}0147$) verschillen $0{,}0002$, en dat is ruim één standaardfout van een gemiddelde over een miljoen
 jaar, want $0{,}16/\sqrt{10^6} = 0{,}00016$. Met een excess volatiliteit van 16% en
-een gemiddeld excess rendement van 1,6% is voor $t = 2$ ongeveer vierhonderd jaar
+een gemiddeld overrendement van 1,6% is voor $t = 2$ ongeveer vierhonderd jaar
 nodig. De consumptiebèta is dus scherp te meten en de premie niet, zodat $\hat\gamma$ de onnauwkeurigheid van de premie erft.
 :::
 
