@@ -1,0 +1,17 @@
+STATUS 03_12_consumptie_capm T words=5469 prose=PASS
+- Waar we zijn: nominale zin over arbitrage herschreven ("bestaat zodra arbitrage onmogelijk is, maar ..."); open vraag in twee zinnen.
+- Overzicht: "Uit consumptie:" wordt een hele zin met "want"; "definieert het tijdvak" wordt "begint een nieuw tijdvak"; "lecture" wordt "college"; "premies dragen" wordt "verklaren".
+- Intuïtie: staccato over eiland en markt samengevoegd met zodat/want; "Wie"-zinnen en telegramzinnen ("Ten eerste een rente ...") herschreven met persoonsvorm.
+- Toy-voorbeeld: dubbele punten in stap 3-4 weg; "Evenzo X en Y" als hele zin; "nu met een mechanisme" wordt "maar dan met"; "haar gemiddelde" (consumptie) wordt "het gemiddelde"; "de SDF prijst" wordt "waardeert"; etiket "Wat het toy-voorbeeld laat zien:" weg.
+- Theorie, routekaart en opzet: "Tot slot de toets" en "De kern ... De rest volgt eruit" als hele zinnen met voegwoord.
+- Euler: alle zes "*Waarom zou dit waar zijn?*" in Theorie geschrapt (STYLE 11.6); "In woorden:" weg; SDF/arbitrage-slot als één zin met "terwijl".
+- Discontovoet: eenregelige openingsalinea samengevoegd met het intuïtieve beeld; "Wie die stap" weg; alinea over Williams gesplitst bij "Let wel op het verschil in namen"; "de data kunnen hem verwerpen" wordt "een toets op de data kan die theorie verwerpen".
+- Lucas-boom: "iemand houdt ... iemand eet" wordt de representatieve belegger; "is economisch" wordt "heeft een economische betekenis".
+- Lognormaal: rentealinea met zodat/want herschreven; "nu met een getal" weg.
+- Consumptie-CAPM: "wat telt" (calque) weg; "Eerst een exacte stap." (telegram) wordt een hele zin; "zoals de intuïtie voorspelde" gevarieerd; puntkomma in de stelling weg.
+- GMM: "Wie ... wil oplossen" wordt "Om ... op te lossen"; "Hij mag" (de fout) wordt "ze"; momentenalinea en celaankondiging samengevoegd.
+- Simulatie: alinea's gesplitst bij de celaankondigingen; "Dat is geen fout ... maar" herschreven; lijstpunten met zodat/terwijl; "Wie één steekproef heeft" wordt "Een onderzoeker met één steekproef".
+- Replicatie: "vertragingen" wordt "lags" (volgens prose_stats; alternatief "vertraagde waarden"); "verwerpt" krijgt lijdend voorwerp; "Wat overblijft, is" (calque) en "haar" (premie) weg; oordeel "Geslaagd" verwijst nu naar het voorspelde patroon in plaats van "de verwachte afwijking" als onderwerp.
+- Wat er brak: "prijzen" wordt "verklaren"; "Volgens haar" (lezing) wordt "volgens die lezing"; puntkomma voor "zie" weg.
+- Oefeningen: drie keer "Wat dit leert:" vervangen door een gewone slotzin met "dus".
+- Twijfel, niet gewijzigd: "excess rendement" en "payoff" laten staan; "gewogen gemiddelde" in de uitleg van de Lucas-operator laten staan, al tellen de gewichten niet op tot één.

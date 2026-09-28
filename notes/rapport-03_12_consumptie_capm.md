@@ -137,3 +137,15 @@ Helderheid: GMM-alinea teruggebracht tot twee zinnen, details (β geconcentreerd
 Opbouw: theorie-of-feit-zin sluit nu "Waar het breekt" af; kop "De discontovoet krijgt een theorie" opent met de bewering.
 Taal: vergelijkingszin simulatie/replicatie in twee zinnen; consumptie-CAPM eerst, Engelse term tussen haakjes; Chicago- en Yale-zin gesplitst.
 Code: Kronecker-stapeling als lus over activa met benoemde blokken; generator in `concentrated` uitgeschreven; `brentq`-conditie als if/else; datacel gesplitst in bouwen en samenvatten, met zin ervoor en erna.
+
+## R9-1 (F6b, ronde 9+)
+
+**Feitelijke fouten.** (1) "gewogen gemiddelde" wordt "gewogen som", met een zin dat gewichten die per toestand onder één blijven (toy: hoogstens 0,98) $T$ tot contractie maken. (2) $\delta < 1$ heet nu voldoende maar niet nodig; oneindig pas als het nut-gewogen dividend langs de keten te snel groeit. (3) Admonition: "nul tot zes lags". (4) "Waar het breekt": een kleine steekproef verklaart $J = 42$ niet (95e percentiel 11,7 bij vier tegen zes vrijheidsgraden); tijdsaggregatie maakt $J$ groter maar verklaart de $\gamma$ in de tientallen niet; "zeldzaam en zwak" geschrapt.
+**Helderheid.** Nut van Hansen en Singleton als $c^{1+\alpha}/(1+\alpha)$, geen tweede $\gamma$. $R^m$ vóór de propositie benoemd als rendement op de boom (subscript = markt, niet de SDF). Rente: "lineair tegen kwadratisch" als reden voor de drempel; reparatiebijzin "andere kalibratie" geschrapt en de kalibratiezin ingekort.
+**Taal.** Drie hardop-zinnen herschreven (Overzicht, celaankondiging toy, consumptiebèta). SDF-definitie in twee zinnen zonder dubbele punt. "leverage" geschrapt. Eén term "lag(s)" (STYLE §3 geeft "lags"; "vertraging" in oefening 3 wordt "lag"). "op vier decimalen nul" vijf keer vervangen door $J$-waarden of $p < 0{,}0001$. Link bij de tweede "standaardfout van 2%". Lucas-boom-opener gaat over de boom. Overzicht-opsomming als vijf volzinnen.
+**Toy.** Stap 3 en 4 houden de redenering; uitkomsten per toestand in een tabel ($\E_i[m]$, $R^f_i$, $\E_i[R]$, $1+R^f_i$, premie). Eerste zin na de celtabel zegt wat die bewijst (Euler-vergelijking gehaald).
+**Opbouw / figuren.** Drievoudige uitleg teruggebracht: zin vóór elke figuur zegt alleen wat erin staat; bijschrift figuur 2 herhaalt de snijpunten niet meer; slotzin simulatie wijst naar $J$ boven 11,7.
+**Replicatie.** Verwachte afwijking noemt nu tijdsaggregatie (kleinere SE, grotere $J$).
+**Code.** Kolom "verwerpt origineel" met decimale komma (30,08; 10,93; 366,22); opnieuw uitgevoerd, alleen die labels verschillen.
+**Afgewezen.** Geen.
+Woorden: 5.612 (was 5.469). prose_stats PASS; nb_numbers 18 meldingen (was 22), geen nieuwe.

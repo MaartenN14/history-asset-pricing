@@ -1,180 +1,199 @@
-STATUS 03_12_consumptie_capm F6c-2 words=5211 prose=PASS open=0 cijfer=8,7 min=8
+STATUS 03_12_consumptie_capm F6c words=5612 prose=PASS open=0 cijfer=9,2 min=9
 
 # Eindbeoordeling: Lucas, Breeden en de SDF (F6)
 
+## Ronde 9+
+
+Vorige ronde: 8,7
+
+Gelezen na de taalredactie (`notes/taal-03_12_consumptie_capm.md`). `prose_stats --check`: 5.469 woorden, PASS (zinslengte 16,9 gemiddeld, dubbele punt 3,5 per 1000, twaalf alinea's van één zin, bijna alle als overgang of celaankondiging). Getallen nagerekend tegen `nb_outputs` (15 cellen). Het punt uit controle 2 ("Daarboven", H8) is opgelost. Weging nu 25/20/20/10/10/10/5.
+
 ## De drie verbeteringen met het meeste effect
 
-1. **Het toy-voorbeeld handrekenbaar maken** (criterium 4, 8 → 9). Stap 2 rekent met noemers 49, 637 en 16/637 en de regel van Cramer. STYLE §11.7 vraagt noemers onder 100. Getallen kiezen waarbij de gewichten eenvoudige breuken zijn, of het stelsel in één regel met afgeronde decimalen oplossen.
-2. **De replicatie na het oordeel uit de lopende tekst halen** (criterium 6, 8 → 9). "Onze standaardfout is 6,2, de hunne 1,57 bij een schatting van 1,51" en "een standaardfout van 67 bij Hansen en Singleton ... rond hun 58" herhalen de tabel in proza, met vijf getallen per alinea. Het oordeel kan naar de tabel verwijzen.
-3. **De losse eindzin verplaatsen en de brug naar de simulatie verhelderen** (criterium 2, 8 → 9). "In de vraag theorie of feit is het consumptie-CAPM een theorie die met één toets werd verworpen." staat na "Wat er daarna kwam" als losse alinea. In de simulatie-inleiding is "of op ruim één basispunt zoals in het toy-voorbeeld" een vergelijking met een andere economie (Markov-groei, $\gamma = 2$), die de lezer niet kan plaatsen.
+1. **Vier plekken in Theorie rechtzetten waar een woord of symbool iets anders zegt dan de wiskunde** (criterium 1, 8,5 → 9). De Lucas-operator is een gewogen *som*, geen gewogen gemiddelde (r. 333). De voorwaarde $\delta < 1$ is voldoende, niet nodig (r. 363–366). De $\gamma$ van Hansen en Singleton botst met de onze (r. 229). $R^m$ verschijnt in de propositie zonder naam (r. 399).
+2. **De taal op de laatste plekken natuurlijk maken** (criterium 3, 8,5 → 9). Het gaat om de drie hardop-zinnen hieronder, "leverage (hefboom)" [onderzoek C], de SDF-definitie met dubbele punt tussen haakjes [onderzoek C], "lags" tegen "vertraging", vijf keer "op vier decimalen nul" [onderzoek C] en de tweede "standaardfout van 2%" zonder link.
+3. **De slotclaim in "Waar het breekt" laten passen bij de waarschuwing en de simulatie** (criterium 2 en 6, 9 → 9,5). "De simulatie laat zien dat dit geen artefact van een kleine steekproef is" botst met de waarschuwing dat tijdsaggregatie $J_T$ te groot maakt. Ook noemt de tekst een verwerping "zeldzaam" terwijl de simulatie er één op de tien geeft.
 
 ## Cijfers
 
 | nr | criterium | gewicht | cijfer |
 |---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 8 |
-| 2 | Opbouw en rode draad | 20% | 8 |
-| 3 | Taal | 15% | 8 |
-| 4 | Toy-voorbeeld | 10% | 8 |
-| 5 | Code en figuren | 10% | 8 |
-| 6 | Replicatie en empirie | 10% | 8 |
+| 1 | Helderheid van de uitleg | 25% | 8,5 |
+| 2 | Opbouw en rode draad | 20% | 9 |
+| 3 | Taal | 20% | 8,5 |
+| 4 | Toy-voorbeeld | 10% | 9 |
+| 5 | Code en figuren | 10% | 9 |
+| 6 | Replicatie en empirie | 10% | 9 |
 | 7 | Oefeningen | 5% | 9 |
-| | **Eindcijfer** | | **8,1** |
+| | **Eindcijfer** | | **8,8** |
 
-(0,3·8 + 0,2·8 + 0,15·8 + 0,1·8 + 0,1·8 + 0,1·8 + 0,05·9 = 8,05, afgerond 8,1.)
+(0,25·8,5 + 0,2·9 + 0,2·8,5 + 0,1·9 + 0,1·9 + 0,1·9 + 0,05·9 = 8,775, afgerond 8,8.)
 
-## 1. Helderheid van de uitleg (8)
-
-*Goed.*
-- Toy-voorbeeld: "In de hoge toestand is de prijs-dividend-ratio *lager*, hoewel de verwachte groei hoger is." De zin daarna noemt het rente-effect en het groei-effect, en oefening 1 leest het resultaat in beide richtingen (H6).
-- Wat het voorspelt, lognormale groei: elke formule krijgt een getal met kalibratie ($\gamma < 14{,}7$, 8,6% rente, 0,25% premie), en de rente wordt ontleed in groei en voorzorgssparen.
-- Opzet en aannames: de vertaling van Hansen en Singletons $\alpha$ naar $\gamma$ staat vooraf, met het getal ($\hat\alpha = -0{,}931$ is $\hat\gamma = 0{,}931$).
-
-*Aanmerkingen.*
-- Simulatie: "Zonder die hefboom bleef de premie steken op $4 \cdot 0{,}035^2 = 0{,}49\%$, of op ruim één basispunt zoals in het toy-voorbeeld." Het tweede deel vergelijkt met een andere economie. Welk scenario "of" beschrijft, is niet te zeggen.
-- Evenwicht in de Lucas-boom: "Laat de groei $g_{t+1} = d_{t+1}/d_t$ afhangen van een Markov-toestand $s_t$ met overgangskans $Q(s, \mathrm{d}s')$." De maattheoretische notatie komt één keer voor en wordt meteen weer tot een som teruggebracht.
-- Hoe het getoetst wordt: de alinea vóór de GMM-code ("De code volgt de stelling in twee stappen ...") stapelt vier implementatiedetails (concentreren van $\beta$, rooster, $\hat{\mathbf{S}}$ zonder autocovarianties, de kolommen van `D`). De lezer moet ze onthouden tot de code.
-- Vergelijking met 1983: "Hun kolom "probability" is de verdelingsfunctie van $\chi^2$, dus .9999 betekent verwerping." De kolom staat niet in de tabel hier; de zin verwijst naar iets wat de lezer niet ziet.
-
-*Beter uitleggen.* Waarom de simulatie een hefboom $\phi = 3$ nodig heeft: één zin met het getal van de premie met en zonder hefboom volstaat, zonder het toy-voorbeeld erbij te halen.
-
-*Voor een 9.* De "of"-bijzin in de simulatie schrappen. De implementatiealinea bij GMM terugbrengen tot wat de lezer nodig heeft om de tabel te lezen, en de rest als commentaar in de code. De zin over "probability" schrappen of de kolom tonen.
-
-## 2. Opbouw en rode draad (8)
+## 1. Helderheid van de uitleg (8,5)
 
 *Goed.*
-- De routekaart wijst de Euler-vergelijking als kern aan, en de kop "Het kernresultaat: de Euler-vergelijking" bevestigt dat.
-- De drie verwachtingen uit de intuïtie worden met naam ingelost: "de eerste voorspelling uit de intuïtie" (rente), "Zoals de intuïtie voorspelde, groeit de premie met de covariantie", "de derde voorspelling uit de intuïtie, nu met een getal".
-- De simulatie gebruikt de lognormale boom uit de theorie, en de rente van 8,6% is al in de theorie uitgerekend. De replicatie leest de $\hat\beta > 1$ met de simulatie in de hand.
+- Toy-voorbeeld: de lagere prijs-dividend-ratio in de hoge toestand krijgt een richting en een reden (rente ruim acht procentpunt hoger, rente-effect wint bij $\gamma = 2$), en oefening 1 keert het om voor $\gamma < 1$ (H6).
+- Wat het voorspelt: rente en premie bij lognormale groei. Elke formule krijgt een getal (drempel 14,7, rente 8,6%, premie 0,25%), en de rente wordt ontleed in groei en voorzorgssparen.
+- Hoe het getoetst wordt: GMM. De Euler-fout wordt eerst in woorden ingevoerd (een fout die niet mag samenhangen met wat de belegger wist), daarna pas als moment met Kronecker-product en een voorbeeld ($N = 2$, $L = 3$, zes momenten).
 
 *Aanmerkingen.*
-- Wat er brak: de alinea "In de vraag theorie of feit is het consumptie-CAPM een theorie die met één toets werd verworpen." staat na "Wat er daarna kwam", als losse slotzin.
-- Theorie heeft zeven `###`-delen. "Williams met een theorie van de discontovoet" begint met een zin over de stap in plaats van met de bewering ("Deze stap laat zien waarom ...").
-- De toy-getallen keren in de theorie terug ($\delta = 0{,}9654$, stap 3 bij de rente), maar de simulatie kiest andere ($\beta = 0{,}98$, $\gamma = 4$). De reden staat erbij, maar de draad van het toy-voorbeeld houdt daar op.
+- Evenwicht in de Lucas-boom: "De ratio van vandaag is het gewogen gemiddelde van één plus de ratio van morgen, met als gewicht de kans maal $\beta g^{1-\gamma}$." De gewichten tellen op tot hoogstens $\delta < 1$ (in het toy 0,94 en 0,98). Dat is een gewogen som; juist dat de som onder één blijft, maakt $T$ een contractie. De redacteur signaleerde het en liet het staan.
+- Evenwicht in de Lucas-boom: "Groeit het sneller, dan is [](#eq-consumptie-capm-contante-waarde) oneindig, zoals het Gordon-model ontploft bij $g \ge r$." $\delta$ is een supremum over toestanden en $\delta < 1$ is voldoende. Groeit het nut-gewogen dividend in één toestand sneller dan $1/\beta$, dan kan de prijs nog eindig zijn.
+- Opzet en aannames: "Hansen en Singleton schrijven het nut als $c^{\gamma}/\gamma$ met $\gamma < 1$ en zetten $\alpha = \gamma - 1$." Dezelfde letter $\gamma$ betekent hier iets anders dan in de rest van het college (H7).
+- Wat het voorspelt: rente en premie bij lognormale groei. $\log \E[R^{m}] - \log (1 + R^f) = \gamma\phi\sigma^2$ gebruikt $R^m$ zonder naam. Pas in het bewijs blijkt dat het het rendement op het aandeel in de boom is, en het subscript $m$ botst met de SDF $m_{t+1}$ (kaart §3).
+- Idem: "Een hogere $\gamma$ versterkt beide krachten, zodat de rente met $\gamma$ stijgt zolang $\gamma < \mu/\sigma^2$ en daarboven het voorzorgssparen wint." Dat beide krachten sterker worden, verklaart niet waarom de rente eerst stijgt. De reden is dat de groeiterm lineair in $\gamma$ is en de voorzorgsterm kwadratisch.
 
-*Voor een 9.* De slotzin over theorie of feit in "Waar het breekt" opnemen. "Williams met een theorie van de discontovoet" laten openen met de bewering: de discontovoet volgt uit $\beta$, $\gamma$ en consumptie.
+*Beter uitleggen.* Waarom de gewichten van $T$ optellen tot $\delta$ en wat dat met de eindigheid van de prijs te maken heeft: één bijzin bij r. 333 met het toy-getal 0,98. Bij de rente: "lineair tegen kwadratisch" als reden voor de drempel.
 
-## 3. Taal (8)
+*Voor een 9.* "gewogen som" in r. 333; "voldoende" en "in elke toestand" bij r. 363–366; de nutsfunctie van Hansen en Singleton met een eigen letter (r. 229–230); $R^m$ bij de propositie één keer benoemen als rendement op de boom, met een ander symbool of de zin dat $m$ hier de markt is (r. 392–399); de "zodat"-zin bij r. 421 herschrijven.
 
-*Goed.* Gemiddeld 13,9 woorden per zin, geen verboden woorden en geen calques volgens `prose_stats`. De intuïtie met het eiland is concreet en heeft een handelend onderwerp ("Wie vandaag een vrucht niet opeet maar belegt").
+## 2. Opbouw en rode draad (9)
 
-*Aanmerkingen.*
-- Vergelijking met 1983: "In de simulatie verwierp de toets een waar model in één op de tien steekproeven, hier met een $p$-waarde die op vier decimalen nul is." Een frequentie en een $p$-waarde worden als gelijksoortig tegenover elkaar gezet.
-- Kop "Williams met een theorie van de discontovoet": geen natuurlijke Nederlandse kop.
-- Overzicht: "Het model heet het *consumption CAPM* (hier consumptie-CAPM: ...)". De Engelse term eerst, terwijl de lecture verder alleen de Nederlandse gebruikt.
-- Wat er brak: "De Chicago-lezing, die prijzen als rationele beloning voor risico leest: de theorie is juist, maar de specificatie is te arm." Een bijzin plus dubbelepunt plus tegenstelling in één zin.
-
-*Voor een 9.* De vergelijkingszin in "Vergelijking met 1983" herschrijven tot twee zinnen die elk één ding zeggen. Een kop die de bewering noemt ("De discontovoet krijgt een theorie").
-
-## 4. Toy-voorbeeld (8)
-
-*Goed.* Opzettabel met de overgangsmatrix, vier stappen met getallen, één codecel, tabel hand/code met de Euler-controle, en een slotzin die zegt wat de lezer weet. De toy-uitkomst (ratio lager in de hoge toestand) koppelt aan de replicatie van Williams.
+*Goed.*
+- Overzicht stelt de vraag (waar komt de discontovoet vandaan) en geeft het antwoord (consumptie, maar te glad). De routekaart noemt de Euler-vergelijking de kern, en "Samengevat" sluit Theorie af.
+- De drie voorspellingen uit de intuïtie worden elk op hun plek ingelost, elke keer in een andere vorm: de rente bij $\gamma\mu$ (r. 418–419), de covariantie bij de consumptiebèta (r. 496–498), de kleine premie met 0,25% (r. 431–433).
+- Toy-getallen keren terug ($\delta = 0{,}9808$, stap 3 bij de rentevoet, stap 2 in de Lucas-operator), en de simulatie gebruikt precies de lognormale boom uit de propositie. De replicatie leest $\hat\beta > 1$ met de simulatie in de hand. 5.469 woorden.
 
 *Aanmerkingen.*
-- Stap 2: "De regel van Cramer geeft met determinant $\tfrac{4}{13}\cdot\tfrac{13}{49} - \tfrac{12}{49}\cdot\tfrac{3}{13} = \tfrac{16}{637}$". Noemers boven 100; het handwerk kost meer dan vijf minuten.
-- Het recept bevat naast $p_t = \E_t[m_{t+1}x_{t+1}]$ ook de recursie voor $\mathrm{PD}_i$. Die volgt uit het recept, maar de lezer krijgt twee formules.
-- Het toy-voorbeeld levert drie uitkomsten (PD, rente, premie) met twee mechanismen (rente-effect tegen groei-effect, en de kleine premie).
+- Wat er brak, en wat daarna kwam: "De simulatie laat zien dat dit geen artefact van een kleine steekproef is, want als het model waar is, zijn de schattingen wel onnauwkeurig, maar is een verwerping zeldzaam en zwak." De simulatie gaf één verwerping op de tien, en de waarschuwing vlak ervoor zegt dat tijdsaggregatie de $J$-statistieken te groot maakt. Die tweede bron van verwerping laat de simulatie buiten beschouwing, zodat de claim sterker is dan de simulatie draagt.
+- Simulatie en Replicatie: elke figuur wordt drie keer uitgelegd, in de zin ervoor, het bijschrift en de alinea erna (r. 786–787, 816–823; r. 976–978, 999–1007) [onderzoek C, D4].
 
-*Voor een 9.* Een kalibratie met kleinere noemers, of $y_h$ en $y_l$ als decimaal met één regel oplossing.
+*Beter uitleggen.* Wat de simulatie wél uitsluit (een kleine steekproef alleen levert geen $J$ van 42 op; het 95e percentiel is 11,7) en wat niet (tijdsaggregatie).
 
-## 5. Code en figuren (8)
+## 3. Taal (8,5)
 
-*Goed.* Eén functie `gmm_euler` voor simulatie en replicatie, met de tweestapsprocedure als zichtbare lus. De simulatieparameters staan in een dict (`tree`). Vóór elke figuur staat waarop te letten ("Let in de figuur links op hoe ver de schattingen van de zwarte lijn bij 4 liggen").
-
-*Aanmerkingen.*
-- Hoe het getoetst wordt: `np.einsum("tn,tl->tnl", scaled, Z).reshape(T, N * L)` en `a, b = (x.mean(axis=0) for x in euler_moments(gamma, gc, R, Z))`. Compacte constructies waar een lus over activa en instrumenten de Kronecker-stapeling zichtbaar had gemaakt.
-- De datacel in "De data" beslaat circa 45 regels: FRED, marktdata, deflatie en de samenvattingstabel in één cel.
-- Wat het aandelenrendement alleen vraagt: `roots[label] = (optimize.brentq(...) if crossing.size else np.nan)` is een meerregelige conditionele expressie.
-
-*Voor een 9.* De datacel splitsen in bouwen en samenvatten. De Kronecker-stapeling met een benoemd tussenresultaat of een korte lus.
-
-## 6. Replicatie en empirie (8)
-
-*Goed.* Het blok noemt de tabellen en paginanummers van Hansen en Singleton, en de verwachte afwijking is een patroon met foutsignaal ("Draait (a) of (c) om, dan zit er een fout in de code"). De tabel origineel/hier heeft SE en $p$-waarde. Het oordeel begint met "Geslaagd" en verwijst naar de verwachte afwijking. De waarschuwing over tijdsaggregatie zegt welke kant de fout op gaat.
+*Goed.* Na de redactie leest het college grotendeels als gesproken Nederlands. De intuïtie met het eiland heeft handelende onderwerpen en voegwoorden ("zodat de markt alleen de prijs vastlegt"), en de Euler-alinea (r. 236–240) is een voorbeeld van H1. Motiefnamen staan elk hoogstens twee keer, er is geen "Wie …"-zin en geen gedachtestreepje.
 
 *Aanmerkingen.*
-- Na het oordeel: "Onze standaardfout is 6,2, de hunne 1,57 bij een schatting van 1,51." en "met een standaardfout van 67 bij Hansen en Singleton. ... Het interval rond hun 58". De getallen uit de tabel komen terug in lopende tekst, meer dan drie per alinea.
-- In de tabel staat onder "(d) alleen de premie" een origineel van 58,25 met SE, en hier een nulpunt zonder SE. Die rij vergelijkt een schatting met een wortel van een steekproefmoment.
+- Overzicht: "Deze jaren vonden het antwoord in consumptie, want een euro morgen is weinig waard als morgen een goede dag is, en veel als het een slechte dag is." Jaren vinden geen antwoord.
+- Overzicht: "De *stochastic discount factor* (SDF, stochastische discontofactor: de willekeurige variabele waarmee we een toekomstige payoff verdisconteren) is dan de verhouding van marginale nutten" [onderzoek C]. Een definitie met dubbele punt tussen haakjes midden in de zin.
+- Wat het voorspelt, lognormale groei: "Hier is $\phi$ de *leverage* (hefboom) van het dividend op consumptie" [onderzoek C]. Verderop staat alleen "hefboom", dus de Engelse term is overbodig.
+- Replicatie tegen oefening 3: "twee tot zes lags als instrumenten" en "één lag" (r. 841–843) tegen "één vertraging van alle drie de variabelen" (r. 1207). Twee namen voor één begrip (H7).
+- "op vier decimalen nul" staat vijf keer (r. 823, 943, 1049, 1072, 1250) en is daarmee een vaste wending geworden [onderzoek C].
+- Vergelijking met 1983: "Hier zien we de standaardfout van 2% in zijn scherpste vorm" zonder link naar `#00-01-rendementen` (kaart §3).
+- Wat het voorspelt, lognormale groei: "en een andere kalibratie geeft een andere drempel." Dit is een ingeplakte reparatiezin uit de vorige ronde (§11.12). Direct daarna herhaalt de volgende zin dezelfde $\mu$ en $\sigma$.
+- Evenwicht in de Lucas-boom: "Deze stap laat daarom zien wanneer de Lucas-boom zo'n prijs heeft." Een zin over de tekst in plaats van over de boom.
+- Overzicht: de opsomming "In dit college: …" met puntkomma's telt als één zin van 88 woorden (`sent_gt40 = 1`).
 
-*Voor een 9.* Het oordeel laten verwijzen naar de tabel en de getallen uit de proza halen. Bij rij (d) in een voetnoot zeggen dat "hier" een nulpunt is zonder standaardfout.
+*Voor een 9.* De drie zinnen uit de hardop-toets herschrijven (r. 36–37, 105–107, 476–477); "leverage" schrappen (r. 385); de SDF-definitie in twee zinnen (r. 39–41); één term voor lags (r. 841–843, 1207); "op vier decimalen nul" hoogstens twee keer, elders "$p < 0{,}0001$" of "verwerpt ruim" (r. 823, 943, 1049, 1072, 1250); link bij r. 1045; de reparatiebijzin bij r. 424 schrappen; r. 313–314 over de boom laten gaan; de opsomming in het Overzicht met punten.
+
+## 4. Toy-voorbeeld (9)
+
+*Goed.* Breuken met noemers hoogstens 27, oplossing door optellen, PD 25 en 27 als hele getallen; tabel hand/code met de Euler-controle; de slotzin zegt wat het getal betekent (een gladde consumptie levert bijna geen premie). Eén mechanisme per uitkomst, en het rente-effect wordt in dezelfde alinea verklaard.
+
+*Aanmerkingen.*
+- Stap 4: de premie: "Vanuit de lage toestand is het verwachte rendement $(0{,}25 \cdot 1{,}04 \cdot 26 + 0{,}75 \cdot 0{,}96 \cdot 28)/27 = 0{,}99704$, tegen $0{,}99687$". Een premie van basispunten vraagt vijf decimalen; stap 3 en 4 bevatten samen meer dan tien getallen per alinea [onderzoek C, D5].
+- "De twee kolommen zijn gelijk, op de afronding van de premie na." De eerste zin na de tabel zegt wat de lezer al ziet, niet wat het toy bewijst [onderzoek C, D2].
+
+*Beter uitleggen.* Stap 3 en 4 kunnen in een kleine tabel (toestand, $\E[m]$, rente, verwacht rendement, premie), zodat de alinea's alleen de redenering dragen.
+
+## 5. Code en figuren (9)
+
+*Goed.* `euler_moments` maakt het Kronecker-product zichtbaar met een lus over activa; `gmm_euler` concentreert $\beta$ uit met commentaar dat zegt waarom; elke cel heeft een zin ervoor en erna; beide figuren hebben een leeswijzer vooraf en een bijschrift dat de conclusie trekt.
+
+*Aanmerkingen.*
+- Vergelijking met 1983: de kolom "verwerpt origineel" toont "ja (chi2(3) = 30.08)" met decimale punt in een Nederlandse presentatietabel.
+- Zie opbouw: de drievoudige uitleg van beide figuren [onderzoek C, D4].
+
+## 6. Replicatie en empirie (9)
+
+*Goed.* Admonition met bron, wat, data, verschil en verwachte afwijking in ruim 150 woorden; tabel origineel/hier met omgerekende $\alpha$; oordeel "Geslaagd" dat naar het voorspelde patroon verwijst; rij (d) koppelt aan de figuur. De getallen staan in tabellen, en de proza verwijst naar kolommen.
+
+*Aanmerkingen.*
+- Replicatie-admonition: "Zij gebruikten maanddata 1959–1978, twee tot zes lags als instrumenten en in 1983 maximum likelihood." Rij (d) komt uit tabel 5 met NLAG = 0 (r. 1012–1013), dus het bereik is nul tot zes.
+- De verwachte afwijking noemt de tijdsaggregatie niet, terwijl de waarschuwing onderaan zegt dat die onze $J$ te groot maakt. Juist dat hoort bij "wat verwachten we anders dan het origineel".
 
 ## 7. Oefeningen (9)
 
-*Goed.* Oefening 1 varieert het toy-voorbeeld in $\gamma$ en persistentie, oefening 2 is een afleiding met controle op de simulatie, oefening 3 breidt de replicatie uit naar coronakwartalen en jaardata. Elke uitwerking eindigt met "Wat dit leert:".
+*Goed.* Instap als variatie op het toy (persistentie en $\gamma$), afleiding met controle op de gesimuleerde economie (consumptiebèta en 411 jaar voor $t = 2$), uitbreiding van de replicatie (jaardata en coronakwartalen). Elke uitwerking eindigt met een les in een gewone zin.
 
-*Aanmerkingen.* Oefening 1 heet niet "Instap", hoewel ze dat is; bij oefening 2 zijn deelvragen 2 en 3 samen uitgewerkt.
+*Aanmerkingen.*
+- Oefening 3: "instrumenten: constante en één vertraging van alle drie de variabelen" (zie taal, H7).
 
 ## Feitelijke fouten
 
-Geen gevonden.
+Nagerekend tegen `nb_outputs`: toy (PD 25/27, rente 7,98% en −0,31%, premie 2,0 en 1,7 bp, $\delta = 0{,}9808$), rente 8,6% en drempel 14,7, premie 0,25% en 1,47% (cel 1,48%), simulatie (mediaan 2,8, 5–95% van −2,9 tot 11,9, SD 4,2 tegen SE 1,5, verwerping 9,8%, 95e percentiel $J$ 11,7, $\hat\beta > 1$ in 28,6%), $16/\sqrt{70} = 1{,}9$, volatiliteitsverhouding 16, 1947–2019 (c) $\hat\gamma = 17{,}3$ en $\hat\beta = 1{,}08$, nulpunt 75,2, oefening 2 (0,0145 tegen 0,0147, 411 jaar), oefening 3 (17 → 2,3 → −2,3). Het bewijs van de propositie klopt ($\tfrac12\sigma^2(\phi^2 - (\phi-\gamma)^2 + \gamma^2) = \gamma\phi\sigma^2$). Geen vakterm is door de redactie van betekenis veranderd, maar één onjuiste term bleef staan.
 
-Nagerekend en correct: toy-voorbeeld (9/13, 12/49, 3/13, 36/49; determinant 16/637; 325/16 en 343/16; 19,3125 en 20,4375; 0,924556 en 1,041233; 0,915576 en 0,971581; 9,22% en 2,93%; 1,09385, 1,08783, 1,09235; 1,03364, 1,02795, 1,02937; premies 1,4 en 1,2 bp), ruim zes procentpunt, 3%, $\delta = 0{,}9654$, de afleiding van $\gamma\phi\sigma^2$, $\gamma < 14{,}7$, $\log(1+R^f) = 0{,}0824$ en 8,6%, 0,25%, 0,49% en 1,5%, simulatie (mediaan 2,8; −3 tot 12; SE 1,5 tegen SD 4,2; 9,8%; 11,7 boven 9,49; 29%; $16/\sqrt{70} = 1{,}9$), zestien keer zo volatiel, $\hat\gamma = 17$ en $\hat\beta = 1{,}08$, $\gamma \approx 75$, factor vijf in de standaardfout, oefening 1 ($\beta/(1-\beta) = 24$), oefening 2 (0,0145 en 0,0147; 0,00016; circa 400 jaar), oefening 3 (17, 2, negatief).
+1. **r. 333** "het gewogen gemiddelde": de gewichten tellen op tot hoogstens $\delta < 1$. Juist is "gewogen som". Omdat een gewogen gemiddelde met gewichten die tot één optellen geen contractie geeft, staat de term haaks op de stelling eronder.
+2. **r. 363–366** "Groeit het sneller, dan is … oneindig": $\delta < 1$ is een voldoende voorwaarde (supremum over toestanden). Oneindig is de prijs pas als het nut-gewogen dividend overal, of via de keten in verwachting, te snel groeit.
+3. **r. 841** "twee tot zes lags": rij (d) komt uit tabel 5 met NLAG = 0 (r. 1012–1013).
+4. **r. 1074–1075** "geen artefact van een kleine steekproef … een verwerping zeldzaam en zwak": de simulatie geeft 9,8% verwerpingen en bevat geen tijdsaggregatie, die volgens de waarschuwing (r. 1052–1054) $J$ opblaast. De claim is sterker dan de simulatie. Juist is dat een kleine steekproef alleen geen $J$ van 42 verklaart (95e percentiel 11,7).
 
 ## Navertelling in vijf zinnen
 
-De Euler-vergelijking zegt dat een prijs de verwachte payoff is, gewogen met de verhouding van marginale nutten $m_{t+1} = \beta(c_{t+1}/c_t)^{-\gamma}$; dat is de positieve SDF waarvan de fundamentele stelling alleen het bestaan gaf. In een Lucas-boom volgen daaruit een unieke prijs-dividend-ratio, een rente die met verwachte groei stijgt, en een premie $\gamma\phi\sigma^2$ die klein is omdat consumptie glad is. Benaderd wordt dat het consumptie-CAPM: de premie is de consumptiebèta maal $\gamma$ maal de variantie van consumptiegroei. Hansen toetste de Euler-vergelijking met GMM, en een simulatie laat zien dat die toets op zeventig jaar data $\gamma$ slecht meet en een waar model te vaak verwerpt. Op Amerikaanse kwartaaldata verwerpt de toets het model voor aandelen en T-bill samen overtuigend, en de premie alleen vraagt een risicoaversie in de tientallen of is helemaal niet te verklaren.
+Rubinstein, Lucas en Breeden maakten de discontovoet de verhouding van marginale nutten, zodat de prijs van elk activum de verwachte payoff is, gewogen met $\beta(c_{t+1}/c_t)^{-\gamma}$. In een Lucas-boom volgt daaruit een unieke prijs-dividend-ratio die beweegt omdat de rente beweegt, een rente die stijgt met verwachte groei, en een premie gelijk aan $\gamma$ maal de covariantie met consumptiegroei. Omdat consumptie glad is, is die premie bij redelijke $\gamma$ klein (0,25% bij $\gamma = 2$). Hansen toetste de Euler-vergelijking met GMM zonder de economie op te lossen; een simulatie laat zien dat $\hat\gamma$ op zeventig jaar data slecht gemeten is en de $J$-toets wat te vaak verwerpt. Op Amerikaanse data verwerpt de toets het model met aandelen en T-bill samen ruim, en de premie alleen vraagt een $\gamma$ van 75 of meer, zodat het consumptie-CAPM als theorie is verworpen. Dit klopt met het Overzicht.
 
-De navertelling komt overeen met het Overzicht.
+## Taal na de redactie
+
+De redactie heeft het college duidelijk vloeiender gemaakt: telegramzinnen, "Wie"-zinnen, "*Waarom zou dit waar zijn?*" in Theorie en de vaste wendingen zijn weg, en verwijswoorden kloppen ("haar" voor premie en lezing is verdwenen). Er is geen vakterm van betekenis veranderd. "Verklaren" voor "dragen" en "waarderen" voor "prijzen" zijn juist. Wel bleef "gewogen gemiddelde" staan (feitelijke fout 1). Hardop-toets, drie zinnen die nog niet natuurlijk klinken:
+
+1. r. 36–37: "Deze jaren vonden het antwoord in consumptie, want een euro morgen is weinig waard als morgen een goede dag is, en veel als het een slechte dag is." → "Tussen 1976 en 1983 vonden economen het antwoord in consumptie. Een euro morgen is weinig waard als morgen een goede dag is, en veel op een slechte dag."
+2. r. 105–107: "We rekenen de prijs van de boom, de rente en de premie uit in een economie met twee toestanden, en de eerste cel laadt de pakketten die we in het hele college nodig hebben." → "We rekenen de prijs van de boom, de rente en de premie uit in een economie met twee toestanden. Eerst laden we de pakketten voor het hele college."
+3. r. 476–477: "De consumptiebèta $\beta_{i,\Delta c}$, met twee indices, is een regressiecoëfficiënt, terwijl $\beta$ zonder index de subjectieve discontofactor blijft." → "Schrijf $\beta_{i,\Delta c}$ voor de regressiecoëfficiënt van $R^e_i$ op $\Delta c$; met de discontofactor $\beta$ deelt ze alleen de letter."
+
+Bij volledige oplossing van alle punten: 9,2
 
 ## Controle 1
 
-Gecontroleerd tegen `rapport-03_12_consumptie_capm.md` §F6-1 en de huidige lecture en notebook. `prose_stats --check`: 5.249 woorden, PASS. In `nb_outputs` veranderen alleen de toy-cel en oefening 1; simulatie, replicatie en oefeningen 2 en 3 zijn identiek.
+Gecontroleerd: `notes/rapport-03_12_consumptie_capm.md` sectie R9-1, tegen het college (één
+keer volledig gelezen) en tegen `nb_outputs` (F6c-03_12_consumptie_capm-out.txt, 15 cellen)
+en `prose_stats`/`nb_numbers`.
 
-**Toy-voorbeeld, proza tegen cel (herkalibratie $g_l = 0{,}96$).** Alles met de hand nagerekend en gelijk aan de cel: gewichten 9/13, 1/4, 3/13, 3/4; optellen geeft $y_h = 26$, $y_l = 28$, dus PD 25 en 27; SDF 0,8876 en 25/24; $\E_h[m] = 0{,}9261$, rente 7,98%; $\E_l[m] = 1{,}0032$, rente −0,31%; rendementen 1,0816 en 1,0752, verwacht 1,0800 tegen 1,0798 (2,0 bp, code 1,9967); vanuit laag 0,99704 tegen 0,99687 (1,7 bp, code 1,7068); renteverschil 8,29 ("ruim acht"); schommeling 4%; $\delta = 0{,}9808$ in "Evenwicht in de Lucas-boom". Geen oude toy-getallen (19,3; 20,4; 9,22; 2,93; 0,9654; 12/49) meer in de tekst. Oefening 1 gebruikt $g_l = 0{,}96$ en $\gamma \in \{0{,}5; 1; 2; 3\}$; de conclusie in de uitwerking klopt met de nieuwe tabel.
+**Feitelijke fouten (4/4 opgelost).**
+1. r. 333 "gewogen gemiddelde" → "gewogen som", met rijsom hoogstens 0,98 (toy:
+   $\max(9/13+1/4;\ 3/13+3/4)=0{,}9808$, r. 374, nagerekend). Opgelost.
+2. r. 363–369 $\delta<1$ heet nu expliciet voldoende maar niet nodig, met de voorwaarde
+   langs de keten in plaats van in elke toestand apart. Opgelost.
+3. r. 850–851 admonition: "nul tot zes lags" (tabel 4 NLAG = 2, tabel 1 NLAG = 6, tabel 5
+   NLAG = 4 en 0, r. 1021–1022: bereik klopt). Opgelost.
+4. r. 1081–1091 "Waar het breekt": nieuwe zin zegt dat een kleine steekproef $J = 42$ niet
+   verklaart (95e percentiel 11,7, vier tegen zes vrijheidsgraden, nagerekend tegen cel 5
+   en cel 9: 11,737 en 42,17) en dat tijdsaggregatie $J$ vergroot maar de $\gamma$ in de
+   tientallen niet verklaart; "zeldzaam en zwak" geschrapt. Opgelost.
 
-| punt | status | toelichting |
-|---|---|---|
-| Verbetering 1: toy handrekenbaar | opgelost | Noemers hoogstens 27, oplossing door optellen, geen Cramer. |
-| Verbetering 2: replicatie na het oordeel | opgelost | De getallen 6,2 / 1,57 / 1,51 / 67 / 58 zijn uit de proza; de tekst verwijst naar de kolommen met standaardfouten en naar rij (d). |
-| Verbetering 3a: losse slotzin | opgelost | De zin over theorie of feit opent nu "Wat er daarna kwam". |
-| Verbetering 3b: brug naar de simulatie | opgelost | "of op ruim één basispunt zoals in het toy-voorbeeld" is geschrapt. |
-| Naadpunt 4 (14,7 tegen 13,8) | opgelost, met een kleine verslechtering | De bijzin verklaart het verschil met de kalibratie. Maar "met de momenten van {cite:t}`Mehra2003` in [](#03-13-equity-premium-puzzle) wordt het 13,8" haalt een getal uit de volgende lecture naar voren, wat STYLE §11.3 verbiedt ("Geen inhoud uit een latere lecture gebruiken"). De uitleg in L13 volstaat; de bijzin hier kan terug naar alleen 14,7. Geen effect op het cijfer. |
+**Criterium 1, "Voor een 9" (5/5 opgelost).** "gewogen som" (zie boven); Hansen-Singleton
+nut nu $c^{1+\alpha}/(1+\alpha)$ met eigen letter $\alpha$ (r. 232–235, $\hat\alpha=-0{,}931
+\to \hat\gamma = 0{,}931$, klopt tegen cel 12 "gamma origineel" (a) 0,931); $R^m$ vóór de
+propositie benoemd als rendement op de boom met "het subscript $m$ voor markt staat en niet
+voor de SDF" (r. 394–395); de "zodat"-zin bij de rentedrempel herschreven met "lineair...
+kwadratisch" (r. 429–431).
 
-Niet gedaan: de GMM-implementatiealinea inkorten, de zin over de kolom "probability", de kop "Williams met een theorie van de discontovoet".
+**Criterium 3, "Voor een 9" (9/9 opgelost).** Drie hardop-zinnen herschreven (r. 36–37,
+104–105, 483–484, nagenoeg woordelijk als voorgesteld); "leverage" geschrapt (nu alleen
+"hefboom", r. 391; de Engelse dict-key in code telt niet mee); SDF-definitie in twee
+zinnen zonder dubbele punt (r. 38–40); één term "lag(s)" in de admonition en oefening 3
+(r. 850–852, 1221); "op vier decimalen nul" nul keer meer aangetroffen; link bij de tweede
+"standaardfout van 2%" (r. 1054, naar `#00-01-rendementen`); reparatiebijzin "andere
+kalibratie" geschrapt; Lucas-boom-opener gaat nu over de boom (r. 314–317); Overzicht-
+opsomming nu vijf bullets in plaats van één zin met puntkomma's.
 
-**Cijfers na controle 1 (cijfer van record)**
+**Bonus, niet vereist voor het plafond maar wel opgelost.** Criterium 2/6: figuurbijschrift
+en -aankondiging minder drievoudig uitgelegd; criterium 6: verwachte afwijking noemt nu het
+effect van kwartaaldata (kleinere SE, grotere $J$); criterium 5: "verwerpt origineel" met
+komma (30,08; 10,93; 366,22, cel 12); criterium 7: oefening 3 gebruikt nu "lag" (H7).
 
-| nr | criterium | was | nu |
+**Nieuwe punten.** Geen; geen verslechtering gevonden, geen nieuwe feitelijke fout.
+
+**Getallencontrole.** `prose_stats --check`: PASS, 5.612 woorden (was 5.469). `nb_numbers`:
+18 meldingen (was 22), alle handmatige tussenstappen van het toy-voorbeeld die elders door
+de code worden bevestigd, geen nieuwe. De vier herstelde punten kloppen tegen `nb_outputs`:
+cel 5 geeft 95e percentiel $J$ = 11,737 (afgerond 11,7), cel 9 geeft $J$(c, 1947–2019) =
+42,1686 (afgerond 42), de toy-rijsom 0,9808 volgt uit stap 1 (9/13+1/4 = 0,9423,
+3/13+3/4 = 0,9808), en $\delta < 1$ voldoende-niet-nodig is een wiskundige eigenschap van
+het bewijs, geen celgetal.
+
+### Cijfers (Controle 1)
+
+| nr | criterium | gewicht | cijfer |
 |---|---|---|---|
-| 1 | Helderheid | 8 | 8 |
-| 2 | Opbouw | 8 | 8 |
-| 3 | Taal | 8 | 8 |
-| 4 | Toy-voorbeeld | 8 | 9 |
-| 5 | Code en figuren | 8 | 8 |
-| 6 | Replicatie | 8 | 9 |
-| 7 | Oefeningen | 9 | 9 |
-| | **Eindcijfer** | 8,1 | **8,3** |
+| 1 | Helderheid van de uitleg | 25% | 9 |
+| 2 | Opbouw en rode draad | 20% | 9,5 |
+| 3 | Taal | 20% | 9 |
+| 4 | Toy-voorbeeld | 10% | 9 |
+| 5 | Code en figuren | 10% | 9 |
+| 6 | Replicatie en empirie | 10% | 9,5 |
+| 7 | Oefeningen | 5% | 9 |
+| | **Eindcijfer** | | **9,2** |
 
-(0,3·8 + 0,2·8 + 0,15·8 + 0,1·9 + 0,1·8 + 0,1·9 + 0,05·9 = 8,25, afgerond 8,3.) Voor 8,5: de GMM-alinea terugbrengen tot wat de tabel nodig heeft en de zin over "probability" schrappen (helderheid naar 9).
-
-## Controle 2
-
-Gecontroleerd tegen `rapport-03_12_consumptie_capm.md` §F6-2 en de huidige lecture. `prose_stats --check`: 5.211 woorden, PASS. `nb_outputs` is op de celnummering na identiek aan controle 1; de toy-getallen uit controle 1 staan ongewijzigd.
-
-| punt uit controle 1 | status | toelichting |
-|---|---|---|
-| Vooruitverwijzing met 13,8 (STYLE §11.3) | opgelost, met een nieuwe kleine zwakte | Alleen 14,7 bij 1,8%/3,5%, geen L13 en geen 13,8 meer. De ingevoegde zin "Een andere kalibratie geeft een andere drempel." staat nu tussen het getal en "Daarboven wint het voorzorgssparen.", zodat "Daarboven" niet meer naar de vorige zin verwijst (H8). |
-| GMM-implementatiealinea | opgelost | Twee zinnen in de tekst; de details staan als commentaar in de code. |
-| Zin over "probability" | opgelost | Vervangen door een toelichting bij rij (d): "hier" is een nulpunt zonder standaardfout. |
-| Kop "Williams met een theorie van de discontovoet" | opgelost | "De discontovoet krijgt een theorie", met de bewering als eerste zin. |
-| Slotzin theorie of feit | opgelost | Sluit nu "Waar het breekt" af. |
-| Taal (vergelijkingszin, Engelse term, Chicago-zin) | opgelost | Twee zinnen; "consumptie-CAPM (in de literatuur *consumption CAPM* ...)"; Chicago-lezing gesplitst. |
-| Code (Kronecker, generator, `brentq`, datacel) | opgelost | Lus over activa met benoemde blokken; datacel gesplitst in bouwen en samenvatten. |
-| Hefboomzin in de simulatie | opgelost | "Met hefboom drie is ze ... drie keer zo groot" ($4 \cdot 3 \cdot 0{,}035^2 = 1{,}47\%$). Klopt. |
-
-Geen nieuwe feitelijke fouten.
-
-**Cijfers na controle 2 (cijfer van record)**
-
-| nr | criterium | controle 1 | nu |
-|---|---|---|---|
-| 1 | Helderheid | 8 | 8 |
-| 2 | Opbouw | 8 | 9 |
-| 3 | Taal | 8 | 9 |
-| 4 | Toy-voorbeeld | 9 | 9 |
-| 5 | Code en figuren | 8 | 9 |
-| 6 | Replicatie | 9 | 9 |
-| 7 | Oefeningen | 9 | 9 |
-| | **Eindcijfer** | 8,3 | **8,7** |
-
-(0,3·8 + 0,2·9 + 0,15·9 + 0,1·9 + 0,1·9 + 0,1·9 + 0,05·9 = 8,70.) Helderheid blijft 8 om de nieuwe verwijzingsfout bij "Daarboven". In L10 kostte een even kleine fout ("Dat getal") in controle 1 hetzelfde. Eén verplaatste zin lost het op.
+(0,25·9 + 0,2·9,5 + 0,2·9 + 0,1·9 + 0,1·9 + 0,1·9,5 + 0,05·9 = 9,15, afgerond 9,2 — gelijk
+aan "bij volledige oplossing van alle punten" hierboven.)
