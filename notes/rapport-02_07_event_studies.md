@@ -106,3 +106,19 @@ Dubbele betekenissen ook opgelost: toy nu $\hat\sigma^2_{\varepsilon_i}$; CAR-va
 **Opmerking.** Mijn hulpscript `scratchpad/f6.py` is na gebruik overschreven door de agent van 02_08. Dat had geen gevolg voor deze lecture.
 - Naadcorrectie: "alfa" → "alpha" (3×), zoals in Deel I en L8; check PASS, sync gedaan.
 - Diffcontrole: de bijzin over τ als "moment van schrappen" in L5 geschrapt (L5 gebruikt nu θ); de vorige zin zegt al dat τ eventtijd is. Check PASS, sync gedaan.
+
+## R9-1 (F6b, ronde 9+)
+
+- **Feitelijke fout (r. 739).** "optimistischer dan echte rendementen" vervangen: het verschil met de 80,4% zit in hun steekproef van willekeurige, volatielere aandelen. Oefening 3 sluit daarop aan (kracht hangt af van de volatiliteit van de gekozen aandelen); de te ruime slotzin is weg.
+- **Werkmeldingen.** Beide FFJR-meldingen geschrapt; de verwachte afwijking zegt nu dat de selectie achteraf het niveau opdrijft, zodat hun figuur de maatstaf is voor de vorm.
+- **Regeltaal.** "openden het tijdvak" → "zetten de toon"; "de theorie leidt ... af" vervangen door het mechanisme (zelfde fout op elke eventdag, $L_2$ keer geteld, $\alpha$-term groeit met $L_2^2$); notatietabel → "We schrijven ... MacKinlay schrijft daarvoor $R$" (twee zinnen); "voorwaarden uit de verwachte afwijking" → "De drie verwachtingen komen uit"; "laat Wat er brak open" → "komt hieronder terug bij de drift"; "pricing error" vertaald.
+- **Zin van 45 woorden / factor 0,95.** Gesplitst in een eigen BMP-alinea; de factor geldt nu expliciet voor de variantie, met $1{,}86/\sqrt{0{,}95} \approx 1{,}91$ als getal voor de $t$-waarde.
+- **Halfwaardetijd.** Gedefinieerd bij het eerste gebruik (bijzin in de Santa-Clara-zin).
+- **Opbouw intuïtie.** De voorspelling over toetskracht staat nu bij de middelingsalinea; de splitsingsalinea zegt dat de replicatie alleen de ex-datum kent. Overzichtsbullet: de modelfout hoort nu alleen bij de lange horizon. Tien getallen in één alinea verdeeld over twee alinea's.
+- **Toy stap 4.** Bijzin: het grootste deel komt van de fout in $\hat\alpha_i$ (9/5), vijf schattingsdagen tegen drie eventdagen.
+- **Simulatie.** Persona-zin herschreven als "Met een bekende eventdag is de toets scherp. Is de dag maar op een week bekend, ...".
+- **Replicatie.** "voorspelden" → "vonden"; vergelijkingstabel kreeg een kolom $\hat{\bar\rho}$ en KP (0,0012/4,47; 0,0000/0,05; 0,0003/−1,16, uit celuitvoer), BMP 4,74; derde kanttekening ingekort. Leeswijzer vóór de CAAR-figuur niet meer dubbel met het bijschrift. Overlapgewicht met een voorbeeld (ruim 90% bij een maand verschil, nul bij jaren).
+- **Code.** De lange ketting (r. 893) in twee regels (`caar_table`), berekening gelijk; sync + nbconvert uitgevoerd, `nb_outputs` voor/na identiek.
+- **Hardop-toets.** Alle drie de zinnen herschreven (r. 26, r. 99, r. 164).
+- **Afgewezen/open.** Recept vóór de stappen (toy, aanmerking) blijft: de rubriek staat één niet-afgeleide formule toe. `nb_numbers`: nieuw 1,86 (herhaald) en 1,91, handberekening op de tekst zelf zoals de bestaande 1,86. `tools/rewrap.py` in de werkmap heeft een syntaxfout (door een andere agent gewijzigd); gedraaid met de versie uit HEAD.
+- Woorden: 5443 (was 5323); prose_stats PASS, zinnen > 40: 0.

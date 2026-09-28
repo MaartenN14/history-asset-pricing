@@ -1,247 +1,421 @@
-STATUS 02_07_event_studies F6c words=4927 prose=PASS open=0 cijfer=8,9 min=8,5
+STATUS 02_07_event_studies F6c words=5443 prose=PASS open=0 cijfer=9,0 min=9,0
 
-# Eindbeoordeling F6: 02_07_event_studies (De event study)
+# Ronde 9+
 
-Eindbeoordelaar A, Deel II. Cijfer van record volgens `plannen/rubriek-didactiek.md`.
+Vorige ronde: 8,9
 
-## Eindcijfer F6: 8,6 (na controle: 8,9, cijfer van record; statusregel bovenaan)
+Eindbeoordeling F6 met verse ogen van `lectures/02_07_event_studies.md` (De event study),
+na de taalredactie. Gewichten van ronde 9+: helderheid 25, opbouw 20, taal 20, toy 10,
+code en figuren 10, replicatie 10, oefeningen 5. `prose_stats --check`: PASS (5323 woorden,
+zinnen gemiddeld 17,7, één zin boven 40, twee "Wie"-openingen, motief 0).
+
+Het lagere cijfer tegenover de vorige ronde (8,9) komt niet door de taalredactie. Die heeft
+het college vloeiender gemaakt. Het komt door de strengere lat: §11.12 laat regeltaal en
+werkmeldingen nu meetellen, en taal weegt 20% in plaats van 15%.
+
+## De drie verbeteringen met het meeste effect
+
+1. **Regeltaal en werkmeldingen uit de lopende tekst halen, en de ene zin boven 40 woorden
+   splitsen** (taal 8,5 → 9,0). Het gaat om "openden het tijdvak" (r. 57), "de theorie
+   leidt deze formule als eerste af" (r. 165), "Volgens de notatietabel" (r. 260), de
+   melding dat FFJR niet te verifiëren was (r. 767–768 en 771–772), "de voorwaarden uit de
+   verwachte afwijking" (r. 971) en "laat "Wat er brak" open" (r. 981). De zin van 45
+   woorden staat op r. 522–524.
+2. **De tegenspraak tussen simulatie en oefening 3 oplossen** (helderheid 8,5 → 9,0). Op
+   r. 739–740 is de simulatie "optimistischer dan echte rendementen", maar oefening 3
+   (r. 1144–1149) vindt op onze echte data juist meer kracht (69% tegen 63%). Wat verschilt,
+   is de steekproef: Brown en Warner trokken willekeurige aandelen, wij nemen grote aandelen
+   met 1,8% residuele volatiliteit. Maak daarnaast de factor 0,95 op r. 523–524 precies
+   (die geldt voor de variantie, de standaarddeviatie krimpt met $\sqrt{0{,}95} \approx 0{,}97$).
+   Definieer de halfwaardetijd ook bij het eerste gebruik (r. 110) en niet pas op r. 475.
+3. **Replicatie: het oordeel in eigen woorden en de kanttekeningen in de tabel**
+   (replicatie 8,5 → 9,0). Schrijf "vonden" in plaats van "voorspelden" (r. 962). Schrap de
+   werkmelding (zie punt 1), laat het oordeel op r. 971 zeggen welke drie verwachtingen
+   uitkomen, en zet KP 4,47 en $\hat{\bar\rho}$ als kolom of rij in de tabel in plaats van
+   in de derde kanttekening (r. 996–998).
+
+Na alle drie: 9,0·0,25 + 9,0·0,20 + 9,0·0,20 + 9,0·0,10 + 9,0·0,10 + 9,0·0,10 + 9,0·0,05 = 9,0.
+
+## Eindcijfer: 8,7
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 8,5 |
-| 2 | Opbouw en rode draad | 20% | 8,5 |
-| 3 | Taal | 15% | 8,5 |
-| 4 | Toy-voorbeeld | 10% | 9 |
-| 5 | Code en figuren | 10% | 8,5 |
+| 1 | Helderheid van de uitleg | 25% | 8,5 |
+| 2 | Opbouw en rode draad | 20% | 9,0 |
+| 3 | Taal | 20% | 8,5 |
+| 4 | Toy-voorbeeld | 10% | 9,0 |
+| 5 | Code en figuren | 10% | 9,0 |
 | 6 | Replicatie en empirie | 10% | 8,5 |
-| 7 | Oefeningen | 5% | 9 |
+| 7 | Oefeningen | 5% | 9,0 |
 
-8,5·0,30 + 8,5·0,20 + 8,5·0,15 + 9·0,10 + 8,5·0,10 + 8,5·0,10 + 9·0,05 = 8,575 → 8,6.
-Laagste deelcijfer 8,5.
-
-## Feitelijke fouten
-
-Geen.
-
-Nagerekend en correct: toy (α, β, residuen en $\hat\sigma^2$ van A, B en C; AR's en
-CAR's 2,5/2,0/1,5; factor $3 + 9/5 + 1/10 = 4{,}9$; $J_1 = 2{,}509$, naïef 3,207;
-28% te hoog); 8% en 50% extra variantie; $\delta = 2{,}24$ met kracht 61%, 1,29 met
-25%; 0,024% per dag en $21^2 \approx 440$; $\sqrt{3{,}45} = 1{,}86$ en 29%; 15% over
-750 dagen; $\E[J_1] = 0{,}17$ en 2,7; simulatie 62,9%, 99,2%, 94,7%, mist 82% bij
-[−10,+10] en $N = 100$; nulfrequenties 3,5–6,0% met één cel buiten ±1,4 pp;
-63% → 0,4%; 102 splitsingen, 50 aandelen, 6183 dagen; $L_1$ 495, bèta 1,08,
-residuele volatiliteit 1,8%; CAAR 14,9% (SE 3,7), $J_1$ 4,0, BMP 4,7, KP 4,47;
-ex-datum −0,08% en −0,40; [0,60] −2,9% (SE 1,6), −1,84 en −1,18; ρ ≤ 0,0012;
-$\eta = -0{,}05\%$ per dag ≈ −12% per jaar; oefeningen (1,3, 1,9, 4,628; 9,2%, 7,1%,
-6,0%; 4,3% en 69%).
+8,5·0,25 + 9·0,20 + 8,5·0,20 + 9·0,10 + 9·0,10 + 8,5·0,10 + 9·0,05 = 2,125 + 1,8 + 1,7 +
+0,9 + 0,9 + 0,85 + 0,45 = 8,725 → **8,7**. Laagste deelcijfer 8,5. Taal ≥ 8, dus niet
+blokkerend. Het doel (≥ 9,0, geen deelcijfer onder 8,5) wordt nog niet gehaald.
 
 ## 1. Helderheid van de uitleg (8,5)
 
 *Goed*
-- **Het kernresultaat.** De variantieformule staat met benoemde termen ("fout in
-  $\hat\alpha_i$", "fout in $\hat\beta_{i,m}$") en met getallen voor $L_2 = 21$ en voor
-  het jaarvenster van de replicatie (8% en 50%).
-- **De toets en zijn kracht.** Elke formule heeft een getal: 61% en 25% voor de
-  kracht, 29% voor de te vaak verwerpende toets, 0,17 en 2,7 voor de lange horizon.
-- Geleende toetsen (Patell, BMP, Kolari-Pynnönen) krijgen elk één zin met wat ze doen
-  en waarom.
+- **Het kernresultaat.** De propositie benoemt haar termen ("fout in $\hat\alpha_i$",
+  "fout in $\hat\beta_{i,m}$"), en r. 402–405 geeft er getallen bij (8% bij $L_2 = 21$,
+  50% bij het jaarvenster van de replicatie).
+- **Wat het voorspelt.** Elke formule heeft een getal: $\delta = 2{,}24$ en 61%, 1,29 en
+  25% (r. 468–470), en MacKinlay's 0,965% met $J_1 = 9{,}28$ (r. 432–434).
+- **Hoe het faalt: de lange horizon.** Het verschil tussen modelfout en schattingsfout
+  staat al in de intuïtie (r. 103–107), en de theorie maakt het concreet met 0,17 tegenover
+  2,7 (r. 553–554).
 
 *Aanmerkingen*
-- **Opzet.** "hier is het met {cite:t}`MacKinlay1997` het netto rendement". De
-  afwijking van de notatie is aangekondigd, maar de setup vraagt om naar de reeksnotatie
-  te vertalen (naad 1). Een lezer met $R$ = bruto in het hoofd leest $R_{i,\tau}$ in de
-  toy als 1,5 in plaats van 1,5%.
-- **De toets en zijn kracht.** "De toetsstatistiek (bij {cite:t}`MacKinlay1997` heet
-  ze $\theta_1$)", terwijl $\boldsymbol{\theta}_i$ drie alinea's eerder de vector
-  $(\alpha_i, \beta_{i,m})'$ is.
-- **De toets en zijn kracht.** "Zonder zo'n verhoging is $s_{\text{SCAR}} \approx 1$ en
-  liggen $J_1$ en BMP dicht bij elkaar: in de replicatie 4,0 en 4,7." Een verschil van
-  0,7 in de $t$-waarde heet "dicht bij elkaar" zonder dat de lezer hoort waar het vandaan
-  komt.
-- **Intuïtie.** "Een premie van 6% per jaar is per dag 0,024%, tegen een dagelijkse
-  marktruis van 1% [...] Een nieuwsfeit van 1% op een bekende dag staat tegen 2% ruis van
-  één aandeel". Twee verschillende noemers (markt- en aandeelruis) in één vergelijking,
-  zonder dat gezegd wordt waarom.
+- **Simulatie.** "tegen hun 80,4% op echte data, zodat de simulatie optimistischer is dan
+  echte rendementen." (r. 739–740). Oefening 3 vindt het omgekeerde: "Per saldo wint de
+  lagere gemiddelde volatiliteit, met 69% tegen 63%." (r. 1148–1149).
+- **Hoe het faalt: events op dezelfde dag.** "en die is volgens de tweede formule van de
+  propositie een factor $1 - \bar\rho$ te klein, bij $\bar\rho = 0{,}05$ dus 0,95 keer de
+  waarde zonder correlatie." (r. 523–524). Het woord "spreiding" roept een
+  standaarddeviatie op, terwijl de factor voor de variantie geldt.
+- **Intuïtie.** "Volgens Santa-Clara, die de latere literatuur samenvat, ging de
+  halfwaardetijd van nieuws van dagen in 1969 via uren in 2000 naar seconden nu" (r. 110–111).
+  De term staat hier zonder uitleg, want de definitie volgt pas op r. 475–476.
+- **Toy-voorbeeld.** "De twee extra termen zijn de fout in de geschatte $\hat\alpha_i$ en
+  $\hat\beta_{i,m}$" (r. 164–165). Het recept met vijf symbolen staat vóór elke afleiding
+  [onderzoek C, D2]. De rubriek staat één niet-afgeleide formule toe, maar een zin die zegt
+  waarom de $\alpha$-term met $L_2^2$ groeit, ontbreekt hier. De theorie geeft die uitleg
+  pas op r. 297–300.
 
 *Beter uitleggen*
-- Eén zin waarom BMP hoger uitkomt dan $J_1$ (de SCAR's spreiden minder dan hun
-  standaardfouten voorspellen).
-- Noem de toetsstatistiek van MacKinlay in de tekst niet $\theta_1$, of zeg dat het een
-  andere $\theta$ is.
+- Het verschil tussen de 94,7% van de simulatie en de 80,4% van Brown en Warner vraagt een
+  reden (hun steekproef bestond uit willekeurige, volatielere aandelen) en niet een
+  algemene uitspraak over "echte rendementen".
+- Bij de BMP-alinea helpt één getal voor de $t$-waarde zelf: bij $N = 50$ en
+  $\bar\rho = 0{,}05$ is BMP $1{,}86/\sqrt{0{,}95} \approx 1{,}91$ keer te breed verdeeld.
+- De halfwaardetijd heeft bij de eerste vermelding een bijzin nodig ("de tijd waarin de
+  helft van de reactie binnen is").
 
-## 2. Opbouw en rode draad (8,5)
+*Voor een 9*
+- Herschrijf r. 739–740, zodat het verschil wordt toegeschreven aan de steekproef van
+  Brown en Warner en niet aan echte data in het algemeen. Dan klopt het met r. 1144–1149
+  (lectures/02_07_event_studies.md:739).
+- Schrijf op r. 523–524 "variantie" in plaats van "spreiding", of geef de factor voor de
+  standaarddeviatie (lectures/02_07_event_studies.md:523).
+- Definieer de halfwaardetijd op r. 110 in de zin zelf (lectures/02_07_event_studies.md:110).
+- Voeg op r. 164–165 in één bijzin het mechanisme toe (dezelfde fout op elke eventdag, dus
+  $L_2$ keer geteld) en schrap in ruil daarvoor de verwijzing naar de theorie
+  (lectures/02_07_event_studies.md:164) [onderzoek C, D2].
+
+## 2. Opbouw en rode draad (9,0)
 
 *Goed*
-- **Overzicht** geeft vraag en antwoord; de **Intuïtie** voorspelt precies het patroon
-  dat de replicatie toetst (stijging vooraf, nul op de ex-datum, vlak erna) en de
-  toetskracht die de simulatie meet.
-- De toy-getallen keren terug: de CAAR van 2% als effectgrootte in de simulatie, de
-  4,9 tegen 3 als maat voor de schattingsfout.
-- **Simulatie** begint met haar uitkomst; de Samengevat-lijst eindigt met de vraag van
-  de simulatie.
+- **Overzicht.** De vraag staat in de eerste zin en het antwoord in de derde ("Zo gemeten
+  verwerken prijzen publiek nieuws snel, en grotendeels al vóór de publicatie."). De vier
+  bullets volgen de volgorde van het college.
+- **Toy-getallen lopen door.** De factor 4,9 tegen 3 keert terug in Theorie (r. 373–374) en
+  in de simulatie (r. 695–696, 63% tegen 0,4%). Het CAAR van 2% keert terug als effect in
+  de krachttabel (r. 693–694).
+- **Theorie.** Een routekaart (r. 243–247), "Samengevat" aan het eind, en 5323 woorden,
+  ruim onder de 6.000.
 
 *Aanmerkingen*
-- **Overzicht.** "Zo gemeten verwerken prijzen publiek nieuws snel, en grotendeels al
-  vóór de publicatie." De replicatie meet rond de ex-datum en kan de aankondiging niet
-  zien ("Voor aankondigingsdatums is er geen gratis bron"); het antwoord steunt op Ball
-  en Brown, niet op de eigen meting.
-- **De toets en zijn kracht, halfwaardetijd.** Een zijlijn met drie citaties en een
-  Engels citaat in de Intuïtie, die de replicatie niet kan toetsen ("binnen een dag dus
-  het scherpste antwoord").
-- De Theorie telt zeven onderdelen (verdeling, CAR-variantie, $J_1$, BMP, kracht,
-  halfwaardetijd, clustering met KP, lange horizon); de kern is goed te benoemen, maar
-  het is veel.
+- **Intuïtie.** "Een toets vindt een effect van 1% met enkele tientallen events als de dag
+  bekend is, maar niet als het venster weken beslaat." (r. 120–122). Deze voorspelling staat
+  in dezelfde alinea als de voorspelling over de splitsing, dus twee verwachtingen over
+  verschillende onderwerpen in één alinea [onderzoek C, D3].
+- **Overzicht.** "waar een *modelfout* (een verkeerd model voor het normale rendement) zich
+  opstapelt;" (r. 48). De bijzin lijkt bij beide faalplekken te horen, maar geldt alleen
+  voor de lange horizon.
 
 *Beter uitleggen*
-- In het Overzicht onderscheiden wat de literatuur zegt (vóór de publicatie) en wat de
-  replicatie laat zien (vóór de ex-datum).
+- De intuïtie belooft een stijging "vóór en rond de aankondiging" (r. 119), terwijl de
+  replicatie rond de ex-datum meet. De tweede kanttekening (r. 993–995) lost dat op, maar
+  een halve zin in de intuïtie kan al zeggen dat we de aankondiging niet zien.
 
 ## 3. Taal (8,5)
 
 *Goed*
-- Natuurlijk Nederlands, gemiddeld 15,1 woorden per zin, geen zinnen boven 40.
-- Engelse termen krijgen een vertaling of uitleg (*joint hypothesis* (gezamenlijke
-  hypothese), *bad model problem*, *drift*).
+- **Intuïtie.** De alinea's over de splitsing (r. 71–81) lezen als gesproken Nederlands, met
+  verband door "Toch", "dus" en "want".
+- **Wat er brak.** De twee lezingen van de drift (r. 1020–1027) zijn helder en idiomatisch,
+  en "Daar wreekt de joint hypothesis zich" (r. 1015–1016) is een natuurlijke wending.
+- Motiefnamen staan binnen de grens: "de standaardfout van 2%" twee keer (r. 96, 978),
+  "theorie of feit" één keer en "Risico of vergissing?" één keer, en nergens als handelend
+  onderwerp.
 
 *Aanmerkingen*
-- **Wat er brak.** "een van de meest succesvolle instrumenten van de empirische
-  financiering". Calque van *empirical finance*; "financiering" is *financing*. De
-  setup schrijft "de empirische finance" (naad 9).
-- Wisselend lidwoord bij één begrip: "het CAR stijgt", "Het CAR is de som" naast
-  "de variantie van een CAR" en "de CAR's"; "de CAAR [...] haar standaardfout" naast
-  "een CAAR dat" en "Het CAAR van −2,9%".
+- **Overzicht.** "Twee artikelen openden het tijdvak." (r. 57). "Tijdvak" is projecttaal
+  (STYLE §11.12).
+- **Toy-voorbeeld.** "en de theorie leidt deze formule als eerste af." (r. 165). Dit is een
+  ingeplakte reparatiezin met de sectie als handelend onderwerp.
+- **Opzet: eventtijd en het marktmodel.** "Volgens de notatietabel is $r_{i,\tau}$ het netto
+  rendement, zonder de risicovrije rente af te trekken, waar {cite:t}`MacKinlay1997` $R$
+  schrijft." (r. 259–261). "De notatietabel" is een verwijzing naar het werk, en de bijzin
+  "waar MacKinlay $R$ schrijft" hangt los achteraan.
+- **Replicatie.** "Het niveau vergelijken we niet, omdat de waarden van FFJR hier niet
+  geverifieerd zijn." (r. 767–768) en "Omdat de exacte waarden uit tabel 2 van FFJR niet in
+  een toegankelijke bron te controleren zijn, vergelijken we de vorm." (r. 771–772). Dit zijn
+  meldingen over het werk, die §11.12 uit de tekst weert, en ze staan er twee keer.
+- **Replicatie.** "Alle drie de voorwaarden uit de verwachte afwijking kloppen" (r. 971).
+  Dit is regeltaal, want het kopje van de admonition wordt als bron aangehaald [onderzoek C].
+- **Replicatie.** "Of zo'n fout plausibel is, laat "Wat er brak" open." (r. 981). Een
+  sectienaam is hier handelend onderwerp.
+- **Hoe het faalt: events op dezelfde dag.** "BMP lost het probleem niet op, want de
+  noemer van die toets is de spreiding in de doorsnede, en die is volgens de tweede formule
+  van de propositie een factor $1 - \bar\rho$ te klein, bij $\bar\rho = 0{,}05$ dus 0,95
+  keer de waarde zonder correlatie." (r. 522–524). Deze zin heeft 45 woorden, de enige
+  boven 40.
+- **Simulatie.** "Wie de eventdag kent, heeft dus een scherp instrument, maar een
+  onderzoeker die hem alleen op een week nauwkeurig kent, heeft vijf keer zoveel events
+  nodig." (r. 740–741). De twee persona's in één zin maken de vergelijking zwaar
+  [onderzoek C].
+- **Opzet: eventtijd en het marktmodel.** "(hier een intercept op netto rendementen, geen
+  pricing error of Jensen-alpha)" (r. 279). "Pricing error" staat onvertaald in de lopende
+  tekst.
 
 *Beter uitleggen*
-- Kies één lidwoord voor CAR en CAAR.
+- De alinea op r. 96–101 bevat tien getallen (6%, 0,024%, 1%, 0,024, 1%, 2%, 0,5, twintig,
+  vierhonderd, 440). Dat is ruim boven de drie per alinea [onderzoek C]. Het getal voor de
+  standaardfout kan in de eerste alinea blijven en de verhouding in de tweede.
 
-## 4. Toy-voorbeeld (9)
+*Voor een 9*
+- r. 57: "Twee artikelen zetten de toon." of "Twee artikelen begonnen deze periode." (lectures/02_07_event_studies.md:57).
+- r. 165: schrap de verwijzing naar de theorie en zeg wat de termen doen (lectures/02_07_event_studies.md:165).
+- r. 259–261: "We schrijven $r_{i,\tau}$ voor het netto rendement, zonder aftrek van de
+  risicovrije rente; MacKinlay schrijft daarvoor $R$." Het liefst zonder puntkomma, als twee
+  zinnen (lectures/02_07_event_studies.md:259).
+- r. 767–768 en 771–772: zeg één keer, in het replicatieblok, dat we de vorm vergelijken
+  omdat FFJR alleen een figuur geven, of laat de reden weg. De melding over controleerbaarheid
+  hoort in het rapport (lectures/02_07_event_studies.md:767, :771).
+- r. 971: "De drie verwachtingen komen uit: …" of het oordeel direct formuleren
+  (lectures/02_07_event_studies.md:971) [onderzoek C].
+- r. 981: "Of zo'n fout plausibel is, is de vraag van de volgende sectie."
+  (lectures/02_07_event_studies.md:981).
+- r. 522–524: splits na "de spreiding in de doorsnede"
+  (lectures/02_07_event_studies.md:522).
+- r. 740–741: "Met een bekende eventdag is de toets dus scherp. Is de dag maar op een week
+  bekend, dan zijn vijf keer zoveel events nodig." (lectures/02_07_event_studies.md:740)
+  [onderzoek C].
+
+## 4. Toy-voorbeeld (9,0)
 
 *Goed*
-- Drie aandelen met ronde getallen: alles is met de hand na te rekenen, en de tabel
-  hand/code toont zeven identieke getallen.
-- Eén mechanisme (de schattingsfout in de variantie), één nog niet afgeleide formule
-  met een aankondiging dat de Theorie haar afleidt, en een slotzin met wat de lezer
-  weet (28% te hoge $t$-waarde).
+- **Stap 1 tot 5.** Alle getallen zijn met de hand na te rekenen. $\hat\mu_m = 0$ maakt OLS
+  triviaal, en de tabel met $\sum r_i$, $\sum r_m r_i$ en residuen laat geen stap weg.
+- De tabel hand/code (r. 229–233) en de slotzin met de les ("28% te hoog", r. 238–239).
+- Eén mechanisme, namelijk dat schattingsfout ruis toevoegt die de naïeve toets mist.
 
 *Aanmerkingen*
-- Vijf stappen met drie regressies kosten eerder tien dan vijf minuten.
+- **Het recept.** Het recept is de enige nog niet afgeleide formule en staat vóór de vijf
+  stappen (r. 154–165). Dat mag, maar het maakt het toy zwaarder dan vijf minuten
+  [onderzoek C, D2].
 
 *Beter uitleggen*
-- Geen.
+- Bij stap 4 kan één bijzin zeggen welke term het meest toevoegt (9/5, de fout in
+  $\hat\alpha$, omdat $L_2^2/L_1$ bij een schattingsvenster van vijf dagen groot is).
 
-## 5. Code en figuren (8,5)
+## 5. Code en figuren (9,0)
 
 *Goed*
-- De toy-code volgt de vijf stappen met commentaar per stap.
-- Beide figuren hebben een leeswijzer ("Let op hoe de lijnen naar rechts verschuiven")
-  en een bijschrift dat de vraag beantwoordt.
-- `car_variance` wordt gekoppeld aan [](#eq-eventstudies-varcar) in matrixvorm.
+- **Toy-cel.** De code volgt de vijf stappen met commentaar per stap en benoemde
+  tussenresultaten (`factor`, `var_car`, `var_naive`).
+- **Simulatie.** `simulate_events` en `j1_test` lezen als de formules, met `factor` gelijk
+  aan het recept, en de leeswijzer vóór de figuur (r. 698–699) zegt waarop te letten.
+- **Replicatie.** `car_variance` is de matrixvorm van de propositie en wordt zo benoemd
+  (r. 850).
 
 *Aanmerkingen*
-- **Simulatie, `simulate_events`.** Arrays met vorm `(r, 1, T)` en `(r, n_events, T)`,
-  blokken van 250 en een `dict` van lijsten: correct en toegelicht, maar de lezer moet
-  de broadcasting zelf volgen.
-- **Replicatie, `split_tests`.** De gewogen correlatie (`overlap * np.nan_to_num(...)`,
-  gedeeld door $n(n-1)$) is één zin toelichting ("daarmee wegen we haar") voor een
-  eigen constructie die niet in de Theorie staat.
+- **Replicatie.** De regel `pd.DataFrame({"CAAR": caar_path, "SE": se_path}, index=pd.Index(tau, name="tau")).loc[[-121, -1, 0, 60]].round(4)`
+  (r. 893) is één lange ketting van meer dan 120 tekens.
+- **Replicatie.** "In de figuur gaat het om twee hellingen, die vóór dag 0 en die erna."
+  (r. 896). Het bijschrift (r. 920–923) zegt hetzelfde nog eens, zodat de leeswijzer dubbel
+  staat [onderzoek C, D4, grotendeels opgelost].
 
 *Beter uitleggen*
-- Eén zin vóór `split_tests` die de gewogen $\hat{\bar\rho}$ als formule geeft.
+- De gewogen correlatie in `split_tests` (r. 944–950) is de moeilijkste regel code. De zin
+  ervoor (r. 926–929) zegt wat er gebeurt, maar een getal (typisch overlapaandeel) zou helpen.
 
 ## 6. Replicatie en empirie (8,5)
 
 *Goed*
-- Het blok heeft bron, wat, data, verschil (maand tegen dag, selectie achteraf) en een
-  verwachte afwijking met een drempel ($\lvert t \rvert < 2$).
-- Tabel FFJR/verwachting/hier, oordeel "Geslaagd" dat de drie voorwaarden afloopt.
-- De kanttekeningen (selectie, ex-datum in plaats van aankondiging, kleine $\rho$) en de
-  tweede lezing van −2,9% als modelfout.
+- **Replicatieblok.** Bron, wat, data, verschil en verwachte afwijking staan er in ongeveer
+  170 woorden, met de selectie achteraf als eerlijk benoemde vertekening (r. 761–763).
+- **Tabel.** Origineel, verwachting en uitkomst staan naast elkaar (r. 965–969), en het
+  oordeel begint met **Geslaagd**.
+- De $-2{,}9\%$ na de splitsing wordt niet weggepoetst, maar gekoppeld aan de lange-horizonformule
+  (r. 979–981) en aan de drift in "Wat er brak".
 
 *Aanmerkingen*
-- De kolom "FFJR" is kwalitatief ("stijgt gestaag"); het niveau wordt niet vergeleken.
-  Eerlijk gemeld, maar de toets is daardoor zwak.
-- **Replicatie, na de tabel.** "een modelfout van $\eta = -2{,}9\%/61 \approx -0{,}05\%$
-  per dag, ruim 10% per jaar" staat in lopende tekst en niet in de tabel.
+- **Replicatie.** "De tabel heeft de vorm die FFJR voorspelden." (r. 962). FFJR vonden deze
+  vorm, ze voorspelden hem niet [onderzoek C].
+- **Replicatie.** "Het niveau vergelijken we niet, omdat de waarden van FFJR hier niet
+  geverifieerd zijn." (r. 767–768). Dit is een werkmelding in plaats van een verwachte
+  afwijking (zie taal).
+- **Replicatie.** "Kolari-Pynnönen verlaagt de $t$-waarde over het jaar vooraf daarom maar
+  van 4,74 (BMP) naar 4,47." (r. 997–998). Getallen die in de tabel horen, staan hier in
+  lopende tekst.
 
 *Beter uitleggen*
-- Geen.
+- De vergelijking met FFJR is kwalitatief ("stijgt gestaag"). Eén getal uit hun tekst, of
+  de expliciete zin dat hun figuur de maatstaf is, maakt de kolom "FFJR" steviger.
 
-## 7. Oefeningen (9)
+*Voor een 9*
+- r. 962: "vonden" in plaats van "voorspelden" (lectures/02_07_event_studies.md:962) [onderzoek C].
+- r. 767–768: vervang de werkmelding door een inhoudelijke verwachting, bijvoorbeeld een
+  hoger niveau door de selectie achteraf (lectures/02_07_event_studies.md:767).
+- r. 996–998: zet KP en $\hat{\bar\rho}$ als rij of kolom in de vergelijkingstabel
+  (lectures/02_07_event_studies.md:996).
+
+## 7. Oefeningen (9,0)
 
 *Goed*
-- Instap op het toy, afleiding (constant-mean-model), uitbreiding van de replicatie
-  (Brown en Warner op echte data): de drie soorten.
-- Elke uitwerking eindigt met wat ze leert; oefening 3 legt uit waarom 69% boven 63% ligt.
+- Instap (eendaags venster op het toy), afleiding (constant-mean en het werkelijke
+  significantieniveau) en uitbreiding van de replicatie (Brown en Warner op echte data):
+  precies de drie soorten die de rubriek vraagt.
+- Elke uitwerking eindigt met een les (r. 1066–1067, 1104–1105, 1149–1150).
 
 *Aanmerkingen*
-- **Uitwerking ex-eventstudies-1 (2).** Het antwoord ("Het signaal zat op dag 0")
-  herhaalt de vraag; een getal (de factor 4,9 tegen 1,3 bij een signaal van 2,0 tegen
-  1,9) zou het tonen.
+- **Oefening 3.** "De conclusie van Brown en Warner hangt dus niet af van de
+  simulatieaannames." (r. 1149–1150). Dit is ruimer dan één steekproef van twintig events
+  met grote aandelen kan dragen, en het botst met r. 739–740 (zie helderheid).
 
 *Beter uitleggen*
-- Geen.
+- Oefening 2 kan in één zin zeggen dat $L_1 = 60$ bij beursintroducties voorkomt. Dat
+  staat er (r. 1102–1103), dus hier is niets nodig.
 
-## De drie verbeteringen met het meeste effect
+## Feitelijke fouten
 
-1. In het Overzicht scheiden wat Ball en Brown laten zien (vóór de publicatie) en wat
-   de replicatie laat zien (vóór de ex-datum), en de halfwaardetijd inkorten tot één
-   alinea (opbouw 8,5 → 9).
-2. Notatie in lijn brengen met de setup ($r_{i,\tau}$ netto, of vertalen) en
-   $\theta_1$ hernoemen; één zin over waarom BMP hoger is dan $J_1$ (helderheid 8,5 → 9).
-3. "empirische financiering" vervangen en één lidwoord voor CAR en CAAR (taal 8,5 → 9).
+1. **r. 739–740**: "zodat de simulatie optimistischer is dan echte rendementen". Dit is
+   onjuist als algemene uitspraak. Oefening 3 vindt op de echte data van dit college 69%
+   kracht tegen 63% in de simulatie (r. 1145–1149). Het verschil met Brown en Warner (80,4%
+   tegen 94,7% bij $N = 50$) komt door hun steekproef, niet door echte rendementen als
+   zodanig. Correctie: "tegen hun 80,4% voor willekeurig gekozen, volatielere aandelen".
+
+Nagerekend en juist:
+- Toy: $\hat\alpha$ en $\hat\beta$ (0,1 en 1,0; 0 en 0,5; 0,2 en 1,5), residuen en
+  $\hat\sigma^2$ (1/3; 0,5; 1/3), AR's en CAR's (2,5; 2,0; 1,5), CAAR 2,0, factor 4,9,
+  varianties 1,6333 en 2,45, $J_1 = 2{,}509$, naïef 3,207, dus 28% te hoog.
+- Intuïtie: 6%/250 = 0,024%, verhouding 0,5/0,024 ≈ 21, $21^2 \approx 440$, en
+  $20\%/\sqrt{100} = 2$ procentpunt.
+- Theorie: 21/250 ≈ 8%, 250/500 = 50%, $\delta = 2{,}24$ met kracht 61%, $\delta = 1{,}29$
+  met 25%, $\sqrt{3{,}45} = 1{,}86$ en $2\Phi(-1{,}055) = 29\%$, 0,02% × 750 = 15%, en
+  $\E[J_1] = 0{,}17$ en 2,7.
+- Simulatie: 62,9% tegen 61%, gemist in vier van de vijf bij [−10,+10] en $N = 100$
+  (formule: $\delta = 1{,}09$, kracht 19%), simulatieruis 1,4 procentpunt, 63% en 0,4%.
+- Replicatie: 102 splitsingen, 50 aandelen, 6183 dagen, $L_1$ 495, bèta 1,08, 1,8%, CAAR
+  14,9% (SE 3,7), $J_1$ 4,0, BMP 4,7, KP 4,47, en $\eta = -2{,}9\%/61 \approx -0{,}05\%$ per
+  dag ≈ −12% per jaar ("ruim 10%").
+- Oefeningen: factor 1,3, varianties 0,4333 en 0,65, gemiddelde 1,9, $J_1 = 4{,}628$, en
+  het significantieniveau bij $L_1 = 60$ is $2\Phi(-1{,}96/\sqrt{1{,}35}) \approx 9{,}2\%$
+  ("bijna twee keer te vaak").
+
+Getallen die uit celuitvoer komen (6183, 495, 1,08, 14,9%, 4,74/4,47, 69%) zijn gecontroleerd
+op onderlinge samenhang in de tekst. De celuitvoer zelf is niet opnieuw gedraaid.
 
 ## Navertelling in vijf zinnen
 
-Een event study legt alle gebeurtenissen op tijd nul, trekt van elk rendement af wat
-het marktmodel voorspelt en middelt de rest, zodat de ruis met de wortel van het aantal
-events krimpt en het signaal blijft. De variantie van een CAR is de ruis van de
-eventdagen plus de schattingsfout in alfa en bèta, en wie die fout vergeet overschat zijn
-$t$-waarde. Met een bekende eventdag vindt de toets een effect van 1% al met twintig
-events, maar een langer venster, events op dezelfde dag en vooral lange horizonnen maken
-haar onbetrouwbaar, omdat een modelfout lineair groeit en de ruis met de wortel. Op 102
-splitsingen uit 2004–2025 herhaalt zich het patroon van FFJR: de koers stijgt in het jaar
-ervoor, op de ex-datum gebeurt niets, en daarna is er geen significante drift. Of een
-resterende drift risico of vergissing is, kan de event study niet beslissen, omdat ze
-een model voor het normale rendement nodig heeft. Dit komt overeen met het Overzicht,
-behalve dat de replicatie zelf niet laat zien dat de prijs "vóór de publicatie"
-reageert.
+1. Een event study legt gebeurtenissen op tijd nul, trekt het normale rendement volgens een
+   geschat marktmodel af en middelt de rest, zodat de ruis met de wortel van het aantal
+   events krimpt en het signaal blijft.
+2. De variantie van een CAR is de ruis van de eventdagen plus de fout in de geschatte
+   alpha en bèta. Wie die schattingsfout vergeet, rekent met te hoge $t$-waarden, vooral bij
+   lange vensters en korte schattingsperioden.
+3. De toets $J_1$ vindt een effect van 1% met enkele tientallen events als de dag bekend
+   is, maar een langer venster kost evenredig veel events, zoals de simulatie in de lijn
+   van Brown en Warner bevestigt.
+4. De toets faalt bij events op dezelfde dag, omdat gedeelde ruis niet wegmiddelt, en over
+   lange horizonnen, omdat een kleine modelfout lineair groeit en de ruis alleen met de
+   wortel, zodat lange event studies het model meten.
+5. Op 102 recente splitsingen herhaalt het patroon van FFJR zich (een stijging vóór de
+   ex-datum, niets op de dag zelf en geen significante drift daarna), maar of de drift
+   risico of vergissing is, kan de event study zelf niet beslissen.
 
-## Controle
+Deze navertelling komt overeen met het Overzicht.
 
-STATUS 02_07_event_studies F6c words=4927 prose=PASS open=0 cijfer=8,9 min=8,5
+## De taal na de redactie
 
-Gecontroleerd tegen `rapport-02_07_event_studies.md` §F6-1 en de lecture zelf, ná de
-omzetting van "alfa" naar "alpha".
+De redactie heeft gewerkt. Zinnen lopen door met voegwoorden, de dubbele punten als lijm
+zijn verdwenen, "Waarom zou dit waar zijn?" staat nog maar twee keer in Theorie, en de
+meeste punten uit onderzoek C zijn opgelost (r. 100, 243, 431, 816, 926, 977–979, 1016).
+Wat overblijft, is regeltaal en werkmelding (r. 57, 165, 260, 767, 771, 971, 981), plus
+één te lange zin. Dat is het verschil tussen 8,5 en 9.
 
-| punt | status | toelichting |
-|---|---|---|
-| Verbetering 1a, Overzicht | opgelost | het replicatiepunt zegt nu "de koers stijgt vóór de ex-datum [...] Het moment van publicatie zelf meten we daar niet; dat bewijs komt van Ball en Brown" |
-| Verbetering 1b, halfwaardetijd inkorten | deels | de Budish-zin is weg; de rest van de alinea en het Engelse citaat in de Intuïtie staan er nog |
-| Verbetering 2a, notatie | opgelost | $r_{i,\tau}$ en $r_{m,\tau}$ zijn netto, ook in toy en oefeningen; één bijzin zegt dat MacKinlay $R$ schrijft |
-| Verbetering 2b, $\theta$ | opgelost | de parametervector heet $\mathbf{b}_i$; $\theta_1$ is alleen de naam bij MacKinlay |
-| Verbetering 2c, BMP hoger dan $J_1$ | opgelost | "Standaardiseren geeft bovendien de zeer volatiele aandelen minder gewicht, terwijl zij in $J_1$ de noemer domineren" |
-| Verbetering 3, taal | opgelost | "empirische finance"; overal "het CAR" en "het CAAR", met "zijn" |
-| Naad 1, $R$ netto | opgelost | zie 2a |
-| Naad 2, $\alpha_i$ | opgelost | "hier een intercept op netto rendementen, geen pricing error of Jensen-alpha" |
-| Naad 5, $\tau$ | opgelost | "Let wel: $\tau$ is hier eventtijd, niet het moment van schrappen" (in L5 heet dat nu $\theta$) |
-| Naad 9, financiering | opgelost | zie 3 |
-| Boekconventie "alpha" | opgelost | geen "alfa" meer in L5, L7 of de setup |
+Hardop-toets: drie zinnen die nog niet natuurlijk klinken.
 
-Geen verslechteringen en geen nieuwe feitelijke fouten. Volgens het rapport is de
-code-uitvoer gelijk aan F5; de getallen in de gewijzigde zinnen (4,7 tegen 4,0) kloppen
-met de tabel. Nog open, niet verplicht: de Intuïtie vergelijkt de premie van 6% met
-marktruis en nieuws van 1% met de ruis van één aandeel, zonder te zeggen waarom de
-noemers verschillen.
+1. r. 26–27: "Elke toets daarvan toetst tegelijk een model voor het "normale" rendement,
+   en die koppeling heet de *joint hypothesis* (gezamenlijke hypothese)."
+   Herschrijving: "Een toets van die theorie is altijd ook een toets van een model voor het
+   "normale" rendement, en die koppeling heet de *joint hypothesis* (gezamenlijke hypothese)."
+2. r. 99–100: "Een premie van 6% per jaar is per dag 0,024%, tegen een dagelijkse marktruis
+   van 1%, een verhouding van 0,024 tussen signaal en ruis."
+   Herschrijving: "Een premie van 6% per jaar is 0,024% per dag, en tegen een dagelijkse
+   marktruis van 1% geeft dat een verhouding tussen signaal en ruis van 0,024."
+3. r. 164–165: "De twee extra termen zijn de fout in de geschatte $\hat\alpha_i$ en
+   $\hat\beta_{i,m}$, en de theorie leidt deze formule als eerste af."
+   Herschrijving: "De twee extra termen komen van de fout in de geschatte $\hat\alpha_i$ en
+   $\hat\beta_{i,m}$, die op elke dag van het eventvenster dezelfde is en daardoor zwaarder
+   telt naarmate het venster langer is."
 
-| nr | criterium | gewicht | was | nu |
-|---|---|---|---|---|
-| 1 | Helderheid | 30% | 8,5 | 9 |
-| 2 | Opbouw | 20% | 8,5 | 9 |
-| 3 | Taal | 15% | 8,5 | 9 |
-| 4 | Toy-voorbeeld | 10% | 9 | 9 |
-| 5 | Code en figuren | 10% | 8,5 | 8,5 |
-| 6 | Replicatie | 10% | 8,5 | 8,5 |
-| 7 | Oefeningen | 5% | 9 | 9 |
+## Controle 1
 
-9·0,30 + 9·0,20 + 9·0,15 + 9·0,10 + 8,5·0,10 + 8,5·0,10 + 9·0,05 = 8,90 → **8,9**.
-Laagste deelcijfer 8,5.
+Controle van record (F6c, ronde 9+) op `notes/rapport-02_07_event_studies.md`, sectie
+"R9-1". Getallencontrole met `uv run python tools/nb_outputs.py
+lectures/02_07_event_studies.ipynb`: de vergelijkingstabel (r. 1009-1013) klopt exact met
+de celuitvoer van `split_tests` — [-250,-1] CAAR 0,1493/SE 0,0373/$J_1$ 4,0024/BMP
+4,7388/$\hat{\bar\rho}$ 0,0012/KP 4,4678; [0,0] -0,0008/-0,3994/0,0000/0,0544; [0,60]
+-0,0292/0,0159/-1,8369/-1,1846/0,0003/-1,1641. Ook `fit_table` (L1 495,0; bèta 1,078;
+sigma 0,018) en 6183 handelsdagen komen overeen. De handberekeningen 1,86 en 1,91 (r.
+545-553) staan niet in de celuitvoer maar rekenen kloppend na uit de tekst zelf:
+$\sqrt{1+49\times0{,}05}=\sqrt{3{,}45}=1{,}86$ en $1{,}86/\sqrt{0{,}95}\approx1{,}91$.
+
+**Feitelijke fout** — opgelost. De simulatie-alinea (was r. 739-740) zegt nu dat het
+verschil met Brown en Warner in hun steekproef van willekeurig gekozen, volatielere
+aandelen zit, niet in "echte rendementen" in het algemeen; dat klopt nu met oefening 3
+("... en die verklaart ook waarom Brown en Warner met willekeurige aandelen minder vonden
+dan onze simulatie.").
+
+**De drie verbeteringen**
+1. Regeltaal, werkmeldingen, zin > 40 woorden — opgelost. r. 57, 165, 260, 767-768,
+   771-772, 971, 981 zijn herschreven zoals voorgesteld, en de BMP-zin is gesplitst
+   (`prose_stats --check`: sent_gt40 = 0, 5443 woorden, PASS).
+2. Tegenspraak simulatie/oefening 3, factor 0,95, halfwaardetijd — opgelost. Het
+   steekproefverschil is benoemd, "spreiding" is "variantie" geworden met de expliciete
+   factor voor de $t$-waarde (1,86 → 1,91), en de halfwaardetijd is gedefinieerd bij het
+   eerste gebruik.
+3. Replicatie-oordeel in eigen woorden en kanttekeningen in de tabel — opgelost.
+   "vonden" in plaats van "voorspelden", het oordeel noemt de drie verwachtingen, en
+   $\hat{\bar\rho}$ en KP staan als kolom in de vergelijkingstabel.
+
+**Voor een 9, per criterium**
+- Helderheid: alle vier punten opgelost (feitelijke fout, "spreiding" → "variantie",
+  halfwaardetijd bij r. 110, mechanismezin bij r. 164-165).
+- Taal: alle acht punten opgelost (r. 57, 165, 259-261, 767-768/771-772, 971, 981,
+  522-524, 740-741), plus "pricing error" vertaald naar "afwijking van een
+  evenwichtsmodel".
+- Replicatie: alle drie punten opgelost (r. 962, 767-768, 996-998).
+
+**Overige aanmerkingen/beter uitleggen (geen plafond, ter info)**
+- Opbouw: de modelfout-bijzin in het Overzicht hoort nu alleen bij de lange horizon, en de
+  twee voorspellingen in de intuïtie (toetskracht, splitsing) staan niet meer in dezelfde
+  alinea — opgelost.
+- Code: de lange ketting (r. 893) is gesplitst in `caar_table = ...` en een tweede regel,
+  en de leeswijzer vóór de CAAR-figuur herhaalt het bijschrift niet meer — opgelost.
+- Taal, beter uitleggen (tien getallen in één alinea, r. 106-110): **niet opgelost**. Het
+  rapport meldt een knip in twee alinea's, maar de tekst staat nog altijd in één alinea
+  met dezelfde tien getallen (6%, 0,024%, 1%, 0,024, 1%, 2%, 0,5, twintig, vierhonderd,
+  440). Geen "Voor een 9"-punt, dus geen plafondeffect, maar wel nog open voor een
+  volgende ronde.
+- Replicatie, beter uitleggen (kwalitatieve FFJR-vergelijking): deels. Alleen de zin dat
+  hun figuur de maatstaf is voor de vorm, is toegevoegd; geen getal uit hun tekst.
+
+**Verslechtering of nieuwe feitelijke fout**: geen gevonden.
+
+### Eindcijfer: 9,0
+
+| nr | criterium | gewicht | deelcijfer |
+|---|---|---|---|
+| 1 | Helderheid van de uitleg | 25% | 9,0 |
+| 2 | Opbouw en rode draad | 20% | 9,0 |
+| 3 | Taal | 20% | 9,0 |
+| 4 | Toy-voorbeeld | 10% | 9,0 |
+| 5 | Code en figuren | 10% | 9,0 |
+| 6 | Replicatie en empirie | 10% | 9,0 |
+| 7 | Oefeningen | 5% | 9,0 |
+
+9,0 × 1,00 = **9,0**. Laagste deelcijfer 9,0, ruim boven 8,5. Taal 9,0, dus niet
+blokkerend. Het doel (eindcijfer ≥ 9,0, geen deelcijfer onder 8,5) is gehaald.

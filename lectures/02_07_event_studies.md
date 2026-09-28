@@ -18,56 +18,55 @@ kernelspec:
 ```{admonition} Waar we zijn in het verhaal
 :class: important
 
-**Jaartal.** 1968–1997: van de eerste event studies op de CRSP-tape tot het
-methodologische overzicht van MacKinlay.
+**Jaartal.** 1968–1997, van de eerste event studies op de CRSP-tape tot het
+methodologische overzicht van MacKinlay. In die dertig jaar werd de event study het
+standaardinstrument om te meten hoe koersen op nieuws reageren.
 
-**Wat we al weten.** [De vorige lecture](#02-06-efficiente-markten) formuleerde
-de efficiënte-marktheorie van Fama: prijzen weerspiegelen alle beschikbare
-informatie. Elke toets daarvan toetst tegelijk een model voor het "normale"
-rendement: de *joint hypothesis* (gezamenlijke hypothese). De toetsen daar
+**Wat we al weten.** [Het vorige college](#02-06-efficiente-markten) formuleerde de
+efficiënte-marktheorie van Fama, waarin prijzen alle beschikbare informatie weerspiegelen. Een toets van die theorie is altijd ook een toets van een model voor het
+"normale" rendement, en die koppeling heet de *joint hypothesis* (gezamenlijke hypothese). De toetsen daar
 zochten patronen in de rendementsreeks zelf, op dagkoersen van de dertig Dow
 Jones-aandelen {cite}`Fama1965,FamaBlume1966`. Voor een studie van honderden
 aandelen rond hun eigen nieuws lagen de data klaar op [de
-CRSP-tape](#02-05-crsp-tape): maandrendementen van elk NYSE-aandeel sinds 1926.
+CRSP-tape](#02-05-crsp-tape), met maandrendementen van elk NYSE-aandeel sinds 1926.
 
 **Welke vraag staat open.** Zit publiek nieuws al in de prijs op het moment dat het
-bekend wordt, of loopt de prijs erachteraan, als niemand weet wat het aandeel
-zonder dat nieuws had gedaan?
+bekend wordt, of loopt de prijs erachteraan? Het lastige is dat niemand weet wat het
+aandeel zonder dat nieuws had gedaan.
 ```
 
 ## Overzicht
 
-Hoe meten we of een prijs nieuws verwerkt vóór of nadat het nieuws bekend wordt? Door alle gebeurtenissen op tijd
-nul te leggen, van elk rendement af te trekken wat het aandeel normaal zou doen,
-en het restant te middelen. Zo gemeten verwerken prijzen publiek nieuws snel, en
-grotendeels al vóór de publicatie. In deze lecture:
+Hoe meten we of een prijs nieuws verwerkt vóór of nadat het nieuws bekend wordt? We
+leggen alle gebeurtenissen op tijd nul, trekken van elk rendement af wat het aandeel
+normaal zou doen, en middelen de rest. Zo gemeten verwerken prijzen publiek nieuws snel,
+en grotendeels al vóór de publicatie. In dit college:
 
 - leiden we af hoeveel ruis er in een abnormaal rendement zit, inclusief de
-  *schattingsfout*: de toevallige fout in de geschatte alpha en bèta van het
-  marktmodel;
+  *schattingsfout* (de toevallige fout in de geschatte alpha en bèta van het marktmodel);
 
-- bouwen we daaruit een toets en een formule voor zijn toetskracht, en zien we
-  waar de toets faalt: bij events op dezelfde dag, en over lange horizonnen, waar
-  een *modelfout* (een verkeerd model voor het normale rendement) zich opstapelt;
+- bouwen we daaruit een toets en een formule voor zijn toetskracht, en zien we dat de
+  toets faalt bij events op dezelfde dag, en over lange horizonnen doordat een *modelfout*
+  (een verkeerd model voor het normale rendement) zich daar opstapelt;
 
 - simuleren we, zoals Brown en Warner, hoe vaak de toets een effect van 1% vindt;
 
 - repliceren we de figuur van Fama, Fisher, Jensen en Roll op 102
-  aandelensplitsingen uit 2004–2025: de koers stijgt vóór de ex-datum en daarna
-  niet meer. Het moment van publicatie zelf meten we daar niet; dat bewijs komt
-  van Ball en Brown.
+  aandelensplitsingen uit 2004–2025, waarin de koers vóór de ex-datum stijgt en daarna
+  niet meer. Het moment van publicatie zelf meten we daar niet, want dat bewijs komt van
+  Ball en Brown.
 
-Twee artikelen openden het tijdvak. {cite:t}`BallBrown1968` vonden dat 85 tot 90%
+Twee artikelen zetten de toon. {cite:t}`BallBrown1968` vonden dat 85 tot 90%
 van de informatie in het jaarcijfer al vóór de publicatie in de koers zat, via
 snellere kanalen (p. 176). {cite:t}`FamaFisherJensenRoll1969` (FFJR) bouwden bij
-hun studie van splitsingen het instrument dat sindsdien *event study* heet. Dat is
-een studie van het koersgedrag in *eventtijd*: elke gebeurtenis ligt op dag of
-maand nul, ongeacht de kalenderdatum. Het idee was ouder; {cite:t}`MacKinlay1997`
-noemt {cite:t}`Dolley1933` als waarschijnlijk eerste studie. FFJR voegden de
-correctie voor de markt en het middelen in eventtijd toe. Daarmee werd de
-efficiënte-marktheorie toetsbaar op nieuws. De reeks vraagt steeds: theorie of feit? De event study is geen
-theorie die getoetst wordt, maar een meetinstrument dat feiten levert. Die feiten
-zijn altijd afwijkingen van een model.
+hun studie van splitsingen het instrument dat sindsdien *event study* heet, een studie
+van het koersgedrag in *eventtijd*, waarin elke gebeurtenis op dag of maand nul ligt,
+ongeacht de kalenderdatum. Het idee was ouder ({cite:t}`MacKinlay1997` noemt
+{cite:t}`Dolley1933` als waarschijnlijk eerste studie), maar FFJR voegden de correctie
+voor de markt en het middelen in eventtijd toe. Daardoor werd de efficiënte-marktheorie
+toetsbaar op nieuws. De event study is zelf geen theorie die getoetst wordt, maar een
+meetinstrument dat feiten levert voor de vraag die de hele reeks stelt, theorie of feit.
+Die feiten zijn altijd afwijkingen van een model.
 
 ## Intuïtie: waarom zou dit waar zijn?
 
@@ -79,54 +78,59 @@ bedrijf op de splitsingsdatum dus niet.
 Toch is een splitsing niet informatieloos. Bedrijven splitsen vooral nadat de
 koers flink is gestegen, vaak samen met een hogere dividenduitkering. De
 aankondiging kan dus iets *zeggen*, ook al *doet* ze niets. FFJR zagen daarin een
-laboratorium: een gebeurtenis zonder economische inhoud, maar met mogelijke
-informatie. In een efficiënte markt komt die informatie in de prijs zodra ze
-bekend wordt. Wie het aandeel daarna koopt, verdient er niets bijzonders meer mee.
+laboratorium, want een splitsing is een gebeurtenis zonder
+economische inhoud, maar met mogelijke informatie. In een efficiënte markt komt die
+informatie in de prijs zodra ze bekend wordt, zodat een belegger die het aandeel daarna
+koopt, er niets bijzonders meer mee verdient.
 
-Om dat te toetsen is één vraag te beantwoorden: wat had het aandeel gedaan
-*zonder* het nieuws? Stijgt de markt die maand 5% en het aandeel 6%, dan is het
-nieuws hooguit 1% waard. FFJR schatten daarom over een rustige periode hoe sterk
-het aandeel met de markt meebeweegt, het *marktmodel*. Het werkelijke rendement
-min wat het marktmodel voorspelt, is het *abnormale rendement*. Opgeteld over de
-dagen rond het event geeft dat het *cumulatieve abnormale rendement* (CAR).
+Om dat te toetsen moeten we eerst weten wat het aandeel *zonder* het nieuws had gedaan.
+Stijgt de markt die maand 5% en het aandeel 6%, dan is het nieuws hooguit 1% waard. FFJR
+schatten daarom over een rustige periode hoe sterk het aandeel met de markt meebeweegt,
+en dat verband heet het *marktmodel*. Het werkelijke rendement min wat het marktmodel
+voorspelt, is het *abnormale rendement*, en de som daarvan over de dagen rond het event
+heet het *cumulatieve abnormale rendement* (CAR).
 
-Eén event zegt weinig. Een aandeel beweegt op een gewone dag 1 à 2% om redenen
-die niemand kent, en een nieuwsfeit van 1% verdwijnt in die ruis. Daarom middelt
-een onderzoeker honderd splitsingen, elk op hun eigen dag nul. De ruis is per
-event onafhankelijk en krimpt met de wortel van het aantal events. Het signaal
-staat bij elk event op dezelfde dag en krimpt niet.
+Eén event zegt weinig, want een aandeel beweegt op een gewone dag 1 à 2% om redenen die
+niemand kent, en een nieuwsfeit van 1% verdwijnt in die ruis. Daarom middelt een
+onderzoeker honderd splitsingen, elk op hun eigen dag nul. Omdat de ruis per event
+onafhankelijk is, krimpt ze in het gemiddelde met de wortel van het aantal events,
+terwijl het signaal bij elk event op dezelfde dag staat en niet krimpt. Zo vindt een
+toets een effect van 1% met enkele tientallen events als de dag bekend is, maar niet als
+het venster weken beslaat.
 
-Dezelfde wortel kennen we uit de standaardfout van 2% in [de lecture over
-rendementen](#00-01-rendementen): bij een volatiliteit van 20% per jaar is het
-gemiddelde rendement na honderd jaar data nog op 2 procentpunt onzeker. Daar werkt
-de wortel tegen de onderzoeker, hier ervoor. Een premie van 6% per jaar is per dag
-0,024%, tegen een dagelijkse marktruis van 1%: een verhouding van 0,024. Een
-nieuwsfeit van 1% op een bekende dag staat tegen 2% ruis van één aandeel: een
-verhouding van 0,5. Die is ruim twintig keer gunstiger, dus er zijn ongeveer
-vierhonderd keer minder waarnemingen nodig ($21^2 \approx 440$).
+Dezelfde wortel kennen we uit de standaardfout van 2% in [het college over
+rendementen](#00-01-rendementen), waar het gemiddelde rendement bij een volatiliteit van
+20% per jaar na honderd jaar data nog op 2 procentpunt onzeker is. Daar werkt de wortel
+tegen de onderzoeker, hier werkt hij ervoor.
+
+Een premie van 6% per jaar is 0,024% per dag, en tegen een dagelijkse marktruis van 1%
+geeft dat een verhouding van 0,024 tussen signaal en ruis. Een nieuwsfeit van 1% op een
+bekende dag staat tegen 2% ruis van één aandeel, zodat de verhouding daar 0,5 is. Die
+verhouding is ruim twintig keer gunstiger, en daarom zijn er
+ongeveer vierhonderd keer minder waarnemingen nodig ($21^2 \approx 440$).
 
 De redenering heeft twee zwakke plekken. De ruis middelt alleen weg als events op
-verschillende dagen vallen. En het normale rendement komt uit een model dat
-verkeerd kan zijn. Zo'n modelfout is iets anders dan de toevallige schattingsfout
-in de bèta: ze verdwijnt niet met meer data. Over drie dagen maakt een kleine
-modelfout niets uit. Over drie jaar stapelt ze zich op tot een abnormaal rendement
-dat er niet is.
+verschillende dagen vallen, en het normale
+rendement komt uit een model dat verkeerd kan zijn. Zo'n modelfout is iets anders dan de
+toevallige schattingsfout in de bèta, omdat ze niet verdwijnt met meer data. Over drie
+dagen maakt een kleine modelfout niets uit, maar over drie jaar stapelt ze zich op tot
+een abnormaal rendement dat er niet is.
 
 Een event study meet ook *wanneer* een prijs reageert. Met maanddata zagen FFJR
-alleen dat de reactie binnen een maand lag. Santa-Clara vat de latere literatuur
-samen: de halfwaardetijd van nieuws ging van dagen in 1969 via uren in 2000 naar
-seconden nu {cite}`SantaClara2026`. In zijn woorden:
+alleen dat de reactie binnen een maand lag. Volgens Santa-Clara, die de latere literatuur
+samenvat, ging de halfwaardetijd van
+nieuws, de tijd waarin de helft van de prijsreactie binnen is, van dagen in 1969 via uren
+in 2000 naar seconden nu {cite}`SantaClara2026`. In
+zijn woorden:
 
 > the event-study half-lives that were days in 1969 and hours in 2000 are now
 > seconds for anything in a filing, a transcript or a satellite image.
 
-Een splitsing heeft twee datums: de aankondiging, en enkele weken later de
-*ex-datum*, de eerste handelsdag waarop het aandeel gesplitst noteert. Het nieuws
-zit in de aankondiging. Wat we dus verwachten: het CAR stijgt vóór en rond de
-aankondiging, het abnormale rendement op de ex-datum is nul, en daarna blijft het
-CAR vlak. Een toets
-vindt een effect van 1% met enkele tientallen events als de dag bekend is, maar
-niet als het venster weken beslaat.
+Een splitsing heeft twee datums, de aankondiging en enkele weken later de *ex-datum*, de
+eerste handelsdag waarop het aandeel gesplitst noteert. Omdat het nieuws in de
+aankondiging zit, verwachten we dat het CAR vóór en rond de aankondiging stijgt, dat het
+abnormale rendement op de ex-datum nul is en dat het CAR daarna vlak blijft. De
+replicatie kent alleen de ex-datum, zodat we de stijging daar vóór dag 0 verwachten.
 
 ## Toy-voorbeeld: drie aandelen, vijf plus drie dagen
 
@@ -155,8 +159,8 @@ meten abnormale rendementen in een *eventvenster* van drie dagen
 | B | $-1{,}0$ | $0{,}0$ | $-1{,}0$ | $1{,}0$ | $1{,}0$ | | $0{,}5$ | $1{,}5$ | $0{,}5$ |
 | C | $-3{,}3$ | $-0{,}8$ | $0{,}2$ | $2{,}2$ | $2{,}7$ | | $2{,}0$ | $0{,}5$ | $1{,}1$ |
 
-Op dag 0 daalt de markt 1%, terwijl alle drie de aandelen stijgen: daar zit het
-event.
+Op dag 0 daalt de markt 1%, terwijl alle drie de aandelen stijgen, en daar zit dus het
+event. Hoe groot het is en hoe zeker we dat weten, rekenen we in vijf stappen uit.
 
 **Het recept.** De variantie van een CAR over $L_2$ dagen is niet
 $L_2\hat\sigma^2_{\varepsilon_i}$, met $\hat\sigma^2_{\varepsilon_i}$ de restvariantie
@@ -166,20 +170,23 @@ $$
 \hat\sigma^2_{\varepsilon_i} \times \Bigl[L_2 + \frac{L_2^2}{L_1} + \frac{(S^*_m - L_2\hat\mu_m)^2}{S_{mm}}\Bigr],
 $$
 
-met $L_1$ de lengte van het schattingsvenster. Daarin zijn $\hat\mu_m$ en $S_{mm}$
-het gemiddelde van de markt en de kwadratensom rond dat gemiddelde. $S^*_m$ is de
-som van de markt in het eventvenster. De twee extra termen zijn de fout
-in de geschatte $\hat\alpha_i$ en $\hat\beta_{i,m}$. De theorie leidt deze formule
-als eerste af.
+met $L_1$ de lengte van het schattingsvenster. Verder zijn $\hat\mu_m$ en $S_{mm}$ het
+gemiddelde van de markt en de kwadratensom rond dat gemiddelde, en is $S^*_m$ de som van
+de markt in het eventvenster. De twee extra termen komen van de fout in de geschatte
+$\hat\alpha_i$ en
+$\hat\beta_{i,m}$. Die fout is op elke dag van het eventvenster dezelfde, zodat ze in het
+CAR $L_2$ keer meetelt en de term van $\hat\alpha_i$ met $L_2^2$ groeit.
 
 **Stap 1: het marktmodel.** De markt heeft in het schattingsvenster gemiddelde
-$\hat\mu_m = 0$ en $S_{mm} = 10$. Omdat het gemiddelde nul is, geeft OLS $\hat\alpha_i = \bar r_i$ en
-$\hat\beta_{i,m} = \sum r_m r_i / 10$. Voor A: $\hat\alpha_A = 0{,}5/5 = 0{,}1$ en
+$\hat\mu_m = 0$ en $S_{mm} = 10$. Omdat het gemiddelde nul is, geeft OLS $\hat\alpha_i = \bar r_i$
+en
+$\hat\beta_{i,m} = \sum r_m r_i / 10$. Voor A is $\hat\alpha_A = 0{,}5/5 = 0{,}1$ en
 $\hat\beta_{A,m} = (2{,}8 + 1{,}4 + 0 + 0{,}6 + 5{,}2)/10 = 1{,}0$.
 
 **Stap 2: de restvariantie.** De residuen van A zijn
 $(0{,}5;\ -0{,}5;\ 0;\ -0{,}5;\ 0{,}5)$, met kwadratensom 1. Gedeeld door
-$L_1 - 2 = 3$ geeft dat $\hat\sigma^2_{\varepsilon_A} = 0{,}3333$. Voor alle drie:
+$L_1 - 2 = 3$ geeft dat $\hat\sigma^2_{\varepsilon_A} = 0{,}3333$. Voor alle drie de
+aandelen ziet de berekening er zo uit:
 
 | aandeel | $\sum r_i$ | $\sum r_m r_i$ | $\hat\alpha_i$ | $\hat\beta_{i,m}$ | residuen | $\hat\sigma^2_{\varepsilon_i}$ |
 |---|---|---|---|---|---|---|
@@ -187,8 +194,9 @@ $L_1 - 2 = 3$ geeft dat $\hat\sigma^2_{\varepsilon_A} = 0{,}3333$. Voor alle dri
 | B | $0$ | $5$ | $0$ | $0{,}5$ | $0;\ 0{,}5;\ -1;\ 0{,}5;\ 0$ | $1{,}5/3 = 0{,}5$ |
 | C | $1{,}0$ | $15$ | $0{,}2$ | $1{,}5$ | $-0{,}5;\ 0{,}5;\ 0;\ 0{,}5;\ -0{,}5$ | $1/3 = 0{,}3333$ |
 
-**Stap 3: abnormale rendementen.** Voor A op dag 0:
-$1{,}0 - 0{,}1 - 1{,}0 \times (-1{,}0) = 1{,}9$. Over de drie dagen:
+**Stap 3: abnormale rendementen.** Voor A is het abnormale rendement op dag 0 gelijk aan
+$1{,}0 - 0{,}1 - 1{,}0 \times (-1{,}0) = 1{,}9$. De tabel geeft ze voor alle drie de
+aandelen en alle drie de dagen.
 
 | | $\widehat{AR}_{-1}$ | $\widehat{AR}_{0}$ | $\widehat{AR}_{+1}$ | $\widehat{CAR}$ |
 |---|---|---|---|---|
@@ -196,15 +204,18 @@ $1{,}0 - 0{,}1 - 1{,}0 \times (-1{,}0) = 1{,}9$. Over de drie dagen:
 | B | $0{,}0$ | $2{,}0$ | $0{,}0$ | $2{,}0$ |
 | C | $0{,}3$ | $1{,}8$ | $-0{,}6$ | $1{,}5$ |
 
-Het gemiddelde CAR, het CAAR, is $2{,}0\%$.
+Het gemiddelde CAR, het CAAR, is $2{,}0\%$. Of dat meer is dan toeval, hangt af van de
+ruis in elk CAR, en die volgt uit het recept.
 
-**Stap 4: de variantie van een CAR.** Met $S^*_m = 1$ geeft het recept
-$3 + 9/5 + 1/10 = 4{,}9$ in plaats van 3. Voor A en C is de variantie
+**Stap 4: de variantie van een CAR.** Met $S^*_m = 1$ geeft het recept niet 3 maar $3 +
+9/5 + 1/10 = 4{,}9$, en het grootste deel van de extra ruis komt van de fout in
+$\hat\alpha_i$ (9/5), omdat vijf schattingsdagen weinig zijn tegen drie eventdagen. Voor A
+en C is de variantie daardoor
 $4{,}9 \times 0{,}3333 = 1{,}6333$, voor B $2{,}45$.
 
 **Stap 5: de toets.** De variantie van het CAAR is
-$(1{,}6333 + 2{,}45 + 1{,}6333)/9 = 0{,}6352$, dus
-$J_1 = 2{,}0/\sqrt{0{,}6352} = 2{,}509$. Wie de schattingsfout vergeet, deelt door
+$(1{,}6333 + 2{,}45 + 1{,}6333)/9 = 0{,}6352$, zodat $J_1 = 2{,}0/\sqrt{0{,}6352} = 2{,}509$.
+Een onderzoeker die de schattingsfout vergeet, deelt door
 $\sqrt{3{,}5/9} = 0{,}6236$ en vindt $3{,}207$.
 
 De code doet dezelfde vijf stappen en zet de uitkomsten naast de handberekening.
@@ -240,38 +251,39 @@ code = {"CAR A": car["A"], "CAR B": car["B"], "CAR C": car["C"], "factor": facto
 pd.DataFrame({"met de hand": hand, "code": code}).round(3)
 ```
 
-De twee kolommen zijn gelijk. Wat de lezer nu weet: een abnormaal rendement is
-een rendement min een geschat model, en die schatting voegt ruis toe die de
-naïeve toets vergeet. Met vijf schattingsdagen maakt dat de $t$-waarde 28% te hoog.
+De code komt op dezelfde getallen uit als de handberekening. Een abnormaal rendement is
+dus een rendement min een geschat model, en die schatting voegt ruis toe die de naïeve
+toets over het hoofd ziet. Met vijf schattingsdagen is de naïeve $t$-waarde daardoor 28%
+te hoog.
 
 ## Theorie
 
-We leiden eerst de verdeling van een abnormaal rendement af, en daaruit de
-variantie van een CAR: het recept uit het toy-voorbeeld. Dat is de kern. Daarna
-volgen de toets $J_1$, zijn toetskracht en de halfwaardetijd van informatie. We
-sluiten af met de twee plekken waar de toets faalt: events op dezelfde dag en
+We leiden eerst de verdeling van een abnormaal rendement af, en daaruit de variantie van
+een CAR. Die variantie is het recept uit het toy-voorbeeld en de kern van dit college.
+Daarna volgen de toets $J_1$, zijn toetskracht en de halfwaardetijd van informatie. We
+sluiten af met de twee plekken waar de toets faalt, bij events op dezelfde dag en over
 lange horizonnen.
 
 ### Opzet: eventtijd en het marktmodel
 
 Een event study verandert de tijdas. Voor elk event $i = 1, \dots, N$ is $\tau = 0$
 de dag van het event, ongeacht de kalenderdatum. Het schattingsvenster heeft $L_1$
-dagen, gebruikelijk vele malen meer dan het eventvenster. Het eventvenster loopt
-van $\tau_1$ tot $\tau_2$ en heeft $L_2 = \tau_2 - \tau_1 + 1$ dagen, gebruikelijk
-kort rond het event. De vensters
+dagen, meestal vele malen meer dan het eventvenster. Het eventvenster loopt
+van $\tau_1$ tot $\tau_2$ en heeft $L_2 = \tau_2 - \tau_1 + 1$ dagen, meestal kort rond
+het event. De vensters
 overlappen niet, zodat het event de schatting van het normale rendement niet
 besmet.
 
-De reeks telt kalendertijd, met rendementen van $t$ naar $t+1$. Hier telt $\tau$
-de dagen ten opzichte van het event. Volgens de notatietabel is $r_{i,\tau}$ het
-netto rendement, zonder de risicovrije rente af te trekken; {cite:t}`MacKinlay1997`
-schrijft daarvoor $R$. Een ster markeert het eventvenster:
-$\mathbf{r}^*_i$ is de vector van de $L_2$ eventrendementen.
+In de rest van de reeks loopt de tijd in kalendertijd, met rendementen van $t$ naar
+$t+1$, maar hier telt $\tau$ de dagen ten opzichte van het event. We schrijven
+$r_{i,\tau}$ voor het netto rendement, zonder aftrek van de risicovrije rente.
+{cite:t}`MacKinlay1997` schrijft daarvoor $R$. Een ster markeert het eventvenster,
+zodat $\mathbf{r}^*_i$ de vector van de $L_2$ eventrendementen is.
 
-*Waarom zou dit waar zijn?* Een groot deel van de dagelijkse beweging van een
-aandeel is marktbeweging. Een onderzoeker die die component weghaalt, houdt een
-residu over met minder variantie, en de toets wordt scherper. Het marktmodel is
-dus een statistisch filter, geen theorie over verwachte rendementen:
+Een groot deel van de dagelijkse beweging van een aandeel is marktbeweging. Een
+onderzoeker die die component weghaalt, houdt een residu over met minder variantie,
+zodat de toets scherper wordt. Het marktmodel is dus een statistisch filter en geen
+theorie over verwachte rendementen:
 
 ```{math}
 :label: eq-eventstudies-marktmodel
@@ -282,10 +294,12 @@ r_{i,\tau} = \alpha_i + \beta_{i,m} r_{m,\tau} + \varepsilon_{i,\tau},
 \Var(\varepsilon_{i,\tau}) = \sigma^2_{\varepsilon_i}.
 ```
 
-In woorden: het rendement van het aandeel is een vast deel $\alpha_i$ (hier een
-intercept op netto rendementen, geen pricing error of Jensen-alpha), een deel
-dat met de markt meebeweegt via $\beta_{i,m}$ (bij grote aandelen rond 1), en een
-residu. De residuele volatiliteit $\sigma_{\varepsilon_i}$ is in de
+Volgens het model bestaat het rendement van het aandeel uit een vast deel $\alpha_i$
+(hier een intercept op netto rendementen, geen afwijking van een evenwichtsmodel zoals de
+Jensen-alpha), een deel dat via $\beta_{i,m}$ met de markt meebeweegt, en een residu. Bij
+grote
+aandelen ligt $\beta_{i,m}$ rond 1. De residuele volatiliteit $\sigma_{\varepsilon_i}$ is
+in de
 replicatiesteekproef hieronder (achteraf gekozen grote aandelen) gemiddeld 1,8%
 per dag. Met
 $\mathbf{X}_i = [\boldsymbol{\iota}\ \ \mathbf{r}_m]$, de $L_1 \times 2$-matrix
@@ -303,11 +317,13 @@ $$
 ### Het kernresultaat: de ruis in een abnormaal rendement
 
 *Waarom zou dit waar zijn?* Een onderzoeker die $\alpha_i$ en $\beta_{i,m}$ te hoog
-schat, trekt op elke eventdag te veel af. Die fout is op alle eventdagen dezelfde.
-Wie de dagen optelt, telt de fout dus $L_2$ keer op, en de variantie van het CAR
-stijgt meer dan evenredig met het venster.
+schat, trekt op elke eventdag te veel af, en die fout is op alle eventdagen dezelfde.
+Bij het optellen van de dagen telt de fout dus $L_2$ keer mee, zodat de variantie van
+het CAR meer dan evenredig met het venster stijgt.
 
-Het abnormale rendement over het eventvenster is
+Het abnormale rendement is het werkelijke rendement min wat het geschatte marktmodel
+voorspelt, zodat het ook de fout in $\hat{\mathbf{b}}_i$ bevat. Over het eventvenster is
+het
 
 ```{math}
 :label: eq-eventstudies-ar
@@ -316,9 +332,8 @@ Het abnormale rendement over het eventvenster is
 ```
 
 Hier is $\mathbf{X}^*_i$ dezelfde matrix als $\mathbf{X}_i$, maar dan met de
-marktrendementen van het eventvenster. In woorden: onder de nulhypothese dat het
-event geen effect heeft, is het abnormale rendement de ruis van de eventdagen min
-de schattingsfout.
+marktrendementen van het eventvenster. Onder de nulhypothese dat het event geen effect
+heeft, is het abnormale rendement dus de ruis van de eventdagen min de schattingsfout.
 
 :::{prf:theorem} Verdeling van abnormale rendementen
 :label: thm-eventstudies-ar
@@ -335,18 +350,18 @@ conditioneel op $\mathbf{X}_i$ en $\mathbf{X}^*_i$,
 ```
 :::
 
-In woorden: de variantie is de ruis van de eventdag ($\mathbf{I}$) plus de
-schattingsfout, die op alle eventdagen tegelijk zit en de abnormale rendementen
-onderling correleert.
+De variantie bestaat uit de ruis van de eventdagen, de term met $\mathbf{I}$, plus de
+schattingsfout. Omdat die fout op alle eventdagen tegelijk zit, zijn de abnormale
+rendementen onderling gecorreleerd.
 
 :::{prf:proof}
 Uit $\hat{\mathbf{b}}_i - \mathbf{b}_i =
 (\mathbf{X}_i'\mathbf{X}_i)^{-1}\mathbf{X}_i'\boldsymbol{\varepsilon}_i$ volgt dat
 $\widehat{\mathbf{ar}}^*_i$ lineair is in de normale vectoren
 $\boldsymbol{\varepsilon}^*_i$ en $\boldsymbol{\varepsilon}_i$, dus normaal met
-verwachting nul. De vensters overlappen niet, dus de twee vectoren zijn
-onafhankelijk (daar werkt de aanname van onafhankelijke storingen over de tijd) en
-de kruistermen verdwijnen:
+verwachting nul. Omdat de vensters niet overlappen, zijn de twee vectoren onafhankelijk
+(daar werkt de aanname van onafhankelijke storingen over de tijd), zodat de kruistermen
+verdwijnen:
 $\Var(\widehat{\mathbf{ar}}^*_i) = \sigma^2_{\varepsilon_i}\mathbf{I} +
 \mathbf{X}^*_i\,\Var(\hat{\mathbf{b}}_i)\,\mathbf{X}^{*\prime}_i$, met
 $\Var(\hat{\mathbf{b}}_i) = \sigma^2_{\varepsilon_i}(\mathbf{X}_i'\mathbf{X}_i)^{-1}$.
@@ -355,7 +370,8 @@ $\square$
 
 Het CAR is de som over het venster,
 $\widehat{\text{CAR}}_i = \boldsymbol{\iota}'\widehat{\mathbf{ar}}^*_i$, met
-variantie $\sigma^2_{\text{CAR},i} = \boldsymbol{\iota}'\mathbf{V}_i\boldsymbol{\iota}$. Voor het
+variantie $\sigma^2_{\text{CAR},i} = \boldsymbol{\iota}'\mathbf{V}_i\boldsymbol{\iota}$.
+Voor het
 marktmodel heeft die variantie een gesloten vorm.
 
 :::{prf:proposition} Variantie van het CAR in het marktmodel
@@ -375,10 +391,10 @@ van de markt in het eventvenster. Dan is
 ```
 :::
 
-In woorden: de ruis groeit met $L_2$, de fout in $\hat\alpha_i$ met $L_2^2$, en de
-fout in $\hat\beta_{i,m}$ met het kwadraat van wat de markt in het eventvenster
-afwijkt van normaal. Dit is het recept uit het toy-voorbeeld. Daar gaf het
-$3 + 9/5 + 1/10 = 4{,}9$ in plaats van 3.
+De ruis groeit dus met $L_2$, de fout in $\hat\alpha_i$ met $L_2^2$ en de fout in
+$\hat\beta_{i,m}$ met het kwadraat van wat de markt in het eventvenster van normaal
+afwijkt. Dit is het recept uit het toy-voorbeeld, waar het $3 + 9/5 + 1/10 = 4{,}9$ gaf
+in plaats van 3.
 
 :::{prf:proof}
 :class: dropdown
@@ -408,14 +424,16 @@ Met $g_1 = L_2$ en $g_2 = S^*_m$ volgt [](#eq-eventstudies-varcar). $\square$
 
 Bij $L_2 = 21$ en $L_1 = 250$ voegt de term $L_2^2/L_1$ 8% toe bovenop de
 ruisterm $L_2$, want $(L_2^2/L_1)/L_2 = 21/250$. Bij het jaarvenster van 250 dagen
-in de replicatie, met $L_1 \approx 500$, is dat $250/500 = 50\%$. Wie de term weglaat, overschat zijn $t$-waarden, des te meer naarmate
-het venster langer is.
+in de replicatie, met $L_1 \approx 500$, is dat $250/500 = 50\%$. Zonder die term zijn de
+$t$-waarden dus te hoog, en des te meer
+naarmate het venster langer is.
 
 ### Wat het voorspelt: de toets en zijn kracht
 
-*Waarom zou dit waar zijn?* Een onderzoeker die $N$ onafhankelijke events middelt,
-laat het signaal staan en deelt de variantie van de ruis door $N$. Hoe meer events,
-hoe kleiner de ruis; hoe langer het venster, hoe groter.
+Middelen over events maakt de toets scherper, en een langer venster maakt hem botter.
+Een onderzoeker die $N$ onafhankelijke events middelt, laat het signaal staan en deelt
+de variantie van de ruis door $N$, terwijl elke extra dag in het venster ruis toevoegt
+zonder signaal.
 
 Het gemiddelde CAR (het CAAR) en zijn variantie zijn
 
@@ -434,17 +452,18 @@ J_1 = \frac{\overline{\text{CAR}}}{\sqrt{\hat{\bar\sigma}^2}}
 \ \xrightarrow{d}\ \mathcal{N}(0,1).
 ```
 
-In woorden: het CAAR gedeeld door zijn standaardfout, een gewone $t$-waarde. In het
+$J_1$ is dus een gewone $t$-waarde, het CAAR gedeeld door zijn standaardfout. In het
 voorbeeld van MacKinlay, 600 winstaankondigingen van Dow Jones-bedrijven, geeft
 goed nieuws op dag 0 een abnormaal rendement van 0,965% met $J_1 = 9{,}28$
 (zijn tabel 1).
 
-$J_1$ gebruikt de variantie uit het schattingsvenster. Maakt het event de koers
-onrustiger, zoals een overnamebod, dan is die variantie te klein en verwerpt $J_1$
-te vaak. {cite:t}`BoehmerMusumeciPoulsen1991` (BMP) schatten de noemer daarom uit
-de doorsnede: uit hoe sterk de CAR's van de $N$ events in het eventvenster zelf
-van elkaar verschillen. Ze delen elk CAR eerst door zijn eigen standaardfout, zoals
-{cite:t}`Patell1976`: $\text{SCAR}_i = \widehat{\text{CAR}}_i/\hat\sigma_{\text{CAR},i}$. Dan
+Omdat $J_1$ de variantie uit het schattingsvenster gebruikt, is die variantie te klein
+als het event de koers onrustiger maakt, zoals bij een overnamebod, en dan verwerpt
+$J_1$ te vaak. {cite:t}`BoehmerMusumeciPoulsen1991` (BMP) schatten de noemer daarom uit
+de doorsnede, dus uit hoe sterk de CAR's van de $N$ events in het eventvenster zelf van
+elkaar verschillen. Ze delen elk CAR eerst door zijn eigen standaardfout, zoals
+{cite:t}`Patell1976`, wat $\text{SCAR}_i =
+\widehat{\text{CAR}}_i/\hat\sigma_{\text{CAR},i}$ geeft. De toets wordt dan
 
 ```{math}
 :label: eq-eventstudies-bmp
@@ -453,14 +472,15 @@ t_{\text{BMP}} = \frac{\overline{\text{SCAR}}}{s_{\text{SCAR}}/\sqrt{N}},
 s^2_{\text{SCAR}} = \frac{1}{N-1}\sum_{i=1}^N\bigl(\text{SCAR}_i - \overline{\text{SCAR}}\bigr)^2 .
 ```
 
-In woorden: een gewone $t$-toets op de gestandaardiseerde CAR's. Een door het event
-verhoogde variantie verschijnt vanzelf in $s_{\text{SCAR}}$. Standaardiseren geeft
-bovendien de zeer volatiele aandelen minder gewicht, terwijl zij in $J_1$ de noemer
-domineren. Daarom ligt BMP in de replicatie iets hoger: 4,7 tegen 4,0.
+$t_{\text{BMP}}$ is een gewone $t$-toets op de gestandaardiseerde CAR's, zodat een door
+het event verhoogde variantie vanzelf in $s_{\text{SCAR}}$ verschijnt. Standaardiseren
+geeft bovendien de zeer volatiele aandelen minder gewicht, terwijl die aandelen in $J_1$
+de noemer domineren. Daarom ligt BMP in de replicatie iets hoger, op 4,7 tegen 4,0.
 
 Hoe vaak vindt $J_1$ een echt effect? Stel dat elk event op $\tau = 0$ een
 abnormaal rendement $a$ heeft, dat alle aandelen residuele volatiliteit
-$\sigma_\varepsilon$ hebben en dat $L_1$ groot is. Dan is $J_1 \approx \mathcal{N}(\delta, 1)$ met
+$\sigma_\varepsilon$ hebben en dat $L_1$ groot is. Dan is $J_1 \approx \mathcal{N}(\delta, 1)$
+met
 
 ```{math}
 :label: eq-eventstudies-power
@@ -469,31 +489,32 @@ $\sigma_\varepsilon$ hebben en dat $L_1$ groot is. Dan is $J_1 \approx \mathcal{
 \text{kracht}(\delta) = \Phi(\delta - 1{,}96) + \Phi(-\delta - 1{,}96),
 ```
 
-met $\Phi$ de standaardnormale verdelingsfunctie. In woorden: de kracht stijgt met de wortel van het aantal events en daalt met de
-wortel van de vensterlengte. Met $\sigma_\varepsilon = 2\%$, $a = 1\%$, $L_2 = 1$ en $N = 20$ is
-$\delta = 2{,}24$ en de kracht 61%. Met een venster van drie dagen zakt $\delta$
-naar $1{,}29$ en de kracht naar 25%. Zoals de intuïtie voorspelde, vindt de toets
-een effect van 1% met enkele tientallen events, zolang de dag bekend is. Een
-venster van $L_2$ dagen vraagt $L_2$ keer zoveel events voor dezelfde kracht.
+met $\Phi$ de standaardnormale verdelingsfunctie. De kracht stijgt dus met de wortel van
+het aantal events en daalt met de wortel van de vensterlengte. Met $\sigma_\varepsilon =
+2\%$, $a = 1\%$, $L_2 = 1$ en $N = 20$ is $\delta = 2{,}24$ en de kracht 61%, maar met
+een venster van drie dagen zakt $\delta$ naar $1{,}29$ en de kracht naar 25%. Zo vindt
+de toets, zoals we in de intuïtie verwachtten, een effect van 1% met enkele tientallen
+events, zolang de dag bekend is. Een venster van $L_2$ dagen vraagt $L_2$ keer zoveel
+events voor dezelfde kracht.
 
-De vensterlengte hangt ook samen met de *halfwaardetijd* van informatie: het
-aantal perioden na het event waarna de helft van de uiteindelijke prijsreactie
-binnen is. Die is nooit kleiner te meten dan de resolutie van de data. Met
-maanddata is "hooguit een maand" het beste antwoord. Met transactiedata vonden
+De vensterlengte hangt ook samen met de *halfwaardetijd* van informatie, het aantal
+perioden na het event waarna de helft van de uiteindelijke prijsreactie binnen is. Die
+halfwaardetijd is nooit kleiner te meten dan de resolutie van de data, zodat met
+maanddata "hooguit een maand" het beste antwoord is. Met transactiedata vonden
 {cite:t}`PatellWolfson1984` een eerste reactie op winst- en dividendberichten
 binnen enkele minuten. Bij aandelen die live op CNBC werden besproken, reageerden
 koersen binnen seconden, en was positief nieuws binnen een minuut verwerkt
 {cite}`BusseGreen2002`. Bij elke
 verfijning van de meetlat lag de halfwaardetijd onder de nieuwe resolutie. Met
-de dagdata van de replicatie is binnen een dag dus het scherpste antwoord dat
+de dagdata van de replicatie is "binnen een dag" dus het scherpste antwoord dat
 we zelf kunnen geven.
 
 ### Hoe het faalt: events op dezelfde dag
 
-*Waarom zou dit waar zijn?* Het delen door $N$ veronderstelt dat de ruis van het
-ene event niets zegt over die van het andere. Vallen honderd bankevents op dezelfde
-dag, dan delen ze het sectornieuws van die dag. Het gemiddelde van die ruis krimpt
-dan niet meer met $N$, en de toets vindt te vaak een effect.
+Als events op dezelfde dag vallen, vindt de toets te vaak een effect. Het delen door $N$
+veronderstelt namelijk dat de ruis van het ene event niets zegt over die van het andere.
+Vallen honderd bankevents op dezelfde dag, dan delen ze het sectornieuws van die dag,
+zodat het gemiddelde van die ruis niet meer met $N$ krimpt.
 
 :::{prf:proposition} Variantie van een gemiddelde onder correlatie
 :label: thm-eventstudies-cluster
@@ -510,9 +531,9 @@ $\bar\rho = \frac{2}{N(N-1)}\sum_{i<j}\Corr(x_i, x_j)$. Dan
 ```
 :::
 
-In woorden: correlatie vergroot de variantie van het gemiddelde met factor
-$1 + (N-1)\bar\rho$ en verkleint de spreiding in de doorsnede met factor
-$1 - \bar\rho$.
+Correlatie vergroot de variantie van het gemiddelde dus met factor $1 + (N-1)\bar\rho$.
+Tegelijk verkleint ze de spreiding in de doorsnede met factor $1 - \bar\rho$, omdat
+gedeelde ruis alle events dezelfde kant op duwt.
 
 :::{prf:proof}
 $\Var(\bar x) = N^{-2}\bigl(Nv + N(N-1)v\bar\rho\bigr)$. Verder is
@@ -523,11 +544,14 @@ $\square$
 Een toets die $\bar\rho$ negeert, heeft onder de nulhypothese een
 standaarddeviatie van $\sqrt{1 + (N-1)\bar\rho}$ in plaats van één. Bij $N = 50$ en
 $\bar\rho = 0{,}05$ is dat $1{,}86$. Een nominale toets van 5% verwerpt dan in
-$2\Phi(-1{,}96/1{,}86) = 29\%$ van de gevallen, en meer events maken het erger. BMP
-lost het niet op. Zijn noemer is de spreiding in de doorsnede, en volgens de
-tweede formule van de propositie is die een factor $1 - \bar\rho$ te klein, bij
-$\bar\rho = 0{,}05$ dus 0,95. BMP deelt door te weinig en verwerpt nog vaker.
-{cite:t}`KolariPynnonen2010` corrigeerden BMP met beide factoren:
+$2\Phi(-1{,}96/1{,}86) = 29\%$ van de gevallen, en meer events maken dat erger.
+
+BMP lost het probleem niet op, want de noemer van die toets schat de variantie in de
+doorsnede. Volgens de tweede formule van de propositie is die variantie een factor
+$1 - \bar\rho$ te klein, bij $\bar\rho = 0{,}05$ dus 0,95 keer de waarde zonder
+correlatie. Omdat BMP door te weinig deelt, is de $t$-waarde bij $N = 50$ niet 1,86 maar
+$1{,}86/\sqrt{0{,}95} \approx 1{,}91$ keer te breed verdeeld, zodat die toets nog vaker
+verwerpt. Daarom corrigeerden {cite:t}`KolariPynnonen2010` BMP met beide factoren:
 
 ```{math}
 :label: eq-eventstudies-kp
@@ -535,35 +559,36 @@ t_{\text{KP}} = t_{\text{BMP}}\sqrt{\frac{1-\hat{\bar\rho}}{1 + (N-1)\hat{\bar\r
 ```
 
 met $\hat{\bar\rho}$ de gemiddelde correlatie tussen de residuen in het
-schattingsvenster. In woorden: de $t$-waarde krimpt naarmate de events meer ruis
-delen. Events op verschillende dagen delen geen ruis. In de replicatie wegen we de
-correlatie daarom met de kalenderoverlap van de vensters.
+schattingsvenster. De $t$-waarde krimpt dus naarmate de events meer ruis delen. Omdat
+events op verschillende dagen geen ruis delen, wegen we de correlatie in de replicatie
+met de kalenderoverlap van de vensters.
 
 ### Hoe het faalt: de lange horizon
 
 *Waarom zou dit waar zijn?* Een onderzoeker die het normale rendement elke dag
-twee basispunten te laag schat, ziet over drie dagen niets. Over drie jaar
-(750 handelsdagen) is dat 15%, en de ruis groeit maar met de wortel van de
-horizon. De fout wint het dan van de ruis.
+twee basispunten te laag schat, ziet over drie dagen niets. Over drie jaar (750
+handelsdagen) loopt die fout op tot 15%,
+terwijl de ruis maar met de wortel van de horizon groeit, zodat de fout het van de ruis
+wint.
 
 Mist het model het verwachte rendement elke dag met $\eta$, de modelfout, dan
-heeft een CAAR over een eventvenster van $L_2$ dagen een bias $L_2\eta$. Bij
-onafhankelijke events is zijn standaardfout $\sigma_\varepsilon\sqrt{L_2/N}$. De
-verwachte $t$-waarde zonder echt effect is
+heeft een CAAR over een eventvenster van $L_2$ dagen een bias $L_2\eta$. Omdat de
+standaardfout bij onafhankelijke events $\sigma_\varepsilon\sqrt{L_2/N}$ is, wordt de
+verwachte $t$-waarde zonder echt effect
 
 $$
 \E[J_1] \approx \frac{L_2\eta}{\sigma_\varepsilon\sqrt{L_2/N}} = \sqrt{NL_2}\ \frac{\eta}{\sigma_\varepsilon}.
 $$
 
 Met $\eta = 0{,}02\%$ per dag, $\sigma_\varepsilon = 2\%$ en $N = 100$ is dat $0{,}17$ bij
-$L_2 = 3$ en $2{,}7$ bij $L_2 = 750$: een "significant" effect dat volledig uit het
-model komt. Dit *bad model problem* (een uitkomst die het benchmarkmodel meet in
-plaats van het event) is de joint hypothesis van [de vorige
-lecture](#02-06-efficiente-markten) in haar meest concrete vorm.
-Volgens {cite:t}`BarberLyon1997` vallen lange-horizontoetsen tegen een
-marktindex bovendien scheef uit. Zij vergeleken daarom met bedrijven van dezelfde
-grootte en boek-marktwaardeverhouding. {cite:t}`KothariWarner2007` concluderen dat
-korte event studies goed werken en lange gevoelig blijven voor het model.
+$L_2 = 3$ en $2{,}7$ bij $L_2 = 750$, een "significant" effect dat volledig uit het model
+komt. Dit
+*bad model problem* (een uitkomst die het benchmarkmodel meet in plaats van het event)
+is de joint hypothesis van [het vorige college](#02-06-efficiente-markten) in de meest
+concrete vorm. Volgens {cite:t}`BarberLyon1997` vallen lange-horizontoetsen tegen een
+marktindex bovendien scheef uit, en daarom vergeleken zij met bedrijven van dezelfde
+grootte en boek-marktwaardeverhouding. {cite:t}`KothariWarner2007` concluderen dat korte
+event studies goed werken, maar dat lange gevoelig blijven voor het model.
 
 ```{admonition} Samengevat
 :class: tip
@@ -577,35 +602,34 @@ korte event studies goed werken en lange gevoelig blijven voor het model.
   $\sqrt{L_2}$ en de residuele volatiliteit $\sigma_\varepsilon$, [](#eq-eventstudies-power).
 
 - Events op dezelfde dag vergroten de variantie van het CAAR met
-  $1 + (N-1)\bar\rho$, [](#eq-eventstudies-cluster); meer events maken dat erger.
+  $1 + (N-1)\bar\rho$, [](#eq-eventstudies-cluster), en meer events maken dat erger.
 
-- Een modelfout groeit met de vensterlengte $L_2$, de ruis met $\sqrt{L_2}$: lange
-  event studies meten het model.
+- Een modelfout groeit met de vensterlengte $L_2$ en de ruis met $\sqrt{L_2}$, zodat
+  lange event studies het model meten.
 
-- De halfwaardetijd is niet kleiner te meten dan de resolutie van de data; met
-  dagdata is binnen een dag het scherpste antwoord.
+- De halfwaardetijd is niet kleiner te meten dan de resolutie van de data, zodat met
+  dagdata "binnen een dag" het scherpste antwoord is.
 
-- De simulatie hierna vraagt: hoe vaak vindt $J_1$ een effect van 1% bij een
-  gegeven aantal events en vensterlengte?
+- De simulatie hierna meet hoe vaak $J_1$ een effect van 1% vindt bij een gegeven aantal
+  events en vensterlengte.
 ```
 
 ## Simulatie: toetskracht zoals Brown en Warner
 
-De uitkomst eerst: met een eendaags venster vindt $J_1$ een effect van 1% bij 20
-events in 63% van de steekproeven, zoals [](#eq-eventstudies-power) voorspelt.
-Met een venster van 21 dagen mist hij hetzelfde effect bij 100 events in vier van
-de vijf steekproeven.
+Met een eendaags venster vindt $J_1$ een effect van 1% bij 20 events in 63% van de
+steekproeven, zoals [](#eq-eventstudies-power) voorspelt. Met een venster van 21 dagen
+mist hij hetzelfde effect zelfs bij 100 events in vier van de vijf steekproeven.
 
-{cite:t}`BrownWarner1980,BrownWarner1985` maten hoe goed event-study-methoden
-werken. Ze injecteerden in echte rendementen op willekeurige datums een bekend
-abnormaal rendement en telden hoe vaak een toets het vond. Met dagdata en 50
-aandelen vond het marktmodel een effect van 1% op dag 0 in 80,4% van de
-steekproeven. Verspreid over de elf dagen van $-5$ tot $+5$ was dat nog 13,2%
-{cite}`BrownWarner1985`. Wij simuleren, zodat we elke eigenschap zelf kiezen.
+{cite:t}`BrownWarner1980,BrownWarner1985` maten hoe goed event-study-methoden werken
+door in echte rendementen op willekeurige datums een bekend abnormaal rendement te
+injecteren en te tellen hoe vaak een toets het vond. Met dagdata en 50 aandelen vond het
+marktmodel een effect van 1% op dag 0 in 80,4% van de steekproeven, maar verspreid over
+de elf dagen van $-5$ tot $+5$ was dat nog 13,2% {cite}`BrownWarner1985`. Wij simuleren
+in plaats daarvan, zodat we elke eigenschap van de data zelf kiezen.
 
-De vraag over steekproeven: hoe vaak verwerpt $J_1$ de nulhypothese, als functie
-van het aantal events $N$, de vensterlengte en de grootte van het effect? Het
-datagenererende proces volgt de eigenschappen van dagrendementen die ertoe doen:
+We willen weten hoe vaak $J_1$ de nulhypothese verwerpt, als functie van het aantal
+events $N$, de vensterlengte en de grootte van het effect. Het datagenererende proces
+volgt daarvoor de eigenschappen van dagrendementen die voor de toets van belang zijn:
 
 | eigenschap | waarde |
 |---|---|
@@ -620,8 +644,9 @@ datagenererende proces volgt de eigenschappen van dagrendementen die ertoe doen:
 De functie hieronder simuleert abnormale rendementen zonder effect, inclusief de
 schattingsfout van het marktmodel. De markt heeft vorm `(r, 1, T)` omdat alle
 events van één steekproef dezelfde marktdagen delen. Met `rho > 0` delen ze ook
-residuele ruis, zoals in [](#thm-eventstudies-cluster); hier staat `rho` op nul.
-De replicaties lopen in blokken van 250 om het geheugengebruik te beperken. De tweede functie voegt een effect toe op dag 0
+residuele ruis, zoals in [](#thm-eventstudies-cluster), maar hier staat `rho` op nul.
+De replicaties lopen in blokken van 250 om het geheugengebruik te beperken. De tweede
+functie voegt een effect toe op dag 0
 en berekent $J_1$ volgens [](#eq-eventstudies-j1).
 
 ```{code-cell} ipython3
@@ -700,9 +725,10 @@ De tabel bevestigt [](#eq-eventstudies-power). Bij $N = 20$, $a = 1\%$ en een
 eendaags venster is de kracht 62,9%, tegen 61% uit de formule. Een effect van 2%,
 zo groot als het CAAR in het toy-voorbeeld, vindt de toets dan in 99,2% van de
 steekproeven. De schattingsfout die in het toy-voorbeeld de variantie met 63%
-verhoogde (4,9 tegen 3), is hier met $L_1 = 250$ en één dag verwaarloosbaar: 0,4%.
+verhoogde (4,9 tegen 3), is hier met $L_1 = 250$ en één dag verwaarloosbaar, want ze voegt
+maar 0,4% toe.
 
-In de figuur staat elk venster in een eigen paneel. Let op hoe de lijnen naar
+In de figuur staat elk venster in een eigen paneel, zodat te zien is hoe de lijnen naar
 rechts verschuiven als het venster langer wordt.
 
 ```{code-cell} ipython3
@@ -734,8 +760,8 @@ plt.show()
 Toetskracht van $J_1$ in 1000 gesimuleerde steekproeven. Met een venster van één
 dag vindt de toets een effect van 1% al in de meeste steekproeven met 20 events.
 Met een venster van 21 dagen mist hij datzelfde effect zelfs met 100 events in
-vier van de vijf steekproeven. De stippellijn (geen effect) blijft rond 5%: de
-toets is goed gespecificeerd, ook met dikke staarten.
+vier van de vijf steekproeven. De stippellijn (geen effect) blijft rond 5%, wat betekent dat de toets ook met dikke
+staarten goed gespecificeerd is.
 :::
 
 Zonder effect ligt de verwerpingsfrequentie overal tussen 3,5 en 6%. Op één cel na
@@ -743,9 +769,11 @@ valt dat binnen de simulatieruis van
 $1{,}96\sqrt{0{,}05 \times 0{,}95/1000} \approx 1{,}4$ procentpunt, en bij twintig
 cellen is één uitschieter te verwachten. Bij $N = 50$ en een eendaags venster, de
 opzet van Brown en Warner, vindt onze toets een effect van 1% in 94,7% van de
-steekproeven, tegen hun 80,4% op echte data: de simulatie is optimistischer dan
-echte rendementen. Wie de eventdag kent, heeft dus een scherp instrument. Wie hem op een
-week nauwkeurig kent, heeft vijf keer zoveel events nodig.
+steekproeven, tegen hun 80,4%. Het verschil zit in hun steekproef van willekeurig gekozen
+aandelen,
+die gemiddeld volatieler zijn dan de 2% van de simulatie. Met een bekende eventdag is de
+toets scherp. Is de dag maar op
+een week bekend, dan zijn vijf keer zoveel events nodig.
 
 ## Replicatie op echte data
 
@@ -764,20 +792,20 @@ CRSP-marktportefeuille uit de French-bibliotheek. De splitsingsdatums staan als
 lijst in de code.
 
 **Verschil met het origineel.** FFJR gebruikten maanddata van 940
-NYSE-splitsingen uit 1927–1959; wij dagdata, een eventvenster van $-250$ tot $+60$
+NYSE-splitsingen uit 1927–1959, en wij gebruiken dagdata, een eventvenster van $-250$ tot $+60$
 dagen en een marktmodel geschat op tot 250 dagen aan elke kant van dat venster. Onze aandelen zijn
 gekozen omdat ze *nu* groot zijn, een selectie achteraf die de stijging vóór de
 splitsing opdrijft.
 
-**Verwachte afwijking.** De vorm moet gelijk zijn: een CAAR dat over het jaar vóór
-de ex-datum positief en significant is, een abnormaal rendement van nul op de
-ex-datum, en daarna geen significante drift ($|t| < 2$). Het niveau vergelijken we
-niet, omdat de waarden van FFJR hier niet geverifieerd zijn.
+**Verwachte afwijking.** De vorm moet gelijk zijn, met een CAAR dat over het jaar vóór de ex-datum positief en
+significant is, een abnormaal rendement van nul op de ex-datum en daarna geen
+significante drift ($|t| < 2$). Door de selectie achteraf
+ligt de stijging vooraf waarschijnlijk hoger dan bij FFJR, en daarom is hun figuur de
+maatstaf voor de vorm en niet voor het niveau.
 ```
 
-De exacte waarden uit tabel 2 van FFJR konden we niet uit een toegankelijke bron
-verifiëren. We vergelijken daarom de vorm. Eerst de lijst met splitsingen. Elke
-regel is `ticker:ex-datum:ratio`, en de ex-datum is dag 0.
+De code begint met de lijst met splitsingen,
+waarin elke regel de vorm `ticker:ex-datum:ratio` heeft en de ex-datum dag 0 is.
 
 ```{code-cell} ipython3
 # Ex-dates and ratios (>= 3:2) from the Yahoo Finance split history
@@ -820,7 +848,8 @@ pd.Series({"splitsingen": len(events), "aandelen": len(tickers),
            "laatste ex-datum": f"{events['ex_date'].max():%Y-%m}"})
 ```
 
-Er zijn 102 splitsingen van 50 aandelen. Nu de koersen en het marktrendement.
+Er zijn 102 splitsingen van 50 aandelen. Daarna laden we de koersen en het
+marktrendement.
 
 ```{code-cell} ipython3
 prices = hap_data.yahoo(tickers, start="2002-01-01", end="2026-08-01")
@@ -854,9 +883,10 @@ def car_variance(s2, xtx_inv, r_m_event):
 ```
 
 `car_variance` is [](#eq-eventstudies-varcar) in matrixvorm. Per event schatten we
-nu het marktmodel, net als FFJR buiten het eventvenster: tot 250 dagen ervóór en
-250 dagen erna. Een venster alleen vooraf zou de stijging vóór de splitsing als
-normaal rendement meetellen, en zo een te hoge alpha geven. Daarna berekenen we de abnormale rendementen over
+nu het marktmodel, net als FFJR buiten het eventvenster, met tot 250 dagen ervóór en 250
+dagen erna. Een venster alleen vooraf zou de stijging vóór de splitsing als
+normaal rendement meetellen, en zo een te hoge alpha geven. Daarna berekenen we de
+abnormale rendementen over
 $\tau = -250, \dots, +60$.
 
 ```{code-cell} ipython3
@@ -886,9 +916,10 @@ fit_table.describe().loc[["mean", "min", "max"]].round(3)
 ```
 
 Het schattingsvenster telt gemiddeld 495 dagen, de gemiddelde bèta is 1,08 en de
-gemiddelde residuele volatiliteit 1,8% per dag. Nu het CAAR-pad en zijn
-standaardfout: voor elke dag $\tau$ de variantie van het CAR van $-250$ tot $\tau$
-volgens [](#eq-eventstudies-varcar), opgeteld over de events.
+gemiddelde residuele volatiliteit 1,8% per dag. Vervolgens berekenen we het CAAR-pad en
+zijn standaardfout, waarvoor we voor elke dag
+$\tau$ de variantie van het CAR van $-250$ tot $\tau$ volgens
+[](#eq-eventstudies-varcar) over de events optellen.
 
 ```{code-cell} ipython3
 caar_path = AR.mean(axis=0).cumsum()
@@ -897,11 +928,13 @@ for f in fits:
     for k in range(len(tau)):   # Var of CAR(-250, tau_k) for this event
         var_path[k] += car_variance(f["s2"], f["xtx_inv"], f["r_m"][:k + 1])
 se_path = np.sqrt(var_path) / len(fits)
-pd.DataFrame({"CAAR": caar_path, "SE": se_path}, index=pd.Index(tau, name="tau")).loc[[-121, -1, 0, 60]].round(4)
+caar_table = pd.DataFrame({"CAAR": caar_path, "SE": se_path}, index=pd.Index(tau, name="tau"))
+caar_table.loc[[-121, -1, 0, 60]].round(4)
 ```
 
-Op dag $-1$ is het CAAR 14,9% met standaardfout 3,7 procentpunt. Let in de figuur
-op twee dingen: de helling vóór dag 0 en de helling erna.
+Op dag $-1$ is het CAAR 14,9% met standaardfout 3,7 procentpunt, en de figuur toont het
+hele pad van dag $-250$ tot
+$+60$.
 
 ```{code-cell} ipython3
 :label: cel-eventstudies-caar
@@ -926,15 +959,18 @@ plt.show()
 :width: 90%
 
 Cumulatief gemiddeld abnormaal rendement rond 102 splitsingen van grote
-Amerikaanse aandelen. Het patroon is dat van FFJR: een gestage stijging over het
-jaar vóór de splitsing, en geen voortgezette stijging erna. De band veronderstelt
-onafhankelijke events; de tabel hieronder controleert dat.
+Amerikaanse aandelen. Het patroon is dat van FFJR, met een gestage stijging over het jaar vóór de splitsing en
+geen voortgezette stijging erna. De band veronderstelt onafhankelijke events, en de
+tabel hieronder controleert die aanname.
 :::
 
-Nu de toetsen per venster. Voor Kolari-Pynnönen schatten we de residuele correlatie
+Nu volgen de toetsen per venster. Voor Kolari-Pynnönen schatten we de residuele correlatie
 tussen elk paar events op de dagen waarop hun schattingsvensters overlappen
 (minimaal 100). Die correlatie telt alleen voor het deel van het eventvenster dat
-beide events op dezelfde kalenderdagen hebben; daarmee wegen we haar.
+beide events op dezelfde kalenderdagen hebben, en daarom wegen we de correlatie met dat
+gedeelde deel. Bij het jaarvenster is dat ruim
+90% voor twee events die een maand na elkaar vallen, en nul voor events die jaren uit
+elkaar liggen.
 
 ```{code-cell} ipython3
 resid_corr = pd.DataFrame(resid_panel).corr(min_periods=100).to_numpy(copy=True)
@@ -967,86 +1003,90 @@ table = pd.DataFrame([split_tests(lo, hi) for lo, hi in windows_real])
 table.set_index("venster").round(4)
 ```
 
-De tabel heeft de vorm die FFJR voorspelden. Naast hun figuur:
+De tabel heeft de vorm die FFJR vonden. Hieronder staan onze getallen naast hun
+figuur.
 
-| | FFJR (hun figuur) | verwachting hier | hier |
-|---|---|---|---|
-| CAAR over het jaar vóór de splitsing | stijgt gestaag | positief, $\lvert t \rvert > 2$ | 14,9% (SE 3,7), $J_1 = 4{,}0$, BMP 4,7 |
-| abnormaal rendement op de ex-datum | niet apart gemeten (maanddata) | nul | $-0{,}08\%$, $J_1 = -0{,}40$ |
-| CAAR na de splitsing | vrijwel vlak | $\lvert t \rvert < 2$ | $-2{,}9\%$ over $[0,60]$ (SE 1,6), $J_1 = -1{,}84$, BMP $-1{,}18$ |
+| | FFJR (hun figuur) | verwachting hier | hier | correlatie $\hat{\bar\rho}$ en KP |
+|---|---|---|---|---|
+| CAAR over het jaar vóór de splitsing | stijgt gestaag | positief, $\lvert t \rvert > 2$ | 14,9% (SE 3,7), $J_1 = 4{,}0$, BMP 4,74 | 0,0012, KP 4,47 |
+| abnormaal rendement op de ex-datum | niet apart gemeten (maanddata) | nul | $-0{,}08\%$, $J_1 = -0{,}40$ | 0,0000, KP 0,05 |
+| CAAR na de splitsing | vrijwel vlak | $\lvert t \rvert < 2$ | $-2{,}9\%$ over $[0,60]$ (SE 1,6), $J_1 = -1{,}84$, BMP $-1{,}18$ | 0,0003, KP $-1{,}16$ |
 
-**Geslaagd.** Alle drie de voorwaarden uit de verwachte afwijking kloppen: een
-significant positief CAAR vooraf, nul op de ex-datum, en geen significante drift
-daarna. Wie na de splitsing koopt, verdient er niets extra mee.
+**Geslaagd.** De drie verwachtingen komen uit, want het CAAR is vooraf
+significant positief, op de ex-datum nul en daarna zonder significante drift. Wie na de
+splitsing koopt, verdient er dus niets extra mee.
 
-Het CAAR van $-2{,}9\%$ na de splitsing verdient een tweede blik. Het is
-verenigbaar met geen drift, maar ook met een negatieve drift van enkele procenten.
-Honderd events zijn te weinig om dat te onderscheiden: de standaardfout van 2% uit
-[de lecture over rendementen](#00-01-rendementen), nu in eventtijd. De
-lange-horizonformule geeft een tweede lezing: een modelfout van
+Het CAAR van $-2{,}9\%$ na de splitsing is het waard om nog eens te bekijken. Het is
+verenigbaar met geen drift, maar ook met een negatieve drift van enkele procenten, en
+honderd events zijn te weinig om die twee te onderscheiden. Dat is hetzelfde probleem
+als de standaardfout van 2% uit [het college over rendementen](#00-01-rendementen), maar
+dan in eventtijd. De lange-horizonformule geeft nog een lezing, want een modelfout van
 $\eta = -2{,}9\%/61 \approx -0{,}05\%$ per dag, ruim 10% per jaar, zou het hele
-CAAR verklaren. Of zo'n fout plausibel is, laat "Wat er brak" open. FFJR vonden
-alleen een daling na splitsingen zonder dividendverhoging. Hun conclusie was dat
-een splitsing op zichzelf geen effect heeft, zodra de dividendinformatie is
+CAAR verklaren. Of zo'n modelfout plausibel is, komt hieronder terug bij de drift. FFJR
+vonden alleen een daling na splitsingen zonder dividendverhoging, en concludeerden
+dat een splitsing op zichzelf geen effect heeft zodra de dividendinformatie is
 meegenomen:
 
 > once the information effects of associated dividends are properly considered,
 > a split per se has no net effect on common stock returns.
 
-Drie kanttekeningen bij onze getallen:
+Bij onze getallen horen drie kanttekeningen. De eerste gaat over de selectie, de tweede
+over de datum en de derde over de toets.
 
-- De stijging vooraf is deels de reden voor de splitsing en deels onze selectie.
-  Wie in 2026 grote aandelen kiest, kiest aandelen die sterk zijn gestegen.
-- We meten rond de ex-datum, niet rond de aankondiging, die enkele weken eerder
-  valt. De informatie zit dus in $[-120, -1]$. Voor aankondigingsdatums is er geen
-  gratis bron.
-- De geschatte correlatie tussen events is klein, hoogstens 0,0012, omdat de
-  splitsingen over twintig jaar verspreid liggen. Kolari-Pynnönen verlaagt de
-  $t$-waarde over het jaar vooraf daarom maar van 4,74 (BMP) naar 4,47.
+- De stijging vooraf is deels de reden voor de splitsing en deels onze selectie, want
+  wie in 2026 grote aandelen kiest, kiest aandelen die sterk zijn gestegen.
+- We meten rond de ex-datum en niet rond de aankondiging, die enkele weken eerder valt,
+  zodat de informatie in $[-120, -1]$ zit. Voor aankondigingsdatums bestaat geen gratis
+  bron.
+- De geschatte correlatie tussen events is klein, omdat de splitsingen over twintig
+  jaar verspreid liggen, zodat Kolari-Pynnönen de $t$-waarden van BMP in de tabel
+  nauwelijks verlaagt.
 
 ## Wat er brak, en wat daarna kwam
 
 **Wat het model verklaart.** De event study is een van de meest succesvolle
-instrumenten van de empirische finance. Ze maakte de semi-sterke vorm van
-efficiëntie toetsbaar (prijzen weerspiegelen alle publieke informatie), en de uitkomst was over een halve eeuw opvallend
+instrumenten van de empirische financiële economie. Ze maakte de semi-sterke vorm van
+efficiëntie toetsbaar (prijzen weerspiegelen alle publieke informatie), en de uitkomst was
+over een halve eeuw opvallend
 consistent. Op korte horizon reageren prijzen snel en in de goede richting op
 publiek nieuws, en daarna valt er weinig meer te verdienen. De splitsingen
-hierboven tonen dat opnieuw, zestig jaar na FFJR. Het instrument verhuisde naar het
-recht en de macro-economie. Zo maten {cite:t}`EisfeldtSchubertZhang2023` er de
-waarde van generatieve AI mee, met de lancering van ChatGPT als event. [De
-lecture over LLM's](#07-37-llms-en-efficientie) pakt die lijn weer op.
+hierboven tonen dat opnieuw, zestig jaar na FFJR. Het instrument verhuisde naar het recht
+en de macro-economie, en
+{cite:t}`EisfeldtSchubertZhang2023` maten er zelfs de waarde van generatieve AI mee, met
+de lancering van ChatGPT als event. [Het college over LLM's](#07-37-llms-en-efficientie)
+pakt die lijn weer op.
 
-**Waar het breekt.** Op de lange horizon. Latere studies vonden *drift* (een
-abnormaal rendement dat na het event in dezelfde richting doorloopt) na
-winstaankondigingen, emissies, inkoopprogramma's en splitsingen. Onze eigen tabel
-laat na de ex-datum $-2{,}9\%$ zien: niet significant, maar ook niet nul. Daar bijt
-de joint hypothesis. De bias van een verkeerd model groeit lineair met de
-horizon en de ruis met de wortel. Een abnormaal rendement over drie jaar zegt dus
+**Waar het breekt.** Het instrument breekt op de lange horizon. Latere studies vonden
+*drift* (een abnormaal rendement dat na het event in dezelfde richting doorloopt) na
+winstaankondigingen, emissies, inkoopprogramma's en splitsingen, en onze eigen tabel
+laat na de ex-datum $-2{,}9\%$ zien, niet significant maar ook niet nul. Daar wreekt de
+joint hypothesis zich, want de bias van een verkeerd model groeit lineair met de horizon
+en de ruis alleen met de wortel. Een abnormaal rendement over drie jaar zegt dus
 evenveel over het model als over de markt.
 
-**Risico of vergissing?** De drift laat twee lezingen toe. In de Chicago-lezing (de
-school van Fama: verwachte rendementen variëren met risico) is hij een beloning voor risico dat het marktmodel niet meet: bedrijven die splitsen
-of hun winst zien stijgen, veranderen van risicoprofiel. Een beter model zou de
-drift dan doen verdwijnen. In de Yale-lezing (de school van Shiller: prijzen
-kunnen ernaast zitten) is hij een vergissing: beleggers
-reageren te traag op nieuws, en arbitrage is te riskant of te duur om de koers in
-één keer recht te zetten. Beide lezingen voorspellen hetzelfde CAR-patroon. Wat ze
-zou scheiden, is een onomstreden model voor het verwachte rendement, en dat levert
-de event study niet.
+**Risico of vergissing?** De drift laat twee lezingen toe. In de Chicago-lezing (de school
+van Fama, waarin verwachte rendementen met risico
+variëren) is hij een beloning voor risico dat het marktmodel niet meet, omdat bedrijven
+die splitsen of hun winst zien stijgen van risicoprofiel veranderen. Een beter model zou
+de drift dan doen verdwijnen. In de Yale-lezing (de school van Shiller, waarin prijzen
+ernaast kunnen zitten) is hij een vergissing, want beleggers reageren te traag op
+nieuws, en arbitrage is te riskant of te duur om de koers in één keer recht te zetten.
+Beide lezingen voorspellen hetzelfde CAR-patroon. Alleen een onomstreden model voor het
+verwachte rendement zou ze kunnen scheiden, en zo'n model levert de event study niet.
 
-**Wat er daarna kwam.** Dat model bestond al als theorie: Sharpe, Lintner en
-Mossin leidden het af {cite}`Sharpe1964,Lintner1965,Mossin1966`, en Jensen gebruikte
-het in 1968 om fondsen te beoordelen {cite}`Jensen1968`. Of bèta werkelijk het
-verwachte rendement bepaalt, werd de vraag van het volgende decennium: [het
-CAPM](#02-08-capm).
+**Wat er daarna kwam.** Een kandidaat voor zo'n model bestond al als theorie. Sharpe,
+Lintner en Mossin leidden het af {cite}`Sharpe1964,Lintner1965,Mossin1966`, en Jensen
+gebruikte het in 1968 om fondsen te beoordelen {cite}`Jensen1968`. Of bèta werkelijk het
+verwachte rendement bepaalt, werd de vraag van het volgende decennium en van het college
+over [het CAPM](#02-08-capm).
 
 ## Oefeningen
 
 :::{exercise}
 :label: ex-eventstudies-1
 
-**Instap: een venster van één dag.** Neem het toy-voorbeeld, maar meet alleen op
-dag 0.
+**Instap: een venster van één dag.** Neem het toy-voorbeeld, maar meet alleen op dag 0.
+Het schattingsvenster en de geschatte alpha's en bèta's blijven gelijk.
 
 1. Bereken met het recept de variantiefactor, het gemiddelde abnormale rendement
    en $J_1$ met de hand.
@@ -1069,16 +1109,17 @@ J1_day0 = np.mean(ar_0) / np.sqrt(sum(var_0) / N**2)
 pd.Series({"factor": factor_0, "gemiddeld AR(0)": np.mean(ar_0), "J1": J1_day0}).round(3)
 ```
 
-**(2)** De dagen $-1$ en $+1$ voegen samen 0,1 aan signaal toe, maar elk een volle
-dag ruis plus schattingsfout. Het signaal zat op dag 0. Wat dit leert: een kort
-venster rond een bekende dag is de sterkste toets, zoals [](#eq-eventstudies-power)
-voorspelt.
+**(2)** Het signaal zat op dag 0. De dagen $-1$ en $+1$ voegen samen maar 0,1 aan
+signaal toe, terwijl elk van die dagen een volle dag ruis plus schattingsfout meebrengt.
+Een kort venster rond een bekende dag is dus de sterkste toets, zoals
+[](#eq-eventstudies-power) voorspelt.
 :::
 
 :::{exercise}
 :label: ex-eventstudies-2
 
-**Afleiding: de prijs van het vergeten van de schattingsfout.**
+**Afleiding: de prijs van het vergeten van de schattingsfout.** In het toy-voorbeeld was
+de naïeve $t$-waarde daardoor te hoog. Deze oefening zoekt de algemene vorm.
 
 1. Leid voor het *constant-mean*-model $r_{i,\tau} = \mu_i + \varepsilon_{i,\tau}$
    (een model zonder markt, alleen een eigen gemiddelde) af dat
@@ -1094,8 +1135,8 @@ voorspelt.
 
 **(1)** Met alleen een constante is $\mathbf{X}_i = \boldsymbol{\iota}$ en
 $(\mathbf{X}_i'\mathbf{X}_i)^{-1} = 1/L_1$. Met $\mathbf{g} = L_2$ geeft
-[](#thm-eventstudies-ar) $\sigma^2_{\varepsilon_i}(L_2 + L_2^2/L_1)$. Intuïtief:
-$\hat\mu_i$ heeft variantie $\sigma^2/L_1$, en die fout wordt $L_2$ keer opgeteld.
+[](#thm-eventstudies-ar) $\sigma^2_{\varepsilon_i}(L_2 + L_2^2/L_1)$. Intuïtief heeft $\hat\mu_i$ variantie $\sigma^2/L_1$, en die fout wordt $L_2$ keer
+opgeteld.
 
 **(2)** De werkelijke variantie gedeeld door de gebruikte is
 $(L_2 + L_2^2/L_1)/L_2 = 1 + L_2/L_1$. Het werkelijke significantieniveau is
@@ -1106,17 +1147,17 @@ level = {L1_: 2 * stats.norm.cdf(-1.96 / np.sqrt(1 + 21 / L1_)) for L1_ in [60, 
 pd.Series(level, name="werkelijk significantieniveau").rename_axis("L1").round(3)
 ```
 
-Bij $L_1 = 250$ is de vertekening klein. Bij $L_1 = 60$, een venster dat we
-tegenkomen bij recente beursintroducties, verwerpt de naïeve toets bijna twee keer
-te vaak. Wat dit leert: de ruis in een abnormaal rendement is niet alleen de ruis
-van de eventdag, maar ook de onzekerheid over wat normaal was.
+Bij $L_1 = 250$ is de vertekening klein, maar bij $L_1 = 60$, een venster dat we
+tegenkomen bij recente beursintroducties, verwerpt de naïeve toets bijna twee keer te
+vaak. De ruis in een abnormaal rendement is dus niet alleen de ruis van de eventdag,
+maar ook de onzekerheid over wat normaal was.
 :::
 
 :::{exercise}
 :label: ex-eventstudies-3
 
 **Brown en Warner op echte data.** Gebruik `returns` en `market` uit de replicatie.
-Trek 300 keer een steekproef van 20 pseudo-events: een willekeurig aandeel en een
+Trek 300 keer een steekproef van 20 pseudo-events, elk een willekeurig aandeel op een
 willekeurige handelsdag tussen 2004 en 2025, met 250 schattingsdagen ervóór.
 Bereken $J_1$ voor een eendaags venster zonder effect en met een abnormaal
 rendement van 1%. Vergelijk met de simulatie ([](#fig-eventstudies-kracht)). Welke
@@ -1149,10 +1190,11 @@ pd.Series({"verwerping zonder effect": np.mean(np.abs(J_null) > 1.96),
 ```
 
 De verwerping zonder effect ligt dicht bij 5%, want willekeurige dagen en aandelen
-geven vrijwel onafhankelijke events. De kracht ligt iets hoger dan de 63% van de
-simulatie met $N = 20$. De residuele volatiliteit van deze grote aandelen (1,8%)
-ligt immers onder de 2% van de simulatie. De spreiding in volatiliteit werkt de
-andere kant op: een paar zeer volatiele aandelen (TSLA, SMCI) domineren de noemer
-van $J_1$. Per saldo wint de lagere gemiddelde volatiliteit: 69% tegen 63%. Wat dit leert: de conclusie van Brown en Warner hangt niet aan de
-simulatieaannames.
+geven vrijwel onafhankelijke events. De kracht ligt iets hoger dan de 63% van de simulatie met $N = 20$, omdat de residuele
+volatiliteit van deze grote aandelen (1,8%) onder de 2% van de simulatie ligt. De
+spreiding in volatiliteit werkt de andere kant op, want een paar zeer volatiele aandelen
+(TSLA, SMCI) domineren de noemer van $J_1$. Per saldo wint de lagere gemiddelde
+volatiliteit, met 69% tegen 63%. Wat de kracht bepaalt, is dus vooral de volatiliteit
+van de gekozen aandelen, en die verklaart ook waarom Brown en Warner met willekeurige
+aandelen minder vonden dan onze simulatie.
 :::
