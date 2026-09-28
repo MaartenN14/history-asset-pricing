@@ -1,0 +1,13 @@
+STATUS 03_11_apt_no_arbitrage T words=5712 prose=PASS
+- Meting voor/na: sent_mean 14,3 -> 16,3; calque 15 -> 0; colon_mid 10,1 -> 3,2; para_one 21 -> 11; telegram 1 -> 0; tmpl 6 -> 2; connect 16 -> 35. nb_numbers: dezelfde meldingen (alleen regelnummers verschoven).
+- Waar we zijn: "prijsden" -> "waardeerden", "haar" (optie) -> "die", losse "Maar"-zin samengevoegd.
+- Overzicht: dubbele punten als lijm weg ("De prijs van die algemeenheid:"), "Ten eerste/Ten tweede", "In deze lecture" -> "In dit college", "definieert het tijdvak" -> "Met dit werk begint een nieuw tijdvak", theorie/CAPM-zinnen verbonden met "maar"/"want".
+- Intuïtie: staccato samengevoegd met want/zodat/maar; "Draai het nu om" -> gewone zin; "En dat geldt" -> "Dat laatste geldt echter".
+- Toy-voorbeeld: stap 1 zonder telegramstijl ("Obligatie: ..."), stap 2 en 3 kregen een hele zin met persoonsvorm, stap 5 in de wij-vorm, "De lezer weet nu" (regeltaal) weg.
+- Theorie: "Waarom zou dit waar zijn?" van 5 naar 1 (de andere vier openen met een gewone bewering), "In woorden:" van 6 naar 2, "Zoals de intuïtie voorspelde" twee keer anders verwoord; "prijst/geprijsd" -> "waardeert juist / verkeerd gewaardeerd"; "haar" voor de call weg; "dus" + hoofdzinvolgorde gecorrigeerd (zodat); in het bewijs van Huberman de losse eenregelige stappen per twee in één alinea gezet.
+- Simulatie: figuurtekst zonder "Bovenste twee lijnen:"-etiketten; motief "standaardfout van 2%" staat er één keer, met uitleg wat het hier betekent; losse zinnen verbonden.
+- Replicatie: "geprijsde factoren" -> "factoren met een premie"; "de verwachte afwijking" als onderwerp (regeltaal) -> "de vooraf gestelde drempels"; telegram "Eerst de drempels ..." en "Dan de vergelijking ..." -> hele zinnen; puntkomma's weg.
+- Wat er brak: Chicago/Yale-lezing zonder dubbele punt als lijm, cleft "Wat de kampen zou scheiden, is" en "is wat de critici aanvoerden" herschreven, "haar" (SDF) -> "de SDF".
+- Oefeningen: vier keer "Wat dit leert:" vervangen door een gewone slotzin met "dus"; "Als ...: verkoop" -> "Is ..., dan verkopen we"; "in haar kleinste vorm" -> "in de kleinste vorm".
+- Opmaak: rewrap plus een eigen herafbreking van de alinea's in directives (rewrap slaat die over). Eén regel inline wiskunde in de opmerking "APT en SDF" (r. 524, 144 tekens) is niet afgebroken.
+- Laten staan en melden: "([](#ex-apt-no-arbitrage-1) laat dat met getallen zien)" linkt naar een oefeningslabel (kaart §3: geen linkdoel), maar links mocht ik niet wijzigen. "short/long", "pricing error" en "factor loadings" staan er nog als vaktermen.

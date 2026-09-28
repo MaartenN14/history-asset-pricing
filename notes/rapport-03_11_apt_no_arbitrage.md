@@ -133,3 +133,18 @@ Sync, uitvoering met HAP_OFFLINE=1 en `nb_outputs` zijn identiek aan F5-1; prose
 
    Niet gedaan: "Veel perioden" verder inkorten, want het bevat alleen nog de martingaalvergelijking (aangehaald in 03_17) en de CRR-knoop. De TODO in de docstring blijft, want STYLE §5 vraagt hem.
 4. Verificatie: sync en uitvoering met HAP_OFFLINE=1 foutloos, geen stderr, prose_stats PASS (5419 woorden). In `nb_outputs` zijn alle getallen gelijk; alleen de celindeling en de tabelvorm zijn veranderd.
+
+## R9-1 (F6b, ronde 9+)
+
+- **Feitelijke fout 1, martingaal (Veel perioden)**: gedaan. "Zonder dividend is de prijs, gemeten in spaarrekeningen, dus een martingaal onder $\pi^*$", met dividend de waarde van aandeel plus herbelegde dividenden; "onder die kansen" in de volgzin.
+- **Verbetering 1, labels**: gedaan. Simulatietabel "verworpen, verkeerd/juist gewaardeerd", legenda "alpha van een verkeerd gewaardeerd aandeel (waar)", vergelijkingstabel "componenten met een premie, tijdreeks / cross-sectie (K = 3)". Notebook offline uitgevoerd; `nb_outputs` voor/na verschilt alleen in labels (en pngbytes).
+- **Verbetering 3 / hardop-toets (taal)**: gedaan. Wie-zin (Huberman) herschreven tot "laat dus toe … maar niet dat veel aandelen het tegelijk zijn"; $R^2$-zin met onderwerp vooraan; metazin over de vorige cel geschrapt ("De tabel hieronder zet de eigenwaarden en hun aandeel …"); Overzicht "Of iets theorie of feit is, hangt hier af van het soort uitspraak"; "{cite:t}`Huberman1982` bewijst dat door … te schalen".
+- **Helderheid, "hij" in Wat het voorspelt**: gedaan ("koopt de handelaar").
+- **Helderheid, SDF twee keer gedefinieerd**: gedaan; in de definitie alleen nog "Een SDF (stochastische discontofactor) is een $m$ met …".
+- **Beter uitleggen, Intuïtie "hoog"**: gedaan ("Lag zijn verwachte rendement toch boven de rente, dan kochten handelaars die portefeuille tot het verschil verdween").
+- **Opbouw, routekaart Theorie**: gedaan; de alinea noemt nu de fundamentele stelling als fundament en de APT als belangrijkste gevolg, in plaats van een opsomming van vier stappen.
+- **Opbouw, oefeningslabels als link**: gedaan; "de eerste oefening laat dat met getallen zien" en "zoals de derde oefening laat zien".
+- **Code en figuren, leeswijzer**: gedaan; de conclusie over de standaardfout staat nu in een eigen alinea die met de tabel opent ("De tabel laat zien dat …") en de portefeuillekant noemt; de leeswijzer is een aparte overgangsalinea vóór de figuur.
+- **Replicatie, $c$-argument**: gedaan; de alinea zegt eerst dat $c$ onbekend is en dat de grens voor 25 portefeuilles daarom geen enkele eindige alpha verbiedt, en gebruikt de simulatie-$c$ alleen nog als "zelfs"-voorbeeld (2469 per portefeuille); 61 700 geschrapt.
+- Afgewezen: geen.
+- Controles: `prose_stats --check` PASS (5.763 woorden), `nb_numbers` geen nieuwe meldingen (alleen de regel met 0,00000081 veranderd van ">" naar "="), `rewrap` en `jupytext --sync` gedraaid.

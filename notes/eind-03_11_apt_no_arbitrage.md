@@ -1,173 +1,169 @@
-STATUS 03_11_apt_no_arbitrage F6c-2 words=5419 prose=PASS open=0 cijfer=9,0 min=9
+STATUS 03_11_apt_no_arbitrage F6c words=5763 prose=PASS open=0 cijfer=9,2 min=9
 
 # Eindbeoordeling: Ross, APT en de fundamentele stelling (F6)
 
+## Ronde 9+
+
+Vorige ronde: 9,0
+
+Gelezen na de taalredactie (notes/taal-03_11_apt_no_arbitrage.md). `prose_stats --check`: 5.712 woorden, PASS. De twee zinnen boven 40 woorden die `prose_stats` telt, zijn splitsartefacten (een getal met punt vóór een zin, r. 336–340, 1238–1240, en het replicatieblok). De langste echte zin telt 38 woorden (r. 87–89). Alle getallen in de proza zijn nagerekend tegen `nb_outputs`. De redactie heeft geen vakterm van betekenis veranderd: "prijst/geprijsd" werd "waardeert juist / verkeerd gewaardeerd", "geprijsde factoren" werd "factoren met een premie", en beide vervangingen zijn inhoudelijk juist. Wel ontstond daardoor een naamsverschil tussen proza en tabellen (punt 1 hieronder). Oordeel: de taal is niet verslechterd, maar vloeiender geworden (35 verbindingswoorden tegen 16, gemiddeld 16,3 woorden per zin tegen 14,3). Een handvol zinnen klinkt nog stroef.
+
 ## De drie verbeteringen met het meeste effect
 
-1. **Eén kern en één naam** (criteria 1 en 2, 8 → 9). De routekaart zegt "Daarna volgt de kern: de APT van Ross", maar de `###` heet "Het kernresultaat: de fundamentele stelling". Kies één kern. Geef het begrip "pricing error" één naam en één symbool: de theorie schrijft $\eta_i$ ("ook alpha genoemd"), de simulatie $\alpha_i$ en "alpha".
-2. **De replicatie laten oordelen over de vraag van Roll en Ross** (criterium 6, 8 → 9). De verwachte afwijking stelt drempels voor PCA en $R^2$, maar niets over het aantal geprijsde factoren. Dat is de vraag uit het blok. Het oordeel "Geslaagd" dekt daardoor niet de uitkomst van één geprijsde component in de cross-sectie tegen "3 à 4". In de tabel origineel/hier zijn vier van de zes cellen onder "origineel" leeg.
-3. **Het getal van 200 aandelen per portefeuille herleiden** (feitelijke fout 1). Het argument dat de alpha van 0,09% binnen de Huberman-grens valt, rust erop.
+1. **Eén naam voor "verkeerd gewaardeerd" en "met een premie", ook in tabellen en legenda** (helderheid 9 → 9,5). De proza zegt na de redactie "verkeerd gewaardeerd", "juist gewaardeerd" en "componenten met een premie", maar de simulatietabel en de figuur zeggen "verworpen, fout geprijsd", "verworpen, goed geprijsd" en "alpha van een fout geprijsd aandeel" (lectures/03_11_apt_no_arbitrage.md:724–725, 745), en de vergelijkingstabel zegt "geprijsde componenten" (:1046–1048). Tabellen en figuurteksten zijn lezerstekst; de labels moeten de woorden van de proza volgen.
+2. **De martingaalzin corrigeren** (helderheid blijft 9,5 alleen met deze correctie; feitelijke fout 1). Na [](#eq-apt-no-arbitrage-martingaal), dat een dividend bevat, staat "De prijs, gemeten in spaarrekeningen, is dus een *martingaal*" (:413). Met dividend is dat onjuist.
+3. **Vijf stroeve zinnen herschrijven** (taal 9 → 9,5). Zie de hardop-toets onderaan en de aanmerkingen bij taal (:545–546, :919–921, :868–869, :67, :578–581).
 
 ## Cijfers
 
 | nr | criterium | gewicht | cijfer |
 |---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 8 |
-| 2 | Opbouw en rode draad | 20% | 8 |
-| 3 | Taal | 15% | 8 |
+| 1 | Helderheid van de uitleg | 25% | 9 |
+| 2 | Opbouw en rode draad | 20% | 9 |
+| 3 | Taal | 20% | 9 |
 | 4 | Toy-voorbeeld | 10% | 9 |
-| 5 | Code en figuren | 10% | 8 |
-| 6 | Replicatie en empirie | 10% | 8 |
+| 5 | Code en figuren | 10% | 9 |
+| 6 | Replicatie en empirie | 10% | 9 |
 | 7 | Oefeningen | 5% | 9 |
-| | **Eindcijfer** | | **8,2** |
+| | **Eindcijfer** | | **9,0** |
 
-(0,3·8 + 0,2·8 + 0,15·8 + 0,1·9 + 0,1·8 + 0,1·8 + 0,05·9 = 8,15, afgerond 8,2.)
+(0,25·9 + 0,2·9 + 0,2·9 + 0,1·9 + 0,1·9 + 0,1·9 + 0,05·9 = 9,0.) Geen deelcijfer onder 8,5; taal boven 8.
 
-## 1. Helderheid van de uitleg (8)
-
-*Goed.*
-- De drie namen van de discontering worden aan het toy-voorbeeld uitgerekend: $m_g = 0{,}6667$, $m_s = 1{,}25$, $\pi^{*}_s = 0{,}5556$, met de zin die zegt waarom de risiconeutrale kans op *slecht* boven 0,4 ligt (Opzet en aannames).
-- De exacte APT wordt op de call uit het toy-voorbeeld toegepast: $1{,}50 = 1{,}1111 + 2{,}6875 \cdot 0{,}1447$. Het resultaat krijgt zo een getal dat de lezer al kent.
-- De Huberman-grens krijgt twee gevolgen met een getal ($\sqrt{0{,}00002} = 0{,}45\%$ per maand) en een zin die ze samenvat ("Voor wie één aandeel wil prijzen, zegt de APT bijna niets").
-
-*Aanmerkingen.*
-- Routekaart van Theorie: "Daarna volgt de kern: de APT van Ross, exact en met ruis." De kop luidt echter "### Het kernresultaat: de fundamentele stelling". De lezer weet niet welke van de twee de kern is.
-- De APT met ruis: "Neem de *pricing errors* (het deel van het verwachte rendement dat de factoren niet verklaren, ook alpha genoemd, in de formules $\eta_i$)." In de simulatie heet dezelfde grootheid $\alpha_i$ en "alpha". Eén begrip, twee namen, twee symbolen.
-- Opmerking APT en SDF: "Neem $m = a - \mathbf{b}'\mathbf{f}$ met $a = 1/(1+R^{f})$, $\boldsymbol{\Omega} = \Var(\mathbf{f})$ en $\mathbf{b} = a\,\boldsymbol{\Omega}^{-1}\boldsymbol{\lambda}$." Drie symbolen in één zin, zonder getal. Voor het toy-voorbeeld is $m$ na te rekenen, maar dat gebeurt niet.
-- Replicatie: "In de Huberman-grens is $N$ het aantal aandelen in een portefeuille". In de stelling is $N$ het aantal activa in de economie. De bewering geldt voor de gelijkgewogen portefeuille van $N$ aandelen, maar dat moet de lezer zelf reconstrueren.
-
-*Beter uitleggen.* Waarom een lineaire $m$ een optie een negatieve prijs kan geven: één getal met het toy-voorbeeld volstaat. Welke $N$ bij de 25 portefeuilles hoort, en waar dat getal vandaan komt.
-
-*Voor een 9.* De kern in de routekaart en de kop gelijktrekken. Eén naam (alpha of pricing error) en één symbool voor het hele stuk. De SDF-opmerking met het toy-voorbeeld narekenen of schrappen.
-
-## 2. Opbouw en rode draad (8)
+## 1. Helderheid van de uitleg (9)
 
 *Goed.*
-- De drie verwachtingen aan het eind van de intuïtie worden alle drie met naam ingelost ("Zoals de intuïtie voorspelde, ligt de optieprijs vast", "telt alleen de factorbèta's", "de derde verwachting uit de intuïtie").
-- De toy-getallen keren terug in theorie (q, $m$, $\pi^\ast$, CRR-kans 0,4444, APT met de call) en in oefening 1.
-- De simulatie beantwoordt één steekproefvraag, en de figuur maakt beide kanten van de Huberman-grens zichtbaar.
+- Opzet en aannames: de drie namen van de discontering worden aan het toy-voorbeeld uitgerekend ($m_g = 0{,}6667$, $m_s = 1{,}25$, $\pi^{*}_s = 0{,}5556$), met de reden waarom de risiconeutrale kans op *slecht* boven 0,4 ligt.
+- Wat het voorspelt: de exacte APT wordt op de call toegepast ($1{,}50 = 1{,}1111 + 2{,}6875 \cdot 0{,}1447$), en de opmerking APT en SDF rekent de lineaire SDF na tot exact 0,6667 en 1,25 en geeft de drempel 1,435 waarboven $m$ negatief wordt.
+- De APT met ruis: de Huberman-grens krijgt twee gevolgen met richting, en het eerste met een getal (0,45% per maand bij $N = 100$).
 
 *Aanmerkingen.*
-- De kern is volgens de routekaart de APT, volgens de kop de fundamentele stelling (zie 1).
-- Theorie heeft zeven `###`-delen. "Veel perioden: de binomiale knoop" levert alleen een brug naar Black-Scholes en de voorwaarde $d < 1 + R^{f} < u$, die oefening 2 opnieuw afleidt.
-- De replicatie opent een nieuwe lijn: "De tabel laat zien dat geen van beide modellen de premies goed vangt." Wat Samengevat over de simulatie belooft (portefeuilles zijn goed geprijsd), moet de replicatie daarna wegverklaren.
+- Veel perioden: "De prijs, gemeten in spaarrekeningen, is dus een *martingaal*." Na een vergelijking met $d_{t+1}$ geldt dat alleen voor prijs plus herbeleggd dividend (feitelijke fout 1).
+- Wat het voorspelt: "Heeft die een positief verwacht rendement, dan koopt hij er onbeperkt van tot dat rendement nul is." Tussen "een handelaar" en "hij" staat een zin met "zo'n portefeuille" als laatste zelfstandig naamwoord, en "portefeuille" wordt elders in het college ook "hij" (:98–99, :462–463). "Hij" is niet eenduidig (H8).
+- Simulatie en Replicatie tegen de proza: "verworpen, fout geprijsd" en "geprijsde componenten, cross-sectie" naast "verkeerd gewaardeerd" en "componenten met een premie" (H7, zie verbetering 1).
+- Overzicht en definitie: de SDF wordt twee keer volledig gedefinieerd, "(SDF, de willekeurige variabele waarmee payoffs van morgen worden verdisconteerd)" (:37–38) en opnieuw in de definitie (:221–222). [onderzoek B]
 
-*Voor een 9.* De kern kiezen. "Veel perioden" terugbrengen tot één alinea met de CRR-kans, of naar oefening 2. In de replicatie vooraf zeggen dat de GRS-toets een tweede vraag is.
+*Beter uitleggen.* Intuïtie: "Had hij toch een hoog verwacht rendement" (:99) zegt niet waarmee "hoog" vergeleken wordt; voor een bijna risicovrije portefeuille is de maatstaf de rente. Eén woord ("hoger dan de rente") volstaat.
 
-## 3. Taal (8)
+## 2. Opbouw en rode draad (9)
 
-*Goed.* Gemiddeld 14,1 woorden per zin, geen verboden woorden en geen calques volgens `prose_stats`. De intuïtie is concreet ("Hij heeft vandaag geld en morgen niets te betalen").
+*Goed.*
+- Overzicht stelt de vraag en geeft het tweeledige antwoord met de prijs ervan ("de stelling zegt niet welke discontofactor het is, en de APT zegt niet welke factoren").
+- De drie verwachtingen uit de intuïtie worden elk op hun plek ingelost, telkens anders verwoord (:339–340, :494–495, :618–620).
+- De toy-getallen keren terug in theorie ($\mathbf{q}$, $m$, $\pi^{*}$, CRR-kans 0,4444, APT met de call, lineaire SDF) en in oefening 1; de $c = 0{,}002$ uit de simulatie keert terug in de replicatie.
 
 *Aanmerkingen.*
-- Wat het voorspelt: "Zoals de intuïtie voorspelde, telt alleen de factorbèta's." Het werkwoord hoort meervoud te zijn.
-- Definitie: "Een vector *state prices* (toestandsprijzen)". Het toy-voorbeeld had "toestandsprijs" al ingevoerd, en nu komt de Engelse term eerst.
-- Replicatie: "Dat is juist wat hun critici aanvoerden." en "Het is geen tegenspraak." Twee korte zinnen die "dat" en "het" laten verwijzen naar een hele alinea.
-- Wat er brak: "De fundamentele stelling is geen model dat kan breken, maar de grammatica van elk later model." Beeldspraak zonder uitleg.
+- Theorie, routekaart: "We leiden vier dingen af. Eerst bewijzen we … Daarna gaan we na … Vervolgens leiden we af … We sluiten af met …" Een mechanische opsomming; de routekaart zegt niet wat de kern is. [onderzoek B]
+- Uniciteit en Replicatie: "([](#ex-apt-no-arbitrage-1) laat dat met getallen zien)" (:396) en "([](#ex-apt-no-arbitrage-3))" (:1056). Oefeningslabels zijn volgens kaart §3 geen linkdoel; de taalredacteur meldde dit al.
 
-*Voor een 9.* De congruentiefout herstellen, "toestandsprijzen" als eerste term in de definitie, en bij "Dat is juist wat hun critici aanvoerden" het ding zelf noemen.
+*Beter uitleggen.* Niets wezenlijks; lengte 5.712 woorden, binnen de grens.
+
+## 3. Taal (9)
+
+*Goed.* De redactie verbond het staccato met want, zodat en maar (Intuïtie, Toy-voorbeeld, Wat er brak) zonder de betekenis te verschuiven. Geen calques, geen gedachtestreepjes of puntkomma's, "In woorden:" twee keer, motiefnamen elk hoogstens één keer en nergens als handelend onderwerp; "de standaardfout van 2%" (:780) zegt ter plekke wat het motief hier betekent.
+
+*Aanmerkingen.*
+- De APT met ruis: "Wie dat uitsluit, sluit dus niet uit dat één aandeel fors verkeerd gewaardeerd is, maar alleen dat veel aandelen dat allemaal zijn." De ontkenning loopt door in het tweede deel, waar een bevestiging bedoeld is. [onderzoek B, deels opgelost]
+- Replicatie: "Of de twee sets dezelfde ruimte opspannen, meet de $R^2$ van de ene set op de andere." Voorop geplaatst lijdend voorwerp; hardop leest "de $R^2$" eerst als onderwerp van "meet" en dan als lijdend voorwerp.
+- Replicatie: "De vorige cel rekent alleen, en de tabel hieronder zet de eigenwaarden en het aandeel in de variantie op een rij." Metazin over de cel. [onderzoek B]
+- Overzicht: "Op de vraag theorie of feit staan hier twee soorten uitspraken naast elkaar." Stroeve voorzetselconstructie rond de motiefnaam. [onderzoek B, sjabloon]
+- De APT met ruis: "Het bewijs, van {cite:t}`Huberman1982`, schaalt …" De komma's zetten "van Huberman" als losse bijstelling.
+
+*Beter uitleggen.* Zie de hardop-toets onderaan; elk van deze zinnen is met een herschrijving van de bestaande zin op te lossen.
 
 ## 4. Toy-voorbeeld (9)
 
-*Goed.* Opzettabel, vijf stappen van één regel, één codecel, tabel hand/code met tien rijen die gelijk zijn. Eén recept ($p = q_g x_g + q_s x_s$), dat Theorie als eerste afleidt. Getallen met noemers onder 100. De slotzin zegt wat de lezer nu weet.
+*Goed.* Opzettabel, vijf genummerde stappen met één regel rekenwerk, één recept dat Theorie als eerste afleidt, een tabel hand/code met tien gelijke rijen, en een slotzin die zegt wat het getal betekent (twee activa leggen de callprijs vast, de kansen 0,6 en 0,4 speelden geen rol).
 
-*Aanmerkingen.* De tabel hand/code koppelt een dict aan een lijst op positie (`hand` en `code`). Dat is kwetsbaar, maar raakt de lezer niet.
+*Aanmerkingen.* Geen die het cijfer raken.
 
-## 5. Code en figuren (8)
+## 5. Code en figuren (9)
 
-*Goed.* De maandelijkse cross-sectionele regressies in `two_pass` zijn een zichtbare lus. De simulatieparameters staan in een dict. Vóór de figuur staat waarop te letten ("let op de bovenste twee lijnen, die vlak blijven"), en het bijschrift zegt wat te zien is.
-
-*Aanmerkingen.*
-- Replicatie: de docstring van `two_pass` eindigt met "TODO: naar hap.stats".
-- De PCA-cel doet in twaalf regels sorteren, schalen, tekenkeuze en presentatie. Het schalen (`long_short = np.abs(eigvec[:, 1:n_pc]).sum(axis=0) / 2`) staat in de tekst, maar de tekenkeuze in de lus niet.
-- De vergelijkingscel formatteert getallen met `f"{x:.3f}".replace(".", ",")` en zet lege strings in de kolom "origineel".
-
-*Voor een 9.* De TODO verwijderen. De PCA-cel splitsen in rekenwerk en tabel. De tabel origineel/hier zonder lege cellen opbouwen.
-
-## 6. Replicatie en empirie (8)
-
-*Goed.* Het blok is compact en noemt het verschil met het origineel duidelijk (1260 aandelen in 42 groepen, factoranalyse en GLS, tegen 25 portefeuilles en PCA). De verwachte afwijking heeft een toetsbare drempel met foutsignaal. De $R^2$'s van de ene set op de andere maken "rotatie van elkaar" meetbaar.
+*Goed.* `two_pass` toont de maandelijkse cross-sectionele regressies als lus; de simulatieparameters staan benoemd in één dict; de figuur met de pricing errors heeft een leeswijzer vooraf en een bijschrift dat zegt wat te zien is; de gewichtenfiguur van PC1–PC3 wordt in het bijschrift gelezen.
 
 *Aanmerkingen.*
-- De verwachte afwijking zegt niets over het aantal geprijsde factoren, de kern van Roll en Ross. Het oordeel: "Het aantal geprijsde factoren is geen vast getal maar hangt af van de toets." Daarmee is het belangrijkste verschil (1 tegen 3 à 4) achteraf geen afwijking meer.
-- In de tabel origineel/hier zijn vier van de zes cellen onder "origineel (Roll en Ross)" leeg.
-- Onder de GRS-tabel volgt een argument met getallen in lopende tekst ($c = 0{,}002$, 200 aandelen, 0,32%, 0,09%, 757 maanden).
+- Simulatie: "De figuur zet de twee kanten van de Huberman-grens naast elkaar. Let vooral op de bovenste twee lijnen, die vlak blijven, en de onderste twee, die dalen." De leeswijzer staat in dezelfde alinea als de conclusie over de standaardfout (:734–737). [onderzoek B]
+- Tabel- en legendalabels "fout geprijsd", "goed geprijsd", "geprijsde componenten" volgen de proza niet meer (verbetering 1).
 
-*Voor een 9.* De verwachte afwijking laten zeggen hoeveel geprijsde componenten er te verwachten zijn, en het oordeel daaraan koppelen. De rijen zonder origineel in een aparte tabel met drempels.
+## 6. Replicatie en empirie (9)
+
+*Goed.* Blok met bron, wat, data, verschil en verwachte afwijking; twee tabellen (vooraf gestelde drempels tegen hier, en origineel tegen hier voor het aantal componenten met een premie); oordeel "Gedeeltelijk geslaagd" gekoppeld aan wat vooraf mogelijk werd geacht; de uitleg waarom een alpha van 0,09% de simulatie niet tegenspreekt, met een getoonde terugrekening.
+
+*Aanmerkingen.*
+- Replicatie: "Met de $c = 0{,}002$ uit de simulatie overschrijdt een alpha van 0,09% per maand die grens pas bij …" De $c$ is een simulatiekeuze; het sterkere argument is dat de grens zonder bekende $c$ voor 25 portefeuilles niets verbiedt. De alinea bevat bovendien vijf getallen ($c$, 0,09%, 2469, 61 700, 757). [onderzoek B]
 
 ## 7. Oefeningen (9)
 
-*Goed.* Oefening 1 is een instap op het toy-voorbeeld met een derde toestand, met handwerk en `linprog`. Oefening 2 is een afleiding met een expliciete arbitrage. Oefening 3 breidt de replicatie uit naar bedrijfstakken en naar $K = 1$ tot 5. Elke uitwerking eindigt met "Wat dit leert:".
+*Goed.* Instap (incomplete markt op het toy, met `linprog` als controle en de super-replicatie als bovengrens), afleiding (CRR-kans en de voorwaarde $d < 1 + R^{f} < u$ met expliciete arbitrage), uitbreiding van de replicatie (49 bedrijfstakken en $K = 1$ tot 5). Elke uitwerking eindigt met wat ze leert, na de redactie in een gewone slotzin.
 
-*Aanmerkingen.* Oefening 3 heeft vier deelvragen over twee verschillende datasets; de uitwerking nummert alleen (4).
+*Aanmerkingen.* Geen die het cijfer raken.
 
 ## Feitelijke fouten
 
-1. Replicatie, onder de GRS-tabel: "Met de $c = 0{,}002$ uit de simulatie en 200 aandelen per portefeuille is dat $\sqrt{0{,}00001} = 0{,}32\%$ per maand". Het aantal van 200 aandelen per portefeuille komt uit geen cel en geen citatie (niet herleidbaar). De rekensom zelf klopt.
+Nagerekend tegen `$TEMP/F6-03_11_apt_no_arbitrage-out.txt`: toy (0,40; 0,50; 1,1111; 0,16; −0,3; 0,5; 0,04), $m$ en $\pi^{*}$, CRR-kans 0,4444, $\lambda_1 = 0{,}1447$, $\beta_{\text{call}} = 2{,}6875$, $\Omega = 0{,}2077$, $b = 0{,}6271$, drempel 1,435; simulatie (SE rond 0,75%, verwerping 26–28%, 3180 × 0,052 ≈ 166, 20 × 0,284 ≈ 5,7, RMS 0,89% naar 0,08%); replicatie (1963-07 tot 2026-07, 757 maanden, 83% en 93%, correlatie 0,93, alle $R^2$ boven 0,89, PC1–PC3 significant en PC4–PC5 niet, SE PC1 × 12 ≈ 2,3%, constante 0,84%, marktpremie −0,545 in het driefactormodel, alleen PC3 significant, gem. |alpha| 0,088, 2469 en 61 700); oefeningen ((0; 0,16), 0,20 extra in *midden*, 55%, 83%, 0,92, 17%, 3%, significante premies 0, 2, 1, 1, 3, constante significant bij $K = 1$). Alles juist.
 
-Nagerekend en correct: toy-voorbeeld ($q = (0{,}40;\ 0{,}50)$, 11,1%, 0,16, $\theta = (-0{,}3;\ 0{,}5)$, 0,04), $m$ en $\pi^\ast$, CRR-kans 0,4444, APT met de call (1,2558; 0,3721; 2,6875; 0,1447; 1,50), $\sqrt{0{,}00002} = 0{,}45\%$, simulatie (0,75%, ruim een kwart, 0,0073, 166 en 5,7, RMS 0,89% naar 0,08%), 757 maanden, 83% en 93%, 0,93, zes $R^2$'s boven 0,89, 2,3% per jaar, negatieve marktpremie −0,545, alleen PC3 significant, 0,84% per maand, oefening 1 (lijnstuk en interval (0; 0,16), 0,20 extra in *midden*), oefening 2, oefening 3 (55%, 0,92, 17%, 3%; 0, 2, 1, 1, 3 significante premies).
+1. Veel perioden (:413–414): "De prijs, gemeten in spaarrekeningen, is dus een *martingaal*." Uit [](#eq-apt-no-arbitrage-martingaal) volgt dat alleen zonder dividend; met dividend is de waarde van prijs plus herbeleggd dividend, gemeten in spaarrekeningen, de martingaal. Ook moet erbij dat het om de verwachting onder $\boldsymbol{\pi}^{*}$ gaat. Onjuist (oud, niet door de redactie ingevoerd). Correctie: "Zonder dividend is de prijs, gemeten in spaarrekeningen, dus een martingaal onder $\boldsymbol{\pi}^{*}$."
 
 ## Navertelling in vijf zinnen
 
-Geen arbitrage is hetzelfde als het bestaan van strikt positieve toestandsprijzen, en dus van een positieve SDF en een risiconeutrale maat; in een markt met twee toestanden ligt de prijs van een call daardoor vast op 0,16, en elke andere prijs geeft gratis geld. De prijzen zijn alleen uniek in een complete markt; anders geeft arbitrage een interval. Ross paste hetzelfde argument toe op factoren: bij een exacte factorstructuur zijn verwachte rendementen lineair in de factorbèta's, en met eigen ruis per aandeel blijft alleen de som van de gekwadrateerde pricing errors begrensd, zodat gespreide portefeuilles goed geprijsd zijn en losse aandelen niet per se. Een simulatie laat zien dat een los fout geprijsd aandeel met tien jaar data maar in een kwart van de steekproeven wordt gevonden, en dat valse vondsten de echte ver overtreffen. Op de 25 portefeuilles van French vinden drie principale componenten vrijwel dezelfde ruimte als markt, SMB en HML, maar hoeveel factoren een premie dragen, hangt af van de toets.
+Geen arbitrage is precies hetzelfde als het bestaan van strikt positieve toestandsprijzen, en dus van een positieve SDF en, met een risicovrij activum, een risiconeutrale maat; in het toy-voorbeeld legt dat de call vast op 0,16. Die prijzen zijn alleen uniek in een complete markt; in een incomplete markt geeft arbitrage een interval, en over veel perioden wordt de verdisconteerde prijs een martingaal. Ross paste hetzelfde argument toe op factoren: met een exacte factorstructuur zijn verwachte rendementen lineair in de factorbèta's, en met eigen ruis blijft alleen de som van de gekwadrateerde pricing errors begrensd, zodat gespreide portefeuilles juist gewaardeerd zijn en losse aandelen niet noodzakelijk. De simulatie laat zien dat een los verkeerd gewaardeerd aandeel met tien jaar data onzichtbaar blijft, terwijl de fout van een gespreide portefeuille verdwijnt. Op de 25 Fama-French-portefeuilles vinden principale componenten drie richtingen die de ruimte van Mkt, SMB en HML opspannen, maar hoeveel ervan een premie dragen hangt van de toets af, en beide modellen laten alpha's over die de APT niet verbiedt. Dat komt overeen met het Overzicht.
 
-De navertelling komt overeen met het Overzicht, behalve dat de lezer twijfelt of de fundamentele stelling of de APT de kern is.
+## Taal na de redactie: hardop-toets
 
-## Controle 1
+De redactie heeft niets verslechterd; het college leest hardop grotendeels als gesproken Nederlands. Drie zinnen die nog niet natuurlijk klinken:
 
-Gecontroleerd tegen `rapport-03_11_apt_no_arbitrage.md` §F6-1 en de huidige lecture. `prose_stats --check`: 5.311 woorden, PASS. `nb_outputs` is identiek aan de vorige versie; alleen de tekst veranderde.
+1. :545–546 "Wie dat uitsluit, sluit dus niet uit dat één aandeel fors verkeerd gewaardeerd is, maar alleen dat veel aandelen dat allemaal zijn." → "Wie dat uitsluit, laat dus toe dat één aandeel fors verkeerd gewaardeerd is, maar niet dat veel aandelen het tegelijk zijn."
+2. :919–921 "Of de twee sets dezelfde ruimte opspannen, meet de $R^2$ van de ene set op de andere." → "De $R^2$ van de ene set op de andere laat zien of beide sets dezelfde ruimte opspannen."
+3. :868–869 "De vorige cel rekent alleen, en de tabel hieronder zet de eigenwaarden en het aandeel in de variantie op een rij." → "De tabel hieronder zet de eigenwaarden en hun aandeel in de variantie op een rij."
 
-| punt | status | toelichting |
-|---|---|---|
-| Feitelijke fout 1 (200 aandelen per portefeuille) | opgelost | Vervangen door een getoonde terugrekening: de grens wordt pas overschreden bij $n > 0{,}002/0{,}0009^2 \approx 2469$ aandelen per portefeuille, $25 \times 2469 \approx 61\,700$ in de markt. Nagerekend, klopt. |
-| Verbetering 1a: één kern | opgelost | De routekaart noemt de APT nu "wat de stelling voor verwachte rendementen voorspelt"; de kop "Het kernresultaat: de fundamentele stelling" is de enige kern. |
-| Verbetering 1b: één naam voor de pricing error | deels | "Pricing error" is nu de naam, met alpha als alias in de simulatie ("de $\eta_i$ van de theorie"). Twee symbolen blijven, zoals opgedragen; in "De APT met ruis" staat "ook alpha genoemd" er nog bij. |
-| Verbetering 2: replicatie oordeelt over Roll en Ross | deels | De verwachte afwijking zegt nu dat het aantal geprijsde componenten mag afwijken, en het oordeel is "Gedeeltelijk geslaagd" met de 1 tegen 3 à 4 genoemd. De tabel origineel/hier heeft nog vier lege cellen onder "origineel". |
-| Verbetering 3 (= feitelijke fout 1) | opgelost | Zie boven. |
-| Naadpunt 6 (Roll 1977) | opgelost | "Dybvig en Ross antwoordden dat het CAPM er niet beter voor staat, omdat de marktportefeuille waarop het steunt niet waarneembaar is {cite}`Roll1977`": een citatie, geen vooruitverwijzing. L14 zegt in "Waar we zijn" dat het bezwaar in de APT-discussie terugkwam en daar begint. |
-| Taal: congruentie, *state prices*, "critici" | opgelost | "tellen alleen de factorbèta's"; "toestandsprijzen (*state prices*)"; de zin over de critici noemt het ding zelf. |
+Bij volledige oplossing van alle punten: 9,3
 
-Niet gedaan: SDF-opmerking met het toy-voorbeeld, "Veel perioden" inkorten, PCA-cel splitsen, TODO in de docstring van `two_pass` (volgens het rapport vraagt STYLE §5 hem).
+## Controle 1 (F6c, ronde 9+)
 
-**Cijfers na controle 1 (cijfer van record)**
+Gecontroleerd tegen R9-1 in notes/rapport-03_11_apt_no_arbitrage.md en het college na de
+wijzigingen (5.763 woorden, `prose_stats --check` PASS). De martingaalzin (r. 412-414) is
+nagerekend: zonder dividend ($d_{t+1}=0$) geeft [](#eq-apt-no-arbitrage-martingaal) direct
+$p_t/A_t = \E^{*}_t[p_{t+1}/A_{t+1}]$, de martingaaldefinitie onder $\pi^{*}$. Met dividend
+geldt hetzelfde voor aandeel plus herbelegde dividenden: voor het aantal stukken $n_t$ met
+$n_{t+1} = n_t(1+d_{t+1}/p_{t+1})$ geeft de vergelijking
+$\E^{*}_t[n_t(p_{t+1}+d_{t+1})/A_{t+1}] = n_t p_t/A_t$, dus is $n_t p_t/A_t$ een martingaal
+onder $\pi^{*}$. De correctie is juist. Het getal 2469 (Huberman-grens, replicatie) is
+nagerekend: $0{,}002/0{,}0009^2 = 2469{,}1\ldots$, klopt; 61.700 is geschrapt en staat
+nergens meer. Geen leftover "geprijsd"/"mispricing"-labels (grep leeg).
 
-| nr | criterium | was | nu |
-|---|---|---|---|
-| 1 | Helderheid | 8 | 8 |
-| 2 | Opbouw | 8 | 8 |
-| 3 | Taal | 8 | 9 |
-| 4 | Toy-voorbeeld | 9 | 9 |
-| 5 | Code en figuren | 8 | 8 |
-| 6 | Replicatie | 8 | 8 |
-| 7 | Oefeningen | 9 | 9 |
-| | **Eindcijfer** | 8,2 | **8,3** |
+1. Feitelijke fout 1 (martingaal, :412-414): opgelost, correctie juist (zie boven).
+2. Verbetering 1 (labels verkeerd/juist gewaardeerd, componenten met een premie): opgelost,
+   overal consistent (simulatietabel, legenda, vergelijkingstabel).
+3. Verbetering 3 / hardop-toets (5 stroeve zinnen, :67, :545-546, :578-581, :868-869,
+   :919-921): opgelost, alle vijf letterlijk herschreven volgens het voorstel.
+4. Helderheid, "hij" in Wat het voorspelt: opgelost ("koopt de handelaar").
+5. Helderheid, SDF twee keer gedefinieerd: opgelost (Overzicht nu informeel, formele
+   definitie alleen bij de definitie).
+6. Beter uitleggen, Intuïtie "hoog": opgelost ("boven de rente").
+7. Opbouw, routekaart Theorie: opgelost (kernresultaat en belangrijkste gevolg i.p.v.
+   mechanische opsomming).
+8. Opbouw, oefeningslabels als linkdoel: opgelost (platte tekst "de eerste/derde oefening").
+9. Code en figuren, leeswijzer bij dezelfde alinea als conclusie: opgelost (eigen
+   overgangsalinea vóór de figuur).
+10. Code en figuren, labels volgden proza niet: opgelost (zie verbetering 1).
+11. Replicatie, $c$-argument en vijf getallen in de alinea: opgelost ($c$ staat er eerst als
+    onbekend, 61.700 geschrapt, de alinea telt nu drie getallen).
 
-(0,3·8 + 0,2·8 + 0,15·9 + 0,1·9 + 0,1·8 + 0,1·8 + 0,05·9 = 8,30.) Helderheid blijft 8 omdat de SDF-opmerking zonder getal staat en de pricing error in de theorie nog twee namen heeft; opbouw blijft 8 omdat "Veel perioden" en de GRS-wending in de replicatie ongewijzigd zijn. Voor 8,5: de SDF-opmerking narekenen met het toy-voorbeeld en "ook alpha genoemd" uit de theorie halen (helderheid naar 9).
+Geen nieuwe punten: geen verslechtering en geen nieuwe feitelijke fout gevonden.
 
-## Controle 2
+| nr | criterium | gewicht | F6 | F6c |
+|---|---|---|---|---|
+| 1 | Helderheid van de uitleg | 25% | 9 | 9,5 |
+| 2 | Opbouw en rode draad | 20% | 9 | 9 |
+| 3 | Taal | 20% | 9 | 9,5 |
+| 4 | Toy-voorbeeld | 10% | 9 | 9 |
+| 5 | Code en figuren | 10% | 9 | 9 |
+| 6 | Replicatie en empirie | 10% | 9 | 9 |
+| 7 | Oefeningen | 5% | 9 | 9 |
+| | **Eindcijfer** | | **9,0** | **9,2** |
 
-Gecontroleerd tegen `rapport-03_11_apt_no_arbitrage.md` §F6-2 en de huidige lecture. `prose_stats --check`: 5.419 woorden, PASS. In `nb_outputs` zijn alle getallen gelijk; alleen celindeling en tabelvorm veranderden.
-
-| punt uit controle 1 | status | toelichting |
-|---|---|---|
-| Pricing error: twee namen in de theorie | opgelost | "ook alpha genoemd" is uit "De APT met ruis"; de alias staat alleen in de eerste zin van de simulatie. |
-| Lege cellen in de tabel origineel/hier | opgelost | Twee tabellen: drempels tegen hier, en een echte tabel origineel/hier voor het aantal geprijsde componenten (3 à 4 tegen 3 en 1). |
-| SDF-opmerking met het toy-voorbeeld | opgelost | Nagerekend: factor +0,3721 en −0,5581, $\Omega = 0{,}6 \cdot 0{,}3721^2 + 0{,}4 \cdot 0{,}5581^2 = 0{,}2077$, $b = 0{,}6271$, $m = 0{,}6667$ en $1{,}25$, drempel $0{,}9/0{,}6271 = 1{,}435$. Klopt. |
-| PCA-cel splitsen | opgelost | Rekenwerk en tabel in aparte cellen. |
-| GRS als tweede vraag aankondigen | opgelost | "Daarnaast stellen we een tweede vraag: laten de factoren alpha's over?" |
-| "Veel perioden" inkorten | afgewezen met reden | De sectie draagt de martingaalvergelijking, die een latere lecture aanhaalt (schraptoets eis 2). Geen aftrek meer. |
-| TODO in de docstring van `two_pass` | geen aftrek meer | STYLE §5 vraagt de regel; projectkeuze. |
-
-Kleine verslechtering, zonder effect op het cijfer: de SDF-opmerking heeft nu twee keer "dus" in één alinea ("Een lineaire SDF prijst dus ...", "De APT is dus zwakker"), waar STYLE §11.2 er één toestaat.
-
-**Cijfers na controle 2 (cijfer van record)**
-
-| nr | criterium | controle 1 | nu |
-|---|---|---|---|
-| 1 | Helderheid | 8 | 9 |
-| 2 | Opbouw | 8 | 9 |
-| 3 | Taal | 9 | 9 |
-| 4 | Toy-voorbeeld | 9 | 9 |
-| 5 | Code en figuren | 8 | 9 |
-| 6 | Replicatie | 8 | 9 |
-| 7 | Oefeningen | 9 | 9 |
-| | **Eindcijfer** | 8,3 | **9,0** |
+(0,25·9,5 + 0,2·9 + 0,2·9,5 + 0,1·9 + 0,1·9 + 0,1·9 + 0,05·9 = 9,225 ≈ 9,2.) Helderheid en
+taal stijgen tot het cijfer dat F6 er expliciet voor in het vooruitzicht stelde
+(verbetering 1+2 resp. verbetering 3, beide volledig opgelost). Opbouw, code en figuren en
+replicatie hadden wel een punt, maar F6 noemde daarvoor geen vooruitzicht-cijfer, dus
+blijven ze op 9 (plafondregel §11.3: geen ruimer belonen dan een verse lezer zou doen).
+Cijfer van record: min(9,225, 9,3) = 9,2. Geen deelcijfer onder 8,5; taal boven 8.
