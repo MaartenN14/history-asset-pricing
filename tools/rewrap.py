@@ -19,8 +19,7 @@ def wrap(line):
     words = line[len(prefix):].split(" ") if m else line.strip().split(" ")
     out, cur = [], prefix if m else indent
     for w in words:
-        cand = w if cur.strip() == "" else cur + " " + w
-        if cur.strip() == "": cand = cur + w
+        cand = cur + w if (cur == "" or cur.endswith(" ")) else cur + " " + w
         if len(cand) > WIDTH and cur.strip() and not open_span(cur):
             out.append(cur.rstrip()); cur = indent + w
         else:
@@ -55,6 +54,8 @@ if __name__ == "__main__":
         t = "Dit is een lange zin met $x_{t} + y$ erin die zeker langer is dan negentig tekens en daarom moet breken, maar niet in de wiskunde.\n"
         r = rewrap(t)
         assert all(len(l) <= WIDTH + 12 for l in r.split("\n")) and "$x_{t} + y$" in r and r.replace("\n", " ") == t.replace("\n", " ")
+        li = rewrap("- " + "woord " * 30 + "\n")
+        assert li.startswith("- woord") and "-  " not in li and li.split("\n")[1].startswith("  woord")
         assert rewrap("```{code-cell}\n" + "x" * 200 + "\n```\n") == "```{code-cell}\n" + "x" * 200 + "\n```\n"
         print("selftest OK"); sys.exit()
     for f in sys.argv[1:]:

@@ -610,3 +610,12 @@ volgende college.
 (.md en .ipynb), `notes/taal-<slug>.md`, `notes/eind-<slug>.md`,
 `notes/rapport-<slug>.md`. Onderzoeksrapporten A–E worden één keer gecommit
 bij de start van de ronde.
+
+### 11.3 Plafond op het cijfer van record (orchestrator, 2026-09-28)
+
+De eerste controle (L1) gaf 9,4 waar de eindbeoordelaar bij volledige oplossing
+9,3 in het vooruitzicht stelde; de controleur ziet zijn lijst afgevinkt en beloont
+ruimer dan een verse lezer. Daarom: het cijfer van record is het laagste van het
+F6c-cijfer en het cijfer dat de eindbeoordelaar in F6 noemde voor het geval alle
+punten zijn opgelost. Deelcijfers stijgen bij F6c alleen voor criteria waar F6 een
+punt had. De orchestrator zet het plafond in de statusregel en de commitregel.
