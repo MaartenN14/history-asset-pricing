@@ -1,8 +1,8 @@
-STATUS 02_08_capm F6 words=5495 prose=PASS open=1 cijfer=8,3 min=8
+STATUS 02_08_capm F6c words=5367 prose=PASS open=1 cijfer=8,6 min=8,5
 
 # Eindbeoordeling (F6): Het CAPM
 
-## Eindcijfer: 8,3
+## Eindcijfer F6: 8,3 (na controle: 8,6, cijfer van record; statusregel bovenaan)
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

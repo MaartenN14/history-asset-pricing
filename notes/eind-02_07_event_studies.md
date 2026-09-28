@@ -1,10 +1,10 @@
-STATUS 02_07_event_studies F6 words=4886 prose=PASS open=0 cijfer=8,6 min=8,5
+STATUS 02_07_event_studies F6c words=4927 prose=PASS open=0 cijfer=8,9 min=8,5
 
 # Eindbeoordeling F6: 02_07_event_studies (De event study)
 
 Eindbeoordelaar A, Deel II. Cijfer van record volgens `plannen/rubriek-didactiek.md`.
 
-## Eindcijfer: 8,6
+## Eindcijfer F6: 8,6 (na controle: 8,9, cijfer van record; statusregel bovenaan)
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

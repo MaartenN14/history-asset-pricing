@@ -1,8 +1,8 @@
-STATUS 02_09_black_scholes F6 words=5172 prose=PASS open=0 cijfer=8,5 min=8
+STATUS 02_09_black_scholes F6c words=5239 prose=PASS open=0 cijfer=8,7 min=8
 
 # Eindbeoordeling (F6): Black-Scholes-Merton en de CBOE
 
-## Eindcijfer: 8,5
+## Eindcijfer F6: 8,5 (na controle: 8,7, cijfer van record; statusregel bovenaan)
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

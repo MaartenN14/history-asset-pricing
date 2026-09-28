@@ -1,10 +1,10 @@
-STATUS 02_05_crsp_tape F6 words=5131 prose=PASS open=3 cijfer=8,1 min=8
+STATUS 02_05_crsp_tape F6c words=5231 prose=PASS open=0 cijfer=8,5 min=8
 
 # Eindbeoordeling F6: 02_05_crsp_tape (De CRSP-tape: data als machine)
 
 Eindbeoordelaar A, Deel II. Cijfer van record volgens `plannen/rubriek-didactiek.md`.
 
-## Eindcijfer: 8,1
+## Eindcijfer F6: 8,1 (na controle: 8,5, cijfer van record; statusregel bovenaan)
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

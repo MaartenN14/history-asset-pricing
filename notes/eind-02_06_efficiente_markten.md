@@ -1,8 +1,8 @@
-STATUS 02_06_efficiente_markten F6 words=5444 prose=PASS open=2 cijfer=8,3 min=8
+STATUS 02_06_efficiente_markten F6c words=5457 prose=PASS open=0 cijfer=8,8 min=8,5
 
 # Eindbeoordeling (F6): Fama en de efficiënte markt
 
-## Eindcijfer: 8,3
+## Eindcijfer F6: 8,3 (na controle: 8,8, cijfer van record; statusregel bovenaan)
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

@@ -1,4 +1,4 @@
-STATUS 00_00_setup F6 words=5014 prose=PASS open=2 cijfer=8,6 min=8,5
+STATUS 00_00_setup F6c words=5028 prose=PASS open=1 cijfer=8,6 min=8,5
 
 # Eindbeoordeling F6: 00_00_setup (Opzet, data en conventies)
 
@@ -6,7 +6,7 @@ Eindbeoordelaar A, Deel II. Cijfer van record volgens `plannen/rubriek-didactiek
 De setup heeft bewust eigen kopjes. Criterium 4 (toy-voorbeeld) is n.v.t.; de overige
 zes gewichten zijn herwogen naar 100% (deling door 0,90).
 
-## Eindcijfer: 8,6
+## Eindcijfer F6: 8,6 (na controle: 8,6, cijfer van record; statusregel bovenaan)
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
