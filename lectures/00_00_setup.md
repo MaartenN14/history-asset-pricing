@@ -18,31 +18,31 @@ kernelspec:
 ```{admonition} Waar we zijn in het verhaal
 :class: important
 
-**Jaartal.** 1863–2026, het hele verhaal in één blik.
+**Jaartal.** 1863–2026. Dit college overziet het hele verhaal in één blik.
 
-**Wat we al weten.** Nog niets, en daar begint deze lecture. Het verhaal opent in
+**Wat we al weten.** Nog niets, want met dit college begint het verhaal. Dat verhaal opent in
 1863 bij een Parijse beursbediende die ziet dat de koersuitslag met de wortel van
-de tijd groeit. Het eindigt bij taalmodellen die beleggingsadvies geven.
+de tijd groeit, en het eindigt bij taalmodellen die beleggingsadvies geven.
 Daartussen liggen de random walk, het CAPM, Black-Scholes, de equity premium
 puzzle en de factor zoo. Elke episode heeft drie onderdelen: een theorie, een
 bron van nieuwe data, en een feit dat de theorie niet aankan (zie [](#index)).
-Deze lecture legt de data en het gereedschap klaar.
+Dit college legt daarvoor de data en het gereedschap klaar.
 
-**Welke vraag staat open.** Hoe is de reeks opgebouwd, en hoe goed meten we met
-haar data het gemiddelde rendement op aandelen?
+**Welke vraag staat open.** Hoe is de reeks opgebouwd? Hoe goed meten we met
+de data van de reeks het gemiddelde rendement op aandelen?
 ```
 
 ## Overzicht
 
-Hoe is deze reeks opgebouwd, en hoe goed meten we met haar data het gemiddelde
-rendement op aandelen? Het antwoord op de tweede vraag is de eerste meting van de
-reeks: over honderd jaar is het rekenkundig gemiddelde marktrendement 11,6% per
-jaar, met een standaardfout van 1,8 procentpunt. In deze lecture:
+Dit college laat zien hoe de reeks in elkaar zit en doet meteen de eerste meting,
+namelijk hoe precies een eeuw data het gemiddelde rendement op aandelen vastlegt. Dat
+valt tegen, want over honderd jaar is het rekenkundig gemiddelde marktrendement 11,6%
+per jaar, met een standaardfout van 1,8 procentpunt. In dit college:
 
 - beschrijven we de drie motieven die door de reeks lopen, en de vaste opbouw van
-  elke lecture;
+  elk college;
 
-- leggen we de notatie vast die in alle lectures geldt;
+- leggen we de notatie vast die in alle colleges geldt;
 
 - laden en tekenen we elk van de acht gratis databronnen van `hap.data` één
   keer, en zeggen we welke data ontbreekt;
@@ -54,117 +54,129 @@ jaar, met een standaardfout van 1,8 procentpunt. In deze lecture:
   we hoe slecht een eeuw het gemiddelde meet en hoe goed de volatiliteit.
 
 De reeks volgt de terugblik van Pedro Santa-Clara op zijn loopbaan in asset
-pricing {cite}`SantaClara2026`. Ze werkt die uit tot op de vergelijking, de data en de
+pricing {cite}`SantaClara2026` en werkt die uit tot op de vergelijking, de data en de
 code. De vorm komt van *Advanced Quantitative Economics with Python*
-{cite}`SargentStachurski`: een tekst waarin elke bewering die telt ook wordt
-uitgerekend, op data die iedereen kan downloaden. Deze lecture repliceert niets.
-Ze is de gereedschapskist waarmee de andere negenendertig lectures hun
+{cite}`SargentStachurski`, een tekst waarin elke belangrijke bewering ook wordt
+uitgerekend, op data die iedereen kan downloaden. Dit college repliceert zelf niets,
+maar is de gereedschapskist waarmee de andere negenendertig colleges hun
 beweringen toetsen.
 
 ## De rode draad, en hoe een lecture is opgebouwd
 
-Het vak is chronologisch geordend, maar niet cumulatief. Elk tijdvak volgt
-hetzelfde patroon. Iemand formuleert een theorie. Dan komt er een bron van data
+Het vak is chronologisch geordend, maar niet cumulatief, want een oud model verdwijnt
+niet als er een nieuw bij komt, zoals het CAPM nog dagelijks naast de factor zoo wordt
+gebruikt. Wel volgt elk tijdvak hetzelfde patroon. Iemand formuleert een theorie, en
+daarna komt er een bron van data
 waarmee die theorie voor het eerst te toetsen is: de CRSP-tape in 1964, de
-optiebeurs in 1973, de open datasets van nu. En dan blijkt er een feit te zijn
+optiebeurs in 1973, de open datasets van nu. Vervolgens blijkt er een feit te zijn
 dat het model niet aankan. Dat feit is de barst, en de barst opent het volgende
 hoofdstuk.
 
 Drie motieven lopen door de hele reeks, en waar ze spelen, komen ze onder deze
-namen terug. De standaardfout van 2% gaat over wat data kunnen meten. Risico of
-vergissing gaat over twee lezingen van hetzelfde feit. Theorie of feit gaat over
-de status van een model: getoetst, of wachtend op een verklaring.
+namen terug. De standaardfout van 2% gaat over wat data kunnen meten, risico of
+vergissing over twee lezingen van hetzelfde feit, en theorie of feit over
+de status van een model, dat getoetst is of nog op een verklaring wacht.
 
 **De standaardfout van 2%.** Het gemiddelde rendement van de aandelenmarkt is
-met een eeuw data nog steeds slecht gemeten. De naam komt van een rond getal: bij
+met een eeuw data nog steeds slecht gemeten. De naam komt van een rond getal, want bij
 20% volatiliteit per jaar en honderd jaar data is de standaardfout van het
 gemiddelde $20/\sqrt{100} = 2$ procentpunt. De variantie is daarentegen goed
-meetbaar, met dagdata bijna exact. Uit die asymmetrie volgen drie dingen.
+meetbaar, met dagdata zelfs bijna precies. Uit die asymmetrie volgen drie dingen.
 
 - Volatiliteit is voorspelbaar en rendement nauwelijks. Omdat de volatiliteit per
-  maand scherp te meten is, zijn haar schommelingen zichtbaar. Een schommeling
-  van een paar procentpunt in het verwachte rendement verdrinkt in de ruis.
+  maand scherp te meten is, zijn de schommelingen van de volatiliteit zichtbaar, terwijl
+  een schommeling
+  van een paar procentpunt in het verwachte rendement in de ruis verdrinkt.
 
 - De equity premium puzzle verdwijnt niet met meer data. De puzzel is dat de
   gemeten premie op aandelen veel hoger is dan modellen met een redelijke
-  risicoaversie verklaren: 6,18% per jaar in {cite:t}`MehraPrescott1985`, 8,3% in
-  de French-data van deze lecture. Een premie die
-  op 2 procentpunt na bekend is, wordt pas scherper met eeuwen extra data.
+  risicoaversie kunnen verklaren, met 6,18% per jaar bij {cite:t}`MehraPrescott1985` en
+  8,3% in
+  de French-data van dit college. Omdat die premie maar
+  op 2 procentpunt na bekend is, wordt ze pas scherper met eeuwen extra data.
 
-- Er verschijnen honderden factoren die significant lijken. Van twintig nutteloze
-  factoren haalt er gemiddeld één toevallig een $t$-waarde boven 1,96. Wie
+- Er verschijnen honderden factoren die significant lijken, omdat van twintig nutteloze
+  factoren er gemiddeld één toevallig een $t$-waarde haalt die in absolute waarde boven
+  1,96 ligt. Een onderzoeker die
   honderden kenmerken probeert, vindt er dus tientallen.
 
-Aan het eind van deze lecture rekenen we het getal na.
+Aan het eind van dit college rekenen we het getal na. Dan blijkt dat de ronde
+rekensom dicht bij de standaardfout ligt die de data zelf geven.
 
-**Risico of vergissing.** Aandelen zijn goedkoop na een crash: de prijs is laag
+**Risico of vergissing.** Na een crash zijn aandelen goedkoop, in de zin dat de prijs laag
+is
 ten opzichte van het dividend. Chicago, met Fama, leest dat als een hogere
-vergoeding die beleggers dan eisen: de discontovoet is gestegen. Yale, met
-Shiller, leest hetzelfde feit als angst: de prijs zit ernaast. Beide kampen zijn het
-eens over de metingen en oneens over de uitleg. In 2013 kregen Fama en Shiller
-samen de Nobelprijs, en dat was een juiste beschrijving van de stand van het vak.
-Waar dit speelt, geven we beide lezingen en kiezen we niet.
+vergoeding die beleggers dan eisen, omdat de discontovoet is gestegen. Yale, met
+Shiller, leest hetzelfde feit als angst, waardoor de prijs ernaast zit. Beide kampen zijn
+het
+eens over de metingen, maar oneens over de uitleg. In 2013 kregen Fama en Shiller
+samen de Nobelprijs, en dat gaf de stand van het vak goed weer.
+Waar deze tegenstelling speelt, geven we beide lezingen en kiezen we niet.
 
-**Theorie of feit.** Het vak begon met één model dat werd getoetst, het CAPM. Het
+**Theorie of feit.** Het vak begon met één model dat werd getoetst, het CAPM, en het
 eindigt met een verzameling robuuste feiten waarvoor meerdere modellen zich
 aandienen. Bij elk model staat daarom welke status het heeft: een theorie die aan
 data wordt onderworpen, of een feit dat op een verklaring wacht.
 
-Naast de drie motieven staat een praktische les van Santa-Clara zelf. Het is
-geen vierde motief, maar de kant van risico of vergissing die een belegger
-voelt. Wat hij verdiende en
-behield, kwam uit het dragen van beloond risico. Wat hij verloor, kwam uit de
-gedachte iets te weten wat de prijs niet wist.
+Naast de drie motieven staat een praktische les van Santa-Clara zelf. Die les is
+geen vierde motief, maar dezelfde tweedeling tussen risico en vergissing, zoals een
+belegger die zelf voelt. Santa-Clara verdiende blijvend aan risico waarvoor de markt een
+premie betaalde, en hij verloor telkens wanneer hij dacht iets te weten wat nog niet in
+de prijs zat.
 
 > Everything I made that lasted came from bearing risk that was priced.
 > Everything I lost came from thinking I knew something the price did not.
 
-Waar een lecture over een handelsstrategie gaat, stellen we die vraag hardop: is
-dit een risicopremie of een vermeend inzicht?
+Waar een college over een handelsstrategie gaat, stellen we die vraag hardop. Is de
+winst van de strategie een risicopremie, of een vermeend inzicht?
 
 ### De didactische trap
 
-Elke inhoudelijke lecture is volgens dezelfde opbouw opgezet, in deze volgorde:
+Elk inhoudelijk college heeft dezelfde opbouw, in deze volgorde:
 *Waar we zijn in het verhaal*, *Overzicht*, *Intuïtie*, *Toy-voorbeeld*,
 *Theorie*, *Simulatie*, *Replicatie op echte data*, *Wat er brak, en wat daarna
-kwam* en *Oefeningen*. Het Overzicht stelt de vraag en geeft het antwoord. De
-Intuïtie vertelt het mechanisme in gewone taal. Toy-voorbeeld, simulatie en
+kwam* en *Oefeningen*. Het Overzicht stelt de vraag en geeft het antwoord, waarna de
+Intuïtie het mechanisme in gewone taal vertelt. Toy-voorbeeld, simulatie en
 replicatie vormen samen de didactische trap, drie treden van klein naar echt:
 
-1. **Toy-voorbeeld.** Het kleinste geval waarin het mechanisme al zichtbaar is,
-   bijvoorbeeld twee toestanden en drie activa. Eerst met de hand uitgerekend,
-   daarna in een codecel die dezelfde getallen geeft. Die controle is de reden om
-   de rest van de code te vertrouwen. De imports-cel staat aan het begin van het
-   toy-voorbeeld.
+1.  **Toy-voorbeeld.** Het toy-voorbeeld is het kleinste geval waarin het mechanisme al
+   zichtbaar is,
+   bijvoorbeeld twee toestanden en drie activa. We rekenen het eerst met de hand uit
+   en daarna in een codecel die dezelfde getallen moet geven. Omdat de twee uitkomsten
+   overeenkomen, durven we de rest van de code te vertrouwen. De cel die de
+   bibliotheken laadt, staat aan het begin van het toy-voorbeeld.
 
-2. **Simulatie.** Hetzelfde model op schaal, in duizenden steekproeven. Hier zien
+2.  **Simulatie.** De simulatie draait hetzelfde model op schaal, in duizenden
+   steekproeven. Daar zien
    we niet wat waar is, maar wat meetbaar is: schattingsfout, bias, datamining.
-   Hier keert de standaardfout van 2% bijna altijd terug.
+   Daarom komt hier bijna altijd de grote onzekerheid over gemiddelde rendementen terug.
 
 3. **Replicatie op echte data.** Pas hier verschijnt `hap.data`, met een
-   replicatieblok dat zegt welk resultaat we nabouwen, met welke data, wat anders is dan in het
+   replicatieblok dat zegt welk resultaat we nabouwen, met welke data, wat anders is dan
+   in het
    origineel, en welke afwijking we verwachten. Zonder verwachte afwijking valt er
    niets te toetsen.
 
 De *Theorie* staat tussen de eerste en de tweede trede. Ze begint met een
 routekaart en eindigt met een blok *Samengevat*. Elke
 afleiding opent met de cursieve vraag *Waarom zou dit waar zijn?* en een
-economisch argument. Wie de wiskunde overslaat, moet het resultaat nog kunnen
+economisch argument, zodat wie de wiskunde overslaat, het resultaat nog kan
 navertellen.
 
-De volgorde is een keuze. Wie meteen een regressie op French-data draait, leert
-een procedure. Wie eerst het toy-voorbeeld narekent, leert een mechanisme.
+De volgorde is een bewuste keuze. Een student die meteen een regressie op French-data
+draait, leert
+een procedure, maar wie eerst het toy-voorbeeld narekent, leert een mechanisme.
 
-Elke lecture sluit met *Wat er brak, en wat daarna kwam*: wat het model
-verklaart, waar het breekt, hoe beide kampen die barst lezen, en welke lecture
+Elk college sluit met *Wat er brak, en wat daarna kwam*: wat het model
+verklaart, waar het breekt, hoe beide kampen die barst lezen, en welk college
 daarom volgt. Daarna komen twee tot vier oefeningen op het niveau van een problem
 set, elk met een uitwerking in een opklapbaar blok.
 
 ## Notatie
 
-De hele reeks deelt één notatie. Wijkt een origineel paper daarvan af, dan
-vertalen we naar de tabel hieronder en zeggen dat in één zin. De tabel wordt
-verder nergens herhaald.
+De hele reeks deelt één notatie. Wijkt een origineel artikel daarvan af, dan
+vertalen we het naar de tabel hieronder en zeggen dat in één zin, zodat de tabel
+verder nergens herhaald hoeft te worden.
 
 | Symbool | Betekenis |
 |---|---|
@@ -173,7 +185,7 @@ verder nergens herhaald.
 | $R_{t+1}$ | bruto rendement, $R = 1 + r$ |
 | $r_{t+1}$ | netto simpel rendement (8% is 0,08) |
 | $R^{f}_{t+1}$ | risicovrije rente, netto (2% is 0,02), al bekend op $t$ |
-| $R^{e}_{t+1}$ | excess rendement, $R^{e} = R - (1 + R^{f}) = r - R^{f}$ |
+| $R^{e}_{t+1}$ | overrendement, $R^{e} = R - (1 + R^{f}) = r - R^{f}$ |
 | $m_{t+1}$ | stochastic discount factor, $m_{t+1} = \beta\,u'(c_{t+1})/u'(c_t)$ |
 | $d_t$, $c_t$ | dividend, consumptie |
 | $u(\cdot)$, $\gamma$, $\beta$ | nutsfunctie, relatieve risicoaversie, subjectieve discontofactor |
@@ -186,12 +198,13 @@ verder nergens herhaald.
 | $\E_t[\cdot]$ | verwachting gegeven de informatie op $t$ |
 | $\Var,\ \Cov,\ \Corr,\ \SD$ | variantie, covariantie, correlatie, standaarddeviatie |
 
-Twee conventies staan in de tabel naast elkaar, en dat is bewust. Een rendement
-$R$ is bruto (1,08 bij 8%), de risicovrije rente $R^f$ is netto (0,02 bij 2%).
-Het bruto risicovrije rendement is dus $1 + R^f$. Het excess rendement is in
-beide schrijfwijzen hetzelfde getal.
+Twee conventies staan bewust naast elkaar in de tabel, want een rendement
+$R$ is bruto (1,08 bij 8%), terwijl de risicovrije rente $R^f$ netto is (0,02 bij 2%).
+Het bruto risicovrije rendement is dus $1 + R^f$. Het overrendement is in
+beide schrijfwijzen toch hetzelfde getal.
 
-Drie afspraken gaan vaak mis.
+Drie afspraken gaan in de praktijk vaak mis. Ze gaan over de tijdsindex, over
+het lettertype van symbolen en over de taal van de vaktermen.
 
 **Tijdsindexering.** Prijzen en informatie krijgen index $t$, payoffs en
 rendementen index $t+1$. De centrale vergelijking van de reeks is dus
@@ -201,22 +214,23 @@ rendementen index $t+1$. De centrale vergelijking van de reeks is dus
 p_t = \E_t\!\left[m_{t+1}\,x_{t+1}\right],
 ```
 
-en nooit $p_t = \E[m_t x_t]$. In woorden: de prijs van vandaag is de verwachte
+en nooit $p_t = \E[m_t x_t]$. De prijs van vandaag is de verwachte
 payoff van morgen, gewogen met de discontofactor van morgen. Een rendement met
-index $t+1$ wordt verdiend tussen $t$ en $t+1$ en is op $t$ nog onbekend. Een
-schatting die die regel overtreedt, kijkt in de toekomst. Veel te mooie
-resultaten in de empirische finance komen daarvandaan.
+index $t+1$ wordt verdiend tussen $t$ en $t+1$ en is op $t$ nog onbekend, zodat een
+schatting die deze regel overtreedt, in de toekomst kijkt. Veel te mooie
+resultaten in de empirische financiële economie komen daarvandaan.
 
 **Vet en cursief.** Vectoren zijn vet en klein ($\mathbf{r}$,
 $\boldsymbol{\beta}$), matrices vet en groot ($\boldsymbol{\Sigma}$,
 $\mathbf{X}$), scalairen gewoon cursief. Zonder aankondiging zijn alle grootheden
-niveaus, en is $r$ het netto simpele rendement. Een logrendement krijgt een eigen symbool, bijvoorbeeld
-$\ell = \log R$. Een lecture die met logs van prijzen en dividenden werkt, zegt
+niveaus, en is $r$ het netto simpele rendement. Een logrendement krijgt daarom een eigen
+symbool, bijvoorbeeld
+$\ell = \log R$. Een college dat met logs van prijzen en dividenden werkt, zegt
 dat met één zin: "vanaf hier zijn kleine letters logs".
 
-**Nederlands en Engels.** De tekst is Nederlands, de code Engels. Vaktermen
+**Nederlands en Engels.** De tekst is Nederlands en de code Engels. Vaktermen
 blijven Engels waar een vertaling gekunsteld is, zoals *stochastic discount
-factor* of *factor zoo*. Ze staan de eerste keer in elke lecture cursief, met een
+factor* of *factor zoo*, en ze staan de eerste keer in elk college cursief, met een
 korte uitleg erbij.
 
 ```{note}
@@ -227,30 +241,31 @@ code-uitvoer blijft de Engelse punt staan, want die komt uit pandas.
 ## De data
 
 Alle data in deze reeks is gratis en publiek, en komt in de regel binnen via
-`hap.data`. Twee lectures halen zelf een klein bestand op en zeggen dat ter
+`hap.data`. Alleen twee colleges halen zelf een klein bestand op, en ze zeggen dat ter
 plekke. Elke loader schrijft een
 parquet-snapshot naar `data/cache/`, en die snapshots staan in de repository.
-Daardoor draait een verse kopie van het project elke lecture zonder
+Daardoor draait een verse kopie van het project elk college zonder
 netwerkverbinding.
 
 Twee conventies gelden voor alle loaders. Elke tabel heeft een `DatetimeIndex`
-met naam `date`: maanddata op maandeinde, dagdata op de handelsdatum. En
-rendementen en yields zijn decimalen, geen procenten: 1,5% is `0.015`. De
-uitzondering is `hap.fred`, dat de conventies van FRED volgt: maanddata op het
-begin van de maand, en rentes in procenten.
+met naam `date`, met maanddata op het maandeinde en dagdata op de handelsdatum. Daarnaast
+zijn
+rendementen en yields decimalen en geen procenten, zodat 1,5% als `0.015` staat. De
+uitzondering is `hap.fred`, dat de conventies van FRED volgt en dus maanddata op het
+begin van de maand zet en rentes in procenten geeft.
 
 | Bron | Wat | Loader |
 |---|---|---|
 | Kenneth French Data Library | factoren en portefeuilles, 1926– | `hap.french(name, freq, table)` |
 | Robert Shiller | S&P-prijs, dividend, winst, CAPE, 1871– | `hap.shiller()` |
-| Goyal-Welch | voorspellers van de equity premium, 1871– | `hap.goyal_welch(freq)` |
+| Goyal-Welch | voorspellers van de aandelenpremie, 1871– | `hap.goyal_welch(freq)` |
 | FRED | macro, rentes, VIX, wisselkoersen | `hap.fred(series)` |
 | Gürkaynak-Sack-Wright | zero-coupon yieldcurve, 1961– | `hap.gsw()` |
 | Open Source Asset Pricing | 212 anomalieportefeuilles + documentatie | `hap.osap(kind)` |
 | He-Kelly-Manela | intermediary capital ratio, 1970– | `hap.hkm(freq)` |
 | Yahoo Finance | recente koersen en optieketens | `hap.yahoo(...)`, `hap.yahoo_options(...)` |
 
-Elke lecture laadt eerst dezelfde bibliotheken, in één imports-cel. Daarna wordt
+Elk college laadt eerst dezelfde bibliotheken in één cel, en daarna wordt
 nergens meer geïmporteerd. De loaders zijn bereikbaar als `hap_data.french` en
 als `hap.french`, de schatters als `hap.newey_west` en als `hap.stats.newey_west`.
 
@@ -279,14 +294,14 @@ getallen in figuren met een decimale komma.
 
 De Data Library van Kenneth French is het werkpaard van de empirische asset
 pricing. Ze bevat de marktfactor, de factoren van het driefactormodel
-{cite}`FamaFrench1993` en de vijffactoruitbreiding, momentum en reversal. Daarnaast
+{cite}`FamaFrench1993` en de vijffactoruitbreiding, momentum en reversal, en daarnaast
 tientallen portefeuilles, gesorteerd op grootte, boek-marktwaarde en industrie. De
-reeksen lopen vanaf juli 1926, maandelijks en dagelijks.
+reeksen lopen vanaf juli 1926, zowel maandelijks als dagelijks.
 
-`hap.market_monthly()` geeft de marktfactor `Mkt-RF` (het excess rendement op de
+`hap.market_monthly()` geeft de marktfactor `Mkt-RF` (het overrendement op de
 markt), de risicovrije rente `RF` en hun som `Mkt`. We tonen er meteen de
-samenvattende statistieken bij. In deze reeks staat geen gemiddeld rendement in
-een tabel zonder zijn standaardfout.
+samenvattende statistieken bij, omdat in deze reeks geen gemiddeld rendement in
+een tabel staat zonder zijn standaardfout.
 
 ```{code-cell} ipython3
 columns_nl = {
@@ -302,16 +317,16 @@ market_stats = hap.summary_stats(market, "monthly")
 market_stats[list(columns_nl)].rename(columns=columns_nl).round(4)
 ```
 
-Alle kolommen staan per jaar: het maandgemiddelde maal twaalf, de
-maandvolatiliteit maal $\sqrt{12}$. De eerste tabel van de reeks bevat al de
-standaardfout van 2%. Het gemiddelde
+Alle kolommen staan per jaar, dat wil zeggen het maandgemiddelde maal twaalf en de
+maandvolatiliteit maal $\sqrt{12}$. Al de eerste tabel van de reeks laat zien hoe
+slecht een gemiddeld rendement gemeten is. Het gemiddelde
 marktrendement (`Mkt`) over 1201 maanden is 11,6% per jaar, met een
-standaarddeviatie van 18,3%. De standaardfout van dat gemiddelde is 1,8
+standaarddeviatie van 18,3%, en de standaardfout van dat gemiddelde is 1,8
 procentpunt.
 
-Een tweezijdig 95%-interval loopt dus van ongeveer 8% tot 15%. De risicovrije
-rente is daarentegen tot op een tiende procentpunt bekend. De figuur hieronder
-toont wat die 11,6% over een eeuw oplevert. De verticale as is logaritmisch.
+Een tweezijdig 95%-interval loopt dus van ongeveer 8% tot 15%, terwijl de risicovrije
+rente tot op een tiende procentpunt bekend is. De figuur hieronder
+toont wat die 11,6% over een eeuw oplevert, op een logaritmische verticale as.
 
 ```{code-cell} ipython3
 :label: cel-setup-french
@@ -341,22 +356,23 @@ plt.show()
 :label: fig-setup-french
 :width: 90%
 
-Cumulatieve waarde van één dollar, herbelegd in de value-weighted markt. Op een
-log-schaal zijn gelijke procentuele bewegingen even groot. Op een lineaire schaal
-zou alles vóór 1980 een vlakke lijn zijn. De diepste terugval is 83,7%, met het
+Cumulatieve waarde van één dollar, herbelegd in de waardegewogen markt. Op een
+log-schaal zijn gelijke procentuele bewegingen even groot, terwijl op een lineaire schaal
+alles vóór 1980 een vlakke lijn zou zijn. De diepste terugval is 83,7%, met het
 dieptepunt in juni 1932.
 :::
 
 ### Robert Shiller: prijzen en dividenden, 1871–
 
-De maandreeks van Shiller gaat een halve eeuw verder terug dan French. Ze bevat
+De maandreeks van Shiller gaat een halve eeuw verder terug dan French en bevat
 naast de prijs ook het dividend, de winst, de consumentenprijsindex en de lange
 rente {cite}`Shiller2000`. Daarmee koppelen we prijzen aan *fundamentals*
-(dividenden en winsten), en niet alleen aan elkaar. Dat is nodig voor alles wat
+(dividenden en winsten) en niet alleen aan elkaar, wat nodig is voor alles wat
 met waardering en voorspelbaarheid te maken heeft. De bekendste afgeleide reeks
 is de CAPE: de prijs gedeeld door het tienjaarsgemiddelde van de reële winst.
 
-We tonen de eerste en de laatste maand waarin alle vijf kolommen bekend zijn.
+We tonen de eerste en de laatste maand waarin alle vijf kolommen bekend zijn, zodat
+de twee uitersten van de reeks naast elkaar staan.
 
 ```{code-cell} ipython3
 shiller = hap_data.shiller()
@@ -364,9 +380,10 @@ shiller[["price", "dividend", "earnings", "cape", "dp"]].dropna().iloc[[0, -1]].
 ```
 
 Tussen 1881 en 2026 steeg de CAPE van 18,5 naar 40,2, en het dividendrendement
-(kolom `dp`, hier $D/P$ in niveaus) daalde van 4,3% naar 1,1%. De figuur toont
-de hele CAPE-reeks met haar gemiddelde als stippellijn. De vraag bij het kijken:
-hoe lang blijft de reeks boven of onder die lijn?
+(kolom `dp`, hier $D/P$ als gewone verhouding en niet in logs) daalde van 4,3% naar 1,1%.
+De figuur toont
+de hele CAPE-reeks met het gemiddelde als stippellijn, en laat zien dat de reeks
+soms tientallen jaren boven of onder die lijn blijft.
 
 ```{code-cell} ipython3
 :label: cel-setup-shiller
@@ -398,11 +415,11 @@ eens.
 
 ### Goyal-Welch: de voorspellers
 
-Welch en Goyal verzamelden de variabelen waarmee de literatuur de equity premium
-probeerde te voorspellen. Voorbeelden zijn het dividendrendement, de
+Welch en Goyal verzamelden de variabelen waarmee de literatuur de aandelenpremie
+probeerde te voorspellen, zoals het dividendrendement, de
 termijnspread en de netto aandelenuitgifte. Ze toonden dat vrijwel geen ervan
 buiten de steekproef beter voorspelt dan het historisch gemiddelde
-{cite}`GoyalWelch2008`. Hun dataset wordt bijgehouden en loopt vanaf 1871.
+{cite}`GoyalWelch2008`. Hun dataset wordt nog altijd bijgehouden en loopt vanaf 1871.
 
 De laatste drie jaarrijen laten zien hoe de kolommen heten en in welke eenheden
 ze staan.
@@ -412,11 +429,12 @@ gw = hap_data.goyal_welch("annual")
 gw[["Index", "D12", "E12", "tbl", "dp", "tms", "equity_premium"]].tail(3).round(4)
 ```
 
-Let op: in deze dataset is `dp` het log dividendrendement, $\log(D/P)$, dus
-een negatief getal rond $-4{,}4$. `D12` en `E12` zijn dividend en winst over
-twaalf maanden, `tbl` de rente op schatkistpapier, `tms` de termijnspread.
-`equity_premium` is het excess rendement op de markt in dat jaar. In de figuur
-gaat het om de traagheid van `dp`: beweegt de lijn over jaren of over decennia?
+Anders dan bij Shiller is `dp` in deze dataset het log dividendrendement, $\log(D/P)$, en
+dus
+een negatief getal rond $-4{,}4$. De kolommen `D12` en `E12` zijn dividend en winst over
+twaalf maanden, `tbl` is de rente op schatkistpapier en `tms` de termijnspread, terwijl
+`equity_premium` het overrendement op de markt in dat jaar is. De figuur laat
+zien of `dp` over jaren of over decennia beweegt.
 
 ```{code-cell} ipython3
 :label: cel-setup-gw
@@ -435,19 +453,21 @@ plt.show()
 :label: fig-setup-gw
 :width: 90%
 
-Het log dividendrendement is extreem persistent: het beweegt over decennia, niet
+Het log dividendrendement is extreem persistent, want het beweegt over decennia en niet
 over jaren. Daardoor lijdt een regressie met deze voorspeller aan de
-Stambaugh-bias {cite}`Stambaugh1999`. Een stijgende koers verhoogt het rendement
-en verlaagt tegelijk $D/P$. Omdat de persistentie in een korte steekproef te laag
-wordt geschat, is de helling naar boven vertekend en de $t$-waarde te groot. Dat
-geldt ook voor de regressie verderop in deze lecture.
+Stambaugh-bias {cite}`Stambaugh1999`, omdat een stijgende koers het rendement verhoogt
+en tegelijk $D/P$ verlaagt. Door die tegengestelde beweging valt de geschatte helling
+juist te hoog uit in steekproeven waarin de persistentie te laag uitvalt. Omdat dat
+in een korte steekproef gemiddeld gebeurt, is de helling naar boven vertekend en de
+$t$-waarde te groot. Die vertekening
+geldt ook voor de regressie verderop in dit college.
 :::
 
 ### FRED: de macrocontext
 
 FRED, van de Federal Reserve Bank of St. Louis, levert alles wat de markt
 omringt: consumptie, inflatie, rentes, wisselkoersen, credit spreads en de VIX.
-Ook de NBER-recessie-indicator komt uit FRED; `hap.plotting.recession_shading`
+Ook de NBER-recessie-indicator komt uit FRED, en `hap.plotting.recession_shading`
 tekent daarmee grijze banden in een figuur. De loader haalt één serie per
 aanroep, in de eenheden van FRED.
 
@@ -459,8 +479,8 @@ vix = hap_data.fred("VIXCLS")
 vix.describe().round(2)
 ```
 
-Over 9266 handelsdagen sinds 1990 ligt de mediaan van de VIX op 17,6 en het
-maximum op 82,7. In de figuur is te zien of de pieken samenvallen met de grijze
+Over 9266 handelsdagen sinds 1990 ligt de mediaan van de VIX op 17,6, maar het
+maximum op 82,7. De figuur laat zien of die pieken samenvallen met de grijze
 recessiebanden.
 
 ```{code-cell} ipython3
@@ -492,7 +512,7 @@ voorspelbaar.
 ### Gürkaynak-Sack-Wright: de yieldcurve
 
 De Federal Reserve publiceert dagelijks een geschatte zero-coupon yieldcurve,
-terug tot 1961 {cite}`GurkaynakSackWright2007`. `hap.gsw()` geeft de kolommen
+terug tot 1961 {cite}`GurkaynakSackWright2007`. De loader `hap.gsw()` geeft de kolommen
 `SVENYnn` (zero-coupon yield op $nn$ jaar), `SVENFnn` (instantane forward) en de
 onderliggende parameters, alles als decimalen.
 
@@ -504,9 +524,10 @@ gsw = hap_data.gsw()
 gsw.loc[["1981-09-30", "2020-08-04", "2026-08-28"], ["SVENY01", "SVENY05", "SVENY10"]].round(4)
 ```
 
-In september 1981 was de eenjaarsrente 15,7%, in augustus 2020 was ze 0,13%. De
-figuur tekent voor dezelfde drie dagen de hele curve tot dertig jaar. Kijk naar
-de vorm: daalt, stijgt of vlakt de curve af met de looptijd?
+In september 1981 was de eenjaarsrente 15,7%, terwijl ze in augustus 2020 op 0,13% stond. De
+figuur tekent voor dezelfde drie dagen de curve over alle geschatte looptijden, tot
+dertig jaar in 2020 en 2026 maar tot twintig jaar in 1981, zodat te zien is of de curve
+met de looptijd daalt, stijgt of afvlakt.
 
 ```{code-cell} ipython3
 :label: cel-setup-gsw
@@ -519,7 +540,8 @@ for date, label in [("1981-09-30", "30 sep. 1981"),
                     ("2020-08-04", "4 aug. 2020"),
                     ("2026-08-28", "28 aug. 2026")]:
     curve = gsw.loc[date, maturities].dropna()
-    ax.plot(range(1, len(curve) + 1), curve.to_numpy() * 100, marker="o",
+    years = [int(name[-2:]) for name in curve.index]
+    ax.plot(years, curve.to_numpy() * 100, marker="o",
             ms=3, label=label)
 ax.set_title("De Amerikaanse zero-coupon yieldcurve op drie dagen")
 ax.set_xlabel("Looptijd (jaren)")
@@ -534,19 +556,21 @@ plt.show()
 
 In 1981 daalt de curve met de looptijd, in 2020 stijgt ze vanaf bijna nul,
 en in 2026 loopt ze licht op. Een steile curve gaat vaak vooraf aan hoge
-rendementen op lange obligaties. Ook daar is de vraag risico of vergissing.
+rendementen op lange obligaties, maar ook daar is de vraag of die rendementen een
+beloning voor risico zijn of het gevolg van een vergissing van beleggers.
 :::
 
 ### Open Source Asset Pricing: de factor zoo, gedocumenteerd
 
 Chen en Zimmermann bouwden de gepubliceerde cross-sectionele anomalieën na
-volgens de recepten van de originele papers {cite}`ChenZimmermann2022`. Een
+volgens de recepten van de originele artikelen {cite}`ChenZimmermann2022`. Een
 anomalie, in de data een signaal of voorspeller genoemd, is een kenmerk van
 aandelen dat gemiddelde rendementen lijkt te voorspellen, bijvoorbeeld de
 accruals van een bedrijf. Per signaal publiceerden Chen en Zimmermann het
-long-short-rendement: de portefeuille met de hoogste waarden van het kenmerk min
-die met de laagste. Een documentatiebestand geeft per signaal de auteurs, het publicatiejaar en de gerapporteerde
-$t$-waarde. Daarmee is na te gaan of factoren na publicatie blijven werken.
+long-short-rendement, het rendement van de portefeuille met de hoogste waarden van
+het kenmerk min dat van de portefeuille met de laagste. Een documentatiebestand geeft
+per signaal de auteurs, het publicatiejaar en de gerapporteerde
+$t$-waarde, zodat na te gaan is of factoren na publicatie blijven werken.
 
 We laden het documentatiebestand en tonen de eerste vijf voorspellers.
 
@@ -556,7 +580,7 @@ predictors = signaldoc[signaldoc["Cat.Signal"] == "Predictor"]
 predictors[["signal", "Authors", "Year", "Journal", "T-Stat"]].head(5)
 ```
 
-Elke rij is één gepubliceerd signaal, met de $t$-waarde uit het originele paper.
+Elke rij is één gepubliceerd signaal, met de $t$-waarde uit het originele artikel.
 De figuur telt de signalen cumulatief per publicatiejaar, en de legenda geeft de
 mediane gepubliceerde $t$-waarde. Rond welk jaar wordt de lijn steil?
 
@@ -581,10 +605,10 @@ plt.show()
 :label: fig-setup-osap
 :width: 90%
 
-Van een handvol anomalieën in de jaren zeventig naar 212 gereproduceerde
+Het aantal groeit van een handvol anomalieën in de jaren zeventig naar 212 gereproduceerde
 signalen. De mediane gepubliceerde $t$-waarde is 4,0, ruim boven de gebruikelijke
-drempel van 1,96. Dat is geen toeval maar een selectie-effect: wat niet
-significant was, werd niet gepubliceerd {cite}`HarveyLiuZhu2016`.
+drempel van 1,96. Die hoge mediaan is geen toeval maar een selectie-effect, omdat wat niet
+significant was, niet werd gepubliceerd {cite}`HarveyLiuZhu2016`.
 :::
 
 ### He-Kelly-Manela: het kapitaal van de tussenpersoon
@@ -604,7 +628,7 @@ hkm.tail(3).round(4)
 ```
 
 De kapitaalratio stond in het voorjaar van 2025 rond 7,5%. De figuur toont de hele
-reeks sinds 1970; let op het laagste punt en de recessie waarin het valt.
+reeks sinds 1970, met een pijl bij het laagste punt, dat midden in een recessie valt.
 
 ```{code-cell} ipython3
 :label: cel-setup-hkm
@@ -633,12 +657,12 @@ plt.show()
 :label: fig-setup-hkm
 :width: 90%
 
-De kapitaalratio van de tussenpersonen bereikt haar laagste punt in februari
-2009, op 2,2%. In modellen van intermediary asset pricing is dat de
-toestandsvariabele: daalt het kapitaal van de dealer ten opzichte van zijn
-activa, dan stijgt de vergoeding die hij eist voor elk risico dat hij draagt.
-Dat is de risico-lezing van een crash; de vergissing-lezing ziet dezelfde lage
-prijzen als paniek.
+De kapitaalratio van de tussenpersonen bereikt het laagste punt in februari
+2009, op 2,2%. In modellen van intermediary asset pricing is die ratio de
+toestandsvariabele. Als het kapitaal van de dealer daalt ten opzichte van zijn
+activa, stijgt de vergoeding die hij eist voor elk risico dat hij draagt.
+In die lezing is een crash een moment waarop risico duurder wordt, terwijl Shiller
+in dezelfde lage prijzen paniek ziet.
 :::
 
 ### Yahoo Finance: recente koersen en optieketens
@@ -649,7 +673,7 @@ splitsingen en dividenden gecorrigeerde slotkoersen van de vijf ETF's hieronder,
 van vijftig afzonderlijke aandelen, van twee groepen beleggingsfondsen (59 en 8
 fondsen), van enkele indexreeksen,
 en twee momentopnamen van de optieketen van SPY. Yahoo is de enige onbetrouwbare bron in
-de lijst: downloads komen soms leeg terug. Een lecture vraagt daarom alleen op
+de lijst, omdat downloads soms leeg terugkomen. Een college vraagt daarom alleen op
 wat al in de cache staat.
 
 De ETF-reeks begint in 1993, maar pas vanaf eind 2004 bestaan alle vijf de ETF's. We
@@ -665,10 +689,11 @@ etf_stats = hap.summary_stats(daily_returns, "daily")
 etf_stats[["mean_ann", "std_ann", "se_mean_ann"]].rename(columns=columns_nl).round(3)
 ```
 
-De standaardfouten liggen tussen 3 en 5 procentpunt. SPY, GLD en IWM liggen minder
-dan één procentpunt uit elkaar, QQQ en TLT liggen 12,5 procentpunt uit elkaar. In
-de figuur, met elke reeks op 1 gezet in 2005, is de vraag welke verschillen tussen
-de lijnen groter zijn dan die ruis.
+De standaardfouten liggen tussen 3 en 5 procentpunt. De gemiddelden van SPY, GLD en IWM
+liggen minder
+dan één procentpunt uit elkaar, terwijl QQQ en TLT 12,5 procentpunt uit elkaar liggen. De
+figuur zet elke reeks op 1 in 2005, zodat te zien is welke verschillen tussen de lijnen
+boven die standaardfouten uitsteken.
 
 ```{code-cell} ipython3
 :label: cel-setup-yahoo
@@ -692,47 +717,53 @@ plt.show()
 :label: fig-setup-yahoo
 :width: 90%
 
-Aandelen (SPY, QQQ, IWM), langlopende staatsobligaties (TLT) en goud (GLD) vanaf
-2005. Na twintig jaar is de standaardfout van elk gemiddelde 3 tot 5 procentpunt.
+Aandelen (SPY, QQQ, IWM), langlopende staatsobligaties (TLT) en goud (GLD)
+vanaf 2005. Na twintig jaar is de standaardfout van elk gemiddelde 3 tot 5 procentpunt.
 Alleen grote verschillen, zoals QQQ tegen TLT (12,5 procentpunt), steken daar
-boven uit. SPY, GLD en IWM eindigen verschillend, maar hun gemiddelden liggen
-binnen één procentpunt: dat verschil verdwijnt in de ruis.
+bovenuit. SPY, GLD en IWM eindigen verschillend, maar hun gemiddelden liggen
+binnen één procentpunt, zodat dat verschil in de ruis verdwijnt.
 :::
 
 ### Wat we niet hebben: CRSP en Compustat
 
 Twee databanken komen in deze reeks voortdurend voor, zonder dat we ze ooit
-openen.
+openen. Omdat bijna elk artikel dat we bespreken erop steunt, beschrijven we ze toch kort.
 
 *CRSP* is het Center for Research in Security Prices van de Universiteit van
 Chicago. Vanaf 1960 bouwde het, met geld van Merrill Lynch, de eerste
 machineleesbare reeks maandrendementen van alle aandelen op de New York Stock
-Exchange, terug tot 1926. De reeks bevat dividenden, splitsingen en ook de
-aandelen die van de beurs verdwenen. Zonder die laatste groep meet een
+Exchange, terug tot 1926. De reeks bevat dividenden en splitsingen, en ook de
+aandelen die van de beurs verdwenen, want zonder die laatste groep meet een
 onderzoeker alleen de overlevenden. De eerste publicatie op die tape
 {cite}`FisherLorie1964` was de eerste betrouwbare meting van het gemiddelde
 rendement op Amerikaanse aandelen over een lange periode. De databank
-*Compustat* doet hetzelfde voor de boekhouding: balans en resultatenrekening per bedrijf per
-kwartaal, en daarmee de noemer van elke waarderingsratio.
+*Compustat* doet hetzelfde voor de boekhouding, met balans en resultatenrekening per
+bedrijf per
+kwartaal, en levert daarmee de noemer van elke waarderingsratio.
 
-Beide zijn commercieel en duur, en meestal alleen via een universiteitsabonnement
-toegankelijk. Deze reeks gebruikt ze niet. Dat kost iets: we kunnen niets doen op
-het niveau van het individuele aandeel. Geen eigen sorteringen, geen eigen
-portefeuilles, geen event study op een brede steekproef. In ruil draait elke
-lecture op een laptop zonder abonnement.
+Beide zijn commercieel en duur en meestal alleen via een universiteitsabonnement
+toegankelijk, en daarom gebruikt deze reeks ze niet. Dat heeft een prijs, want we kunnen
+niets doen op
+het niveau van het individuele aandeel. We maken dus geen eigen sorteringen en geen eigen
+portefeuilles, en ook geen event study op een brede steekproef. In ruil draait elk
+college op een laptop zonder abonnement.
 
-De belangrijkste bewerkingen zijn al voor ons gedaan. Kenneth French publiceert
+De belangrijkste bewerkingen zijn gelukkig al voor ons gedaan, want Kenneth French
+publiceert
 de portefeuilles die uit CRSP en Compustat zijn gebouwd, en Chen en Zimmermann
-publiceren de long-short-rendementen van de anomalieën. We erven daarmee hun
-constructiekeuzes, en waar dat uitmaakt, staat het in het replicatieblok. Waar
-zelfs dat niet volstaat, simuleren we. Dan staat erbij welke eigenschap van de
+publiceren de long-short-rendementen van de anomalieën. We erven daarmee wel hun
+constructiekeuzes, en waar die uitmaken, staat dat in het replicatieblok. Waar
+zelfs die portefeuilles niet volstaan, simuleren we, en dan staat erbij welke eigenschap
+van de
 echte data de simulatie nabootst.
 
 Uit de acht figuren nemen we drie dingen mee. Gemiddelde rendementen zijn slecht
 bekend, over een eeuw (French) en zeker over twintig jaar (Yahoo). De traag
 bewegende grootheden, zoals de CAPE, het dividendrendement en de kapitaalratio,
-zijn de voorspellers waar risico of vergissing om draait. En de factor zoo is
-voor een deel een selectie-effect van de standaardfout van 2%.
+zijn de voorspellers waarover Chicago en Yale van mening verschillen. De factor zoo is ten
+slotte
+voor een deel een selectie-effect, omdat toeval bij zulke onzekere gemiddelden al snel
+significant lijkt.
 
 ## De gereedschapskist: `hap.stats` en `hap.plotting`
 
@@ -743,9 +774,9 @@ autocorrelatie toelaten), `fama_macbeth`, `grs_test`, `long_horizon_regression`,
 `summary_stats`. Ze werken op gewone pandas-objecten en verwachten rendementen als
 decimalen per periode.
 
-Een voorbeeld: voorspelt het log dividendrendement het rendement van het
-volgende jaar? We regresseren de equity premium van jaar $t+1$ op
-$\mathrm{dp}_t$, met Newey-West-standaardfouten en één vertraging.
+Als voorbeeld nemen we de vraag of het log dividendrendement het rendement van het
+volgende jaar voorspelt. Daarvoor regresseren we de aandelenpremie van jaar $t+1$ op
+$\mathrm{dp}_t$, met Newey-West-standaardfouten en één lag.
 
 ```{code-cell} ipython3
 panel = pd.DataFrame(
@@ -758,16 +789,19 @@ pd.DataFrame(
 ).round(4)
 ```
 
-De helling is 0,042 en positief: een hoog dividendrendement gaat samen met een
+De helling is 0,042 en positief, zodat een hoog dividendrendement samengaat met een
 hoger rendement daarna. Dat teken voorspelt de theorie van discontovoeten die in
-de tijd variëren. Een hoog $D/P$ is een lage prijs ten opzichte van het dividend,
-en een lage prijs betekent een hoog verwacht rendement. Maar met een $t$-waarde
-van 0,95 bewijst de regressie niets. Er zijn honderd jaarobservaties, niet 155,
-omdat `equity_premium` pas in 1926 begint. Die spanning, tussen een teken dat klopt en een standaardfout
-die te groot is, komt in een groot deel van de reeks terug.
+de tijd variëren, want een hoog $D/P$ is een lage prijs ten opzichte van het dividend,
+en een lage prijs betekent een hoog verwacht rendement. Toch bewijst de regressie met een
+$t$-waarde
+van 0,95 niets. Er zijn honderd jaarwaarnemingen en niet 155,
+omdat `equity_premium` pas in 1926 begint. Die spanning tussen een teken dat klopt en een
+standaardfout
+die te groot is komt in een groot deel van de reeks terug.
 
 `hap.plotting` is kleiner. `setup()` zet de projectstijl en staat in de
-imports-cel. `timeline_axis(ax)` maakt van een datum-as een as in kalenderjaren.
+eerste codecel van elk college. `timeline_axis(ax)` maakt van een datum-as een as in
+kalenderjaren.
 `recession_shading(ax)` zet de NBER-recessies als grijze banden achter een
 figuur, en `COLORS` is het vaste kleurenpalet. Elke figuur heeft een titel en
 aslabels in het Nederlands.
@@ -782,10 +816,10 @@ houdt. De testsuite draait offline:
 uv run pytest -q
 ```
 
-Elke lecture bestaat twee keer: als MyST-markdown (`lectures/00_00_setup.md`) en
-als notebook (`lectures/00_00_setup.ipynb`). Jupytext houdt de twee gepaard. De
-markdown is de bron voor de tekst, het notebook de plek om code uit te proberen.
-Wie in het notebook werkt, synchroniseert terug en voert de lecture opnieuw uit:
+Elk college bestaat twee keer, als MyST-markdown (`lectures/00_00_setup.md`) en
+als notebook (`lectures/00_00_setup.ipynb`), en Jupytext houdt de twee gepaard. De
+markdown is de bron voor de tekst, terwijl het notebook de plek is om code uit te proberen.
+Na werk in het notebook synchroniseren we terug en voeren we het college opnieuw uit:
 
 ```bash
 uv run jupytext --sync lectures/00_00_setup.md
@@ -793,9 +827,9 @@ uv run jupytext --execute --to ipynb lectures/00_00_setup.md
 ```
 
 Voor de data zijn er twee omgevingsvariabelen. `HAP_OFFLINE=1` verbiedt elke
-download: de loaders lezen alleen uit `data/cache/`. Een ontbrekende snapshot
-geeft dan een `hap.CacheMissError`, in plaats van stilzwijgend nieuwe data. Zo
-draait de testsuite, en zo is elke lecture uitgevoerd. `HAP_REFRESH=1` doet het
+download, zodat de loaders alleen uit `data/cache/` lezen en een ontbrekende snapshot
+een `hap.CacheMissError` geeft in plaats van stilzwijgend nieuwe data. Zo
+draait de testsuite, en zo is elk college uitgevoerd. `HAP_REFRESH=1` doet het
 omgekeerde en haalt een verse snapshot op. Zonder een van beide wordt alleen
 gedownload als het parquet-bestand ontbreekt. Snapshots verlopen dus nooit
 vanzelf, en een figuur van vandaag ziet er morgen hetzelfde uit.
@@ -803,31 +837,31 @@ vanzelf, en een figuur van vandaag ziet er morgen hetzelfde uit.
 ```{warning}
 Een reeks die per uitvoering verandert, is niet reproduceerbaar. Ververs een
 snapshot bewust, met `HAP_REFRESH=1` en een aantekening erbij, en niet als
-bijvangst van een lecture die toevallig wordt uitgevoerd.
+bijvangst van een college dat toevallig wordt uitgevoerd.
 ```
 
 ## Een eerste meting: het gemiddelde en zijn standaardfout
 
-*Waarom zou dit waar zijn?* Een onderzoeker die een eeuw jaarrendementen
+*Waarom zou een eeuw data zo weinig zeggen?* Een onderzoeker die een eeuw jaarrendementen
 middelt, heeft honderd trekkingen uit een verdeling met een klein midden en een
 grote spreiding. Een typisch jaar wijkt ongeveer 20 procentpunt af van het
-midden, terwijl dat midden, het excess rendement, maar ongeveer 8% is. Meer jaren
-maken de schatting beter, maar traag: de fout daalt met de wortel van het aantal
-jaren. Hoe fijn de onderzoeker binnen een jaar kijkt, helpt voor het gemiddelde
-niet. We verwachten dus een standaardfout die na een eeuw nog een flink deel van
+midden, terwijl dat midden, het overrendement, maar ongeveer 8% is. Meer jaren
+maken de schatting beter, maar traag, omdat de fout met de wortel van het aantal
+jaren daalt. Voor het gemiddelde helpt het niet om binnen een jaar vaker
+te meten. We verwachten dus een standaardfout die na een eeuw nog een flink deel van
 het gemiddelde zelf is.
 
 De formule achter die verwachting is de standaardfout van een steekproefgemiddelde
 van $T$ onafhankelijke trekkingen met standaarddeviatie $\sigma$:
 $\SD(\bar r) = \sigma/\sqrt{T}$. Met $\sigma = 20\%$ en $T = 100$ is dat 2
-procentpunt, de naam van het motief. Voor de geschatte volatiliteit geldt bij
+procentpunt, een kwart van een premie van 8%. Voor de geschatte volatiliteit geldt bij
 normale rendementen $\SD(\hat\sigma) \approx \sigma/\sqrt{2T} = 0{,}20/\sqrt{200}
-= 1{,}4$ procentpunt; oefening 2 leidt die formule af.
+= 0{,}014$, dus 1,4 procentpunt, en oefening 2 leidt die formule af.
 
-We simuleren een markt met een werkelijk gemiddeld excess rendement van 8% en een
+We simuleren een markt met een werkelijk gemiddeld overrendement van 8% en een
 werkelijke volatiliteit van 20% per jaar, honderd jaar lang. De 8% ligt dicht
-bij de 8,3% van `Mkt-RF` in de eerste tabel; de 20% is een ronde kalibratie, iets
-boven de gemeten 18,4%. We kijken wat
+bij de 8,3% van `Mkt-RF` in de eerste tabel, terwijl de 20% een ronde kalibratie is, iets
+boven de gemeten 18,4%. Eerst kijken we wat
 één zo'n eeuw schat.
 
 ```{code-cell} ipython3
@@ -847,10 +881,11 @@ pd.DataFrame(
 ).round(4)
 ```
 
-Deze eeuw schat 8,5% met een standaardfout van 2,0 procentpunt. Het 95%-interval
-loopt van 4,5% tot 12,4%, en het werkelijke gemiddelde ligt erin.
+Deze gesimuleerde eeuw schat 8,5% met een standaardfout van 2,0 procentpunt. Het
+95%-interval
+loopt van 4,5% tot 12,4% en bevat dus het werkelijke gemiddelde.
 
-Eén steekproef zegt weinig. We simuleren daarom tienduizend eeuwen en zetten de
+Omdat één steekproef weinig zegt, simuleren we daarna tienduizend eeuwen en zetten we de
 spreiding van beide schatters naast de formules.
 
 ```{code-cell} ipython3
@@ -874,9 +909,9 @@ pd.DataFrame(
 ```
 
 Formule en simulatie komen overeen: 2,0 procentpunt voor het gemiddelde, 1,4 voor
-de volatiliteit. Relatief is het verschil groot. Het gemiddelde heeft een
-relatieve fout van ongeveer 25%, de volatiliteit van ongeveer 7%. Na een eeuw is
-de volatiliteit dus op een paar procent na bekend, het gemiddelde op een kwart na.
+de volatiliteit. Relatief is het verschil toch groot, want het gemiddelde heeft een
+relatieve fout van ongeveer 25% en de volatiliteit van ongeveer 7%. Na een eeuw is
+de volatiliteit dus op een paar procent na bekend, maar het gemiddelde pas op een kwart na.
 De figuur toont de hele verdeling van het geschatte gemiddelde, met de
 95%-grenzen als stippellijnen.
 
@@ -900,6 +935,7 @@ plt.show()
 
 :::{figure} #cel-setup-se
 :label: fig-setup-se
+:width: 90%
 
 De verdeling van het gemiddelde rendement over tienduizend gesimuleerde eeuwen.
 De stippellijnen liggen twee standaardfouten van de waarheid af, op ongeveer 4%
@@ -907,33 +943,35 @@ en 12%. Een onderzoeker met honderd jaar data en een perfect gespecificeerd mode
 weet dus nog steeds niet of de premie 4% of 12% is.
 :::
 
-Zoals verwacht is het gemiddelde na een eeuw nog slecht bekend, en de
-volatiliteit goed. De asymmetrie komt uit de verhouding $\sigma/\mu$: bij 20%
+Zoals verwacht is het gemiddelde na een eeuw nog slecht bekend en de
+volatiliteit goed. De asymmetrie komt uit de verhouding $\sigma/\mu$, want bij 20%
 tegen 8% is de ruis van één jaar 2,5 keer zo groot als het signaal. Meer jaren
-helpen beide, fijnere data helpt alleen de variantie. Voor het gemiddelde
-logrendement is de reden exact. Dat is het logverschil tussen eind- en
-beginkoers, gedeeld door de lengte van de periode, en de koersen daartussen
-tellen niet mee. Het rekenkundig gemiddelde ligt ongeveer een halve variantie
+helpen beide, maar fijnere data helpt alleen de variantie. Voor het gemiddelde
+logrendement is de reden precies aan te wijzen. Dat gemiddelde is het logverschil tussen
+eind- en
+beginkoers, gedeeld door de lengte van de periode, zodat de koersen daartussen
+niet meetellen. Het rekenkundig gemiddelde ligt ongeveer een halve variantie
 hoger en is dus even slecht gemeten. De variantie daarentegen is een gemiddelde
-van gekwadrateerde rendementen, en wordt scherper met elke extra waarneming.
+van gekwadrateerde rendementen en wordt scherper met elke extra waarneming.
 
-De regressie in de gereedschapskist was een tweede geval van hetzelfde motief:
-een helling van 0,042 met een standaardfout van 0,044.
+De regressie in de gereedschapskist liet dezelfde asymmetrie zien, want de helling
+van 0,042 had een standaardfout van 0,044. Het teken klopte, maar de helling zelf was
+nauwelijks van nul te onderscheiden.
 
 ```{admonition} Replicatie
 :class: seealso
 
-**Bron.** Geen paper, maar de rekensom achter de standaardfout van 2%: de
-formule $\sigma/\sqrt{T}$ en de simulatie hierboven.
+**Bron.** Er is geen artikel om na te bouwen. We repliceren de rekensom
+$\sigma/\sqrt{T}$ uit de rode draad en de simulatie hierboven.
 
-**Wat.** De standaardfout van het gemiddelde excess rendement op de Amerikaanse
+**Wat.** De standaardfout van het gemiddelde overrendement op de Amerikaanse
 aandelenmarkt over een eeuw.
 
-**Data hier.** `Mkt-RF` uit de Kenneth French Data Library, 1201 maanden vanaf
-juli 1926: de reeks die de simulatie nabootst.
+**Data hier.** We gebruiken `Mkt-RF` uit de Kenneth French Data Library, 1201 maanden vanaf
+juli 1926. Het is de reeks die de simulatie nabootst.
 
 **Verschil met de simulatie.** De echte volatiliteit is 18,4% in plaats van 20%.
-Maandrendementen zijn niet onafhankelijk en niet normaal: ze hebben lichte
+Maandrendementen zijn niet onafhankelijk en niet normaal, want ze hebben lichte
 autocorrelatie en dikke staarten.
 
 **Verwachte afwijking.** Met 18,4% geeft de formule ongeveer 1,8 procentpunt in
@@ -942,8 +980,8 @@ enkele tienden hoger maken. De orde van grootte, tussen 1,5 en 2,5 procentpunt,
 moet kloppen.
 ```
 
-We zetten simulatie en data naast elkaar. Voor de data berekenen we de
-standaardfout op twee manieren: met de formule, en met Newey-West over twaalf
+We zetten simulatie en data naast elkaar, en voor de data berekenen we de
+standaardfout op twee manieren, met de formule en met Newey-West over twaalf
 maanden, die autocorrelatie toelaat.
 
 ```{code-cell} ipython3
@@ -956,33 +994,34 @@ se_newey_west = 12 * nw_fit.bse["gemiddelde"]  # monthly to annual
 
 pd.DataFrame(
     {
-        "simulatie (8%, 20%)": [mu_true, sigma_true, se_mean_formula, means.std(ddof=1)],
+        "simulatie (8%, 20%)": [mu_true, sigma_true, se_mean_formula,
+                                means.std(ddof=1), np.nan],
         "data (Mkt-RF)": [excess_stats["mean_ann"], excess_stats["std_ann"],
-                          excess_stats["se_mean_ann"], se_newey_west],
+                          excess_stats["se_mean_ann"], np.nan, se_newey_west],
     },
     index=["gemiddelde", "volatiliteit", "standaardfout, formule",
-           "standaardfout, spreiding of Newey-West"],
+           "standaardfout, spreiding over simulaties", "standaardfout, Newey-West"],
 ).round(4)
 ```
 
 **Geslaagd.** Op de data geeft de formule 1,8 procentpunt en Newey-West 2,0,
-binnen de verwachte afwijking van enkele tienden. Het gemiddelde excess rendement
-van 8,3% is dus op ongeveer 2 procentpunt na bekend. Het totale marktrendement
-`Mkt` heeft dezelfde standaardfout, 1,8 procentpunt bij 11,6%, omdat de
-risicovrije rente nauwelijks schommelt. De standaardfout van 2% is geen metafoor,
-maar een rekensom die hier drie keer is gemaakt.
+binnen de verwachte afwijking van enkele tienden. Het gemiddelde overrendement is
+dus na een eeuw maar op ongeveer 2 procentpunt na bekend, en voor het totale
+marktrendement `Mkt` geldt hetzelfde, omdat de risicovrije rente nauwelijks
+schommelt. Die onzekerheid is geen metafoor, maar een uitkomst die we hier drie keer
+hebben gevonden: met de formule, in de simulatie en op de data.
 
 ## Wat er daarna komt
 
 De gereedschapskist staat klaar: acht databronnen die offline draaien, een
-notatie voor de hele reeks, en een handvol schatters. Wat nog ontbreekt, is het
-begrip waar alles op rust. In deze lecture zijn rendementen opgeteld, gemiddeld en
-geannualiseerd zonder te zeggen wat een rendement is. Open bleef ook of het
-meetkundig of het rekenkundig gemiddelde de gestelde vraag beantwoordt. En de
-bewering dat dagdata de variantie scherper maakt en het gemiddelde niet, staat
-hier zonder bewijs.
+notatie voor de hele reeks, en een handvol schatters. Er ontbreekt nog het
+begrip waar alles op rust, want in dit college hebben we rendementen opgeteld, gemiddeld en
+geannualiseerd zonder te zeggen wat een rendement is. Ook bleef open of het
+meetkundig of het rekenkundig gemiddelde de gestelde vraag beantwoordt, en de
+bewering dat dagdata de variantie scherper maken en het gemiddelde niet, staat
+hier nog zonder bewijs.
 
-Dat is de inhoud van [Rendementen en hun statistiek](#00-01-rendementen):
+Die vragen beantwoordt [Rendementen en hun statistiek](#00-01-rendementen), met
 logrendementen en simpele rendementen, annualisatie, de standaardfout van het
 gemiddelde in volle vorm, autocorrelatie en dikke staarten. Daarna begint het
 verhaal in 1863, bij een man in Parijs die zag dat de koersuitslag met de wortel
@@ -995,7 +1034,7 @@ van de tijd toenam.
 
 **Een loader gebruiken en een grootheid berekenen.** Laad de tien
 industrieportefeuilles van French met
-`hap_data.french("10_Industry_Portfolios", "monthly")` en beperk de steekproef
+`hap_data.french("10_Industry_Portfolios", "monthly")`. Beperk de steekproef
 tot 1970 en later.
 
 1. Bereken per industrie het geannualiseerde gemiddelde rendement, de
@@ -1004,7 +1043,7 @@ tot 1970 en later.
 2. Welke industrie heeft het hoogste gemiddelde, en welke het laagste? Hoeveel
    procentpunt schelen ze?
 3. Bereken de standaardfout van dat verschil onder de aanname dat de twee reeksen
-   ongecorreleerd zijn. Bereken haar ook uit de maandelijkse verschilreeks, die de
+   ongecorreleerd zijn. Bereken die standaardfout ook uit de maandelijkse verschilreeks, die de
    correlatie meeneemt. Haalt het verschil twee standaardfouten?
 :::
 
@@ -1048,25 +1087,26 @@ pd.DataFrame(
 ```
 
 Het verschil tussen de beste en de slechtste industrie is 2,7 procentpunt per
-jaar. Zonder correlatie is de standaardfout 3,7 procentpunt. De twee reeksen zijn
-positief gecorreleerd, dus de gemeenschappelijke marktbeweging valt weg uit het
-verschil. Daardoor is de standaardfout uit de verschilreeks kleiner, 2,8
-procentpunt, maar ook dan blijft de $t$-waarde onder één.
+jaar, en zonder correlatie is de standaardfout 3,7 procentpunt. De twee reeksen zijn
+echter positief gecorreleerd, zodat de gemeenschappelijke marktbeweging uit het
+verschil wegvalt. Daardoor is de standaardfout uit de verschilreeks kleiner, 2,8
+procentpunt, maar ook dan blijft de $t$-waarde net onder één.
 
-Wat dit leert: zelfs de uitersten van tien portefeuilles over een halve eeuw zijn
-niet van elkaar te onderscheiden. Wie een rangorde van gemiddelde rendementen
-serieus neemt, neemt ruis serieus.
+Zelfs de uitersten van tien portefeuilles zijn over een halve eeuw niet van elkaar
+te onderscheiden. Een rangorde van gemiddelde rendementen weerspiegelt dus vooral
+ruis.
 :::
 
 :::{exercise}
 :label: ex-setup-2
 
-**Hoeveel data is genoeg?** Gebruik `hap_data.market_monthly()`.
+**Hoeveel data is genoeg?** Gebruik `hap_data.market_monthly()`. Alle drie de
+deelvragen gaan over het overrendement `Mkt-RF`.
 
 1. Splits de steekproef in 1926–1975 en 1976–2026 en bereken voor beide helften
-   het geannualiseerde gemiddelde excess rendement met standaardfout. Verschilt
+   het geannualiseerde gemiddelde overrendement met standaardfout. Verschilt
    het gemiddelde significant tussen de twee helften?
-2. Hoeveel jaar data is nodig om het gemiddelde excess rendement tot op 0,5
+2. Hoeveel jaar data is nodig om het gemiddelde overrendement tot op 0,5
    procentpunt nauwkeurig te kennen, bij de waargenomen volatiliteit?
 3. Laat zien dat bij normale rendementen $\SD(\hat\sigma) \approx
    \sigma/\sqrt{2T}$, met $\Var(\hat\sigma^2) = 2\sigma^4/T$ en de deltamethode.
@@ -1117,18 +1157,19 @@ pd.DataFrame(
 ).round(3)
 ```
 
-Eerst de afleiding. De deltamethode geeft $\SD(\hat\sigma) \approx
+Voor de afleiding geeft de deltamethode $\SD(\hat\sigma) \approx
 \SD(\hat\sigma^2)/(2\sigma) = \sigma^2\sqrt{2/T}/(2\sigma) = \sigma/\sqrt{2T}$.
-De twee helften van de eeuw verschillen met een $t$-waarde van $-0{,}2$. De data
-kan dus niet uitmaken of de equity premium tussen de eerste en de tweede halve eeuw is veranderd. Om het
-gemiddelde tot op een halve procentpunt te kennen, zijn ongeveer 1350 jaar nodig,
+De twee helften van de eeuw verschillen met een $t$-waarde van $-0{,}2$. Uit de data
+valt dus niet op te maken of de aandelenpremie tussen de eerste en de tweede halve eeuw is veranderd. Om het
+gemiddelde tot op een half procentpunt te kennen, zijn ongeveer 1350 jaar nodig,
 meer dan er beurzen bestaan. Voor de standaarddeviatie volstaan met jaardata
 ongeveer 675 jaar, de helft. Met onafhankelijke maandrendementen is dat ongeveer
 56 jaar, want de variantie profiteert van metingen binnen het jaar en het
 gemiddelde niet.
 
-Wat dit leert: het gemiddelde rendement is met elke denkbare hoeveelheid
-beursgeschiedenis slecht bekend, de volatiliteit niet. Waarom fijnere data alleen
+Het gemiddelde rendement blijft met elke denkbare hoeveelheid
+beursgeschiedenis slecht bekend, terwijl de volatiliteit met ruim een halve eeuw
+maanddata al tot op een half procentpunt te meten is. Waarom fijnere data alleen
 de variantie helpt, staat in [Rendementen en hun statistiek](#00-01-rendementen).
 :::
 

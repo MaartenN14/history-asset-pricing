@@ -1,227 +1,309 @@
-STATUS 00_00_setup F6c words=5028 prose=PASS open=1 cijfer=8,6 min=8,5
+STATUS 00_00_setup F6c words=5424 prose=PASS open=0 cijfer=9,0 min=9,0
 
-# Eindbeoordeling F6: 00_00_setup (Opzet, data en conventies)
+# Ronde 9+
 
-Eindbeoordelaar A, Deel II. Cijfer van record volgens `plannen/rubriek-didactiek.md`.
-De setup heeft bewust eigen kopjes. Criterium 4 (toy-voorbeeld) is n.v.t.; de overige
-zes gewichten zijn herwogen naar 100% (deling door 0,90).
+Vorige ronde: 8,6
 
-## Eindcijfer F6: 8,6 (na controle: 8,6, cijfer van record; statusregel bovenaan)
-
-| nr | criterium | gewicht | deelcijfer |
-|---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 8,5 |
-| 2 | Opbouw en rode draad | 20% | 8,5 |
-| 3 | Taal | 15% | 8,5 |
-| 4 | Toy-voorbeeld | 10% | n.v.t. |
-| 5 | Code en figuren | 10% | 8,5 |
-| 6 | Replicatie en empirie | 10% | 9 |
-| 7 | Oefeningen | 5% | 8,5 |
-
-(8,5·30 + 8,5·20 + 8,5·15 + 8,5·10 + 9·10 + 8,5·5) / 90 = 8,56 → 8,6. Laagste deelcijfer 8,5.
-
-## Feitelijke fouten
-
-1. **De data → Yahoo Finance.** "De cache bevat de dagelijkse, voor splitsingen en
-   dividenden gecorrigeerde slotkoersen van vijf ETF's, en één momentopname van de
-   optieketen van SPY." `data/cache/` bevat negen Yahoo-snapshots: behalve de vijf
-   ETF's ook de 50 aandelen van L7, twee fondsenreeksen, `GSPC-PUT-BXM`, `SP500TR` en
-   twee optie-snapshots van SPY (`yahoo_options__SPY__6` en `__28`). De zin klopt niet
-   meer, en L7 laadt koersen die volgens deze zin niet bestaan (zie naad 6 in
-   `eind-deel-2a.md`).
-2. **Oefeningen → uitwerking ex-setup-2.** "De data kan dus niet uitmaken of de equity
-   premium na de oorlog is veranderd." De steekproef is gesplitst in 1926–1975 en
-   1976–2026, niet rond 1945. Het verschil is dat tussen de eerste en de tweede halve
-   eeuw.
-
-Nagerekend en correct (ter controle): 11,6% en SE 1,8 pp (`Mkt`); interval 8–15%;
-83,7% terugval in juni 1932; CAPE 18,5 → 40,2 en gemiddelde 17,8; `dp` 4,3% → 1,1%;
-VIX 9266 dagen, mediaan 17,6, max 82,7; GSW 15,7% en 0,13%; 212 signalen, mediane
-$t$ 4,0; HKM-dieptepunt 2,2% in februari 2009; QQQ − TLT = 12,5 pp; helling 0,042,
-SE 0,044, $t$ 0,95, 100 jaarwaarnemingen; simulatie 8,5% [4,5; 12,4]; 2,0 en 1,4 pp;
-relatieve fout 25% en 7%; Newey-West 2,0; 2,7 pp, 3,7, 2,8, $t$ < 1; SE 3,0 en 2,2;
-$t = -0{,}2$; 1350, 675 en 56 jaar; 39 andere lectures (40 in `lectures/`).
-
-## 1. Helderheid van de uitleg (8,5)
-
-*Goed*
-- **De rode draad.** Het motief "de standaardfout van 2%" krijgt meteen zijn rekensom
-  ($20/\sqrt{100} = 2$) en drie gevolgen, elk met een getal (6,18% en 8,3%, één op de
-  twintig factoren).
-- **Notatie.** De dubbele conventie (R bruto, $R^f$ netto) wordt uitgelegd met 1,08
-  en 0,02, en er staat dat het excess rendement in beide schrijfwijzen hetzelfde getal is.
-- **Een eerste meting.** "Waarom zou dit waar zijn?" voorspelt een SE die een flink
-  deel van het gemiddelde is; formule, simulatie en data lossen dat in met dezelfde
-  getallen.
-
-*Aanmerkingen*
-- **Goyal-Welch, bijschrift.** "Omdat de persistentie in een korte steekproef te laag
-  wordt geschat, is de helling naar boven vertekend en de $t$-waarde te groot." Twee
-  stappen (negatieve correlatie tussen de schokken, onderschatte persistentie) worden
-  in één zin samengeperst tot een teken.
-- **Gürkaynak-Sack-Wright.** "`SVENFnn` (instantane forward)": de term krijgt geen
-  betekenis en wordt nergens gebruikt.
-- **He-Kelly-Manela.** "We tonen de laatste drie maanden van de vier kolommen." Drie
-  van de vier kolommen (`risk_factor`, `value_weighted_investment_return`,
-  `leverage_ratio_squared`) krijgen geen uitleg.
-- **Een eerste meting, slotalinea.** "Voor het gemiddelde logrendement is de reden
-  exact. [...] Het rekenkundig gemiddelde ligt ongeveer een halve variantie hoger en
-  is dus even slecht gemeten." De sprong van log naar rekenkundig is snel, en het
-  argument voor de variantie ("wordt scherper met elke extra waarneming") zegt niet
-  waarom waarnemingen *binnen* het jaar meetellen.
-
-*Beter uitleggen*
-- Stambaugh-bias: één zin met het mechanisme (een hoge koersschok verlaagt $D/P$
-  en verhoogt het rendement, dus fouten in de persistentie lekken naar de helling).
-- Fijnere data en variantie: één getal, bijvoorbeeld 12 onafhankelijke maandkwadraten
-  per jaar tegen één, zoals oefening 2 al uitrekent (675 tegen 56 jaar).
-
-## 2. Opbouw en rode draad (8,5)
-
-*Goed*
-- **Overzicht** stelt de vraag en geeft het antwoord (11,6%, SE 1,8 pp).
-- **Een eerste meting** volgt de trap voorspelling → formule → simulatie → data, met
-  8% en 20% als verbindende getallen, en keert terug naar de regressie uit de
-  gereedschapskist (0,042 en 0,044).
-- 5014 woorden, ruim onder de grens.
-
-*Aanmerkingen*
-- **Waar we zijn / Overzicht.** "Hoe is de reeks opgebouwd, en hoe goed meten we met
-  haar data het gemiddelde rendement op aandelen?" Twee vragen; het Overzicht
-  beantwoordt alleen de tweede met een getal.
-- **Wat we niet hebben: CRSP en Compustat.** De samenvatting van de hele datasectie
-  ("Uit de acht figuren nemen we drie dingen mee.") staat aan het eind van de
-  CRSP-subsectie, waar ze bij CRSP lijkt te horen.
-- De datasubsecties beginnen met een beschrijving van de bron, niet met hun conclusie.
-
-*Beter uitleggen*
-- Geef de datasectie een eigen slotalinea buiten "Wat we niet hebben", of zet de drie
-  lessen vooraan in "De data".
-
-## 3. Taal (8,5)
-
-*Goed*
-- Korte zinnen (gemiddeld 14,5 woorden), geen u/je, geen calques.
-- Het Santa-Clara-citaat staat als blokcitaat met een Nederlandse inleiding.
-
-*Aanmerkingen*
-- **Kenneth French** en **Een eerste meting.** Wisselende namen: "volatiliteit
-  (per jaar)" in de tabel, "met een standaarddeviatie van 18,3%" in de tekst direct
-  eronder, en "de geschatte volatiliteit" bij $\SD(\hat\sigma)$.
-- **Wat we niet hebben.** "meet een onderzoeker alleen de overlevenden"; L5 zegt
-  consequent "overlevers" (zie naad 8).
-
-*Beter uitleggen*
-- Eén naam voor $\sigma$ in lopende tekst, bij voorkeur "volatiliteit".
-
-## 4. Toy-voorbeeld (n.v.t.)
-
-De setup heeft bewust geen toy-voorbeeld; de simulatie met 8% en 20% vervult die rol.
-
-## 5. Code en figuren (8,5)
-
-*Goed*
-- Elke figuur heeft een vraag vooraf ("Rond welk jaar wordt de lijn steil?") en een
-  bijschrift dat die vraag beantwoordt.
-- De code is kort en leesbaar; `number_nl` wordt direct na de imports uitgelegd.
-
-*Aanmerkingen*
-- **Kenneth French, eerste figuur.** "De figuur hieronder toont wat die 11,6% over een
-  eeuw oplevert. De verticale as is logaritmisch." Er staat niet waarop te letten; de
-  diepste terugval, die de figuur annoteert, komt alleen in het bijschrift.
-- **He-Kelly-Manela.** De cel toont vier kolommen, waarvan de tekst er één gebruikt.
-- **Een eerste meting, laatste cel.** De rij "standaardfout, spreiding of Newey-West"
-  zet twee verschillende grootheden in één rij.
-
-*Beter uitleggen*
-- Toon bij HKM alleen `intermediary_capital_ratio`, of zeg in één zin wat de andere
-  kolommen zijn.
-
-## 6. Replicatie en empirie (9)
-
-*Goed*
-- Het replicatieblok heeft bron, wat, data, verschil en verwachte afwijking (1,8
-  in plaats van 2,0; band 1,5–2,5), ruim onder 250 woorden.
-- Tabel simulatie/data, en een oordeel "Geslaagd" dat naar de verwachte afwijking
-  verwijst.
-
-*Aanmerkingen*
-- De verwachte band "tussen 1,5 en 2,5 procentpunt" is zo breed dat de toets weinig
-  kan laten mislukken; de scherpere verwachting (1,8 formule, enkele tienden erboven met
-  Newey-West) staat er wel en wordt ook ingelost.
-
-*Beter uitleggen*
-- Geen.
-
-## 7. Oefeningen (8,5)
-
-*Goed*
-- Beide uitwerkingen eindigen met "Wat dit leert".
-- Oefening 2 combineert een afleiding (deltamethode) met een toepassing op data.
-
-*Aanmerkingen*
-- **Uitwerking ex-setup-2.** "Eerst de afleiding." De afleiding staat ná de codecel
-  en beslaat één regel.
-- Zie feitelijke fout 2 ("na de oorlog").
-- Geen oefening die de replicatie uitbreidt (bijvoorbeeld Newey-West met andere
-  vertragingen).
-
-*Beter uitleggen*
-- Zet de deltamethode vóór de cel, met de tussenstap $\Var(\hat\sigma^2) = 2\sigma^4/T$.
+Eindbeoordeling F6 van `lectures/00_00_setup.md` (Opzet, data en conventies), met verse ogen
+na de taalredactie. `prose_stats --check`: PASS (5366 woorden, zinnen gemiddeld 17,3, p90 28,
+2 zinnen > 40, alinea gemiddeld 47, dubbele punt 2,2 per 1000, `wie_open` 1, `tmpl` 1).
+Criterium 4 heeft in de setup geen eigen kopje; het wordt beoordeeld op het equivalent: de
+ronde rekensom $20/\sqrt{100}$ (r. 78–82) en de ene gesimuleerde eeuw (r. 832–856).
+Onderzoeken: alleen onderzoek A noemt dit college; B–E niet. De A-punten bij r. 66–71,
+104–105, 368–369 en 1120 zijn door de redactie opgelost; de punten hieronder gelden nog.
 
 ## De drie verbeteringen met het meeste effect
 
-1. Stambaugh-mechanisme in één extra zin en de slotalinea over fijnere data met het
-   getal uit oefening 2 (helderheid 8,5 → 9).
-2. Twee vragen terugbrengen tot één, of beide in het Overzicht beantwoorden, en de
-   drie lessen van de datasectie een eigen plek geven (opbouw 8,5 → 9).
-3. De Yahoo-zin en "na de oorlog" corrigeren, en één naam voor $\sigma$ (feiten naar 0,
-   taal 8,5 → 9).
+1. **Taal: het leeswijzersjabloon en vier hardop-zinnen herschrijven** (8,7 → 9,0). "Het
+   gaat erom" / "gaat het erom/om" staat vier keer als leeswijzer (r. 371–372, 421–422,
+   611–612, 675–676) [onderzoek A, P2]; daarnaast de zinnen op r. 116–118, 645–646, 821 en
+   1063 (zie hardop-toets onderaan).
+2. **Helderheid: de Stambaugh-stap en twee kleine slordigheden** (8,8 → 9,0). In het
+   bijschrift r. 444–446 ontbreekt de schakel waarom onderschatte persistentie de helling
+   omhoog trekt; r. 829 schrijft $0{,}20/\sqrt{200} = 1{,}4$ procentpunt (eenhedenwissel);
+   r. 95 zegt "boven 1,96" waar $|t| > 1{,}96$ bedoeld is.
+3. **Replicatie: getallen uit het oordeel naar de tabel** (8,8 → 9,0). Het oordeel
+   (r. 974–979) bevat zes getallen in één alinea, waarvan 11,6% niet in de tabel staat, en
+   de tabelrij "standaardfout, spreiding of Newey-West" (r. 970) stopt twee verschillende
+   grootheden in één rij.
+
+## Eindcijfer: 8,9
+
+| nr | criterium | gewicht | deelcijfer |
+|---|---|---|---|
+| 1 | Helderheid van de uitleg | 25% | 8,8 |
+| 2 | Opbouw en rode draad | 20% | 9,0 |
+| 3 | Taal | 20% | 8,7 |
+| 4 | Toy-voorbeeld (equivalent) | 10% | 9,0 |
+| 5 | Code en figuren | 10% | 9,0 |
+| 6 | Replicatie en empirie | 10% | 8,8 |
+| 7 | Oefeningen | 5% | 9,0 |
+
+0,25·8,8 + 0,20·9,0 + 0,20·8,7 + 0,10·9,0 + 0,10·9,0 + 0,10·8,8 + 0,05·9,0 = 8,87 → **8,9**.
+Laagste deelcijfer 8,7 (taal). Geen deelcijfer onder 8,5; taal ≥ 8, dus niet blokkerend.
+Doel 9,0 niet gehaald. (Zonder criterium 4, herwogen over 90%: 8,86 → 8,9; zelfde cijfer.)
+
+## 1. Helderheid van de uitleg (8,8)
+
+*Goed*
+- **De rode draad → De standaardfout van 2%.** Het motief krijgt meteen zijn rekensom
+  ($20/\sqrt{100} = 2$) en drie gevolgen met getallen (6,18% en 8,3%; één op de twintig).
+- **Notatie.** De dubbele conventie ($R$ bruto, $R^f$ netto) krijgt 1,08 en 0,02, en de
+  tijdsindexregel krijgt een reden (vooruitkijken, "veel te mooie resultaten").
+- **Een eerste meting.** De asymmetrie gemiddelde/variantie wordt verklaard met
+  $\sigma/\mu = 2{,}5$ en met het logverschil tussen eind- en beginkoers (r. 915–923).
+
+*Aanmerkingen*
+- **Goyal-Welch, bijschrift.** "Omdat de persistentie in een korte steekproef te laag
+  wordt geschat, is de helling naar boven vertekend en de $t$-waarde te groot." De
+  negatieve correlatie staat er nu (r. 443–444), maar de schakel van onderschatte
+  persistentie naar een opwaartse helling niet.
+- **Een eerste meting.** "$\SD(\hat\sigma) \approx \sigma/\sqrt{2T} = 0{,}20/\sqrt{200}
+  = 1{,}4$ procentpunt" — links een decimaal, rechts procentpunten.
+- **De rode draad.** "omdat van twintig nutteloze factoren er gemiddeld één toevallig een
+  $t$-waarde boven 1,96 haalt." Eén op twintig geldt voor $|t| > 1{,}96$.
+
+*Beter uitleggen*
+- De Stambaugh-bias: één bijzin dat de regressie de te lage persistentie "corrigeert" via
+  de negatief gecorreleerde schok, zodat de helling omhoog schuift.
+- "Niet cumulatief" (r. 66) zegt de lezer weinig; een voorbeeld (het CAPM verdwijnt niet
+  als de factor zoo komt) maakt het concreet.
+
+*Voor een 9*
+- `lectures/00_00_setup.md:444-446` Stambaugh-schakel in één bijzin.
+- `lectures/00_00_setup.md:829` eenheden gelijk trekken ($0{,}20/\sqrt{200} = 0{,}014$).
+- `lectures/00_00_setup.md:95` "in absolute waarde boven 1,96".
+
+## 2. Opbouw en rode draad (9,0)
+
+*Goed*
+- **Overzicht** stelt de vraag en geeft meteen het antwoord (11,6%, standaardfout 1,8).
+- **Een eerste meting** voorspelt ("Waarom zou een eeuw data zo weinig zeggen?") en lost
+  in met dezelfde getallen (8%, 20%, 18,4%) in formule, simulatie en data; de regressie uit
+  de gereedschapskist keert terug (r. 925–927).
+- **De data** sluit af met drie lessen uit de acht figuren (r. 736–740); lengte 5366 woorden.
+
+*Aanmerkingen*
+- **Waar we zijn / Overzicht.** "Hoe is de reeks opgebouwd? Hoe goed meten we met de data
+  van de reeks het gemiddelde rendement op aandelen?" staat vrijwel woordelijk opnieuw in
+  de eerste zin van het Overzicht (r. 37–38) [onderzoek A].
+
+*Beter uitleggen*
+- Geen inhoudelijk gat; het Overzicht kan de vraag parafraseren in plaats van herhalen.
+
+## 3. Taal (8,7)
+
+*Goed*
+- **De data.** De bronbeschrijvingen lezen als gesproken tekst, met voegwoorden en zonder
+  telegramzinnen; ritme 17,3 woorden met afwisseling.
+- **Wat er daarna komt.** Korte, natuurlijke overgang met een concrete vraag voor het
+  volgende college.
+
+*Aanmerkingen*
+- **De data (leeswijzers).** "Het gaat erom hoe lang de reeks boven of onder die lijn
+  blijft." (r. 371–372); "In de figuur gaat het erom of `dp` over jaren of over decennia
+  beweegt." (r. 421–422); "daarin gaat het om het laagste punt en de recessie waarin dat
+  punt valt." (r. 612); "gaat het erom welke verschillen tussen de lijnen groter zijn dan
+  de standaardfouten." (r. 675–676) — vier keer dezelfde wending (§11.12) [onderzoek A, P2].
+- **De rode draad.** "Zijn blijvende winst kwam uit het dragen van risico waarvoor de markt
+  een premie betaalde, terwijl zijn verliezen kwamen uit de gedachte iets te weten wat de
+  prijs niet wist." "Zijn" kan op "een belegger" (r. 115) slaan [onderzoek A, 113–116].
+- **He-Kelly-Manela.** "Zo leest de risicokant een crash, terwijl de vergissingskant in
+  dezelfde lage prijzen paniek ziet." Kampen als "kant" die leest, dicht bij motief als
+  handelend onderwerp.
+- **Oefeningen (ex-setup-1).** "Wie een rangorde van gemiddelde rendementen serieus neemt,
+  neemt dus vooral ruis serieus." Engelse chiasme [onderzoek A, 1057–1058].
+- **Een eerste meting.** "Hoe fijn de onderzoeker binnen een jaar kijkt, helpt voor het
+  gemiddelde niet." en "2 procentpunt, de naam van het motief." (regeltaal-achtig).
+- **Motiefnaam.** "de standaardfout van 2%" staat vier keer bij naam (r. 74, 78, 933, 978);
+  de setup mag ze invoeren, maar r. 933 en 978 kunnen zonder naam.
+
+*Beter uitleggen*
+- Niet van toepassing buiten de zinnen hierboven; de redactie heeft de grote knippen en
+  dubbele punten weggewerkt.
+
+*Voor een 9*
+- `lectures/00_00_setup.md:371,421,612,675` leeswijzers elk anders formuleren (vraag,
+  "let op", of de bewering zelf).
+- `lectures/00_00_setup.md:116-118,645-646,821,1063` de vier hardop-zinnen herschrijven.
+- `lectures/00_00_setup.md:828,978` motiefnaam en "de naam van het motief" vervangen door
+  wat er gemeten is.
+
+## 4. Toy-voorbeeld, equivalent (9,0)
+
+*Goed*
+- **De rode draad.** $20/\sqrt{100} = 2$ is in tien seconden na te rekenen, één mechanisme.
+- **Een eerste meting.** De ene eeuw (8,5%, 2,0, interval 4,5–12,4) en de tabel
+  formule/simulatie werken als hand/code-controle; dezelfde getallen keren terug in de data.
+
+*Aanmerkingen*
+- Geen.
+
+*Beter uitleggen*
+- Niets nodig.
+
+## 5. Code en figuren (9,0)
+
+*Goed*
+- Elke cel heeft een zin ervoor en erna; vóór elke figuur staat waarop te letten.
+- De simulatiecode leest als de wiskunde (`se_mean_formula`, `se_sd_formula`).
+- `number_nl` zorgt voor Nederlandse decimalen in figuren.
+
+*Aanmerkingen*
+- **Een eerste meting.** `fig-setup-se` heeft als enige figuur geen `:width:` (r. 906–908)
+  [onderzoek A].
+- **Gürkaynak-Sack-Wright.** "De figuur tekent voor dezelfde drie dagen de hele curve tot
+  dertig jaar" — voor 1981 ontbreken de lange looptijden, en `range(1, len(curve) + 1)`
+  veronderstelt stilzwijgend dat alleen het staartstuk ontbreekt.
+
+*Beter uitleggen*
+- Eén bijzin bij de GSW-figuur dat de curve van 1981 korter is.
+
+## 6. Replicatie en empirie (8,8)
+
+*Goed*
+- Admonition compleet (bron, wat, data, verschil, verwachte afwijking) en kort.
+- Oordeel begint met **Geslaagd** en verwijst naar "enkele tienden".
+- Twee standaardfouten (formule en Newey-West) naast de simulatie.
+
+*Aanmerkingen*
+- **Replicatie (oordeel).** "Op de data geeft de formule 1,8 procentpunt en Newey-West 2,0,
+  binnen de verwachte afwijking van enkele tienden. Het gemiddelde overrendement van 8,3%
+  is dus op ongeveer 2 procentpunt na bekend. Het totale marktrendement `Mkt` heeft
+  dezelfde standaardfout, 1,8 procentpunt bij 11,6%, ..." Zes getallen in lopende tekst.
+- **Replicatie (tabel).** Rij "standaardfout, spreiding of Newey-West": in de ene kolom de
+  spreiding over simulaties, in de andere Newey-West.
+
+*Beter uitleggen*
+- De lezer moet uit de rijnaam afleiden welke grootheid in welke kolom staat.
+
+*Voor een 9*
+- `lectures/00_00_setup.md:969-970` twee aparte rijen (spreiding simulatie; Newey-West), eventueel een rij voor `Mkt`.
+- `lectures/00_00_setup.md:974-979` oordeel terugbrengen tot hoogstens drie getallen.
+
+## 7. Oefeningen (9,0)
+
+*Goed*
+- ex-setup-2 varieert op de rekensom (jaren voor 0,5 pp) en bevat de afleiding van
+  $\sigma/\sqrt{2T}$; ex-setup-1 breidt de data-meting uit.
+- Beide uitwerkingen eindigen met wat ze leren (r. 1062–1064, 1137–1140).
+
+*Aanmerkingen*
+- **ex-setup-1, uitwerking.** Taalpunt r. 1063 (zie criterium 3); de $t$-waarde uit de
+  verschilreeks is 0,99, "onder één" klopt maar nipt.
+
+*Beter uitleggen*
+- Niets nodig.
+
+## Feitelijke fouten
+
+Nagerekend met `HAP_OFFLINE=1` op de cache (script `$TEMP/F6-00_00_setup-check.py`).
+
+1. **r. 94–95** "een $t$-waarde boven 1,96": bij één op twintig hoort $|t| > 1{,}96$
+   (tweezijdig); eenzijdig is het één op veertig.
+2. **r. 510–512** "de hele curve tot dertig jaar": op 30-09-1981 is `SVENY30` leeg, dus die
+   curve stopt eerder.
+3. **r. 829** "$0{,}20/\sqrt{200} = 1{,}4$ procentpunt": uitkomst is 0,014 (= 1,4 pp);
+   notatiefout, geen rekenfout.
+
+Nagerekend en juist: `Mkt` 11,6% / 18,3% / SE 1,8 pp over 1201 maanden; interval 8–15%;
+`Mkt-RF` 8,3% / 18,4%; RF-standaardfout 0,09 pp; terugval 83,7% in juni 1932; CAPE 18,5 →
+40,2 (40,15), gemiddelde 17,8; `dp` 4,3% → 1,1%; GW-`dp` −4,2 tot −4,5; helling 0,042, SE
+0,044, $t$ 0,95, 100 waarnemingen, 155 jaar, `equity_premium` vanaf 1926; VIX 9266 dagen,
+mediaan 17,6, max 82,7; GSW 15,7% en 0,13%; OSAP 212 signalen, mediane $t$ 4,0, eerste 1973;
+HKM ~7,5% voorjaar 2025, minimum 2,2% februari 2009; alle vijf ETF's vanaf november 2004;
+ETF-standaardfouten 3,1–5,2 ("3 tot 5" is afgerond); SPY/GLD/IWM binnen 0,9 pp; QQQ−TLT
+12,5 pp; eeuw 8,5%, 2,0, [4,5; 12,4]; simulatie 2,0 en 1,4; Newey-West 2,0; Energie−Telecom
+2,7 pp, SE 3,7 en 2,8, $t$ 0,99; helften SE 3,0 en 2,2, $t$ −0,2; 1350, 675 en 56 jaar.
+De twee fouten uit de vorige ronde (Yahoo-cache, "na de oorlog") zijn opgelost.
 
 ## Navertelling in vijf zinnen
 
-De reeks vertelt ruim 160 jaar asset pricing als een opeenvolging van theorie, nieuwe data
-en een feit dat de theorie niet aankan, met drie motieven die steeds terugkeren. Alle
-lectures delen één notatie, met $R$ bruto, $r$ en $R^f$ netto en de tijdsregel
-$p_t = \E_t[m_{t+1}x_{t+1}]$. Acht gratis bronnen, offline gecachet, vervangen CRSP en
-Compustat, ten koste van analyses op het niveau van het individuele aandeel. Het
-gemiddelde marktrendement over een eeuw is 11,6% met een standaardfout van 1,8
-procentpunt, precies wat $\sigma/\sqrt{T}$ voorspelt, terwijl de volatiliteit tot op
-een paar procent bekend is. Die asymmetrie, de standaardfout van 2%, keert in de hele
-reeks terug. De navertelling komt overeen met het Overzicht.
+1. De reeks vertelt de geschiedenis van asset pricing als een opeenvolging van theorie,
+   nieuwe data en een feit dat de theorie niet aankan, met drie terugkerende motieven.
+2. Alle colleges delen één notatie ($R$ bruto, $R^f$ netto, $m_{t+1}$, tijdsindex $t+1$ voor
+   payoffs) en één vaste opbouw van toy via theorie en simulatie naar replicatie.
+3. Acht gratis bronnen, offline uit een cache, dekken de data; CRSP en Compustat ontbreken,
+   zodat de reeks op French- en OSAP-portefeuilles en op simulatie leunt.
+4. Het `hap`-pakket levert de standaardschatters en figuurhulpjes, en een eerste regressie
+   laat zien dat een juist teken met een te grote standaardfout niets bewijst.
+5. Na een eeuw is het gemiddelde overrendement (8,3%) maar op ongeveer 2 procentpunt na
+   bekend en de volatiliteit veel scherper, wat formule, simulatie en data alle drie bevestigen.
 
-## Controle
+Dit komt overeen met het Overzicht.
 
-STATUS 00_00_setup F6c words=5028 prose=PASS open=1 cijfer=8,6 min=8,5
+## Taal na de redactie
 
-Gecontroleerd tegen `rapport-00_00_setup.md` §F6-1 en de lecture zelf.
+De redactie heeft gewerkt: de telegramzinnen en dubbele punten als lijm uit de vorige ronde
+zijn weg, de meeste alinea's lezen hardop als een college. Wat overblijft is een
+sjabloonwending in de leeswijzers ("het gaat erom", vier keer) en een handvol zinnen die
+geschreven klinken.
 
-| punt | status | toelichting |
-|---|---|---|
-| Fout 1 / naad 6, Yahoo-cache | opgelost | de zin noemt nu vijf ETF's, vijftig aandelen, fondsen en indexreeksen en twee optie-snapshots; dat klopt met de negen `yahoo*`-bestanden |
-| Fout 2, "na de oorlog" | opgelost | "tussen de eerste en de tweede halve eeuw" |
-| Naad 8, overlevenden | opgelost | "overlevenden", gelijk aan L5 en de boekconventie |
-| Naad 9, "empirische finance" | opgelost | de setup hield haar vorm; L7 is gelijkgezet |
-| Verbetering 1, Stambaugh en fijnere data | niet | bijschrift Goyal-Welch en slotalinea ongewijzigd |
-| Verbetering 2, twee vragen en de plaats van de drie lessen | niet | "Hoe is de reeks opgebouwd, en hoe goed meten we [...]" en "Uit de acht figuren [...]" in de CRSP-subsectie ongewijzigd |
-| Verbetering 3, één naam voor $\sigma$ | niet | "met een standaarddeviatie van 18,3%" naast "volatiliteit (per jaar)" |
+Hardop-toets (drie zinnen die nog niet natuurlijk klinken):
 
-**Nieuwe feitelijke fout, ontstaan bij de herschrijving.** Yahoo Finance, de alinea na de
-cachebeschrijving: "De cache begint in 1993, maar pas vanaf eind 2004 bestaan alle vijf de
-ETF's." Nu de zin ervoor de hele cache beschrijft, klopt "De cache begint in 1993" niet
-meer: de fondsenreeksen beginnen in 1980 en 1985, de indexreeksen in 1986. Bedoeld is
-de ETF-reeks.
+1. r. 116–118 "Zijn blijvende winst kwam uit het dragen van risico waarvoor de markt een
+   premie betaalde, terwijl zijn verliezen kwamen uit de gedachte iets te weten wat de prijs
+   niet wist." → "Santa-Clara verdiende blijvend aan risico waarvoor de markt een premie
+   betaalde, en hij verloor telkens wanneer hij dacht iets te weten wat nog niet in de prijs
+   zat."
+2. r. 821 "Hoe fijn de onderzoeker binnen een jaar kijkt, helpt voor het gemiddelde niet."
+   → "Voor het gemiddelde helpt het niet om binnen een jaar vaker te meten."
+3. r. 645–646 "Zo leest de risicokant een crash, terwijl de vergissingskant in dezelfde lage
+   prijzen paniek ziet." → "In die lezing is een crash een moment waarop risico duurder
+   wordt, terwijl Shiller in dezelfde lage prijzen paniek ziet."
 
-De deelcijfers zijn ongewijzigd, omdat de drie verbeteringen niet zijn uitgevoerd:
+## Controle 1
 
-| nr | criterium | gewicht | nu |
+Controle F6c op R9-1 (notes/rapport-00_00_setup.md), na lezing van het hele college.
+
+**Feitelijke fouten (3/3 opgelost)**
+1. r. 94–95 "boven 1,96" → **opgelost**: "een $t$-waarde ... die in absolute waarde boven 1,96 ligt."
+2. r. 510–512 GSW-curve "tot dertig jaar" → **opgelost**: tekst zegt nu "tot dertig jaar in 2020 en 2026 maar tot twintig jaar in 1981"; code leest de looptijd uit de kolomnaam (`years = [int(name[-2:]) for name in curve.index]`) in plaats van `range(1, len(curve)+1)`, dus de figuur telt niet langer stilzwijgend door bij ontbrekende lange looptijden.
+3. r. 829 eenheden "$= 1{,}4$ procentpunt" → **opgelost**: "$= 0{,}014$, dus 1,4 procentpunt".
+
+**Verbetering 1, taal — leeswijzersjabloon en hardop-zinnen (opgelost)**
+De vier "het gaat erom"-leeswijzers (Shiller, Goyal-Welch, HKM, Yahoo) zijn elk anders
+geformuleerd (geen sjabloon meer). De vier hardop-zinnen (Santa-Clara r. 123–125,
+HKM r. 664, "Een eerste meting" r. 850–851, ex-setup-1 r. 1096–1097) zijn woordelijk
+herschreven zoals de hardop-toets voorstelde. Geen nieuw sjabloon zichtbaar (`prose_stats`
+`tmpl=0`); `sent_gt40=2`, ongewijzigd t.o.v. F6.
+
+**Verbetering 2, helderheid — Stambaugh-schakel en twee slordigheden (opgelost)**
+Het GW-bijschrift legt nu de schakel expliciet: "Door die tegengestelde beweging valt de
+geschatte helling juist te hoog uit in steekproeven waarin de persistentie te laag uitvalt."
+r. 829 en r. 95 zijn opgelost (zie Feitelijke fouten 1 en 3, die met deze twee samenvallen).
+
+**Verbetering 3, replicatie — getallen uit het oordeel naar de tabel (opgelost)**
+Tabelrij "standaardfout, spreiding of Newey-West" is gesplitst in twee rijen (spreiding
+over simulaties; Newey-West, elk met `NaN` waar niet van toepassing). Het oordeel noemt nu
+drie getallen (1,8; 2,0; 2 procentpunt) in plaats van zes, en verwijst niet meer naar 11,6%.
+
+**Overige aanmerkingen/Beter uitleggen (alle opgelost)**
+- Criterium 1: "niet cumulatief" heeft nu het CAPM/factor-zoo-voorbeeld in dezelfde zin.
+- Criterium 2: Overzicht herhaalt de vraag uit "Waar we zijn" niet meer letterlijk, maar
+  parafraseert ("laat zien hoe de reeks in elkaar zit" / "doet meteen de eerste meting").
+- Criterium 3: Santa-Clara-zin, He-Kelly-Manela-zin, ex-setup-1-chiasme en de twee zinnen bij
+  "Een eerste meting" zijn herschreven; motiefnaam weg uit Bron en oordeel van de replicatie
+  (blijft twee keer in de definiërende alinea's van De rode draad, vrijgesteld).
+- Criterium 5: `fig-setup-se` heeft nu `:width: 90%`; de GSW-figuurcode is root-cause gefixt
+  (kolomnaam i.p.v. `range`), zie Feitelijke fout 2.
+- Criterium 6: zie Verbetering 3.
+- Criterium 7: ex-setup-1 zegt nu "net onder één" i.p.v. "onder één".
+
+Geen nieuwe punten: geen verslechtering en geen nieuwe feitelijke fout aangetroffen bij het
+navertellen en de hardop-toets. `prose_stats --check`: PASS, 5424 woorden.
+
+**Eindcijfer: 9,0**
+
+| nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
-| 1 | Helderheid | 30% | 8,5 |
-| 2 | Opbouw | 20% | 8,5 |
-| 3 | Taal | 15% | 8,5 |
-| 4 | Toy-voorbeeld | — | n.v.t. |
-| 5 | Code en figuren | 10% | 8,5 |
-| 6 | Replicatie | 10% | 9 |
-| 7 | Oefeningen | 5% | 8,5 |
+| 1 | Helderheid van de uitleg | 25% | 9,0 |
+| 2 | Opbouw en rode draad | 20% | 9,0 |
+| 3 | Taal | 20% | 9,0 |
+| 4 | Toy-voorbeeld (equivalent) | 10% | 9,0 |
+| 5 | Code en figuren | 10% | 9,0 |
+| 6 | Replicatie en empirie | 10% | 9,0 |
+| 7 | Oefeningen | 5% | 9,0 |
 
-Eindcijfer **8,6** (herwogen over 90%), laagste deelcijfer 8,5. Open: één feitelijke fout.
+Alle deelcijfers 9,0 → gewogen eindcijfer **9,0**. Geen deelcijfer onder 8,5; taal 9,0, niet
+blokkerend. Doel 9,0 gehaald.

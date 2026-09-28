@@ -146,3 +146,24 @@ Naden 1–5 en 7: de setup-regels kloppen; de afwijkingen staan in L5 en L7, en 
 Naad 8, bijgesteld: L5 gebruikt nu "overlevenden"; de setup is daarop gelijkgezet. `--check` PASS, sync gedaan.
 Diffcontrole Yahoo-zin: "enkele beleggingsfondsen" → "twee groepen beleggingsfondsen (59 en 8 fondsen)", nageteld in de twee cachebestanden; `--check` PASS, sync gedaan.
 Eindcontrole: "De cache begint in 1993" → "De ETF-reeks begint in 1993" (eerste datum 1993-01-29 in het ETF-cachebestand); `--check` PASS, sync gedaan.
+
+## R9-1 (F6b, ronde 9+)
+
+Woorden 5366 -> 5424; `prose_stats --check` PASS; `nb_numbers` alleen nieuw `:width: 90%`; rewrap gedraaid; notebook opnieuw uitgevoerd, getallen gelijk.
+
+- **Feit 1, De rode draad (r. 94-95).** Gedaan: "$t$-waarde die in absolute waarde boven 1,96 ligt".
+- **Feit 2, Gürkaynak-Sack-Wright.** Gedaan: tekst zegt nu dat de curve van 1981 tot twintig jaar loopt (SVENY21-30 leeg, nagerekend); code zet looptijden uit de kolomnaam i.p.v. `range(1, len(curve)+1)`.
+- **Feit 3, Een eerste meting (r. 829).** Gedaan: $0{,}20/\sqrt{200} = 0{,}014$, dus 1,4 procentpunt.
+- **Leeswijzers (r. 371, 421, 612, 675).** Gedaan: elk anders (bewering over CAPE, "De figuur laat zien of", pijl bij laagste punt, "zodat te zien is welke verschillen").
+- **Hardop-zinnen (r. 116-118, 645-646, 821, 1063).** Gedaan: Santa-Clara als onderwerp; HKM "In die lezing is een crash ..."; "Voor het gemiddelde helpt het niet om binnen een jaar vaker te meten"; ex-setup-1 "Een rangorde ... weerspiegelt dus vooral ruis".
+- **Stambaugh-schakel (bijschrift GW).** Gedaan: fouten in helling en persistentie bewegen tegengesteld; gemiddeld te lage persistentie geeft te hoge helling.
+- **Motiefnaam (r. 828, 933, 978).** Gedaan: "de naam van het motief" -> "een kwart van een premie van 8%"; naam weg uit replicatie-Bron en oordeel. "Risico of vergissing" bij Santa-Clara -> "tweedeling tussen risico en vergissing".
+- **Replicatietabel.** Gedaan: aparte rijen "spreiding over simulaties" en "Newey-West" (NaN waar niet van toepassing); geen `Mkt`-rij (optioneel, oordeel verwijst niet meer naar 11,6%).
+- **Oordeel.** Gedaan: drie getallen (1,8; 2,0; 2).
+- **Overzicht herhaalt "Welke vraag staat open".** Gedaan: vraag geparafraseerd.
+- **"Niet cumulatief".** Gedaan: voorbeeld CAPM naast de factor zoo in dezelfde zin.
+- **`fig-setup-se` zonder `:width:`.** Gedaan: `:width: 90%`.
+- **ex-setup-1, $t$ = 0,99.** Gedaan: "net onder één".
+- Afgewezen: geen.
+
+Open: 0.
