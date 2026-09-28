@@ -176,3 +176,28 @@ CAPM") niet tegen.
 **Afgewezen.** "Kendall en post-1985 in lopende tekst": elk staat al in een tabel, en de tekst
 noemt alleen de getallen die het oordeel dragen (STYLE §11.5).
 - F6-1 vervolg: ontbinding Regnault-kloof gecorrigeerd: ongeveer 2/3 door SD sneller dan √h (log 0,922 = −0,081), 1/3 door MAD/SD 0,70 → 0,73 (log = −0,041), samen log 0,885 = −0,122.
+
+## R9-1 (F6b, ronde 9+)
+
+Uitgevoerd op notes/eind-01_02_bachelier.md (8,6). Alleen proza en bijschriften; geen code.
+- **Donsker (verbetering 1, helderheid).** Beleggersalinea onder "Het kernresultaat" vervangen
+  door het pad: verkooporder, hoogste punt in de maand, CLT tegenover Donsker, zes tegen vijf
+  van de zestien toypaden. Alinea na de stelling herschreven (maximum, 1951-zin zonder "maar").
+- **Routekaart Theorie.** Zin over de raakkans herschreven: ze laat zien dat de limiet over het pad gaat.
+- **Hardop-toets en regeltaal (verbetering 2, taal).** Herschreven: imports-zin (Toy), $T$/$N$-wissel,
+  "maar dat volgt" (optieprijs), "is dat niet" (variance ratio), "De verwachting uit de intuïtie"
+  (replicatie), Regnault-"Wat", 1951-zin, "Wat verwachten we dus?" opgenomen in de vorige zin.
+- **Intuïtie.** Optieverwachting ingekort tot richting en evenredigheid; factor 0,4 weg.
+- **Getallen naar tabellen (verbetering 3).** Oordeel Regnault in twee alinea's, 0,577/0,70/0,73/0,05
+  eruit, verwijzing naar tabelregel en -kolom. "Waar het breekt": 0,205, 91 en de twee
+  kwadraatberekeningen eruit; "volstaan net" uitgelegd (toets vindt het iets vaker wel dan niet).
+  Uitwerking 3: 1,28, 280, 487 en de wortelformule eruit, "omgekeerde richting" vervangen door wat
+  eq-bachelier-power hier zegt.
+- **Bijschriften.** "die Lo en MacKinlay vonden" wordt "op de steekproef van"; "net onder" wordt
+  "onder één, geen significant" (VR(16) = 0,871); "rode krommen" wordt "dikke krommen".
+- **$z_2$ met getal: deels.** De zin zegt nu wat de gewone $z$ fout doet (te vaak significant); een
+  getal staat in geen cel en zou niet herleidbaar zijn (kaart-rollen §6), dus niet toegevoegd.
+- **Afgewezen:** toy-"recept" dubbel getal (beoordelaar: grotendeels opgelost); lengte-aanmerking
+  (binnen 6.000, geen actiepunt).
+- Controles: prose_stats --check PASS; nb_numbers 13 meldingen (was 19, geen nieuwe); rewrap gedraaid.
+- Woorden: 5.824 → 5.884.

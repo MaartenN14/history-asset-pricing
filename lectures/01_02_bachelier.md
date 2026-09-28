@@ -22,20 +22,21 @@ kernelspec:
 
 **Wat we al weten.** [](#00-01-rendementen) leidde de $\sqrt{t}$-regel af uit
 de aanname dat rendementen onafhankelijk zijn. Het liet ook zien dat het
-gemiddelde rendement slecht meetbaar is en de variantie goed. Deze lecture
-draait de volgorde om: de regel werd in 1863 gemeten, 37 jaar voordat Bachelier
-er een model voor gaf.
+gemiddelde rendement slecht meetbaar is en de variantie goed. Dit college
+draait de volgorde om, want de regel werd al in 1863 gemeten, 37 jaar voordat
+Bachelier er een model voor gaf.
 
 **Welke vraag staat open.** Als de gemiddelde koersafwijking met $\sqrt{t}$
-groeit, welk model van de prijs past daarbij, en hoe toetst men dat model?
+groeit, welk model van de prijs past daarbij, en hoe toetsen we dat model?
 ```
 
 ## Overzicht
 
-Hoe beweegt een koers als niemand de volgende stap kan voorspellen? Als een
-*random walk* (een som van ongecorreleerde schokken): de spreiding groeit met de
-wortel van de tijd, en een optie is te prijzen uit die spreiding alleen. Over
-het niveau van de koers zegt het model niets. In deze lecture:
+Hoe beweegt een koers als niemand de volgende stap kan voorspellen? Dan beweegt
+hij als een *random walk* (een som van ongecorreleerde schokken), waarvan de
+spreiding groeit met de wortel van de tijd, zodat een optie te waarderen is op
+grond van die spreiding alleen. Over het niveau van de koers zegt het model
+niets. In dit college:
 
 - tellen we in een wandeling van vier stappen na dat de variantie lineair groeit
   en de spreiding met de wortel van het aantal stappen,
@@ -56,11 +57,12 @@ absolute afwijking van de koers evenredig is met de wortel van de verstreken tij
 {cite}`Regnault1863`. Louis Bachelier maakte er in 1900 een model van: de
 Brownse beweging als limiet van een random walk {cite}`Bachelier1900`. Hij
 leidde er de eerste optieformule mee af, vijf jaar voordat Einstein dezelfde
-wiskunde voor zwevende deeltjes gebruikte. Zonder Bachelier was Regnaults regel een meting gebleven. Bachelier gaf als
-enige een model waaruit ze volgt. Zijn proefschrift
-bleef een halve eeuw ongelezen, ook omdat de kansrekening pas in 1933 een
-formele taal voor stochastische processen kreeg. Daarna kwamen de empirici.
-Cowles liet zien dat beroepsvoorspellers de markt niet versloegen
+wiskunde voor zwevende deeltjes gebruikte. Zonder Bachelier was Regnaults
+regel een meting gebleven, want hij gaf als enige een model waaruit de regel
+volgt. Zijn proefschrift bleef toch een halve eeuw ongelezen, ook omdat de
+kansrekening pas in 1933 een formele taal voor stochastische processen kreeg.
+Daarna waren de empirici aan zet. Cowles liet zien dat beroepsvoorspellers de markt niet
+versloegen
 {cite}`Cowles1933`, Working stelde de random walk voor als nulhypothese
 {cite}`Working1934`, en Kendall vond in wekelijkse prijsreeksen een samenhang
 die te zwak was om mee te voorspellen {cite}`Kendall1953`.
@@ -84,35 +86,35 @@ nooit ver. Zijn de stappen onafhankelijk, dan tellen hun varianties op, en groei
 de afstand met de wortel van de tijd. Twee keer zo lang wachten geeft 1,41 keer
 zo veel spreiding, vier keer zo lang wachten het dubbele.
 
-Meer zegt Regnaults wet niet. Hij drukte haar in hoofdletters af: de gemiddelde
-absolute afwijking van de koers is evenredig met de wortel van de tijd.
+Meer zegt Regnaults wet niet. Regnault drukte de wet in hoofdletters af, en in
+het Nederlands zegt ze dat de gemiddelde absolute afwijking van de koers
+evenredig is met de wortel van de tijd.
 
 > l'écart des cours est en raison directe de la racine carrée des temps
 
 Regnault schreef over de Franse 3%-rente, maar het mechanisme is dat van de
-muntworp: een koersverandering vandaag zegt niets over die van morgen. Het
-economische argument kwam later. Wist iedereen dat de koers morgen stijgt, dan
-wilde vandaag niemand verkopen, en steeg de koers vandaag al.
+muntworp, omdat een koersverandering vandaag niets zegt over die van morgen. Het
+economische argument kwam pas later. Als iedereen wist dat de koers morgen
+stijgt, wilde vandaag niemand verkopen, zodat de koers vandaag al steeg.
 
 Bachelier maakte de schokken oneindig klein en oneindig frequent. Daaruit
-ontstaat de Brownse beweging, waarmee meer uit te rekenen valt dan de spreiding.
-Wat verwachten we dus?
+ontstaat de Brownse beweging, waarmee meer uit te rekenen valt dan alleen de
+spreiding, en zo komen we tot drie verwachtingen.
 
 - De spreiding en de gemiddelde absolute afwijking van koersveranderingen groeien
   met de wortel van de horizon.
 
 - Een optie *op het geld* (uitoefenprijs gelijk aan de huidige koers) betaalt
-  alleen bij uitschieters naar boven. Haar
-  waarde is dus evenredig met de spreiding van de koers op de vervaldag: een vier
-  keer zo lange looptijd kost het dubbele. De evenredigheidsfactor, ongeveer 0,4,
-  leidt de theorie af.
+  alleen bij uitschieters naar boven. Zo'n optie is daardoor meer waard naarmate
+  de koers op de vervaldag meer spreidt, zodat een vier keer zo lange looptijd
+  het dubbele kost.
 
 - Elke autocorrelatie van koersveranderingen is nul.
 
 ## Toy-voorbeeld: een random walk van vier stappen
 
-De $\sqrt{t}$-wet is al zichtbaar in een wandeling van vier stappen. De cel
-hieronder laadt de pakketten. Het is de enige cel met imports.
+De $\sqrt{t}$-wet is al zichtbaar in een wandeling van vier stappen. Eerst laden
+we de pakketten die het hele college gebruikt.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -148,11 +150,12 @@ $$
 
 **Stap 2: de regel achter het getal.** Elke stap heeft variantie 1 en de stappen
 zijn ongecorreleerd, dus $\Var(S_n) = n$ en de standaarddeviatie is $\sqrt{n}$.
-Dat is Regnaults wet zonder limiet en zonder normale verdeling.
+Daarmee hebben we Regnaults wet al, zonder limiet en zonder normale verdeling.
 
 **Stap 3: de gemiddelde absolute afwijking.** Regnault mat niet de
 standaarddeviatie maar de *écart*, de gemiddelde absolute afwijking $\E|S_n|$.
-In deze lecture heet $\E|\cdot|$ steeds zo, en "spreiding" is de standaarddeviatie.
+In dit college heet $\E|\cdot|$ steeds zo, en met "spreiding" bedoelen we de
+standaarddeviatie.
 
 $$
 \E|S_4| = \frac{4 \cdot 1 + 2 \cdot 4 + 0 \cdot 6 + 2 \cdot 4 + 4 \cdot 1}{16}
@@ -160,19 +163,21 @@ $$
 $$
 
 Na één stap is $\E|S_1| = 1$. Na twee stappen staat de wandelaar op $-2$, $0$ of
-$2$ met kansen $\tfrac14$, $\tfrac12$, $\tfrac14$, dus $\E|S_2| = 1$: de helft
-van de paden keert terug naar nul. Na drie stappen is
+$2$ met kansen $\tfrac14$, $\tfrac12$, $\tfrac14$, zodat $\E|S_2| = 1$, omdat de
+helft van de paden terugkeert naar nul. Na drie stappen is
 $\E|S_3| = (6 \cdot 1 + 2 \cdot 3)/8 = 1{,}50$.
 
 **Stap 4: de verhouding tot de wortel.** $\E|S_n|/\sqrt{n}$ loopt van $1{,}000$
-via $0{,}707$ en $0{,}866$ naar $0{,}750$. Ze schommelt, want de wandeling is nog
-grof.
+via $0{,}707$ en $0{,}866$ naar $0{,}750$. De verhouding schommelt nog, want de
+wandeling is grof.
 
 **Het recept.** Voor lange wandelingen nadert die verhouding
-$\sqrt{2/\pi} \approx 0{,}798$. De theorie leidt dat als eerste af. De variantie
-volgt $n$ meteen, de absolute afwijking volgt $\sqrt{n}$ pas op den duur.
+$\sqrt{2/\pi} \approx 0{,}798$, en dat getal leidt de theorie als eerste af. De
+variantie is dus meteen gelijk aan $n$, terwijl de absolute afwijking pas op den
+duur met $\sqrt{n}$ meegroeit.
 
-De code telt alle zestien paden na en zet de getallen met de hand ernaast.
+De code telt alle zestien paden na en zet de getallen die we met de hand
+vonden ernaast.
 
 ```{code-cell} ipython3
 paths = np.array(list(product([-1, 1], repeat=4)))   # 16 paden van 4 stappen
@@ -197,19 +202,20 @@ toy = pd.DataFrame(
 toy.round(4)
 ```
 
-De kolommen met de hand en code zijn gelijk. We weten nu dat de variantie van
-een som van ongecorreleerde stappen lineair groeit, en de spreiding dus met de
-wortel van het aantal stappen.
+De kolommen met de hand en uit de code zijn gelijk. Al bij vier stappen groeit
+de variantie van een som van ongecorreleerde stappen dus lineair, en daardoor
+groeit de spreiding met de wortel van het aantal stappen.
 
 ## Theorie
 
-We leiden vier dingen af. Eerst de kern: een random walk wordt in de limiet een
-Brownse beweging, waarvan de gemiddelde absolute afwijking met de wortel van de
-horizon groeit, met de factor $\sqrt{2/\pi}$ uit het toy-voorbeeld. Daarna twee
-gevolgen: de kans om een niveau te raken en Bacheliers optieprijs. Ten slotte de
-variance ratio, de toets waar simulatie en replicatie om draaien. De replicatie
-toetst twee resultaten: de $\sqrt{t}$-wet en een variance ratio van één. De
-raakkans en de optieprijs toetsen we niet op data.
+We leiden vier dingen af. De kern is dat een random walk in de limiet een
+Brownse beweging wordt, waarvan de gemiddelde absolute afwijking met de wortel van de
+horizon groeit, met de factor $\sqrt{2/\pi}$ uit het toy-voorbeeld. Daaruit
+volgen de kans om een niveau te raken, die laat zien dat de limiet over het hele
+pad gaat en niet alleen over de eindpositie, en Bacheliers optieprijs.
+Ten slotte komt de variance ratio, de toets waar simulatie en replicatie om
+draaien. De replicatie toetst de $\sqrt{t}$-wet en een variance ratio van één,
+maar de raakkans en de optieprijs toetsen we niet op data.
 
 ### Opzet en aannames
 
@@ -220,33 +226,36 @@ $r_{t+1}$ onderling ongecorreleerd, met verwachting $\mu$ en variantie
 $\sigma^2$. Voor Amerikaanse maandrendementen is $\mu$ ongeveer 1% en $\sigma$
 ongeveer 5%. De toetsen gebruiken alleen varianties en autocorrelaties, dus
 $\mu$ speelt verder geen rol. In de notatie van [](#00-00-setup) is $r$ het
-simpele rendement. In deze lecture is het dus een logrendement.
+simpele rendement, maar in dit college is het een logrendement.
 
 Bachelier werkte niet met logs maar met het prijsniveau $P_t$. Zijn proces heet
-nu *aritmetische Brownse beweging*: de absolute prijsveranderingen zijn normaal
-verdeeld. Zijn volatiliteit noemen we $v$, een bedrag in euro per
-$\sqrt{\text{jaar}}$: bij een aandeel van 100 met 20% volatiliteit ongeveer 20
-euro. Drie symbolen houden in deze lecture één betekenis: $\sigma$ is de
-standaarddeviatie van één stap of één rendement, $S_n$ de positie van een
-wandeling, en $T$ het aantal waarnemingen. In [](#00-01-rendementen) heette dat
-laatste $N$ en was $T$ het aantal jaren.
+nu *aritmetische Brownse beweging*, en daarin zijn de absolute
+prijsveranderingen normaal verdeeld. Zijn volatiliteit noemen we $v$, een bedrag
+in euro per $\sqrt{\text{jaar}}$, bij een aandeel van 100 met 20% volatiliteit
+ongeveer 20 euro. In dit college houden drie symbolen steeds dezelfde betekenis.
+$\sigma$ is de standaarddeviatie van één stap of één rendement, $S_n$ de positie
+van een wandeling, en $T$ het aantal waarnemingen. In [](#00-01-rendementen)
+heette dat aantal nog $N$ en stond $T$ voor het aantal jaren.
 
 ### Het kernresultaat: van random walk naar Brownse beweging
 
 Worden de stappen kleiner en talrijker, dan wordt de wandeling een Brownse
-beweging, welke verdeling de stappen ook hebben.
+beweging, welke verdeling de stappen ook hebben. Deze stelling, van Donsker, is de
+kern van het college.
 
-*Waarom zou dit waar zijn?* Een belegger houdt een aandeel een maand vast. Zijn
-maandrendement is de som van twintig dagrendementen. Zijn die onafhankelijk, dan
-middelen de uitschieters van losse dagen weg, en wordt het maandrendement bij
-benadering normaal verdeeld. Clusterende volatiliteit vertraagt dat, zoals de
-replicatie laat zien. Houdt hij langer vast, dan stijgt de spreiding van zijn
-resultaat met de wortel van de looptijd, want de varianties tellen op.
+Het nieuwe aan de stelling is dat ze over het hele pad gaat. Neem een belegger
+die een verkooporder boven de koers heeft liggen. Of die order binnen een maand
+wordt uitgevoerd, hangt af van het hoogste punt dat de koers in die maand
+bereikt, niet van de slotkoers. De centrale limietstelling maakt alleen het
+maandrendement, de som van twintig dagrendementen, bij benadering normaal,
+terwijl de stelling van Donsker ook de verdeling van dat hoogste punt vastlegt.
+Van de zestien paden in het toy-voorbeeld raken er zes het niveau 2, terwijl er
+maar vijf op of boven dat niveau eindigen.
 
 We herschalen de wandeling in de ruimte met $\sqrt{n}$ en in de tijd met $n$,
-met $\sigma$ de standaarddeviatie van één stap. Het doel is een *standaard
-Brownse beweging* $W$: een continu proces met $W_0 = 0$ en onafhankelijke
-aangroeiingen $W_{t+h} - W_t \sim \mathcal{N}(0, h)$.
+met $\sigma$ de standaarddeviatie van één stap. We willen uitkomen bij een
+*standaard Brownse beweging* $W$, een continu proces met $W_0 = 0$ en
+onafhankelijke aangroeiingen $W_{t+h} - W_t \sim \mathcal{N}(0, h)$.
 
 ```{math}
 :label: eq-bachelier-donsker
@@ -254,8 +263,9 @@ W^{(n)}(u) \;=\; \frac{1}{\sigma\sqrt{n}}\,S_{\lfloor n u \rfloor},
 \qquad u \in [0,1].
 ```
 
-In woorden: $W^{(n)}(u)$ is de positie na een fractie $u$ van de $n$ stappen,
-gemeten in standaarddeviaties van de hele wandeling.
+Hier is $W^{(n)}(u)$ de positie na een fractie $u$ van de $n$ stappen, gemeten
+in standaarddeviaties van de hele wandeling. Bij $u = 1$ is het de eindpositie
+gedeeld door $\sigma\sqrt{n}$.
 
 :::{prf:theorem} Invariantieprincipe (Donsker)
 :label: thm-bachelier-donsker
@@ -267,18 +277,17 @@ $W^{(n)}$ uit [](#eq-bachelier-donsker) in verdeling naar de standaard Brownse
 beweging $W$ op $[0,1]$.
 :::
 
-In woorden: bij veel kleine stappen is de herschaalde wandeling niet van een
-Brownse beweging te onderscheiden. De stelling vraagt meer dan de nulhypothese:
-onafhankelijke stappen met verwachting nul. Daarom trekt de replicatie eerst het
-gemiddelde af. Het gaat om de verdeling van het hele pad, niet alleen van de
-eindpositie. Zo convergeert ook het maximum van het pad, en dat gebruikt de
-raakkans hieronder. Donsker bewees dit in 1951. De schets toont alleen de
-verdeling op vaste tijdstippen.
+Bij veel kleine stappen is de herschaalde wandeling dus niet van een Brownse
+beweging te onderscheiden, ook niet in het hoogste punt van het pad, dat we
+hieronder voor de raakkans nodig hebben. De stelling vraagt wel meer dan de
+nulhypothese, namelijk onafhankelijke stappen met verwachting nul, en daarom
+trekt de replicatie eerst het gemiddelde af. Het volledige bewijs gaf Donsker in
+1951, en de schets hieronder behandelt alleen de verdeling op vaste tijdstippen.
 
 :::{prf:proof}
 :class: dropdown
 
-*Schets: de eindig-dimensionale verdelingen.* Voor één tijdstip $u$ geldt
+*Schets voor de eindig-dimensionale verdelingen.* Voor één tijdstip $u$ geldt
 
 $$
 W^{(n)}(u) = \frac{1}{\sigma\sqrt{n}} \sum_{k \le \lfloor nu\rfloor} \varepsilon_k
@@ -289,25 +298,28 @@ $$
 
 door de centrale limietstelling, en dus $W^{(n)}(u) \Rightarrow \mathcal{N}(0,u)$.
 Voor twee tijdstippen $u < u'$ zijn $W^{(n)}(u)$ en $W^{(n)}(u') - W^{(n)}(u)$ sommen
-over disjuncte blokken en dus onafhankelijk. In de limiet is dat de definiërende
-eigenschap van de Brownse beweging: onafhankelijke, normaal verdeelde
+over disjuncte blokken en dus onafhankelijk. In de limiet is dat precies wat
+een Brownse beweging definieert, namelijk onafhankelijke, normaal verdeelde
 aangroeiingen met $\Var(W_{u'} - W_u) = u' - u$. $\square$
 :::
 
-Daarmee is Regnaults wet een stelling geworden in plaats van een meting:
+Daarmee is Regnaults wet geen meting meer, maar een stelling. Voor de spreiding
+en de gemiddelde absolute afwijking over een horizon $h$ geldt
 
 $$
 \SD(W_{t+h} - W_t) = \sqrt{h}, \qquad \E|W_{t+h} - W_t| = \sqrt{2h/\pi}.
 $$
 
-De tweede formule volgt uit de eerste: $W_{t+h} - W_t = \sqrt{h}\,Z$ met $Z$
+De tweede formule volgt uit de eerste, want $W_{t+h} - W_t = \sqrt{h}\,Z$ met $Z$
 standaardnormaal, en $\E|Z| = 2\int_0^\infty z\,\varphi(z)\,\mathrm{d}z =
-2\varphi(0) = \sqrt{2/\pi}$, met $\varphi$ de standaardnormale dichtheid. Zoals de
-intuïtie voorspelde, groeit de gemiddelde absolute afwijking met de wortel van de horizon. Bij $h = 4$ geeft de tweede formule $\sqrt{8/\pi} \approx 1{,}60$, tegen $1{,}50$
-in het toy-voorbeeld: vier stappen zitten nog 6% onder de limiet.
+2\varphi(0) = \sqrt{2/\pi}$, met $\varphi$ de standaardnormale dichtheid. De gemiddelde
+absolute afwijking groeit dus met de wortel van de horizon, zoals we bij de
+intuïtie verwachtten. Bij $h = 4$ geeft de tweede formule
+$\sqrt{8/\pi} \approx 1{,}60$, tegen $1{,}50$ in het toy-voorbeeld, zodat vier
+stappen nog 6% onder de limiet zitten.
 
-De figuur hieronder toont veertig herschaalde wandelingen van 2000 stappen. Let
-op de bundel, niet op één pad.
+De figuur hieronder toont veertig herschaalde wandelingen van 2000 stappen, en
+het gaat daarin om de bundel, niet om één pad.
 
 ```{code-cell} ipython3
 :label: cel-bachelier-paden
@@ -336,24 +348,23 @@ plt.show()
 
 Veertig paden van een symmetrische random walk, herschaald volgens
 [](#eq-bachelier-donsker). Geen enkel pad is glad, maar de bundel heeft een
-scherpe omhullende: de rode krommen zijn $\pm\sqrt{u}$, één standaarddeviatie.
-Wie naar één pad kijkt, ziet patronen. Wie naar de bundel kijkt, ziet
-$\sqrt{t}$.
+scherpe omhullende, die de dikke krommen $\pm\sqrt{u}$ volgt, op één
+standaarddeviatie van nul. In één pad lijken patronen te zitten, maar de bundel
+laat alleen $\sqrt{t}$ zien.
 :::
 
 ### Wat het voorspelt: de kans om een niveau te raken
 
 De kans dat de koers vóór een datum ooit een niveau $a$ raakt, is ongeveer twee
-keer de kans dat hij op die datum boven $a$ staat.
+keer de kans dat hij op die datum boven $a$ staat. Die raakkans hangt af van
+de verdeling van het hele pad en niet alleen van de eindpositie, en daarom
+hadden we de stelling van Donsker nodig.
 
-De raakkans gebruikt de verdeling van het hele pad, niet alleen die van de
-eindpositie. Daarvoor was de stelling van Donsker nodig.
-
-*Waarom zou dit waar zijn?* Een belegger legt een verkooporder neer op een
-niveau $a$ boven de koers. Na de eerste aanraking is een stap omhoog even
-waarschijnlijk als een stap omlaag. Voor elk pad dat daarna terugzakt, is er dus
-een even waarschijnlijk pad dat boven $a$ eindigt: de order wordt twee keer zo
-vaak uitgevoerd als de eindkoers doet vermoeden.
+Waarom twee keer? Denk aan een belegger die een verkooporder neerlegt op een
+niveau $a$ boven de koers. Zodra de koers $a$ voor het eerst raakt, is een stap
+omhoog even waarschijnlijk als een stap omlaag. Voor elk pad dat daarna
+terugzakt, is er dus een even waarschijnlijk pad dat boven $a$ eindigt, zodat de
+order twee keer zo vaak wordt uitgevoerd als de eindkoers doet vermoeden.
 
 :::{prf:theorem} Reflectieprincipe
 :label: thm-bachelier-reflectie
@@ -367,23 +378,24 @@ P(M_n \ge a) \;=\; P(S_n = a) \,+\, 2\,P(S_n > a).
 ```
 :::
 
-In woorden: de kans om $a$ ooit te raken is de kans om er precies op te eindigen,
-plus twee keer de kans om erboven te eindigen. Een hoger niveau maakt de
-raakkans kleiner, een langere horizon maakt haar groter. Bewijsidee: spiegel elk pad dat $a$ raakt en daarna onder $a$ eindigt, vanaf
-de eerste aanraking, in het niveau $a$. Zo ontstaat een even waarschijnlijk pad
+De kans om $a$ ooit te raken is dus de kans om er precies op te eindigen, plus
+twee keer de kans om erboven te eindigen. Een hoger niveau verkleint de
+raakkans, en een langere horizon vergroot hem. Het bewijs spiegelt elk pad dat
+$a$ raakt en daarna onder $a$ eindigt, vanaf de eerste aanraking, in het niveau
+$a$. Zo ontstaat een even waarschijnlijk pad
 dat boven $a$ eindigt, en elk pad boven $a$ ontstaat zo precies één keer.
 
 In de Brownse limiet is de kans om exact op $a$ te eindigen nul, en blijft
-$P(\max_{s \le h} W_s \ge a) = 2\,P(W_h \ge a)$ over. Een voorbeeld, zonder
-drift: een verkooporder 10 euro boven de koers, bij een volatiliteit $v$ van 20
-euro per $\sqrt{\text{jaar}}$. De order ligt dan een halve standaarddeviatie
-boven de koers. Na een jaar eindigt de koers in $1 - \Phi(0{,}5) \approx 31\%$
-van de gevallen boven de order, en de order wordt in 62% van de gevallen
-uitgevoerd.
+$P(\max_{s \le h} W_s \ge a) = 2\,P(W_h \ge a)$ over. Neem als voorbeeld,
+zonder drift, een verkooporder 10 euro boven de koers bij een volatiliteit $v$
+van 20 euro per $\sqrt{\text{jaar}}$. De order ligt dan een halve
+standaarddeviatie boven de koers. Na een jaar eindigt de koers in
+$1 - \Phi(0{,}5) \approx 31\%$ van de gevallen boven de order, zodat de order in
+62% van de gevallen wordt uitgevoerd.
 
 In het toy-voorbeeld is $n = 4$ en $a = 2$. De stelling geeft
-$P(S_4 = 2) + 2P(S_4 > 2) = 4/16 + 2 \cdot 1/16 = 0{,}375$. De code telt dat na
-op de zestien paden.
+$P(S_4 = 2) + 2P(S_4 > 2) = 4/16 + 2 \cdot 1/16 = 0{,}375$. De code controleert dat
+door de zestien paden na te tellen.
 
 ```{code-cell} ipython3
 touches_two = positions.max(axis=1) >= 2             # raakt het pad ooit +2?
@@ -397,26 +409,31 @@ pd.Series(
 ).round(4)
 ```
 
-Tellen en spiegelen geven allebei $0{,}375$.
+Tellen en spiegelen geven allebei $0{,}375$, zes van de zestien paden. Het
+reflectieprincipe klopt dus al bij vier stappen, zonder limiet.
 
 ### Wat het voorspelt: Bacheliers optieprijs
 
-Volgt de koers een aritmetische Brownse beweging, dan is een calloptie haar
-verwachte uitbetaling waard. Op het geld is dat ongeveer $0{,}4\,v\sqrt{\tau}$.
+Volgt de koers een aritmetische Brownse beweging, dan is een calloptie evenveel
+waard als de verwachte uitbetaling. Op het geld is dat ongeveer
+$0{,}4\,v\sqrt{\tau}$.
 
-*Waarom zou dit waar zijn?* Bachelier nam aan dat de speculant gemiddeld niets
-wint (*l'espérance mathématique du spéculateur est nulle*). Wij noemen dat de
-*martingaalconditie*: de verwachte koers op de vervaldag is de koers van
-vandaag, $\E_t[P_{t+\tau}] = P_t$, zoals in een eerlijk kansspel. Een koper die meer
+Bachelier redeneerde vanuit de aanname dat de speculant gemiddeld niets wint
+(*l'espérance mathématique du spéculateur est nulle*). Wij noemen dat de
+*martingaalconditie*, en die zegt dat de verwachte koers op de vervaldag gelijk
+is aan de koers van vandaag, $\E_t[P_{t+\tau}] = P_t$, zoals in een eerlijk
+kansspel. Een koper die meer
 betaalt dan de verwachte uitbetaling, verliest dan gemiddeld, en een verkoper
 die minder vraagt ook. De optieprijs is dus de verwachte uitbetaling. Hoe breder
-de verdeling van de koers op de vervaldag, hoe meer de optie waard is: ze
-verdient aan uitschieters naar boven en verliest niets aan die naar beneden.
+de verdeling van de koers op de vervaldag, hoe meer de optie waard is, omdat ze
+aan uitschieters naar boven verdient en aan uitschieters naar beneden niets
+verliest.
 
 :::{prf:theorem} Bacheliers optieprijs
 :label: thm-bachelier-optie
 
-Zij $P_{t+\tau} = P_t + v (W_{t+\tau} - W_t)$ met $W$ een standaard Brownse beweging, dus
+Stel dat $P_{t+\tau} = P_t + v (W_{t+\tau} - W_t)$, met $W$ een standaard
+Brownse beweging, zodat
 $P_{t+\tau} \mid \mathcal{F}_t \sim \mathcal{N}\!\left(P_t, v^2 \tau\right)$ met
 $\mathcal{F}_t$ de informatie op $t$ en $\tau$ de looptijd. Onder de
 martingaalconditie is de waarde van een calloptie met uitoefenprijs $K$, bij een
@@ -432,8 +449,9 @@ met $\Phi$ en $\varphi$ de verdelings- en dichtheidsfunctie van de
 standaardnormale verdeling.
 :::
 
-In woorden: de optie is de intrinsieke waarde $P_t - K$ waard, gewogen met
-$\Phi(d)$, de kans dat de optie in het geld eindigt, plus een term die groeit met de spreiding
+De optie is dus de intrinsieke waarde $P_t - K$ waard, gewogen met
+$\Phi(d)$, de kans dat de optie in het geld eindigt, plus een term die groeit met de
+spreiding
 $v\sqrt{\tau}$ van de koers op de vervaldag. Diep *in het geld* (uitoefenprijs
 ver onder de koers) nadert de waarde $P_t - K$, ver *uit het geld* nadert ze nul.
 Het bewijs integreert de uitbetaling over de normale dichtheid.
@@ -460,30 +478,30 @@ $$
 want $\varphi$ is even. Samen geeft dit [](#eq-bachelier-call). $\square$
 :::
 
-Voor een optie *op het geld* ($K = P_t$, dus $d = 0$) blijft alleen de tweede
-term over:
+Het eenvoudigste geval is een optie *op het geld* ($K = P_t$, dus $d = 0$).
+Dan valt de eerste term weg en blijft over
 
 ```{math}
 :label: eq-bachelier-atm
 C_t \;=\; \frac{v\sqrt{\tau}}{\sqrt{2\pi}} \;\approx\; 0{,}3989\,v\sqrt{\tau}.
 ```
 
-In woorden: de optie is vier tiende van de spreiding van de koers op de
+Een optie op het geld is dus vier tiende van de spreiding van de koers op de
 vervaldag waard. Bij $v = 20$ euro en een looptijd van een jaar is dat 7,98
-euro. Zoals de intuïtie voorspelde, is de prijs evenredig met $\sqrt{\tau}$: wie
-de looptijd verviervoudigt, betaalt het dubbele. Er staat geen risicoaversie en
-geen verwacht rendement in. Dat is hier een gevolg van de aangenomen
-martingaalconditie. Black en Scholes lieten later zien waarom ze mag: een optie die met aandeel en
-kas na te maken is, kost wat die portefeuille kost, welk verwacht rendement men
-ook aanneemt. Er wordt
-niet verdisconteerd, omdat Bachelier met termijnkoersen werkte: een prijs die nu
-wordt afgesproken en later betaald.
+euro. De prijs is evenredig met $\sqrt{\tau}$, zoals de intuïtie voorspelde,
+zodat een koper die de looptijd verviervoudigt het dubbele betaalt. Risicoaversie
+en verwacht rendement ontbreken in de formule, maar alleen omdat we de
+martingaalconditie hebben aangenomen. Black en Scholes lieten later zien waarom
+die aanname mag, want een optie die met aandeel en kas na te maken is, kost wat
+die portefeuille kost, welk verwacht rendement beleggers ook aannemen. Bachelier
+verdisconteerde niet, omdat hij met termijnkoersen werkte, prijzen die nu worden
+afgesproken en later betaald.
 
 Black en Scholes {cite}`BlackScholes1973` lieten de *relatieve* prijsverandering
-normaal verdeeld zijn in plaats van de absolute. Daarover gaat
+normaal verdeeld zijn in plaats van de absolute, en daarover gaat
 [](#02-09-black-scholes). Bij korte looptijden en rond het geld vallen de twee
 prijzen vrijwel samen, met $v \approx \sigma_{\text{BS}} \cdot P_t$.
-De cel rekent beide uit voor een aandeel van 100 met een Black-Scholes-volatiliteit
+De cel rekent beide prijzen uit voor een aandeel van 100 met een Black-Scholes-volatiliteit
 van 20% per jaar, voor drie looptijden en drie uitoefenprijzen.
 
 ```{code-cell} ipython3
@@ -520,29 +538,32 @@ table.round(4)
 
 Bij een looptijd van een maand verschillen de twee prijzen hooguit drie cent.
 Bij een jaar en tien procent uit het geld is het verschil 0,34 euro, op een
-optie van ongeveer vier euro. Op het geld geeft de tabel bij een jaar 7,98, zoals
-[](#eq-bachelier-atm) voorspelde. Dat de Bachelier-koers negatief kan worden, is
-voor een aandeel onzin. Voor een termijncontract is het juist gewenst: toen de
-termijnprijs van ruwe olie in april 2020 negatief werd, kwam de formule weer in
-gebruik.
+optie van ongeveer vier euro. Op het geld geeft de tabel bij een jaar 7,98,
+precies wat [](#eq-bachelier-atm) voorspelt. Dat de Bachelier-koers negatief kan
+worden, is voor een aandeel onzin, maar voor een termijncontract juist gewenst.
+Toen de termijnprijs van ruwe olie in april 2020 negatief werd, kwam de formule
+daarom weer in gebruik.
 
 De optieformule zelf toetsen we hier niet, want historische optieprijzen zijn
-niet gratis. Wel toetsen we de aanname eronder: koersveranderingen zijn
-onvoorspelbaar.
+niet gratis. Wel toetsen we de aanname eronder, namelijk dat
+koersveranderingen onvoorspelbaar zijn.
 
 ### Hoe het getoetst wordt: de variance ratio
 
-De hoofdtoets is de variance ratio. Ze bundelt veel kleine autocorrelaties en
-gebruikt alleen varianties, die goed meetbaar zijn. Net als de autocorrelatie
-kijkt ze naar koersveranderingen, niet naar het niveau. De slotkoers van morgen
-is met een kleine fout te voorspellen: het is ongeveer de koers van vandaag. De koers*verandering* van morgen is dat niet.
+De hoofdtoets is de variance ratio, omdat die veel kleine autocorrelaties
+bundelt en alleen varianties gebruikt, die goed meetbaar zijn. Net als de
+autocorrelatie kijkt de variance ratio naar koersveranderingen en niet naar het
+niveau. De koers van morgen ligt dicht bij die van vandaag en is daardoor met
+een kleine fout te voorspellen, maar voor de koers*verandering* van morgen lukt
+dat niet.
 
 **Autocorrelatie.** Onder de nulhypothese is $\rho_k = \Corr(r_t, r_{t-k}) = 0$
 voor elke $k \ge 1$. De steekproefautocorrelatie heeft dan bij benadering
-standaardfout $1/\sqrt{T}$, met $T$ het aantal waarnemingen: $0{,}029$ bij een
-eeuw maanddata. Kendall rekende deze grootheid uit.
+standaardfout $1/\sqrt{T}$, met $T$ het aantal waarnemingen, en dat is
+$0{,}029$ bij een eeuw maanddata. Kendall rekende deze grootheid uit.
 
-**Variance ratio.** De tweede toets is de $\sqrt{t}$-wet in één getal:
+**Variance ratio.** De tweede toets vat de $\sqrt{t}$-wet samen in één getal.
+Voor een horizon van $q$ perioden is dat
 
 ```{math}
 :label: eq-bachelier-vr
@@ -550,17 +571,18 @@ VR(q) \;=\; \frac{\Var\!\left(r_t + r_{t-1} + \dots + r_{t-q+1}\right)}
                   {q\,\Var(r_t)} .
 ```
 
-In woorden: de variantie van een rendement over $q$ perioden, gedeeld door $q$
+De teller is de variantie van een rendement over $q$ perioden, de noemer $q$
 keer de variantie over één periode. Onder de random walk is $VR(q) = 1$ voor
-elke $q$, want de variantie groeit lineair, zoals in het toy-voorbeeld. Boven één
-wijst op positieve autocorrelatie, onder één op negatieve.
+elke $q$, want de variantie groeit lineair, zoals in het toy-voorbeeld. Een
+waarde boven één wijst op positieve autocorrelatie, een waarde onder één op
+negatieve.
 
 :::{prf:theorem} Variance ratio als gewogen som van autocorrelaties
 :label: thm-bachelier-vr
 
-Voor een covariantie-stationaire reeks (gemiddelde, variantie en
-autocovarianties veranderen niet in de tijd, zoals bij het proces
-$r_t = \rho\, r_{t-1} + e_t$ met $|\rho| < 1$) geldt
+Neem een covariantie-stationaire reeks, waarvan gemiddelde, variantie en
+autocovarianties niet in de tijd veranderen, zoals bij het proces
+$r_t = \rho\, r_{t-1} + e_t$ met $|\rho| < 1$. Voor zo'n reeks geldt
 
 ```{math}
 :label: eq-bachelier-vr-rho
@@ -568,43 +590,47 @@ VR(q) \;=\; 1 + 2\sum_{j=1}^{q-1}\left(1 - \frac{j}{q}\right)\rho_j .
 ```
 :::
 
-In woorden: $VR(q)$ is één plus een gewogen som van de eerste $q - 1$
+Een variance ratio is dus één plus een gewogen som van de eerste $q - 1$
 autocorrelaties, met lineair aflopende gewichten. Is alleen $\rho_1 = 0{,}1$, dan
 is $VR(4) = 1 + 2 \cdot \tfrac34 \cdot 0{,}1 = 1{,}15$. Voor $q = 2$ volgt
-$VR(2) - 1 = \rho_1$, exact.
+precies $VR(2) - 1 = \rho_1$.
 
 :::{prf:proof}
 :class: dropdown
 
 Schrijf $\gamma_j = \Cov(r_t, r_{t-j})$, dus $\rho_j = \gamma_j/\gamma_0$. De
 variantie van de som van $q$ opeenvolgende termen telt $q$ keer $\gamma_0$, en
-voor elke $j \ge 1$ telt ze $2(q-j)$ keer $\gamma_j$: er zijn $q - j$ paren op
-afstand $j$ en elk paar telt twee keer mee.
+voor elke $j \ge 1$ telt ze $2(q-j)$ keer $\gamma_j$, omdat er $q - j$ paren op
+afstand $j$ zijn en elk paar twee keer meetelt.
 
 $$
 \Var\Bigl(\sum_{i=0}^{q-1} r_{t-i}\Bigr)
  = q\gamma_0 + 2\sum_{j=1}^{q-1}(q-j)\gamma_j .
 $$
 
-Delen door $q\gamma_0$ geeft [](#eq-bachelier-vr-rho). $\square$
+Delen door $q\gamma_0$ geeft [](#eq-bachelier-vr-rho). Elke autocorrelatie
+$\rho_j$ krijgt zo het gewicht $2(1 - j/q)$. $\square$
 :::
 
-De variance ratio is om twee redenen de hoofdtoets. Ze bundelt: is de
-afhankelijkheid over veel vertragingen uitgesmeerd, dan verdwijnt elke $\rho_j$
-apart in de ruis, maar hun gewogen som niet. En ze gebruikt alleen varianties.
-Dat is de standaardfout van 2% uit [](#00-01-rendementen) van de andere kant.
-Het gemiddelde jaarrendement is na een eeuw data nog maar op twee procentpunt
-nauwkeurig, maar een variantie is over dezelfde eeuw veel nauwkeuriger bekend.
-Een toets die alleen varianties vergelijkt, heeft daardoor scherpte.
+De variance ratio is om twee redenen de hoofdtoets. De eerste reden is dat ze
+bundelt. Als de afhankelijkheid over veel lags is uitgesmeerd, verdwijnt elke
+$\rho_j$ apart in de ruis, maar hun gewogen som niet. De tweede reden is dat ze
+alleen varianties gebruikt en zo de standaardfout van 2% uit
+[](#00-01-rendementen) omzeilt. Het gemiddelde jaarrendement is na een eeuw data
+nog maar op twee procentpunt nauwkeurig, terwijl een variantie over dezelfde
+eeuw veel nauwkeuriger bekend is. Een toets die alleen varianties vergelijkt, is
+daardoor scherp.
 
 Onder de nulhypothese en bij constante variantie is de standaardfout van
 $VR(q)$ gelijk aan $\sqrt{2(2q-1)(q-1)/(3qT)}$ {cite}`LoMacKinlay1988`. Voor
 $q = 2$ is dat $1/\sqrt{T}$. Bij de 1216 weken van Lo en MacKinlay is ze
-$0{,}029$, $0{,}054$, $0{,}085$ en $0{,}126$ voor $q = 2, 4, 8, 16$: bij lange
-horizonnen is de toets minder scherp. De functie `hap.variance_ratio` geeft
+$0{,}029$, $0{,}054$, $0{,}085$ en $0{,}126$ voor $q = 2, 4, 8, 16$, zodat de
+toets bij lange horizonnen minder scherp is. De functie `hap.variance_ratio` geeft
 $VR(q)$ (sleutel `vr`) en de toetsgrootheid $z_2$ (sleutel `z2`), die robuust is
-voor clusterende volatiliteit: rustige en woelige perioden wisselen elkaar af,
-en de gewone $z$ zou de ruis dan onderschatten. Lo en MacKinlay noemen haar $z^{*}$.
+voor clusterende volatiliteit. Omdat rustige en woelige perioden elkaar
+afwisselen, zou de gewone $z$ de ruis onderschatten en een afwijking te vaak
+significant noemen. Lo en MacKinlay noemen de
+robuuste grootheid $z^{*}$.
 
 ```{admonition} Samengevat
 :class: tip
@@ -615,26 +641,27 @@ en de gewone $z$ zou de ruis dan onderschatten. Lo en MacKinlay noemen haar $z^{
 
 - De kans om een niveau te raken is $P(S_n = a) + 2P(S_n > a)$,
   [](#eq-bachelier-reflectie), in de Brownse limiet exact twee keer de kans om
-  erboven te eindigen. Een hoger niveau maakt haar kleiner, een langere horizon
-  groter.
+  erboven te eindigen. Een hoger niveau maakt die kans kleiner, een langere
+  horizon groter.
 
 - Een optie op het geld is $0{,}4\,v\sqrt{\tau}$ waard,
-  [](#eq-bachelier-atm): hoger bij meer volatiliteit of een langere looptijd,
-  zonder verwacht rendement of risicoaversie.
+  [](#eq-bachelier-atm), en die waarde stijgt met de volatiliteit en de
+  looptijd, zonder dat verwacht rendement of risicoaversie meetellen.
 
-- $VR(q) - 1$ is een gewogen som van autocorrelaties, [](#eq-bachelier-vr-rho):
-  positief bij positieve autocorrelatie, negatief bij negatieve. Een grotere $q$
-  telt meer vertragingen mee, maar met een grotere standaardfout.
+- $VR(q) - 1$ is een gewogen som van autocorrelaties, [](#eq-bachelier-vr-rho),
+  dus positief bij positieve autocorrelatie en negatief bij negatieve. Een grotere
+  $q$ telt meer lags mee, maar met een grotere standaardfout.
 
-- De simulatie hierna vraagt: hoeveel jaren weekdata zijn nodig om een kleine
-  autocorrelatie met $VR(2)$ te zien?
+- De simulatie hierna vraagt hoeveel jaren weekdata nodig zijn om een kleine
+  autocorrelatie met $VR(2)$ te zien.
 ```
 
 ## Simulatie: hoeveel data om een afwijking te zien?
 
-Een kleine autocorrelatie is pas na tientallen jaren data te zien. We bouwen een wereld van weekrendementen met 2% volatiliteit per
+Een kleine autocorrelatie is pas na tientallen jaren data te zien. Om dat te
+laten zien, bouwen we een wereld van weekrendementen met 2% volatiliteit per
 week, eerst zonder afhankelijkheid en daarna met eerste autocorrelatie $\rho$.
-Als maat nemen we de steekproef van Lo en MacKinlay: $T = 1216$ weken, ruim
+Als maatstaf nemen we de steekproef van Lo en MacKinlay: $T = 1216$ weken, ruim
 drieëntwintig jaar. De eerste cel trekt 2000 paden zonder afhankelijkheid en
 vergelijkt de spreiding van $\widehat{VR}(2)$ met $1/\sqrt{T}$.
 
@@ -658,10 +685,11 @@ pd.DataFrame(
 ```
 
 Onder de nulhypothese werkt de toets zoals bedoeld. Het gemiddelde is vrijwel
-één, de spreiding van $0{,}0281$ ligt dicht bij $0{,}0287$, en de toets verwerpt
-in 4,3% van de steekproeven, iets onder de nominale 5%.
+één en de spreiding van $0{,}0281$ ligt dicht bij $0{,}0287$, terwijl de toets in
+4,3% van de steekproeven verwerpt, iets onder de nominale 5%.
 
-Nu het alternatief: een AR(1) in log-rendementen, $r_t = \rho\, r_{t-1} + e_t$.
+Als alternatief nemen we een AR(1) in log-rendementen,
+$r_t = \rho\, r_{t-1} + e_t$.
 Daarvoor is $\rho_1 = \rho$ en dus $VR(2) = 1 + \rho$ volgens
 [](#eq-bachelier-vr-rho). De cel simuleert voor drie waarden van $\rho$ en drie
 steekproeflengtes elk 1000 paden en telt hoe vaak de toets verwerpt.
@@ -693,8 +721,8 @@ power = pd.DataFrame(rows)
 power.round(3)
 ```
 
-De geschatte $VR(2)$ is in alle negen gevallen vrijwel $1 + \rho$: de schatter
-is nagenoeg zuiver. Het *onderscheidend vermogen*, de kans dat de toets de foute
+De geschatte $VR(2)$ is in alle negen gevallen vrijwel $1 + \rho$, zodat de
+schatter nagenoeg zuiver is. Het *onderscheidend vermogen*, de kans dat de toets de foute
 nulhypothese verwerpt, hangt sterk af van de lengte van de steekproef. Omdat
 $VR(2) - 1 = \rho$ en de standaardfout ongeveer $1/\sqrt{T}$ is, is de verwachte
 $z$-waarde $\rho\sqrt{T}$. Een verwachte $z$ van 1,96 vraagt dan
@@ -704,9 +732,10 @@ $z$-waarde $\rho\sqrt{T}$. Een verwachte $z$ van 1,96 vraagt dan
 T^{*} \;=\; \left(\frac{1{,}96}{\rho}\right)^{2}
 ```
 
-waarnemingen. In woorden: halveer de autocorrelatie en de benodigde steekproef
-wordt vier keer zo lang. Ook bij $T^{*}$ verwerpt de toets maar in de helft van
-de steekproeven.
+waarnemingen. Halveert de autocorrelatie, dan wordt de benodigde steekproef dus
+vier keer zo lang. Zelfs bij $T^{*}$ verwerpt de toets maar in de helft van de
+steekproeven, omdat de geschatte $z$ dan even vaak onder als boven de kritieke
+waarde ligt.
 
 | $\rho$ | $T^{*}$ (weken) | jaren |
 |---|---|---|
@@ -715,9 +744,10 @@ de steekproeven.
 | 0,02 | 9604 | 185 |
 
 Een autocorrelatie van 0,02 vraagt 185 jaar weekdata, langer dan de 155 jaar
-van Shillers maandreeks, de langste reeks in deze lecture. Vanaf twintig jaar
-data volgt de simulatie de formule. Bij vijf jaar wijkt ze tot drie procentpunt
-af, omdat de benadering daar nog grof is. De figuur zet het onderscheidend vermogen uit tegen de lengte van de
+van Shillers maandreeks, de langste reeks in dit college. Vanaf twintig jaar
+data volgt de simulatie de formule, maar bij vijf jaar wijkt ze tot drie
+procentpunt af, omdat de benadering daar nog grof is. De figuur zet het onderscheidend
+vermogen uit tegen de lengte van de
 steekproef. Let op waar de lijnen de verticale lijn van Lo en MacKinlay kruisen.
 
 ```{code-cell} ipython3
@@ -753,13 +783,14 @@ Het onderscheidend vermogen van de variance-ratio-toets tegen een AR(1), als
 functie van de lengte van de steekproef. De zwarte punten zijn de gesimuleerde
 waarden uit de tabel. Bij de drieëntwintig jaar weekdata van Lo en MacKinlay is
 een autocorrelatie van 0,20 zo goed als zeker zichtbaar, en een van 0,02 zo goed
-als onzichtbaar. Wie beweert dat een markt efficiënt is, zegt dus altijd: met de
-data die ik heb.
+als onzichtbaar. Wie beweert dat een markt efficiënt is, bedoelt dus altijd
+dat ze efficiënt is voor zover de beschikbare data dat kunnen laten zien.
 :::
 
 ```{warning}
 Dezelfde $T$ die te klein is om een echte $\rho$ van 0,02 te vinden, laat ruis
-tot 0,06 toe: twee standaardfouten van $1/\sqrt{1216} \approx 0{,}029$. Wie
+tot 0,06 toe, want dat zijn twee standaardfouten van
+$1/\sqrt{1216} \approx 0{,}029$. Wie
 vijftig markten, tien horizonnen en drie frequenties nakijkt, vindt vrijwel
 zeker ergens een $z$-waarde boven twee, zonder dat er iets te vinden is.
 ```
@@ -772,13 +803,14 @@ zeker ergens een $z$-waarde boven twee, zonder dat er iets te vinden is.
 **Bron.** Jules Regnault, *Calcul des chances et philosophie de la bourse*,
 Parijs 1863 {cite}`Regnault1863`.
 
-**Wat.** Zijn eigen toets van de wet (§83–84): een gemiddelde absolute afwijking
-van ongeveer 2,73 frank per maand, maal $\sqrt{3}$ en $\sqrt{12}$, geeft 4,73 en
-9,46, tegen waargenomen ongeveer 4,74 en 9,50. Wij herhalen die vergelijking en schatten
+**Wat.** In zijn eigen toets (§83–84) vermenigvuldigt Regnault een maandafwijking
+van ongeveer 2,73 frank met $\sqrt{3}$ en $\sqrt{12}$, en die voorspelling valt
+voor het kwartaal en het jaar minder dan een half procent naast de waargenomen
+afwijkingen van 4,74 en 9,50 frank. Wij herhalen die vergelijking en schatten
 de helling $b$ in $\log \E|p_{t+h} - p_t| = a + b \log h$ over
 $h = 1, 3, 12, 60$ maanden.
 
-**Data hier.** Shillers maandreeks van de reële S&P-prijs vanaf 1871 en de
+**Data hier.** We gebruiken Shillers maandreeks van de reële S&P-prijs vanaf 1871 en de
 maandelijkse marktfactor van French (het totale rendement van de waardegewogen
 Amerikaanse markt) vanaf 1926.
 
@@ -786,9 +818,10 @@ Amerikaanse markt) vanaf 1926.
 koers van de Franse 3%-rente, wij een Amerikaanse aandelenindex in log-prijzen. Shillers maandprijs is een gemiddelde
 van dagkoersen, en die middeling drukt de spreiding op de kortste horizon.
 
-**Verwachte afwijking.** Helling voor French binnen 0,05 van 0,5, voor Shiller
-erboven. De falsifieerbare eis: $\E|p_{t+h} - p_t|/\sqrt{h}$ blijft over de vier
-horizonnen binnen een factor twee, waar een lineaire wet een factor acht
+**Verwachte afwijking.** We verwachten een helling binnen 0,05 van 0,5 voor
+French en een hogere voor Shiller. De falsifieerbare eis is dat
+$\E|p_{t+h} - p_t|/\sqrt{h}$ over de vier horizonnen binnen een factor twee
+blijft, waar een lineaire wet een factor acht
 ($\sqrt{60} \approx 7{,}7$) zou geven. Regnaults eigen verhouding voorspeld /
 waargenomen van bijna één verwachten we niet, omdat aandelenvolatiliteit meer
 wisselt dan die van zijn staatsrente.
@@ -796,8 +829,8 @@ wisselt dan die van zijn staatsrente.
 
 De functie hieronder berekent per horizon de gemiddelde absolute afwijking en
 de standaarddeviatie van de verandering in de log-prijs, na aftrek van het
-gemiddelde. De kolom "Regnault" doet wat hij deed: de gemiddelde absolute
-afwijking over één maand maal $\sqrt{h}$.
+gemiddelde. De kolom "Regnault" doet wat hij deed en vermenigvuldigt de
+gemiddelde absolute afwijking over één maand met $\sqrt{h}$.
 
 ```{code-cell} ipython3
 # Shiller loopt hier van 1871-01 t/m 2026-09, French vanaf 1926-07.
@@ -831,8 +864,8 @@ regnault = pd.concat(
 regnault.round(4)
 ```
 
-Beide reeksen groeien veel trager dan lineair. De kolom met $\sqrt{h}$ in de
-noemer blijft voor French tussen 0,037 en 0,042 over een factor zestig in
+Beide reeksen groeien veel trager dan lineair, want de kolom met $\sqrt{h}$ in
+de noemer blijft voor French tussen 0,037 en 0,042 over een factor zestig in
 horizon. De volgende cel
 schat de helling en zet de uitkomst naast Regnaults eigen toets.
 
@@ -866,22 +899,23 @@ pd.DataFrame(
 ```
 
 **Geslaagd op de helling, gedeeltelijk geslaagd op Regnaults eigen toets.** De
-French-helling van 0,511 ligt binnen 0,05 van een half, en de falsifieerbare eis
-(factor twee) is ruim gehaald. De Shiller-helling van 0,577 ligt hoger, zoals
-verwacht: de maandmiddeling drukt de kortste horizon. Regnaults overeenstemming
-van een half procent halen we niet. Voor French voorspelt de maandwaarde maal
-$\sqrt{12}$ een jaarwaarde die ruim tien procent te laag is. Ongeveer twee
-derde daarvan komt doordat de standaarddeviatie sneller groeit dan $\sqrt{h}$,
-door de positieve maandautocorrelatie. De rest komt uit de laatste kolom van de
-eerste tabel: gemiddelde absolute afwijking gedeeld door standaarddeviatie is
-0,70 bij één maand en 0,73 bij twaalf maanden, tegen 0,80 voor een normale
-verdeling. Maandveranderingen hebben door wisselende volatiliteit dikke
-staarten, en dan is de gemiddelde absolute afwijking klein ten opzichte van de
-spreiding. Regnault neemt die lage maandverhouding mee naar de jaarhorizon, waar
-ze hoger ligt.
+French-helling van 0,511 ligt binnen de verwachte marge rond een half, en de
+falsifieerbare eis (factor twee) is ruim gehaald. De Shiller-helling ligt hoger,
+zoals verwacht, omdat de maandmiddeling de kortste horizon drukt. Regnaults
+overeenstemming van een half procent halen we niet, want voor French valt de
+voorspelde jaarwaarde ruim tien procent te laag uit, zoals de onderste regel van
+de tabel laat zien. Ongeveer twee derde daarvan komt doordat de
+standaarddeviatie sneller groeit dan $\sqrt{h}$, door de positieve
+maandautocorrelatie.
+
+De rest komt van dikke staarten. Door wisselende volatiliteit is de gemiddelde
+absolute afwijking van maandveranderingen klein ten opzichte van hun spreiding,
+zodat de laatste kolom van de eerste tabel bij één maand verder onder de 0,80
+van een normale verdeling ligt dan bij twaalf maanden. Regnault neemt die lage
+maandverhouding mee naar de jaarhorizon, waar ze hoger ligt.
 
 De figuur zet beide reeksen op dubbellogaritmische schaal naast een lijn met
-helling een half. Let erop dat beide reeksen evenwijdig aan die lijn lopen.
+helling een half. Het gaat erom dat beide reeksen evenwijdig aan die lijn lopen.
 
 ```{code-cell} ipython3
 :label: cel-bachelier-regnault
@@ -921,20 +955,21 @@ Prices*, JRSS-A 1953 {cite}`Kendall1953`. Andrew Lo en Craig MacKinlay, *Stock
 Market Prices Do Not Follow Random Walks*, Review of Financial Studies 1988
 {cite}`LoMacKinlay1988`.
 
-**Wat.** Kendalls eerste autocorrelaties van wekelijkse Britse
-industrie-indices. Lo en MacKinlay, tabel 1a (variance ratios van hun
+**Wat.** We repliceren Kendalls eerste autocorrelaties van wekelijkse Britse
+industrie-indices. Van Lo en MacKinlay nemen we tabel 1a (variance ratios van hun
 waardegewogen marktindex over 1216 weken) en tabel 2 (per grootte-kwintiel).
 
-**Data hier.** De dagelijkse marktfactor van French, opgeteld tot
+**Data hier.** We gebruiken de dagelijkse marktfactor van French, opgeteld tot
 weekrendementen, en de maandelijkse kwintielportefeuilles op marktwaarde.
 
 **Verschil met het origineel.** Kendall had Britse sectorindices, wij de
 Amerikaanse markt. Lo en MacKinlay hadden wekelijkse, gelijkgewogen kwintielen,
 wij maandelijkse, waardegewogen.
 
-**Verwachte afwijking.** Markt-$VR(q)$ binnen 0,05 van het origineel, $z$
-rond de twee. Lagere waarden voor Kendall en de kwintielen. Falsifieerbaar: de
-rangorde, $VR(2)$ daalt van klein naar groot.
+**Verwachte afwijking.** We verwachten markt-$VR(q)$ binnen 0,05 van het
+origineel en $z$-waarden rond de twee, maar lagere waarden voor Kendall en de
+kwintielen. Falsifieerbaar is de rangorde, want $VR(2)$ moet dalen van klein
+naar groot.
 ```
 
 De eerste cel berekent, zoals Kendall, de eerste vijf autocorrelaties, nu voor
@@ -958,15 +993,16 @@ kendall.round(4)
 
 Kendalls resultaat houdt in orde van grootte stand. Onze eerste
 weekautocorrelatie ligt ver onder de ongeveer $0{,}13$ die Kendall gemiddeld
-vond {cite}`Kendall1953`. Zijn reeksen waren indices van dun verhandelde Britse aandelen,
-en die zijn sterker positief gecorreleerd. Dat Kendall nulcorrelaties vond, is
-een misverstand: hij vond positieve waarden, maar te zwak om mee te voorspellen.
+vond {cite}`Kendall1953`, omdat zijn reeksen indices van dun verhandelde Britse
+aandelen waren, en zulke indices zijn sterker positief gecorreleerd. Het idee dat
+Kendall nulcorrelaties vond, is een misverstand, want hij vond positieve waarden
+die te zwak waren om mee te voorspellen.
 
 De grootste autocorrelatie hier is die van maandrendementen, $0{,}085$. Ze is
 significant, maar verklaart maar 0,7%
-($0{,}085^2$) van de variantie van het volgende maandrendement. De voorspelling
-uit de intuïtie, autocorrelaties van nul, houdt dus bijna stand: niet exact nul,
-maar te klein om mee te voorspellen.
+($0{,}085^2$) van de variantie van het volgende maandrendement. We verwachtten
+autocorrelaties van nul, en dat klopt bijna. Ze zijn niet precies nul, maar te
+klein om mee te voorspellen.
 
 De variance ratios berekenen we op drie steekproeven: die van Lo en MacKinlay,
 de periode na hun steekproef, en het interbellum van 1928 tot 1938, ongeveer
@@ -996,9 +1032,9 @@ vr_samples.round(3)
 
 Op de steekproef van Lo en MacKinlay, 1216 weken zoals bij hen, liggen alle
 vier de ratio's boven één. In de veertig jaar na hun steekproef liggen ze alle
-vier onder één, maar geen enkele significant. De afwijking is verdwenen, en een
-omgekeerd teken is niet aangetoond. In het
-interbellum, elf jaar data, is de afwijking het grootst.
+vier onder één, maar geen enkele is significant. De afwijking is dus verdwenen,
+zonder dat een omgekeerd teken is aangetoond. In het interbellum, met elf jaar
+data, is de afwijking het grootst.
 
 Dezelfde berekening per kwintiel op marktwaarde, over 1962–1985, toetst de
 rangorde.
@@ -1051,10 +1087,10 @@ de $z$-waarden.** Voor de marktindex liggen alle vier de schattingen binnen 0,02
 van de gepubliceerde waarden, met hetzelfde patroon over $q$. De $z$-waarden
 liggen met 1,2 tot 2,0 iets onder de verwachte twee, net als bij hen het laagst
 bij $q = 16$. De rangorde over de kwintielen, de falsifieerbare
-eis, is die van Lo en MacKinlay. De kwintielniveaus liggen tot 0,2 lager: onze
-reeksen zijn maandelijks en waardegewogen, en dat middelt de afhankelijkheid weg.
-Kendalls autocorrelatie komt, zoals verwacht, lager uit. Zelfs zijn 0,13
-verklaart nog geen 2% ($0{,}13^2$) van de variantie van het volgende
+eis, is die van Lo en MacKinlay. De kwintielniveaus liggen tot 0,2 lager, omdat
+onze reeksen maandelijks en waardegewogen zijn, wat de afhankelijkheid
+wegmiddelt. Kendalls autocorrelatie komt, zoals verwacht, lager uit, al
+verklaart zelfs zijn 0,13 nog geen 2% ($0{,}13^2$) van de variantie van het volgende
 weekrendement.
 
 De figuur vat beide tabellen samen. Let links op de ligging ten opzichte van
@@ -1089,47 +1125,50 @@ plt.show()
 :label: fig-bachelier-vr
 :width: 95%
 
-Links: de variance ratios die Lo en MacKinlay vonden, liggen boven één en lopen
-op tot $q = 8$. Na 1985 liggen ze er net onder. Rechts: hoe kleiner de
-onderneming, hoe groter de afwijking van de random walk. Beide panelen laten
+Links liggen de variance ratios op de steekproef van Lo en MacKinlay boven één,
+en ze lopen op tot $q = 8$. Na 1985 liggen ze onder één, zonder dat een ervan
+significant is. Rechts is te zien dat de
+afwijking van de random walk groter is naarmate de onderneming kleiner is. Beide panelen laten
 open of het om een prijsfout ging of om een eigenschap van de handel in kleine
 aandelen.
 :::
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** Uit één zin,
-opeenvolgende koersveranderingen zijn ongecorreleerd, volgen de $\sqrt{t}$-wet
+**Wat het model verklaart.** Uit de aanname dat
+opeenvolgende koersveranderingen ongecorreleerd zijn, volgen de $\sqrt{t}$-wet
 (helling 0,51 op French-data), de Brownse beweging als limiet, de kans om een
 niveau te raken, en een optieformule die voor korte looptijden nauwelijks van
-Black-Scholes verschilt. Het verklaart ook waarom beroepsvoorspellers collectief
-falen: Cowles vond in 1933 dat adviesdiensten het gemiddeld slechter deden dan
+Black-Scholes verschilt. Het model verklaart ook waarom beroepsvoorspellers als
+groep falen, en Cowles vond in 1933 al dat adviesdiensten het gemiddeld slechter deden dan
 de markt {cite}`Cowles1933`.
 
-**Waar het breekt.** De zwaarste breuk: de random walk zegt iets over
-*veranderingen*, niets over het *niveau*. Het is een theorie van de ruis, niet
-van de waarde. De tweede breuk is empirisch: variance ratios boven één die dalen
-met de grootte van de onderneming. Volgens [](#eq-bachelier-power) is
-$VR(2) - 1 = 0{,}205$ van het kleinste kwintiel na
-$(1{,}96/0{,}205)^2 \approx 91$ maanden zichtbaar, ongeveer acht jaar. De
-week-$\rho_1$ van 0,030 vraagt $(1{,}96/0{,}030)^2 \approx 4270$ weken, en onze
-5223 weken volstaan net. Technisch laat aritmetische Brownse beweging negatieve
-prijzen toe. Osborne verplaatste haar in 1959 naar de log-prijs
+**Waar het breekt.** De zwaarste breuk is dat de random walk iets zegt over
+*veranderingen* en niets over het *niveau*. Het is een theorie van de ruis, niet
+van de waarde. De tweede breuk is empirisch, want de variance ratios liggen boven
+één en dalen met de grootte van de onderneming. Volgens [](#eq-bachelier-power)
+is de afwijking van het kleinste kwintiel al na ongeveer acht jaar maanddata
+zichtbaar, terwijl de week-$\rho_1$ van de hele markt zo'n 4270 weken vraagt.
+Onze 5223 weken liggen daar maar net boven, zodat de toets die kleine
+autocorrelatie iets vaker wel dan niet zou vinden. Technisch laat de aritmetische Brownse
+beweging negatieve
+prijzen toe, en daarom verplaatste Osborne het model in 1959 naar de log-prijs
 {cite}`Osborne1959`.
 
 **Risico of vergissing?** De variance ratios boven één, hoger bij kleinere
-ondernemingen, laten beide lezingen toe. De Chicago-lezing (Fama: prijzen
-kloppen): kleine aandelen worden niet elke dag verhandeld, hun laatste koers
-loopt achter, en dat maakt indexrendementen vanzelf positief gecorreleerd. De
-Yale-lezing (Shiller: prijzen kunnen ernaast zitten): in weinig gevolgde
-aandelen past de prijs zich te traag aan. Dat de afwijking na 1985 verdween,
-past bij beide: er wordt vaker gehandeld, en er zijn meer analisten. Scheiden
-vraagt de handelsfrequentie per aandeel vóór 1985. Die zit in de betaalde
+ondernemingen, laten beide lezingen toe. Volgens de Chicago-lezing
+(Fama, voor wie prijzen kloppen) worden kleine aandelen niet elke dag
+verhandeld, zodat hun laatste koers achterloopt en indexrendementen vanzelf
+positief gecorreleerd raken. Volgens de Yale-lezing (Shiller, voor wie prijzen
+ernaast kunnen zitten) past de prijs zich in weinig gevolgde aandelen te traag
+aan. Dat de afwijking na 1985 verdween, past bij beide lezingen, want er wordt
+vaker gehandeld en er zijn meer analisten. Om de lezingen te scheiden, is de
+handelsfrequentie per aandeel vóór 1985 nodig, en die zit in de betaalde
 CRSP-databank, niet in de gratis bronnen van deze reeks.
 
 **Wat er daarna kwam.** Voordat iemand kon zeggen of een prijs *fout* was, moest
 er een theorie zijn van wat een prijs *hoort* te zijn. John Burr Williams schreef
-die in 1938 op: zie [](#01-03-williams-ddm).
+die in 1938 op, in [](#01-03-williams-ddm).
 
 ## Oefeningen
 
@@ -1137,7 +1176,8 @@ die in 1938 op: zie [](#01-03-williams-ddm).
 :label: ex-bachelier-instap
 
 **Instap: een scheve munt.** Neem het toy-voorbeeld, maar laat elke stap met
-kans 0,6 omhoog gaan en met kans 0,4 omlaag.
+kans 0,6 omhoog gaan en met kans 0,4 omlaag. De stappen blijven onafhankelijk
+van elkaar.
 
 1. Bereken $\E[S_4]$ en $\Var(S_4)$ met de hand.
 2. Groeit de spreiding van de wandeling nog met de wortel van het aantal stappen?
@@ -1149,7 +1189,7 @@ kans 0,6 omhoog gaan en met kans 0,4 omlaag.
 :class: dropdown
 
 **(1)** Eén stap heeft verwachting $0{,}6 - 0{,}4 = 0{,}2$ en variantie
-$1 - 0{,}2^2 = 0{,}96$. Bij onafhankelijke stappen tellen beide op:
+$1 - 0{,}2^2 = 0{,}96$. Omdat de stappen onafhankelijk zijn, tellen beide op:
 $\E[S_4] = 0{,}8$ en $\Var(S_4) = 3{,}84$. De code weegt de zestien paden van
 het toy-voorbeeld met hun nieuwe kansen.
 
@@ -1171,15 +1211,16 @@ lineair weg, als $0{,}2\,n$. Vanaf ongeveer 24 stappen is de drift groter dan de
 spreiding ($0{,}2n > \sqrt{0{,}96n}$). Zonder aftrek van het gemiddelde trekt de
 drift de geschatte helling naar één.
 
-Wat dit leert: de $\sqrt{t}$-wet gaat over de spreiding rond de drift, en wie
-haar toetst, moet de drift eerst verwijderen.
+De $\sqrt{t}$-wet gaat dus over de spreiding rond de drift. Een toets van de
+wet moet de drift daarom eerst verwijderen.
 :::
 
 :::{exercise}
 :label: ex-bachelier-1
 
 **De variance ratio van een AR(1).** Laat $r_t = \rho\,r_{t-1} + e_t$ met
-$|\rho| < 1$ en $e_t$ witte ruis.
+$|\rho| < 1$ en $e_t$ witte ruis. Dat is het proces waarmee de simulatie de
+afwijking van de random walk maakte.
 
 1. Toon aan dat $\rho_j = \rho^{\,j}$ en leid met [](#eq-bachelier-vr-rho) een
    gesloten uitdrukking af voor $VR(q)$.
@@ -1201,8 +1242,9 @@ VR(q) = 1 + \frac{2\rho}{1-\rho}
         \left[1 - \frac{1-\rho^{\,q}}{q\,(1-\rho)}\right].
 $$
 
-Voor $q \to \infty$ verdwijnt de tweede term en blijft
-$VR(\infty) = (1+\rho)/(1-\rho) = 1{,}1/0{,}9 \approx 1{,}222$ over.
+Voor $q \to \infty$ verdwijnt de breuk tussen de haken, omdat de noemer met $q$
+meegroeit. Er blijft $VR(\infty) = (1+\rho)/(1-\rho) = 1{,}1/0{,}9 \approx 1{,}222$
+over.
 
 **(2) en (3)** De cel rekent de theoretische waarden uit en schat ze op één
 gesimuleerd pad van 1216 weken.
@@ -1234,21 +1276,22 @@ valt bij de kleinste horizon: 4,51 bij $q = 2$ tegen 3,29 bij $q = 16$. De
 standaardfout van $VR(q)$ groeit ongeveer met $\sqrt{q}$, terwijl $VR(q) - 1$ na
 $q = 4$ nauwelijks nog toeneemt.
 
-Wat dit leert: tegen een AR(1) is de kortste horizon de scherpste toets, omdat
-het signaal daar al vrijwel volledig is en de ruis het kleinst.
+Tegen een AR(1) is de kortste horizon dus de scherpste toets. Daar is het
+signaal al vrijwel volledig, terwijl de ruis er het kleinst is.
 :::
 
 :::{exercise}
 :label: ex-bachelier-3
 
 **De replicatie uitgebreid: is de afwijking verdwenen?** Lo en MacKinlay
-publiceerden in 1988 op data tot eind 1985.
+publiceerden in 1988 op data tot eind 1985. Sindsdien is er ruim veertig jaar
+data bijgekomen.
 
 1. Herhaal de variance-ratio-tabel voor de grootte-kwintielen op de periode
    1986-01 tot heden. Blijft de rangorde bestaan?
 2. Bereken per kwintiel het verschil in $VR(2)$ tussen de twee periodes. Hoe
    groot is dat verschil vergeleken met de standaardfout?
-3. De anomalie is weggearbitreerd, of de handel zelf is veranderd. Welke meting
+3. Ofwel is de anomalie weggearbitreerd, ofwel is de handel zelf veranderd. Welke meting
    zou de twee verklaringen kunnen scheiden, en hebben wij die?
 :::
 
@@ -1291,20 +1334,20 @@ comparison["t van het verschil"] = comparison["verschil"] / np.sqrt(
 comparison.round(3)
 ```
 
-Geen van de vijf verschillen haalt twee standaardfouten. De hoogste $t$-waarde
-is 1,28. Met 280 en 487 maandwaarnemingen is de standaardfout van het verschil
-$\sqrt{1/280 + 1/487} \approx 0{,}075$, en de verschuiving voor de vier
-kleinste kwintielen is 0,06 tot 0,10. Dat is [](#eq-bachelier-power) van de
-andere kant bekeken: de afwijking lijkt verdwenen, maar het verschil is
-statistisch niet van nul te onderscheiden.
+Geen van de vijf verschillen haalt twee standaardfouten, zoals de laatste kolom
+laat zien. De standaardfout van het verschil is ongeveer $0{,}075$, van dezelfde
+orde als de verschuivingen van 0,06 tot 0,10 in de vier kleinste kwintielen.
+Zo'n kleine verschuiving vraagt volgens [](#eq-bachelier-power) veel langere
+periodes dan de twee die we hebben. De afwijking lijkt dus verdwenen, terwijl
+het verschil statistisch niet van nul te onderscheiden is.
 
 **(3)** Beide verklaringen voorspellen dat de afwijking sinds 1985 kleiner
 werd, zoals in "Risico of vergissing?". De meting die ze scheidt, de
 handelsfrequentie per aandeel vóór 1985, zit in CRSP (de betaalde databank met
 Amerikaanse aandelenkoersen sinds 1926), en die hebben wij niet.
 
-Wat dit leert: dat een anomalie na publicatie verdwijnt, is met één reeks niet
-te bewijzen, en waarom ze verdween, is met de gratis data niet te beslissen.
+Dat een anomalie na publicatie verdwijnt, is met één reeks dus niet te
+bewijzen. Waarom ze verdween, is met de gratis data evenmin vast te stellen.
 :::
 
 <!-- Referenties verschijnen automatisch onderaan de pagina. -->
