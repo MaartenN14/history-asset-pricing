@@ -1,0 +1,13 @@
+STATUS 02_05_crsp_tape T words=5498 prose=PASS
+- Waar we zijn: "lecture" wordt "college", de dubbele punt als lijm wordt "omdat".
+- Overzicht: de herhaalde zin over "meer data" is herschreven met "omdat". Het tijdvak en theorie of feit staan nu in hele zinnen met voegwoorden. De standaardfout van 2% krijgt een bijstelling in plaats van een dubbele punt.
+- Intuïtie: "De eerste:/De tweede:" zijn hele vragen geworden. De calque "krijgt van de data drie vragen terug" is nu "stuit op drie vragen". "Wie vandaag" wordt "Een onderzoeker die". Staccato-zinnen zijn samengevoegd. De derde herhaling van de "meer data"-zin is anders geformuleerd.
+- Toy: "Opzet" en "Stap 2" zijn geen telegram meer. Stap 1 is samengevoegd met de alinea van één zin. In Stap 3 is "dus" drie keer "ofwel" geworden. Het oordeel onder de tabel is een gewone zin zonder dubbele punt. De aankondiging van de imports staat er zonder regeltaal.
+- Theorie: de routekaart heeft geen telegramzinnen meer. Van "In woorden:" (7) zijn gewone leeszinnen gemaakt. "Waarom zou dit waar zijn" staat er nog twee keer (de andere twee: gewone opening en "Waarom maakt de weging zoveel uit?"). "Zoals de intuïtie voorspelde" is geen vaste formule meer. "dus" in hoofdzinvolgorde wordt "zodat". "haar onderdelen" wordt "de eigen onderdelen". Equal-/value-weighted worden gelijk-/waardegewogen, met de Engelse term de eerste keer tussen haakjes.
+- Samengevat: de dubbele punten zijn weg, en de vraag in de laatste regel is een bewering geworden.
+- Simulatie: "Nu de ..." en "Ten slotte het ..." zijn hele zinnen. Verbanden staan er nu met want/zodat/terwijl. In het figuuronderschrift staat "verwerpt de nulhypothese", zonder "Links:/Rechts:"-telegram. "haar" (de fout) wordt "die fout".
+- Replicatie: gelijk-/waardegewogen, "zet naast" wordt "vergelijkt met", "replicatieblok" is uit de tekst. "die rendementen" heeft nu een eenduidig antecedent (delisting returns van kleine aandelen). Staccato-zinnen zijn samengevoegd en de dubbele punten weg.
+- Wat er brak: "Waar het breekt" heeft een persoonsvorm gekregen. De derde herhaling van de "meer data"-zin is ingekort. De calque "Wat X, is Y" is weg, en "zie []" is een bijstelling geworden.
+- Oefeningen: "Wat dit leert:" (3) is een gewone slotzin geworden. Instap, afleiding en uitbreiding zijn geen alinea van één zin meer. "dus de selectie" wordt "zodat".
+- Niet gewijzigd: het kopje "### Weging: equal-weighted tegenover value-weighted" (kopjes vast) en de Engelse labels in de figuurcellen.
+- nb_numbers: dezelfde 38 meldingen als ervoor (de lijst met getallen is identiek).

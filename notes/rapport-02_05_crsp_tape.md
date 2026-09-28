@@ -172,3 +172,28 @@ zonder one-liner, "delisting-fout" wordt "fout door ontbrekende delisting return
 **nb_outputs-diff tegen F5.** Alleen labels (overlevenden, z0, r_s) en de simulatiefiguur
 (legendatekst, 119320 bytes); alle getallen gelijk. Open: H11-kalibratie.
 Diffcontrole: codecommentaar r. 927 gebruikt nu r_s in plaats van D; alleen sync, uitvoer ongewijzigd.
+
+## R9-1 (F6b, ronde 9+)
+
+Woorden 5498 -> 5671, prose_stats PASS, nb_numbers 38 meldingen (gelijk aan vóór, geen nieuwe),
+celuitvoer ongewijzigd behalve de nieuwe cel (diff nb_outputs), rewrap gedraaid.
+
+- Feitelijke fout 1 (Replicatie, admonition "Wat"): gedaan; reden (weegverschil binnen het deciel =
+  size-premie + bid-ask bias + delisting-fout) en voorwaarde (eerste twee niet negatief) op één plek.
+- Feitelijke fout 2 (afronding): gedaan; "ruim negen procentpunt", "vijfenhalf", "veertienenhalf".
+- Verbetering 1 / Taal (kop Weging): gedaan; "Weging: gelijkgewogen tegenover waardegewogen"
+  (geen verwijzingen naar de oude kop in het repo). EW/VW als alias op :136 en :297.
+- Verbetering 1 / Code (legenda's figuur weging): gedaan, Nederlands. `measure` gesplitst in
+  `decile_returns` en `market_returns` plus een korte `measure`; aankondiging aangepast; getallen gelijk.
+- Verbetering 3 / Replicatie (tabel origineel/hier): gedaan; nieuwe cel `fisher_lorie` (9,0% tegen
+  VW 9,39%, EW 12,87%, 1926–1960), verwachting in de admonition, alinea met verklaring.
+- Replicatie "Alle drie de verwachtingen" (:818): herschreven naar het weegverschil alleen.
+- Replicatie (:970–973): vijf getallen terug naar twee plus "ruim vijf standaardfouten".
+- Helderheid/taal break-even (:988–989): bijzin $h = \text{premie}/|r^{\text{s}}|$ in dezelfde zin;
+  dubbel "verdwijnt" weg.
+- Taal Overzicht (:40–41) en bovengrens (:829–830): herschreven volgens hardop-voorstel.
+- Taal "dus" (:832): alinea opent nu met de reden ("Omdat het kleinste deciel ...").
+- Taal "Toch" (:803): contrast direct na de zesvoudige eindwaarde in dezelfde zin.
+- Opbouw herhaling (:1025–1026): bijzin "omdat de ene fout ..." geschrapt.
+- Code tabellen EW/VW-kolommen: opgelost via de alias in de tekst.
+- Afgewezen: geen.

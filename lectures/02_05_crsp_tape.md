@@ -22,8 +22,8 @@ kernelspec:
 
 **Wat we al weten.** [Markowitz, Roy en Tobin](#01-04-markowitz) gaven een theorie
 van keuze die draait op verwachte rendementen en covarianties. Die theorie strandt op
-de invoer: verwachte rendementen zijn slecht meetbaar. In
-[de lecture over rendementen](#00-01-rendementen) bouwden we het eerste gemeten
+de invoer, omdat verwachte rendementen slecht meetbaar zijn. In
+[het college over rendementen](#00-01-rendementen) bouwden we het eerste gemeten
 marktrendement na, de 9,0% per jaar van Fisher en Lorie. Het rekenkundige gemiddelde over
 dezelfde 35 jaar, 11,7%, had een standaardfout van 3,9 procentpunt. Daar namen we aan dat "het rendement van de markt" één
 welbepaald getal is.
@@ -36,10 +36,10 @@ de omgang met verdwenen bedrijven, met het gemiddelde rendement dat eruit komt?
 
 Hoe meten we het gemiddelde rendement van alle aandelen, als een deel van die
 aandelen onderweg verdwijnt? Alleen door de verdwenen bedrijven mee te tellen, tot en
-met hun laatste verlies: wie ze weglaat, meet een te hoog gemiddelde, vooral bij
-kleine aandelen. Meer data halen de fout niet onder de ruis:
-de fout door ontbrekende delisting returns blijft staan, en die van overlevenden
-krimpt hoogstens even snel als de ruis. In deze lecture:
+met hun laatste verlies, want wie ze weglaat, meet een te hoog gemiddelde, vooral bij
+kleine aandelen. Meer data helpen niet, want de fout door ontbrekende laatste rendementen
+blijft elk jaar even groot, en de fout door alleen overlevenden te tellen krimpt niet
+sneller dan de ruis. In dit college:
 
 - rekenen we met de hand na wat één faillissement met een marktgemiddelde doet;
 - leiden we af hoe groot de fout is als de database het laatste rendement van
@@ -56,42 +56,41 @@ maandprijzen, dividenden en kapitaalmutaties van alle gewone NYSE-aandelen vanaf
 januari 1926 verzamelen en op magneetband zetten. De resultaten verschenen in 1964
 {cite}`FisherLorie1964`, het jaaroverzicht tot 1965 in 1968 {cite}`FisherLorie1968`.
 
-Met dat werk begint het tijdvak: de event study en de toetsen van het CAPM draaiden
-erop. Voor theorie of feit is de tape geen van beide:
-ze toetst geen theorie en verklaart geen feit, ze meet. Maar elke meetbeslissing heeft
-een voorspelbaar teken, en die fout kan groter zijn dan
-[de standaardfout van 2%](#00-01-rendementen): de onzekerheid die een eeuw
+Met dat werk begint een tijdvak, want de event study en de toetsen van het CAPM
+draaiden op deze data. In de vraag theorie of feit hoort de tape bij geen van beide,
+omdat ze geen theorie toetst en geen feit verklaart, maar meet. Toch geeft elke
+meetbeslissing een fout met een voorspelbaar teken, en die fout kan groter zijn dan
+[de standaardfout van 2%](#00-01-rendementen), de onzekerheid die een eeuw
 jaarrendementen met 20% volatiliteit in een gemiddelde laat.
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-De vraag lijkt eenvoudig: neem alle aandelen van 1926, volg ze tot nu, en tel.
-Maar wie het probeert, krijgt van de data drie vragen terug.
+De vraag lijkt eenvoudig, want het volstaat schijnbaar om alle aandelen van 1926 tot nu
+te volgen en te tellen. Wie dat probeert, stuit echter op drie vragen.
 
-De eerste: wat is het rendement van een aandeel? Een koers die op de dag van een
-dividend daalt, is geen verlies. Het geld is naar de aandeelhouder gegaan. Een koers
-die bij een split halveert, is ook geen verlies, want de houder heeft nu twee stukken.
+De eerste vraag is wat het rendement van een aandeel is. Een koers die op de dag van een
+dividend daalt, is geen verlies, want het geld is naar de aandeelhouder gegaan. Een koers
+die bij een split halveert, is evenmin een verlies, omdat de houder nu twee stukken heeft.
 
-De tweede: welke aandelen tellen mee? Een bedrijf dat failliet gaat, verdwijnt van de
-beurs. Wie vandaag de lijst van genoteerde bedrijven opvraagt en terugrekent tot 1926,
-meet alleen de overlevenden. Dat zijn per definitie de bedrijven die nooit zo diep
-daalden dat ze werden geschrapt.
+De tweede vraag is welke aandelen meetellen. Een bedrijf dat failliet gaat, verdwijnt van
+de beurs. Een onderzoeker die vandaag de lijst van genoteerde bedrijven opvraagt en
+terugrekent tot 1926, meet daardoor alleen de overlevenden, en dat zijn per definitie de
+bedrijven die nooit zo diep daalden dat ze werden geschrapt.
 
-De derde is subtieler. Ook als de verdwenen bedrijven in de database staan,
+De derde vraag is subtieler. Ook als de verdwenen bedrijven in de database staan,
 ontbreekt vaak de *delisting return* (het rendement tussen de laatste beurskoers en
 wat de houder na schrapping nog krijgt). Bij een faillissement is dat rendement groot
-en negatief. Juist dan ontbreekt het het vaakst.
+en negatief, en juist dan ontbreekt het het vaakst.
 
-Geen van die keuzes voegt ruis toe. Ze voegen een vertekening toe met een voorspelbaar
-teken. We verwachten dus dat het gemeten gemiddelde *te hoog* uitvalt, het meest bij
-kleine aandelen, omdat die het vaakst failliet gaan. En we verwachten dat meer data de
-fout niet onder de ruis halen:
-de fout door ontbrekende delisting returns blijft staan, en die van overlevenden
-krimpt hoogstens even snel als de ruis.
+Geen van die keuzes voegt ruis toe, maar elke keuze voegt een vertekening met een
+voorspelbaar teken toe. We verwachten dus dat het gemeten gemiddelde *te hoog* uitvalt,
+het meest bij kleine aandelen, omdat die het vaakst failliet gaan. Ook verwachten we dat
+een langere steekproef weinig helpt. Een ontbrekend laatste rendement vertekent elk jaar
+opnieuw, en de selectie op overleven wordt niet sneller kleiner dan de ruis.
 
 ## Toy-voorbeeld: vijf aandelen, vier perioden
 
-De imports staan in de eerste cel.
+De eerste cel laadt de pakketten die het hele college gebruikt.
 
 ```{code-cell} ipython3
 import copy
@@ -108,9 +107,9 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-**Opzet.** Vijf aandelen, prijzen op $t = 0, \dots, 4$, zonder dividenden of splits.
-Aandeel C wordt in periode 3 geschrapt: de laatste beurskoers is 6, en daarna is het aandeel
-onderhands nog 1,50 waard.
+**Opzet.** Er zijn vijf aandelen met prijzen op $t = 0, \dots, 4$, zonder dividenden of
+splits. Aandeel C wordt in periode 3 geschrapt, met 6 als laatste beurskoers, en daarna is
+het aandeel onderhands nog 1,50 waard.
 
 | aandeel | $t=0$ | $t=1$ | $t=2$ | $t=3$ | $t=4$ | gebeurtenis |
 |---|---|---|---|---|---|---|
@@ -124,9 +123,8 @@ onderhands nog 1,50 waard.
 prijs aan het begin, min één. Voor een geschrapt aandeel is de waarde aan het eind de
 waarde na schrapping.
 
-**Stap 1.** C in periode 3: $1{,}50/6 - 1 = -75\%$. Dat is de delisting return.
-
-De overige rendementen volgen direct uit de prijzen:
+**Stap 1.** Het rendement van C in periode 3 is $1{,}50/6 - 1 = -75\%$, en dat is de
+delisting return. De overige rendementen volgen direct uit de prijzen:
 
 | periode | A | B | C | D | E |
 |---|---|---|---|---|---|
@@ -135,19 +133,20 @@ De overige rendementen volgen direct uit de prijzen:
 | 3 | 0% | 0% | −75% | 0% | 0% |
 | 4 | +10% | −10% | — | +10% | −10% |
 
-**Stap 2.** Het equal-weighted marktrendement, op drie manieren. Correct telt alle
-aandelen die aan het begin van de periode bestaan. Zonder delisting return ontbreekt C
-in periode 3. Bij alleen overlevenden ontbreekt C in alle perioden, want de lijst van
-$t=4$ kent C niet meer.
+**Stap 2.** We berekenen het gelijkgewogen (*equal-weighted*, EW) marktrendement op drie
+manieren. De correcte berekening telt alle aandelen die aan het begin van de periode
+bestaan. Zonder delisting return ontbreekt C in periode 3, en bij alleen overlevenden
+ontbreekt C in alle perioden, want de lijst van $t=4$ kent C niet meer.
 
 - Correct: $2{,}0\%$, $-1{,}0\%$, $-75/5 = -15{,}0\%$ en $0{,}0\%$; gemiddeld $-3{,}50\%$.
 - Zonder delisting return: periode 3 wordt $0/4 = 0{,}0\%$; gemiddeld $+0{,}25\%$.
-- Alleen overlevenden: $30/4 = 7{,}5\%$, $20/4 = 5{,}0\%$, $0\%$ en $0\%$; gemiddeld $+3{,}13\%$.
+- Alleen overlevenden: $30/4 = 7{,}5\%$, $20/4 = 5{,}0\%$, $0\%$ en $0\%$; gemiddeld
+  $+3{,}13\%$.
 
-**Stap 3.** Cumulatief vermenigvuldigen we de bruto rendementen. Correct:
-$1{,}02 \times 0{,}99 \times 0{,}85 = 0{,}8583$, dus $-14{,}17\%$. Zonder delisting
-return: $1{,}02 \times 0{,}99 = 1{,}0098$, dus $+0{,}98\%$. Overlevenden:
-$1{,}075 \times 1{,}05 = 1{,}12875$, dus $+12{,}88\%$.
+**Stap 3.** Voor het cumulatieve rendement vermenigvuldigen we de bruto rendementen.
+De correcte reeks geeft $1{,}02 \times 0{,}99 \times 0{,}85 = 0{,}8583$, ofwel $-14{,}17\%$.
+Zonder delisting return wordt het $1{,}02 \times 0{,}99 = 1{,}0098$, ofwel $+0{,}98\%$, en
+met alleen overlevenden $1{,}075 \times 1{,}05 = 1{,}12875$, ofwel $+12{,}88\%$.
 
 De code bouwt dezelfde rendementen uit prijzen en de waarde na schrapping, zoals een
 database dat doet.
@@ -186,27 +185,28 @@ pd.DataFrame({
 }).round(5)
 ```
 
-Code en hand geven dezelfde getallen. Dezelfde vijf aandelen, en de markt verloor 14%
-of won 13%, afhankelijk van één beslissing: wat er met het verdwenen aandeel gebeurt.
-Beide fouten bestaan uit ontbrekende waarnemingen, zijn dus onzichtbaar, en maken de
-markt allebei beter dan hij was.
+Code en hand geven dezelfde getallen. Met dezelfde vijf aandelen verloor de markt 14%
+of won hij 13%, afhankelijk van één beslissing over wat er met het verdwenen aandeel
+gebeurt. Beide fouten bestaan uit ontbrekende waarnemingen, zodat ze onzichtbaar zijn,
+en allebei maken ze de markt beter dan hij was.
 
 ## Theorie
 
-We leiden vier dingen af. Eerst de definitie van een rendement in een database: het
-recept uit het toy-voorbeeld, uitgebreid met dividend en split. Dan de kern: hoe groot de fout is als de database het
-laatste rendement van geschrapte aandelen mist. Daarna survivorship, de extreme vorm
-van dezelfde selectie. Tot slot wat de weging doet met een gemiddelde waarin kleine
+We leiden vier dingen af. Eerst definiëren we het rendement in een database, als het
+recept uit het toy-voorbeeld uitgebreid met dividend en split. Daarna volgt de kern,
+namelijk hoe groot de fout is als de database het laatste rendement van geschrapte
+aandelen mist. Survivorship, de extreme vorm van dezelfde selectie, komt als derde aan
+bod, en tot slot laten we zien wat de weging doet met een gemiddelde waarin kleine
 aandelen meetellen.
 
 ### Opzet: het rendement in een database
 
-*Waarom zou dit waar zijn?* Een rendement meet wat er gebeurt met het vermogen van een
-houder die niets doet. Die houder ontvangt het dividend in contanten en krijgt bij een
-split extra stukken. Wie een van die twee vergeet, ziet een verlies dat er niet is.
+Een rendement meet wat er gebeurt met het vermogen van een houder die niets doet. Die
+houder ontvangt het dividend in contanten en krijgt bij een split extra stukken, zodat
+een berekening die een van die twee vergeet, een verlies laat zien dat er niet is.
 
 Naast de prijs $p_t$ en het dividend $d_{t+1}$ is er een *aanpassingsfactor*
-$k_{t+1}$: het aantal aandelen op $t+1$ per aandeel op $t$. Een 2:1-split heeft
+$k_{t+1}$, het aantal aandelen op $t+1$ per aandeel op $t$. Een 2:1-split heeft
 $k = 2$, een stockdividend van 5% heeft $k = 1{,}05$, en in een gewone maand is
 $k = 1$.
 
@@ -221,22 +221,23 @@ R_{t+1} = \frac{k_{t+1}\, p_{t+1} + d_{t+1}}{p_t} .
 ```
 :::
 
-In woorden: wat de houder op $t+1$ heeft, gedeeld door wat hij op $t$ betaalde.
-
-Een aandeel van 44 dat 2 dividend uitkeert en daarna 42 noteert, heeft $(42 + 2)/44 - 1 = 0\%$,
+De teller is wat de houder op $t+1$ heeft, de noemer wat hij op $t$ betaalde. Een
+aandeel van 44 dat 2 dividend uitkeert en daarna 42 noteert, heeft $(42 + 2)/44 - 1 = 0\%$,
 niet $-4{,}55\%$. Een aandeel van 60 dat 2:1 splitst en daarna 33 noteert, heeft
 $2 \times 33/60 - 1 = +10\%$, niet $-45\%$. CRSP slaat precies deze
-bouwstenen op: de ruwe prijs, de uitkeringen en een cumulatieve factor. Het herbeleggen
-van dividenden is een keuze. Die keuze scheidt de 9,0% van Fisher en Lorie, met
+bouwstenen op, namelijk de ruwe prijs, de uitkeringen en een cumulatieve factor. Het
+herbeleggen van dividenden is een keuze, en die keuze scheidt de 9,0% van Fisher en Lorie,
+met
 herbelegde dividenden, van hun 6,9% zonder herbelegging in [](#00-01-rendementen).
 
 ### Het kernresultaat: de ontbrekende delisting return
 
 Mist de database het laatste rendement van geschrapte aandelen, dan valt het gemiddelde
-te hoog uit: met de schrappingskans maal het gemiste verlies. Eerst het rendement van
-een geschrapt aandeel. Een aandeel wordt in de loop van periode $t+1$ geschrapt. De laatste beurskoers is
-$p^{\text{laatst}}$. Daarna krijgt de houder nog een waarde $v$: een overnameprijs, een
-liquidatie-uitkering of een onderhandse koers. Het rendement over de periode is dan
+te hoog uit, en wel met de schrappingskans maal het gemiste verlies. We beginnen bij het
+rendement van een geschrapt aandeel. Stel dat een aandeel in de loop van periode $t+1$
+wordt geschrapt, met laatste beurskoers $p^{\text{laatst}}$. Daarna krijgt de houder nog
+een waarde $v$, zoals een overnameprijs, een liquidatie-uitkering of een onderhandse
+koers. Het rendement over de periode is dan
 
 ```{math}
 :label: eq-crsp-tape-delisting
@@ -244,23 +245,26 @@ R_{t+1} = \frac{p^{\text{laatst}}}{p_t} \cdot \frac{v}{p^{\text{laatst}}}
        = \left(1 + r^{\text{deel}}_{t+1}\right)\left(1 + r^{\text{DL}}_{t+1}\right).
 ```
 
-In woorden: het rendement tot de laatste handelsdag, $r^{\text{deel}}$, maal het
-rendement daarna, de delisting return $r^{\text{DL}} = v/p^{\text{laatst}} - 1$. CRSP
-bewaart $r^{\text{DL}}$ als apart veld. {cite:t}`Shumway1997` liet zien dat dat veld in zijn
+Het rendement tot de laatste handelsdag, $r^{\text{deel}}$, wordt dus vermenigvuldigd
+met het rendement daarna, de delisting return $r^{\text{DL}} = v/p^{\text{laatst}} - 1$.
+CRSP bewaart $r^{\text{DL}}$ als apart veld, en {cite:t}`Shumway1997` liet zien dat dat
+veld in zijn
 steekproef, die in 1962 begint, leeg was voor de meeste schrappingen om slechte
-prestaties. Hieronder is $r^{\text{s}}$ het netto rendement van een geschrapt aandeel over de hele
-periode, dus [](#eq-crsp-tape-delisting) min één. In het toy-voorbeeld valt $r^{\text{s}}$ samen met
+prestaties. Hieronder is $r^{\text{s}}$ het netto rendement van een geschrapt aandeel over
+de hele
+periode, ofwel [](#eq-crsp-tape-delisting) min één. In het toy-voorbeeld valt
+$r^{\text{s}}$ samen met
 de delisting return, omdat de laatste koers daar ook de beginkoers van de periode is.
 
 *Waarom zou dit waar zijn?* Een onderzoeker middelt de rendementen die in de database
-staan. Juist de laagste rendementen van de maand, die van net failliete bedrijven,
-staan er niet in. Het gemeten gemiddelde stijgt dus, met de kans op zo'n schrapping
+staan, maar juist de laagste rendementen van de maand, die van net failliete bedrijven,
+staan er niet in. Het gemeten gemiddelde stijgt daardoor, met de kans op zo'n schrapping
 maal de afstand tussen het ontbrekende rendement en de rest.
 
 :::{prf:theorem} Bias door ontbrekende delisting returns
 :label: thm-crsp-tape-delisting
 
-Neem een equal-weighted portefeuille van $N$ aandelen in periode $t+1$. Elk aandeel wordt
+Neem een gelijkgewogen portefeuille van $N$ aandelen in periode $t+1$. Elk aandeel wordt
 onafhankelijk met kans $h$ geschrapt, met netto rendement $r^{\text{s}}$. Anders is het netto
 rendement $r^{a}$, met verwachting $\mu_a$, onafhankelijk van de schrapping. De database mist de
 rendementen van geschrapte aandelen en middelt over de rest. Dan geldt voor
@@ -273,10 +277,10 @@ $N \to \infty$
 ```
 :::
 
-Hier is $\plim$ de kanslimiet: de waarde waar het gemiddelde naartoe gaat bij veel
-aandelen. In woorden: de fout is de schrappingskans maal hoe ver het ontbrekende
-rendement onder het gewone rendement ligt. Het bewijsidee: het ware gemiddelde gaat naar
-$(1-h)\mu_a + h\,r^{\text{s}}$, het databasegemiddelde naar $\mu_a$.
+Hier is $\plim$ de kanslimiet, de waarde waar het gemiddelde naartoe gaat bij veel
+aandelen. De fout is dus de schrappingskans maal hoe ver het ontbrekende rendement onder
+het gewone rendement ligt. Het bewijs berust erop dat het ware gemiddelde naar
+$(1-h)\mu_a + h\,r^{\text{s}}$ gaat en het databasegemiddelde naar $\mu_a$.
 
 :::{prf:proof}
 :class: dropdown
@@ -284,43 +288,43 @@ $(1-h)\mu_a + h\,r^{\text{s}}$, het databasegemiddelde naar $\mu_a$.
 Het ware gemiddelde is $N^{-1}\sum_i r_{i,t+1}$ en convergeert naar $(1-h)\mu_a + h\,r^{\text{s}}$.
 Het databasegemiddelde loopt over de $(1-h)N$ niet-geschrapte aandelen. Omdat schrapping
 en $r^{a}$ onafhankelijk zijn, hebben hun rendementen nog steeds verwachting $\mu_a$,
-dus het gemiddelde convergeert naar $\mu_a$. Het verschil is
+zodat het gemiddelde naar $\mu_a$ convergeert. Het verschil is
 $\mu_a - (1-h)\mu_a - h\,r^{\text{s}} = h(\mu_a - r^{\text{s}})$. $\square$
 :::
 
-Het toy-voorbeeld is het kleinste geval. In periode 3 is $h = 1/5$, $\mu_a = 0$ en
-$r^{\text{s}} = -75\%$, dus de fout is $0{,}2 \times 0{,}75 = 15$ procentpunt: precies het verschil
-tussen $0{,}0\%$ en $-15{,}0\%$.
+Het toy-voorbeeld is het kleinste geval van de stelling. In periode 3 is $h = 1/5$,
+$\mu_a = 0$ en $r^{\text{s}} = -75\%$, zodat de fout $0{,}2 \times 0{,}75 = 15$ procentpunt
+is, precies het verschil tussen $0{,}0\%$ en $-15{,}0\%$.
 
 In echte data is $\mu_a$ ongeveer 1% per maand en ligt
-$r^{\text{s}}$ tussen $-30\%$ en $-100\%$. De fout is dan vrijwel $h\,|r^{\text{s}}|$.
-
+$r^{\text{s}}$ tussen $-30\%$ en $-100\%$, zodat de fout vrijwel $h\,|r^{\text{s}}|$ is.
 In de kleinste
 Nasdaq-aandelen was $h$ ongeveer 3% per maand en $\mu_a$ 3,8% {cite}`ShumwayWarther1999`.
-Met $r^{\text{s}} = -55\%$ is de fout dan $0{,}0295 \times 0{,}588 = 1{,}7$ procentpunt per maand. Zoals de intuïtie voorspelde, zit ze waar $h$ groot is,
-bij kleine aandelen, en is daarom een fout in de size-premie, niet alleen in het niveau.
-Voor een value-weighted portefeuille vervangt het marktwaardegewogen gemiddelde van
-de $h_i$ de kans $h$. Dat gemiddelde is klein, omdat grote bedrijven zelden failliet
-gaan.
+Met $r^{\text{s}} = -55\%$ is de fout dan $0{,}0295 \times 0{,}588 = 1{,}7$ procentpunt
+per maand. De fout zit dus waar $h$ groot is, bij kleine aandelen, en is
+daarom een fout in de size-premie en niet alleen in het niveau. Voor een waardegewogen
+(*value-weighted*, VW) portefeuille vervangt het marktwaardegewogen gemiddelde van de $h_i$
+de kans $h$, en dat gemiddelde is klein, omdat grote bedrijven zelden failliet gaan.
 
 ### Wat het voorspelt: overlevenden en look-ahead
 
-Survivorship bias is de extreme vorm van dezelfde selectie. Nu ontbreekt niet alleen
+Survivorship bias is de extreme vorm van dezelfde selectie. Nu ontbreekt immers niet alleen
 het laatste rendement, maar de hele geschiedenis van elk bedrijf dat vóór het einde
 van de steekproef verdween.
 
 *Waarom zou dit waar zijn?* Een bedrijf wordt geschrapt als zijn waarde onder een
-drempel zakt. Wie overleeft, is die drempel nooit tegengekomen, en dat zegt iets over
-zijn rendementen: ze waren hoger dan gemiddeld. Hoe dichter bij de drempel en hoe
-volatieler het aandeel, hoe strenger de selectie. Een steekproef van overlevenden maakt
-kleine aandelen dus mooier dan grote.
+drempel zakt. Een bedrijf dat overleeft, is die drempel nooit tegengekomen, en dat zegt
+iets over zijn rendementen, want die waren hoger dan gemiddeld. Hoe dichter bij de
+drempel en hoe volatieler het aandeel, hoe strenger de selectie, zodat een steekproef van
+overlevenden kleine aandelen mooier maakt dan grote.
 
-Het eenvoudigste model waarin dat exact kan: $Z_t = z_0 + \sigma W_t$ is de
+In het eenvoudigste model waarin dat exact uit te rekenen is, is $Z_t = z_0 + \sigma W_t$ de
 log-afstand tot de schrappingsdrempel, met $W$ een standaard Brownse beweging en
 $z_0 > 0$. Het bedrijf wordt geschrapt zodra $Z_t = 0$, bijvoorbeeld als de koers onder
-de noteringseis van de beurs zakt. Er is geen drift, dus het ware verwachte logrendement
-is nul. Het reflectieprincipe zegt dat een pad dat de drempel raakt, daarna even vaak
-boven als onder de drempel eindigt. Daaruit volgt de kans om tot $T$ te overleven
+de noteringseis van de beurs zakt. Omdat er geen drift is, is het ware verwachte
+logrendement nul. Volgens het reflectieprincipe eindigt een pad dat de drempel raakt,
+daarna even vaak boven als onder de drempel, en daaruit volgt de kans om tot $T$ te
+overleven
 
 ```{math}
 :label: eq-crsp-tape-overleefkans
@@ -328,7 +332,7 @@ P(\theta > T) = 2\,\Phi\!\left(\frac{z_0}{\sigma\sqrt{T}}\right) - 1 ,
 ```
 
 met $\theta$ het moment van schrappen en $\Phi$ de standaardnormale verdelingsfunctie.
-In woorden: de kans daalt naarmate de drempel dichterbij ligt ($z_0$ klein) of het
+De overleefkans daalt naarmate de drempel dichterbij ligt ($z_0$ klein) of het
 aandeel volatieler is.
 
 :::{prf:theorem} Survivorship bias bij een absorberende drempel
@@ -343,33 +347,33 @@ In het model hierboven is het gemiddelde logrendement per jaar van de overlevend
 ```
 :::
 
-In woorden: de fout is de beginafstand per jaar, $z_0/T$, maal de kans op schrappen
-gedeeld door de kans op overleven. Ze stijgt als de overleefkans daalt. Het bewijsidee: een proces
-zonder drift houdt gemiddeld zijn beginwaarde, en de geschrapte paden staan op nul.
-Alle beginwaarde zit dus in de overlevenden.
+Voor de overlevenden is de fout dus de beginafstand per jaar, $z_0/T$, maal de kans op
+schrappen gedeeld door de kans op overleven, en ze stijgt als de overleefkans daalt. Het
+bewijs berust erop dat een proces zonder drift gemiddeld zijn beginwaarde houdt, terwijl
+de geschrapte paden op nul staan. Daarom zit alle beginwaarde in de overlevenden.
 
 :::{prf:proof}
 :class: dropdown
 
 Zonder drift is $Z_t$ een martingaal, en $T \wedge \theta$ is een begrensde stoptijd. Volgens de
 optional-stopping-stelling is $\E[Z_{T\wedge\theta}] = z_0$. Op $\{\theta \le T\}$ is
-$Z_{T\wedge\theta} = 0$, dus
+$Z_{T\wedge\theta} = 0$, zodat
 
 $$
 z_0 = \E\left[Z_T \mathbf{1}\{\theta > T\}\right]
     = \E\left[Z_T \mid \theta > T\right] P(\theta > T) .
 $$
 
-Delen door $P(\theta > T)$, $z_0$ aftrekken en door $T$ delen geeft het resultaat. $\square$
+waarna delen door $P(\theta > T)$, $z_0$ aftrekken en door $T$ delen het resultaat geeft. $\square$
 :::
 
-Neem een klein bedrijf met $z_0 = 1$ (een koers van 2,7 keer de drempel) en
+Denk aan een klein bedrijf met $z_0 = 1$ (een koers van 2,7 keer de drempel) en
 $\sigma = 50\%$ per jaar. Het overleeft twintig jaar met kans
 $2\Phi(0{,}447) - 1 = 0{,}345$. De overlevenden hebben een gemiddeld logrendement van
 $(1/20)(1/0{,}345 - 1) = 9{,}5\%$ per jaar, terwijl het ware rendement nul is. Een groot
 bedrijf met $z_0 = 3$ en $\sigma = 20\%$ overleeft vrijwel zeker, en zijn fout is een
 honderdste procentpunt. Een steekproef van overlevenden maakt dus uit het niets een
-size-premie van negen procentpunt. De cel rekent beide gevallen na.
+size-premie van ruim negen procentpunt. De cel rekent beide gevallen na.
 
 ```{code-cell} ipython3
 def survivor_bias(x0, sigma, horizon):
@@ -386,43 +390,47 @@ pd.DataFrame(
 ```
 
 De tabel bevestigt de handberekening: 9,5% voor het kleine bedrijf, 0,012% voor het
-grote. De derde rij gebruiken we hieronder. Zoals de intuïtie voorspelde, is de fout positief en het grootst bij kleine,
-volatiele aandelen.
+grote. De derde rij komt zo meteen aan bod. Teken en plaats van de fout kloppen met wat
+de intuïtie liet verwachten, want de fout is positief en het grootst bij kleine, volatiele
+aandelen.
 
 Meer jaren helpen, maar niet ten opzichte van de ruis. Voor grote $T$ gaat de fout in
 [](#eq-crsp-tape-survivorship) naar $\sqrt{\pi/2}\,\sigma/\sqrt{T}$, ongeveer 1,25 keer de
 standaardfout van het gemiddelde van één aandeel. Na een eeuw geeft de exacte formule
 voor het kleine bedrijf nog $P = 2\Phi(0{,}2) - 1 = 0{,}159$ en een fout van
-$0{,}01 \times (1/0{,}159 - 1) = 5{,}3\%$ per jaar; de cel hierboven rekent het na. Meer aandelen helpen niet:
-middelen over $N$ overlevenden deelt de standaardfout door $\sqrt{N}$, maar laat de fout
-staan.
+$0{,}01 \times (1/0{,}159 - 1) = 5{,}3\%$ per jaar, zoals de derde rij van de tabel laat
+zien. Meer aandelen helpen evenmin, want
+het middelen over $N$ overlevenden deelt de standaardfout door $\sqrt{N}$, maar laat de
+fout staan.
 
 Hetzelfde mechanisme werkt buiten aandelen. {cite:t}`BrownGoetzmannIbbotsonRoss1992`
 lieten zien dat fondsen die na slechte jaren verdwijnen, de prestaties van de overlevenden
-persistent laten lijken. Die selectie kon het toenmalige bewijs voor voorspelbare
-fondsprestaties verklaren. In boekhouddata heet het backfill: als Compustat een bedrijf
-toevoegt, voegt het vaak ook eerdere jaren toe, maar alleen voor bedrijven die dan nog
-bestaan. {cite:t}`KothariShankenSloan1995` vermoedden dat een deel van de waardepremie
+persistent laten lijken, en die selectie kon het toenmalige bewijs voor voorspelbare
+fondsprestaties verklaren. In boekhouddata heet het verschijnsel backfill. Als Compustat
+een bedrijf toevoegt, voegt het vaak ook eerdere jaren toe, maar alleen voor bedrijven die
+dan nog bestaan. {cite:t}`KothariShankenSloan1995` vermoedden dat een deel van de
+waardepremie
 daardoor komt.
 
 Eén fout werkt de andere kant op: *look-ahead bias* (vertekening doordat een strategie
 informatie gebruikt die op het beslismoment nog niet bestond). Wie aandelen sorteert op
 hun marktwaarde aan het *einde* van de maand, stopt de crashes van die maand in de
-kleinste portefeuille. Kleine aandelen lijken dan slechter dan ze zijn. Een uitvoerbare
-strategie sorteert alleen op wat op het beslismoment openbaar was. Daarom koppelen Fama
+kleinste portefeuille. Kleine aandelen lijken dan slechter dan ze zijn, terwijl een
+uitvoerbare
+strategie alleen sorteert op wat op het beslismoment openbaar was. Daarom koppelen Fama
 en French een jaarrekening pas een half jaar na het einde van het boekjaar aan
 rendementen {cite}`FamaFrench1992`.
 
-### Weging: equal-weighted tegenover value-weighted
+### Weging: gelijkgewogen tegenover waardegewogen
 
-*Waarom zou dit waar zijn?* Een value-weighted portefeuille houdt elk aandeel naar zijn
-marktwaarde en hoeft niets te doen: een stijgend aandeel krijgt vanzelf meer gewicht.
-Een equal-weighted portefeuille verkoopt elke maand winnaars en koopt verliezers bij,
-tot alle gewichten weer $1/N$ zijn. Kleine aandelen wegen daarin even zwaar als grote.
-Daarom duwen de fouten van kleine aandelen het equal-weighted gemiddelde vol omhoog, en
-het value-weighted nauwelijks.
+Waarom maakt de weging zoveel uit? Een waardegewogen portefeuille houdt elk aandeel naar
+zijn marktwaarde en hoeft niets te doen, want een stijgend aandeel krijgt vanzelf meer
+gewicht. Een gelijkgewogen portefeuille verkoopt daarentegen elke maand winnaars en koopt
+verliezers bij, tot alle gewichten weer $1/N$ zijn, zodat kleine aandelen daarin even
+zwaar wegen als grote. Daarom duwen de fouten van kleine aandelen het gelijkgewogen
+gemiddelde vol omhoog en het waardegewogen nauwelijks.
 
-Met gewichten $w_{i,t}$ van de value-weighted portefeuille en $\sum_i (w_{i,t} - 1/N) = 0$
+Met gewichten $w_{i,t}$ van de waardegewogen portefeuille en $\sum_i (w_{i,t} - 1/N) = 0$
 is het verschil tussen de twee rendementen
 
 ```{math}
@@ -432,13 +440,13 @@ R^{\text{EW}}_{t+1} - R^{\text{VW}}_{t+1}
   = -N \cdot \Cov_{\text{cs}}\!\left(w_{i,t},\, R_{i,t+1}\right) ,
 ```
 
-met $\Cov_{\text{cs}}$ de covariantie over de aandelen in één periode. In woorden: het
-rekenkundige verschil is positief als kleine aandelen in die periode beter deden. Het
-verschil tussen de wegingen is dus zelf een size-premie.
+met $\Cov_{\text{cs}}$ de covariantie over de aandelen in één periode. Het
+rekenkundige verschil is dus positief als kleine aandelen in die periode beter deden,
+zodat het verschil tussen de wegingen zelf een size-premie is.
 
 Twee effecten komen daar nog bij. Het eerste is de winst uit herbalanceren
-{cite}`BoothFama1992`. Een portefeuille die naar vaste gewichten wordt teruggezet,
-groeit meetkundig sneller dan het gewogen gemiddelde van haar onderdelen. Met
+{cite}`BoothFama1992`, want een portefeuille die naar vaste gewichten wordt teruggezet,
+groeit meetkundig sneller dan het gewogen gemiddelde van de eigen onderdelen. Met
 $g \approx \mu - \tfrac12\sigma^2$, de meetkundige groei een halve variantie onder de
 rekenkundige, geldt bij benadering:
 
@@ -447,18 +455,20 @@ rekenkundige, geldt bij benadering:
 g_p - \sum_i w_i g_i = \tfrac12\left(\sum_i w_i \sigma_i^2 - \sigma_p^2\right) \;\ge\; 0 .
 ```
 
-In woorden: de winst is de helft van het variantieverlies door spreiding. Hier is $g$ de
+Deze winst is de helft van het variantieverlies door spreiding. Hier is $g$ de
 meetkundige groeivoet, $\sigma_i$ de volatiliteit van aandeel $i$ en $\sigma_p$ die van
 de portefeuille. Bij veel aandelen met $\sigma = 50\%$ en onderlinge correlatie 0,2 is
-dat $\tfrac12 \times 0{,}25 \times 0{,}8 = 10\%$ per jaar. Het verwachte rendement stijgt
-daardoor niet. Wel toont een equal-weighted index over een eeuw veel meer eindvermogen.
+de winst $\tfrac12 \times 0{,}25 \times 0{,}8 = 10\%$ per jaar. Het verwachte rendement
+stijgt
+daardoor niet, maar een gelijkgewogen index toont over een eeuw wel veel meer eindvermogen.
 
-Het tweede effect is de bid-ask bias. Een slotkoers ligt op de bied- of de laatkoers,
-niet op de ware prijs. Met een relatieve afwijking $\delta_t$ met gemiddelde nul en
+Het tweede effect is de bid-ask bias, want een slotkoers ligt op de bied- of de
+laatkoers en niet op de ware prijs. Met een relatieve afwijking $\delta_t$ met gemiddelde
+nul en
 variantie $s^2$ is het gemeten bruto rendement gemiddeld ongeveer $\E[R](1 + s^2)$, omdat
 $\E[1/(1+\delta)] \approx 1 + s^2$. Bij een
-spread van 10% van de koers is $\delta = \pm 5\%$ en $s^2 = 0{,}25\%$ per maand: drie
-procentpunt per jaar. Een equal-weighted portefeuille erft die fout elke maand, een
+spread van 10% van de koers is $\delta = \pm 5\%$ en $s^2 = 0{,}25\%$ per maand, ofwel drie
+procentpunt per jaar. Een gelijkgewogen portefeuille erft die fout elke maand, een
 buy-and-hold-portefeuille alleen aan begin en eind. {cite:t}`BlumeStambaugh1983`
 vonden zo een jaarlijks size-effect dat half zo groot was als eerder gerapporteerd.
 
@@ -467,22 +477,22 @@ vonden zo een jaarlijks size-effect dat half zo groot was als eerder gerapportee
 
 - Een rendement in een database telt dividend en split mee, [](#eq-crsp-tape-totaal).
 - Een ontbrekende delisting return maakt het gemiddelde $h(\mu_a - r^{\text{s}})$ te hoog,
-  [](#eq-crsp-tape-delistingbias): hoger bij een grotere schrappingskans $h$ of een
+  [](#eq-crsp-tape-delistingbias), en meer bij een grotere schrappingskans $h$ of een
   groter verlies $|r^{\text{s}}|$.
 - Een steekproef van overlevenden geeft een positief rendement waar het ware nul is,
-  [](#eq-crsp-tape-survivorship): meer bij een lagere overleefkans.
-- Equal-weighted gemiddelden erven deze fouten vol, plus herbalanceringswinst en bid-ask
-  bias; value-weighted nauwelijks, [](#eq-crsp-tape-ewvw).
-- De simulatie hierna vraagt: hoe groot zijn die fouten samen in steekproeven van
-  dertig jaar, vergeleken met de steekproefruis?
+  [](#eq-crsp-tape-survivorship), en meer bij een lagere overleefkans.
+- Gelijkgewogen gemiddelden erven deze fouten vol, plus herbalanceringswinst en bid-ask
+  bias, en waardegewogen gemiddelden nauwelijks, [](#eq-crsp-tape-ewvw).
+- De simulatie hierna meet hoe groot die fouten samen zijn in steekproeven van dertig
+  jaar, vergeleken met de steekproefruis.
 ```
 
 ## Simulatie: een universum met faillissementen
 
-In een universum zonder size-premie meet een database zonder delisting returns een
-premie van vijf procentpunt per jaar, en een database van overlevenden een van vijftien.
-De steekproefruis is ongeveer één procentpunt. De simulatie zet de fouten uit de theorie
-in één universum en vergelijkt ze met die ruis.
+In een universum zonder size-premie meet een database zonder delisting returns een premie
+van vijfenhalf procentpunt per jaar, en een database van overlevenden een van
+veertienenhalf, terwijl de steekproefruis maar ongeveer één procentpunt is. De simulatie
+brengt de fouten uit de theorie samen in één universum en vergelijkt ze met die ruis.
 
 **Het model.** Er zijn 1000 aandelen, 30 jaar maanddata en 100 onafhankelijke
 steekproeven. Elk aandeel heeft een log-marktwaarde $s_{i,t}$. De kans op schrapping in
@@ -493,25 +503,28 @@ h_{i,t} = \frac{0{,}02}{1 + \exp\!\left(\left(s_{i,t} - \bar s_t + 2\right)/0{,}
 $$
 
 zodat de kleinste aandelen tot 2% per maand kans op schrapping hebben. Een geschrapt
-aandeel heeft over de maand rendement $r^{\text{s}} = -30\%$. Dat is de gemiddelde delisting return
-die {cite:t}`Shumway1997` voor NYSE en AMEX reconstrueerde. Een nieuwe, kleine notering
+aandeel heeft over de maand rendement $r^{\text{s}} = -30\%$, de gemiddelde delisting return
+die {cite:t}`Shumway1997` voor NYSE en AMEX reconstrueerde, en een nieuwe, kleine notering
 neemt zijn plaats in. De overige aandelen krijgen een marktschok ($\sigma_m = 4{,}5\%$
 per maand) en een eigen schok ($\sigma_\varepsilon = 12\%$ per maand).
 
 **De cruciale keuze.** Het ware verwachte rendement is voor elk aandeel 1% per maand,
-inclusief de kans op schrapping: $(1-h)(1+\mu_a) + h(1+r^{\text{s}}) = 1{,}01$. Een klein aandeel
+inclusief de kans op schrapping: $(1-h)(1+\mu_a) + h(1+r^{\text{s}}) = 1{,}01$. Een klein
+aandeel
 krijgt dus een hogere drift $\mu_a$, die precies het verwachte verlies bij schrapping
-goedmaakt. **Er is per constructie geen size-premie.** Alles wat we toch meten, komt uit
+goedmaakt. **Er is per constructie geen size-premie.** Wat we toch meten, komt uit
 de database.
 
 We meten tien size-decielen op vier manieren. De eerste is correct, de tweede mist de
 delisting returns, de derde bevat alleen de aandelen die na dertig jaar nog genoteerd
-zijn. De vierde sorteert met look-ahead, op de marktwaarde aan het einde van de maand.
+zijn, en de vierde sorteert met look-ahead, op de marktwaarde aan het einde van de maand.
 
-De eerste cel bevat drie hulpfuncties. De functie `size_deciles` rangschikt de aandelen in een
+De eerste cel bevat drie hulpfuncties. De functie `size_deciles` rangschikt de aandelen in
+een
 steekproef per maand naar grootte en deelt de rang door een tiende van het aantal.
-De functie `decile_mean` middelt een grootheid per deciel, met een lus over de tien decielen.
-De functie `hazard` is de schrappingskans van hierboven.
+De functie `decile_mean` middelt een grootheid per deciel, met een lus over de tien
+decielen,
+en `hazard` berekent de schrappingskans van hierboven.
 
 ```{code-cell} ipython3
 def size_deciles(size, in_sample):
@@ -537,10 +550,13 @@ def hazard(x, h_max):
     return h_max / (1 + np.exp((relative + 2.0) / 0.5))
 ```
 
-De tweede cel maakt het universum, los van elke meting. De functie `draw_universe` geeft maand na
+De tweede cel maakt het universum, los van elke meting. De functie `draw_universe` geeft
+maand na
 maand de log-marktwaarde aan het begin, het ware rendement en wie er wordt geschrapt.
-De functie `last_delisting` loopt één keer door het universum en onthoudt per positie de maand van
-de laatste schrapping. Een steekproef van overlevenden heeft die kennis van het einde nodig.
+De functie `last_delisting` loopt één keer door het universum en onthoudt per positie de
+maand van
+de laatste schrapping, omdat een steekproef van overlevenden die kennis van het einde
+nodig heeft.
 
 ```{code-cell} ipython3
 :label: cel-crsp-tape-simfuncties
@@ -572,42 +588,48 @@ def last_delisting(universe):
     return last
 ```
 
-De derde cel meet. Elke maand rekent ze de decielrendementen op de vier manieren uit, en
-het marktrendement equal- en value-weighted.
+De derde cel doet de metingen. Elke maand rekent `decile_returns` de decielrendementen
+op de vier manieren uit en `market_returns` het marktrendement, gelijk- en waardegewogen,
+waarna `measure` de maanden op elkaar stapelt.
 
 ```{code-cell} ipython3
+def decile_returns(x, true_return, delisted, listed, recorded, survivor):
+    """Decile returns of one month, measured the four ways of the text, plus the delisting rate."""
+    by_size = size_deciles(x, listed)
+    by_end_size = size_deciles(x + np.log1p(true_return), listed)   # look-ahead
+    return {"correct": decile_mean(true_return, by_size, listed),
+            "missing": decile_mean(true_return, by_size, recorded),
+            "survivors": decile_mean(true_return, size_deciles(x, survivor), survivor),
+            "lookahead": decile_mean(true_return, by_end_size, listed),
+            "delist_rate": decile_mean(delisted.astype(float), by_size, listed)}
+
+
+def market_returns(x, true_return, recorded, survivor):
+    """Equal- and value-weighted market return of one month, with and without missing returns."""
+    cap = np.exp(x)
+    return {"EW correct": true_return.mean(axis=1),
+            "EW zonder delisting": (true_return * recorded).sum(axis=1) / recorded.sum(axis=1),
+            "EW overlevenden": (true_return * survivor).sum(axis=1) / np.maximum(survivor.sum(axis=1), 1),
+            "VW correct": (cap * true_return).sum(axis=1) / cap.sum(axis=1),
+            "VW zonder delisting": (cap * true_return * recorded).sum(axis=1) / (cap * recorded).sum(axis=1)}
+
+
 def measure(universe, last_delist):
-    """Decile and market returns per month, measured the four ways of the text."""
-    deciles = {k: [] for k in ("correct", "missing", "survivors", "lookahead", "delist_rate")}
-    market = {k: [] for k in ("EW correct", "EW zonder delisting", "EW overlevenden",
-                              "VW correct", "VW zonder delisting")}
+    """Decile and market returns for every month, stacked along axis 1."""
+    deciles, market = [], []
     for t, x, true_return, delisted in universe:
         listed = np.ones_like(delisted)
         recorded = ~delisted                                  # database without delisting returns
         survivor = (t > last_delist) & recorded               # still listed at the end
-        by_size = size_deciles(x, listed)
-        by_end_size = size_deciles(x + np.log1p(true_return), listed)   # look-ahead
-        deciles["correct"].append(decile_mean(true_return, by_size, listed))
-        deciles["missing"].append(decile_mean(true_return, by_size, recorded))
-        deciles["delist_rate"].append(decile_mean(delisted.astype(float), by_size, listed))
-        deciles["survivors"].append(decile_mean(true_return, size_deciles(x, survivor), survivor))
-        deciles["lookahead"].append(decile_mean(true_return, by_end_size, listed))
-
-        cap = np.exp(x)
-        market["EW correct"].append(true_return.mean(axis=1))
-        market["EW zonder delisting"].append((true_return * recorded).sum(axis=1) / recorded.sum(axis=1))
-        market["EW overlevenden"].append(
-            (true_return * survivor).sum(axis=1) / np.maximum(survivor.sum(axis=1), 1))
-        market["VW correct"].append((cap * true_return).sum(axis=1) / cap.sum(axis=1))
-        market["VW zonder delisting"].append(
-            (cap * true_return * recorded).sum(axis=1) / (cap * recorded).sum(axis=1))
-    return ({k: np.stack(v, axis=1) for k, v in deciles.items()},
-            {k: np.stack(v, axis=1) for k, v in market.items()})
+        deciles.append(decile_returns(x, true_return, delisted, listed, recorded, survivor))
+        market.append(market_returns(x, true_return, recorded, survivor))
+    return ({k: np.stack([d[k] for d in deciles], axis=1) for k in deciles[0]},
+            {k: np.stack([m[k] for m in market], axis=1) for k in market[0]})
 ```
 
-We trekken het universum twee keer uit dezelfde toestand van de generator: een kopie
-zoekt de laatste schrappingen, daarna meet `rng` zelf. Beide doorgangen zien dus exact
-hetzelfde universum.
+We trekken het universum twee keer uit dezelfde toestand van de generator. Een kopie
+zoekt eerst de laatste schrappingen en daarna meet `rng` zelf, zodat beide doorgangen
+precies hetzelfde universum zien.
 
 ```{code-cell} ipython3
 n_sims, n_stocks, n_months, delist_ret = 100, 1000, 360, -0.30
@@ -622,10 +644,10 @@ pd.Series({
 }).round(4)
 ```
 
-Het universum verliest 3,2% van zijn noteringen per jaar. Dat ligt tussen de 1,2% voor
-NYSE en AMEX en de 5,6% voor Nasdaq die {cite:t}`ShumwayWarther1999` rapporteren. Nu de
-gemeten rendementen van het kleinste en het grootste deciel, per jaar, gemiddeld over de
-honderd steekproeven.
+Het universum verliest 3,2% van zijn noteringen per jaar, wat tussen de 1,2% voor
+NYSE en AMEX en de 5,6% voor Nasdaq ligt die {cite:t}`ShumwayWarther1999` rapporteren. De
+volgende cel toont de gemeten rendementen van het kleinste en het grootste deciel, per
+jaar en gemiddeld over de honderd steekproeven.
 
 ```{code-cell} ipython3
 labels = {"correct": "correct", "missing": "zonder delisting return",
@@ -643,14 +665,15 @@ sim_table = pd.DataFrame(
 sim_table.round(4)
 ```
 
-Correct gemeten is de premie nul: 0,05 procentpunt, met een spreiding over de
-steekproeven van één procentpunt. Zonder delisting returns wordt ze 5,5 procentpunt, ruim
-vijf standaarddeviaties. Met alleen overlevenden wordt ze 14,5 procentpunt. Look-ahead
+Correct gemeten is de premie nul, want 0,05 procentpunt valt weg tegen een spreiding over
+de steekproeven van één procentpunt. Zonder delisting returns wordt ze 5,5 procentpunt, ruim
+vijf standaarddeviaties, en met alleen overlevenden 14,5 procentpunt. Look-ahead
 draait het teken om, want de kleinste aandelen aan het einde van de maand zijn vooral
 de aandelen die die maand instortten.
 
 De volgende tabel toetst [](#eq-crsp-tape-delistingbias) per deciel. In de simulatie is
-$\mu_a = (0{,}01 - h\,r^{\text{s}})/(1-h)$, dus de voorspelde fout is $h(0{,}01 - r^{\text{s}})/(1-h)$ per maand.
+$\mu_a = (0{,}01 - h\,r^{\text{s}})/(1-h)$, zodat de voorspelde fout $h(0{,}01 - r^{\text{s}})/(1-h)$
+per maand is.
 
 ```{code-cell} ipython3
 delist_rate = sim_deciles["delist_rate"].mean(axis=(0, 1))
@@ -668,8 +691,9 @@ check.round(4)
 
 De stelling en de simulatie komen overeen tot op 0,01 procentpunt. In het kleinste
 deciel is de schrappingskans 1,44% per maand en de fout 5,43 procentpunt per jaar. Vanaf
-het vijfde deciel is de fout kleiner dan 0,3 procentpunt: ze zit aan de rand van het
-universum, waar een size-sortering kijkt. Ten slotte het marktrendement zelf.
+het vijfde deciel is de fout kleiner dan 0,3 procentpunt, want ze zit aan de rand van het
+universum, precies waar een size-sortering kijkt. Ten slotte kijken we naar het
+marktrendement zelf.
 
 ```{code-cell} ipython3
 market_table = pd.DataFrame(
@@ -679,11 +703,11 @@ market_table = pd.DataFrame(
 market_table.round(4)
 ```
 
-Equal-weighted zonder delisting returns ligt een procentpunt te hoog, met alleen
-overlevenden bijna vijf. Value-weighted verandert nauwelijks, van 11,97% naar 12,00%, zoals
-de theorie voorspelde. De figuur laat zien hoe de vier metingen per deciel uit elkaar
-lopen. Let links op het kleine eind van de lijnen, en rechts op de afstand tussen de
-drie verdelingen.
+Gelijkgewogen ligt het marktrendement zonder delisting returns een procentpunt te hoog,
+en met alleen overlevenden bijna vijf. Waardegewogen verandert het nauwelijks, van 11,97%
+naar 12,00%, zoals de theorie voorspelde. In de figuur lopen de vier metingen per deciel
+uit elkaar. Links gaat het om het kleine eind van de lijnen, rechts om de afstand tussen
+de drie verdelingen.
 
 ```{code-cell} ipython3
 :label: cel-crsp-tape-sim
@@ -719,18 +743,18 @@ plt.show()
 :label: fig-crsp-tape-sim
 :width: 100%
 
-Een universum zonder size-premie, vier keer gemeten. Links: correct gemeten is het
+Een universum zonder size-premie is hier vier keer gemeten. Links is het correct gemeten
 rendement in elk deciel 12% (stippellijn). Zonder delisting returns en met alleen
 overlevenden stijgt het naar het kleine eind, met look-ahead daalt het. De banden zijn twee
-standaarddeviaties over de steekproeven. Rechts: de drie verdelingen van de geschatte
-premie overlappen niet. Een $t$-toets op de verkeerde database verwerpt "geen
-size-premie" in elke steekproef.
+standaarddeviaties over de steekproeven. Rechts overlappen de drie verdelingen van de
+geschatte premie niet, zodat een $t$-toets op de verkeerde database de nulhypothese van
+geen size-premie in elke steekproef verwerpt.
 :::
 
 De ruis is hier kleiner dan in echte data, omdat het model geen gemeenschappelijke
 size-factor heeft. In de French-data hieronder is de standaardfout van de size-premie
 twee tot zes procentpunt. Een fout van vijf procentpunt valt daar dus niet op, en meer
-jaren data halen haar niet weg.
+jaren data halen die fout niet weg.
 
 ## Replicatie op echte data
 
@@ -743,26 +767,30 @@ jaren data halen haar niet weg.
 Business 1964 {cite}`FisherLorie1964`, en het jaaroverzicht 1926–65 uit 1968
 {cite}`FisherLorie1968`.
 
-**Wat.** Wat de weging doet met het rendement op "alle" aandelen sinds 1926 (de 9,0% zelf
-staat in [](#00-01-rendementen)). Het weegverschil in het kleinste deciel is een bovengrens
-voor de fout door ontbrekende delisting returns, want alleen equal-weighted geeft dat deciel
-gewicht.
+**Wat.** We zetten de 9,0% per jaar van Fisher en Lorie over 1926–1960 naast de
+waardegewogen en de gelijkgewogen markt over dezelfde jaren, en meten wat de weging over de
+hele eeuw doet met het rendement op "alle" aandelen. Binnen het kleinste deciel is het
+weegverschil de som van een size-premie, de bid-ask bias en de fout door ontbrekende
+delisting returns. Zolang de eerste twee niet negatief zijn, is het weegverschil daar dus
+een bovengrens voor de derde.
 
-**Data hier.** Kenneth French Data Library: tien size-decielen, equal- en
-value-weighted, met het aantal bedrijven en de gemiddelde marktwaarde per deciel,
+**Data hier.** Kenneth French Data Library: tien size-decielen, gelijk- en
+waardegewogen, met het aantal bedrijven en de gemiddelde marktwaarde per deciel,
 1926–2026.
 
 **Verschil met het origineel.** Fisher en Lorie namen alleen NYSE-aandelen en
-herbalanceerden niet. French neemt ook AMEX en Nasdaq en herbalanceert equal-weighted
-elke maand, en het gemiddelde over alle bedrijven reconstrueren we uit de decielen.
+herbalanceerden niet. French neemt ook AMEX en Nasdaq en herbalanceert de gelijkgewogen
+portefeuilles elke maand, en het gemiddelde over alle bedrijven reconstrueren we uit de decielen.
 
-**Verwachte afwijking.** De uit decielen gereconstrueerde value-weighted markt ligt
-binnen 0,1 procentpunt per jaar van de marktreeks. Equal-weighted ligt hoger, en het
+**Verwachte afwijking.** De uit decielen gereconstrueerde waardegewogen markt ligt
+binnen 0,1 procentpunt per jaar van de marktreeks. Tot en met 1960 ligt de waardegewogen
+markt dicht bij de 9,0%, zoals in [](#00-01-rendementen), en de gelijkgewogen markt enkele
+procentpunten hoger. Over de hele eeuw ligt het gelijkgewogen rendement hoger, en het
 weegverschil binnen de decielen zit vrijwel geheel in het kleinste deciel.
 ```
 
-We laden de decielen en wegen ze met het aantal bedrijven (equal-weighted) of de
-totale marktwaarde (value-weighted) van de vorige maand.
+We laden de decielen en wegen ze met het aantal bedrijven (gelijkgewogen) of de
+totale marktwaarde (waardegewogen) van de vorige maand.
 
 ```{code-cell} ipython3
 deciles = ["Lo 10", "2-Dec", "3-Dec", "4-Dec", "5-Dec", "6-Dec", "7-Dec", "8-Dec", "9-Dec", "Hi 10"]
@@ -799,11 +827,28 @@ def describe(r):
 weighting.apply(describe).T.round(4)
 ```
 
-De reconstructie klopt: 11,63% per jaar uit decielen tegen 11,55% voor de marktreeks.
-Equal-weighted ligt rekenkundig 3,1 procentpunt hoger en één dollar groeit tot zes keer
-zoveel. Meetkundig is het verschil kleiner, 12,30% tegen 10,33%: de volatielere
-equal-weighted reeks verliest meer aan variantie, ondanks de herbalanceringswinst. Er is geen enkel aandeel anders gemeten. De volgende cel zoekt waar het verschil
-zit, deciel voor deciel.
+De reconstructie klopt, met 11,63% per jaar uit decielen tegen 11,55% voor de marktreeks.
+Gelijkgewogen ligt het rendement rekenkundig 3,1 procentpunt hoger. Meetkundig is het
+verschil kleiner, 12,30% tegen 10,33%, omdat de volatielere gelijkgewogen reeks meer aan
+variantie verliest, ondanks de herbalanceringswinst. Toch groeit één dollar gelijkgewogen
+tot zes keer zoveel als waardegewogen, terwijl geen enkel aandeel anders is gemeten.
+
+De volgende cel zet het getal van Fisher en Lorie naast beide wegingen, over hun jaren tot
+en met 1960.
+
+```{code-cell} ipython3
+fisher_lorie = pd.DataFrame({"origineel": 0.090,
+                             "hier": weighting.loc[:"1960-12"].apply(describe).loc["meetkundig"]})
+fisher_lorie["verschil"] = fisher_lorie["hier"] - fisher_lorie["origineel"]
+fisher_lorie.round(4)
+```
+
+De waardegewogen markt ligt vier tienden van een procentpunt boven de 9,0%, de
+gelijkgewogen bijna vier procentpunt. Fisher en Lorie belegden een gelijk bedrag in elk
+NYSE-aandeel en herbalanceerden niet, zodat hun gewichten naar marktwaarde afdreven, en de
+kleinste AMEX- en Nasdaq-aandelen ontbraken bij hen. Hun getal hoort daarom bij de
+waardegewogen reeks. De cel hierna zoekt deciel voor deciel waar het verschil tussen de
+wegingen zit.
 
 ```{code-cell} ipython3
 gap = weighting["EW alle bedrijven"] - weighting["VW markt (Mkt)"]
@@ -817,33 +862,35 @@ gap_table["t-waarde"] = gap_table.iloc[:, 0] / gap_table["SE"]
 gap_table.round(4)
 ```
 
-**Geslaagd.** Alle drie de verwachtingen uit het replicatieblok komen uit. In het
-kleinste deciel is equal-weighted 3,77 procentpunt per jaar beter ($t = 5{,}2$). Vanaf het
-derde deciel is het verschil niet van nul te onderscheiden.
+**Geslaagd.** Ook het weegverschil zit waar we het verwachtten. In het kleinste deciel
+doet gelijkgewogen weging het 3,77 procentpunt per jaar beter ($t = 5{,}2$), terwijl het
+verschil vanaf het derde deciel niet van nul te onderscheiden is.
 
-Het marktverschil van 3,1 procentpunt heeft twee bronnen. Equal-weighted geeft het
-kleinste deciel veel gewicht, omdat daar de meeste bedrijven zitten. Value-weighted geeft
-het weinig. Binnen dat deciel doet equal-weighted het bovendien nog eens beter.
+Het marktverschil van 3,1 procentpunt heeft twee bronnen. Gelijkgewogen weging geeft het
+kleinste deciel veel gewicht, omdat daar de meeste bedrijven zitten, terwijl waardegewogen
+weging het weinig geeft. Binnen dat deciel doet de gelijkgewogen portefeuille het
+bovendien nog eens beter.
 
-Volgens [](#eq-crsp-tape-ewvw) is dat verschil zelf een size-premie binnen het deciel, en de bid-ask
-bias en ontbrekende delisting returns kunnen eraan bijdragen. Welk deel waarvan komt, kunnen
-deze data niet scheiden. Zijn de andere bronnen niet negatief, dan is 3,77 procentpunt wel
-een bovengrens voor wat de weging via ontbrekende delisting returns in dit deciel kan doen.
+Volgens [](#eq-crsp-tape-ewvw) is dat verschil binnen het deciel zelf een size-premie, en
+de bid-ask bias en ontbrekende delisting returns kunnen eraan bijdragen. Deze data kunnen
+niet scheiden welk deel waarvan komt, maar zolang de size-premie en de bid-ask bias niet
+negatief zijn, kunnen ontbrekende delisting returns in dit deciel hoogstens 3,77
+procentpunt van het weegverschil verklaren.
 
-Het equal-weighted
-marktrendement is dus vooral een uitspraak over het kleinste deciel, waar de fouten uit
-de theorie het grootst zijn. De figuur toont de eeuw. Let op de afstand tussen de twee
-lijnen van het kleinste deciel.
+Omdat het kleinste deciel gelijkgewogen zoveel gewicht krijgt en daarbinnen ook nog beter
+doet, is het gelijkgewogen marktrendement vooral een uitspraak over dat deciel, waar de
+fouten uit de theorie het grootst zijn. In de figuur met de hele eeuw gaat het om de
+afstand tussen de twee lijnen van het kleinste deciel.
 
 ```{code-cell} ipython3
 :label: cel-crsp-tape-weging
 :tags: [hide-input]
 
 wealth = pd.DataFrame({
-    "value-weighted markt": (1 + weighting["VW markt (Mkt)"]).cumprod(),
-    "equal-weighted, alle bedrijven": (1 + weighting["EW alle bedrijven"]).cumprod(),
-    "kleinste deciel, equal-weighted": (1 + size_ew["Lo 10"].loc[weighting.index]).cumprod(),
-    "kleinste deciel, value-weighted": (1 + size_vw["Lo 10"].loc[weighting.index]).cumprod(),
+    "waardegewogen markt": (1 + weighting["VW markt (Mkt)"]).cumprod(),
+    "gelijkgewogen, alle bedrijven": (1 + weighting["EW alle bedrijven"]).cumprod(),
+    "kleinste deciel, gelijkgewogen": (1 + size_ew["Lo 10"].loc[weighting.index]).cumprod(),
+    "kleinste deciel, waardegewogen": (1 + size_vw["Lo 10"].loc[weighting.index]).cumprod(),
 })
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.2), gridspec_kw={"width_ratios": [3, 2]})
@@ -869,11 +916,11 @@ plt.show()
 :label: fig-crsp-tape-weging
 :width: 100%
 
-Links: dezelfde eeuw, vier keer gewogen. Het kleinste deciel equal-weighted eindigt ruim
-een orde van grootte boven hetzelfde deciel value-weighted. Het zijn dezelfde aandelen.
-Alleen de weging binnen het deciel en het maandelijks herbalanceren verschillen. Rechts:
-het universum zelf is geen constante. Het groeide tot eind jaren negentig en kromp
-daarna. Elke daling is een verzameling schrappingen, en elke schrapping is een rendement
+Links staat dezelfde eeuw, vier keer gewogen. Gelijkgewogen eindigt het kleinste deciel
+ruim een orde van grootte boven hetzelfde deciel waardegewogen, hoewel het om dezelfde
+aandelen gaat en alleen de weging binnen het deciel en het maandelijks herbalanceren
+verschillen. Rechts is te zien dat het universum zelf geen constante is, want het groeide
+tot eind jaren negentig en kromp daarna. Elke daling is een verzameling schrappingen, en elke schrapping is een rendement
 dat wel of niet in de database staat.
 :::
 
@@ -888,7 +935,7 @@ Its Implications for the Size Effect*, Journal of Finance 1999 {cite}`ShumwayWar
 
 **Wat.** De correctie voor ontbrekende delisting returns in de kleinste portefeuille:
 Shumway, tabel VII (1962–1992), en Shumway en Warther, tabel IV (Nasdaq, 1972–1995).
-Daarnaast de size-premie per deelperiode.
+Daarnaast meten we de size-premie per deelperiode.
 
 **Data hier.** Er is geen gratis bedrijfsdata met delisting returns. We toetsen de
 gepubliceerde correcties daarom aan [](#eq-crsp-tape-delistingbias), en meten de
@@ -899,18 +946,19 @@ CRSP-bestanden, niet die van 1997. Hoe die met nog ontbrekende delisting returns
 hebben we niet kunnen verifiëren.
 
 **Verwachte afwijking.** De formule reproduceert beide correcties tot op ongeveer 0,2
-procentpunt. De equal-weighted premie is groter dan de value-weighted zolang er een
+procentpunt. De gelijkgewogen premie is groter dan de waardegewogen zolang er een
 premie is. Na 1981, toen {cite:t}`Banz1981` publiceerde dat kleine aandelen meer
 opbrachten dan het CAPM voorspelde, is ze in beide wegingen niet van nul te onderscheiden.
 ```
 
-De cel zet de gepubliceerde correcties naast de stelling $h(\mu_a - r^{\text{s}})$. De Nasdaq-rij is
-een onafhankelijke toets. De tweede rij haalt $h$ uit dezelfde tabel en toetst dus alleen of
-de fout lineair is in $r^{\text{s}}$.
+De cel vergelijkt de gepubliceerde correcties met de stelling $h(\mu_a - r^{\text{s}})$. De
+Nasdaq-rij is een onafhankelijke toets, terwijl de tweede rij $h$ uit dezelfde tabel haalt
+en dus alleen toetst of de fout lineair is in $r^{\text{s}}$.
 
 Voor Nasdaq
 rapporteren Shumway en Warther $h$ zelf, 2,95% per maand, bij een gemiddeld rendement
-$\mu_a$ van 3,79% per maand. Shumways tabel VII geeft jaarrendementen. Zetten we elk
+$\mu_a$ van 3,79% per maand. Shumways tabel VII geeft daarentegen jaarrendementen. Zetten
+we elk
 ontbrekend rendement op $-100\%$, dan daalt het kleinste deciel met 5,21 procentpunt per
 jaar. Volgens de stelling is dat $12\,h\,(\mu_a + 1)$, met $\mu_a = 21{,}28/12 = 1{,}77\%$
 per maand. Daaruit volgt $12\,h = 5{,}21/1{,}0177 = 5{,}12\%$ per jaar, en die $h$ gaat met
@@ -937,9 +985,10 @@ published.round(3)
 ```
 
 **Geslaagd.** Beide correcties liggen binnen de aangekondigde 0,2 procentpunt van de
-stelling: 1,73 tegen 1,82 per maand op Nasdaq, 1,63 tegen 1,45 per jaar bij Shumway. De
-hele fout door ontbrekende delisting returns zit in twee getallen: de schrappingskans en het ontbrekende verlies.
-Nu de size-premie per deelperiode, met 1981 als grens.
+stelling, met 1,73 tegen 1,82 per maand op Nasdaq en 1,63 tegen 1,45 per jaar bij Shumway.
+De hele fout door ontbrekende delisting returns zit dus in twee getallen, de
+schrappingskans en het ontbrekende verlies. De volgende cel meet de size-premie per
+deelperiode, met 1981 als grens.
 
 ```{code-cell} ipython3
 subperiods = {"1926-07 / 1962-12": ("1926-07", "1962-12"),
@@ -968,13 +1017,13 @@ size_premium = pd.DataFrame(rows).T
 size_premium.round(4)
 ```
 
-**Geslaagd.** Vóór 1982 is de equal-weighted premie groter dan de value-weighted, 18,6
-tegen 10,3 procentpunt per jaar tot 1962. Na 1981 is de premie in beide wegingen weg,
-met standaardfouten van ruim twee procentpunt. Over de volle eeuw scheelt de weging vier
-procentpunt, met een standaardfout van het verschil van 0,8 procentpunt.
+**Geslaagd.** Vóór 1982 is de gelijkgewogen premie groter dan de waardegewogen, tot 1962
+bijna twee keer zo groot, met 18,6 tegen 10,3 procentpunt per jaar. Na 1981 is de premie in
+beide wegingen niet meer van nul te onderscheiden, en over de volle eeuw is het verschil
+tussen de wegingen ruim vijf standaardfouten groot, zoals de laatste twee kolommen tonen.
 
 Hoe kwetsbaar is die premie? De laatste cel rekent terug welke schrappingskans zonder
-geregistreerd laatste rendement de equal-weighted premie sinds 1963 volledig zou
+geregistreerd laatste rendement de gelijkgewogen premie sinds 1963 volledig zou
 verklaren.
 
 ```{code-cell} ipython3
@@ -986,12 +1035,14 @@ break_even = pd.DataFrame(
 break_even.round(4)
 ```
 
-De rij $r^{\text{s}} = -100\%$ is de premie zelf, 0,31% per maand. Ze verdwijnt als 0,57% van het kleinste deciel per maand
-verdwijnt met een ontbrekend rendement van $-55\%$. Shumway en Warther vonden in de
-kleinste Nasdaq-portefeuille 2,95% per maand. Die kans is niet exotisch.
+In de rij $r^{\text{s}} = -100\%$ is de kans gelijk aan de premie zelf, 0,31% per maand,
+omdat de cel $h = \text{premie}/|r^{\text{s}}|$ rekent. De premie is weg als elke maand
+0,57% van het kleinste deciel van de beurs gaat met een ontbrekend rendement van $-55\%$.
+Shumway en Warther vonden in de
+kleinste Nasdaq-portefeuille 2,95% per maand, zodat zo'n kans allerminst exotisch is.
 
 French sorteert
-op NYSE-breekpunten: de decielgrenzen komen alleen uit NYSE-aandelen, zodat de vele
+op NYSE-breekpunten. De decielgrenzen komen dus alleen uit NYSE-aandelen, zodat de vele
 kleine AMEX- en Nasdaq-aandelen in het kleinste deciel belanden. De cel toont welk deel
 van de bedrijven in dat deciel valt.
 
@@ -1001,8 +1052,9 @@ share_small.loc[["1956-07-31", "1976-07-31", "2026-07-31"]].rename("aandeel in k
 ```
 
 In 1956 viel 10% van de bedrijven in het kleinste deciel, in 1976 ruim de helft en nu nog
-bijna 40%. Of de huidige data die rendementen bevatten,
-is zonder CRSP niet vast te stellen. Het teken en de omvang van de size-premie hangen dus
+bijna 40%. Of de huidige French-data de delisting returns van die kleine aandelen
+bevatten, is zonder CRSP niet vast te stellen. Het teken en de omvang van de size-premie
+hangen dus
 af van een veld dat de gebruiker zelden opent.
 
 ## Wat er brak, en wat daarna kwam
@@ -1010,46 +1062,45 @@ af van een veld dat de gebruiker zelden opent.
 **Wat de tape verklaart.** Vóór 1964 was er over het rendement op aandelen een mening,
 daarna een getal met een definitie. Binnen tien jaar draaiden de eerste event study en
 de toetsen van het CAPM op dezelfde band. De keuzes van
-Fisher en Lorie zijn nog altijd de standaard: totaalrendementen met herbelegde
-dividenden, vanaf 1926, alle genoteerde aandelen. Dat ze de verdwenen bedrijven
-meenamen, bleek achteraf de belangrijkste.
+Fisher en Lorie, namelijk totaalrendementen met herbelegde dividenden, vanaf 1926 en voor
+alle genoteerde aandelen, zijn nog altijd de standaard. Dat ze ook de verdwenen bedrijven
+meenamen, bleek achteraf de belangrijkste keuze.
 
-**Waar het breekt.** In de velden die leeg bleven en in de keuzes van de gebruiker. De
+**Waar het breekt.** De tape breekt in de velden die leeg bleven en in de keuzes van de
+gebruiker. De
 weging alleen verschuift het marktrendement van een eeuw met 3,1 procentpunt per jaar,
-bijna geheel via het kleinste deciel. Shumway en Warther {cite}`ShumwayWarther1999` lieten zien dat het
-size-effect op Nasdaq verdwijnt zodra de ontbrekende delisting returns zijn ingevuld: de
-$F$-toets op gelijke gemiddelden zakt van 3,52 naar 0,58.
+bijna geheel via het kleinste deciel. Shumway en Warther {cite}`ShumwayWarther1999` lieten
+zien dat het
+size-effect op Nasdaq verdwijnt zodra de ontbrekende delisting returns zijn ingevuld, en
+de $F$-toets op gelijke gemiddelden zakt dan van 3,52 naar 0,58.
 
-De bouw van de database is voor
-de cross-sectie een grotere bron van onzekerheid dan
-[de standaardfout van 2%](#00-01-rendementen), de ruis die een eeuw data in een
-gemiddelde laat. Meer data halen die fout niet onder de ruis:
-de fout door ontbrekende delisting returns blijft staan, en die van overlevenden
-krimpt hoogstens even snel als de ruis.
+De bouw van de database is voor de cross-sectie een grotere bron van onzekerheid dan [de
+standaardfout van 2%](#00-01-rendementen), de ruis die een eeuw data in een gemiddelde
+laat, en een langere reeks verandert daar weinig aan.
 
 **Risico of vergissing?** Is de size-premie een beloning of een meetfout? De
-Chicago-lezing ziet prijzen als juist. Kleine aandelen moeten dan zolang ze bestaan meer
-opbrengen, om het verlies bij faillissement goed te maken. Onze simulatie is zo gebouwd,
-en correct gemeten is de premie daar nul. Wat in schone data overblijft, zou een
-beloning voor risico zijn. De Yale-lezing laat toe dat prijzen ernaast zitten: een
-premie die verdwijnt na correctie en na publicatie, was nooit een risicopremie.
+Chicago-lezing ziet prijzen als juist, zodat kleine aandelen zolang ze bestaan meer moeten
+opbrengen om het verlies bij faillissement goed te maken. Onze simulatie is zo gebouwd,
+en correct gemeten is de premie daar nul. Een premie die in schone data overblijft, zou
+dan een beloning voor risico zijn. De Yale-lezing laat toe dat prijzen ernaast zitten, en
+dan was een premie die verdwijnt na correctie en na publicatie nooit een risicopremie.
 {cite:t}`ShumwayWarther1999` vinden hun resultaten slecht te rijmen met
 risicoverklaringen. Scheiden kan alleen met een onafhankelijke maat voor
-faillissementsrisico plus volledige delisting returns, en die data heeft deze reeks
-niet. De simulatie toont hoe groot een premie wordt die de
-database zelf maakt.
+faillissementsrisico plus volledige delisting returns, en die gegevens ontbreken in deze
+reeks. Wel laat de simulatie zien hoe groot een premie kan worden die de database zelf
+maakt.
 
 **Wat er daarna kwam.** De tape leverde de rendementen, maar geen argument voor wat die
 rendementen zouden moeten doen. Dat argument gaf Fama met de hypothese van efficiënte
-markten: zie [](#02-06-efficiente-markten).
+markten, het onderwerp van [](#02-06-efficiente-markten).
 
 ## Oefeningen
 
 :::{exercise}
 :label: ex-crsp-tape-1
 
-**Instap: een faillissement zonder restwaarde.** Neem het toy-voorbeeld, maar laat
-aandeel C na schrapping niets meer waard zijn ($v = 0$).
+**Instap: een faillissement zonder restwaarde.** Neem het toy-voorbeeld. Laat aandeel C
+nu na schrapping niets meer waard zijn ($v = 0$), terwijl de andere prijzen gelijk blijven.
 
 1. Bereken de delisting return van C en het correcte marktrendement in periode 3.
 2. Hoe groot is nu de fout van de database zonder delisting return in periode 3? Klopt
@@ -1059,9 +1110,9 @@ aandeel C na schrapping niets meer waard zijn ($v = 0$).
 :::{solution} ex-crsp-tape-1
 :class: dropdown
 
-**(1)** $r^{\text{s}} = 0/6 - 1 = -100\%$. Het correcte marktrendement is $-100/5 = -20\%$.
+**(1)** De delisting return is $r^{\text{s}} = 0/6 - 1 = -100\%$. Het correcte marktrendement is $-100/5 = -20\%$.
 
-**(2)** De database zonder delisting return meet $0\%$, een fout van 20 procentpunt. De
+**(2)** De database zonder delisting return meet $0\%$, een fout van 20 procentpunt, en de
 formule geeft $0{,}2 \times (0 - (-1)) = 0{,}20$. De cel rekent het na met de functie uit
 het toy-voorbeeld.
 
@@ -1072,8 +1123,8 @@ pd.Series({"correct, periode 3": worthless.loc[3].mean(),
            "formule h (mu_a - r_s)": 0.2 * (0.0 - (-1.0))}).round(4)
 ```
 
-Wat dit leert: de fout groeit lineair met het ontbrekende verlies. Een database die
-faillissementen zonder restwaarde mist, overschat het gemiddelde met de volle
+De fout groeit dus lineair met het ontbrekende verlies. Een database die
+faillissementen zonder restwaarde mist, overschat het gemiddelde daardoor met de volle
 schrappingskans.
 :::
 
@@ -1081,7 +1132,7 @@ schrappingskans.
 :label: ex-crsp-tape-2
 
 **Afleiding: survivorship bij drift en bij maandelijkse waarneming.** Neem het model van
-[](#thm-crsp-tape-survivorship) met $z_0 = 1$, $\sigma = 50\%$ per jaar en $T = 20$ jaar.
+[](#thm-crsp-tape-survivorship). Kies $z_0 = 1$, $\sigma = 50\%$ per jaar en $T = 20$ jaar.
 
 1. Laat zien dat [](#eq-crsp-tape-survivorship) niet geldt als $Z_t$ een drift
    $\nu \neq 0$ heeft. Waar gaat het bewijs mis, en welk proces is dan wel een
@@ -1097,8 +1148,8 @@ schrappingskans.
 **(1)** Het bewijs gebruikt dat $Z_t$ een martingaal is, zodat $\E[Z_{T\wedge\theta}] = z_0$.
 Met drift is $\E[Z_{T\wedge\theta}] = z_0 + \nu\,\E[T\wedge\theta]$, en die verwachte stoptijd
 hangt zelf van de drempel af. De martingaal is dan $Z_t - \nu t$. De eenvoudige formule
-geldt alleen zonder drift. Bij positieve drift raken minder paden de drempel: de fout
-blijft positief, maar wordt kleiner.
+geldt alleen zonder drift. Bij positieve drift raken minder paden de drempel, zodat de
+fout positief blijft maar kleiner wordt.
 
 **(2)**
 
@@ -1117,24 +1168,24 @@ pd.DataFrame(
 ```
 
 De gesimuleerde overleefkans (0,368) ligt boven de formule (0,345), en de fout (9,3%)
-eronder (9,5%). Dat teken is te verwachten. Een pad dat tussen twee maandeinden kort onder
-de drempel duikt, wordt bij maandelijkse waarneming niet geschrapt, dus de selectie is
-iets milder.
+eronder (9,5%). Dat teken is te verwachten, want een pad dat tussen twee maandeinden kort onder
+de drempel duikt, wordt bij maandelijkse waarneming niet geschrapt, zodat de selectie
+iets milder is.
 
-Wat dit leert: survivorship bias is geen eigenschap van één model maar van selectie op
-een drempel. Hoe strenger de selectie, hoe groter de fout.
+Survivorship bias is dus geen eigenschap van één model maar van selectie op een drempel.
+Hoe strenger die selectie, hoe groter de fout.
 :::
 
 :::{exercise}
 :label: ex-crsp-tape-3
 
-**Uitbreiding van de replicatie: waar en wanneer zit het weegverschil?** Gebruik
-`size_ew`, `size_vw` en `ew_all` uit de replicatie.
+**Uitbreiding van de replicatie: waar en wanneer zit het weegverschil?** De reeksen
+`size_ew`, `size_vw` en `ew_all` staan klaar uit de replicatie. Gebruik ze voor de drie deelvragen.
 
-1. Bereken voor 1926–1962, 1963–1981 en 1982–2026 het verschil tussen equal- en
-   value-weighted in het kleinste en het grootste deciel, met standaardfouten.
+1. Bereken voor 1926–1962, 1963–1981 en 1982–2026 het verschil tussen gelijk- en
+   waardegewogen in het kleinste en het grootste deciel, met standaardfouten.
 2. Bereken voor dezelfde perioden het verschil in meetkundig gemiddelde tussen `ew_all`
-   en de value-weighted markt. Is het groter of kleiner dan het rekenkundige verschil?
+   en de waardegewogen markt. Is het groter of kleiner dan het rekenkundige verschil?
 3. Is het weegverschil in het kleinste deciel na 1981 verdwenen, zoals de size-premie?
 :::
 
@@ -1164,13 +1215,13 @@ meer van nul te onderscheiden. In het grootste deciel ligt het in alle perioden 
 tienden van een procentpunt. Krimpende spreads en vollediger delisting returns passen bij
 dit patroon, maar een verdwijnende premie binnen het deciel ook.
 
-**(2)** Het meetkundige verschil is in elke periode kleiner dan het rekenkundige. De
-volatielere equal-weighted markt verliest meer aan variantie. De winst uit
+**(2)** Het meetkundige verschil is in elke periode kleiner dan het rekenkundige, omdat de
+volatielere gelijkgewogen markt meer aan variantie verliest. De winst uit
 [](#eq-crsp-tape-bonus) geldt ten opzichte van de eigen onderdelen, niet ten opzichte van
 een andere portefeuille.
 
-Wat dit leert: "het" marktrendement bestaat niet. Elke uitspraak erover is een uitspraak
-over een periode en een weging.
+Deze oefening laat zien dat "het" marktrendement niet bestaat. Elke uitspraak erover
+gaat immers over een periode en een weging.
 :::
 
 <!-- Referenties verschijnen automatisch onderaan de pagina. -->
