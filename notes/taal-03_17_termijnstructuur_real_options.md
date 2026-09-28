@@ -1,0 +1,16 @@
+STATUS 03_17_termijnstructuur_real_options T words=5552 prose=PASS
+- Waar we zijn: "prijsden ... door haar" -> "waardeerden ... door die"; "barst" -> "zwakke plek"; open vraag in twee zinnen; "haar" voor claim weg.
+- Overzicht: "Door haar af te dekken:" -> hedgen met voegwoord; "prijst" (2x) -> "bepaalt de (prijs/waarde)"; "In deze lecture" -> "In dit college"; geschiedenisalinea met jaartallen per zin en verbanden; "theorie of feit"-zin herschreven.
+- Intuïtie: dubbele punten als lijm vervangen door omdat/want/daardoor; "haar" voor mijn weg; slotalinea "Dat leidt tot" -> "Uit deze vier beelden volgen", "En LSM" -> "Ten slotte".
+- Toy: regeltaal "imports-cel" en "De lezer weet nu" weg; "We prijzen" -> "We zoeken de prijs van"; stap 1 en 2 kregen een uitleggende tweede zin; "achterwaarts" -> "van achteren naar voren".
+- Theorie routekaart: "De kernlijn van deze lecture" -> "Het college draait om".
+- Opzet: "haar looptijd/yield" -> "de looptijd/yield van die obligatie"; "short gaan" uitgelegd.
+- Theorie-subsecties: "Waarom zou dit waar zijn" 7 -> 1 (overige openen met een vraag of bewering), "In woorden:" 10 -> 2, "zoals de intuïtie voorspelde" 5 -> 1 (overige gevarieerd); "haar" voor obligatie/rente/functie overal vervangen; Itô en PDE kregen een aankondigende zin.
+- Wat het voorspelt / mijn / LSM: "dekt ... af" -> "hedget", "afgedekte" -> "gehedgede"; "Wie vandaag investeert" in de note -> "Een investering vandaag"; McDonald-Siegel-slot kreeg de economische reden bij beide richtingen.
+- Simulatie: motiefnaam weggelaten (beschreven via de verwijzing naar Rendementen); lange zin over de mediaan gesplitst met "omdat"/"zodat"; bijschrift in hele zinnen; "exacte maximum likelihood" -> "precies".
+- Replicatie: "excess rendementen" -> "overrendementen"; "via haar afgeleiden" -> "via de afgeleiden van die functie"; "op eigen kracht" -> "zelfstandig"; "Let in de figuur op" -> gewone zinnen; oordeelzinnen met voegwoorden.
+- Wat er brak: "beprijsd" -> "met een premie"; "De data kiezen niet" -> "Uit de data valt niet op te maken"; "onderzoeksobject" -> "onderwerp van onderzoek".
+- Oefeningen: "Wat dit leert" 4 -> 1; uitwerkingen eindigen met gewone slotzinnen; oefening 4(3) zegt nu expliciet dat het project de openingskosten van 0,20 wel of niet waard is.
+- Getallen, labels, kopjes, code, wiskunde en citaties onveranderd (nb_numbers identiek aan het voor-bestand). Theoremzinnen blijven alinea's van één zin.
+- Twijfel: "term premium", "convenience yield", "real options" en "short gaan" als Engelse vaktermen laten staan.
+- Tool-opmerking: prose_stats knipt "0,15. Een" als lijstnummer weg (LIST-regex midden in een zin); omzeild door de formulering, niet in de tool opgelost.

@@ -106,3 +106,19 @@ STATUS 03_17_termijnstructuur_real_options F6b-2 words=5108 prose=PASS open=0 ci
 
 **Niet gedaan.** Geen punt afgewezen.
 **F6b-2.** "Opzet en notatie" zegt nu "(geen risiconeutrale kans)" zonder verwijzing naar de koperboom; twee puntkomma's (routekaart, Real options) gesplitst; geen code of labels geraakt.
+
+## R9-1 (F6b, ronde 9+)
+
+**Meting.** `prose_stats --check` PASS, 5.678 woorden (was 5.552). `nb_numbers`: geen nieuwe meldingen. Geen code, cel of label veranderd; alleen `jupytext --sync`.
+
+**Feitelijke fout.** CIR-opener: gedaan ("Cox, Ingersoll en Ross maken de variantie evenredig met de rente", oorzaak en gevolg hersteld).
+
+**Taal.** Termijnpremie: gedaan (r. 317, 443, 483, 1223, 1332; eerste keer met *term premium* tussen haakjes). "Het lemma van Itô": gedaan. Hardop-toets: CIR-, Santa-Clara- en "blijvend"-zin herschreven. Getallen per alinea: padenalinea in twee alinea's gesplitst, simulatie-intervallen zonder getallenreeks (de tabel staat erboven), oefening 1 op vier decimalen, oefening 3 in twee alinea's zonder standaardfouten tussen haakjes; "Wat dit leert" weg. "Verwachting uit het replicatieblok" (2x) wordt "wat we vooraf verwachtten". Level/slope/curvature: Nederlandse namen één keer tussen haakjes.
+
+**Helderheid.** LSM boven de boom: gedaan (0,005 boven, binnen één SE; de stelling geldt voor vaste coëfficiënten, in-sample schatting vertekent licht opwaarts). Twee premies: 1,5 pp heet "premie in het verwachte rendement", 3 pp "termijnpremie in de lange yield", met een verbindende alinea ($\sigma_p = \sigma/\kappa = 10\%$, dan vallen ze samen). Obligatieprijzen: de alinea opent met het antwoord; "daarom" vervangen door verwijzing naar de prijsformule. Duration en PCA elk met een bijzin; vergelijking 1 met citatie van Longstaff en Schwartz.
+
+**Opbouw.** Intuïtie: twee verwachtingen over de curve, mijn en LSM als toepassingen zonder eigen verwachting; de inlossingen bij de mijn en LSM herschreven zonder verwijzing naar een verwachting. Simulatie 40 jaar: niet naar 660 maanden gezet (dat verandert alle getallen en de `rng`-stroom van LSM en oefening 2), maar één zin zegt dat de replicatie 55 jaar heeft en dat de $t$-waarde daar toont dat de drift ook dan slecht gemeten blijft; "vijftig jaar" wordt "55 jaar". Terugverwijzing "De renteboom was deze formule" geschrapt.
+
+**Toy en code.** Overbodige halve zin na de toy-tabel weg. Bijschrift curvefiguur herhaalt de jaartallen niet meer (die staan in de alinea's erna).
+
+**Niet gedaan.** Geen punt afgewezen. 05_28 niet aangeraakt.

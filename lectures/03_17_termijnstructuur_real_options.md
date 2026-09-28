@@ -18,31 +18,32 @@ kernelspec:
 ```{admonition} Waar we zijn in het verhaal
 :class: important
 
-**Jaartal.** 1977–2001, met het zwaartepunt tussen 1977 en 1992.
+**Jaartal.** 1977–2001. Het zwaartepunt ligt tussen 1977 en 1992.
 
-**Wat we al weten.** [Black, Scholes en Merton](#02-09-black-scholes) prijsden een
-optie door haar na te maken met aandeel en obligatie. Dat vraagt een onderliggende
-waarde die te koop is, en een constante rente.
-[Basu, Banz en Rosenberg](#03-16-vroege-anomalieen) vonden kenmerken die rendementen
-voorspelden buiten het CAPM om. Die barst blijft hier even liggen.
+**Wat we al weten.** [Black, Scholes en Merton](#02-09-black-scholes) waardeerden een
+optie door die na te maken met aandeel en obligatie, maar dat kan alleen als de
+onderliggende waarde te koop is en de rente constant blijft.
+Daarna vonden [Basu, Banz en Rosenberg](#03-16-vroege-anomalieen) kenmerken die rendementen
+voorspelden buiten het CAPM om. Die zwakke plek laten we hier even liggen.
 
-**Welke vraag staat open.** Hoe krijgt een claim een prijs als de variabele die haar
-drijft niet te koop is, zoals de korte rente, of als de claim een keuze bevat, zoals
-het sluiten van een mijn?
+**Welke vraag staat open.** Hoe krijgt een claim een prijs als de variabele die de claim
+drijft niet te koop is, zoals de korte rente? En wat verandert er als de claim een keuze
+bevat, zoals het sluiten van een mijn?
 ```
 
 ## Overzicht
 
-Hoe krijgt een obligatie een prijs als de korte rente niet te koop is? Door haar af te
-dekken met andere obligaties die aan dezelfde renteschok hangen: dan bieden alle
-obligaties dezelfde vergoeding per eenheid risico. Met één bron van onzekerheid bewegen
-alle rentes echter samen, en in de data heeft de curve drie factoren. Hetzelfde argument
-prijst ook een mijn met de keuze om te sluiten en een Amerikaanse optie. In deze lecture:
+Hoe krijgt een obligatie een prijs als de korte rente niet te koop is? We hedgen de
+obligatie met andere obligaties die van dezelfde renteschok afhangen, zodat alle
+obligaties dezelfde vergoeding per eenheid risico moeten bieden. Met één bron van
+onzekerheid bewegen alle rentes echter samen, terwijl de curve in de data drie factoren
+heeft. Met hetzelfde argument bepalen we ook de waarde van een mijn die mag sluiten en
+van een Amerikaanse optie. In dit college:
 
 - rekenen we een obligatie in een renteboom uit;
 
-- leiden we af dat één marktprijs van risico alle obligaties prijst, met de formules van
-  Vasicek en CIR, en passen we hetzelfde argument kort toe op een mijn en op
+- leiden we af dat één marktprijs van risico de prijs van alle obligaties bepaalt, met de
+  formules van Vasicek en CIR, en passen we hetzelfde argument kort toe op een mijn en op
   Amerikaanse opties;
 
 - simuleren we hoe goed veertig jaar maanddata de rentedynamiek vastleggen;
@@ -51,56 +52,59 @@ prijst ook een mijn met de keuze om te sluiten en een Amerikaanse optie. In deze
   en repliceren we Litterman en Scheinkman {cite}`LittermanScheinkman1991` en tabel 1
   van Longstaff en Schwartz {cite}`LongstaffSchwartz2001`.
 
-{cite:t}`Vasicek1977` liet met een arbitrageargument zien dat alle obligaties dezelfde
-vergoeding per eenheid renterisico bieden, en gaf een formule voor de hele curve.
-{cite:t}`CoxIngersollRoss1985` leidden een positieve rente af uit een evenwicht.
-{cite:t}`BrennanSchwartz1979` voegden de lange yield als tweede factor toe, in een model
-dat alleen numeriek op te lossen is. {cite:t}`LongstaffSchwartz1992` bouwden een
-tweefactormodel met gesloten formules. {cite:t}`DuffieKan1996` lieten zien wat Vasicek,
-CIR en Longstaff-Schwartz delen: ze zijn *affien* (de log-prijs van een obligatie is
-lineair in de factoren). Op een grondstof werd dezelfde wiskunde de theorie van *real
-options* (opties in een project: wachten, sluiten, opgeven)
+In 1977 liet {cite:t}`Vasicek1977` met een arbitrageargument zien dat alle obligaties
+dezelfde vergoeding per eenheid renterisico bieden, en hij gaf een formule voor de hele
+curve. Acht jaar later leidden {cite:t}`CoxIngersollRoss1985` een positieve rente af uit
+een evenwicht. Daartussen voegden {cite:t}`BrennanSchwartz1979` de lange yield als tweede
+factor toe, maar hun model is alleen numeriek op te lossen. In 1992 bouwden
+{cite:t}`LongstaffSchwartz1992` een tweefactormodel dat wel gesloten formules heeft. In
+1996 lieten {cite:t}`DuffieKan1996` zien wat Vasicek, CIR en Longstaff-Schwartz delen,
+namelijk dat ze *affien* zijn (de log-prijs van een obligatie is lineair in de factoren).
+Toegepast op een grondstof werd dezelfde wiskunde de theorie van *real options* (opties
+in een project, zoals wachten, sluiten of opgeven)
 {cite}`BrennanSchwartz1985,McDonaldSiegel1986`. De lijn eindigt bij *least-squares Monte
-Carlo* (LSM: doorgaan gewaardeerd met een regressie op gesimuleerde paden). Zo werd
-Black-Scholes een methode voor alles wat van een onzekere toestand afhangt. Santa-Clara
-noemt dit de UCLA-lijn, naar zijn mentoren Brennan en Schwartz {cite}`SantaClara2026`.
+Carlo* (LSM, dat de waarde van doorgaan schat met een regressie op gesimuleerde paden).
+Zo werd Black-Scholes een methode voor alles wat van een onzekere toestand afhangt.
+Santa-Clara noemt dit de UCLA-lijn, naar zijn mentoren Brennan en Schwartz
+{cite}`SantaClara2026`.
 
-Op de vraag theorie of feit zijn deze modellen relatieve waarderingsregels, zoals
-Black-Scholes. Ze zeggen wat een obligatie waard is *gegeven* het renteproces en één
-marktprijs van risico, en worden getoetst op de correlatie tussen rentes en de vorm van
-de curve.
+Op de vraag theorie of feit is het antwoord dat deze modellen, net als Black-Scholes,
+relatieve waarderingsregels zijn. Ze zeggen wat een obligatie waard is *gegeven* het
+renteproces en één marktprijs van risico. Daarom toetsen we ze op de correlatie tussen
+rentes en op de vorm van de curve.
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-De korte rente is een prijs, geen activum. Vasiceks uitweg was dat alle obligaties met
-dezelfde renteschok bewegen. Een handelaar die een lange obligatie koopt en een kortere
-verkoopt in de juiste verhouding, heft die schok op en moet de korte rente verdienen. Dus
-bieden beide obligaties hetzelfde extra rendement per eenheid risico. Die ene verhouding,
-de *marktprijs van risico*, is alles wat de markt over voorkeuren hoeft te vertellen.
+De korte rente is een prijs en geen activum, zodat niemand de rente kan kopen om een
+obligatie na te maken. Vasiceks uitweg was dat alle obligaties met dezelfde renteschok
+bewegen. Een handelaar die een lange obligatie koopt en in de juiste verhouding een kortere
+verkoopt, heft die schok op en moet dan de korte rente verdienen. Daarom bieden beide
+obligaties hetzelfde extra rendement per eenheid risico. Die ene verhouding, de
+*marktprijs van risico*, is alles wat de markt over voorkeuren hoeft te vertellen.
 
 Trekt de rente terug naar een gemiddelde, dan hangt de vorm van de curve af van waar de
-rente nu staat. Onzekerheid duwt lange yields omlaag: een verre euro wint meer bij een
-rentedaling dan hij verliest bij een even grote stijging. Een beloning voor renterisico
-duwt ze omhoog.
+rente nu staat. Onzekerheid duwt lange yields omlaag, omdat een verre euro bij een
+rentedaling meer in waarde wint dan hij bij een even grote stijging verliest. Een beloning
+voor renterisico duwt ze juist omhoog.
 
-Een kopermijn is een reeks opties op koper: delven als de prijs de kosten dekt, sluiten
-als dat niet zo is. Een netto contante waarde met de verwachte koperprijs rekent alsof de
-mijn in verliesjaren doorwerkt, en onderschat haar. Wie vandaag investeert, geeft
-bovendien de keuze op om te wachten.
+Een kopermijn is een reeks opties op koper, want de eigenaar delft als de prijs de
+kosten dekt en sluit als dat niet zo is. Een netto contante waarde met de verwachte
+koperprijs rekent alsof de mijn in verliesjaren doorwerkt, en onderschat daardoor de
+waarde van de mijn. Wie vandaag investeert, geeft bovendien de keuze op om te wachten.
 
 Een Amerikaanse optie wordt uitgeoefend zodra dat meer oplevert dan doorgaan. Longstaff en
-Schwartz schatten doorgaan met een regressie op gesimuleerde paden, en een geschatte regel
-is nooit beter dan de beste.
+Schwartz schatten de waarde van doorgaan met een regressie op gesimuleerde paden, maar een
+geschatte uitoefenregel is nooit beter dan de beste regel.
 
-Dat leidt tot vier verwachtingen. Lange yields liggen onder de verwachte korte rente als
-alleen onzekerheid telt, en erboven als beleggers een beloning voor renterisico vragen.
-Met één bron van onzekerheid bewegen alle rentes perfect samen. Een mijn met de keuze om
-te sluiten is meer waard dan haar netto contante waarde, en een project start pas ruim
-boven de kosten. En LSM benadert de juiste prijs van onderen.
+Voor de curve volgen daaruit twee verwachtingen, en die toetst de replicatie. Lange
+yields liggen onder de verwachte korte rente als alleen onzekerheid telt, maar erboven als
+beleggers een beloning voor renterisico vragen. Met één bron van onzekerheid bewegen
+bovendien alle rentes perfect samen. De mijn en de Amerikaanse optie werken we daarna kort
+uit, als toepassingen van hetzelfde argument.
 
 ## Toy-voorbeeld: een renteboom van drie perioden
 
-We beginnen met de imports-cel, de enige van deze lecture.
+Alle bibliotheken die dit college gebruikt, laden we hier in één keer.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -119,20 +123,22 @@ rng = np.random.default_rng(20240101)
 **Opzet.** De korte rente per periode heet $i_t$, want $r$ is in de reeks het netto
 simpele rendement. In de renteboom, naar {cite:t}`HoLee1986`, begint $i$ op 5% en gaat
 ze elke periode met risiconeutrale kans $\tfrac12$ drie procentpunt omhoog of omlaag. We
-prijzen een obligatie die op $t = 3$ één euro uitkeert.
+zoeken de prijs van een obligatie die op $t = 3$ één euro uitkeert.
 
 | $t = 0$ | $t = 1$ | $t = 2$ |
 |---|---|---|
 | 5% | 8% / 2% | 11% / 5% / $-1$% |
 
-**Het recept.** We rekenen achterwaarts: een claim is op $t$ de verwachte waarde in de
-volgende knopen waard, gedeeld door $1 + i_t$. De theorie leidt dat af als
-[](#eq-termijnstructuur-real-options-prijs).
+**Het recept.** We rekenen van achteren naar voren, want een claim is op $t$ de
+verwachte waarde in de volgende knopen waard, gedeeld door $1 + i_t$. De theorie leidt die
+regel af als [](#eq-termijnstructuur-real-options-prijs).
 
-**Stap 1: de obligatie op $t = 2$.** Eén periode voor de vervaldag is ze
-$1/1{,}11 = 0{,}900901$, $1/1{,}05 = 0{,}952381$ of $1/0{,}99 = 1{,}010101$ waard.
+**Stap 1: de obligatie op $t = 2$.** Eén periode voor de vervaldag is de obligatie
+$1/1{,}11 = 0{,}900901$, $1/1{,}05 = 0{,}952381$ of $1/0{,}99 = 1{,}010101$ waard. Dat is
+de euro van $t = 3$, verdisconteerd tegen de rente van de knoop waarin we staan.
 
-**Stap 2: de obligatie op $t = 1$.** In de hoge knoop
+**Stap 2: de obligatie op $t = 1$.** We middelen de twee waarden erna en
+verdisconteren tegen de rente van de knoop. In de hoge knoop geeft dat
 $\tfrac12(0{,}900901 + 0{,}952381)/1{,}08 = 0{,}858001$, in de lage
 $\tfrac12(0{,}952381 + 1{,}010101)/1{,}02 = 0{,}962001$.
 
@@ -141,11 +147,11 @@ $\tfrac12(0{,}952381 + 1{,}010101)/1{,}02 = 0{,}962001$.
 0{,}907771$.
 
 **Stap 4: de yields.** De *yield* is het rendement per jaar tot de vervaldag,
-$(1/p)^{1/\tau} - 1$ bij een looptijd van $\tau$ jaar: 5,000%, 4,957% en 4,886% op één,
-twee en drie jaar. De curve daalt, terwijl de verwachte korte rente overal 5% is. Dat komt
-doordat $1/(1+i)$ bol is in $i$: het *convexiteitseffect*.
+$(1/p)^{1/\tau} - 1$ bij een looptijd van $\tau$ jaar. Op één, twee en drie jaar is dat
+5,000%, 4,957% en 4,886%. De curve daalt dus, terwijl de verwachte korte rente overal 5%
+is. Dat komt doordat $1/(1+i)$ bol is in $i$, en dat heet het *convexiteitseffect*.
 
-De code loopt de boom achteruit door en zet de handberekening ernaast.
+De code loopt de boom van achteren naar voren door en zet de handberekening ernaast.
 
 ```{code-cell} ipython3
 i_tree = [np.array([0.05]), np.array([0.08, 0.02]), np.array([0.11, 0.05, -0.01])]
@@ -173,44 +179,47 @@ code = {"p op t=1, hoge knoop": bond_t1[0], "p op t=1, lage knoop": bond_t1[1],
 pd.DataFrame({"met de hand": hand, "code": code}).round(6)
 ```
 
-De twee kolommen zijn gelijk. De lezer weet nu het mechanisme in het klein: onzekerheid
-over de rente maakt een verre euro duurder dan de verwachte rente zegt, dus ligt de
-driejaarsyield 0,114 procentpunt onder de verwachte korte rente. Oefening 4 rekent met
-dezelfde methode een mijn met de keuze om te sluiten uit.
+De tabel laat het mechanisme in het klein zien. Omdat
+onzekerheid over de rente een verre euro duurder maakt dan de verwachte rente zegt, ligt
+de driejaarsyield 0,114 procentpunt onder de verwachte korte rente. Oefening 4 rekent met
+dezelfde methode de waarde uit van een mijn die mag sluiten.
 
 ## Theorie
 
-De kernlijn van deze lecture is de termijnstructuur. We leiden eerst af dat één
-renteschok alle obligaties dezelfde marktprijs van risico geeft, en dat elke prijs dan aan
-één partiële differentiaalvergelijking voldoet. Dan volgt de affiene oplossing, met Vasicek
-en CIR, en wat die over de curve voorspellen. Dat toetsen simulatie en replicatie. Daarna
-passen we hetzelfde argument kort toe op een mijn en op Amerikaanse opties (LSM).
+Het college draait om de termijnstructuur. We leiden eerst af dat één renteschok alle
+obligaties dezelfde marktprijs van risico geeft, zodat elke prijs aan één partiële
+differentiaalvergelijking voldoet. Daarna volgt de affiene oplossing, met Vasicek en CIR,
+en wat die modellen over de curve voorspellen, want dat toetsen simulatie en replicatie.
+Ten slotte passen we hetzelfde argument kort toe op een mijn en op Amerikaanse opties
+(LSM).
 
 ### Opzet en notatie
 
 Vanaf hier is $i_t$ de *instantane korte rente*: de continu samengestelde rente op een
 oneindig korte lening, bijvoorbeeld 5% per jaar. Een constante rente, bij de mijn en bij
 LSM, heet ook $i$. $p(t,T)$ is de prijs op $t$ van een *nulcouponobligatie* (één euro op
-$T$, verder niets), $\tau = T - t$ haar looptijd en $y(t,T) = -\log p(t,T)/\tau$ haar
-yield. Partiële afgeleiden schrijven we als $\partial_t p$, $\partial_i p$ en
-$\partial_{ii} p$. Vasiceks $\alpha$, $\gamma$ en $q$ (geen risiconeutrale kans) heten hier
+$T$, verder niets), $\tau = T - t$ de looptijd en $y(t,T) = -\log p(t,T)/\tau$ de
+yield van die obligatie. Partiële afgeleiden schrijven we als $\partial_t p$,
+$\partial_i p$ en $\partial_{ii} p$. Vasiceks $\alpha$, $\gamma$ en $q$ (geen
+risiconeutrale kans) heten hier
 $\kappa$, $\theta$ en $\lambda$. De aannames:
 
 1. de korte rente is de enige toestandsvariabele, en volgt onder de werkelijke kansen
    $\mathrm{d}i_t = \mu(i_t)\,\mathrm{d}t + \sigma(i_t)\,\mathrm{d}W_t$;
 
 2. obligaties van elke looptijd worden continu verhandeld, zonder transactiekosten, en
-   short gaan mag;
+   verkopen zonder ze te bezitten (short gaan) mag;
 
 3. er is geen arbitrage.
 
 ### Obligatieprijzen als risiconeutrale verwachting
 
-*Waarom zou dit waar zijn?* Een belegger die zijn geld elke dag tegen de korte rente
-uitzet, weet vooraf niet wat hij over tien jaar heeft. Een obligatie belooft een vast
-bedrag. Onder risiconeutrale kansen leveren beide gemiddeld hetzelfde op, dus kost de
-obligatie de verwachte discontering van één euro. Omdat discontering bol is in de rente,
-maakt onzekerheid de obligatie duurder dan bij een vaste rente.
+Waarom maakt onzekerheid over de rente een obligatie duurder? Een obligatie kost de
+verwachte discontering van één euro, en omdat die discontering bol is in de rente, verhogen
+renteschommelingen die verwachting. Dat de prijs een verwachting is, volgt uit een
+vergelijking met een belegger die zijn geld elke dag tegen de korte rente uitzet. Hij weet
+vooraf niet wat hij over tien jaar heeft, terwijl een obligatie een vast bedrag belooft,
+maar onder risiconeutrale kansen leveren beide gemiddeld hetzelfde op.
 
 Volgens de fundamentele stelling, [](#eq-apt-no-arbitrage-martingaal), is elke
 arbitragevrije prijs een verdisconteerde verwachting onder een martingaalmaat. Met een
@@ -222,27 +231,29 @@ p(t,T) = \E^{\mathbb{Q}}_t\!\left[\exp\!\Big(-\int_t^T i_s\,\mathrm{d}s\Big)\rig
        = \E_t\!\left[\frac{m_T}{m_t}\right].
 ```
 
-In woorden: de obligatie kost de risiconeutrale verwachting van de disconteringsfactor
-over haar looptijd, met $\mathbb{Q}$ de risiconeutrale maat uit
-[](#02-09-black-scholes). Met de stochastische discontofactor (SDF) $m$ (het gewicht van een
-euro in elke toekomstige toestand) is dat de verwachte $m_T/m_t$. De renteboom was deze
-formule in drie stappen.
+De obligatie kost dus de risiconeutrale verwachting van de disconteringsfactor over de
+looptijd, met $\mathbb{Q}$ de risiconeutrale maat uit [](#02-09-black-scholes). Met de
+stochastische discontofactor (SDF) $m$ (het gewicht van een euro in elke toekomstige
+toestand) is die prijs de verwachte $m_T/m_t$.
 
 Omdat $e^{-x}$ bol is, geldt $\E^{\mathbb{Q}}[e^{-X}] > e^{-\E^{\mathbb{Q}}[X]}$ (Jensens
-ongelijkheid): onzekerheid verhoogt de prijs en verlaagt de yield. In de boom was dat
-$5{,}000\% - 4{,}886\% = 0{,}114$ procentpunt op drie jaar. Een termijnstructuurmodel is
-een keuze voor het proces van $i$ onder $\mathbb{Q}$.
+ongelijkheid), zodat onzekerheid de prijs verhoogt en de yield verlaagt. In de boom
+scheelde dat $5{,}000\% - 4{,}886\% = 0{,}114$ procentpunt op drie jaar. Uit
+[](#eq-termijnstructuur-real-options-prijs) volgt ook dat een termijnstructuurmodel niets
+anders is dan een keuze voor het proces van $i$ onder $\mathbb{Q}$.
 
 ### Het kernresultaat: één marktprijs van risico
 
 *Waarom zou dit waar zijn?* Een handelaar koopt een tienjaarsobligatie en verkoopt een
 tweejaarsobligatie. Stijgt de rente, dan verliest hij op de eerste en wint hij op de
-tweede. In de juiste verhouding heffen die elkaar op. De positie is zonder risico en moet
-de korte rente opleveren. Biedt de tienjaarsobligatie per eenheid risico meer, dan koopt
-iedereen haar, en stijgt haar prijs tot het verschil weg is.
+tweede, en in de juiste verhouding heffen winst en verlies elkaar op. De positie is dan
+zonder risico en moet de korte rente opleveren. Biedt de tienjaarsobligatie per eenheid
+risico meer, dan koopt iedereen die obligatie, zodat de prijs stijgt tot het verschil weg
+is.
 
-Itô's lemma uit [](#thm-black-scholes-ito), de kettingregel plus kromming maal variantie,
-geeft voor $p = p(i,t;T)$
+Om die positie door te rekenen, hebben we het verwachte rendement en de volatiliteit van
+een obligatie nodig. Het lemma van Itô uit [](#thm-black-scholes-ito), de kettingregel plus
+kromming maal variantie, geeft voor $p = p(i,t;T)$
 
 $$
 \frac{\mathrm{d}p}{p} = \mu_p\,\mathrm{d}t - \sigma_p\,\mathrm{d}W,
@@ -252,9 +263,9 @@ $$
 \sigma_p = -\frac{\sigma\,\partial_i p}{p} .
 $$
 
-In woorden: $\mu_p$ is het verwachte rendement van de obligatie en $\sigma_p$ haar
-volatiliteit. Een obligatie daalt als de rente stijgt ($\partial_i p < 0$), dus
-$\sigma_p$ is positief.
+Hier is $\mu_p$ het verwachte rendement van de obligatie en $\sigma_p$ de volatiliteit.
+Omdat een obligatie daalt als de rente stijgt ($\partial_i p < 0$), is $\sigma_p$
+positief.
 
 :::{prf:theorem} Eén marktprijs van renterisico
 :label: thm-termijnstructuur-real-options-lambda
@@ -269,7 +280,7 @@ looptijd $T$, zodat voor elke obligatie
 :::
 
 In woorden: het extra rendement per eenheid volatiliteit is voor elke looptijd hetzelfde.
-Het bewijs is de positie van de handelaar.
+Het bewijs is niets anders dan de positie van de handelaar.
 
 :::{prf:proof}
 :class: dropdown
@@ -284,7 +295,8 @@ $(\mu_{p,1} - i)/\sigma_{p,1} = (\mu_{p,2} - i)/\sigma_{p,2}$. Omdat $T_1$ en $T
 willekeurig waren, hangt deze verhouding niet van de looptijd af. $\square$
 :::
 
-Invullen van $\mu_p$ en $\sigma_p$ in $\mu_p - i = \lambda\sigma_p$ geeft de
+De stelling legt een voorwaarde op de afgeleiden van de obligatieprijs. Invullen van
+$\mu_p$ en $\sigma_p$ in $\mu_p - i = \lambda\sigma_p$ geeft namelijk de
 *termijnstructuur-PDE*:
 
 ```{math}
@@ -294,24 +306,26 @@ Invullen van $\mu_p$ en $\sigma_p$ in $\mu_p - i = \lambda\sigma_p$ geeft de
 \qquad p(i,T;T) = 1 .
 ```
 
-In woorden: tijdsverval, drift en kromming maal variantie leveren samen de korte rente
-op. In [](#eq-black-scholes-pde) verdween de drift, omdat het aandeel zelf in de hedge
-zat. De rente is geen activum, dus hier blijft de *risiconeutrale drift*
+Tijdsverval, drift en kromming maal variantie leveren samen dus de korte rente op. In
+[](#eq-black-scholes-pde) verdween de drift, omdat het aandeel zelf in de hedge zat. De
+rente is geen activum, en daarom blijft hier de *risiconeutrale drift*
 $\mu + \lambda\sigma$ staan. Volgens Feynman-Kac ([](#thm-black-scholes-feynman-kac)) is
 de oplossing een verdisconteerde verwachting: [](#eq-termijnstructuur-real-options-prijs).
 
 Het verwachte extra rendement van een obligatie is $\lambda\sigma_p$. Een positieve
-$\lambda$ geeft een *term premium* (het verwachte extra rendement van een lange obligatie
-boven een reeks korte): bij $\lambda = 0{,}3$ en 5% volatiliteit $0{,}3 \cdot 5\% =
-1{,}5$ procentpunt per jaar. Zoals de intuïtie voorspelde, vertelt één getal alles over
-voorkeuren. Vasicek nam $\lambda$ constant.
+$\lambda$ geeft dus een *termijnpremie* (*term premium*), omdat een lange obligatie naar
+verwachting meer verdient dan een reeks korte. Bij $\lambda = 0{,}3$ en 5% volatiliteit is
+die premie in het verwachte rendement $0{,}3 \cdot 5\% = 1{,}5$ procentpunt per jaar. Eén
+getal vertelt dus alles wat de markt over voorkeuren
+hoeft te zeggen, precies zoals de handelaar uit de intuïtie liet zien. Vasicek nam
+$\lambda$ constant.
 
 ### De affiene klasse: Duffie en Kan
 
-*Waarom zou dit waar zijn?* Een belegger houdt een obligatie terwijl de rente één
-procentpunt stijgt. Stijgen drift en variantie van de rente onder $\mathbb{Q}$ lineair met
-de rente, dan verliest hij daarbij op elk renteniveau hetzelfde percentage. De log-prijs
-daalt dan lineair in de rente.
+Wanneer is de log-prijs van een obligatie lineair in de rente? Denk aan een belegger die
+een obligatie houdt terwijl de rente één procentpunt stijgt. Stijgen drift en variantie
+van de rente onder $\mathbb{Q}$ lineair met de rente, dan verliest hij daarbij op elk
+renteniveau hetzelfde percentage, zodat de log-prijs lineair in de rente daalt.
 
 :::{prf:theorem} Affiene termijnstructuur
 :label: thm-termijnstructuur-real-options-affien
@@ -333,11 +347,12 @@ A'(\tau) = -a_0 B(\tau) + \tfrac12 b_0 B(\tau)^2,
 ```
 :::
 
-In woorden: $B(\tau)$ is de gevoeligheid van de log-prijs voor de korte rente, een soort
-duration, en $A(\tau)$ vangt het verwachte pad van de rente en het convexiteitseffect. De
-yield $y = (B i_t - A)/\tau$ is dus affien (lineair plus een constante) in $i_t$. De
-vergelijking voor $B$ is een Riccati-vergelijking (met een kwadratische term), die voor
-$A$ daarna een integraal.
+De functie $B(\tau)$ is de gevoeligheid van de log-prijs voor de korte rente, dus een
+soort *duration* (de procentuele prijsdaling per procentpunt rentestijging), terwijl
+$A(\tau)$ het verwachte pad van de rente en het convexiteitseffect
+vangt. De yield $y = (B i_t - A)/\tau$ is dus affien (lineair plus een constante) in
+$i_t$. De vergelijking voor $B$ is een Riccati-vergelijking (met een kwadratische term),
+en als $B$ bekend is, is die voor $A$ een gewone integraal.
 
 :::{prf:proof}
 :class: dropdown
@@ -357,10 +372,10 @@ $i$ geeft de vergelijking voor $B'$, de constante die voor $A'$. De eindvoorwaar
 $p(i,T;T) = 1$ voor alle $i$ geeft $A(0) = B(0) = 0$. $\square$
 :::
 
-{cite:t}`DuffieKan1996` bewezen dit voor een vector factoren $\mathbf{x}_t$, bijvoorbeeld
-de korte rente en haar volatiliteit: dan is $\log p = A(\tau) -
+{cite:t}`DuffieKan1996` bewezen de stelling voor een vector factoren $\mathbf{x}_t$,
+bijvoorbeeld de korte rente en de volatiliteit van die rente, en dan is $\log p = A(\tau) -
 \mathbf{b}(\tau)'\mathbf{x}_t$. Vasicek, CIR en Longstaff-Schwartz zijn speciale gevallen.
-Eén factor heeft een scherpe consequentie.
+Met maar één factor volgt er echter een scherpe voorspelling.
 
 :::{prf:corollary} Eén factor, perfect gecorreleerde yields
 :label: cor-termijnstructuur-real-options-correlatie
@@ -368,18 +383,21 @@ Eén factor heeft een scherpe consequentie.
 In elk eenfactormodel met $y(t,T) = (B(\tau)i_t - A(\tau))/\tau$ is
 $\mathrm{d}y = (B(\tau)/\tau)\,\mathrm{d}i + (\ldots)\,\mathrm{d}t$. Yieldveranderingen
 van alle looptijden zijn dus lokaal perfect gecorreleerd, en een
-principale-componentenanalyse op yieldveranderingen vindt één component.
+principale-componentenanalyse op yieldveranderingen (die de gezamenlijke bewegingen
+ontleedt in ongecorreleerde patronen, gerangschikt naar verklaarde variantie) vindt één
+component.
 :::
 
-In woorden: elke yield beweegt met een vast veelvoud van dezelfde schok, zoals de
-intuïtie voorspelde. Dit toetst de replicatie.
+Elke yield beweegt dus met een vast veelvoud van dezelfde schok, en daarmee klopt de
+verwachting dat alle rentes perfect samen bewegen. De replicatie zet die voorspelling
+tegen de data.
 
 ### Vasicek: een terugtrekkende rente met normale schokken
 
-*Waarom zou dit waar zijn?* De eenvoudigste terugtrekkende rente is een veer met
-schokken van vaste grootte: staat de rente boven haar gemiddelde, dan trekt de drift haar
-omlaag. Met normale schokken is ook de som van de rentes over de looptijd normaal, en voor
-een normale $X$ is $\E[e^{-X}]$ bekend.
+Het eenvoudigste affiene model is een rente die als een veer terugtrekt en schokken van
+vaste grootte krijgt. Staat de rente boven het gemiddelde, dan trekt de drift de rente
+omlaag. Omdat de schokken normaal zijn, is ook de som van de rentes over de looptijd
+normaal, en voor een normale $X$ is $\E[e^{-X}]$ bekend.
 
 Vasicek nam $\mathrm{d}i = \kappa(\theta - i)\,\mathrm{d}t + \sigma\,\mathrm{d}W$ en een
 constante $\lambda$. Hier is $\kappa$ de snelheid van terugtrekken, bijvoorbeeld 0,15 per
@@ -425,24 +443,30 @@ $B \to 1/\kappa$, dus $B i/\tau \to 0$ en $-A/\tau \to \theta^{*} - \sigma^2/(2\
 $\square$
 :::
 
-In woorden: de lange yield is het gemiddelde $\theta$, plus de term premium
-$\lambda\sigma/\kappa$, min het convexiteitseffect $\sigma^2/(2\kappa^2)$. Met de getallen
-hierboven en $\lambda = 0{,}3$ is dat $5\% + 3\% - 0{,}5\% = 7{,}5\%$. Zoals de intuïtie
-voorspelde, ligt de lange yield zonder beloning ($\lambda = 0$) onder $\theta$, en met
-beloning erboven. Stijgt $\sigma$, dan stijgt
-de premie lineair en het convexiteitseffect kwadratisch. Stijgt $\kappa$, dan krimpen
-beide, omdat verre rentes minder onzeker zijn. Op de korte rente reageert de lange yield
-niet.
+De lange yield is het gemiddelde $\theta$, plus de termijnpremie in de lange yield
+$\lambda\sigma/\kappa$, min het convexiteitseffect $\sigma^2/(2\kappa^2)$. Met de
+getallen hierboven en $\lambda = 0{,}3$ komt dat uit op $5\% + 3\% - 0{,}5\% = 7{,}5\%$.
+Zonder beloning ($\lambda = 0$) ligt de lange yield dus onder $\theta$ en met beloning
+erboven, zoals de intuïtie verwachtte.
+
+Die premie in de lange yield is iets anders dan de premie in het verwachte rendement van
+1,5 procentpunt hierboven, die gold voor een obligatie met 5% volatiliteit. Een oneindig
+lange obligatie heeft volatiliteit $\sigma_p = \sigma/\kappa = 10\%$, en dan vallen de
+twee premies samen, want $\lambda\sigma_p = \lambda\sigma/\kappa$. Stijgt $\sigma$, dan
+stijgt de premie
+lineair en het convexiteitseffect kwadratisch. Stijgt $\kappa$, dan krimpen beide, omdat
+verre rentes minder onzeker zijn. Op de korte rente reageert de lange yield niet.
 
 De rente is stationair normaal verdeeld, met standaarddeviatie $\sigma/\sqrt{2\kappa}$,
-hier 2,7%, en kan dus negatief worden. In 1977 was dat een schoonheidsfout, na 2014, met
-negatieve rentes op Duitse en Zwitserse staatsobligaties, een eigenschap.
+hier 2,7%, en kan dus negatief worden. In 1977 gold dat als een schoonheidsfout, maar na
+2014, toen Duitse en Zwitserse staatsobligaties een negatieve rente hadden, werd het een
+eigenschap.
 
 ### Cox, Ingersoll en Ross: de vierkantswortel
 
-*Waarom zou dit waar zijn?* Is de variantie evenredig met de rente, dan is de schok bij
-$i = 0$ nul, terwijl de drift $\kappa\theta$ de rente omhoog duwt. De rente kan dus niet
-onder nul.
+Cox, Ingersoll en Ross maken de variantie evenredig met de rente. Bij $i = 0$ is de schok
+dan nul, terwijl de drift $\kappa\theta$ de rente omhoog duwt, zodat de rente niet onder
+nul zakt.
 
 {cite:t}`CoxIngersollRoss1985` namen
 $\mathrm{d}i = \kappa(\theta - i)\,\mathrm{d}t + \sigma\sqrt{i}\,\mathrm{d}W$. De rente
@@ -461,14 +485,14 @@ e^{A(\tau)} = \left[\frac{2h\, e^{(\kappa^{*} + h)\tau/2}}
 h = \sqrt{\kappa^{*2} + 2\sigma^2}.
 ```
 
-In woorden: dezelfde vorm als Vasicek, maar $B$ hangt ook van de volatiliteit af, via
+De vorm is dezelfde als bij Vasicek, maar $B$ hangt ook van de volatiliteit af, via
 de hulpgrootheid $h$ (0,16 bij de simulatiegetallen hieronder), die bepaalt hoe snel $B$
 naar zijn limiet $2/(h + \kappa^{*})$ loopt. De oneindig lange yield is
 $2\kappa\theta/(h + \kappa^{*})$. Bij $\kappa^{*} < \kappa$ ligt het risiconeutrale
-gemiddelde $\kappa\theta/\kappa^{*}$ boven $\theta$: een positieve term premium. Bij
-$\kappa^{*} > \kappa$ ligt het eronder, en is de premie negatief.
+gemiddelde $\kappa\theta/\kappa^{*}$ boven $\theta$, wat een positieve termijnpremie
+betekent. Bij $\kappa^{*} > \kappa$ ligt het eronder, en dan is de premie negatief.
 
-De code implementeert de yields van beide modellen.
+De code zet de yieldformules van beide modellen om in twee functies.
 
 ```{code-cell} ipython3
 def vasicek_yield(i_now, tau, kappa, theta, sigma, lam):
@@ -488,14 +512,16 @@ def cir_yield(i_now, tau, kappa, theta, sigma, kappa_q):
     return (B * i_now - A) / tau
 ```
 
-Beide functies werken ook op arrays van looptijden en rentes.
+Beide functies geven een continu samengestelde yield. Ze werken ook op arrays van
+looptijden en rentes, zodat één aanroep een hele curve oplevert.
 
 ### Wat het voorspelt: paden en curves
 
-Vasicek laat de rente onder nul zakken en CIR niet, en in beide lopen alle curves naar
-dezelfde lange yield. Dat laat een exacte simulatie zien. We nemen $\kappa = 0{,}15$ en
-$\theta = 5\%$, de startrente van de boom, en $\lambda = 0{,}3$. Vasicek krijgt $\sigma = 1{,}5\%$, CIR dezelfde volatiliteit bij $i = \theta$. We
-simuleren 5000 paden van dertig jaar vanaf 2%.
+Vasicek laat de rente onder nul zakken en CIR niet, en in beide modellen lopen alle
+curves naar dezelfde lange yield. Een exacte simulatie laat beide eigenschappen zien. We
+nemen $\kappa = 0{,}15$, $\theta = 5\%$ (de startrente van de boom) en $\lambda = 0{,}3$.
+Vasicek krijgt $\sigma = 1{,}5\%$ en CIR dezelfde volatiliteit bij $i = \theta$. Daarmee
+simuleren we 5000 paden van dertig jaar vanaf 2%.
 
 ```{code-cell} ipython3
 vas = dict(kappa=0.15, theta=0.05, sigma=0.015, lam=0.3)    # parameters from the theory
@@ -548,10 +574,12 @@ pd.DataFrame(
 ).round(4)
 ```
 
-Van de Vasicek-paden zakt 58% minstens één maand onder nul, 4,7% van alle maanden is
-negatief, en de laagste rente is $-6{,}7\%$. Geen CIR-pad komt onder nul. De oneindig
-lange yield is 7,5% bij Vasicek en 5,2% bij CIR, vooral omdat de prijs van risico bij CIR
-$\lambda\sqrt{i}$ is: bij 5% maar $0{,}3 \cdot 0{,}22 = 0{,}067$.
+Ruim de helft van de Vasicek-paden (58%) zakt minstens één maand onder nul, en de laagste
+rente in de tabel is $-6{,}7\%$. Geen enkel CIR-pad komt daarentegen onder nul.
+
+De oneindig lange yield ligt bij CIR met 5,2% ruim onder de 7,5% van Vasicek, vooral omdat
+de prijs van risico bij CIR $\lambda\sqrt{i}$ is en niet $\lambda$. Bij $i = \theta$ is
+dat maar $0{,}3 \cdot 0{,}22 = 0{,}067$.
 
 Let in de figuur rechts op waar de curves van één model heen lopen.
 
@@ -589,24 +617,24 @@ plt.show()
 :label: fig-termijnstructuur-real-options-paden
 :width: 100%
 
-Links: Vasicek-paden zakken onder nul, CIR-paden niet. Rechts: de korte rente bepaalt de
+Links zakken Vasicek-paden onder nul en CIR-paden niet. Rechts bepaalt de korte rente de
 vorm, maar alle curves van één model lopen naar dezelfde lange yield.
 :::
 
 ### Hetzelfde argument voor een mijn: real options
 
-*Waarom zou dit waar zijn?* Een mijneigenaar die termijncontracten op koper verkoopt, dekt
-zijn koperrisico af. De afgedekte mijn verdient dan de rente, zoals bij Black en Scholes.
-Wie koper in voorraad heeft, geniet wel de *convenience yield* (het voordeel van het fysiek
-bezitten van de grondstof), en die verlaagt de risiconeutrale groei van de koperprijs,
-zoals een dividend.
+Het arbitrageargument werkt ook voor een mijn. Een mijneigenaar die termijncontracten op
+koper verkoopt, hedget zijn koperrisico, zodat de gehedgede mijn de rente moet verdienen,
+zoals bij Black en Scholes. Wie koper in voorraad heeft, geniet wel de *convenience yield*
+(het voordeel van het fysiek bezitten van de grondstof), en die verlaagt de risiconeutrale
+groei van de koperprijs, net als een dividend.
 
 Laat $\mathrm{d}S = \mu S\,\mathrm{d}t + \sigma S\,\mathrm{d}W$, met $\delta$ de
-convenience yield, bijvoorbeeld 1% per jaar. Brennan en Schwartz noemen haar $\kappa$,
-maar die letter is hier de snelheid van terugtrekken. Onder $\mathbb{Q}$ groeit de
-koperprijs met $i - \delta$. Een open mijn produceert $n$ pond per jaar tegen kosten $a$
-per pond (niet de $a_0$ en $a_1$ van de affiene stelling). Zonder vaste kosten,
-belastingen en uitputting voldoet haar waarde $V(S,t)$ aan
+convenience yield, bijvoorbeeld 1% per jaar. Brennan en Schwartz noemen de convenience
+yield $\kappa$, maar die letter is hier de snelheid van terugtrekken. Onder $\mathbb{Q}$
+groeit de koperprijs met $i - \delta$. Een open mijn produceert $n$ pond per jaar tegen
+kosten $a$ per pond (niet de $a_0$ en $a_1$ van de affiene stelling). Zonder vaste kosten,
+belastingen en uitputting voldoet de waarde $V(S,t)$ van de mijn aan
 
 ```{math}
 :label: eq-termijnstructuur-real-options-mijn
@@ -615,17 +643,17 @@ belastingen en uitputting voldoet haar waarde $V(S,t)$ aan
 ```
 
 In woorden: dit is de PDE van Black en Scholes met groei $i - \delta$ en een dividend
-$n(S - a)$ per jaar. Een gesloten mijn mist dat dividend. Waar de eigenaar opent of
-sluit, verschillen de waarden van open en gesloten mijn de wisselkosten (*value
-matching*) en zijn ze even steil (*smooth pasting*). Zoals de intuïtie voorspelde, is de
-mijn meer waard dan haar netto contante waarde: in de koperboom van oefening 4 bijna
-twee keer zoveel.
+$n(S - a)$ per jaar, dat een gesloten mijn mist. Waar de eigenaar opent of sluit,
+verschillen de waarden van open en gesloten mijn precies de wisselkosten (*value
+matching*) en zijn ze even steil (*smooth pasting*). De keuze om te sluiten maakt de mijn
+meer waard dan de netto contante waarde zegt, in de koperboom van oefening 4 bijna twee
+keer zoveel.
 
 ::::{note} De getallen van Brennan en Schwartz, en de drempel van McDonald en Siegel
 :class: dropdown
 
-{cite:t}`BrennanSchwartz1985` losten het volledige model numeriek op (hun tabellen 1
-en 2):
+{cite:t}`BrennanSchwartz1985` losten het volledige model numeriek op. De tabel vat de
+invoer en de uitkomsten uit hun tabellen 1 en 2 samen.
 
 | grootheid | Brennan en Schwartz |
 |---|---|
@@ -634,7 +662,7 @@ en 2):
 | openen / sluiten / opgeven bij een koperprijs van | 76 / 44 / 20 dollarcent |
 | waarde van de keuze om te sluiten, bij 50 cent | 0,89 miljoen dollar, 12% van een mijn die altijd produceert |
 
-Wie vandaag investeert, geeft de keuze op om later, met meer informatie, te beslissen.
+Een investering vandaag geeft ook de keuze op om later, met meer informatie, te beslissen.
 Voor een project met waarde $V$ (een nieuwe $V$, niet de mijnwaarde) die onder
 $\mathbb{Q}$ met $i - \delta$ groeit en volatiliteit $\sigma$ heeft, en onomkeerbare
 kosten $I$, vonden {cite:t}`McDonaldSiegel1986` de drempel
@@ -653,24 +681,26 @@ V^{*} = \frac{\eta}{\eta - 1}\, I,
 ```
 :::
 
-Het bewijs: de optie om te investeren is $F = cV^{\eta}$, met $\eta$ de positieve wortel
+Voor het bewijs schrijven we de optie om te investeren als $F = cV^{\eta}$, met $\eta$ de positieve wortel
 van $\tfrac12\sigma^2\eta(\eta - 1) + (i - \delta)\eta - i = 0$. Value matching
 ($cV^{*\eta} = V^{*} - I$) en smooth pasting ($c\eta V^{*\eta - 1} = 1$) geven samen
 $V^{*} = \eta I/(\eta - 1)$. $\eta$ is de elasticiteit van de optiewaarde naar $V$. Bij
 $i = \delta = 4\%$ en $\sigma = 20\%$ is $\eta = \tfrac12 + \sqrt{\tfrac14 + 2} = 2$, dus
-$V^{*} = 2I$, waar de netto contante waarde $V^{*} = I$ zegt. Meer onzekerheid verhoogt
-de drempel, een hogere $\delta$ verlaagt haar.
+$V^{*} = 2I$, terwijl de netto contante waarde $V^{*} = I$ zegt. Meer onzekerheid
+verhoogt de drempel, omdat wachten dan meer oplevert, en een hogere $\delta$ verlaagt de
+drempel, omdat wachten dan meer gemiste opbrengst kost.
 ::::
 
 ### Hetzelfde argument voor een Amerikaanse optie: LSM
 
-*Waarom zou dit waar zijn?* De houder van een Amerikaanse put beslist op elk moment:
-uitoefenen of doorgaan. Doorgaan is de verwachte waarde van zijn latere kasstromen, en een
-regressie op gesimuleerde paden schat die verwachting. Voorspelt de regressie slecht, dan
-oefent hij soms verkeerd uit, en daalt de waarde.
+De houder van een Amerikaanse put kiest op elk moment tussen uitoefenen en doorgaan.
+Doorgaan is de verwachte waarde van zijn latere kasstromen waard, en een regressie op
+gesimuleerde paden schat die verwachting. Voorspelt de regressie slecht, dan oefent hij
+soms verkeerd uit, zodat de waarde daalt.
 
 Laat de put met uitoefenprijs $K$ uitoefenbaar zijn op $J$ momenten
-$t_1 < \dots < t_J = T$. Doorgaan is op $t_k$ waard (vergelijking 1 van het artikel):
+$t_1 < \dots < t_J = T$. Doorgaan is op $t_k$ waard (vergelijking 1 van
+{cite:t}`LongstaffSchwartz2001`):
 
 ```{math}
 :label: eq-termijnstructuur-real-options-doorgaan
@@ -698,9 +728,9 @@ verdisconteerde opbrengst. Met vaste coëfficiënten convergeert het gemiddelde 
 verwachte opbrengst van deze ene stoptijd, en die is hoogstens het supremum. $\square$
 :::
 
-In woorden: LSM benadert de optiewaarde met veel paden van onderen, zoals de intuïtie
-voorspelde (Proposition 1 van {cite:t}`LongstaffSchwartz2001`). De replicatie toetst dat
-met één tabel.
+Met veel paden en vaste coëfficiënten benadert LSM de optiewaarde dus van onderen, omdat
+een geschatte uitoefenregel nooit beter is dan de beste (Proposition 1 in hetzelfde
+artikel). De replicatie toetst die ondergrens met één tabel.
 
 ```{admonition} Samengevat
 :class: tip
@@ -714,7 +744,7 @@ met één tabel.
   [](#eq-termijnstructuur-real-options-vasicek). Eén factor geeft perfect gecorreleerde
   yields.
 
-- Hetzelfde argument prijst een mijn, [](#eq-termijnstructuur-real-options-mijn), en
+- Hetzelfde argument bepaalt de waarde van een mijn, [](#eq-termijnstructuur-real-options-mijn), en
   een Amerikaanse optie met LSM, dat een ondergrens geeft.
 
 - De simulatie hierna vraagt: hoe goed leggen veertig jaar maanddata $\kappa$, $\theta$
@@ -724,14 +754,17 @@ met één tabel.
 ## Simulatie: hoe goed is de rentedynamiek te schatten?
 
 Veertig jaar maanddata leggen de volatiliteit van de rente tot op enkele procenten vast,
-maar de snelheid van terugtrekken niet eens tot op een factor twee. Hoe goed kan de
-replicatie dus schatten, als het model klopt?
+maar de snelheid van terugtrekken niet eens tot op een factor twee. De replicatie heeft
+met 55 jaar iets meer data, maar dat de drift ook dan slecht gemeten blijft, laat de
+$t$-waarde van $\hat\kappa$ daar zien. Hoe goed kan de replicatie de parameters schatten,
+als het model klopt?
 
 Per maand is de Vasicek-rente een *AR(1)-proces*: de rente van volgende maand is een
 constante plus $b$ maal de rente van nu, plus een normale schok, met
 $b = e^{-\kappa/12} = 0{,}9876$ bij $\kappa = 0{,}15$. Omdat die schok normaal is en voor
-elke maand even groot, is kleinste kwadraten exacte maximum likelihood. We trekken 2000 steekproeven van 40 jaar uit het model van de theorie
-en schatten elke steekproef.
+elke maand even groot, is kleinste kwadraten precies maximum likelihood. We trekken 2000
+steekproeven van 40 jaar uit het model van de theorie en schatten het model op elke
+steekproef.
 
 ```{code-cell} ipython3
 def fit_vasicek(rate, dt):
@@ -762,9 +795,10 @@ pd.DataFrame(
 ).round(4)
 ```
 
-Het 90%-interval van $\hat\kappa$ loopt van 0,10 tot 0,54, bijna drie keer de ware 0,15
-breed. Dat van $\hat\sigma$ loopt van 1,43% tot 1,59%, een tiende van de ware 1,5%. De
-lange yield erft de onzekerheid van de drift: van 4,2% tot 9,8% rond een ware 7,5%.
+Tussen het 5%- en het 95%-kwantiel is $\hat\kappa$ bijna drie keer zo breed verspreid als
+de ware waarde groot is, terwijl $\hat\sigma$ daar maar een tiende van zijn ware waarde
+beslaat. De lange yield erft de onzekerheid van de drift, en zijn interval beslaat bijna
+zes procentpunt.
 
 Let in de figuur links op de breedte en de lange rechterstaart, rechts op hoe smal de
 verdeling is.
@@ -794,19 +828,19 @@ plt.show()
 :label: fig-termijnstructuur-real-options-schatting
 :width: 100%
 
-Links een brede, scheve verdeling rond een te hoge mediaan, rechts een smalle rond de
-ware waarde.
+De verdeling links is breed en scheef, rond een te hoge mediaan. De verdeling rechts is
+smal en ligt rond de ware waarde.
 :::
 
-Hier komt de standaardfout van 2% uit [Rendementen en hun statistiek](#00-01-rendementen)
-terug: een gemiddeld aandelenrendement ligt na een eeuw maar op twee procentpunt vast,
-de variantie wel scherp. Zo ook hier: de drift $\kappa(\theta - i)$ wordt alleen beter
-met een langere periode, de volatiliteit met elke extra maand.
+Hetzelfde patroon zagen we in [Rendementen en hun statistiek](#00-01-rendementen), waar
+een gemiddeld aandelenrendement na een eeuw maar op twee procentpunt vastligt, terwijl de
+variantie scherp gemeten is. Ook hier wordt de drift $\kappa(\theta - i)$ alleen beter
+gemeten met een langere periode, maar de volatiliteit met elke extra maand.
 
-De mediaan van $\hat\kappa$ ligt met 0,24 ruim boven de ware 0,15. Een geschatte
-AR(1)-coëfficiënt is in een korte steekproef naar beneden vertekend, en een lagere $b$
-geeft een hogere $\hat\kappa$: een persistente rente lijkt sneller terug te trekken dan
-ze doet.
+De mediaan van $\hat\kappa$ ligt met 0,24 ruim boven de ware waarde van 0,15, omdat een
+geschatte AR(1)-coëfficiënt in een korte steekproef naar beneden vertekend is. Een lagere
+$b$ geeft een hogere $\hat\kappa$, zodat een persistente rente sneller lijkt terug te
+trekken dan ze in werkelijkheid doet.
 
 ## Replicatie op echte data
 
@@ -830,7 +864,7 @@ gesimuleerde paden, zoals in het artikel.
 
 **Verschil met het origineel.** Vasicek en CIR schatten niets; wij schatten met maximum
 likelihood op een maandgemiddelde T-billrente. Litterman en Scheinkman gebruikten
-wekelijkse excess rendementen over 1984–1988, wij maandelijkse yieldveranderingen.
+wekelijkse overrendementen over 1984–1988, wij maandelijkse yieldveranderingen.
 
 **Verwachte afwijking.** Drie componenten verklaren meer dan 95%, de correlatie tussen 1-
 en 10-jaarsveranderingen ligt duidelijk onder één, en Vasicek zit met de 10-jaarsyield in
@@ -841,8 +875,8 @@ binnen twee standaardfouten van een binomiale boom.
 ### Vasicek en CIR op de driemaandsrente
 
 We schatten Vasicek als AR(1), met standaardfouten via de *deltamethode* (de standaardfout
-van een functie van geschatte parameters, via haar afgeleiden). CIR schatten we met
-maximum likelihood op de niet-centrale $\chi^2$-dichtheid van de overgang.
+van een functie van geschatte parameters, berekend via de afgeleiden van die functie). CIR
+schatten we met maximum likelihood op de niet-centrale $\chi^2$-dichtheid van de overgang.
 
 ```{code-cell} ipython3
 short = (hap_data.fred("TB3MS")["TB3MS"] / 100).loc["1971-08":]   # 3-month T-bill, monthly average
@@ -884,17 +918,18 @@ pd.DataFrame(
 ).round(4)
 ```
 
-De tabel bevestigt de simulatie: de volatiliteit ligt scherp vast, de drift niet. De
-snelheid van terugtrekken heeft bij Vasicek een $t$-waarde van maar
+De tabel bevestigt de simulatie, want de volatiliteit ligt scherp vast en de drift niet.
+De snelheid van terugtrekken heeft bij Vasicek een $t$-waarde van maar
 $0{,}1003/0{,}0608 = 1{,}6$, en het gemiddelde $\theta$ heeft een standaardfout van twee
-procentpunt, [de standaardfout van 2%](#00-01-rendementen) voor de rente. De
-Feller-verhouding van CIR ligt net boven één, omdat de rente jarenlang bij nul lag.
+procentpunt. Ook bij de rente stuiten we dus op [de standaardfout van 2%](#00-01-rendementen),
+want na 55 jaar data is het gemiddelde nog nauwelijks bekend.
+De Feller-verhouding van CIR ligt net boven één, omdat de rente jarenlang bij nul lag.
 
 ### De modelcurve naast de waargenomen curve
 
-De marktprijs van risico zit alleen in de curve. We kiezen per model één constante
-$\lambda$ (voor CIR één $\kappa^{*}$) die de kwadratische afstand tot de GSW-yields van 1
-tot 10 jaar over alle maanden minimaliseert.
+De marktprijs van risico is alleen uit de curve af te lezen. Daarom kiezen we per model
+één constante $\lambda$ (voor CIR één $\kappa^{*}$) die de kwadratische afstand tot de
+GSW-yields van 1 tot 10 jaar over alle maanden minimaliseert.
 
 ```{code-cell} ipython3
 gsw_month = hap_data.gsw().resample("ME").last()
@@ -942,8 +977,9 @@ print(f"CIR: kappa* = {kq_c.x:.3f}, RMSE = {1e4 * np.sqrt(kq_c.fun):.0f} bp")
 ```
 
 De tabel geeft yields in procenten. Beide modellen zitten gemiddeld ruim een procentpunt
-naast de curve, en hun grootste fouten liggen aan de lange kant in 1981, 2008 en 2021.
-Let in de figuur op de afstand tussen de zwarte lijn en de modellen aan de lange kant.
+naast de curve. Hun grootste fouten liggen aan de lange kant, in 1981, 2008 en 2021. In
+de figuur gaat het daarom om de afstand tussen de zwarte lijn en de modellen aan de lange
+kant.
 
 ```{code-cell} ipython3
 :label: cel-termijnstructuur-real-options-curves
@@ -983,25 +1019,26 @@ plt.show()
 :label: fig-termijnstructuur-real-options-curves
 :width: 100%
 
-In 1981 zet Vasicek de 10-jaarsyield te laag, in 2021 te hoog. CIR zit in 2008 te laag.
+De panelen zetten Vasicek en CIR op vijf datums naast de GSW-curve.
 Rechtsonder: de 10-jaarsyield van het model volgt de korte rente, de waargenomen
-10-jaarsyield beweegt trager en op eigen kracht.
+10-jaarsyield beweegt trager en zelfstandig.
 :::
 
-Vasicek zet de lange yield vast op één getal, hier 8,3%. Daardoor verklaart het model
-een hoge lange yield niet samen met een hoge korte rente (1981), en een lage lange yield
-niet samen met een korte rente van nul (2021).
+Vasicek zet de lange yield vast op één getal, hier 8,3%. Daardoor kan het model een hoge
+lange yield niet verklaren samen met een hoge korte rente (1981), en evenmin een lage lange
+yield samen met een korte rente van nul (2021).
 
 CIR maakt de omgekeerde fout. Bij een hoge rente stijgt de curve te steil (1981), en bij
 een rente van nul schakelt de vierkantswortel de volatiliteit uit, zodat de curve te vlak
-blijft (2008). Beide fouten zijn [](#cor-termijnstructuur-real-options-correlatie) in de
-vorm van een curve.
+blijft (2008). Beide fouten volgen uit [](#cor-termijnstructuur-real-options-correlatie),
+want met één factor kan de lange kant niet los van de korte bewegen.
 
 ### Drie factoren: level, slope en curvature
 
 Drijft één factor de curve, dan vindt een principale-componentenanalyse op
-yieldveranderingen één component. We rekenen haar uit op maandelijkse veranderingen van 1
-tot 10 en van 1 tot 30 jaar.
+yieldveranderingen één component. We voeren die analyse uit op maandelijkse veranderingen
+van 1 tot 10 en van 1 tot 30 jaar, en vinden er drie, die Litterman en Scheinkman *level*,
+*slope* en *curvature* noemden (niveau, helling en kromming).
 
 ```{code-cell} ipython3
 pca_cols = yield_cols[:10]
@@ -1031,9 +1068,10 @@ pca_table
 ```
 
 De verdeling tot 30 jaar is bijna die van Litterman en Scheinkman. De iets hogere totalen
-komen deels door de Svensson-curve van GSW (een gladde functie met zes parameters,
-per dag door de waargenomen yields gelegd), die ruis uit de kleine componenten filtert. De correlatie tussen 1- en 10-jaarsveranderingen is 0,69. Let in de figuur op hoe
-vaak elke lijn van teken wisselt.
+komen deels door de Svensson-curve van GSW (een gladde functie met zes parameters, per dag
+door de waargenomen yields gelegd), die ruis uit de kleine componenten filtert. De
+correlatie tussen 1- en 10-jaarsveranderingen is 0,69 en dus ver van één. In de figuur
+gaat het erom hoe vaak elke lijn van teken wisselt.
 
 ```{code-cell} ipython3
 :label: cel-termijnstructuur-real-options-pca
@@ -1057,12 +1095,12 @@ plt.show()
 
 De eerste component heeft positieve ladingen op alle looptijden, licht aflopend: een
 bijna parallelle verschuiving (*level*). De tweede verandert tussen vier en vijf jaar van
-teken: kort en lang bewegen tegengesteld (*slope*). De derde is positief aan beide
-uiteinden en negatief in het midden (*curvature*). Dat zijn de vormen uit figuur 2 van
-Litterman en Scheinkman.
+teken, zodat kort en lang tegengesteld bewegen (*slope*). De derde is positief aan beide
+uiteinden en negatief in het midden (*curvature*). Het zijn dezelfde drie vormen als in
+figuur 2 van Litterman en Scheinkman.
 :::
 
-De tabel zet de uitkomsten naast de verwachting uit het replicatieblok.
+De tabel zet de uitkomsten naast wat we vooraf verwachtten.
 
 ```{code-cell} ipython3
 first_pc_one_sign = bool(np.all(eigvec[:, 0] > 0))
@@ -1083,19 +1121,20 @@ pd.DataFrame(
 )
 ```
 
-**Geslaagd.** Elke verwachting uit het replicatieblok komt uit: drie componenten verklaren
-99,9% en 98,9%, de correlatie ligt ver onder één, en Vasicek zit in 1981 en 2021 ruim een
-procentpunt naast de curve, in tegengestelde richting. Dat de eerste component negen tiende
-verklaart, laat zien waarom Vasicek als benadering bruikbaar was.
+**Geslaagd.** Alles wat we vooraf verwachtten komt uit, want drie componenten
+verklaren 99,9% en 98,9%, de correlatie ligt ver onder één, en Vasicek zit in 1981 en 2021
+ruim een procentpunt naast de curve, in tegengestelde richting. Omdat de eerste component
+negen tiende verklaart, was Vasicek toch een bruikbare benadering.
 
 ### LSM tegen een binomiale boom
 
 De put uit tabel 1 van Longstaff en Schwartz heeft $S = 36$, $K = 40$, $\sigma = 0{,}20$,
-$T = 1$ en $i = 6\%$, en is vijftig keer per jaar uitoefenbaar. Maatstaf is een binomiale
-boom van 5000 stappen waarin elke honderdste stap uitoefenbaar is. LSM gebruikt 100.000
-paden, de helft *antithetisch* (elk pad met zijn spiegelbeeld). De regressoren zijn een
-constante en nul tot drie gewogen *Laguerre-polynomen* van $x = S/K$: veeltermen in $x$,
-vermenigvuldigd met $e^{-x/2}$, zodat de regressie goed geconditioneerd blijft.
+$T = 1$ en $i = 6\%$, en is vijftig keer per jaar uitoefenbaar. Als maatstaf dient een
+binomiale boom van 5000 stappen waarin elke honderdste stap uitoefenbaar is. LSM gebruikt
+100.000 paden, waarvan de helft *antithetisch* is (elk pad met zijn spiegelbeeld). De
+regressoren zijn een constante en nul tot drie gewogen *Laguerre-polynomen* van
+$x = S/K$: veeltermen in $x$, vermenigvuldigd met $e^{-x/2}$, zodat de regressie goed
+geconditioneerd blijft.
 
 ```{code-cell} ipython3
 def binomial_put(S0, K, rate, sigma, T, n_steps, exercise_every=1):
@@ -1164,40 +1203,45 @@ pd.DataFrame(
 ).round(4)
 ```
 
-**Geslaagd.** Boom en Europese put vallen samen met het artikel, en LSM met drie
-polynomen ligt binnen één standaardfout van de boom. Met minder basisfuncties ligt LSM
-eronder, met alleen een constante bijna vijftien cent, zoals
-[](#thm-termijnstructuur-real-options-ondergrens) voorspelt.
+**Geslaagd.** Boom en Europese put vallen samen met het artikel. LSM met drie polynomen
+ligt 0,005 boven de boom, binnen één standaardfout, en dat botst niet met
+[](#thm-termijnstructuur-real-options-ondergrens). De stelling geldt voor vaste
+coëfficiënten, terwijl LSM de coëfficiënten schat op dezelfde paden waarop het ze toepast,
+zodat de regel een beetje vooruitkijkt en de waarde licht naar boven vertekent. Met minder
+basisfuncties ligt LSM duidelijk onder de boom, met alleen een constante zelfs bijna
+vijftien cent.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat de modellen verklaren.** Veel, en blijvend. Eén arbitrageargument geeft elke
-obligatie en obligatieoptie een consistente prijs, en sinds Duffie en Kan is elk later
-model een keuze van factoren. Dezelfde PDE maakte van investeringen opties, en LSM maakte
-Amerikaanse opties op veel factoren rekenbaar. De eerste principale component verklaart
-89% van de variantie.
+**Wat de modellen verklaren.** De modellen verklaren veel, en dat is zo gebleven. Eén
+arbitrageargument geeft elke obligatie en obligatieoptie een consistente prijs, en sinds
+Duffie en Kan is elk later model een keuze van factoren. Dezelfde PDE maakte van
+investeringen opties, en LSM maakte Amerikaanse opties op veel factoren rekenbaar. De
+eerste principale component verklaart 89% van de variantie.
 
-**Waar het breekt.** Eén factor met een constante marktprijs van risico past kort en
-lang niet tegelijk: Vasicek zit met de 10-jaarsyield in 1981 2,3 procentpunt te laag en in
-2021 1,8 te hoog. Veranderingen in de 1- en 10-jaarsyield correleren 0,69, niet één.
-Daaronder ligt [de standaardfout van 2%](#00-01-rendementen) in rentevorm: de drift is
-na ruim vijftig jaar nauwelijks gemeten ($t = 1{,}6$ voor $\hat\kappa$).
+**Waar het breekt.** Eén factor met een constante marktprijs van risico past niet
+tegelijk op kort en lang, want Vasicek zit met de 10-jaarsyield in 1981 2,3 procentpunt
+te laag en in 2021 1,8 te hoog. Bovendien correleren veranderingen in de 1- en
+10-jaarsyield 0,69 en niet één. Daaronder ligt
+[de standaardfout van 2%](#00-01-rendementen) in rentevorm, want de drift is na ruim
+vijftig jaar nauwelijks
+gemeten ($t = 1{,}6$ voor $\hat\kappa$).
 
 **Risico of vergissing?** De Chicago-lezing (prijzen belonen risico dat door de tijd
 varieert) zegt dat de marktprijs van risico niet constant is. Na tien jaar inflatie
 eisten beleggers in 1981 een hoge vergoeding voor renterisico, in 2021 een lage, en de
 fout is een gemeten risicopremie. De Yale-lezing (prijzen wijken af door vergissingen en
 beperkte arbitrage) zegt dat beleggers recente inflatie extrapoleren, of dat
-pensioenfondsen en centrale banken kopen ongeacht de prijs. Scheiden vraagt de
-stochastische discontofactor in crises als 1979–1981, 2008 en 2022, en die zijn te
-schaars. Wie in 1981 een lange obligatie tegen 15% kocht, droeg in de termen van
-Santa-Clara een beprijsd risico, of dacht iets te weten wat de prijs niet wist. De data
-kiezen niet.
+pensioenfondsen en centrale banken kopen ongeacht de prijs. Om beide lezingen te scheiden,
+is de stochastische discontofactor in crises als 1979–1981, 2008 en 2022 nodig, maar zulke
+crises zijn te schaars. Wie in 1981 een lange obligatie tegen 15% kocht, kreeg volgens
+Santa-Clara een vergoeding voor risico, of zag iets wat de markt over het hoofd zag. Uit
+de data valt niet op te maken welke van de twee het was.
 
-**Wat er daarna kwam.** De term premium wordt later een eigen onderzoeksobject
-([](#05-28-termijnstructuur-premies)). Eerst keert het vak terug naar de cross-sectie,
-waar Fama en French de anomalieën van Basu, Banz en Rosenberg in één regressie
-samenbrachten: [](#04-18-fama-french).
+**Wat er daarna kwam.** De termijnpremie wordt later een eigen onderwerp van onderzoek
+([](#05-28-termijnstructuur-premies)). Eerst keert het vak echter terug naar de
+cross-sectie, waar Fama en French de anomalieën van Basu, Banz en Rosenberg in één
+regressie samenbrachten: [](#04-18-fama-french).
 
 ## Oefeningen
 
@@ -1217,9 +1261,9 @@ uitoefenprijs $K = 0{,}87$ is uit te oefenen op $t = 0$, $1$ en $2$.
 :class: dropdown
 
 **(1)** Op $t = 2$ ligt de obligatie overal boven 0,87. Op $t = 1$ levert uitoefenen in
-de hoge knoop $0{,}87 - 0{,}858001 = 0{,}011999$, en doorgaan niets. Op $t = 0$ levert
-uitoefenen $0{,}87 - 0{,}866668 = 0{,}003332$, en wachten $\tfrac12(0{,}011999 + 0)/1{,}05 = 0{,}005714$. De houder wacht,
-en de put is $0{,}005714$ waard.
+de hoge knoop $0{,}87 - 0{,}8580 = 0{,}0120$, en doorgaan niets. Op $t = 0$ levert
+uitoefenen $0{,}87 - 0{,}8667 = 0{,}0033$, en wachten $\tfrac12(0{,}0120 + 0)/1{,}05 =
+0{,}0057$. Omdat wachten meer oplevert, wacht de houder, en de put is $0{,}0057$ waard.
 
 **(2)** Nul, om dezelfde reden als op $t = 2$ hierboven. De code rekent beide na.
 
@@ -1238,9 +1282,9 @@ pd.Series({
 }).round(6).to_frame("waarde")
 ```
 
-Wat dit leert: een obligatie trekt naar haar nominale waarde, dus haar renterisico krimpt
-met de tijd, en een obligatieoptie vraagt een model van de hele curve. Uitoefenen tegen
-doorgaan is de beslissing die LSM met een regressie neemt.
+Een obligatie trekt dus naar de nominale waarde, zodat het renterisico met de tijd
+krimpt, en een obligatieoptie vraagt daarom een model van de hele curve. Dezelfde keuze
+tussen uitoefenen en doorgaan neemt LSM met een regressie.
 :::
 
 :::{exercise}
@@ -1274,7 +1318,7 @@ $$
        = \Big(\theta^{*} - \frac{\sigma^2}{2\kappa^2}\Big)(B - \tau) - \frac{\sigma^2B^2}{4\kappa} - B\,i_t .
 $$
 
-**(2) en (3)** De code simuleert de rente onder $\mathbb{Q}$ en integreert haar met de
+**(2) en (3)** De code simuleert de rente onder $\mathbb{Q}$ en integreert die met de
 trapeziumregel.
 
 ```{code-cell} ipython3
@@ -1300,10 +1344,11 @@ convexity_30 = sigma**2 / (2 * kappa**2) * (1 - B30 / 30) - sigma**2 * B30**2 / 
 print(f"convexiteit 30 jaar: {convexity_30:.2%};  oneindig lang: {sigma**2 / (2 * kappa**2):.2%}")
 ```
 
-De Monte-Carloprijs 0,82983 ligt 0,7 standaardfout (0,00043) onder de gesloten vorm 0,83013.
-Het convexiteitseffect verlaagt de 30-jaarsyield met 0,34 en de oneindig lange yield met
-0,50 procentpunt, klein naast de term premium van 3 procentpunt. Wat dit leert: de affiene formule is Jensens ongelijkheid uit
-het toy-voorbeeld, toegepast op een normale integraal van de rente.
+De Monte-Carloprijs 0,82983 ligt 0,7 standaardfout (0,00043) onder de gesloten vorm
+0,83013. Het convexiteitseffect verlaagt de 30-jaarsyield met 0,34 en de oneindig lange
+yield met 0,50 procentpunt, klein naast de termijnpremie in de lange yield van 3 procentpunt. De affiene
+formule is dus Jensens ongelijkheid uit het toy-voorbeeld, toegepast op een normale
+integraal van de rente.
 :::
 
 :::{exercise}
@@ -1355,12 +1400,14 @@ for name in ("kappa", "theta"):
 subsamples.round(4)
 ```
 
-Vóór 2000 is $\hat\kappa = 0{,}28$ (standaardfout 0,14) en $\hat\theta = 6{,}8\%$, daarna
-$0{,}10$ (0,07) en 1,3%. Dat zijn verschillen van $-1{,}15$ en $-2{,}86$
-standaardfouten. De volatiliteit daalt van 2,0% naar 0,65%, de correlatie tussen 1- en
-10-jaarsveranderingen van 0,76 naar 0,56, het aandeel van de eerste component van 0,93
-naar 0,91. Wat dit leert: één eenfactormodel met vaste parameters past niet op
-beide perioden, en de breuk is het scherpst in de tweede momenten, die goed meetbaar zijn.
+Het gemiddelde verschilt het meest, want $\hat\theta$ daalt van 6,8% vóór 2000 naar 1,3%
+daarna, bijna drie standaardfouten. De snelheid van terugtrekken daalt ook, maar dat
+verschil is met ruim één standaardfout niet significant.
+
+De correlatie tussen 1- en 10-jaarsveranderingen daalt van 0,76 naar 0,56, en de
+volatiliteit van 2,0% naar 0,65%. Alleen het aandeel van de eerste component blijft bijna
+gelijk. Eén eenfactormodel met vaste parameters past dus niet op beide perioden, en de
+breuk is het scherpst in de tweede momenten, die goed meetbaar zijn.
 :::
 
 :::{exercise}
@@ -1383,17 +1430,17 @@ is een verhandeld activum zonder convenience yield.
 
 **(1)** $q = (1 + R^{f} - d)/(u - d) = (1{,}05 - 0{,}8)/0{,}4 = 0{,}625$, zoals $\pi^{*}$ in
 [](#03-11-apt-no-arbitrage). Onder $q$ is de verwachte koperprijs $1{,}05$ op $t = 1$ en
-$1{,}1025$ op $t = 2$, dus de netto contante waarde is
-$0{,}05/1{,}05 + 0{,}1025/1{,}1025 = 0{,}140590$.
+$1{,}1025$ op $t = 2$, zodat de netto contante waarde
+$0{,}05/1{,}05 + 0{,}1025/1{,}1025 = 0{,}140590$ is.
 
 **(2)** Op $t = 2$ levert de mijn $\max(S - a, 0)$: $0{,}44$, $0$ of $0$. Op $t = 1$ levert
 doorwerken in de hoge knoop $0{,}20 + 0{,}625 \cdot 0{,}44/1{,}05 = 0{,}461905$; in de lage
-knoop $-0{,}20$, dus daar gaat de mijn dicht. Vandaag is ze
+knoop $-0{,}20$, zodat de mijn daar dichtgaat. Vandaag is ze
 $0{,}625 \cdot 0{,}461905/1{,}05 = 0{,}274943$ waard, en de keuze
 $0{,}274943 - 0{,}140590 = 0{,}134354$ (op onafgeronde getallen).
 
-**(3)** De netto contante waarde (0,14) verwerpt het project, de waardering met de keuze
-(0,27) accepteert het. De code rekent het na.
+**(3)** Volgens de netto contante waarde (0,14) is het project de openingskosten niet
+waard, maar volgens de waardering met de keuze (0,27) wel. De code rekent het na.
 
 ```{code-cell} ipython3
 mine = dict(S0=1.00, u=1.2, d=0.8, R_f=0.05, cost=1.00)
@@ -1415,8 +1462,8 @@ pd.DataFrame({
 }).round(6)
 ```
 
-Wat dit leert: de keuze om te sluiten verdubbelt bijna de waarde van de mijn, en een
-netto contante waarde met de verwachte koperprijs rekent alsof de mijn in verliesjaren
+De keuze om te sluiten verdubbelt dus bijna de waarde van de mijn. Een netto contante
+waarde met de verwachte koperprijs rekent immers alsof de mijn in verliesjaren
 doorwerkt.
 :::
 

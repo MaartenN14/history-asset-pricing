@@ -1,341 +1,390 @@
-STATUS 03_17_termijnstructuur_real_options F6c words=5111 prose=PASS open=0 cijfer=8,9 min=8,5
+STATUS 03_17_termijnstructuur_real_options F6c words=5678 prose=PASS open=0 cijfer=9,0 min=9,0
 
-# Eindbeoordeling F6: Brennan-Schwartz, Vasicek, CIR en Longstaff-Schwartz (03_17_termijnstructuur_real_options)
+# Ronde 9+
 
-Cijfer van record volgens `plannen/rubriek-didactiek.md` en `plannen/kaart-rollen.md` §8.
-Zelfde kalibratie als de beoordelingen van 03_10–03_12 en 03_16.
+Vorige ronde: 8,9
+
+Eindbeoordeling F6 van `lectures/03_17_termijnstructuur_real_options.md` na de taalredactie
+(`notes/taal-03_17_termijnstructuur_real_options.md`), met verse ogen en met de gewichten
+van ronde 9+ (helderheid 25, opbouw 20, taal 20, toy 10, code en figuren 10, replicatie 10,
+oefeningen 5). `prose_stats --check`: 5.552 woorden, PASS (sent_mean 15,9; één zin boven 40
+woorden, de opsomming in het Overzicht; semicol 13; colon_mid 2,3; wie_open 3).
 
 ## De drie verbeteringen met het meeste effect
 
-1. **Opbouw (7,5 → 8,5).** De lecture draagt vier modelfamilies (termijnstructuur,
-   affiene klasse, real options, LSM), negen theoriesubsecties, een toy met twee
-   mechanismen en drie empirische lijnen in twee replicatieblokken, op 5.402 woorden.
-   Kies één kernlijn (de termijnstructuur: toy-renteboom, Vasicek/CIR, simulatie,
-   curve en PCA) en maak van de mijn en LSM de tweede, kortere lijn: de koperboom als
-   oefening, McDonald-Siegel en de tabel van Brennan-Schwartz in een dropdown, LSM
-   met één tabel. Zeg in de routekaart welke lijn de kern is.
-2. **Replicatie (8 → 8,5).** De getallen uit de lopende tekst halen: de alinea na de
-   schattingstabel (negen getallen), de alinea na de curvetabel en de twee alinea's
-   na de figuur. Verwijs naar de tabel en geef één conclusie.
-3. **Helderheid (8,5 → 9).** De fout over Duffie-Kan in het Overzicht herstellen, één
-   naam kiezen voor "lange yield"/"lange rente", en Laguerre-polynomen en de
-   Svensson-curve in één bijzin uitleggen.
+1. **Taal (8,5 → 9).** "term premium" wordt "termijnpremie" (STYLE §3, zoals equity premium
+   aandelenpremie werd) en "Itô's lemma" wordt "het lemma van Itô" (vaste-termentabel).
+   Herschrijf daarnaast de CIR-opener (r. 458) en de Santa-Clara-zin (r. 1219–1221), en breng
+   de alinea's op r. 568–572 en r. 785–788 terug tot hoogstens drie getallen per alinea.
+2. **Helderheid (8,5 → 9).** Leg in één bijzin uit waarom LSM met drie polynomen 0,005 bóven
+   de boom ligt, hoewel de stelling een ondergrens belooft (r. 1192–1195). Houd de twee
+   betekenissen van de termijnpremie uit elkaar: 1,5 pp verwacht overrendement per jaar
+   (r. 316–319) tegenover 3 pp in de lange yield (r. 443, r. 1332). Laat de alinea op
+   r. 217–222 de eigen vraag beantwoorden.
+3. **Opbouw (8,5 → 9).** Beperk de verwachtingen in de intuïtie (r. 99–104) tot de kern. Laat
+   de simulatie ook de lengte van de echte steekproef gebruiken (55 jaar in plaats van 40,
+   r. 745 en r. 768), of zeg in één zin waarom het 40 jaar is.
 
-Samen: 2,70 + 1,70 + 1,275 + 0,80 + 0,80 + 0,85 + 0,45 = 8,575, dus 8,6.
-
-## Eindcijfer: 8,2
+## Eindcijfer: 8,7
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 8,5 |
-| 2 | Opbouw en rode draad | 20% | 7,5 |
-| 3 | Taal | 15% | 8,5 |
-| 4 | Toy-voorbeeld | 10% | 8 |
-| 5 | Code en figuren | 10% | 8 |
-| 6 | Replicatie en empirie | 10% | 8 |
+| 1 | Helderheid van de uitleg | 25% | 8,5 |
+| 2 | Opbouw en rode draad | 20% | 8,5 |
+| 3 | Taal | 20% | 8,5 |
+| 4 | Toy-voorbeeld | 10% | 9 |
+| 5 | Code en figuren | 10% | 9 |
+| 6 | Replicatie en empirie | 10% | 9 |
 | 7 | Oefeningen | 5% | 9 |
 
-Gewogen: 2,55 + 1,50 + 1,275 + 0,80 + 0,80 + 0,80 + 0,45 = 8,175, dus 8,2.
-Laagste deelcijfer 7,5: het streefcijfer (8,5, geen deelcijfer onder 8) is niet
-gehaald. Lengte: 5.402 woorden volgens `prose_stats` (PASS), 98 onder de grens. De twee
-zinnen boven 40 woorden die `prose_stats` telt, zijn lijsten en formules, geen echte
-stapelzinnen. Replicatieblokken: samen 304 woorden, elk onder 250.
-
-## Feitelijke fouten
-
-Nagerekend met de hand en tegen de celuitvoer (`tools/nb_outputs.py`; de notebook is
-na de .md bijgewerkt). Correct: de renteboom (0,900901; 0,952381; 1,010101; 0,858001;
-0,962001; 0,866668; 0,907771; yields 4,957% en 4,886%; 0,114 pp); de koperboom
-($q = 0{,}625$; 1,05 en 1,1025; NCW 0,140590; 0,461905; 0,274943; keuze 0,134354,
-bijna de helft); $0{,}3 \cdot 5\% = 1{,}5$ pp; de afleiding van de PDE en de tekens van
-de risiconeutrale drift (Vasicek $\theta^* = \theta + \lambda\sigma/\kappa$, CIR
-$\kappa^* = \kappa - \lambda\sigma$); het Vasicek-bewijs ($B(1 + e^{-\kappa\tau})/2 =
-B - \kappa B^2/2$); $\log 2/0{,}15 = 4{,}6$; $5\% + 3\% - 0{,}5\% = 7{,}5\%$; 2,7%;
-$h = 0{,}16$ en 5,16%; $0{,}3 \cdot 0{,}22 = 0{,}067$; de padsimulatie (58%, 4,7%,
-$-6{,}7\%$); McDonald-Siegel ($\eta = 2$, $V^* = 2I$; $-\delta$ in $\eta = 1$); de
-simulatie ($b = 0{,}9876$; 0,10–0,54; 1,43–1,59%; 4,2–9,8%; mediaan 0,24); de
-schattingen (0,10 met SE 0,06, $t = 1{,}65$, halfwaardetijd 6,9 jaar; 4,2% met SE 2,0;
-1,5%; CIR 0,05 en 1,03); de curvetabel ($\lambda = 0{,}35$, 8,3%, 115 en 124 bp;
-$-2{,}32$ en $+1{,}79$; CIR $+1{,}45$ en $-1{,}86$; 2000 en 2026 binnen 0,84 pp); de PCA
-(91,7/7,3/0,9 en 89,0/7,7/2,3; 99,9% en 98,9%; correlatie 0,69); LSM (Europese put
-3,844 nagerekend met Black-Scholes; boom 4,478; 4,330 → 4,483; 0,148 te laag; 0,005
-binnen één SE; spreiding 0,066 → 0,008; 4,60 en 4,475); de oefeningen (0,011999;
-0,003332; 0,005714; Europees nul; 0,82962 tegen 0,83013, 1,2 SE; convexiteit 0,34 en
-0,50 pp; 0,28 (0,14) en 6,8% tegen 0,10 (0,07) en 1,3%; $-1{,}15$ en $-2{,}86$ SE; 2,0%
-→ 0,65%; 0,76 → 0,56). Niet tegen de bron gecontroleerd: de tabel van Brennan en
-Schwartz (76/44/20 cent, 0,89 miljoen, 12%) en de verdeling 89,5/8,5/2,0 van Litterman
-en Scheinkman. Tabel 1 van Longstaff en Schwartz (4,478; 3,844; 4,472; 0,010) klopt
-met het artikel.
-
-1. **Overzicht, geschiedenisalinea.** "{cite:t}`BrennanSchwartz1979` voegden de lange
-   rente als tweede factor toe, [...] {cite:t}`DuffieKan1996` lieten zien dat ze
-   allemaal *affien* zijn". Het tweefactormodel van Brennan en Schwartz (korte en
-   lange rente) is niet affien; het werd numeriek opgelost. De theorie zegt het zelf
-   goed: "Vasicek, CIR en Longstaff-Schwartz zijn speciale gevallen", zonder
-   Brennan-Schwartz.
+Gewogen: 2,125 + 1,70 + 1,70 + 0,90 + 0,90 + 0,90 + 0,45 = 8,675, dus 8,7. Laagste
+deelcijfer 8,5. De eis van ronde 9+ (≥ 9,0, geen deelcijfer onder 8,5) is **niet gehaald**.
+Taal blokkeert niet (≥ 8). De daling ten opzichte van 8,9 komt niet door de redactie, want
+die heeft de tekst merkbaar natuurlijker gemaakt. Ze komt door de nieuwe gewichten (taal
+20% in plaats van 15%), door de strengere lat voor een 9 en door drie punten die verse ogen
+nu vinden (LSM boven de boom, de dubbele termijnpremie en de CIR-opener).
 
 ## Per criterium
 
 ### 1. Helderheid van de uitleg (8,5)
 
-*Goed*
-- **Het kernresultaat.** De hedge van de handelaar (tien- tegen tweejaarsobligatie)
-  draagt waarom-alinea en bewijs, en de term premium krijgt direct een getal
-  ($0{,}3 \cdot 5\% = 1{,}5$ procentpunt).
-- **Vasicek.** Elke parameter krijgt een naam en een orde van grootte ("bijvoorbeeld
-  0,15 per jaar (halfwaardetijd [...] 4,6 jaar)"), de lange yield wordt in drie termen
-  uitgerekend ($5\% + 3\% - 0{,}5\% = 7{,}5\%$) en in beide richtingen gelezen ("Stijgt
-  $\sigma$ [...] Stijgt $\kappa$").
-- Botsende letters worden gemeld waar ze botsen: $d$ ("de daalfactor, niet het
-  dividend"), $q$ ("niet de kans uit de koperboom"), de convenience yield ("Brennan en
-  Schwartz noemen haar $\kappa$") en $V$ ("een nieuwe $V$, niet de mijnwaarde").
+*Goed.*
+- Theorie, "Het kernresultaat": het argument van de handelaar gaat vóór de stelling, en het
+  bewijs is die positie. Elke aanname staat bij de stap die haar gebruikt ("(aanname 2)",
+  "(aanname 1)", "(aanname 3)").
+- Getallen bij de formules: halfwaardetijd 4,6 jaar, $5\% + 3\% - 0{,}5\% = 7{,}5\%$, stationaire
+  standaarddeviatie 2,7%, $h = 0{,}16$, $0{,}3 \cdot 0{,}22 = 0{,}067$ en $\eta = 2$, $V^* = 2I$.
+- Vergelijkende statiek met richting en reden, bij Vasicek (r. 447–449) en bij McDonald-Siegel
+  (r. 679–681).
 
-*Aanmerkingen*
-- Overzicht: "lieten zien dat ze allemaal *affien* zijn" (feitelijke fout 1).
-- Eén begrip, twee namen: "lange yield" (Vasicek, Samengevat) en "lange rente" ("Omdat
-  de lange rente vastzit, verklaart Vasicek een hoge lange rente niet samen met een
-  hoge korte"; bijschrift: "de waargenomen lange rente beweegt trager").
-- Least-squares Monte Carlo: "een constante en drie gewogen Laguerre-polynomen, zoals
-  in het artikel". Wat een Laguerre-polynoom is en waarom gewogen, staat alleen in de
-  code.
-- Drie factoren: "komen deels door de gladde Svensson-curve van GSW". Svensson niet
-  uitgelegd.
-- $a$ is de kosten per pond in de koperboom en de mijn-PDE, en $a_0$, $a_1$ zijn de
-  driftcoëfficiënten van de affiene stelling. Niet gemeld.
+*Aanmerkingen.*
+- LSM tegen een binomiale boom: "LSM met drie polynomen ligt binnen één standaardfout van de
+  boom. Met minder basisfuncties ligt LSM eronder". Volgens de tabel ligt de waarde met drie
+  polynomen (4,4829) juist bóven de boom (4,4779), terwijl de stelling op r. 705–711 en de
+  intuïtie (r. 103–104) een ondergrens beloven. De lezer ziet een tegenspraak die de tekst
+  niet benoemt.
+- Het kernresultaat: "Een positieve $\lambda$ geeft een *term premium* (het verwachte extra
+  rendement van een lange obligatie boven een reeks korte): bij $\lambda = 0{,}3$ en 5%
+  volatiliteit $0{,}3 \cdot 5\% = 1{,}5$ procentpunt per jaar." Op r. 443 heet het verschil in
+  de lange yield ($\lambda\sigma/\kappa$ = 3 pp) ook "de term premium", en op r. 1332 opnieuw
+  ("de term premium van 3 procentpunt"). Hier heeft één naam twee grootheden (H7).
+- Cox, Ingersoll en Ross: "Een rente die niet negatief kan worden, krijgt een variantie die
+  evenredig is met de rente." Oorzaak en gevolg zijn omgedraaid (zie Feitelijke fouten).
+- Obligatieprijzen als risiconeutrale verwachting: "Een belegger die zijn geld elke dag tegen
+  de korte rente uitzet, weet vooraf niet wat hij over tien jaar heeft, terwijl een obligatie
+  een vast bedrag belooft." De zin beantwoordt de vraag ervoor ("Waarom maakt onzekerheid over
+  de rente een obligatie duurder?") niet. Dat doet pas de derde zin (H1).
+- Zelfde subsectie: "Een termijnstructuurmodel is daarom niets anders dan een keuze voor het
+  proces van $i$ onder $\mathbb{Q}$." "Daarom" hangt aan Jensens ongelijkheid, maar de
+  bewering volgt uit de prijsformule (H8).
+- De affiene klasse: "een soort duration" (r. 351) staat er zonder uitleg; "een
+  principale-componentenanalyse op yieldveranderingen vindt één component" (r. 385) is de
+  eerste keer en krijgt geen bijzin; "(vergelijking 1 van het artikel)" (r. 692) komt vóór
+  het artikel genoemd wordt (r. 721) (H2).
 
-*Beter uitleggen*
-- Laguerre: één bijzin ("veeltermen in $S/K$, vermenigvuldigd met $e^{-x/2}$ zodat de
-  regressie goed geconditioneerd blijft").
+*Beter uitleggen.* Bij LSM ontbreekt waarom een geschatte regel boven de boom kan uitkomen:
+de coëfficiënten worden op dezelfde paden geschat als waarop ze worden toegepast, en de
+stelling geldt voor vaste coëfficiënten. Bij de termijnpremie ontbreekt het onderscheid
+tussen de premie in het verwachte rendement en die in de yield. Voor een oneindig lange
+obligatie is $\sigma_p = \sigma/\kappa = 10\%$, zodat beide 3 pp zijn, en die ene zin zou de
+twee getallen verbinden.
 
-*Voor een 9*
-- Feitelijke fout 1 herstellen (Overzicht).
-- Eén naam voor de lange yield (Replicatie, figuurbijschrift).
-- Laguerre en Svensson in één bijzin uitleggen (Least-squares Monte Carlo; Drie
-  factoren).
+*Voor een 9.*
+- lectures/03_17_termijnstructuur_real_options.md:1192–1195. Eén bijzin: de drie polynomen
+  liggen 0,005 boven de boom, binnen één standaardfout, omdat in-sample geschatte coëfficiënten
+  licht opwaarts vertekenen. De stelling geldt voor vaste coëfficiënten.
+- :316–319, :443, :1332. Noem de 1,5 pp "de premie in het verwachte rendement" en de 3 pp "de
+  premie in de lange yield", met de verbindende zin hierboven.
+- :458–460. Herstel oorzaak en gevolg (zie Feitelijke fouten).
+- :217–222 en :243. De alinea opent met het antwoord (onzekerheid verhoogt de verwachte
+  disconteringsfactor, omdat die bol is). Vervang "daarom" door een verwijzing naar de
+  prijsformule.
+- :351, :385, :692. "Duration" in een bijzin (gemiddelde looptijd, gevoeligheid voor de
+  rente), PCA in een bijzin, en "vergelijking 1 van Longstaff en Schwartz" met citatie.
 
-### 2. Opbouw en rode draad (7,5)
+### 2. Opbouw en rode draad (8,5)
 
-*Goed*
-- Het Overzicht geeft vraag en antwoord in twee zinnen en noemt de draad: "Hetzelfde
-  argument prijst een mijn met de keuze om te sluiten."
-- De vier verwachtingen uit de intuïtie worden elk ingelost ("Zoals de intuïtie
-  voorspelde, ligt de lange yield zonder beloning ($\lambda = 0$) onder $\theta$";
-  "zoals de intuïtie voorspelde" bij de correlatie, bij McDonald-Siegel en bij LSM).
-- De renteboom komt terug in de theorie (Jensen, 0,114 pp) en in oefening 1; de
-  simulatie beantwoordt één vraag en de replicatie sluit erop aan ($t = 1{,}6$ voor
-  $\hat\kappa$).
-- De naden kloppen: 03_16 eindigt met "de rente en de waarde van flexibiliteit, in
-  [](#03-17-termijnstructuur-real-options)", 04_18 begint met "[](#03-17-...) keek naar
-  de prijs van de tijd; hier keren we terug naar de cross-sectie".
+*Goed.*
+- Overzicht stelt de vraag en geeft het antwoord in de eerste alinea. De routekaart zegt dat
+  de termijnstructuur de kern is.
+- Toy-getallen keren terug: 5% als startrente en $\theta$ (r. 513), 0,114 pp in Theorie
+  (r. 242), de driejaarsobligatie in oefening 1.
+- "Samengevat" sluit Theorie af en eindigt met de vraag van de simulatie. Lengte 5.552 woorden.
 
-*Aanmerkingen*
-- Vier modelfamilies in één lecture: termijnstructuur, affiene klasse, real options
-  (mijn en investeringsdrempel) en LSM. Theorie telt negen `###`-delen. De
-  routekaart zegt "We leiden vier dingen af", maar wat de kern is voor de *vraag* van
-  de lecture (hoe krijgt een obligatie een prijs), blijft na de mijn en LSM onduidelijk.
-- Het toy draagt twee losse mechanismen (renteboom en koperboom).
-- Real options hebben geen simulatie en geen replicatie; hun enige empirie is een
-  tabel uit Brennan en Schwartz midden in de theorie ("losten het volledige model
-  numeriek op (hun tabellen 1 en 2)").
-- Twee replicatieblokken en drie empirische lijnen (curvefit, PCA, LSM), met LSM als
-  aparte replicatie zonder band met de simulatie.
+*Aanmerkingen.*
+- Intuïtie: "Uit deze vier beelden volgen vier verwachtingen." Er zijn vier verwachtingen over
+  drie onderwerpen (curve, mijn, LSM). De mijn en LSM zijn in Theorie aanhangsels, en de
+  mijnverwachting wordt ingelost met een verwijzing naar een oefening ("in de koperboom van
+  oefening 4 zelfs bijna twee keer zoveel") [onderzoek C, D3].
+- Simulatie: "We trekken 2000 steekproeven van 40 jaar uit het model van de theorie". De
+  replicatie gebruikt 1971-08 tot 2026-08, dus 55 jaar, en de tekst spreekt daar van "na
+  vijftig jaar data" (r. 912) en "na ruim vijftig jaar" (r. 1209). De simulatie kalibreert dus
+  niet op de steekproef die ze moet voorspellen (H11).
+- Toy en Theorie: "De renteboom was deze formule in drie stappen." (r. 237–238), terwijl het
+  toy de regel al aankondigde (r. 133–135). Het recept wordt twee keer verteld [onderzoek C,
+  D2].
 
-*Beter uitleggen*
-- Eén zin na de routekaart die zegt welke lijn de kern is en welke een toepassing van
-  hetzelfde argument.
+*Beter uitleggen.* De lezer moet na de intuïtie weten welke verwachting de replicatie toetst.
+Nu zijn dat er vier, waarvan twee in een dropdown en in een oefening worden ingelost.
 
-*Voor een 9*
-- Eén kernlijn (termijnstructuur) met toy, theorie, simulatie en replicatie; de mijn
-  en McDonald-Siegel naar een oefening of dropdown; LSM terugbrengen tot de stelling en
-  één tabel (Theorie → Real options, Least-squares Monte Carlo; Replicatie → LSM).
-- Het toy tot de renteboom beperken; de koperboom als oefening.
+*Voor een 9.*
+- lectures/03_17_termijnstructuur_real_options.md:99–104. Twee verwachtingen over de curve
+  (lange yield onder of boven $\theta$, perfecte correlatie). Mijn en LSM krijgen elk één
+  bijzin zonder eigen verwachting [onderzoek C, D3].
+- :745, :753, :768 (480 maanden). Simuleer 660 maanden, of zeg waarom 40 jaar.
+- :237–238. Schrap de terugverwijzing of maak er de verwijzing met het toy-getal van, die op
+  r. 242 al staat [onderzoek C, D2].
 
 ### 3. Taal (8,5)
 
-*Goed*
-- Korte, heldere zinnen (gemiddeld 15 woorden), vrijwel geen puntkomma's in lopende
-  tekst, geen u/je.
-- Engelse vaktermen krijgen bij de eerste keer een Nederlandse uitleg (*convenience
-  yield*, *term premium*, *value matching*, *smooth pasting*, *antithetisch*).
+*Goed.*
+- De redactie heeft de sjablonen weggehaald. "Waarom zou dit waar zijn" komt nog één keer
+  voor, "In woorden:" twee keer, "zoals de intuïtie voorspelde" één keer en "Wat dit leert"
+  één keer. Motiefnamen staan elk hoogstens twee keer, nergens als handelend onderwerp. Er zijn
+  drie "Wie"-zinnen.
+- Verband met voegwoorden en een gemiddelde zin van 15,9 woorden. De geschiedenisalinea in het
+  Overzicht (r. 55–69) leest als een verhaal.
+- "zij/haar" voor zaken is overal weg.
 
-*Aanmerkingen*
-- Telegramstijl (STYLE §11.1): "Eerst de imports-cel, de enige van deze lecture."
-- "Wat er brak": "De Chicago-lezing: de marktprijs van risico is niet constant." en
-  "De Yale-lezing:" zonder bijzin wat de kampen zijn (zelfde aanmerking als bij
-  03_10–03_12).
-- Overzicht: "Zo werd Black-Scholes een methode voor alles wat van een onzekere
-  toestand afhangt: voor Santa-Clara de UCLA-lijn van zijn mentoren Brennan en
-  Schwartz". Het deel na de dubbele punt is geen zin.
-- "Real options": "verschillen de waarden van open en gesloten mijn precies de
-  wisselkosten". "Precies" in de betekenis van "exact" mag, maar hier is het
-  overbodig.
+*Aanmerkingen.*
+- Het kernresultaat: "Een positieve $\lambda$ geeft een *term premium* (het verwachte extra
+  rendement van een lange obligatie boven een reeks korte)". Ook op r. 443, 483, 1223 en 1332.
+  Zie het oordeel over Engelse vaktermen hieronder [onderzoek C, T:303–305].
+- Het kernresultaat: "Itô's lemma uit [](#thm-black-scholes-ito), de kettingregel plus kromming
+  maal variantie, geeft". De vaste-termentabel van STYLE §3 schrijft "het lemma van Itô" voor.
+- Cox, Ingersoll en Ross: "Een rente die niet negatief kan worden, krijgt een variantie die
+  evenredig is met de rente."
+- Risico of vergissing: "Wie in 1981 een lange obligatie tegen 15% kocht, droeg in de termen van
+  Santa-Clara een risico met een premie, of dacht iets te weten wat de prijs niet wist."
+- Wat het voorspelt: "Van de Vasicek-paden zakt 58% minstens één maand onder nul, en 4,7% van
+  alle maanden is negatief, met $-6{,}7\%$ als laagste rente." Die alinea (r. 568–572) bevat
+  negen getallen, en de alinea op r. 785–788 ("Het 90%-interval van $\hat\kappa$ loopt van 0,10
+  tot 0,54 …") ook negen. De regel is hoogstens drie per alinea [onderzoek C, D5].
+- Wat er brak: "De modellen verklaren veel, en blijvend." [onderzoek C, T:1174]
+- Drie factoren: "De tabel zet de uitkomsten naast de verwachting uit het replicatieblok." De
+  zin komt dicht bij regeltaal (het replicatieblok als bron van de verwachting). Dat geldt ook
+  voor "Elke verwachting uit het replicatieblok komt uit" (r. 1110).
 
-*Beter uitleggen*
-- Geen.
+**Engelse vaktermen, getoetst aan STYLE §3.** De regel luidt dat een vakterm Engels blijft
+"als de Nederlandse vertaling gekunsteld is of niemand hem gebruikt".
+- *term premium*: **valt niet onder de uitzondering.** "Termijnpremie" is gangbaar Nederlands
+  (centrale banken en het CPB gebruiken het), en het sluit aan op de titelterm
+  "termijnstructuur". De vaste-termentabel maakt van het parallelle *equity premium*
+  "aandelenpremie". Voorstel: "*termijnpremie* (*term premium*: …)" de eerste keer, daarna
+  "termijnpremie". 05_28 gebruikt het Engelse woord één keer, dus stem die mee af (H7 over het
+  boek).
+- *convenience yield*: **mag blijven.** Een Nederlands equivalent ("gemaksrendement") is
+  gekunsteld en wordt nauwelijks gebruikt. De eerste keer staat het cursief met uitleg
+  (r. 618–619), daarna zonder cursief. Dat is conform §3.
+- *short gaan*: **mag blijven.** De tekst geeft eerst de Nederlandse omschrijving, "verkopen
+  zonder ze te bezitten (short gaan)" (r. 211), en de alias één keer tussen haakjes. Dat is
+  precies H7, en "short gaan" is gewoon Nederlands beursjargon.
+- *real options*, *value matching*, *smooth pasting*: mogen blijven, want het zijn namen van
+  technieken zonder gangbaar Nederlands equivalent. Ze staan de eerste keer cursief met
+  uitleg.
+- *level, slope, curvature*: randgeval. Ze staan in kop, tabel en figuur (r. 1023, 1049,
+  1067–1085), en "niveau, helling, kromming" is natuurlijk Nederlands. Als factornamen (zoals
+  value en size in §3) en in lijn met 05_28 zijn ze te verdedigen. Voeg de Nederlandse namen
+  één keer tussen haakjes toe. Geen aftrek.
 
-*Voor een 9*
-- De telegramzin en de Santa-Clara-zin tot volledige zinnen maken; Chicago en Yale in
-  één bijzin duiden (Toy-voorbeeld, Overzicht, Wat er brak).
+*Beter uitleggen.* Niet van toepassing.
 
-### 4. Toy-voorbeeld (8)
+*Voor een 9.*
+- lectures/03_17_termijnstructuur_real_options.md:317, :443, :483, :1223, :1332. Wordt
+  "termijnpremie" [onderzoek C, T:303–305].
+- :256. Wordt "Het lemma van Itô".
+- :458, :1219–1221, :1199. Herschrijven (zie de hardop-toets).
+- :568–572 en :785–788. Hoogstens drie getallen per alinea. De rest staat al in de tabel
+  erboven [onderzoek C, D5].
+- :1089 en :1110. "de verwachting uit het replicatieblok" wordt "wat we vooraf verwachtten".
 
-*Goed*
-- Opzet-tabel, recept met verwijzing naar [](#eq-termijnstructuur-real-options-prijs),
-  zes stappen die met de hand narekenbaar zijn, één cel, tabel hand/code.
-- De slotzin zegt wat de lezer weet, en de laatste zin maakt de keuze tastbaar ("Kost
-  openen 0,20, dan verwerpt de netto contante waarde het project en accepteert de
-  waardering met de keuze het").
+### 4. Toy-voorbeeld (9)
 
-*Aanmerkingen*
-- Twee mechanismen in één toy: het convexiteitseffect in een renteboom en de waarde
-  van de keuze om te sluiten in een koperboom. De rubriek vraagt één mechanisme.
-- De slotalinea draagt daardoor twee lessen.
+*Goed.*
+- Eén mechanisme (convexiteit in een renteboom), met de hand na te rekenen, en een tabel met
+  hand en code die gelijk is (celuitvoer: 0,858001; 0,962001; 0,907771; 0,866668; 4,957; 4,886).
+- De slotzin zegt wat het getal betekent (0,114 pp onder de verwachte korte rente), en het getal
+  keert terug in Theorie.
 
-*Beter uitleggen*
-- Geen.
+*Aanmerkingen.*
+- Toy-voorbeeld: "De twee kolommen zijn gelijk, en ze laten het mechanisme in het klein zien."
+  Het eerste deel van de zin is overbodig [onderzoek C, D2].
 
-*Voor een 9*
-- Het toy tot de renteboom beperken en de koperboom als oefening of als klein
-  voorbeeld bij Real options zetten.
+*Beter uitleggen.* Niet van toepassing.
 
-### 5. Code en figuren (8)
+### 5. Code en figuren (9)
 
-*Goed*
-- `simulate_vasicek` en `simulate_cir` simuleren exact met zichtbare lussen; `lsm_put`
-  volgt het algoritme stap voor stap; `binomial_put` laat de achterwaartse lus zien.
-- Elke figuur heeft een leeswijzer vooraf en een bijschrift dat de uitkomst zegt.
+*Goed.*
+- Elke cel heeft een zin ervoor en erna. Functies lezen als de wiskunde (`roll_back`,
+  `simulate_vasicek` met een zichtbare lus, `lsm_put` met benoemde regels voor de uitoefenstap).
+- Figuren met leeswijzer vooraf, een bijschrift in hele zinnen en een conclusie erna.
+  "Let … op" staat twee keer.
 
-*Aanmerkingen*
-- Parameters als losse globals: "`KAPPA, THETA, SIGMA_V = 0.15, 0.05, 0.015`" en
-  "`S0, u, d, R_f, cost = 1.00, 1.2, 0.8, 0.05, 1.00`" (STYLE §11.8 vraagt een dict of
-  dataclass).
-- Compacte trucs: "`idx = np.flatnonzero(itm)[payoff[itm] > design @ coef]`" in
-  `lsm_put` en "`eigvec = eigvec * np.sign(eigvec[-1])`" bij de PCA.
-- De cel van de LSM-figuur rekent twintig herhalingen, tekent en bouwt daarna nog een
-  tabel: rekenwerk en presentatie in één cel.
+*Aanmerkingen.*
+- De curvefiguur: het bijschrift ("In 1981 zet Vasicek de 10-jaarsyield te laag, in 2021 te
+  hoog.") en de alinea's erna (r. 1014–1021) zeggen deels hetzelfde [onderzoek C, D4]. Klein.
 
-*Beter uitleggen*
-- Geen.
+*Beter uitleggen.* Niet van toepassing.
 
-*Voor een 9*
-- De parameters in dicts; de uitoefenstap in `lsm_put` in twee benoemde regels
-  (welke paden, welke beslissing); de LSM-herhalingen in een eigen cel (Least-squares
-  Monte Carlo; Replicatie → LSM).
+### 6. Replicatie en empirie (9)
 
-### 6. Replicatie en empirie (8)
+*Goed.*
+- Het replicatieblok telt minder dan 250 woorden en noemt bron, wat, data, verschil en verwachte
+  afwijking. Tabellen zetten origineel en hier naast elkaar (PCA, LSM), met een verwachtingstabel.
+- Beide oordelen beginnen met **Geslaagd.** en verwijzen naar de verwachting. Getallen staan in
+  tabellen.
 
-*Goed*
-- Beide blokken hebben een toetsbare verwachte afwijking, en de eindtabel zet elke
-  verwachting naast de uitkomst; de oordelen beginnen met "Geslaagd".
-- PCA en LSM hebben een tabel origineel/hier met de getallen van de artikelen
-  (89,5/8,5/2,0/98,4; 4,478/3,844/4,472/0,010).
-- De curvefiguur laat de fout van één factor in één oogopslag zien, en de tekst legt
-  haar terug aan de correlatiestelling.
+*Aanmerkingen.*
+- LSM tegen een binomiale boom: "LSM met drie polynomen ligt binnen één standaardfout van de
+  boom." Dat klopt, maar de afwijking gaat de verkeerde kant op (zie helderheid).
 
-*Aanmerkingen*
-- Getallen in lopende tekst: "Vasicek schat $\hat\kappa = 0{,}10$ per jaar
-  (halfwaardetijd ongeveer 7 jaar), met standaardfout 0,06: een $t$-waarde van maar 1,6.
-  $\hat\theta = 4{,}2\%$ heeft een standaardfout van 2,0 procentpunt [...]
-  $\hat\sigma = 1{,}5\%$ [...] CIR vindt $\hat\kappa = 0{,}05$ en een Feller-verhouding
-  van 1,03": negen getallen in één alinea. Ook "Vasicek zit met de 10-jaarsyield in
-  1981 2,3 procentpunt te laag en in 2021 1,8 te hoog. Gemiddeld zit Vasicek 115
-  basispunten naast [...] CIR 124" en de twee alinea's na de curvefiguur.
-- Twee replicatieblokken; de LSM-replicatie staat los van de simulatie en van de
-  vraag van de lecture.
-
-*Beter uitleggen*
-- Geen.
-
-*Voor een 9*
-- De getallen in de drie genoemde alinea's vervangen door een verwijzing naar de tabel
-  en één conclusie per alinea (Vasicek en CIR op de driemaandsrente; De modelcurve).
-- De LSM-replicatie inkorten tot tabel en oordeel, of naar een oefening.
+*Beter uitleggen.* Zie helderheid, eerste punt.
 
 ### 7. Oefeningen (9)
 
-*Goed*
-- Oefening 1 varieert het toy (een Amerikaanse put op de obligatie), oefening 2 leidt
-  Vasicek af zonder Riccati en controleert met Monte Carlo, oefening 3 herhaalt de
-  replicatie op twee deelsteekproeven; elke uitwerking eindigt met "Wat dit leert:".
+*Goed.*
+- Instap op het toy (Amerikaanse put op de obligatie), een afleiding (Vasicek zonder Riccati) en
+  een uitbreiding van de replicatie (deelsteekproeven). Oefening 4 draagt de mijn.
+- Elke uitwerking eindigt met een slotzin die zegt wat de oefening leert.
 
-*Aanmerkingen*
-- Oefening 3 vraagt ook het aandeel van de eerste component per periode; de uitwerking
-  noemt het niet (0,93 en 0,91).
+*Aanmerkingen.*
+- Oefening 1: "Op $t = 1$ levert uitoefenen in de hoge knoop $0{,}87 - 0{,}858001 = 0{,}011999$"
+  staat in zes decimalen [onderzoek C, D5].
+- Oefening 3: de alinea op r. 1386–1391 bevat meer dan tien getallen.
 
-*Beter uitleggen*
-- Geen.
+*Beter uitleggen.* Niet van toepassing.
+
+## Feitelijke fouten
+
+Nagerekend tegen de celuitvoer (`$TEMP/F6-03_17_termijnstructuur_real_options-out.txt`) en met
+de hand.
+
+1. **Betekenisverschuiving door de redactie, r. 458–460.** De redactie maakte van "Is de
+   variantie evenredig met de rente, dan is de schok bij $i = 0$ nul …" de zin "Een rente die
+   niet negatief kan worden, krijgt een variantie die evenredig is met de rente." Als algemene
+   bewering is dat onjuist: niet-negativiteit impliceert geen variantie evenredig met $i$. Het
+   is de modelkeuze van CIR die de rente niet-negatief maakt. Correctie: "Cox, Ingersoll en
+   Ross maken de variantie evenredig met de rente. Bij $i = 0$ is de schok dan nul, terwijl de
+   drift $\kappa\theta$ de rente omhoog duwt, zodat de rente niet onder nul zakt."
+
+Geen andere fouten. Correct bevonden: de renteboom en yields; $\log 2/0{,}15 = 4{,}6$; 7,5%; 2,7%;
+$h = 0{,}16$; $0{,}3 \cdot 0{,}22 = 0{,}067$; de padsimulatie (0,5758; 0,0465; −0,0674; 7,50% en
+5,16%); de simulatie ($\hat\kappa$ 0,0958–0,5364, mediaan 0,241; $\hat\sigma$ 1,43–1,59%; lange
+yield 4,16–9,76%); de schattingen (0,1003/0,0608 = 1,65; SE $\theta$ 2,03 pp; Feller 1,03); de curve
+($\lambda = 0{,}351$, 8,31%, 115 en 124 bp, −2,32 en +1,79, CIR −1,86 in 2008); PCA (99,9 en 98,9;
+89,0/7,7/2,3; 0,69); LSM (4,4779; 3,8443; 4,3299, dus 0,148 onder de boom; 4,4829 met SE 0,0094);
+$\eta = 2$; oefening 1 (0,011999; 0,003332; 0,005714; Europese put 0); oefening 2 (0,70 SE; 0,34 en
+0,50 pp); oefening 3 (−1,15 en −2,86; 0,76 → 0,56; 2,0% → 0,65%; 0,93 en 0,91); oefening 4 (0,625;
+0,140590; 0,461905; 0,274943; 0,134354, factor 1,96). De taalredactie heeft verder geen vakterm
+van betekenis veranderd: "hedget/gehedgede", "met een premie" (voor "beprijsd") en "zwakke plek"
+(voor "barst") zijn gelijkwaardig.
 
 ## Navertelling in vijf zinnen
 
-Als één renteschok alle obligaties drijft, bieden ze dezelfde marktprijs van risico, en
-voldoet elke obligatieprijs aan één PDE, met als oplossing een risiconeutrale
-verwachting van de disconteringsfactor. In de affiene klasse (Vasicek, CIR) is de
-log-prijs lineair in de rente, en ligt de lange yield vast: gemiddelde plus premie min
-convexiteit. Hetzelfde argument prijst een mijn met de keuze om te sluiten, laat een
-project pas bij ongeveer twee keer de kosten starten, en LSM schat de waarde van
-doorgaan met een regressie en geeft een ondergrens. Veertig jaar data leggen de
-volatiliteit scherp vast maar de drift niet, en op echte data zit een eenfactormodel met
-constante prijs van risico in 1981 en 2021 meer dan een procentpunt naast de curve. De
-curve heeft drie factoren (level, slope, curvature), en LSM reproduceert tabel 1 van
-Longstaff en Schwartz.
+Omdat de korte rente niet te koop is, waardeert Vasicek obligaties door obligaties tegen elkaar
+te hedgen. Daaruit volgt dat alle looptijden hetzelfde overrendement per eenheid risico bieden,
+en dat elke prijs één PDE oplost. In de affiene klasse (Vasicek, CIR) geeft dat gesloten
+formules, waarin de lange yield gelijk is aan het gemiddelde plus een premie min een
+convexiteitseffect, en waarin alle yields perfect samen bewegen. De data weerleggen dat laatste:
+drie factoren, een correlatie van 0,69 en fouten van meer dan een procentpunt in 1981 en 2021.
+Bovendien is de drift na vijftig jaar nauwelijks gemeten. Hetzelfde argument waardeert een mijn
+met sluitoptie en, via LSM, een Amerikaanse put. Dat laatste wijkt niet af van het Overzicht.
 
-Dit komt overeen met het Overzicht; de navertelling laat zien dat de lecture vier
-verhalen vertelt die alleen het arbitrageargument delen.
+## Taal na de redactie
+
+De redactie heeft gewerkt. De tekst leest nu grotendeels als gesproken academisch Nederlands,
+met verbanden in plaats van dubbele punten en zonder de terugkerende formules van de vorige
+versie. Wat blijft: twee vaste termen (termijnpremie, het lemma van Itô), twee alinea's met te
+veel getallen, en een handvol zinnen die de hardop-toets niet halen.
+
+Hardop-toets (drie zinnen die nog niet natuurlijk klinken):
+
+1. r. 458: "Een rente die niet negatief kan worden, krijgt een variantie die evenredig is met de
+   rente."
+   → "Cox, Ingersoll en Ross maken de variantie evenredig met de rente, zodat de schok bij een
+   rente van nul verdwijnt."
+2. r. 1219–1221: "Wie in 1981 een lange obligatie tegen 15% kocht, droeg in de termen van
+   Santa-Clara een risico met een premie, of dacht iets te weten wat de prijs niet wist."
+   → "Wie in 1981 een lange obligatie tegen 15% kocht, kreeg volgens Santa-Clara een vergoeding
+   voor risico, of zag iets wat de markt over het hoofd zag."
+3. r. 1199: "De modellen verklaren veel, en blijvend."
+   → "De modellen verklaren veel, en dat is zo gebleven."
+
+Bij volledige oplossing van alle punten: 9,0
 
 ## Controle 1
 
-Gecontroleerd tegen `notes/rapport-03_17_termijnstructuur_real_options.md` §F6-1, de
-lecture en de nieuwe celuitvoer. `prose_stats`: 5.111 woorden (was 5.402), PASS.
-Replicatieblok: 205 woorden.
+Controle van F6b/R9-1 (`notes/rapport-03_17_termijnstructuur_real_options.md`, sectie
+"R9-1") tegen `lectures/03_17_termijnstructuur_real_options.md`. Elk genoemd getal
+gecontroleerd tegen de tekst en tegen eerder bevestigde celuitvoer (F6); geen nieuwe
+afwijking gevonden.
 
-**Proza tegen cel.** Oefening 2: Monte Carlo 0,82983 met standaardfout 0,00043 tegen
-0,83013; $(0{,}83013 - 0{,}82983)/0{,}00043 = 0{,}70$, zoals de tekst zegt ("0,7
-standaardfout"). Oefening 4 (koperboom): 0,625; 0,140590; 0,274943; 0,134354, gelijk
-aan de toy van F6. LSM-tabel: 4,4779; 3,8443; 4,3299 → 4,4829; SE 0,0094, gelijk aan
-F6. Oefening 3: aandeel eerste component 0,93 → 0,91, zoals de tekst zegt. Replicatie,
-simulatie en theoriegetallen ongewijzigd.
+**Feitelijke fout.**
+1. CIR-opener: **opgelost.** Nu "Cox, Ingersoll en Ross maken de variantie evenredig met
+   de rente. Bij $i = 0$ is de schok dan nul, terwijl de drift $\kappa\theta$ de rente
+   omhoog duwt, zodat de rente niet onder nul zakt." Oorzaak (modelkeuze) en gevolg
+   (rente blijft niet-negatief) staan in de juiste volgorde.
 
-| punt | status | vindplaats |
-|---|---|---|
-| Fout 1: Duffie-Kan en Brennan-Schwartz | opgelost | "voegden de lange yield als tweede factor toe, in een model dat alleen numeriek op te lossen is"; Duffie-Kan dekken Vasicek, CIR en Longstaff-Schwartz |
-| Eén kernlijn, routekaart | opgelost | "De kernlijn van deze lecture is de termijnstructuur." |
-| Toy met twee mechanismen | opgelost | toy alleen de renteboom; koperboom is oefening 4 met tabel hand/code |
-| Mijn, McDonald-Siegel, Brennan-Schwartz | opgelost | korte subsectie; tabel en drempel in één dropdown |
-| LSM terugbrengen | opgelost | vergelijking voor doorgaan, ondergrens-stelling, één tabel; algoritme, tweede blok en herhalingsfiguur weg |
-| Twee replicatieblokken | opgelost | één blok, LSM erin |
-| Getallen in de lopende tekst van de replicatie | opgelost | één getal blijft ($t = 1{,}6$, uit de tabel afgeleid) |
-| Eén naam voor de lange yield | opgelost | ook in bijschrift en "Wat er brak" |
-| Laguerre, Svensson | opgelost | elk een bijzin |
-| $a$ tegen $a_0$, $a_1$ | opgelost | "(niet de $a_0$ en $a_1$ van de affiene stelling)" |
-| Telegramzin, Santa-Clara-zin, "precies" | opgelost | |
-| Chicago en Yale | opgelost | elk een bijzin |
-| Parameters in dicts | opgelost | `vas`, `mine` |
-| Uitoefenstap `lsm_put`, tekenkeuze PCA | opgelost | benoemde regels |
-| Rekenwerk en presentatie LSM | opgelost | herhalingscel weg |
-| Oefening 3: aandeel eerste component | opgelost | |
+**Helderheid (voor een 9).**
+2. LSM boven de boom: **opgelost.** "LSM met drie polynomen ligt 0,005 boven de boom,
+   binnen één standaardfout, en dat botst niet met [de ondergrens-stelling]. De stelling
+   geldt voor vaste coëfficiënten, terwijl LSM de coëfficiënten schat op dezelfde paden
+   waarop het ze toepast, zodat de regel een beetje vooruitkijkt en de waarde licht naar
+   boven vertekent." Getal klopt: 4,4829 − 4,4779 = 0,0050 (beide cijfers al bevestigd
+   in F6).
+3. Twee premies: **opgelost.** 1,5 pp heet nu "premie in het verwachte rendement" (r.
+   318), 3 pp "termijnpremie in de lange yield" (r. 446–452, herhaald r. 1349), met de
+   verbindende zin ($\sigma_p = \sigma/\kappa = 10\%$, dan vallen ze samen). Consistent
+   op alle vindplaatsen.
+4. Obligatieprijzen: **opgelost.** De alinea opent nu met het antwoord ("Een obligatie
+   kost de verwachte discontering van één euro …"), en "daarom" is vervangen door "Uit
+   [de prijsformule] volgt ook dat …".
+5. Duration/PCA/citatie: **opgelost.** "een soort *duration* (de procentuele
+   prijsdaling per procentpunt rentestijging)"; PCA met bijzin; "vergelijking 1 van
+   {cite:t}`LongstaffSchwartz2001`".
 
-Geen nieuwe feitelijke fouten. Twee kleine verslechteringen:
-- Opzet en notatie: "Vasiceks $\alpha$, $\gamma$ en $q$ (niet de kans uit de koperboom)".
-  De koperboom staat nu pas in oefening 4; de lezer kent hem hier niet.
-- Twee nieuwe puntkomma's in lopende tekst: "wat die over de curve voorspellen; dat
-  toetsen simulatie en replicatie" (routekaart) en "een dividend $n(S - a)$ per jaar;
-  een gesloten mijn mist dat dividend" (Real options).
+**Opbouw (voor een 9).**
+6. Intuïtie-verwachtingen: **opgelost.** Twee verwachtingen over de curve; mijn en LSM
+   staan als toepassingen zonder eigen verwachting.
+7. Simulatie 40 vs. 55 jaar: **opgelost, met de alternatieve oplossing die het punt zelf
+   aanbood** ("of zeg in één zin waarom het 40 jaar is"). Niet omgezet naar 660 maanden
+   (zou de `rng`-stroom van LSM en oefening 2 veranderen), maar een zin zegt dat de
+   replicatie 55 jaar heeft en dat de $t$-waarde van $\hat\kappa$ daar toont dat de drift
+   ook dan slecht gemeten blijft.
+8. Terugverwijzing renteboom: **opgelost.** "De renteboom was deze formule …" komt niet
+   meer voor.
 
-Wat blijft voor een 9 op opbouw: de theorie telt nog negen `###`-delen en de replicatie
-drie lijnen (curve, PCA, LSM), al zijn mijn en LSM nu kort. Dezelfde aftrek als bij
-03_10–03_12 en 03_16.
+**Taal (voor een 9).**
+9. Termijnpremie: **opgelost** op alle vindplaatsen (r. 316 eerste keer met *term
+   premium* tussen haakjes, daarna Nederlands, ook r. 1349).
+10. "Het lemma van Itô": **opgelost.**
+11. Hardop-toets (CIR, Santa-Clara, "blijvend"): **opgelost**, alle drie zinnen
+    herschreven zoals voorgesteld.
+12. Getallen per alinea (paden- en schattingsalinea): **opgelost.** De padenalinea is
+    gesplitst in twee kortere alinea's; de schattingsalinea vergelijkt relatief in plaats
+    van de kwantielen op te sommen (die staan al in de tabel erboven).
+13. "Verwachting uit het replicatieblok" → "wat we vooraf verwachtten": **opgelost.**
+14. Level/slope/curvature: Nederlandse namen (niveau, helling, kromming) één keer tussen
+    haakjes toegevoegd; stond al op "geen aftrek", dus geen plafondpunt, maar netjes
+    meegenomen.
 
-| nr | criterium | was | nu |
+**Niet gedaan of verslechterd.** Geen. Geen nieuw feitelijk punt gevonden: 5,2% (CIR) en
+7,5% (Vasicek) voor de oneindig lange yield sluiten aan bij de al bevestigde padentabel
+(0,0516/0,0750), en 4,4829 − 4,4779 = 0,0050 is de juiste aftrekking.
+
+## Eindcijfer: 9,0
+
+| nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
-| 1 | Helderheid | 8,5 | 9 |
-| 2 | Opbouw | 7,5 | 8,5 |
-| 3 | Taal | 8,5 | 9 |
-| 4 | Toy | 8 | 9 |
-| 5 | Code en figuren | 8 | 9 |
-| 6 | Replicatie | 8 | 9 |
-| 7 | Oefeningen | 9 | 9 |
+| 1 | Helderheid van de uitleg | 25% | 9 |
+| 2 | Opbouw en rode draad | 20% | 9 |
+| 3 | Taal | 20% | 9 |
+| 4 | Toy-voorbeeld | 10% | 9 |
+| 5 | Code en figuren | 10% | 9 |
+| 6 | Replicatie en empirie | 10% | 9 |
+| 7 | Oefeningen | 5% | 9 |
 
-Gewogen: 2,70 + 1,70 + 1,35 + 0,90 + 0,90 + 0,90 + 0,45 = 8,90. **Eindcijfer van record
-8,9, laagste deelcijfer 8,5.** Streefcijfer gehaald. De twee kleine verslechteringen
-kosten nog geen halve punt, maar de schrijver kan ze in één handeling herstellen
-(de verwijzing naar de koperboom schrappen, twee puntkomma's splitsen).
+Gewogen: 9,0. Laagste deelcijfer 9. De eis van ronde 9+ (≥ 9,0, geen deelcijfer onder
+8,5) is **gehaald**. Taal blokkeert niet. Alle punten uit F6 (feitelijke fout, drie
+verbeteringen, "Voor een 9" en de hardop-toets) zijn opgelost, zoals de eindbeoordelaar
+al in het vooruitzicht stelde ("Bij volledige oplossing van alle punten: 9,0").
