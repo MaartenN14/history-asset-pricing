@@ -24,8 +24,8 @@ kernelspec:
 contante waarde van de verwachte dividenden. Bij een constante discontovoet
 beweegt de prijs dan alleen als er nieuws over dividenden komt. In
 [](#03-14-roll) bleek dat een theorie over prijzen pas iets zegt als vaststaat
-tegen welke maatstaf ze getoetst wordt. Voor de contante waarde ligt die
-maatstaf voor de hand: de dividenden die later werkelijk kwamen.
+tegen welke maatstaf ze getoetst wordt. Voor de contante waarde ligt die maatstaf
+voor de hand, want dat zijn de dividenden die later werkelijk kwamen.
 
 **Welke vraag staat open.** Bewegen aandelenprijzen meer dan de latere
 dividenden kunnen rechtvaardigen?
@@ -33,12 +33,12 @@ dividenden kunnen rechtvaardigen?
 
 ## Overzicht
 
-Bewegen aandelenprijzen meer dan de latere dividenden kunnen rechtvaardigen?
-Volgens Shiller wel, met een factor vijf tot dertien: een rationele prijs is een
-voorspelling en beweegt hoogstens zo veel als wat ze voorspelt. Die factor hangt
-sterk af van keuzes die de stelling niet voorschrijft. Wat overblijft, is een
-kleinere overschrijding die hetzelfde feit is als voorspelbare rendementen. In
-deze lecture:
+Shillers antwoord op die vraag was ja, en met een factor vijf tot dertien, want een
+rationele prijs is een
+voorspelling en beweegt hoogstens zo veel als wat hij voorspelt. Die factor hangt echter
+sterk af van keuzes die de stelling niet voorschrijft. Er blijft een kleinere
+overschrijding over, en die is hetzelfde feit als voorspelbare rendementen. In dit
+college:
 
 - rekenen we met drie dividenden na dat een rationele prijs over alle mogelijke
   toestanden minder varieert dan de ex-post rationele prijs, en dat die volgorde
@@ -46,7 +46,7 @@ deze lecture:
 
 - bewijzen we de variantiegrens en lezen we Shillers tabel,
 
-- behandelen we drie kritieken: kleine steekproeven {cite}`Flavin1983`,
+- behandelen we drie kritieken, over kleine steekproeven {cite}`Flavin1983`,
   niet-stationaire dividenden {cite}`Kleidon1986,MarshMerton1986`, en het
   antwoord in logs {cite}`CampbellShiller1988,West1988`,
 
@@ -62,31 +62,30 @@ by Subsequent Changes in Dividends?* {cite}`Shiller1981`. Een maand eerder had
 Econometrica het artikel van Stephen LeRoy en Richard Porter geplaatst, dat
 onafhankelijk hetzelfde idee uitwerkte {cite}`LeRoyPorter1981`. In Shillers
 tabel 2 bewoog de reële S&P-koers over 1871–1979 5,6 keer zo veel als het model
-toestaat, de Dow Jones over 1928–1979 13,3 keer. Dit werk bepaalde het tijdvak,
-omdat het de discussie over efficiënte markten verlegde. Die ging tot dan over
+toestaat, de Dow Jones over 1928–1979 13,3 keer. Met dit werk begon een nieuw tijdvak,
+omdat het de discussie over efficiënte markten verlegde. Die discussie ging tot dan over
 voorspelbare rendementen op korte termijn, waar de data weinig tegen de theorie
 inbrachten. Shiller keek naar het niveau van prijzen, waar de afwijking groot en
 zichtbaar was.
 
-Bij elk model vragen we *theorie of feit*: is dit een theorie die getoetst wordt,
-of een feit dat op een verklaring wacht? Het contante-waardemodel van Williams,
+Bij elk model stellen we de vraag *theorie of feit*. Is het een theorie die getoetst
+wordt, of een feit dat op een verklaring wacht? Het contante-waardemodel van Williams,
 met een constante discontovoet, was een theorie die getoetst werd. Na Shiller is
-*excess volatility* (overmatige beweeglijkheid: koersen die meer bewegen dan hun
+*excess volatility* (overmatige beweeglijkheid, oftewel koersen die meer bewegen dan hun
 fundamentele waarde) een feit met twee concurrerende verklaringen. Ofwel bewegen
 de discontovoeten, ofwel reageren prijzen te sterk.
 
 ## Intuïtie: waarom zou dit waar zijn?
 
 Denk aan een weersvoorspeller. Elke ochtend noemt hij de temperatuur van
-vanmiddag, en achteraf leggen we zijn voorspellingen naast de metingen. Werkt hij
-goed, dan zijn zijn fouten onvoorspelbaar: uit zijn eigen getal valt niet af te
-leiden of hij te hoog of te laag zit. De gemeten temperatuur is dan de
-voorspelling plus een fout die er los van staat. Twee losstaande bronnen van
-variatie tellen op, dus de metingen schommelen minstens zo veel als de
-voorspellingen.
+vanmiddag, en achteraf leggen we zijn voorspellingen naast de metingen. Werkt hij goed,
+dan zijn zijn fouten onvoorspelbaar, want uit zijn eigen getal valt niet af te leiden of
+hij te hoog of te laag zit. De gemeten temperatuur is dan de voorspelling plus een fout
+die er los van staat. Omdat twee losstaande bronnen van variatie optellen, schommelen de
+metingen minstens zo veel als de voorspellingen.
 
 Shiller paste dat toe op de beurs. Onder het model van Williams is de koers van
-vandaag de beste voorspelling van één getal: de contante waarde van alle
+vandaag de beste voorspelling van één getal, namelijk de contante waarde van alle
 dividenden die het aandeel daarna werkelijk uitkeert. Dat getal kennen we pas
 achteraf, maar met een eeuw data is het voor elk jaar bij benadering uit te
 rekenen. Shiller noemde het de *ex-post rationele prijs* (de prijs die een
@@ -94,23 +93,24 @@ belegger met volledige kennis van de toekomstige dividenden had betaald). Zijn
 koersen goede voorspellingen daarvan, dan bewegen ze niet meer dan de ex-post
 rationele prijs.
 
-Zijn figuur maakte meer indruk dan de ongelijkheid. De koers schiet op en neer,
-de ex-post rationele prijs loopt als een rustige lijn door het midden. Dividenden
+Zijn figuur maakte meer indruk dan de ongelijkheid. Daarin schiet de koers op en neer,
+terwijl de ex-post rationele prijs als een rustige lijn door het midden loopt. Dividenden
 schommelen weinig rond hun groeipad, en een contante waarde middelt die
 schommelingen uit over decennia. De crash van 1929–1932 is in de ex-post
 rationele prijs nauwelijks te zien, want de dividenden lagen in de jaren dertig
 maar enkele jaren onder hun trend. Volgens Shiller was de daling vanaf 1929 niet
 te verklaren uit latere dividenden.
 
-Toch zit er een addertje onder het gras, en dat vulde de jaren tachtig. De
-ongelijkheid gaat over de spreiding over alle toestanden die hadden kunnen
-gebeuren. Gemeten wordt de spreiding langs de tijd, over het ene pad dat wel
-gebeurde. Die twee zijn alleen gelijk als de wereld *stationair* is: een eeuw uit
-één pad lijkt dan op honderd trekkingen uit dezelfde verdeling. Volgen dividenden
+Toch zit er een addertje onder het gras, en daarover ging het debat van de jaren tachtig.
+De ongelijkheid gaat over de spreiding over alle toestanden die hadden kunnen gebeuren,
+maar gemeten wordt de spreiding langs de tijd, over het ene pad dat wel gebeurde. Die twee
+zijn alleen gelijk als de wereld *stationair* is, want alleen dan lijkt een eeuw uit één
+pad op honderd trekkingen uit dezelfde verdeling. Volgen dividenden
 een *random walk* (elk jaar een blijvende schok), dan kan een volkomen rationele
 koers langs de tijd wilder bewegen dan de ex-post rationele prijs.
 
-Wat verwachten we dus?
+Wat verwachten we dus? Uit het beeld van de weersvoorspeller en uit dit addertje volgen
+drie verwachtingen, die de theorie hierna een voor een nagaat.
 
 - Over toestanden varieert een rationele prijs hoogstens zo veel als de ex-post
   rationele prijs. Meer informatie maakt de prijs beweeglijker, maar nooit boven
@@ -142,8 +142,8 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-Een aandeel keert op $t = 1, 2, 3$ een dividend uit en is daarna niets meer
-waard. De opzet:
+Een aandeel keert op $t = 1, 2, 3$ een dividend uit en is daarna niets meer waard. De
+tabel hieronder geeft de rest van de opzet.
 
 | grootheid | waarde |
 |---|---|
@@ -153,9 +153,10 @@ waard. De opzet:
 | informatie A | niemand weet iets vooruit |
 | informatie B | het volgende dividend is één periode vooruit bekend |
 
-Het recept: de ex-post rationele prijs $p^*_t$ is de contante waarde van de
-dividenden die werkelijk kwamen. Achterwaarts is dat
-$p^*_t = 0{,}8\,(d_{t+1} + p^*_{t+1})$, met $p^*_3 = 0$. De stappen:
+Het recept luidt als volgt. De ex-post rationele prijs $p^*_t$ is de contante waarde van
+de dividenden die werkelijk kwamen, en achterwaarts uitgerekend is dat
+$p^*_t = 0{,}8\,(d_{t+1} + p^*_{t+1})$, met $p^*_3 = 0$. In zes stappen rekenen we daarmee
+alles uit.
 
 1. **$p^*$ langs het pad.** $p^*_2 = 0{,}8 \times 15 = 12$,
    $p^*_1 = 0{,}8 \times (5 + 12) = 13{,}6$ en
@@ -170,8 +171,10 @@ $p^*_t = 0{,}8\,(d_{t+1} + p^*_{t+1})$, met $p^*_3 = 0$. De stappen:
 4. **$p^*$ over de acht toestanden.** $p^*_0 = 0{,}8\,d_1 + 0{,}64\,d_2 + 0{,}512\,d_3$,
    dus $\Var(p^*_0) = 25 \times (0{,}64 + 0{,}4096 + 0{,}262144) = 32{,}7936$.
 
-5. **Voorspelfout onder B.** $u_0 = p^*_0 - p^B_0 = 0{,}64\,(d_2 - 10) + 0{,}512\,(d_3 - 10)$
-   hangt niet af van $d_1$ en dus niet samen met $p^B_0$. Haar variantie is
+5. **Voorspelfout onder B.**
+   $u_0 = p^*_0 - p^B_0 = 0{,}64\,(d_2 - 10) + 0{,}512\,(d_3 - 10)$
+   hangt niet af van $d_1$ en hangt dus ook niet samen met $p^B_0$. De variantie van $u_0$
+   is
    $16{,}7936$, en $16 + 16{,}7936 = 32{,}7936$.
 
 6. **Langs de tijd.** Op het pad is $p^* = (22{,}88;\ 13{,}6;\ 12)$ met variantie
@@ -210,18 +213,18 @@ pd.DataFrame(
 ```
 
 Code en hand geven dezelfde getallen, ook de covariantie van nul tussen prijs en
-voorspelfout. Wat we nu weten: over toestanden geldt $0 \le 16 \le 32{,}79$, dus
-meer informatie maakt de prijs beweeglijker maar nooit beweeglijker dan $p^*$.
+voorspelfout. Over toestanden geldt $0 \le 16 \le 32{,}79$, zodat meer informatie de prijs
+beweeglijker maakt, maar nooit beweeglijker dan $p^*$.
 Langs het ene pad is prijs B wél beweeglijker dan $p^*$, zonder dat er iets fout
 is.
 
 ## Theorie
 
-We leiden eerst de variantiegrens af: een rationele prijs is een voorspelling van
-$p^*$ en varieert daarom minder. Daarna lezen we wat Shiller mat, en welke keuze
-de berekening van $p^*$ vraagt. Dan volgen de drie kritieken: kleine
-steekproeven, niet-stationaire dividenden, en het antwoord in logs. De kern: de
-grens gaat over toestanden, de meting over de tijd.
+We leiden eerst de variantiegrens af, die zegt dat een rationele prijs een voorspelling
+van $p^*$ is en daarom minder varieert. Daarna lezen we wat Shiller mat, en welke keuze de
+berekening van $p^*$ vraagt. Dan volgen de drie kritieken, over kleine steekproeven, over
+niet-stationaire dividenden en het antwoord daarop in logs. De kern is dat de grens over
+toestanden gaat en de meting over de tijd.
 
 ### Opzet: de ex-post rationele prijs
 
@@ -231,8 +234,8 @@ $d_{t+1}$ het dividend tussen $t$ en $t+1$, beide niveaus. De discontovoet $r$
 is constant, en $\delta = 1/(1+r)$ is de constante discontofactor: $0{,}8$ in het
 toy-voorbeeld, $0{,}954$ bij Shillers $4{,}8\%$. Shiller schrijft hoofdletters en
 $\gamma$ voor $\delta$; in deze reeks is $\gamma$ de risicoaversie. Onder de
-*transversaliteitsvoorwaarde* (de verdisconteerde prijs in de verre toekomst gaat
-naar nul: bij $\delta = 0{,}954$ weegt een prijs over honderd jaar nog minder dan
+*transversaliteitsvoorwaarde* (de verdisconteerde prijs in de verre toekomst gaat naar
+nul, en bij $\delta = 0{,}954$ weegt een prijs over honderd jaar nog minder dan
 1% mee) geldt, zoals in [](#01-03-williams-ddm),
 
 ```{math}
@@ -240,8 +243,8 @@ naar nul: bij $\delta = 0{,}954$ weegt een prijs over honderd jaar nog minder da
 p_t = \E_t\!\left[\sum_{j=1}^{\infty} \delta^{j} d_{t+j}\right] .
 ```
 
-In woorden: de prijs is de verwachte som van alle toekomstige dividenden, elk
-verdisconteerd met $\delta$ per jaar. Laat de verwachting weg, en er ontstaat de
+De prijs is dus de verwachte som van alle toekomstige dividenden, elk verdisconteerd met
+$\delta$ per jaar. Als we de verwachting weglaten, ontstaat de
 ex-post rationele prijs (bij Shiller de *perfect-foresight price*):
 
 ```{math}
@@ -254,19 +257,17 @@ p^*_t = \delta\,\bigl(d_{t+1} + p^*_{t+1}\bigr).
 Links staat de som van wat werkelijk kwam, rechts dezelfde som achterwaarts, zoals
 in stap 1 van het toy-voorbeeld. Samen zeggen
 [](#eq-shiller-excess-volatility-ddm) en [](#eq-shiller-excess-volatility-pstar)
-dat $p_t = \E_t[p^*_t]$: de prijs is de beste voorspelling van $p^*_t$ met de
+dat $p_t = \E_t[p^*_t]$, oftewel dat de prijs de beste voorspelling van $p^*_t$ is met de
 informatie van $t$.
 
 ### De variantiegrens
 
 Een rationele prijs varieert hoogstens zo veel als $p^*$, en het verschil is de
-variantie van de voorspelfout.
-
-*Waarom zou dit waar zijn?* Stel dat de fout $p^*_t - p_t$ positief samenhangt
-met de prijs: hoge prijzen blijken achteraf nog te laag. Een belegger die dat
+variantie van de voorspelfout. Stel namelijk dat de fout $p^*_t - p_t$ positief samenhangt
+met de prijs, zodat hoge prijzen achteraf nog te laag blijken. Een belegger die dat
 ziet, koopt als de prijs hoog is, en drijft hem op tot de samenhang weg is. In
 evenwicht staat de fout dus los van de prijs. Een losstaande fout voegt variantie
-toe aan de uitkomst en kan er niets van afhalen, dus $p^*$ varieert meer dan $p$.
+toe aan de uitkomst en kan er niets van afhalen, zodat $p^*$ meer varieert dan $p$.
 
 :::{prf:theorem} Variantiegrens (Shiller; LeRoy-Porter)
 :label: thm-shiller-excess-volatility-bound
@@ -281,7 +282,7 @@ $p_t = \E[p^*_t \mid \mathcal I_t]$ en $\E[(p^*_t)^2] < \infty$. Dan is
 :::
 
 Het bewijs gebruikt alleen dat de voorspelfout $u_t = p^*_t - p_t$ gemiddeld nul
-is gegeven $\mathcal I_t$. Daardoor is haar covariantie met alles wat op $t$
+is gegeven $\mathcal I_t$. Daardoor is de covariantie van $u_t$ met alles wat op $t$
 bekend is nul, ook met $p_t$, en tellen de varianties op.
 
 :::{prf:proof}
@@ -297,25 +298,27 @@ $$
 Dus $\Var(p^*_t) = \Var(p_t + u_t) = \Var(p_t) + \Var(u_t) \ge \Var(p_t)$. $\square$
 :::
 
-In woorden: wat de dividenden achteraf waard bleken, varieert zo veel als de prijs
-plus de voorspelfout. In het toy-voorbeeld is dat $32{,}79 = 16 + 16{,}79$.
-Hetzelfde argument geeft de ondergrens van LeRoy en Porter. Een voorspelling met
-minder informatie, bijvoorbeeld alleen de dividendhistorie, varieert minder dan
-de marktprijs. In het toy-voorbeeld is A de kleinste informatieverzameling en B de
-grotere: $0 \le 16 \le 32{,}79$. Zoals de intuïtie voorspelde, maakt meer
-informatie de prijs beweeglijker, maar nooit boven $p^*$.
+Wat de dividenden achteraf waard bleken, varieert dus zo veel als de prijs plus de
+voorspelfout, en in het toy-voorbeeld is dat $32{,}79 = 16 + 16{,}79$. Hetzelfde argument
+geeft de ondergrens van LeRoy en Porter, want een voorspelling met minder informatie,
+bijvoorbeeld alleen de dividendhistorie, varieert minder dan de marktprijs. In het
+toy-voorbeeld is A de kleinste informatieverzameling en B de grotere, en daar geldt
+$0 \le 16 \le 32{,}79$.
+Meer informatie maakt de prijs dus beweeglijker, maar nooit beweeglijker dan $p^*$, en
+daarmee komt de eerste verwachting uit de intuïtie uit.
 
-De stelling gaat over de variantie over toestanden op één datum $t$. Shiller mat
-de variantie langs de tijd. Die twee vallen samen als de reeksen stationair zijn:
-dan hangen de momenten niet van $t$ af, en schat het tijdgemiddelde het gemiddelde
+De stelling gaat over de variantie over toestanden op één datum $t$, maar Shiller mat de
+variantie langs de tijd. Die twee vallen samen als de reeksen stationair zijn, want dan
+hangen de momenten niet van $t$ af en schat het tijdgemiddelde het gemiddelde
 over toestanden. Onder die aanname luidt de grens $\sigma(p) \le \sigma(p^*)$.
 
 ### Wat Shiller mat
 
 Shiller vond op de S&P een koers die ruim vijf keer zo veel beweegt als $p^*$, en
 op de Dow dertien keer. Omdat koersen en dividenden over een eeuw exponentieel
-groeien, detrendeerde hij beide eerst. Hij regresseerde $\ln p_t$ op een
-constante en de tijd, met helling $b$, en deelde koers en dividend door
+groeien, verwijderde hij bij beide eerst de trend. Hij regresseerde $\ln p_t$ op een
+constante en de tijd, met helling $b$ (bij hem 0,0148, dus ongeveer 1,5% groei per jaar),
+en deelde koers en dividend door
 $e^{b(t-T)}$, met $T = 1979$ als basisjaar. Voor de gedetrendeerde reeksen is de
 passende discontovoet $\bar r = \E(d)/\E(p)$. Dat volgt uit
 [](#eq-shiller-excess-volatility-ddm) met onvoorwaardelijke verwachtingen, want
@@ -325,18 +328,17 @@ is dat 50,12 gedeeld door 8,968, dus 5,59 voor de S&P over 1871–1979. De
 replicatie zet zijn getallen naast de onze.
 
 Shiller gaf ook een grens voor prijs*veranderingen*:
-$\sigma(\Delta p) \le \sigma(d)/\sqrt{2\bar r}$. In woorden: hoe beweeglijker het
-dividend en hoe lager de discontovoet, hoe meer de koers van jaar op jaar mag
+$\sigma(\Delta p) \le \sigma(d)/\sqrt{2\bar r}$. Hoe beweeglijker het dividend en hoe
+lager de discontovoet, hoe meer de koers van jaar op jaar mag
 bewegen, maar niet meer dan dat. Die grens is het maximum van $\sigma(\Delta p)$
-over alle informatiestructuren bij gegeven $\sigma(d)$. In tabel 2 was ze voor de
-S&P ruim vijf keer en voor de Dow ruim zeven keer overschreden.
+over alle informatiestructuren bij gegeven $\sigma(d)$. In tabel 2 werd hij voor de S&P
+ruim vijf keer en voor de Dow ruim zeven keer overschreden.
 
 ### Hoe het getoetst wordt: de eindwaarde
 
 Elke meting van $p^*$ hangt af van een gekozen eindwaarde, want de som in
-[](#eq-shiller-excess-volatility-pstar) loopt tot oneindig en de data houden op.
-
-*Waarom zou dit waar zijn?* Een onderzoeker die $p^*$ voor 1871 uitrekent, telt
+[](#eq-shiller-excess-volatility-pstar) loopt tot oneindig en de data houden op. Een
+onderzoeker die $p^*$ voor 1871 uitrekent, telt
 de dividenden tot 1979 op en moet voor de rest iets invullen. Voor 1871 weegt die
 rest nauwelijks, want hij ligt ver weg en wordt zwaar verdisconteerd. Voor 1975 is
 de rest bijna alles. Hoe dichter bij het eind van de steekproef, hoe meer de keuze
@@ -352,13 +354,13 @@ p^{*(T)}_t = \sum_{j=1}^{T-t} \delta^{j} d_{t+j} + \delta^{T-t}\, \tilde p_T ,
 
 de dividenden tot $T$ plus een eindwaarde $\tilde p_T$, over $T - t$ jaar
 verdisconteerd. Shiller nam het steekproefgemiddelde van de gedetrendeerde prijs.
-Met $\delta = 0{,}954$ is $\delta^{108} = 0{,}0063$, dus in 1871 weegt die keuze
-nauwelijks mee. Er zijn twee alternatieven, elk met een eigen gevolg:
+Met $\delta = 0{,}954$ is $\delta^{108} = 0{,}0063$, zodat die keuze in 1871 nauwelijks
+meeweegt. Er zijn twee alternatieven, elk met een eigen gevolg:
 
-- **De werkelijke eindprijs, $\tilde p_T = p_T$.** Dan geldt de stelling exact in
+- **De werkelijke eindprijs, $\tilde p_T = p_T$.** Dan geldt de stelling exact bij een
   eindige horizon, want $p_t = \E_t[p^{*(T)}_t]$ volgt uit dezelfde iteratie als in
-  [](#01-03-williams-ddm). De keerzijde: aan het eind van de steekproef erft
-  $p^{*(T)}$ de beweeglijkheid van $p_T$, en de gemeten variantie van $p^*$ stijgt.
+  [](#01-03-williams-ddm). De keerzijde is dat $p^{*(T)}$ aan het eind van de steekproef
+  de beweeglijkheid van $p_T$ erft, zodat de gemeten variantie van $p^*$ stijgt.
 
 - **Het gemiddelde of een extrapolatie, $\tilde p_T = \bar p$.** Dan staat de
   voorspelfout niet meer exact los van $p_t$, want $\bar p$ gebruikt de hele
@@ -371,46 +373,44 @@ bevat dus meer dan de ongelijkheid alleen.
 
 ### Kritiek 1: kleine steekproeven (Flavin)
 
-In een eindige steekproef valt de gemeten variantie van $p^*$ te laag uit, en
-slaat de toets te vaak alarm.
-
-*Waarom zou dit waar zijn?* Wie een steekproefvariantie berekent, meet de
-spreiding rond het steekproefgemiddelde. Een reeks die langzaam rond haar
-gemiddelde schommelt, trekt dat steekproefgemiddelde met zich mee, en de gemeten
-spreiding daalt. Hoe persistenter de reeks, hoe groter de onderschatting. Omdat
+In een eindige steekproef valt de gemeten variantie van $p^*$ te laag uit, en daardoor
+slaat de toets te vaak alarm. Een steekproefvariantie meet namelijk de spreiding rond het
+steekproefgemiddelde. Een reeks die langzaam rond zijn gemiddelde schommelt, trekt dat
+steekproefgemiddelde met zich mee, zodat de gemeten spreiding daalt. Hoe persistenter de
+reeks, hoe groter de onderschatting. Omdat
 $p^*$ een gewogen som over decennia is, is het persistenter dan $p$. De gemeten
 $\sigma(p^*)$ zakt dus sterker dan $\sigma(p)$, en de ratio stijgt.
 
 {cite:t}`Flavin1983` liet zien dat toetsen op variantiegrenzen in kleine
 steekproeven daardoor vaak sterk naar verwerping vertekend zijn. Na correctie
-verdwijnt een groot deel van de excess volatility. Neem een AR(1)-reeks: elke
-waarde is $\phi$ maal de vorige plus een schok. Over $T$ waarnemingen is de
+verdwijnt een groot deel van de excess volatility. Neem een AR(1)-reeks, waarin elke
+waarde $\phi$ maal de vorige plus een schok is. Over $T$ waarnemingen is de
 verwachte steekproefvariantie dan ongeveer
 
 $$
 \E\bigl[\hat\sigma^2\bigr] \approx \Var(x)\Bigl[1 - \frac{1}{T}\,\frac{1+\phi}{1-\phi}\Bigr].
 $$
 
-Bij $\phi = 0{,}95$ en $T = 100$ is de correctieterm $39/100$: de variantie valt
-39% te laag uit, en $p^*$ is persistenter dan dat. Dit is de standaardfout van 2%
-uit [](#00-01-rendementen) in een andere gedaante: een gemiddelde is slecht te
-meten, en hier bederft het ook een tweede moment. Een variantie is doorgaans goed
+Bij $\phi = 0{,}95$ en $T = 100$ is de correctieterm $39/100$, zodat de variantie 39% te
+laag uitvalt, en $p^*$ is nog persistenter dan zo'n reeks. Dit is dezelfde les als die van
+de standaardfout van 2% uit [](#00-01-rendementen), in een andere gedaante. Een gemiddelde
+is slecht te meten, en hier bederft die onzekerheid ook een tweede moment. Een variantie
+is doorgaans goed
 te schatten, maar niet rond het gemiddelde van een zeer persistente reeks.
 
 ### Kritiek 2: niet-stationaire dividenden (Kleidon; Marsh en Merton)
 
 Volgen dividenden een random walk, dan beweegt een volkomen rationele prijs langs
-de tijd meer dan $p^*$, terwijl de grens over toestanden blijft gelden.
-
-*Waarom zou dit waar zijn?* Bij een random walk verhoogt een dividendschok de
+de tijd meer dan $p^*$, terwijl de grens over toestanden blijft gelden. Bij een random
+walk verhoogt een dividendschok de
 verwachting van alle toekomstige dividenden. Beleggers passen de prijs daarom in
-één keer volledig aan. De ex-post rationele prijs bevatte de schok al voordat hij
-kwam, want hij is opgebouwd uit de latere dividenden. Hij laat de schok geleidelijk
-binnenlopen naarmate die dichterbij komt. Langs de tijd springt de rationele prijs
+één keer volledig aan. De ex-post rationele prijs bevatte de schok al voordat die kwam,
+want $p^*$ is opgebouwd uit de latere dividenden en laat de schok geleidelijk binnenlopen
+naarmate die dichterbij komt. Langs de tijd springt de rationele prijs
 dus, en glijdt $p^*$.
 
-{cite:t}`Kleidon1986` betoogde daarom dat Shillers figuur geen bewijs is: ook bij
-rationele prijzen en een constante discontovoet is $p^*$ gladder. Grenzen die wel
+{cite:t}`Kleidon1986` betoogde daarom dat Shillers figuur geen bewijs is, omdat $p^*$ ook
+bij rationele prijzen en een constante discontovoet gladder is. Grenzen die wel
 gelden bij niet-stationaire dividenden werden voor de S&P volgens hem niet
 geschonden. De volgende propositie maakt het mechanisme exact.
 
@@ -460,21 +460,22 @@ $\sigma^2\delta^2/(1-\delta^2)$. Hun quotiënt is
 $(1-\delta^2)/(r^2\delta^2) = \bigl((1+r)^2 - 1\bigr)/r^2 = 1 + 2/r$. $\square$
 :::
 
-In woorden: hoe lager de discontovoet, hoe sterker de rationele prijs reageert op
+Hoe lager de discontovoet, hoe sterker de rationele prijs dus reageert op
 een blijvende schok, terwijl $p^*$ die schok over meer jaren uitsmeert. Bij
-Shillers $\bar r = 0{,}048$ is de verhouding $\sqrt{1 + 2/0{,}048} = 6{,}5$. Een
-volkomen rationele prijs beweegt dan van jaar op jaar zes en een half keer zo veel
-als $p^*$. Dat is een verhouding van *veranderingen*, Shillers 5,59 een verhouding
-van gedetrendeerde *niveaus*: de orde van grootte is gelijk, de statistiek niet.
-Bij een hogere $r$ daalt de
-verhouding, maar bij $10\%$ is ze nog $\sqrt{21} = 4{,}6$.
+Shillers $\bar r = 0{,}048$ is de verhouding $\sqrt{1 + 2/0{,}048} = 6{,}5$, zodat een
+volkomen rationele prijs van jaar op jaar zes en een half keer zo veel beweegt als $p^*$,
+zoals de tweede verwachting uit de intuïtie zei. Dat is een verhouding van
+*veranderingen*, terwijl Shillers 5,59 een verhouding van gedetrendeerde *niveaus* is. De
+orde van grootte is dus gelijk, de statistiek niet. Bij een hogere $r$ daalt de
+verhouding, maar bij $10\%$ is hij nog $\sqrt{21} = 4{,}6$.
 
-De propositie zegt niet dat Shiller ongelijk heeft. Ze zegt dat zijn statistiek
+De propositie zegt niet dat Shiller ongelijk heeft, maar wel dat zijn statistiek
 niets onderscheidt als dividenden een *eenheidswortel* hebben (schokken die
 blijvend zijn, zoals bij een random walk). De variantie langs de tijd groeit dan
 met de lengte van de steekproef en schat geen vaste grootheid. Shiller nam aan dat
-dividenden stationair rond een bekende trend schommelen. Dan geldt de stelling, en
-de simulatie laat zien dat de toets dan werkt. Welke van de twee werelden de onze
+dividenden stationair rond een bekende trend schommelen. In dat geval geldt de stelling,
+en de simulatie laat zien dat de toets dan werkt, mits de afwijkingen van de trend snel
+uitdoven. Welke van de twee werelden de onze
 is, valt met honderd jaar data nauwelijks te beslissen.
 
 {cite:t}`MarshMerton1986` gaven de niet-stationariteit een economische reden:
@@ -488,21 +489,21 @@ onderzoeker mag veronderstellen.
 
 ### Het antwoord: een grens in logs
 
-Een grens op de log-prijs-dividend-ratio ontloopt de discussie over trends, en wat
-die grens overschrijdt, is voorspelbaarheid van rendementen.
-
-*Waarom zou dit waar zijn?* De bezwaren van Kleidon en van Marsh en Merton gaan
-over niveaus die groeien. De verhouding van prijs en dividend groeit niet: stijgt
+Een grens op de log-prijs-dividend-ratio ontloopt de discussie over trends, en een
+overschrijding van die grens betekent dat rendementen voorspelbaar zijn. De bezwaren van
+Kleidon en van Marsh en Merton gaan immers over niveaus die groeien, terwijl de verhouding
+van prijs en dividend niet groeit. Stijgt
 het dividend blijvend en de koers mee, dan blijft de verhouding gelijk. Delen
 beide dezelfde trend, dan schommelt de verhouding rond een vast niveau, ook als
 elk van beide een random walk volgt. Een onderzoeker die de verhouding gebruikt in
-plaats van de niveaus, hoeft dus niets te detrenden.
+plaats van de niveaus, hoeft dus geen trend te verwijderen.
 
 Vanaf hier zijn kleine letters logs: $p_t$ is de log van de prijs, $d_t$ de log
 van het dividend, en $pd_t = p_t - d_t$ de log-prijs-dividend-ratio. Het
 logrendement is $\ell_{t+1} = \log R_{t+1}$. Campbell en Shiller
-{cite}`CampbellShiller1988` loglineariseerden het rendement: ze benaderden het logrendement door een lineaire
-functie van de log-ratio, rond haar gemiddelde $\overline{pd}$. Met
+{cite}`CampbellShiller1988` loglineariseerden het rendement, dat wil zeggen dat ze het
+logrendement benaderden door een lineaire functie van de log-ratio rond het gemiddelde
+$\overline{pd}$. Met
 $\rho = e^{\overline{pd}}/(1+e^{\overline{pd}})$, ongeveer $0{,}96$ bij een
 gemiddelde prijs-dividend-ratio van 25, en een constante $\kappa$ geeft dat
 
@@ -512,7 +513,7 @@ pd_t = \kappa + \Delta d_{t+1} - \ell_{t+1} + \rho\, pd_{t+1}
      = \frac{\kappa}{1-\rho} + \sum_{j\ge0}\rho^{j}\bigl(\Delta d_{t+1+j} - \ell_{t+1+j}\bigr).
 ```
 
-In woorden: een hoge ratio vandaag betekent hoge dividendgroei later, of lage
+Een hoge ratio vandaag betekent dus hoge dividendgroei later, of lage
 rendementen later. Dat is een identiteit die achteraf geldt, en dus ook in
 verwachting op $t$. Bij constante verwachte rendementen is
 $pd_t = \E_t[pd^*_t]$, met de ex-post rationele log-ratio
@@ -521,13 +522,15 @@ $pd^*_t = \text{constante} + \sum_{j\ge0}\rho^j\Delta d_{t+1+j}$.
 voor grootheden die stationair kunnen zijn.
 
 Campbell en Shiller {cite}`CampbellShiller1987` werkten dit uit met
-vectorautoregressies (VAR's: elke reeks geregresseerd op de vorige waarden van alle
+vectorautoregressies (VAR's, waarin elke reeks wordt geregresseerd op de vorige waarden
+van alle
 reeksen). Voor aandelen bewoog de werkelijke verhouding van koers en dividend veel
 meer dan de verhouding die hun VAR met constante discontovoet voorspelde. West
 {cite}`West1988` leidde een grens af die ook geldt als koers en dividend een
-eenheidswortel hebben: onverwachte koersveranderingen mogen niet meer variëren dan
-het dividendnieuws toelaat. Die grens was duidelijk en significant
-geschonden.
+eenheidswortel hebben. Onverwachte koersveranderingen mogen volgens die grens niet meer
+variëren dan bij een voorspeller die alleen de dividendhistorie kent, want meer informatie
+maakt het nieuws kleiner. Op de lange S&P-reeks was het omgekeerd, en die schending was
+significant.
 
 Vermenigvuldig de tweede vorm van [](#eq-shiller-excess-volatility-cs) met
 $pd_t - \overline{pd}$ en neem verwachtingen. Links ontstaat
@@ -543,10 +546,12 @@ $\E[pd_t - \overline{pd}] = 0$, en wordt elke som een covariantie met $pd_t$:
 In woorden: alle beweging van de ratio komt terug als voorspelling van latere
 dividendgroei, of als voorspelling van latere rendementen met een minteken.
 Varieert $pd$ meer dan dividendnieuws kan dragen, dan zit het verschil in de
-tweede covariantie. Een ratio die te veel beweegt, voorspelt dus rendementen, zoals
-de intuïtie verwachtte. {cite:t}`Cochrane1992` en {cite:t}`Cochrane2011` maakten
-daarvan het centrale punt: excess volatility en voorspelbare rendementen zijn één
-feit, twee keer gemeten. In [](#04-20-voorspelbaarheid) wordt deze decompositie
+tweede covariantie. Een ratio die te veel beweegt, voorspelt dus rendementen, en dat was
+ook de derde verwachting uit de intuïtie. Voor {cite:t}`Cochrane1992` en
+{cite:t}`Cochrane2011`
+werd dat het centrale punt, want excess volatility en voorspelbare rendementen zijn
+volgens hen één feit, twee keer gemeten. In [](#04-20-voorspelbaarheid) wordt deze
+decompositie
 geschat.
 
 ```{admonition} Samengevat
@@ -578,17 +583,20 @@ geschat.
 
 ## Simulatie: hoe vaak slaat Shillers toets alarm?
 
-Shillers toets werkt als dividenden stationair rond een bekende trend schommelen,
-en slaat altijd vals alarm als ze een random walk volgen. We passen zijn
-procedure, zoals in 1981, toe op drie kunstmatige economieën waarin de prijs per
+Shillers toets werkt als dividenden rond een bekende trend schommelen en afwijkingen snel
+uitdoven, slaat bij persistente afwijkingen geregeld vals alarm, en altijd als dividenden
+een random walk volgen. We passen zijn procedure van
+1981 toe op drie kunstmatige economieën waarin de prijs per
 constructie de rationele verwachting van $p^*$ is. De discontovoet is 7% op de
-gedetrendeerde dividenden (in niveaus $1{,}07 \times 1{,}015 - 1 = 8{,}6\%$), de
-steekproef 109 jaar, zo lang als Shillers S&P-reeks. Dat zijn andere getallen dan
-de 25% en drie perioden van het toy-voorbeeld, omdat de toets hier op een eeuw
-jaardata moet lijken. De vraag over steekproeven:
-hoe vaak valt $\sigma(p)/\sigma(p^*)$ boven één, terwijl de prijzen rationeel zijn?
+gedetrendeerde dividenden (op de dividenden met trend
+$1{,}07 \times 1{,}015 - 1 = 8{,}6\%$),
+en de steekproef telt 109 jaar, zo lang als Shillers S&P-reeks. Die getallen wijken af van
+de 25% en de drie perioden van het toy-voorbeeld, omdat de kunstmatige data hier op een
+eeuw jaarcijfers moeten lijken. We willen weten hoe vaak $\sigma(p)/\sigma(p^*)$ boven één
+valt
+terwijl de prijzen rationeel zijn.
 
-Eerst een hulpfunctie die $p^*$ achterwaarts oplost met het recept van het
+We beginnen met een hulpfunctie die $p^*$ achterwaarts oplost met het recept van het
 toy-voorbeeld, [](#eq-shiller-excess-volatility-pstar), op één pad of op een matrix
 van paden tegelijk.
 
@@ -610,12 +618,23 @@ def ex_post_price(div, gross_rate, terminal):
     return out
 ```
 
-Met `ex_post_price(path, 1.25, 0.0)` geeft ze de 22,88, 13,6 en 12 uit stap 1. De
-tweede functie volgt Shillers stappen: een exponentiële trend op de log-koers,
-$\bar r = \bar d/\bar p$, het gemiddelde als eindwaarde, en dan de ratio. Dezelfde
+Met `ex_post_price(path, 1.25, 0.0)` geeft die functie de 22,88, 13,6 en 12 uit de eerste
+stap.
+De hulpfunctie `log_trend` schat per pad de helling $b$ van de log-reeks, en `shiller_test`
+volgt daarna Shillers stappen, met die trend op de log-koers, $\bar r = \bar d/\bar p$,
+het gemiddelde als eindwaarde en dan de ratio. Dezelfde
 functie gebruiken we straks op de echte data.
 
 ```{code-cell} ipython3
+def log_trend(x):
+    """OLS slope of log(x) on the year, per row."""
+    t = np.arange(x.shape[1]) - (x.shape[1] - 1)
+    b = np.empty(x.shape[0])
+    for i in range(x.shape[0]):
+        b[i] = np.polyfit(t, np.log(x[i]), deg=1)[0]
+    return b
+
+
 def shiller_test(P, D, terminal="mean", detrend="price", rate=None):
     """Shiller (1981) variance-bound statistic, vectorised over rows.
 
@@ -628,11 +647,7 @@ def shiller_test(P, D, terminal="mean", detrend="price", rate=None):
     P, D = np.atleast_2d(P), np.atleast_2d(D)
     n_paths, T = P.shape
     t = np.arange(T) - (T - 1)                 # years relative to the last year
-    log_base = np.log(P if detrend == "price" else D)
-
-    b = np.empty(n_paths)                      # OLS slope of the log trend, per path
-    for i in range(n_paths):
-        b[i] = np.polyfit(t, log_base[i], deg=1)[0]
+    b = log_trend(P if detrend == "price" else D)
     trend = np.exp(b)[:, None]
     p = P / trend**t                           # detrended price
     d = D / trend ** (t + 1)                   # detrended dividend
@@ -662,12 +677,12 @@ alle een trendgroei van 1,5% per jaar, dicht bij Shillers $b = 0{,}0148$:
   volatiliteit 12% per jaar. Met $G = \E[d_{t+1}/d_t]$ is de rationele prijs
   $p_t = d_t\,\delta G/(1-\delta G)$.
 
-- **(b) Shiller.** Dividenden schommelen stationair rond een *bekende* trend: de
+- **(b) Shiller.** Dividenden schommelen stationair rond een *bekende* trend. De
   afwijkingen volgen een AR(1) met $\phi = 0{,}5$, en de prijs is
   $p_t = \bar d\,\delta/(1-\delta) + (d_t - \bar d)\,\delta\phi/(1-\delta\phi)$.
 
-- **(c) Flavin.** Hetzelfde als (b), maar met $\phi = 0{,}9$: stationair, maar zeer
-  persistent.
+- **(c) Flavin.** Hetzelfde als (b), maar met $\phi = 0{,}9$, zodat de dividenden
+  stationair maar zeer persistent zijn.
 
 De eerste cel bouwt economie (a), met 5 000 paden.
 
@@ -719,10 +734,11 @@ for name, (P, D) in economies.items():
 summary.astype(float).round(3)
 ```
 
-In (b) valt de ratio in geen enkele steekproef boven één: de toets werkt waarvoor
-hij ontworpen is. In (c) slaat hij in bijna een op de vijf steekproeven vals
-alarm. In (a) ligt de ratio in elke steekproef boven één. De figuur toont de drie
-verdelingen. Let op de zwarte lijn bij één en op Shillers eigen 5,59 (gestreept).
+In (b) valt de ratio in geen enkele steekproef boven één, dus daar doet de toets waarvoor
+hij ontworpen is. In (c) slaat hij in bijna een op de vijf steekproeven vals alarm, en in
+(a) ligt de ratio in elke steekproef boven één. De figuur toont de drie verdelingen, met
+een zwarte lijn bij één, Shillers S&P-waarde 5,59 gestreept en zijn Dow-waarde 13,28
+gestippeld.
 
 ```{code-cell} ipython3
 :label: cel-shiller-excess-volatility-simulatie
@@ -748,24 +764,27 @@ plt.show()
 :width: 95%
 
 In alle drie de economieën zijn prijzen exact rationeel. Rechts van de zwarte lijn
-liggen dus alleen schendingen die de toets verzint. Bij random-walk-dividenden (a)
-ligt de hele verdeling rechts, rond een factor 2,6. Bij stationaire dividenden (b)
+liggen dus alleen schendingen die de toets verzint, en de grijze lijnen markeren Shillers
+5,59 (S&P) en 13,28 (Dow, kortere steekproef). Bij random-walk-dividenden (a)
+ligt de hele verdeling rechts, rond een factor 2,6. Bij weinig persistente dividenden (b)
 werkt de toets zoals bedoeld. Bij persistente dividenden (c) schuift de verdeling
-op naar de grens: de onderschatting van Flavin.
+op naar de grens, en dat is de onderschatting van Flavin.
 :::
 
-Persistentie maakt de toets onbetrouwbaar zonder dat er een eenheidswortel nodig
-is. In (c) slokt het steekproefgemiddelde van een persistente $p^*$ een groot deel
+Persistentie maakt de toets onbetrouwbaar zonder dat er een eenheidswortel nodig is, want
+in (c) slokt het steekproefgemiddelde van een persistente $p^*$ een groot deel
 van zijn variantie op. In (a) werkt het mechanisme van
-[](#thm-shiller-excess-volatility-kleidon): de rationele prijs springt, $p^*$
-glijdt. De formule geldt hier niet letterlijk. De dividenden groeien geometrisch
-met drift, en de toets meet gedetrendeerde niveaus in plaats van veranderingen.
-Daarom ligt de mediaan van 2,6 onder $\sqrt{1 + 2/0{,}07} = 5{,}4$. Shillers 5,59 ligt boven het 95e percentiel
-van (a), 4,04. De simulatie weerlegt Shiller dus niet. Zijn getal bewijst alleen
-iets voor wie gelooft dat dividenden rond een bekende trend schommelen.
+[](#thm-shiller-excess-volatility-kleidon), waarin de rationele prijs springt en $p^*$
+glijdt. De formule geldt hier niet letterlijk, omdat de dividenden geometrisch met drift
+groeien en de toets gedetrendeerde niveaus meet in plaats van veranderingen.
+Daarom ligt de mediaan van 2,6 onder $\sqrt{1 + 2/0{,}07} = 5{,}4$. Shillers 5,59 ligt wel
+boven het 95e percentiel van (a), 4,04, zodat de simulatie Shiller niet weerlegt. Zijn
+getal bewijst alleen
+iets voor wie gelooft dat dividenden rond een bekende trend schommelen en snel naar die
+trend terugkeren.
 
-De laatste controle is die van de stelling zelf: over toestanden, op een vaste
-datum, moet de grens ook in (a) gelden. We rekenen $p^*$ uit met de ware $r$ en de
+Als laatste controleren we de stelling zelf, want over toestanden en op een vaste datum
+moet de grens ook in (a) gelden. We rekenen $p^*$ uit met de ware $r$ en de
 rationele eindprijs, en vergelijken de variantie over de 5 000 paden op drie data.
 
 ```{code-cell} ipython3
@@ -784,9 +803,9 @@ check.round(2)
 ```
 
 Op elke datum is $\Var(p_t) \le \Var(p^*_t)$ over de paden, zoals
-[](#thm-shiller-excess-volatility-bound) eist. Langs de tijd laten dezelfde paden
-allemaal het omgekeerde zien. Dat zijn stap 4 en stap 6 van het toy-voorbeeld, op
-schaal.
+[](#thm-shiller-excess-volatility-bound) zegt, terwijl dezelfde paden langs de tijd
+allemaal het omgekeerde laten zien. Zo keren stap 4 en stap 6 van het toy-voorbeeld terug,
+maar dan op grote schaal.
 
 ## Replicatie op echte data
 
@@ -808,17 +827,18 @@ als dividend van dat jaar. De reële korte rente komt uit
 `hap.data.goyal_welch("annual")`.
 
 **Verschil met het origineel.** Shiller defleerde met de groothandelsprijsindex
-(WPI), die veel beweeglijker is dan de CPI. De Dow-reeks is niet gratis
-beschikbaar, dus we tonen de S&P over 1928–1979 als benadering.
+(WPI), die veel beweeglijker is dan de CPI. Omdat de Dow-reeks niet gratis
+beschikbaar is, tonen we als benadering de S&P over 1928–1979.
 
 **Verwachte afwijking.** Op 1871–1979 ligt de ratio tussen 3 en 7, met $b$ en
 $\bar r$ binnen enkele tienden van een procentpunt, een correlatie onder 0,5, en
-over 1928–1979 een hogere ratio, zoals bij Shiller de Dow. Een ander *teken* van $\sigma(p) - \sigma(p^*)$ wijst op een fout in de code, en
-volgens Kleidon varieert de ratio over redelijke keuzes met minstens een factor
-vijf, met de log-lineaire ratio veel dichter bij één.
+over 1928–1979 een hogere ratio, zoals bij Shiller de Dow. Een ander *teken* van
+$\sigma(p) - \sigma(p^*)$ wijst op een fout in de code. Na de kritiek van Kleidon
+verwachten we dat de ratio over redelijke keuzes met minstens een factor vijf varieert,
+met de log-lineaire ratio veel dichter bij één.
 ```
 
-De eerste cel bouwt een jaarreeks: januarikoers, decemberdividend, het reële
+De eerste cel bouwt een jaarreeks met de januarikoers, het decemberdividend, het reële
 rendement uit de totaalrendementsindex en de reële korte rente.
 
 ```{code-cell} ipython3
@@ -858,8 +878,8 @@ overview.round(4)
 ```
 
 De steekproef telt 155 jaren zonder ontbrekende waarden. Het gemiddelde reële
-rendement is 8,6% per jaar, de gemiddelde reële rente 1,7%. Eerst de originele
-steekproef, met Shillers conventies.
+rendement is 8,6% per jaar en de gemiddelde reële rente 1,7%. We beginnen met de originele
+steekproef en Shillers conventies.
 
 ```{code-cell} ipython3
 def run(start, end, **kwargs):
@@ -883,12 +903,13 @@ pd.DataFrame(
 ).round(4)
 ```
 
-**Geslaagd.** Elke rij valt binnen de verwachting uit het replicatieblok, en de
+**Geslaagd.** Elke rij valt binnen wat we verwachtten, en de
 kortere steekproef geeft ook hier de hogere ratio. Dat onze ratio's lager
-uitvallen dan die van Shiller, kan aan de deflator liggen: een beweeglijker prijsindex zoals de WPI maakt een reële
+uitvallen dan die van Shiller, kan aan de deflator liggen, want een beweeglijker
+prijsindex zoals de WPI maakt een reële
 prijsreeks beweeglijker. Met de data hier is dat niet na te gaan.
 
-Voor de figuur rekenen we ook twee versies van $p^*$ zonder detrending uit, met de
+Voor de figuur rekenen we ook twee niet-gedetrendeerde versies van $p^*$ uit, met de
 koers van januari 2025 als eindwaarde. De eerste verdisconteert tegen het
 gemiddelde reële rendement. De tweede verdisconteert tegen de reële korte rente
 plus een constante premie, en heeft dus elk jaar een andere discontovoet.
@@ -905,8 +926,9 @@ pstar_rates = ex_post_price(
 ```
 
 De premie is het verschil tussen gemiddeld rendement en gemiddelde rente,
-$0{,}0860 - 0{,}0168 = 0{,}069$: vrijwel de $6{,}92\%$ die
-[](#03-13-equity-premium-puzzle) tot 2024 vindt. Let in de figuur links op de afstand tussen koers
+$0{,}0860 - 0{,}0168 = 0{,}069$, vrijwel de $6{,}92\%$ die
+[](#03-13-equity-premium-puzzle) tot 2024 vindt. Let in de figuur links op de afstand
+tussen koers
 en $p^*$, en rechts op de momenten waarop de lijnen bewegen.
 
 ```{code-cell} ipython3
@@ -938,19 +960,22 @@ plt.show()
 :label: fig-shiller-excess-volatility-figuur1
 :width: 100%
 
-Links: de gedetrendeerde reële S&P-koers en $p^*$ met Shillers conventies; de
-verticale lijn markeert het einde van zijn steekproef. Het beeld van 1981
-overleeft: $p^*$ kabbelt, de koers niet. Rechts: dezelfde data zonder detrending,
-met $p^*$ tegen een constant rendement en tegen de reële rente plus premie.
-Tijdvariërende rentes maken $p^*$ beweeglijker, maar volgen de grote bewegingen
-van de koers maar deels.
+Links staan de gedetrendeerde reële S&P-koers en $p^*$ met Shillers conventies, en
+de verticale lijn markeert het einde van zijn steekproef. Het beeld van 1981 blijft
+overeind, want $p^*$ kabbelt en de koers niet. Rechts staan dezelfde data, niet
+gedetrendeerd, met $p^*$ tegen een constant rendement en tegen de reële rente plus
+premie.
+Tijdvariërende rentes maken $p^*$ beweeglijker, maar ook dan volgt $p^*$ de grote
+bewegingen van de koers maar deels.
 :::
 
-Nu de gevoeligheid. Elke rij van de tabel hieronder is een verdedigbare keuze die
+Nu kijken we naar de gevoeligheid. Elke rij van de tabel hieronder is een verdedigbare
+keuze die
 in de stelling niet voorkomt. De log-lineaire rijen gebruiken als ratio de log van
 de januarikoers min de log van het dividend van het jaar ervoor, en $pd^*_t$ uit
-[](#eq-shiller-excess-volatility-cs) met gedemeende dividendgroei, zonder
-detrending. De eerste cel definieert die log-lineaire grens.
+[](#eq-shiller-excess-volatility-cs) met de dividendgroei min het gemiddelde ervan, zonder
+de
+trend te verwijderen. De eerste cel definieert die log-lineaire grens.
 
 ```{code-cell} ipython3
 def loglinear_bound(start, end, terminal="last"):
@@ -1011,8 +1036,9 @@ for label, (start, end, term) in {
 table.astype(float).round(3)
 ```
 
-**Geslaagd**, ook voor de tweede verwachting. Op dezelfde data en met dezelfde
-stelling loopt de ratio van 0,55 tot 9,8, veel meer dan de verwachte factor vijf.
+**Geslaagd**, ook voor de verwachte spreiding over keuzes. Op dezelfde data en met dezelfde
+stelling loopt de ratio van 0,55 (1871–2025, lage discontovoet) tot 9,8 (1928–1979), veel
+meer dan de verwachte factor vijf.
 De keuzes met het grootste effect zijn die welke Kleidon en Marsh en Merton
 aanwezen:
 
@@ -1026,57 +1052,60 @@ aanwezen:
 - **Steekproef.** De keuze van de steekproef bepaalt of de jaren negentig erin
   zitten.
 
-- **Discontovoet.** Met de reële korte rente plus een constante premie is $p^*$ na
-  detrending beweeglijker dan de koers (ratio 0,83). In niveaus is de grens dan
-  niet geschonden. Wat overblijft, is dat $p^*$ en de koers maar deels samen
-  bewegen (correlatie 0,59).
+- **Discontovoet.** Met de reële korte rente plus een constante premie is de
+  gedetrendeerde $p^*$
+  beweeglijker dan de koers (ratio 0,83), zodat de grens voor de niveaus
+  dan niet geschonden is. Wel bewegen $p^*$ en de koers maar deels samen (correlatie
+  0,59).
 
-Ook de standaardfout van 2% uit [](#00-01-rendementen) doet mee: een gemiddeld
-rendement is slecht meetbaar. De discontovoet is zo'n gemiddelde, en twee
+Ook hier zien we de standaardfout van 2% uit [](#00-01-rendementen) terug, want een
+gemiddeld rendement is slecht meetbaar. De discontovoet is zo'n gemiddelde, en twee
 standaardfouten verschuiven de ratio van 0,55 naar 2,36. Met een discontovoet twee
 standaardfouten lager is de grens niet eens geschonden. Een tweede moment is goed
-meetbaar, maar deze statistiek bouwt het tweede moment van $p^*$ op uit een eerste
-moment dat dat niet is.
+meetbaar, maar deze statistiek bouwt de variantie van $p^*$ op uit een gemiddelde, en dat
+is slecht meetbaar.
 
-De log-lineaire grens is het robuuste antwoord, en ze zegt iets bescheideners. De
+De log-lineaire grens is het robuuste antwoord, maar die zegt iets bescheideners. De
 log-prijs-dividend-ratio beweegt 1,1 tot 1,9 keer zo veel als de dividendgroei kan
-rechtvaardigen, afhankelijk van de eindwaarde. Dat is geen factor dertien, maar
-het ligt boven één. Wat erboven uitsteekt, moet volgens
-[](#eq-shiller-excess-volatility-decompositie) uit voorspelbare rendementen komen:
-in [](#01-03-williams-ddm) voorspelde de prijs-dividend-ratio het
-tienjaarsrendement, en niet de tienjaarsgroei van dividenden.
+rechtvaardigen, afhankelijk van de eindwaarde. Dat is geen factor dertien, maar het ligt
+wel boven één. Het deel boven één moet volgens
+[](#eq-shiller-excess-volatility-decompositie) uit voorspelbare rendementen komen, en dat
+past bij [](#01-03-williams-ddm), waar de prijs-dividend-ratio het tienjaarsrendement
+voorspelde en niet de tienjaarsgroei van dividenden.
 
 ## Wat er brak, en wat daarna kwam
 
 **Wat het model verklaart.** De variantiegrens is een van de weinige resultaten in
-het vak die uit bijna niets volgen: een voorspelling beweegt nooit meer dan wat ze
-voorspelt. Ze verlegde de toets van efficiëntie van de vraag of iemand morgen rijk
-kan worden, waarop het antwoord nee was, naar de vraag of koersniveaus passen bij
-fundamentele waarde. En ze leverde een beeld op, de koers tegen $p^*$, dat een
+het vak die uit bijna niets volgen, want er is alleen voor nodig dat een voorspelling nooit
+meer beweegt dan wat hij voorspelt. De grens verlegde de toets van efficiëntie naar de
+vraag of koersniveaus bij de fundamentele waarde passen, terwijl die toets tot dan toe
+vroeg of iemand morgen rijk kon worden, wat nooit bleek te lukken. Bovendien leverde hij
+een beeld op, de koers tegen $p^*$, dat een
 generatie economen overtuigde. Dat rendementen op korte termijn onvoorspelbaar
 zijn, zoals in [](#02-06-efficiente-markten), betekent nog niet dat prijzen juist
 zijn.
 
-**Waar het breekt.** Niet in de ongelijkheid, maar in haar meting. Onze replicatie
+**Waar het breekt.** Het model breekt niet in de ongelijkheid, maar in de meting ervan.
+Onze replicatie
 geeft 3,9 op Shillers steekproef, en tussen 0,55 en 9,3 over 1871–2025, afhankelijk
 van keuzes die de stelling niet voorschrijft. Een random-walk-economie met exact
 rationele prijzen schendt de gedetrendeerde toets in elke steekproef. De robuuste
-log-lineaire versie blijft boven één, maar is geen factor vijf tot dertien. Wat
-overeind blijft, is een kwalitatief feit: de prijs-dividend-ratio beweegt meer dan
+log-lineaire versie blijft boven één, maar is geen factor vijf tot dertien. Overeind blijft
+het kwalitatieve feit dat de prijs-dividend-ratio meer beweegt dan
 dividendnieuws kan dragen, en dat surplus is hetzelfde als voorspelbare
 rendementen.
 
-**Risico of vergissing?** De Chicago-lezing, met Cochrane
-{cite}`Cochrane1992,Cochrane2011` als woordvoerder: de discontovoet varieert.
-Verworpen is de constante $r$ van Williams, niet de rationaliteit van beleggers.
-In recessies eisen beleggers meer, dus zijn prijzen laag en rendementen daarna
-hoog. De Yale-lezing komt van Shiller zelf {cite}`Shiller2014`: de benodigde
-discontovoet beweegt wild op momenten dat geen gemeten rente beweegt. Ook hier
+**Risico of vergissing?** Volgens de Chicago-lezing, met Cochrane
+{cite}`Cochrane1992,Cochrane2011` als woordvoerder, varieert de discontovoet. Verworpen is
+dan de constante $r$ van Williams, niet de rationaliteit van beleggers.
+In recessies eisen beleggers meer, dus zijn prijzen dan laag en rendementen daarna hoog.
+De Yale-lezing komt van Shiller zelf {cite}`Shiller2014`, die opmerkt dat de benodigde
+discontovoet wild beweegt op momenten dat geen gemeten rente beweegt. Ook hier
 volgt de rente-variant van $p^*$ de koers maar matig (correlatie 0,59). Koersen
 reageren volgens Shiller eerder op wisselende stemmingen, *animal spirits*. Beide
 lezingen voorspellen een grote rendementscovariantie in
 [](#eq-shiller-excess-volatility-decompositie). Alleen een onafhankelijke meting
-van de discontovoet scheidt ze, en die bestaat nog altijd nauwelijks.
+van de discontovoet kan de twee scheiden, en zo'n meting bestaat nog altijd nauwelijks.
 
 **Wat er daarna kwam.** Als de markt als geheel te veel beweegt, zouden ook
 aandelen die goedkoop zijn ten opzichte van winst of boekwaarde later meer moeten
@@ -1088,8 +1117,8 @@ opbrengen. Dat vonden Basu, Banz en Rosenberg in de cross-sectie,
 :::{exercise}
 :label: ex-shiller-excess-volatility-1
 
-**Een derde informatiestructuur.** Neem het toy-voorbeeld en voeg structuur C
-toe: op $t = 0$ zijn $d_1$ en $d_2$ al bekend, $d_3$ niet.
+**Een derde informatiestructuur.** Neem het toy-voorbeeld en voeg structuur C toe, waarin
+op $t = 0$ de dividenden $d_1$ en $d_2$ al bekend zijn en $d_3$ niet.
 
 1. Bereken $\Var(p^C_0)$ over de acht toestanden met de hand.
 2. Controleer de keten $\Var(p^A_0) \le \Var(p^B_0) \le \Var(p^C_0) \le \Var(p^*_0)$
@@ -1114,14 +1143,13 @@ print("Var(p*) - Var(p_C) - Var(u_C) =",
       round(pstar_0.var() - price_C.var() - (pstar_0 - price_C).var(), 12))
 ```
 
-De keten loopt op en de decompositie sluit op nul.
+De keten loopt op en de decompositie sluit op nul. Elke stap naar meer informatie voegt
+dus variantie toe aan de prijs en haalt evenveel weg uit de voorspelfout.
 
-**(3)** Volledige kennis van $d_1, d_2, d_3$: dan is $p_0 = p^*_0$ en de
-voorspelfout overal nul.
-
-Wat dit leert: elke extra informatie maakt de rationele prijs beweeglijker, en
-$p^*$ is het plafond dat bij volledige informatie hoort. Een koers boven dat
-plafond kan dus niet uit meer informatie komen.
+**(3)** Bij volledige kennis van $d_1, d_2, d_3$ is $p_0 = p^*_0$ en de voorspelfout
+overal nul. Elke extra informatie maakt de rationele prijs dus beweeglijker, en $p^*$ is
+het plafond dat bij volledige informatie hoort. Een koers boven dat plafond kan daarom
+niet uit meer informatie komen.
 :::
 
 :::{exercise}
@@ -1130,7 +1158,8 @@ plafond kan dus niet uit meer informatie komen.
 **Twee grenzen.** Gebruik [](#thm-shiller-excess-volatility-kleidon) en
 [](#thm-shiller-excess-volatility-bound).
 
-1. Bereken $\sigma(\Delta p)/\sigma(\Delta p^*)$ voor $r \in \{0{,}02;\ 0{,}048;\ 0{,}10\}$.
+1. Bereken $\sigma(\Delta p)/\sigma(\Delta p^*)$ voor
+   $r \in \{0{,}02;\ 0{,}048;\ 0{,}10\}$.
 2. Simuleer één pad van 200 000 jaar met $d_{t+1} = d_t + \varepsilon_{t+1}$,
    $\varepsilon \sim N(0,1)$ en $r = 0{,}048$. Benader $p^*_t$ met 400 termen plus
    de rationele eindprijs, en vergelijk de gemeten ratio met de formule.
@@ -1162,7 +1191,8 @@ print(f"gesimuleerd (r = 0.048): "
       f"{np.diff(p_long[:m]).std() / np.diff(pstar_long).std():.2f}")
 ```
 
-De gesimuleerde ratio, 6,54, ligt vlak bij de formule, 6,53.
+De gesimuleerde ratio van 6,54 ligt vlak bij de 6,53 uit de formule. Op zo'n lang pad
+speelt de onderschatting van Flavin geen rol meer.
 
 **(3)** Omdat $\mathcal H_t \subseteq \mathcal I_t$, geeft de wet van iteratieve
 verwachtingen $\E[p^*_t \mid \mathcal H_t] = \E[p_t \mid \mathcal H_t]$. Pas nu de
@@ -1170,8 +1200,8 @@ variantiegrens toe met $p_t$ in de rol van $p^*_t$ en $\mathcal H_t$ in de rol v
 $\mathcal I_t$: $\Var(\E[p_t \mid \mathcal H_t]) \le \Var(p_t)$.
 
 Wat dit leert: juist bij de lage discontovoeten waarmee Shiller rekende, is de
-tijdreeks van een rationele prijs het beweeglijkst ten opzichte van $p^*$. En de
-grens heeft twee kanten: minder informatie geeft een rustiger prijs.
+tijdreeks van een rationele prijs het beweeglijkst ten opzichte van $p^*$. Bovendien
+heeft de grens twee kanten, want minder informatie geeft een rustiger prijs.
 :::
 
 :::{exercise}
@@ -1199,11 +1229,9 @@ post = {
 pd.Series(post, name="sigma(p)/sigma(p*), 1950–2025").round(3)
 ```
 
-De ratio ligt in alle varianten boven één, maar de omvang verschilt met ruim een
-factor negen: van 1,34 (log-lineair, laatste eindwaarde) tot 12,1 (trend op
-dividenden).
-
-Wat dit leert: het teken van excess volatility is robuust over steekproeven en
-conventies, de omvang niet. Met ruim zeventig jaar zeer persistente data is dat
-wat Flavin en Kleidon zouden voorspellen.
+De ratio ligt in alle varianten boven één, maar de omvang verschilt met ruim een factor
+negen, van 1,34 (log-lineair, laatste eindwaarde) tot 12,1 (trend op dividenden). Het
+teken van excess volatility is dus robuust over steekproeven en conventies, de omvang
+niet. Bij ruim zeventig jaar zeer persistente data hadden Flavin en Kleidon precies dat
+voorspeld.
 :::

@@ -1,0 +1,14 @@
+STATUS 03_15_shiller_excess_volatility T words=5648 prose=PASS
+- Waar we zijn: dubbele punt in "maatstaf ... voor de hand" vervangen door "want".
+- Overzicht: "In deze lecture" wordt "In dit college"; "Wat overblijft, is" en "Dit werk bepaalde het tijdvak" herschreven; "ze" voor de prijs wordt "hij"; motiefzin *theorie of feit* als gewone vraag.
+- Intuïtie: "dus"-hoofdzin wordt "Omdat ..., schommelen"; addertje-alinea met "maar"/"want" verbonden; "Wat verwachten we dus?" krijgt een tweede zin.
+- Toy-voorbeeld: "De opzet:"/"De stappen:"/"Het recept:" worden hele zinnen; "Haar variantie" wordt "De variantie van $u_0$"; etiket "Wat we nu weten" weg.
+- Theorie: alle vijf "*Waarom zou dit waar zijn?*" weg, de eerste bewering van elke ### loopt over in de uitleg (één alinea minder per ###); vijf van de zes "In woorden:" weg; dubbele punten als lijm vervangen door want/zodat/namelijk.
+- Theorie: H12-terugkoppeling ingelost in gewone zinnen (eerste, tweede en derde verwachting) in plaats van "zoals de intuïtie voorspelde".
+- Theorie: "detrenden" wordt "geen trend te verwijderen"; "haar" voor fout/reeks/ratio/grens weg; "hij/die" met eenduidig antecedent in de Kleidon-alinea.
+- Simulatie: "Eerst een hulpfunctie", "De vraag over steekproeven:" en "De laatste controle is die van" worden gewone zinnen; "(in niveaus ...)" wordt "(op de dividenden met trend ...)"; "eist" wordt "zegt".
+- Replicatie: "Nu de gevoeligheid." en "Eerst de originele steekproef" worden hele zinnen; "detrending", "gedemeend", "overleeft" weg; "Wat overblijft, is" herschreven; motief niet meer als handelend onderwerp.
+- Wat er brak: telegramzin "Niet in de ongelijkheid, maar ..." wordt een hele zin; Chicago/Yale-lezingen zonder dubbele punt; "Wat overeind blijft, is" herschreven.
+- Oefeningen: twee "Wat dit leert:" opgenomen in de slotzin van de uitwerking; eenzinsalinea's aangevuld.
+- Twijfel: "trendcorrectie" gebruikt voor "detrending" (STYLE §3: "de trend verwijderen"); "gedetrendeerd" als bijvoeglijk naamwoord laten staan.
+- Getallen, formules, labels, code en celvolgorde ongewijzigd; nb_numbers geeft dezelfde 26 meldingen (alleen regelnummers verschoven).

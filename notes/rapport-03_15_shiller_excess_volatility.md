@@ -97,3 +97,12 @@ STATUS 03_15_shiller_excess_volatility F6b words=5425 prose=PASS open=0 cijfer=-
 **Overige punten.**
 - Gedaan: "knoppen" → "keuzes met het grootste effect"; "definieert" → "bepaalde"; Flavin in *Samengevat*; tabel in "Wat Shiller mat" weg (definitie en één getal, de rest in de replicatie); toy één cel (stap 1 met de hand in de cel, `ex_post_price` naar de Simulatie); hand- en codekolom op 2 decimalen; oefening 2 kreeg een afleidingsdeel (ondergrens van LeRoy en Porter) in plaats van de uitlegvraag; effectieve discontovoet in niveaus (8,6%) bij de simulatie genoemd.
 - Afgewezen: twee mechanismen in het toy. Stap 6 is het toy-anker voor de kritiek van Kleidon (STYLE §11.10 H11) en draagt de kern "de grens gaat over toestanden, de meting over de tijd". Zeven `###` blijven, omdat elke kritiek een eigen *Waarom* heeft (STYLE §1: subkopjes zijn vrij).
+
+## R9-1 (F6b, ronde 9+)
+
+- **Feitelijke fouten**: geen; twijfelpunt 583–584 opgelost (zie Helderheid). Kleidon "minstens een factor vijf" is nu onze verwachting na zijn kritiek, niet meer aan hem toegeschreven. Basu/Banz/Rosenberg (1095) niet gewijzigd: hoort bij 03_16.
+- **Helderheid**: simulatie-opening en de zin in Kritiek 2 beperkt tot snel uitdovende afwijkingen, met vals alarm bij persistentie; bijschrift (b) "weinig persistente dividenden". "de tweede verwachting" → "de verwachte spreiding over keuzes"; 0,55 en 9,8 kregen hun rij (lage discontovoet, 1928–1979). West 1988: exemplaar (vernieuwingen tegen voorspeller met alleen dividendhistorie, omgekeerd op de S&P); geen getal, want niet uit cel of gecontroleerde bron. $b$ krijgt bij eerste vermelding 0,0148 (tabel 2).
+- **Opbouw**: Overzicht herhaalt de vraag niet meer woordelijk ("Shillers antwoord op die vraag was ja").
+- **Taal**: één familie, "gedetrendeerd" en "de trend verwijderen"; "detrendeerde" en alle vier "trendcorrectie" weg. Hardop-zinnen 158, 591, 1048 en 1062 herschreven; "binnen wat we verwachtten"; Dow-zin met "Omdat"; "namelijk" van 8 naar 3; "geeft ze" (functie) → "geeft die functie".
+- **Code en figuren**: 13,28-lijn genoemd in leeswijzer en bijschrift (Dow, kortere steekproef); trendschatting naar `log_trend`. Uitvoer voor/na identiek (alleen celkop verschilt), offline uitgevoerd.
+- Woorden: 5.748 (prose PASS, geen zin > 40); nb_numbers geen nieuwe meldingen.
