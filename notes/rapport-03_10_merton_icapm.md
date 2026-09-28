@@ -132,3 +132,22 @@ Onder de Barberis-tabel staat nu één zin: onze 4,5% geldt voor $\gamma = 5$ me
 - **Overige punten uit Controle 1: gedaan.** De tweede voorspelling wordt ingelost bij de horizonfiguur. De kommazin in stap 4 is gesplitst. "Vergunning" is vervangen door "grond". "Kortweg de kansen" is één keer ingevoerd als alias van "beleggingskansen".
 - **Betaald met schrappen.** Weg zijn de openingsvraag van *Numerieke oplossing*, de zin "Hij heeft in het beste geval een eeuw jaarcijfers" (samengevoegd met de vraag erna), "Gesloten vorm en numerieke oplossing vallen samen" (oefening 2), en een deel van de slotzin van het toy. Het resultaat is 5.497 woorden, PASS.
 - **Verificatie.** Sync en uitvoering met `HAP_OFFLINE=1` foutloos. De `nb_outputs`-uitvoer is identiek aan F6-1.
+
+## R9-1 (F6b, ronde 9+)
+
+- **Feitelijk, r. 234–235 (consumptie).** Gedaan: beperkt tot constante kansen (Merton-portefeuille), plus dat tussentijdse consumptie de hedgevraag tot een gewogen gemiddelde over horizonnen maakt (teken blijft, grootte verandert).
+- **Code, roostercel.** Gedaan: gesplitst in een functiecel (`solve_rebalancing`, `normal_shocks`) en een controlecel, met één zin ertussen; RNG-volgorde ongewijzigd. Na uitvoering (offline) verschillen in `nb_outputs` alleen celnummers en labels.
+- **Beter uitleggen, roostercontrole.** Gedaan: bijzin dat de continue vertaling een benadering is en dat het rooster later de replicatie draagt.
+- **Numerieke oplossing, $\gamma = 2$.** Gedaan: zin zegt nu dat de tabel $\gamma = 2$ weglaat vanwege de grens 0,99.
+- **Numerieke oplossing, log-rendement.** Gedaan: "het verwachte log-rendement".
+- **Overrendement (H7).** Gedaan: admonition "log overrendement", tabelindex "a (gem. log overrendement)".
+- **"die gok" (r. 376).** Gedaan: "die proefoplossing".
+- **Hardop-toets r. 62, 971, 1281.** Gedaan: "Is het ICAPM theorie of feit? Het is een theorie met een open plek, want ..."; leeswijzer noemt linkerpaneel (gestreepte lijn rechts van de zwarte) en rechterpaneel (breedte); "Ook dit verschil volgt uit de standaardfout van 2%, want ...".
+- **"het het" (r. 565).** Gedaan: "wanneer de belegger dat het minst nodig heeft".
+- **Stellingkop, r. 278.** Gedaan: "Irrelevantie van de horizon".
+- **koop-en-houd (r. 1277, 1283).** Gedaan: "buy-and-hold-belegger", "buy-and-hold-getal".
+- **Figuurtitel r. 990.** Gedaan: "Waartegen de belegger denkt zich te moeten indekken".
+- **Tabelkolom r. 1258.** Gedaan: "D/P in standaarddeviaties".
+- **Oefening 1, "w0".** Gedaan: "de fractie in geval B".
+- **r. 58 (niet vereist).** Gedaan: "omdat het asset pricing dynamisch maakte".
+- Controles: `prose_stats --check` PASS, 5.899 woorden; `nb_numbers` geen nieuwe meldingen; `rewrap` en `jupytext --sync` gedraaid.

@@ -1,175 +1,321 @@
-STATUS 03_10_merton_icapm F6c-2 words=5497 prose=PASS open=0 cijfer=8,9 min=8
+STATUS 03_10_merton_icapm F6c words=5899 prose=PASS open=0 cijfer=9,0 min=9
 
 # Eindbeoordeling: Merton, continue tijd en het ICAPM (F6)
 
+## Ronde 9+
+
+Vorige ronde: 8,9
+
+Gelezen na de taalredactie (`notes/taal-03_10_merton_icapm.md`). Normen: eindcijfer ≥ 9,0,
+geen deelcijfer onder 8,5, taal onder 8 blokkeert. Gewichten van ronde 9+ (helderheid 25,
+opbouw 20, taal 20). `prose_stats`: 5.822 woorden, PASS; gemiddelde zinslengte 15,7, één
+zin boven 40 woorden. Celuitvoer: `$TEMP/F6-03_10_merton_icapm-out.txt`.
+
+Vaktermen na de redactie: geen betekenisverschuiving gevonden. "Marktruiming" werd
+"vraag en aanbod gelijk" (r. 512, 534) en "in evenwicht" (r. 485, 525), wat hetzelfde
+zegt. "Beprijsde factoren" werd "factoren met een risicopremie" (r. 574, 1298), wat
+klopt. Met "overrendement" (r. 126, 659) is *excess return* goed vertaald, maar de
+vervanging is niet overal doorgevoerd (zie taal). "Het lemma van Itô" (r. 326) is
+hetzelfde resultaat als in 02_09.
+
+Oordeel over wat de redacteur bewust liet staan:
+- **"asset pricing" (r. 58, 1294).** Mag blijven. Het is de gangbare naam van het
+  vakgebied in Nederlands academisch spraakgebruik, net als *payoff* of *posterior*, en
+  STYLE §3 geeft er geen Nederlandse vaste term voor. Alleen het lidwoord in r. 58 ("omdat
+  het de asset pricing dynamisch maakte") klinkt stroef. "omdat het asset pricing
+  dynamisch maakte" is natuurlijker. Dat is geen voorwaarde voor een 9.
+- **"In dit college:" vóór de lijst (r. 38).** Mag blijven. De dubbele punt staat vóór
+  een opsomming, zoals STYLE toestaat. De lijstitems lopen grammaticaal door ("In dit
+  college rekenen we ..."), en hardop klinkt dat gewoon.
+
 ## De drie verbeteringen met het meeste effect
 
-1. **Code leesbaar maken** (criterium 5, 7 → 8). `kim_omberg` (broadcast-trucs `np.broadcast`/`np.broadcast_to`), de simulatiecel van `ols_var` (circa 55 regels, rekenen en presentatie in één cel) en `posterior_predictive` (`transpose(0, 2, 1)`) splitsen en benoemen. De `# TODO: naar hap.stats` uit de docstring halen.
-2. **De Kim-Omberg-stap dragen met een getal en een beeld** (criterium 1, 8 → 9). Bij `eq-merton-icapm-riccati` staat alleen dat $B$ en $C$ negatief worden. Vóór de numerieke oplossing ontbreken de waarden van $\theta$ en $\sigma_\eta$ voor de illustratieve kalibratie ($\theta = 0{,}34$). "Hoe groot is het effect?" in het kernresultaat leent $h = 0{,}339$ uit een tabel die pas later komt.
-3. **De replicatietabellen vullen** (criterium 6, 8 → 9). In de Barberis-tabel voor parameteronzekerheid zijn vier van de vijf cellen onder "origineel" leeg, en de Campbell-Viceira-tabel zegt alleen "tot 2". Rijen zonder origineel weglaten, of het getal uit het artikel noemen.
+1. **De roostercel splitsen en de leeswijzer bij de steekproeffiguur herschrijven**
+   (criterium 5, 8 → 9). De cel r. 805–854 bevat `solve_rebalancing`, `normal_shocks`,
+   `known`, de controlelus en de tabel in circa 48 regels. Splits haar in de functies en een
+   controlecel met een zin ertussen. De leeswijzer op r. 969–971 zegt niet wat de lezer moet
+   zien (zie hardop-toets).
+2. **De taal op zes plekken afmaken** (criterium 3, 8,5 → 9). Gebruik één naam voor het
+   overrendement: r. 1021 heeft nog "log excess rendement" en de tabelindex op r. 1095 "gem.
+   log excess rendement". Maak van "die gok" (r. 376) een proefoplossing. Herschrijf ook r.
+   62, 565, 971 en 1281, "Horizon-irrelevantie" (r. 278), "koop-en-houdbelegger" (r. 1277),
+   de figuurtitel "moet indekken" (r. 990) en "standaardafwijkingen" in de tabel (r. 1258).
+3. **Drie kleine gaten in de uitleg dichten** (criterium 1, 9 → 9,5). Beperk de bewering
+   over consumptie (r. 234–235) tot constante kansen. Zeg in r. 857 dat $\gamma = 2$
+   daarom niet in de tabel staat. Schrijf in r. 679 "het verwachte log-rendement" in plaats
+   van "het log-rendement".
 
 ## Cijfers
 
 | nr | criterium | gewicht | cijfer |
 |---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 8 |
-| 2 | Opbouw en rode draad | 20% | 8 |
-| 3 | Taal | 15% | 8 |
+| 1 | Helderheid van de uitleg | 25% | 9 |
+| 2 | Opbouw en rode draad | 20% | 9 |
+| 3 | Taal | 20% | 8,5 |
 | 4 | Toy-voorbeeld | 10% | 9 |
-| 5 | Code en figuren | 10% | 7 |
-| 6 | Replicatie en empirie | 10% | 8 |
+| 5 | Code en figuren | 10% | 8 |
+| 6 | Replicatie en empirie | 10% | 9 |
 | 7 | Oefeningen | 5% | 9 |
-| | **Eindcijfer** | | **8,1** |
+| | **Eindcijfer** | | **8,8** |
 
-(0,3·8 + 0,2·8 + 0,15·8 + 0,1·9 + 0,1·7 + 0,1·8 + 0,05·9 = 8,05, afgerond 8,1.)
+(0,25·9 + 0,2·9 + 0,2·8,5 + 0,1·9 + 0,1·8 + 0,1·9 + 0,05·9 = 8,80.) Het eindcijfer haalt
+9,0 niet, en code (8) ligt onder de ondergrens van 8,5.
 
-## 1. Helderheid van de uitleg (8)
-
-*Goed.*
-- Toy-voorbeeld: elke stap staat er met getallen, en de theorie haalt die getallen terug: $w^\ast = 0{,}10/(2\cdot 0{,}0676) = 0{,}7396$ tegen 0,8333 (De Merton-portefeuille). Geval A en geval B komen terug in het bewijs van Samuelson en bij het teken van de hedgevraag.
-- De hedgevraag: "Het teken volgt de intuïtie, met één voorwaarde erbij." Het teken van $g_x$ wordt in drie zinnen afgeleid en aan geval B en B' gekoppeld.
-- Symbolen krijgen een orde van grootte: $\kappa = 0{,}083$ met een halfwaardetijd van 8 jaar, $\delta = -0{,}8$ bij $\gamma = 5$.
-
-*Aanmerkingen.*
-- Het kernresultaat, "Hoe groot is het effect?": "Met $\gamma = 5$, $\sigma = 18\%$ en $h = 0{,}339$ op twintig jaar uit de Kim-Omberg-tabel hieronder". Het getal komt uit een tabel die de lezer nog niet heeft gezien, met een kalibratie die nog niet is ingevoerd.
-- Wat het voorspelt: "Bij $\gamma > 1$ en $\theta > 0$ worden ze negatief, dus is de hedgevraag positief zodra $\rho < 0$." Wat $B$ en $C$ economisch zijn, staat er niet. $g_\eta/g = B + C\eta$ staat alleen in de dropdown.
-- Numerieke oplossing: "$\sigma_z = \SD(\varepsilon_2)\sqrt{2\kappa/(1-\phi^2)}$ en $\sigma_\eta = b\,\sigma_z/\sigma$". De vertaling voert drie symbolen in zonder de getallen die eruit volgen.
-- $J_t$ betekent in De Merton-portefeuille de partiële afgeleide naar de tijd, en in het bewijs van Samuelson de waardefunctie op tijdstip $t$ ($J_T(W)$, $J_{t+1}(W)$).
-
-*Beter uitleggen.* Welke $\theta$ en $\sigma_\eta$ de illustratieve kalibratie geeft (één regel, twee getallen). Wat $C$ zegt: hoe sterk de waarde van de toekomst reageert als de Sharpe-ratio stijgt.
-
-*Voor een 9.* Het voorbeeld in "Hoe groot is het effect?" verplaatsen naar na de tabel van Numerieke oplossing, of een getal gebruiken dat de lezer al kent. $\theta$ en $\sigma_\eta$ als getal onder de VAR-tabel. Eén zin met de economische betekenis van $B + C\eta$ in de hoofdtekst van Wat het voorspelt.
-
-## 2. Opbouw en rode draad (8)
+## 1. Helderheid van de uitleg (9)
 
 *Goed.*
-- Het Overzicht geeft vraag en antwoord in twee zinnen. Van de drie voorspellingen aan het eind van de intuïtie worden er twee in Theorie met naam ingelost ("Dat is de eerste voorspelling", "Dat was de derde voorspelling").
-- De routekaart noemt vijf resultaten en wijst de kern aan. Samengevat verwijst per regel naar het label.
-- Simulatie, replicatie en Wat er brak draaien om dezelfde grootheid: de hedgevraag bij $\gamma = 5$ op twintig jaar (0,339 in het model, 0,223 op de data).
+- Toy-voorbeeld en Theorie: de getallen keren terug. $w^\ast = 0{,}7396$ tegen 0,8333 (De
+  Merton-portefeuille), $q = 25/26$ in geval A (Samuelson) en geval B en B' bij het teken
+  van de hedgevraag (r. 476–477).
+- Numerieke oplossing: $\theta = 0{,}34$ en $\sigma_\eta = 0{,}069$ zijn met de hand
+  uitgerekend (r. 685–686, nagerekend). De som $B + C\eta$ krijgt in de hoofdtekst een
+  betekenis (r. 628–629).
+- Het ICAPM-effect in getallen: 10,7% in plaats van 16,2%, "met een derde" (r. 756–758).
 
 *Aanmerkingen.*
-- Met 5.483 woorden zit de lecture net onder de grens van 5.500. Theorie draagt vijf stellingen, een numerieke oplossing en een tweede numerieke controle met een rooster ("Klopt de vertaling van een jaarlijks VAR naar continue tijd?"). Die controle is nodig voor niets dat daarna komt, behalve `solve_rebalancing`, dat ook in de replicatie had kunnen staan.
-- De tweede voorspelling ("stijgt de fractie met de horizon") wordt niet met naam ingelost.
-- De replicatie heeft drie delen en drie oordelen. Het derde deel (parameteronzekerheid) is een tweede verhaal naast de hedgevraag.
+- Opzet en aannames: "Consumptie laten we weg, omdat Merton liet zien dat ze de
+  portefeuilleregels hieronder niet verandert". Voor de Merton-portefeuille klopt dat.
+  Voor de hedgevraag van Kim-Omberg niet: met tussentijdse consumptie wordt die een gewogen
+  gemiddelde over horizonnen.
+- De Merton-portefeuille: "Daarna gaan we na dat die gok de HJB-vergelijking oplost." Drie
+  alinea's eerder (r. 273) en in de Intuïtie (r. 80) betekent "gok" weddenschap. Hier
+  betekent het proefoplossing (H7).
+- Numerieke oplossing: "Bij $\gamma = 2$ loopt de allocatie tegen de grens van 0,99 aan."
+  De tabel erboven toont alleen $\gamma = 5$ en $10$. Dat dit de reden is dat
+  $\gamma = 2$ ontbreekt, moet de lezer zelf bedenken.
+- Numerieke oplossing: "Het verwachte simpele overrendement is het log-rendement plus
+  $\tfrac12\sigma^2$". Bedoeld is het verwachte log-rendement. De formule tussen haakjes
+  herstelt dat.
 
-*Voor een 9.* De roostercontrole in Numerieke oplossing terugbrengen tot één zin met het grootste verschil. De tweede voorspelling expliciet inlossen bij de figuur `fig-merton-icapm-horizon`.
+*Beter uitleggen.* Waarom de lezer de roostercontrole nodig heeft: één bijzin dat de
+vertaling naar continue tijd een benadering is, en dat het rooster later de
+replicatie draagt.
 
-## 3. Taal (8)
+## 2. Opbouw en rode draad (9)
 
-*Goed.* Korte zinnen (gemiddeld 14,2 woorden), geen verboden woorden of calques volgens `prose_stats`. Het Engelse abstract van Merton is geparafraseerd ("Merton schreef het in zijn abstract").
+*Goed.*
+- Het Overzicht geeft vraag en antwoord in drie zinnen. De drie verwachtingen uit de
+  Intuïtie worden alle drie ingelost, telkens in een gewone zin: bij Samuelson (r.
+  290–291), bij de horizonfiguur (r. 761–762) en na het ICAPM (r. 567–568).
+- Eén grootheid loopt door Numerieke oplossing, Simulatie, Replicatie en Wat er brak: de
+  hedgevraag bij $\gamma = 5$ op twintig jaar (0,339 in het model, 0,450 gemiddeld
+  geschat, 0,223 op de data).
+- 5.822 woorden, onder de grens. Routekaart (r. 223–227) en Samengevat zijn op hun plaats.
 
 *Aanmerkingen.*
-- Toy-voorbeeld, stap 4: "In de dure toestand is er geen premie, de belegger houdt $w = 0$ en $q_{\text{duur}} = 1$." Twee zinnen met een komma aan elkaar.
-- Replicatie, Barberis' VAR: "Op die ene $t$-waarde rust de hele literatuur over horizoneffecten." Een retorische overdrijving.
-- Wat er brak: "Het ICAPM gaf elk later meerfactormodel een theoretische vergunning". Beeldspraak die de volgende bijzin toch moet uitleggen.
-- Wisselende namen: "beleggingskansen", "kansen" en "de toekomst" voor hetzelfde begrip; "hedgefractie" $h$ naast "hedgevraag".
+- Replicatie: het derde deel (parameteronzekerheid) is een tweede verhaal naast de
+  hedgevraag. De slotalinea's (r. 1281–1289) sluiten wel aan op de simulatie. Geen
+  aftrek.
 
-*Voor een 9.* Stap 4 splitsen. "Kansen" één keer als alias van "beleggingskansen" invoeren en daarna één naam gebruiken. De overdrijving in Barberis' VAR schrappen.
+## 3. Taal (8,5)
+
+*Goed.* De redactie heeft het staccato verbonden ("daarom", "terwijl", "want", "zodat").
+Stap 1 tot 5 van het toy-voorbeeld lezen als zinnen. "Zij" en "haar" voor zaken zijn weg.
+Motiefnamen: "de standaardfout van 2%" staat twee keer, "theorie of feit" en "risico of
+vergissing" elk één keer. "Wie …" staat twee keer. De vaste wending "Waarom zou dit waar
+zijn?" staat één keer in de tekst, en de tweede keer anders geformuleerd.
+
+*Aanmerkingen.*
+- Replicatie-admonition, Wat: "het maandelijkse VAR van het log excess rendement op de
+  dividendopbrengst". De tabelindex op r. 1095 zegt "a (gem. log excess rendement)", terwijl
+  r. 126 en 659 "overrendement" gebruiken. Dat zijn twee namen voor één begrip (H7) [onderzoek E].
+- De Merton-portefeuille: "Daarna gaan we na dat die gok de HJB-vergelijking oplost."
+  [onderzoek E]
+- Het kernresultaat: "levert vermogen wanneer het het minst nodig is". Het dubbele "het"
+  struikelt [onderzoek E].
+- Overzicht: "Op de vraag theorie of feit is het ICAPM een theorie met een open plek." De
+  motiefnaam klinkt aangeplakt [onderzoek E].
+- Parameteronzekerheid volgens Barberis: "Het verschil komt zelf van [de standaardfout
+  van 2%]". "Komt zelf van" is geen gesproken Nederlands [onderzoek E].
+- Samuelson: de stellingkop "Horizon-irrelevantie" is een gekunstelde samenstelling
+  [onderzoek E].
+- Parameteronzekerheid volgens Barberis: "koop-en-houdbelegger" [onderzoek E]. In de figuurtitel
+  "Wat de belegger denkt dat hij moet indekken" staat "indekken" niet-wederkerend
+  [onderzoek E]. In de tabel staat "D/P in standaardafwijkingen", terwijl de tekst
+  "standaarddeviaties" zegt [onderzoek E].
+
+*Voor een 9.* Vervang "excess rendement" door "overrendement" in
+`lectures/03_10_merton_icapm.md:1021` en in de tabelindex op :1095. "gok" wordt
+"proefoplossing" op :376. Herschrijf :62, :565, :971 en :1281 (zie hardop-toets). Maak van
+:278 "Irrelevantie van de horizon", van :1277 "buy-and-hold-belegger", van de titel op :990
+"waartegen de belegger denkt zich te moeten indekken" en van de tabelkolom op :1258 "D/P in
+standaarddeviaties".
 
 ## 4. Toy-voorbeeld (9)
 
-*Goed.* Opzettabel, vijf stappen van één regel met getallen, één codecel, tabel hand/code die tot vier decimalen overeenkomt. Eén niet-afgeleide formule (het recept voor $q$), die Theorie als eerste afleidt. De slotzin zegt wat de lezer nu weet.
-
-*Aanmerkingen.* $\sqrt{2{,}25 \cdot 26/25}$ is net geen handwerk, maar wel te doen.
-
-## 5. Code en figuren (7)
-
-*Goed.* Vóór elke figuur staat waarop te letten ("Let in de figuur op de afstand tussen de getrokken en de gestreepte lijn"). De Runge-Kutta-lus en de achterwaartse recursie in `solve_rebalancing` zijn zichtbare lussen. De parameters staan in een dict (`illustrative`).
+*Goed.* Een opzettabel, vijf stappen met getallen en één codecel met een tabel hand/code
+die tot vier decimalen overeenkomt (nagerekend: 0,8333, 25/26, 1,5297, 0,8759, 0,7909,
+1,7361). De slotzin zegt wat het getal betekent: 0,0426, ruim vijf procent, en waarom.
 
 *Aanmerkingen.*
-- Numerieke oplossing: `shape = np.broadcast(sigma, kappa, theta, sig_l, rho).shape` en `np.broadcast_to(myopic, np.shape(out))`. Trucs die alleen de simulatie nodig heeft.
-- Simulatie: de cel met `ols_var` beslaat circa 55 regels en combineert een functie, een simulatielus, de schatting en de presentatietabel. De docstring eindigt met `# TODO: naar hap.stats`.
-- Parameteronzekerheid: `C = C_hat + L_x @ Z @ L_sigma.transpose(0, 2, 1)`. Een compacte batchmatrixtruc.
-- De cel met `solve_rebalancing` combineert rekenwerk en de controletabel.
+- Het recept: "met $q = \E[(1 + wR^{e})^{-1}]$ bij de optimale $w$ (Theorie leidt die
+  vorm af)". De vorm van de waardefunctie en de gewogen eerste-ordevoorwaarde komen vóór
+  hun afleiding [onderzoek A]. Dat is één geleende formule, wat de rubriek toestaat.
+  Omdat stap 4 de voorwaarde uitschrijft, is de lezer niet verloren.
 
-*Voor een 9.* De simulatiecel splitsen in functie, simulatie en tabel. De TODO verwijderen. De broadcast-logica in `kim_omberg` vervangen door een lus over parametersets.
+## 5. Code en figuren (8)
 
-## 6. Replicatie en empirie (8)
-
-*Goed.* Het blok heeft alle vijf onderdelen en een toetsbare verwachte afwijking ("Een negatieve helling of een positieve correlatie is een fout in de code"). Drie tabellen origineel/hier, drie oordelen die met Geslaagd of Gedeeltelijk geslaagd beginnen en naar de verwachting verwijzen. Het verschil met Barberis wordt in standaardfouten uitgedrukt (0,5).
+*Goed.* Vóór elke tabel staat een zin en erna een lezing. `kim_omberg` heeft een
+zichtbare Runge-Kutta-lus zonder broadcast-trucs. De simulatie staat in drie cellen:
+functie, simulatie, tabel. Figuren hebben een bijschrift dat zegt wat te zien is.
 
 *Aanmerkingen.*
-- De Campbell-Viceira-tabel heeft als origineel twee keer "tot 2".
-- De Barberis-tabel voor parameteronzekerheid: vier van de vijf cellen onder "origineel (Barberis)" zijn leeg.
-- Onder het derde oordeel staan getallen weer in lopende tekst: "tienjaarssteekproef 1986–1995", "44 jaar maanddata", "honderd jaar".
+- Numerieke oplossing: de cel met `solve_rebalancing`, `normal_shocks`, `known`, de lus
+  over $\gamma$ en de controletabel beslaat circa 48 regels. Rekenwerk en presentatie
+  staan daar in één cel.
+- Simulatie: "Let in de figuur op waar de gestreepte lijn links ligt ten opzichte van de
+  zwarte." De zin zegt niet waarop de lezer moet letten (de afstand, en welke kant op) en
+  noemt het rechterpaneel niet.
+- Oefening 1: "(w0 in geval B min de myopische fractie)". Een codenaam in de proza
+  [onderzoek A].
 
-*Voor een 9.* In de tabellen origineel/hier alleen rijen met een origineel; eind 2025 en D/P in sd in een aparte tabel. Voor Campbell-Viceira hun getal bij een vergelijkbare $\gamma$ noemen.
+*Voor een 9.* Splits `lectures/03_10_merton_icapm.md:805–854` in een cel met de functies
+en een controlecel, met één zin ertussen. Laat de leeswijzer op :969–971 zeggen waar de
+gestreepte lijn links ligt en wat rechts te zien is. Maak op :1339 van "w0" "de fractie in
+geval B".
+
+## 6. Replicatie en empirie (9)
+
+*Goed.* De admonition heeft alle vijf onderdelen en een toetsbare verwachting ("Een
+negatieve helling of een positieve correlatie is een fout in de code"). Er zijn drie
+tabellen origineel/hier met alleen rijen die een origineel hebben. Elk oordeel begint met
+Geslaagd of Gedeeltelijk geslaagd en verwijst naar de verwachting. De afwijking van
+Barberis wordt in standaardfouten uitgedrukt (0,5).
+
+*Aanmerkingen.*
+- Parameteronzekerheid volgens Barberis: "Die 4,5% geldt wel voor $\gamma = 5$ met
+  jaarlijkse herbalancering, zodat de vergelijking alleen een orde van grootte geeft." De
+  tabel zet ongelijke gevallen naast elkaar [onderzoek A]. De tekst zegt dat eerlijk, dus
+  er gaat hier niets af voor een 9. Voor een 10 zou $\gamma = 10$ uitgerekend worden.
 
 ## 7. Oefeningen (9)
 
-*Goed.* Instap met een variatie op het toy-voorbeeld, een afleiding van de gesloten vorm met numerieke controle, een uitbreiding van de replicatie naar 1996–2025. Elke uitwerking eindigt met "Wat dit leert:".
+*Goed.* De instap varieert op het toy-voorbeeld, de afleiding van $C_\infty$ en
+$B_\infty$ heeft een numerieke controle (0,6088 tegen 0,6087), en de uitbreiding past de
+replicatie toe op 1996–2025. Elke uitwerking eindigt met een gewone zin over wat ze
+leert.
 
-*Aanmerkingen.* In oefening 3 is deelvraag 2 alleen op vijf jaar in woorden uitgewerkt.
+*Aanmerkingen.* Oefening 1: "(w0 in geval B min de myopische fractie)", zie code.
 
 ## Feitelijke fouten
 
-1. Replicatie, Parameteronzekerheid volgens Barberis: "met parameteronzekerheid ligt de allocatie op elke horizon twee à drie procentpunt lager". Dat geldt voor de kolom "D/P op gemiddelde" (1,9 tot 3,3 pp). Voor "D/P zoals eind 2025" is het verschil 1,2 tot 1,9 pp (0,222 − 0,210 tot 0,364 − 0,345).
+1. **Onnauwkeurig (open).** `lectures/03_10_merton_icapm.md:234–235`: "Consumptie laten we
+   weg, omdat Merton liet zien dat ze de portefeuilleregels hieronder niet verandert
+   {cite}`Merton1969`." Dat geldt bij constante beleggingskansen, dus voor
+   [](#eq-merton-icapm-merton). De Kim-Omberg-hedgevraag hieronder verandert wel met
+   tussentijdse consumptie: die wordt een gemiddelde over horizonnen. Voorstel: "... dat ze
+   de Merton-portefeuille niet verandert, en de hedgevraag alleen in grootte." Of beperk
+   de zin tot constante kansen.
 
-Nagerekend en correct: de toy-stappen (0,8333; 25/26; 1,5297; 0,8759; 0,7909; +5,1%; 1,7361 bij log-nut), $w^\ast = 0{,}7396$, 8% marktpremie, 10,7% tegen 16,2%, $\kappa = 0{,}083$ en 8 jaar, de Riccati-vergelijkingen (opnieuw afgeleid uit de HJB-vergelijking) en de vierkantsvergelijking voor $C_\infty$, 0,378 en 0,339, het grootste roosterverschil van 1,6 pp, de simulatie (0,143–0,850; 0,450; 55,5%), 0,5 en 2,4 bij Barberis, $t = 1{,}07$, 0,924, −0,856, 8,8 jaar, 14,1%, 4,2%, 4,5%, −1,86 sd, 0,483, oefening 3 (0,358; 2,60; 0,647; 0,649 tegen 0,817).
+Nagerekend tegen de celuitvoer en correct: het toy-voorbeeld (0,8333; 25/26 = 0,9615;
+1,5297; 0,8759; 0,7909; 0,0426; 1,7361; $q = 1{,}0833$ bij $\gamma = 0{,}5$; de
+hedgeverhouding groeit met $\gamma$: 0,051, 0,078, 0,086), $w^\ast = 0{,}7396$, 8%
+marktpremie, $\kappa = 0{,}083$ en 8 jaar, $\delta = -0{,}8$, $\theta = 0{,}34$,
+$\sigma_z = 0{,}156$, $\sigma_\eta = 0{,}069$, 0,378 en 0,339 ("bijna verdubbelt"),
+$\gamma = 10$ op vijftig jaar (0,372 > 0,189), 10,7% tegen 16,2% en "met een derde", het
+grootste roosterverschil van 1,6 pp ($\gamma = 10$, $H = 20$), $\gamma = 2$ boven 0,99
+(0,944 plus de hedgevraag), de simulatie (0,143–0,850; 0,450; 55,5%; 0,1% negatief; $\hat b$
+0,124 > 0,08; $\hat\phi$ 0,880 < 0,92; "minder dan de helft tot tweeënhalf keer"),
+Barberis 0,4058, 0,5 en 2,4, $t = 1{,}07$, 0,924, −0,856, 8,8 jaar, 1,943 bij $\gamma = 10$
+en $H = 50$, de posterior (0,042 tegen 0,040; 14,1%; 4,2%), de verschillen 0,019–0,032 en
+0,012–0,019, 4,5%, −1,86 sd, "half zo groot" (0,222 tegen 0,459), 0,223, $C_\infty$ en de
+oneindige hedgevraag 0,609 boven de myopische 0,378 en boven 0,546 op vijftig jaar, en
+oefening 3 (0,358; 2,60; 0,647; 0,990; 0,649 tegen 0,817, "zeventien procentpunt"; op de
+eeuw 0,261 tegen 0,250, "ruim één procentpunt"). De tekens van de hedgevraag
+($g_x < 0$, $\rho < 0$) en van $b_x = -\bar H/\bar T$ zijn opnieuw afgeleid en kloppen.
 
 ## Navertelling in vijf zinnen
 
-Samuelson en Merton lieten in 1969 zien dat de horizon niet uitmaakt voor een CRRA-belegger zolang rendementen onafhankelijk zijn: hij kiest elk jaar hetzelfde percentage, in continue tijd $(\mu - r)/(\gamma\sigma^2)$. Zijn rendementen voorspelbaar, dan houdt een belegger met $\gamma > 1$ naast de myopische vraag een hedgevraag aan in activa die stijgen wanneer de beleggingskansen verslechteren; bij aandelen en de dividendopbrengst is die positief en groeit hij met de horizon. Tel die vraag op over alle beleggers, en het verwachte rendement beloont naast de marktbèta de bèta op elke toestandsvariabele: het ICAPM, dat niet zegt welke variabelen dat zijn. In een illustratief VAR kan de hedgevraag de vraag naar aandelen bijna verdubbelen, maar een eeuw data meet haar slecht, omdat ze hangt aan een helling die maar in de helft van de steekproeven significant is. Op de Goyal-Welch-data is de hedgevraag positief en kleiner dan een verdubbeling, en parameteronzekerheid drukt de allocatie maar een paar procentpunt, omdat een eeuw data de posterior smal maakt.
+Samuelson en Merton lieten in 1969 zien dat de horizon niet uitmaakt voor een
+CRRA-belegger zolang rendementen onafhankelijk zijn. Hij kiest dan elk jaar hetzelfde
+percentage, in continue tijd $(\mu - r)/(\gamma\sigma^2)$. Zijn rendementen voorspelbaar,
+dan houdt een belegger die risicomijdender is dan iemand met log-nut er een hedgevraag bij
+in activa die stijgen als de beleggingskansen verslechteren. Bij aandelen en de
+dividendopbrengst is die hedgevraag positief, en ze groeit met de horizon tot een grens.
+Tel die vraag op over alle beleggers, en het verwachte rendement beloont naast de
+marktbèta de bèta op elke toestandsvariabele. Dat is het ICAPM, dat niet zegt welke
+variabelen het zijn. In het model kan de hedgevraag de vraag naar aandelen bijna
+verdubbelen, maar een eeuw data meet haar slecht, en op de Goyal-Welch-data is ze positief
+en kleiner dan een verdubbeling, terwijl parameteronzekerheid de allocatie maar een paar
+procentpunt drukt.
 
 De navertelling komt overeen met het Overzicht.
 
+## Taal na de redactie
+
+De redactie heeft gewerkt. De gemiddelde zinslengte ging van 14,4 naar 15,7 woorden, het
+aandeel eenzinsalinea's van 19% naar 12% en het aandeel zinnen met een verbindingswoord
+van 16% naar 29%. Calques en sjabloonzinnen zijn vrijwel verdwenen. Wat overblijft zijn
+losse plekken, geen patroon. Eén ervan heeft de redactie zelf veroorzaakt:
+"overrendement" is niet overal doorgevoerd.
+
+Hardop-toets (drie zinnen die nog niet natuurlijk klinken):
+1. r. 62: "Op de vraag theorie of feit is het ICAPM een theorie met een open plek." →
+   "Is het ICAPM theorie of feit? Het is een theorie met een open plek: het zegt welke
+   vorm een prijsvergelijking heeft, maar niet welke variabelen erin horen."
+2. r. 969–971: "Let in de figuur op waar de gestreepte lijn links ligt ten opzichte van de
+   zwarte." → "Let in het linkerpaneel op de gestreepte lijn, die rechts van de zwarte
+   ligt, en rechts op de breedte van de verdeling."
+3. r. 1281: "Het verschil komt zelf van de standaardfout van 2%, want hoe korter de
+   steekproef, hoe breder de posterior." → "Ook dit verschil is een gevolg van de
+   standaardfout van 2%: hoe korter de steekproef, hoe breder de posterior."
+
+Bij volledige oplossing van alle punten: 9,0
+
 ## Controle 1
 
-Gecontroleerd tegen `rapport-03_10_merton_icapm.md` §F6-1 en de huidige lecture en notebook. `prose_stats --check`: 5.493 woorden, PASS. De `nb_outputs` van de oude en de nieuwe versie verschillen alleen in celgrenzen en in de gesplitste Barberis- en Campbell-Viceira-tabellen; Kim-Omberg, simulatie en replicatie geven dezelfde waarden.
+Gelezen: R9-1 in `notes/rapport-03_10_merton_icapm.md`, het hele college opnieuw, en
+`nb_outputs.py` opnieuw gedraaid (offline) tegen `$TEMP/F6c-03_10_merton_icapm-out.txt`.
 
-| punt | status | toelichting |
-|---|---|---|
-| Feitelijke fout 1 (twee à drie procentpunt) | opgelost | Nieuwe tabel met het kleinste en grootste verschil per beginstand (0,019–0,032 en 0,012–0,019); de tekst zegt "twee à drie procentpunt, vanaf eind 2025 ruim één à twee". Klopt. |
-| Verbetering 1: code | opgelost | `np.broadcast` en `np.broadcast_to` weg; de simulatiecel is gesplitst in functie, simulatie en tabel, met een zin ertussen; `L_sigma_t` benoemd. De TODO staat nog als commentaarregel boven `ols_var`, niet meer in de docstring. |
-| Verbetering 2: Kim-Omberg met getal | opgelost | $\theta = 0{,}34$ en $\sigma_\eta = 0{,}069$ als handberekening (nagerekend: $\sigma_z = 0{,}156$); zin over $B + C\eta$ in de hoofdtekst; "Hoe groot is het effect?" staat nu na de Kim-Omberg-tabel. Nieuwe kleine H8-zwakte: de verplaatste alinea opent met "Dat getal zegt ook hoe groot het ICAPM-effect is", na een zin die over een verdubbeling ging. |
-| Verbetering 3: replicatietabellen | opgelost | Alleen rijen met origineel in de tabellen origineel/hier; de overige grootheden in een aparte tabel. Het getal van Campbell en Viceira is terecht niet toegevoegd (niet geverifieerd, STYLE §11.11). |
-| Naadpunt 5 (Black-Scholes) | opgelost | "In [](#02-09-black-scholes) leverde de stochastische calculus de prijs van een optie. Merton gebruikte die wiskunde al vanaf 1969 voor de portefeuillekeuze". Strookt nu met L9. |
+**Feitelijke fout**
+1. r. 234–237 (consumptie): **opgelost.** Beperkt tot constante kansen voor de
+   Merton-portefeuille, met een aparte zin dat tussentijdse consumptie de hedgevraag tot
+   een gewogen gemiddelde over horizonnen maakt (teken blijft, grootte verandert).
 
-Niet gedaan en niet gevraagd: $J_t$ met twee betekenissen, de tweede voorspelling expliciet inlossen, de kommazin in stap 4, "vergunning", wisselende namen voor beleggingskansen.
+**De drie verbeteringen**
+1. Roostercel splitsen (criterium 5): **opgelost.** Functiecel met `solve_rebalancing` en
+   `normal_shocks` (r. 811–840), dan een zin (r. 842–843), dan de controlecel met `known`,
+   de lus en de tabel (r. 846–865). Celuitvoer ongewijzigd: de tabel rooster/Kim-Omberg
+   voor $\gamma = 5$ en $10$ geeft nog altijd het grootste verschil van 1,6 pp bij
+   $\gamma = 10$, $H = 20$ (0,401 tegen 0,385 in `nb_outputs`); de RNG-volgorde is niet
+   geraakt.
+2. Taal op zes plekken (criterium 3): **opgelost.** "Overrendement" nu overal (admonition
+   en tabelindex r. 1107 "a (gem. log overrendement)"), "proefoplossing" i.p.v. "gok"
+   (r. 378), r. 62, 567–568, 981–983 en 1293 herschreven zoals voorgesteld,
+   "Irrelevantie van de horizon" (r. 280), "buy-and-hold-belegger"/"buy-and-hold-getal"
+   (r. 1289, 1295), figuurtitel r. 1002, "D/P in standaarddeviaties" (r. 1270). Geen
+   restanten van de oude vormen gevonden (gecontroleerd met grep).
+3. Drie kleine gaten in de uitleg (criterium 1): **opgelost.** Consumptie beperkt (zie
+   feitelijke fout), de reden voor het ontbreken van $\gamma = 2$ staat er nu (r. 868–869),
+   "het verwachte log-rendement" (r. 682).
 
-**Cijfers na controle 1 (cijfer van record)**
+**Overige aanmerkingen**
+- Leeswijzer bij de steekproeffiguur (r. 981–983): **opgelost**, noemt nu linker- en
+  rechterpaneel met wat erin te zien is.
+- Oefening 1, "w0" (r. 1351): **opgelost**, "de fractie in geval B".
 
-| nr | criterium | was | nu |
-|---|---|---|---|
-| 1 | Helderheid | 8 | 8 |
-| 2 | Opbouw | 8 | 8 |
-| 3 | Taal | 8 | 8 |
-| 4 | Toy-voorbeeld | 9 | 9 |
-| 5 | Code en figuren | 7 | 8 |
-| 6 | Replicatie | 8 | 9 |
-| 7 | Oefeningen | 9 | 9 |
-| | **Eindcijfer** | 8,1 | **8,3** |
+Geen nieuwe punten: geen verslechtering en geen nieuwe feitelijke fout gevonden.
 
-(0,3·8 + 0,2·8 + 0,15·8 + 0,1·9 + 0,1·8 + 0,1·9 + 0,05·9 = 8,25, afgerond 8,3.) Helderheid blijft 8: de drie punten uit "Voor een 9" zijn gedaan, maar $J_t$ staat er nog en de verplaatste alinea opent met een onduidelijke "Dat". Voor 8,5 zijn nog nodig: de $J_t$-botsing en die openingszin (helderheid naar 9), of de tweede voorspelling inlossen bij de figuur en de kommazin in stap 4 splitsen (opbouw of taal naar 9).
+**Getallencontrole.** Alle in de tekst aangehaalde en gewijzigde getallen zijn nagerekend
+tegen `nb_outputs.py` (opnieuw gedraaid, offline) of tegen een berekening uit de tekst; ze
+kloppen. De celsplitsing bij de roostercontrole verandert alleen de indeling: de
+uitkomsten (rooster vs. Kim-Omberg voor $\gamma = 5$ en $10$, grootste verschil 1,6 pp)
+zijn identiek aan F6.
 
-## Controle 2
+**Cijfers**
 
-Gecontroleerd tegen `rapport-03_10_merton_icapm.md` §F6-2 en de huidige lecture. `prose_stats --check`: 5.497 woorden, PASS. `nb_outputs` is identiek aan controle 1.
+| nr | criterium | gewicht | F6 | Controle 1 |
+|---|---|---|---|---|
+| 1 | Helderheid van de uitleg | 25% | 9 | 9,5 |
+| 2 | Opbouw en rode draad | 20% | 9 | 9 |
+| 3 | Taal | 20% | 8,5 | 9 |
+| 4 | Toy-voorbeeld | 10% | 9 | 9 |
+| 5 | Code en figuren | 10% | 8 | 9 |
+| 6 | Replicatie en empirie | 10% | 9 | 9 |
+| 7 | Oefeningen | 5% | 9 | 9 |
+| | **Eindcijfer** | | 8,8 | **9,0** |
 
-| punt uit controle 1 | status | toelichting |
-|---|---|---|
-| $J_t$ met twee betekenissen | opgelost | In het Samuelson-bewijs heet de waardefunctie nu $V_t(W)$, met de zin "$J_t$ is verderop een afgeleide". |
-| Opening "Dat getal" (H8) | opgelost | "De hedgevraag van 0,339 bij $\gamma = 5$ op twintig jaar bepaalt ook hoe groot het ICAPM-effect is." |
-| Tweede voorspelling inlossen | opgelost | Bij de horizonfiguur: "Dat de getrokken lijn stijgt, is de tweede voorspelling van de intuïtie." |
-| Kommazin in stap 4 | opgelost | Twee zinnen: "In de dure toestand is er geen premie. De belegger houdt daar $w = 0$ ..." |
-| "vergunning" | opgelost | "een theoretische grond". |
-| Wisselende namen voor beleggingskansen | opgelost | "de beleggingskansen, kortweg de kansen" wordt één keer ingevoerd. |
-| TODO in de code | geen aftrek meer | STYLE §5 (r. 467) vraagt de regel `# TODO: naar hap.stats`; dat is een projectkeuze. |
-| Rekenwerk en tabel in één cel bij `solve_rebalancing` | niet | De cel met `solve_rebalancing`, `normal_shocks`, `known` en de controletabel beslaat nog circa 48 regels. |
-
-Geen verslechteringen, geen nieuwe feitelijke fouten.
-
-**Cijfers na controle 2 (cijfer van record)**
-
-| nr | criterium | controle 1 | nu |
-|---|---|---|---|
-| 1 | Helderheid | 8 | 9 |
-| 2 | Opbouw | 8 | 9 |
-| 3 | Taal | 8 | 9 |
-| 4 | Toy-voorbeeld | 9 | 9 |
-| 5 | Code en figuren | 8 | 8 |
-| 6 | Replicatie | 9 | 9 |
-| 7 | Oefeningen | 9 | 9 |
-| | **Eindcijfer** | 8,3 | **8,9** |
-
-(0,3·9 + 0,2·9 + 0,15·9 + 0,1·9 + 0,1·8 + 0,1·9 + 0,05·9 = 8,90.) Code blijft 8 omdat de roostercel functies, rekenwerk en tabel combineert.
+(0,25·9,5 + 0,2·9 + 0,2·9 + 0,1·9 + 0,1·9 + 0,1·9 + 0,05·9 = 9,125. De F6-plafondregel zegt
+dat het eindcijfer hoogstens het cijfer is dat "bij volledige oplossing van alle punten"
+werd genoemd, hier 9,0; het gewogen gemiddelde van 9,125 wordt daarop afgetopt.) Geen
+deelcijfer onder 8,5, taal (9) ruim boven de ondergrens van 8. Norm gehaald.
