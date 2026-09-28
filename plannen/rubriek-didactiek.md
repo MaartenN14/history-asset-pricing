@@ -8,7 +8,7 @@ niet paraat heeft. IJkpunt voor een 10: een QuantEcon-lecture zoals
 interpretatie, één model, leesbare code, directe oefeningen).
 
 Streefcijfer: een herziene lecture haalt een eindcijfer van minstens 9,0 (ronde 9+, 2026-09-28; eerder 8,5) en heeft geen
-deelcijfer onder 8.
+deelcijfer onder 8,5.
 
 ## Cijferschaal (geldt per criterium en voor het eindcijfer)
 

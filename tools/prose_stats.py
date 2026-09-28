@@ -106,7 +106,7 @@ TELEGRAM = r"^(?:Eerst|Dan|Daarna|Nu|Ten slotte|Tot slot) (?:de|het|een|twee|dri
 ANGLICISMS = (r"(?<![-/])\b(finance|asset pricing|paper|short|size|value-weighted|equal-weighted|"
               r"pre-ranking|toy|lecture|in-sample|horizons)\b(?![-/])")
 DAT_IS = r"^(Dat|Dit) (is|zijn)\b"
-LIST = r"\s*([-*+]|\d+\.)\s"
+LIST = r"\s*([-*+]|\d{1,2}\.)\s"  # hoogstens twee cijfers: een jaartal aan het regelbegin is geen lijstnummer
 
 
 def _display(m):
@@ -157,7 +157,7 @@ def stats_for(text, name=""):
     flat = "\n\n".join(" ".join(b.split()) for b in blocks if b != "CODECELL")
     nobold = re.sub(r"\*\*[^*]+\*\*", "", flat)
     tmpl = {k: len(re.findall(r, flat)) for k, r in TEMPLATES.items()}
-    if "00_00" not in name:  # setup definieert de motieven en mag ze vaker noemen
+    if "00_0" not in name:  # setup en rendementen definiëren de motieven en mogen ze vaker noemen
         tmpl.update({k: len(re.findall(r, nobold, flags=re.I)) for k, r in MOTIFS.items()})
     counts = collections.Counter(" ".join(s.split()) for s in sents if len(s.split()) >= 10)
     return {
