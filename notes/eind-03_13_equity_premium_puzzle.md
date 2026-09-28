@@ -1,145 +1,304 @@
-STATUS 03_13_equity_premium_puzzle F6c words=5354 prose=PASS open=0 cijfer=8,6 min=8
+STATUS 03_13_equity_premium_puzzle F6c words=5651 prose=PASS open=1 cijfer=9,0 min=8,8
 
-# Eindbeoordeling: Mehra-Prescott en Hansen-Jagannathan (F6)
+# Ronde 9+
+
+Vorige ronde: 8,6
+
+Eindbeoordeling (F6) van `lectures/03_13_equity_premium_puzzle.md`, gelezen na de taalredactie.
+Getallen zijn nagerekend tegen `nb_outputs` (18 cellen) en met de hand. Verwijzingen naar
+[](#03-12-consumptie-capm) (14,7 en "ongeveer 75") kloppen met 03_12:424 en 03_12:976.
 
 ## De drie verbeteringen met het meeste effect
 
-1. **De tabel met vereiste $\gamma$ corrigeren en na de replicatie zetten** (feitelijke fout 1; criteria 1 en 2, 8 → 9). De rij "Euler-vergelijking met GMM | 1959–1978 | ongeveer 75" geeft een verkeerde methode op. De tabel staat bovendien vóór Samengevat en haalt vier getallen aan die de simulatie en de replicatie pas later uitrekenen.
-2. **Het replicatieblok binnen de vorm brengen en het tweede oordeel laten kloppen met de verwachting** (criterium 6, 8 → 9). "Wat" heeft drie zinnen, "Verschil" drie, "Verwachte afwijking" vier; STYLE §11.7 staat er twee per onderdeel toe. De verwachte afwijking voorspelt al dat consumptie vanaf 1929 gladder is, en toch luidt het oordeel "Gedeeltelijk geslaagd" omdat "de consumptiemomenten van Mehra en Prescott" niet gehaald worden.
-3. **De tweede Hansen-Jagannathan-stelling lichter maken** (criterium 1, 8 → 9). Met meerdere activa komen $v$, $m^*_v$ en de V-vorm er in één alinea bij, zonder getal. Eén getal (de grens bij $v = 1/(1+R^f)$ voor markt en T-bill) zou de lezer houvast geven.
+1. **Hardop-zinnen en getallenalinea's herschrijven** (taal, 8,5 → 9). Het gaat om de zes
+   zinnen onder criterium 3, en om alinea's met vijf of zes getallen in lopende tekst
+   (03_13:127–133, 465–469, 689–699, 770–774, 907–912, 1044–1046) [onderzoek D]. Daarnaast
+   moet de tweede "standaardfout van 2%" (03_13:773) een link naar `#00-01-rendementen` krijgen.
+2. **Eén woord per begrip bij "grens", en de routekaart met een eenduidig verwijswoord**
+   (helderheid, 8,5 → 9). "Grens" betekent nu vijf dingen: de HJ-grens, de Sharpe-grens, de
+   efficiënte grens (589), de bovengrens $\gamma \le 10$ (750, 1237) en de grenzen van het
+   $\gamma$-gebied (638). In de routekaart (202–204) is niet duidelijk waar "dat" naar verwijst.
+3. **Het tweede replicatieoordeel laten kloppen met de cijfers, en het Engelse figuurlabel
+   vertalen** (replicatie 8,5 → 9, code en figuren 8,5 → 9). De zin "Gladdere consumptie maakt de
+   vereiste risicoaversie hoger dan bij Mehra en Prescott" (911) klopt voor RRA(2)
+   (13,0 tegen 10,4 op de MP-momenten), maar niet voor RRA(1): 22,0 ligt onder de 27,2 van de
+   simulatie op de MP-momenten. Het label "Sharpe-grens: excess marktrendement" (1011) is
+   Engels.
 
 ## Cijfers
 
 | nr | criterium | gewicht | cijfer |
 |---|---|---|---|
-| 1 | Helderheid van de uitleg | 30% | 8 |
-| 2 | Opbouw en rode draad | 20% | 8 |
-| 3 | Taal | 15% | 8 |
+| 1 | Helderheid van de uitleg | 25% | 8,5 |
+| 2 | Opbouw en rode draad | 20% | 9 |
+| 3 | Taal | 20% | 8,5 |
 | 4 | Toy-voorbeeld | 10% | 9 |
-| 5 | Code en figuren | 10% | 8 |
-| 6 | Replicatie en empirie | 10% | 8 |
+| 5 | Code en figuren | 10% | 8,5 |
+| 6 | Replicatie en empirie | 10% | 8,5 |
 | 7 | Oefeningen | 5% | 9 |
-| | **Eindcijfer** | | **8,2** |
+| | **Eindcijfer** | | **8,7** |
 
-(0,3·8 + 0,2·8 + 0,15·8 + 0,1·9 + 0,1·8 + 0,1·8 + 0,05·9 = 8,15, afgerond 8,2.)
+(0,25·8,5 + 0,2·9 + 0,2·8,5 + 0,1·9 + 0,1·8,5 + 0,1·8,5 + 0,05·9 = 8,675, afgerond 8,7.
+Taal is minstens 8, dus er is geen blokkade. Het doel van 9,0 is niet gehaald.)
 
-## 1. Helderheid van de uitleg (8)
-
-*Goed.*
-- Elk resultaat krijgt een getal met kalibratie: 0,25 procentpunt bij $\gamma = 2$ ("vrijwel de 0,26 van het toy-voorbeeld"), 0,362% uit het rooster tegen 0,35%, $\sigma(m)/\E[m] = 0{,}07$ bij $\gamma = 2$, "een vijfde van wat de grens eist".
-- Wat het voorspelt: de lezer krijgt uitgelegd waarom de simulatie een andere $\gamma$ geeft dan de boom ("Een echt aandeel beweegt niet perfect met consumptie mee, maar is wel veel volatieler"), en de simulatie rekent het na (27,2 tegen 47,6).
-- Symbolen uit het artikel worden vertaald: "Mehra en Prescott schrijven $\alpha$, $\lambda_i$ en $w_i$ waar wij $\gamma$, $g_i$ en $\mathrm{PD}_i$ schrijven", en de keuze voor $P$ in plaats van $\phi$ wordt verklaard.
-
-*Aanmerkingen.*
-- Waarom de rente de uitweg afsluit, de tabel met maatstaven: "Euler-vergelijking met GMM | 1959–1978 | ongeveer 75". Zie feitelijke fout 1.
-- Hoe het getoetst wordt: "Bij elke kandidaatwaarde $v$ hoort dan een minimale schommeling, en de discontofactor die haar haalt is een lineaire combinatie van de rendementen". De tweede stelling voert $v$, $m^*_v$ en $\boldsymbol{\Sigma}^{-1}$ in zonder getal; de lezer ziet de grens pas in de replicatie.
-- Samengevat: "consumptie haalt dat pas bij $\gamma \approx 10$". De cel erboven toont bij $\gamma = 10$ een verhouding van 0,34, onder de 0,37, en de replicatie vindt 15.
-- Waarschuwing bij de grens: "Het kwadraat van die Sharpe-ratio ligt ongeveer $N/T$ te hoog." Geleend resultaat zonder bron of één regel uitleg.
-
-*Beter uitleggen.* Wat $v$ economisch is: de prijs van een zekere euro, dus $1/(1+R^f)$ als er een risicovrij activum is. Eén zin met die vertaling maakt de V-vorm leesbaar.
-
-*Voor een 9.* De maatstaventabel corrigeren. Bij de tweede stelling één getal. "Pas bij $\gamma \approx 10$" vervangen door "net boven 10".
-
-## 2. Opbouw en rode draad (8)
+## 1. Helderheid van de uitleg (8,5)
 
 *Goed.*
-- Het Overzicht geeft vraag en antwoord met getallen (0,35 tegen 6,18). De routekaart wijst de toelaatbare regio als kern aan, en de kop "Het kernresultaat: de toelaatbare regio" bevestigt dat.
-- De toy-getallen keren overal terug: 0,26 bij de covariantie en de lognormale premie, 0,9589 als $\E[m]$ in de HJ-controle, $\delta = 0{,}036$ in de simulatie, 0,26 in oefening 1.
-- De drie verwachtingen uit de intuïtie worden ingelost ("Zoals de intuïtie voorspelde, tilt meer risicoaversie premie en rente samen op", "Zoals de intuïtie voorspelde, is de premie klein omdat consumptie glad is").
+- Toy-voorbeeld en Theorie: elke formule krijgt een getal. De lognormale premie komt op 0,25
+  tegen 0,26 in het toy-voorbeeld, het rooster op 0,362 tegen 0,35, en $\sigma(m)/\E[m]$ is
+  0,07, "een vijfde van wat de grens eist".
+- Hoe het getoetst wordt: $v$ krijgt een economische betekenis ("Economisch is $v$ de prijs van
+  een zekere euro") en een getal (0,37/1,008). Daarmee is de kritiek van vorige ronde opgelost.
+- Wat het voorspelt: de alinea over "Een echt aandeel beweegt niet perfect met consumptie mee,
+  maar is wel veel volatieler" verklaart vooraf waarom de simulatie 27,2 geeft en de boom 47,6.
 
 *Aanmerkingen.*
-- De tabel met vereiste $\gamma$ staat aan het eind van Theorie en haalt vier uitkomsten aan uit Simulatie en Replicatie ("ook de maatstaven die de simulatie en de replicatie nog uitrekenen"). De simulatie verwijst daarna terug ("De tabel vóór *Samengevat* ... zet deze maatstaf naast de andere"). De lezer leest conclusies voor de berekening.
-- Theorie bevat twee HJ-stellingen, een rentesectie met een cel en de maatstaventabel. De grens met meerdere activa wordt pas in de replicatie gebruikt.
-- De replicatie heeft drie delen met drie oordelen; het middelste deel (RRA(1) en RRA(2)) zit tussen de twee geciteerde artikelen in.
+- Theorie, routekaart: "Ten slotte bevestigen twee toetsen dat zonder het hele model, namelijk
+  de grens van Hansen en Jagannathan en de rente die de uitweg via een hoge $\gamma$ afsluit."
+  (202–204). Het verwijswoord "dat" wijst terug naar een zin over de lognormale premie, en de
+  rentesectie is geen toets zonder model (H8).
+- Hoe het getoetst wordt: "Zit er een risicovrij activum in $\mathbf{R}$, dan moet
+  $v = 1/(1 + R^f)$ zijn" (561–562). De stelling eist een niet-singuliere $\boldsymbol{\Sigma}$,
+  en dat sluit een echt risicovrij activum uit. De smalle V ontstaat omdat de reële T-bill bijna
+  risicovrij is. Die ene bijzin ontbreekt.
+- Meerdere plekken: "grens" voor vijf begrippen (H7), bijvoorbeeld "De grenzen van dat gebied
+  volgen door $\beta = 1$ in te vullen" (638) vlak na twee HJ-grenzen.
+- Consumptie en de vereiste risicoaversie: "Gladdere consumptie maakt de vereiste
+  risicoaversie hoger dan bij Mehra en Prescott" (911). Waarmee wordt vergeleken? De tabel
+  heeft voor Mehra en Prescott geen RRA.
 
-*Voor een 9.* De maatstaventabel naar het eind van de replicatie of naar Wat er brak. De tweede HJ-stelling kort houden en in de replicatie inzetten.
+*Beter uitleggen.* Eén bijzin in de tweede HJ-stelling zou zeggen dat de T-bill in de
+replicatie bijna, maar niet helemaal, risicovrij is. Voor de V-vorm is dat genoeg.
 
-## 3. Taal (8)
+*Voor een 9.* 03_13:202–204 laten verwijzen naar "dat de premie klein is". Bij 03_13:561 de
+bijna-risicovrije T-bill noemen. Voor de bovengrens van $\gamma$ (750, 1237) en voor de wortels
+(638) een ander woord dan "grens" kiezen. Bij 03_13:911 zeggen met welk getal wordt vergeleken.
 
-*Goed.* Gemiddeld 15,0 woorden per zin, geen verboden woorden of calques volgens `prose_stats`. De intuïtie is concreet ("Een slecht jaar is een jaar met iets minder groei, geen jaar waarin het eten op is").
+## 2. Opbouw en rode draad (9)
+
+*Goed.*
+- Overzicht: vraag en antwoord met getallen (0,35 tegen 6,18). De routekaart en "Samengevat"
+  omsluiten Theorie.
+- De maatstaventabel staat nu aan het eind van de replicatie (1052–1067), na de berekeningen.
+  Dat was vorige ronde het grootste opbouwpunt.
+- De voorspellingen uit de intuïtie komen in gewone zinnen uit: "zoals we in de intuïtie al
+  verwachtten" (352), "Zoals verwacht is de premie klein" (475). De toy-getallen keren terug in
+  0,9589 (529), $\delta = 0{,}036$ (692) en 0,26 (1133).
 
 *Aanmerkingen.*
-- Wat er brak: "Kwalitatief alles wat het moest verklaren." en "Op getallen die we zelf hebben nagerekend." Telegramstijl (§11.1).
-- Replicatie: "de equity premium puzzle" (HJ-oordeel). Het Overzicht voerde "premie" in als Nederlandse naam; de Engelse puzzelnaam komt zonder inleiding terug.
-- Rentesectie: "Die $\psi$ heet de *elasticity of intertemporal substitution* (EIS, intertemporele substitutie-elasticiteit: ...)". Drie namen in één zin; daarna wordt geen ervan meer gebruikt.
-- "discontofactor" betekent hier $m$ (Stap 1, HJ-sectie), terwijl de vorige lecture hetzelfde woord voor $\beta$ gebruikt (zie het naaddocument).
+- Hoe het getoetst wordt: "Tot hier ging het om één overrendement. Met meerdere activa wordt de
+  eis strenger, en daarvoor is een tweede stelling nodig." (534–535). De tweede stelling met
+  bewijs is zwaar voor een resultaat dat alleen de replicatie gebruikt. Dat is acceptabel, maar
+  het is het zwaarste stuk van het college.
 
-*Voor een 9.* De twee telegramzinnen in Wat er brak volledig maken. "Equity premium puzzle" alleen in het Overzicht als alias.
+*Beter uitleggen.* Niets essentieels. 5.526 woorden, dus binnen de grens.
+
+## 3. Taal (8,5)
+
+*Goed.* De telegramzinnen, regeltaal ("De lezer weet nu") en vaste wendingen zijn weg. Gemiddeld
+15,9 woorden per zin, geen zin boven 40, en de motiefnamen staan elk hoogstens twee keer. De
+intuïtie leest als gesproken taal ("Een slecht jaar is een jaar met iets minder groei, geen jaar
+waarin het eten op is"). De redactie heeft geen vakterm van betekenis veranderd. "Overrendement"
+voor *excess return* en "grens" voor *bound* zijn juist. "Aan de rand" (382) betekent de rand
+van het rooster en is geen alias.
+
+*Aanmerkingen.*
+- Overzicht: "Het schat niets. Het kalibreert een Lucas-economie op de Amerikaanse consumptie"
+  (59). Geknipt, en dit punt stond al open [onderzoek D, E:58].
+- Het kernresultaat: "De oplossing is gesloten omdat CRRA-nut alleen naar verhoudingen kijkt,
+  zodat een belegger die twee keer zo rijk is, een procentuele schommeling hetzelfde
+  beoordeelt." (248–249)
+- Wat het voorspelt: "Zoals verwacht is de premie klein omdat consumptie glad is, met een
+  factor $\gamma$ ervoor." (475–476)
+- Waarom de rente de uitweg afsluit: "als beleggers zo ongaarne consumptie over de tijd
+  verschuiven" (655–656). Het woord is ouderwets.
+- Wat er brak: "Mehra merkte op dat de rente dan tegen die kans in zou moeten bewegen" (1091).
+- Simulatie: "In dat verschil zit de standaardfout van 2%" (773) staat zonder link naar
+  `#00-01-rendementen` (rolkaart §3).
+- Veel alinea's met meer dan drie getallen in lopende tekst: 127–133, 465–469, 689–699,
+  770–774, 907–912 en 1044–1046 [onderzoek D]. `prose_stats` telt 11 alinea's van één zin.
+
+*Beter uitleggen.* Niet van toepassing.
+
+*Voor een 9.* De vijf geciteerde zinnen herschrijven (zie de hardop-toets). Getallen uit
+03_13:689–699 en 907–912 naar de tabel verplaatsen of verdelen over zinnen. Bij 03_13:773 de
+link toevoegen. Eenzinsalinea's die geen overgang zijn, bij de buuralinea voegen [onderzoek D].
 
 ## 4. Toy-voorbeeld (9)
 
-*Goed.* Opzettabel met $g^{-1}$ en $g^{-2}$ al uitgerekend, vijf stappen van één regel, één codecel, tabel hand/code met negen gelijke rijen, slotzin met wat de lezer weet ("De discontofactor verschilt maar 0,14 tussen de toestanden"). Eén formule die de theorie als eerste afleidt (de premie als covariantie), expliciet als controle aangeduid.
-
-*Aanmerkingen.* De slotzin "De lezer weet nu waar de kleine premie vandaan komt." zegt het, maar herhaalt dan drie getallen; één zin volstaat.
-
-## 5. Code en figuren (8)
-
-*Goed.* `mp_economy` volgt de propositie met een zichtbare dubbele lus voor $R_{ij}$. `iid_economy` noemt in commentaar de stap van het toy-voorbeeld per regel. Vóór elke figuur staat waarop te letten ("Let in de figuur op de gestreepte lijn bij $\gamma = 10$").
+*Goed.* Vijf stappen die met de hand na te rekenen zijn, en een tabel die hand en code gelijk
+laat zien. Er is één nog niet afgeleide formule, en die is als controle aangekondigd. De
+slotzin (192–194) zegt waar de kleine premie vandaan komt: 0,14 maal 7,4 gedeeld door vier.
 
 *Aanmerkingen.*
-- Figuur van de regio: `upper = np.array([prem_grid[admissible][bins == k].max() if np.any(bins == k) else np.nan for k in range(80)])`. Een meerregelige comprehension met conditie, in een cel van circa 33 regels.
-- Het rooster van 400 × 400 draait `mp_economy` 160.000 keer met eigenwaarden per punt; de tekst noemt de keuze, maar niet waarom zo fijn.
-- Oefening 3: `first_gamma` rekent met `gc[..., None] ** (-gamma_ex3)` en `hit.argmax(axis=-1)` over willekeurige assen. Leesbaar alleen voor wie broadcasting kent.
+- Opzet: de tabelrij "| voorkeuren | $\beta = 0{,}99$ | $\gamma = 2$ | | |" (139) staat in
+  kolommen die kans en groei heten.
 
-*Voor een 9.* De grensberekening voor de figuur als benoemde functie met een lus over de bins, los van de plotcel.
+*Beter uitleggen.* Niets.
 
-## 6. Replicatie en empirie (8)
+## 5. Code en figuren (8,5)
 
-*Goed.* Tabel 1 wordt met paginanummer en rekenwijze (jaargemiddelde prijzen, p. 148) nagebouwd en komt tot op honderdsten uit. Elk deel heeft een tabel origineel/hier en een oordeel dat met Geslaagd of Gedeeltelijk geslaagd begint. De verwachte afwijking heeft een foutsignaal ("Valt er een met $\gamma \le 5$ binnen, dan zit er een fout in de code").
+*Goed.* Elke cel heeft een zin ervoor en erna. `iid_economy` en `mp_economy` volgen de
+stapnummers en de propositie, met een zichtbare lus voor $R_{ij}$. Vóór elke figuur staat
+waarop te letten ("Let in de figuur hieronder op de schaal", "op de gestreepte lijn bij
+$\gamma = 10$").
 
 *Aanmerkingen.*
-- Replicatieblok: "Wat" (drie zinnen), "Verschil met het origineel" (drie) en "Verwachte afwijking" (vier) zijn langer dan de twee zinnen per onderdeel.
-- Consumptie en de vereiste risicoaversie: "**Gedeeltelijk geslaagd.** ... De consumptiemomenten van Mehra en Prescott halen we niet." De verwachte afwijking zei al "Consumptie vanaf 1929 is gladder dan die van 1889–1978". Het oordeel volgt dus niet uit de verwachting.
-- In de HJ-tabel staat "boven 10 (lognormaal, correlatie één)" als origineel; de tekst zegt direct eronder dat Hansen en Jagannathan geen drempel rapporteren.
+- HJ-figuur: `label="Sharpe-grens: excess marktrendement"` (1011). Figuurteksten horen in het
+  Nederlands, en de proza zegt "overrendement".
+- Regiofiguur: `upper = np.array([prem_grid[admissible][bins == k].max() if np.any(bins == k)
+  else np.nan for k in range(80)])` (394). Een compacte truc, al staat hij in een verborgen cel.
+- De HJ-tabel (cel 14) heeft acht kolommen en elf rijen. Voor de tekst zijn drie kolommen nodig.
 
-*Voor een 9.* Het blok inkorten tot twee zinnen per onderdeel. Het tweede oordeel "Geslaagd" of de verwachte afwijking aanpassen. In de HJ-tabel de kolom "verwacht" noemen in plaats van "origineel of verwacht".
+*Beter uitleggen.* Niets.
+
+*Voor een 9.* In 03_13:1011 "overrendement van de markt" schrijven. Regel 394–395 als lus of
+`groupby` schrijven. In 03_13:968–972 de tabel beperken tot de kolommen die de tekst gebruikt.
+
+## 6. Replicatie en empirie (8,5)
+
+*Goed.* Het blok telt ongeveer 205 woorden en twee zinnen per onderdeel. Er is een tabel
+origineel/hier voor tabel 1 en voor de drempels. Elk oordeel begint met **Geslaagd** en verwijst
+naar de verwachte afwijking. De omslag bij $\gamma = 40$–50 wordt uitgelegd als een eigenschap
+van de steekproef, met een verwijzing naar Hansen en Jagannathan (p. 250) en Rietz.
+
+*Aanmerkingen.*
+- Consumptie en de vereiste risicoaversie: "Gladdere consumptie maakt de vereiste
+  risicoaversie hoger dan bij Mehra en Prescott, en tot 2024 wordt ze nog gladder." (911–912)
+  Zie feitelijke fout 1.
+- Hetzelfde oordeel: "door de Depressie en de oorlog is onze standaarddeviatie 2,58 tegen 3,57
+  en de autocorrelatie $+0{,}49$ tegen $-0{,}14$" (908–909). Dat zijn zes getallen in lopende
+  tekst die ook in de tabel erboven staan.
+
+*Voor een 9.* In 03_13:907–912 alleen de richting noemen en naar de tabel verwijzen. De
+vergelijking met Mehra en Prescott expliciet maken (RRA(2): 13,0 tegen 10,4 op hun momenten).
 
 ## 7. Oefeningen (9)
 
-*Goed.* Oefening 1 is een instap op het toy-voorbeeld met dubbele schommelingen en toont de kwadratische schaal (factor 3,97). Oefening 2 is een afleiding met de gevoeligheid van ruim vier procentpunt per eenheid $\gamma$. Oefening 3 breidt de HJ-replicatie uit met deelperioden en bootstrap. Elke uitwerking eindigt met "Wat dit leert:".
+*Goed.* De drie soorten zijn er: een instap op het toy, een afleiding (op het scherp van de
+snede) en een uitbreiding van de replicatie (deelperioden en bootstrap). Elke uitwerking eindigt
+met een les, bijvoorbeeld "dat hij bestaat, hangt er niet van af". Alle getallen kloppen met
+de celuitvoer.
 
-*Aanmerkingen.* Oefening 3: "Het interval van de vereiste $\gamma$ is even breed" is vaag; de tabel toont 10 tot 26.
+*Aanmerkingen.*
+- Oefening 3: "Het interval van de vereiste $\gamma$ is even breed" (1236–1237). "Even breed"
+  als wat? Relatief (10–26 tegen 0,25–0,64) klopt het, maar dat staat er niet.
 
 ## Feitelijke fouten
 
-1. Waarom de rente de uitweg afsluit, tabel met maatstaven: "Euler-vergelijking met GMM | 1959–1978 | ongeveer 75 | [](#03-12-consumptie-capm)". In de lecture over het consumptie-CAPM is 75 de $\gamma$ waarbij het met $g^{-\gamma}$ gewogen excess rendement nul is ("Wat het aandelenrendement alleen vraagt"). Dat is een exact opgelost moment, geen GMM-schatting van de Euler-vergelijking. De GMM-schattingen over 1959–1978 zijn daar 0,57 (T-bill), −2,02 (markt) en −0,02 (beide).
+Nagerekend: alle getallen in toy, theorie (0,00125; 0,0172; 47,6; 0,47 en 27,1; 13,8; 0,546;
+±4,2 pp), simulatie (27,2; 13,6; 2,6–9,5; 10–71; 0,34; 0,29 en 0,58), replicatie (6,22; 0,75;
+1,77; 6,92; 1,34; 22,0; 13,0; 0,43; 15, 42 en 43; 35% en ±15%) en oefeningen. Ze kloppen met de
+celuitvoer. Ook 14,7 en "ongeveer 75" uit 03_12 kloppen.
 
-Nagerekend en correct: toy-voorbeeld (0,9488, 0,9002, 1,0183, 1,0370; 0,8912 en 1,0266; 15%; 0,9589 en 4,29%; $k = 0{,}9737$, PD ≈ 37; 1,0825, 1,0085, 1,0455; 0,26; covariantie −0,0025), $2 \cdot 0{,}43 - 1 = -0{,}14$, keten (0,29 en 4,3%; 2,7 en 13,1%), rooster 0,362%, factor zeven (2,66 tegen 0,36), $\sigma_c^2 = 0{,}00125$ en $\mu_c = 0{,}0172$, 0,25 en 1,25 procentpunt, $6{,}18/16{,}67 = 0{,}37$, HJ-controle (0,07; 0,34 en 12,8%; 0,71 en 9,6%), $25/96 = 0{,}26$ en $0{,}43^2 = 0{,}18$, wortels 0,47 en 27,1, maximum bij 13,8, $\beta = 0{,}55$ bij 47,6, ruim vier procentpunt, correlatie 0,37 uit Kocherlakota, 4,7 keer, 0,0022, simulatie (2,6 tot 9,5; 10 tot 71; 30% en 58%; twee derde boven tien; 13,6 en 27,2), tabel 1 (6,22 en 0,75; SE 1,77 en 0,61; 6,92 en 1,34), 8,3% in de setup, RRA(1) 22,0 en RRA(2) 13,0, 2,58 en +0,49, Sharpe-ratio 0,43, $\gamma = 15$ bij 30%, 42 en 43, rente rond 35% en van +15,8 naar −15,6%, oefening 1 (0,8333, 1,1062 met de afgeronde 1,1174, 3,12%, 0,9774, 1,0104; factor 3,97; $\sqrt{6{,}18/0{,}26} = 4{,}9$), oefening 2 (−0,042; 47,6 en 0,546), oefening 3 (0,34 en 11; 0,56 en 27; 0,25 tot 0,64).
+1. **Onzeker** (03_13:911): "Gladdere consumptie maakt de vereiste risicoaversie hoger dan bij
+   Mehra en Prescott". Op de MP-momenten (simulatie, correlatie 0,37) is RRA(1) 27,2 en RRA(2)
+   $0{,}0618/(0{,}0357 \cdot 0{,}1667) = 10{,}4$. Hier is RRA(1) 22,0, lager, en RRA(2) 13,0,
+   hoger. De bewering geldt dus alleen voor RRA(2), omdat de hogere correlatie (0,59) het effect
+   van gladdere consumptie op RRA(1) meer dan compenseert. Correctie: "RRA(2) ligt hoger dan op
+   de momenten van Mehra en Prescott (13,0 tegen 10,4), RRA(1) niet, omdat de correlatie hier
+   0,59 is".
+2. Kleine onnauwkeurigheid, geen fout (03_13:561–562): een echt risicovrij activum maakt
+   $\boldsymbol{\Sigma}$ singulier, tegen de aanname van de stelling in. Zie criterium 1.
 
 ## Navertelling in vijf zinnen
 
-Mehra en Prescott kalibreerden een Lucas-economie op Amerikaanse consumptie en vonden dat die met $\gamma \le 10$ en een rente tussen nul en vier procent hooguit 0,35 procentpunt premie oplevert, tegen 6,18 in de data. De reden is dat de premie ongeveer $\gamma$ maal de variantie van consumptiegroei is, en die variantie is klein; wie $\gamma$ opvoert, drijft tegelijk de rente op, en een rente van 0,80% vraagt dan een $\beta$ boven één. Hansen en Jagannathan maakten er een grens van zonder voorkeuren: de discontofactor moet relatief minstens zoveel schommelen als de Sharpe-ratio van de markt, en de consumptie-SDF haalt dat pas bij hoge $\gamma$ en een absurde rente. Een simulatie laat zien dat de standaardfout van de premie de vereiste risicoaversie heel onzeker maakt, maar dat ook bij een ware premie van 3% de puzzel blijft. De replicatie reproduceert tabel 1 van Mehra en Prescott tot op honderdsten en vindt op data tot 2025 dat de consumptie-SDF de grens pas bij $\gamma = 15$ haalt, met een rente van dertig procent.
+Een Lucas-economie met CRRA-nut en de Amerikaanse consumptie van 1889–1978 levert bij
+$\gamma \le 10$ en een rente tussen nul en vier procent hoogstens 0,35 procentpunt premie, tegen
+6,18 gemeten. De reden is dat de premie ongeveer $\gamma$ maal de variantie van consumptiegroei
+is, en die variantie is klein. Hansen en Jagannathan zeggen hetzelfde zonder voorkeuren: de
+stochastische discontofactor moet minstens de Sharpe-ratio van 0,37 schommelen, en consumptie
+haalt dat pas bij $\gamma$ boven tien, tegen een absurd hoge rente (Weils rentepuzzel). De
+premie zelf is slecht gemeten (standaardfout 1,76), maar ook bij een ware premie van 3% blijft
+de vereiste $\gamma$ in twee derde van de steekproeven boven tien. De replicatie op Shiller-,
+FRED- en French-data tot 2025 bevestigt dit met drempels van 15 tot 43. Dat komt overeen met
+het Overzicht.
 
-De navertelling komt overeen met het Overzicht.
+## Taal na de redactie
+
+De redactie heeft het college duidelijk natuurlijker gemaakt en geen betekenis verschoven.
+Wat overblijft, zijn losse zinnen en getallenrijen. Hardop-toets, drie zinnen:
+
+1. "De oplossing is gesloten omdat CRRA-nut alleen naar verhoudingen kijkt, zodat een belegger
+   die twee keer zo rijk is, een procentuele schommeling hetzelfde beoordeelt." (248–249)
+   → "Er is een gesloten oplossing, omdat een belegger met CRRA-nut een schommeling van een
+   procent even erg vindt, hoe rijk hij ook is."
+2. "Ten slotte bevestigen twee toetsen dat zonder het hele model, namelijk de grens van Hansen
+   en Jagannathan en de rente die de uitweg via een hoge $\gamma$ afsluit." (202–204)
+   → "Ten slotte laten de grens van Hansen en Jagannathan en de rente zien dat een hoge
+   $\gamma$ de puzzel niet oplost, ook zonder het hele model."
+3. "Zoals verwacht is de premie klein omdat consumptie glad is, met een factor $\gamma$
+   ervoor." (475–476) → "De premie is dus klein, zoals verwacht, omdat ze de variantie van een
+   gladde consumptiereeks maal $\gamma$ is."
+
+Bij volledige oplossing van alle punten: 9,0
 
 ## Controle 1
 
-Gecontroleerd tegen `rapport-03_13_equity_premium_puzzle.md` §F6-1 en de huidige lecture. `prose_stats --check`: 5.354 woorden, PASS. `nb_outputs` is identiek aan de vorige versie.
+Controle van R9-1 (F6b), na de taalredactie. Getallen nagerekend tegen
+`nb_outputs` (cel 12, consumptietabel; cel 9, simulatietabel).
 
-| punt | status | toelichting |
-|---|---|---|
-| Feitelijke fout 1 (75 als GMM) | opgelost | De rij heet "premie alleen: gewogen excess rendement nul". |
-| Verbetering 1: maatstaventabel | opgelost | De tabel staat onder "### Alle maatstaven voor de vereiste risicoaversie" aan het eind van de replicatie en haalt niets meer vooruit; de simulatie verwijst ernaar. |
-| Verbetering 2: replicatieblok en tweede oordeel | opgelost | Elk onderdeel heeft twee zinnen. De verwachte afwijking voorspelt afwijkende momenten én een risicoaversie boven tien; het oordeel "Geslaagd" toetst beide. |
-| Verbetering 3: tweede HJ-stelling | opgelost | $v$ is "de prijs van een zekere euro", met het getal $0{,}37/1{,}008 = 0{,}37$ (nagerekend: 0,367). |
-| Samengevat en de $N/T$-waarschuwing | opgelost | "net boven $\gamma = 10$"; de waarschuwing legt $N/T$ in een bijzin uit. |
-| Naadpunt 2 (discontofactor) | opgelost | $m$ heet overal "stochastische discontofactor", $\beta$ "subjectieve discontofactor"; geen losse "discontofactor" meer. |
-| Naadpunt 3 (reeksconventie $\mu$, $\sigma$) | opgelost | "om ze te onderscheiden van de momenten van rendementen in deze lecture". |
-| Naadpunt 4 (14,7 tegen 13,8) | opgelost | Eén zin noemt de 14,7 van de vorige lecture en de kalibratie als oorzaak. |
+**Feitelijke fouten.**
+1. **Opgelost.** 911: RRA(2) 13,0 tegen 10,4 (hoger, gladdere consumptie),
+   RRA(1) 22,0 tegen 27,2 (lager, correlatie 0,59). Nagerekend: `nb_outputs`
+   geeft RRA(1) 21,97 en RRA(2) 12,96 over 1929–1978 (afgerond 22,0 en 13,0),
+   correlatie groei/premie 0,590 (afgerond 0,59), en 27,249 als "ware gamma"
+   bij 6% in de simulatietabel (afgerond 27,2). De 10,4 komt uit geen cel:
+   $0{,}0618/(0{,}0357 \cdot 0{,}1667) = 10{,}38$ (afgerond 10,4) is een
+   handberekening op tabel 1 van Mehra en Prescott, expliciet als zodanig
+   ingeleid met "Op de momenten van Mehra en Prescott" en met de =-teken in de
+   tekst zelf, niet in een cel. De vergelijking klopt nu voor beide RRA's en
+   zegt waarom ze tegengesteld bewegen.
+2. **Opgelost.** 561–562: de bijzin over het singuliere $\boldsymbol{\Sigma}$
+   bij een echt risicovrij activum staat er, met de bijna-risicovrije T-bill
+   als reden voor de smalle V.
 
-Niet gedaan: de telegramzinnen in "Wat er brak" ("Kwalitatief alles wat het moest verklaren.", "Op getallen die we zelf hebben nagerekend."), "de equity premium puzzle" in het HJ-oordeel, de kolom "origineel of verwacht", de comprehension in de regiofiguur.
+**Drie verbeteringen.**
+1. **Deels.** Hardop-zinnen: 248–249, 202–204 en 475–476 herschreven (248 en
+   475 vrijwel woordelijk de voorgestelde tekst, 202 anders geformuleerd maar
+   lost dezelfde verwijzing op); 655–656 "ongaarne" vervangen. 1091 niet
+   herschreven; de schrijver verantwoordt dit omdat de hardop-toets zelf geen
+   herschrijving voor deze zin gaf, terwijl "Voor een 9" vijf zinnen noemde.
+   De zin ("Mehra merkte op dat de rente dan tegen die kans in zou moeten
+   bewegen") is op zichzelf gewoon Nederlands, dus dit is een klein open punt,
+   geen fout. Getallenalinea's 127, 465, 689, 770, 907 en 1044 zijn wel alle
+   herschreven (voorkeuren apart, tussenrekening eruit, Kocherlakota als
+   display, "hoge/lage premie" in plaats van herhaalde percentages, sd en
+   autocorrelatie alleen als richting).
+2. **Opgelost.** "Grens" wordt nu voor vijf begrippen vermeden: 589 "efficiënte
+   portefeuilles"/minimum-variantieportefeuille, 638 "de twee waarden van
+   gamma waarbij beta precies één is", 750/1237 "het maximum van Mehra en
+   Prescott". De routekaart (202–204) verwijst nu ondubbelzinnig naar wat HJ en
+   de rente laten zien, zonder het probleemgevoelige "dat".
+3. **Opgelost.** Het replicatieoordeel bij 911 klopt nu met de cijfers (zie
+   feitelijke fout 1). Het label is vertaald naar "Sharpe-grens: overrendement
+   van de markt" (bevestigd in de tekst, cel voor de HJ-figuur).
 
-**Cijfers na controle 1 (cijfer van record)**
+**Overige "Voor een 9"-punten.** Link bij 773 toegevoegd
+(`[de standaardfout van 2%](#00-01-rendementen)`). Toy-tabel: rij "voorkeuren"
+verwijderd, $\beta$ en $\gamma$ staan in de tekst. Regiocel (394) nu een lus.
+HJ-tabel toont drie kolommen, de drempels 15/42/43 staan in de print.
+Oefening 3 (1237): "naar verhouding even breed, want ook daar is de bovenkant
+ruim twee keer de onderkant" lost de eerdere ambiguïteit op. Opbouw (534) bleef
+ongewijzigd, zoals de vorige beoordeling toestond.
 
-| nr | criterium | was | nu |
-|---|---|---|---|
-| 1 | Helderheid | 8 | 9 |
-| 2 | Opbouw | 8 | 8 |
-| 3 | Taal | 8 | 8 |
-| 4 | Toy-voorbeeld | 9 | 9 |
-| 5 | Code en figuren | 8 | 8 |
-| 6 | Replicatie | 8 | 9 |
-| 7 | Oefeningen | 9 | 9 |
-| | **Eindcijfer** | 8,2 | **8,6** |
+**Nieuwe punten.** Geen; geen verslechtering of nieuwe feitelijke fout
+gevonden.
 
-(0,3·9 + 0,2·8 + 0,15·8 + 0,1·9 + 0,1·8 + 0,1·9 + 0,05·9 = 8,55, afgerond 8,6.) Opbouw blijft 8: de tweede HJ-stelling staat nog in Theorie, terwijl alleen de replicatie haar gebruikt. Taal blijft 8 om de telegramzinnen. Het streefcijfer van 8,5 is gehaald, zonder deelcijfer onder 8.
+## Cijfers (Controle 1)
+
+| nr | criterium | gewicht | vorig | nieuw |
+|---|---|---|---|---|
+| 1 | Helderheid van de uitleg | 25% | 8,5 | 9 |
+| 2 | Opbouw en rode draad | 20% | 9 | 9 |
+| 3 | Taal | 20% | 8,5 | 8,8 |
+| 4 | Toy-voorbeeld | 10% | 9 | 9 |
+| 5 | Code en figuren | 10% | 8,5 | 9 |
+| 6 | Replicatie en empirie | 10% | 8,5 | 9 |
+| 7 | Oefeningen | 5% | 9 | 9 |
+| | **Eindcijfer** | | 8,7 | **9,0** |
+
+(0,25·9 + 0,2·9 + 0,2·8,8 + 0,1·9 + 0,1·9 + 0,1·9 + 0,05·9 = 8,96, afgerond
+9,0. Taal blijft op 8,8 door het ene niet-herschreven punt (1091); alle andere
+deelcijfers bereikten het in het vorige rapport genoemde plafond. Geen
+deelcijfer onder 8,5. Doel gehaald.)

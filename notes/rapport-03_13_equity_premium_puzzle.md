@@ -135,3 +135,21 @@ De tabel met de maatstaven voor $\gamma$ staat nu aan het eind van *Theorie*, vl
 - 7, 10, 11: niet gewijzigd, volgens de opdracht.
 
 **Lengte.** Netto +86 woorden, onder 5.500.
+
+## R9-1 (F6b, ronde 9+)
+
+- **Feitelijke fout 1 (911, RRA):** gedaan. Nieuwe alinea na het oordeel vergelijkt op de MP-momenten: RRA(2) 13,0 tegen 10,4 (hoger, gladdere consumptie), RRA(1) 22,0 tegen 27,2 (lager, correlatie 0,59). 10,4 staat als handberekening uit tabel 1 van MP in de tekst.
+- **Fout 2 / HJ-stelling (561):** gedaan. Een echt risicovrij activum maakt Sigma singulier; de reële T-bill is bijna risicovrij en legt v bijna vast; grens valt "ongeveer" samen met de Sharpe-grens.
+- **Routekaart (202):** gedaan. HJ laat zien dat de premie zonder model te klein is, de rente waarom hoge gamma geen uitweg is.
+- **"Grens" (H7):** 589 "efficiënte portefeuilles", 638 "de twee waarden van gamma waarbij beta precies één is", 750-label en 1237 "het maximum van Mehra en Prescott".
+- **Hardop-zinnen:** 59 (schat geen parameters, maar kalibreert), 248, 475 (samengevoegd met de getallen van Mehra), 655 ("zo weinig ... willen verschuiven") herschreven. 1091 niet gewijzigd: de zin is gewoon Nederlands, de beoordelaar gaf geen herschrijving.
+- **Getallenalinea's:** 127 (gesplitst, voorkeuren apart), 465 (mu_c en de tussenrekening eruit), 689 (twee alinea's, Kocherlakota-berekening als display), 770 (gesplitst, 6%/3% als "hoge/lage premie"), 907 (sd en autocorrelatie alleen als richting), 1044 herschreven.
+- **Link standaardfout van 2% (773):** gedaan.
+- **Toy-tabel:** rij "voorkeuren" verwijderd, beta en gamma staan in de tekst.
+- **Code en figuren:** label "Sharpe-grens: overrendement van de markt"; regiocel als lus; HJ-tabel toont drie kolommen (de drempels staan in de print). Uitvoer vergeleken: alleen de tabelkolommen en de twee figuren met gewijzigd label verschillen, regiofiguur identiek.
+- **Oefening 3 (1237):** "naar verhouding even breed, want ook daar is de bovenkant ruim twee keer de onderkant".
+- **Opbouw (534):** niet gewijzigd; de beoordelaar noemde het acceptabel.
+- **Eenzinsalinea's:** para_one 11%, onder de grens.
+- nb_numbers: nieuw 10,4 (handberekening uit MP tabel 1) en 3,5 (bestaande verwijzing naar 03_12, eerder toevallig gematcht in de verwijderde tabelkolom).
+
+**Woorden.** 5.651 (was 5.526), prose_stats PASS.

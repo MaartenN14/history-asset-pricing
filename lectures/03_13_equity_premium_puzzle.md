@@ -21,12 +21,12 @@ kernelspec:
 **Jaartal.** 1979–2003: van het werkpapier van Mehra en Prescott tot hun eigen
 terugblik.
 
-**Wat we al weten.** In [](#03-12-consumptie-capm) kreeg de stochastische
-discontofactor een theorie: $m_{t+1} = \beta (c_{t+1}/c_t)^{-\gamma}$, met $\beta$ de
-subjectieve discontofactor en $\gamma$ de relatieve risicoaversie. Met die $m$ kon de Euler-vergelijking de T-bill en het
-aandelenrendement niet tegelijk prijzen. Uit [](#00-01-rendementen) weten we dat
-een gemiddeld rendement over een eeuw een standaardfout van ongeveer twee
-procentpunt heeft.
+**Wat we al weten.** In [](#03-12-consumptie-capm) kreeg de stochastische discontofactor
+een theorie: $m_{t+1} = \beta (c_{t+1}/c_t)^{-\gamma}$, met $\beta$ de subjectieve
+discontofactor en $\gamma$ de relatieve risicoaversie. Met die $m$ kon de
+Euler-vergelijking de T-bill en het aandelenrendement niet tegelijk prijzen. Uit
+[](#00-01-rendementen) weten we dat een gemiddeld rendement over een eeuw een
+standaardfout van ongeveer twee procentpunt heeft.
 
 **Welke vraag staat open.** Is de aandelenpremie te groot voor elk redelijk
 consumptiemodel, en hoe zeker is dat als de premie zelf zo slecht gemeten is?
@@ -34,11 +34,11 @@ consumptiemodel, en hoe zeker is dat als de premie zelf zo slecht gemeten is?
 
 ## Overzicht
 
-Hoeveel *equity premium* (het gemiddelde rendement van aandelen boven de
-risicovrije rente, hierna de premie) kan een economie met redelijke risicoaversie
+Hoeveel aandelenpremie (het gemiddelde rendement van aandelen boven de
+risicovrije rente, hierna kortweg de premie) kan een economie met redelijke risicoaversie
 opleveren als consumptie zo glad groeit als de Amerikaanse? Hooguit 0,35
 procentpunt, tegen 6,18 gemeten over 1889–1978 {cite}`MehraPrescott1985`, want
-consumptie schommelt te weinig om aandelen riskant te maken. In deze lecture:
+consumptie schommelt te weinig om aandelen riskant te maken. In dit college:
 
 - rekenen we een economie met twee toestanden met de hand door, en vinden een
   premie van 0,26 procentpunt;
@@ -55,23 +55,23 @@ consumptie schommelt te weinig om aandelen riskant te maken. In deze lecture:
 - repliceren we tabel 1 van Mehra en Prescott op Shillers data, en de grens van
   Hansen en Jagannathan op French-data tot 2025.
 
-Mehra en Prescott schreven het paper in 1979 en publiceerden het in 1985
-{cite}`MehraPrescott1985`. Het schat niets. Het kalibreert een Lucas-economie op
-de Amerikaanse consumptie en vraagt welke paren van rente en premie ze kan
+Mehra en Prescott schreven het artikel in 1979 en publiceerden het in 1985
+{cite}`MehraPrescott1985`. Het schat geen parameters, maar kalibreert een Lucas-economie
+op de Amerikaanse consumptie en vraagt welke paren van rente en premie ze kan
 voortbrengen. Daarmee verschoof de vraag van "past dit model?" naar "welk model
 zou dit ooit kunnen passen?". Weil gaf de tweelingpuzzel over de rente een naam
 {cite}`Weil1989`, en Hansen en Jagannathan maakten er een grens van die voor elke
 stochastische discontofactor geldt {cite}`HansenJagannathan1991`.
 
-Voor *theorie of feit* is dit het kantelpunt. Het consumptie-CAPM was een
-theorie die met een toets werd verworpen. De premie is sindsdien een feit dat op
-een verklaring wacht, en elk later model wordt eraan gemeten.
+Voor de vraag *theorie of feit* is dit artikel het kantelpunt. Het consumptie-CAPM was een
+theorie die met een toets werd verworpen, terwijl de premie sindsdien een feit is dat op
+een verklaring wacht. Elk later model wordt eraan gemeten.
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-Een aandeel is riskant als het slecht rendeert wanneer het de economie slecht
-gaat: wanneer consumptie tegenvalt en een extra euro het meest waard is. Beleggers
-eisen daarvoor een premie. Die hangt af van twee dingen: hoe ver consumptie in
+Een aandeel is riskant als het slecht rendeert wanneer het de economie slecht gaat, dus
+wanneer consumptie tegenvalt en een extra euro het meest waard is. Beleggers eisen voor
+dat risico een premie. Die hangt af van twee dingen: hoe ver consumptie in
 slechte jaren terugvalt, en hoe erg beleggers dat vinden.
 
 Het eerste is gemeten, en het is klein. Amerikaanse consumptie per hoofd groeide
@@ -85,32 +85,32 @@ schommelingen tussen goede en slechte jaren aan afkeer van schommelingen door de
 Omdat consumptie groeit, wil zo'n belegger toekomstige rijkdom naar vandaag halen
 door te lenen. Als iedereen wil lenen en niemand wil uitlenen, stijgt de rente tot
 niemand meer wil lenen. De premie is dan alleen te redden door de rente op te
-drijven. De reële rente was over dezelfde periode gemiddeld maar 0,80%.
+drijven. Toch was de reële rente over dezelfde periode gemiddeld maar 0,80%.
 
-Hansen en Jagannathan zagen dat dit argument geen voorkeuren nodig heeft. Elk
-prijsmodel is een uitspraak over de stochastische discontofactor. Leveren aandelen per eenheid
-risico veel meer op dan de risicovrije belegging, dan moet de stochastische discontofactor hevig
-schommelen, relatief minstens zoveel als die opbrengst per eenheid risico. In de
-data van Mehra en Prescott is dat de premie gedeeld door haar eigen
-standaarddeviatie, $6{,}18/16{,}67 = 0{,}37$ per jaar: de Sharpe-ratio van de markt. Een
-stochastische discontofactor die uit consumptie is gebouwd, haalt dat alleen met een zeer hoge
-risicoaversie.
+Hansen en Jagannathan zagen dat dit argument geen voorkeuren nodig heeft, omdat elk
+prijsmodel een uitspraak is over de stochastische discontofactor. Leveren aandelen per
+eenheid risico veel meer op dan de risicovrije belegging, dan moet de stochastische
+discontofactor hevig schommelen, relatief minstens zoveel als die opbrengst per eenheid
+risico. In de data van Mehra en Prescott is die opbrengst per eenheid risico de premie
+gedeeld door de standaarddeviatie van de premie, $6{,}18/16{,}67 = 0{,}37$ per jaar, en
+dat is de Sharpe-ratio van de markt. Een stochastische discontofactor die uit consumptie
+is gebouwd, haalt dat alleen met een zeer hoge risicoaversie.
 
-De puzzel hangt aan één getal, de gemiddelde premie, en dat getal is slecht
-gemeten. De 6,18 heeft een standaardfout van 1,76 {cite}`MehraPrescott1985`. Dat
-is de standaardfout van 2% uit [](#00-01-rendementen): over negentig jaar ligt een
+De puzzel draait om één getal, de gemiddelde premie, en juist dat getal is slecht gemeten.
+De 6,18 heeft een standaardfout van 1,76 {cite}`MehraPrescott1985`. Daarin komt de
+standaardfout van 2% uit [](#00-01-rendementen) terug, want over negentig jaar ligt een
 gemiddeld rendement maar op twee procentpunt na vast. De ware premie kan dus ook
 de helft zijn.
 
-Wat we daarom verwachten: in het model is de premie klein, ongeveer de
-risicoaversie maal de variantie van consumptiegroei. Wie de risicoaversie opvoert,
-krijgt een hogere premie en een hogere rente tegelijk. De meetonzekerheid maakt de
+We verwachten daarom dat de premie in het model klein is, ongeveer de risicoaversie maal
+de variantie van consumptiegroei. Een hogere risicoaversie geeft een hogere premie, maar
+tegelijk een hogere rente. De meetonzekerheid maakt de
 kloof kleiner, maar niet klein genoeg om te verdwijnen.
 
 ## Toy-voorbeeld: twee toestanden, een premie van een kwart procentpunt
 
 We rekenen de kleinste versie van de economie van Mehra en Prescott met de hand
-door. Eerst de imports-cel van de lecture.
+door. We beginnen met de pakketten die het hele college gebruikt.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -124,25 +124,25 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-**Opzet.** Consumptie groeit elk jaar met 5,4% of met $-1{,}8\%$, elk met kans
-$\tfrac12$ en onafhankelijk van vorig jaar. Dat is de kalibratie van Mehra en
-Prescott: gemiddeld 1,8% groei, plus of min $\delta = 0{,}036$
-{cite}`MehraPrescott1985` (p. 154). Het aandeel is een claim op consumptie: het
-dividend is de consumptie zelf. Voorkeuren: $\beta = 0{,}99$ en $\gamma = 2$.
+**Opzet.** Consumptie groeit elk jaar met 5,4% of met $-1{,}8\%$, met gelijke kans en
+onafhankelijk van vorig jaar. Dit is de kalibratie van Mehra en Prescott, met de
+gemiddelde groei plus of min $\delta = 0{,}036$ {cite}`MehraPrescott1985` (p. 154). Het
+aandeel is een claim op consumptie, want het dividend is de consumptie zelf.
 
-De kolom $g^{-2}$ is voor $m$ (want $\gamma = 2$), de kolom $g^{-1}$ voor $\E[mg]$ in stap 3.
+Voor de voorkeuren nemen we $\beta = 0{,}99$ en $\gamma = 2$. Naast de groei staat in de
+tabel daarom de kolom $g^{-2}$, die we voor $m$ nodig hebben, en de kolom $g^{-1}$ voor
+$\E[mg]$ in stap 3.
 
 | toestand | kans | groei $g$ | $g^{-1}$ | $g^{-2}$ |
 |---|---|---|---|---|
 | hoog | 0,5 | 1,054 | 0,9488 | 0,9002 |
 | laag | 0,5 | 0,982 | 1,0183 | 1,0370 |
-| voorkeuren | $\beta = 0{,}99$ | $\gamma = 2$ | | |
 
 **Het recept.** De Euler-vergelijking uit [](#03-12-consumptie-capm) is
 $p_t = \E_t[m_{t+1} x_{t+1}]$, met $m_{t+1} = \beta g_{t+1}^{-\gamma}$ en
-$g_{t+1} = c_{t+1}/c_t$ de bruto consumptiegroei. Als controle gebruiken we één
-formule die de theorie als eerste afleidt: de premie is $-(1 + R^f)$ maal de
-covariantie van $m$ met het rendement $R$.
+$g_{t+1} = c_{t+1}/c_t$ de bruto consumptiegroei. Als controle gebruiken we één formule
+die de theorie als eerste afleidt, namelijk dat de premie gelijk is aan $-(1 + R^f)$
+maal de covariantie van $m$ met het rendement $R$.
 
 **Stap 1: de stochastische discontofactor.** $m_h = 0{,}99 \cdot 0{,}9002 = 0{,}8912$ en
 $m_l = 0{,}99 \cdot 1{,}0370 = 1{,}0266$. Een euro in het lage jaar is 15% meer
@@ -162,9 +162,9 @@ $\mathrm{PD} = k/(1-k) \approx 37$.
 $R_h = 1{,}054/0{,}9737 = 1{,}0825$ en $R_l = 0{,}982/0{,}9737 = 1{,}0085$. Het
 gemiddelde is $\E[R] = 1{,}0455$.
 
-**Stap 5: de premie.** $\E[R] - (1 + R^f) = 1{,}0455 - 1{,}0429 = 0{,}0026$, dus
-0,26 procentpunt. Controle via de covariantie: bij twee even waarschijnlijke
-toestanden is $\Cov(m, R) = \tfrac14(m_h - m_l)(R_h - R_l) = \tfrac14(-0{,}1354)(0{,}0740) = -0{,}0025$,
+**Stap 5: de premie.** $\E[R] - (1 + R^f) = 1{,}0455 - 1{,}0429 = 0{,}0026$, dus 0,26
+procentpunt. Controle via de covariantie: bij twee even waarschijnlijke toestanden is
+$\Cov(m, R) = \tfrac14(m_h - m_l)(R_h - R_l) = \tfrac14(-0{,}1354)(0{,}0740) = -0{,}0025$,
 en $-1{,}0429 \cdot (-0{,}0025) = 0{,}0026$.
 
 De code volgt dezelfde vijf stappen en zet de uitkomst naast de handberekening.
@@ -189,39 +189,41 @@ hand = {"m hoog": 0.8912, "m laag": 1.0266, "R^f": 0.0429, "k": 0.9737, "R hoog"
 pd.DataFrame({"met de hand": hand, "code": iid_economy(0.99, 2, growth_mp)}).round(4)
 ```
 
-De twee kolommen zijn gelijk. De lezer weet nu waar de kleine premie vandaan komt.
-De stochastische discontofactor verschilt maar 0,14 tussen de toestanden en het rendement maar
-7,4 procentpunt, en de covariantie is een kwart van dat product.
+De twee kolommen zijn gelijk, en ze laten zien waar de kleine premie vandaan komt.
+De stochastische discontofactor verschilt maar 0,14 tussen de toestanden en het rendement
+maar 7,4 procentpunt, zodat de covariantie, een kwart van dat product, klein blijft.
 
 ## Theorie
 
-We leiden vijf dingen af. Eerst de premie als covariantie met de stochastische discontofactor, de
-controle uit stap 5. Dan de kern: de oplossing van Mehra en Prescott en hun
-maximum van 0,35 procentpunt. Daarna waarom dat getal klein is: in een lognormale
-economie is de premie $\gamma$ maal de variantie van consumptiegroei. Ten slotte
-twee toetsen die dat bevestigen zonder het hele model: de grens van Hansen en
-Jagannathan, en de rente die de uitweg via een hoge $\gamma$ afsluit.
+We leiden vijf dingen af. Eerst schrijven we de premie als covariantie met de
+stochastische discontofactor, de controle uit stap 5. Daarna volgt de kern, de oplossing
+van Mehra en Prescott met hun maximum van 0,35 procentpunt. Vervolgens laten we zien
+waarom dat getal klein is, want in een lognormale economie is de premie $\gamma$ maal de
+variantie van consumptiegroei. Ten slotte laat de grens van Hansen en Jagannathan zien
+dat de premie ook zonder het hele model te klein is, en laat de rente zien waarom een
+hoge $\gamma$ geen uitweg biedt.
 
 ### Opzet: de premie als covariantie
 
 *Waarom zou dit waar zijn?* Een belegger die een aandeel koopt in plaats van de
 obligatie, ruilt een zekere euro in voor een onzekere. Valt het aandeel tegen
-wanneer de stochastische discontofactor hoog is, dan levert het het minst op wanneer een euro het
-meest waard is. Zo'n aandeel wil niemand tegen de obligatieprijs hebben: de prijs
-daalt tot het gemiddelde rendement hoger ligt. Hoe sterker rendement en
+wanneer de stochastische discontofactor hoog is, dan levert het het minst op wanneer een
+euro het meest waard is. Zo'n aandeel wil niemand tegen de obligatieprijs hebben, zodat de
+prijs daalt tot het gemiddelde rendement hoger ligt. Hoe sterker rendement en
 stochastische discontofactor tegen elkaar in bewegen, hoe hoger de premie.
 
-Uit $1 = \E_t[m_{t+1}R_{t+1}] = \E_t[m_{t+1}]\,\E_t[R_{t+1}] + \Cov_t(m_{t+1}, R_{t+1})$
-en $\E_t[m_{t+1}] = 1/(1 + R^f_{t+1})$ volgt, na vermenigvuldigen met
-$1 + R^f_{t+1}$,
+We splitsen de Euler-vergelijking voor een rendement in een verwachtingsdeel en een
+covariantie. Uit
+$1 = \E_t[m_{t+1}R_{t+1}] = \E_t[m_{t+1}]\,\E_t[R_{t+1}] + \Cov_t(m_{t+1}, R_{t+1})$ en
+$\E_t[m_{t+1}] = 1/(1 + R^f_{t+1})$ volgt, na vermenigvuldigen met $1 + R^f_{t+1}$,
 
 ```{math}
 :label: eq-equity-premium-puzzle-cov
 \E_t[R_{t+1}] - (1 + R^f_{t+1}) = -(1 + R^f_{t+1})\,\Cov_t(m_{t+1}, R_{t+1}) .
 ```
 
-In woorden: een aandeel dat hoog rendeert als $m$ laag is, heeft een negatieve
-covariantie en dus een positieve premie. In het toy-voorbeeld is de covariantie
+Een aandeel dat hoog rendeert als $m$ laag is, heeft dus een negatieve covariantie en een
+positieve premie. In het toy-voorbeeld is de covariantie
 $-0{,}0025$ en de premie 0,26 procentpunt.
 
 Mehra en Prescott vullen $m$ in met consumptie. Groei $g_{t+1}$ neemt de waarden
@@ -231,23 +233,24 @@ dividend is consumptie, en de prijs in toestand $i$ is $p_t = \mathrm{PD}_i\,c_t
 Mehra en Prescott schrijven $\alpha$, $\lambda_i$ en $w_i$ waar wij $\gamma$,
 $g_i$ en $\mathrm{PD}_i$ schrijven.
 
-Ze kalibreerden twee toestanden op hun tabel 1: groei $1{,}018 \pm 0{,}036$ en een
+Ze kalibreerden twee toestanden op hun tabel 1, met groei $1{,}018 \pm 0{,}036$ en een
 kans $P_{hh} = P_{ll} = 0{,}43$ om in dezelfde toestand te blijven. De
 autocorrelatie van groei is dan $2 \cdot 0{,}43 - 1 = -0{,}14$, zoals in de data. Het
 toy-voorbeeld is dezelfde keten met kans $\tfrac12$. We schrijven $P$ en niet de
-$\phi$ van Mehra en Prescott, omdat $\phi$ in [](#03-12-consumptie-capm) de hefboom is. Ze stonden $\gamma \le 10$ toe, op grond van micro- en
+$\phi$ van Mehra en Prescott, omdat $\phi$ in [](#03-12-consumptie-capm) de hefboom is.
+Mehra en Prescott stonden $\gamma \le 10$ toe, op grond van micro- en
 macrobewijs, en $0 < \beta < 1$. De *toelaatbare regio* (admissible region: alle
 paren van gemiddelde rente en premie die zulke voorkeuren voortbrengen, bij een
-rente tussen nul en vier procent) is figuur 4 van hun paper.
+rente tussen nul en vier procent) staat in figuur 4 van hun artikel.
 
 ### Het kernresultaat: de toelaatbare regio
 
-*Waarom zou dit waar zijn?* Wie twee keer zo rijk is, beoordeelt een
-procentuele schommeling hetzelfde, want CRRA-nut kijkt alleen naar verhoudingen.
-Een belegger betaalt voor de boom dus een vast veelvoud van het dividend van
-vandaag, en dat veelvoud hangt alleen van de toestand af. Wat overblijft is per
-toestand één prijs-dividendratio, en een lineair stelsel met evenveel vergelijkingen
-als toestanden.
+Er is een gesloten oplossing, omdat een belegger met CRRA-nut een schommeling van een
+procent even erg vindt, hoe rijk hij ook is. Hij betaalt voor de boom dus een vast
+veelvoud van het dividend van
+vandaag, en dat veelvoud hangt alleen van de toestand af. Er blijft per toestand één
+prijs-dividendratio over, met een lineair stelsel van evenveel vergelijkingen als
+toestanden.
 
 :::{prf:proposition} Gesloten oplossing van de Mehra-Prescott-economie
 :label: prf-equity-premium-puzzle-mp
@@ -264,9 +267,9 @@ dan één, bestaan er unieke positieve prijs-dividendratio's
 met $\mathbf{1}$ de vector van $n$ enen.
 :::
 
-In woorden: de ratio is de verdisconteerde som van alle toekomstige dividendgroei.
-Het bewijsidee: vul $p_t = \mathrm{PD}_i c_t$ in de Euler-vergelijking in en deel
-door $c_t$. Rendement en rente volgen daarna direct:
+De ratio is de verdisconteerde som van alle toekomstige dividendgroei. Voor het bewijs
+vullen we $p_t = \mathrm{PD}_i c_t$ in de Euler-vergelijking in en delen door $c_t$.
+Rendement en rente volgen daarna direct:
 
 $$
 R_{ij} = \frac{g_j\,(1 + \mathrm{PD}_j)}{\mathrm{PD}_i},
@@ -285,13 +288,13 @@ Invullen van $p_t = \mathrm{PD}_i c_t$ en $m = \beta g_j^{-\gamma}$ in
 $p_t = \E_t[m_{t+1}(p_{t+1} + c_{t+1})]$ en delen door $c_t$ geeft
 $\mathrm{PD}_i = \sum_j a_{ij}(1 + \mathrm{PD}_j)$, ofwel
 $(\mathbf{I} - \mathbf{A})\boldsymbol{\mathrm{PD}} = \mathbf{A}\mathbf{1}$. Bij een
-spectraalstraal kleiner dan één is $(\mathbf{I} - \mathbf{A})^{-1} = \sum_k \mathbf{A}^k$
-niet-negatief, en de oplossing uniek en positief. Dit is de voorwaarde
-$\lim_{k \to \infty} \mathbf{A}^k = 0$ van Mehra en Prescott (p. 151), de eindige versie van
-[](#thm-consumptie-capm-contractie). Het rendement volgt uit
-$R_{ij} = (p_{t+1} + c_{t+1})/p_t$ met $c_{t+1} = g_j c_t$, de rente uit
-$1/(1 + R^f_i) = \E_i[m]$. Ergodiciteit maakt tijdgemiddelden gelijk aan
-gemiddelden onder $\pi$. $\square$
+spectraalstraal kleiner dan één is
+$(\mathbf{I} - \mathbf{A})^{-1} = \sum_k \mathbf{A}^k$ niet-negatief, en de oplossing
+uniek en positief. Dit is de voorwaarde $\lim_{k \to \infty} \mathbf{A}^k = 0$ van Mehra
+en Prescott (p. 151), de eindige versie van [](#thm-consumptie-capm-contractie). Het
+rendement volgt uit $R_{ij} = (p_{t+1} + c_{t+1})/p_t$ met $c_{t+1} = g_j c_t$, de rente
+uit $1/(1 + R^f_i) = \E_i[m]$. Ergodiciteit maakt tijdgemiddelden gelijk aan gemiddelden
+onder $\pi$. $\square$
 :::
 
 We lossen de keten van Mehra en Prescott op voor $\gamma = 2$ en $\gamma = 10$, met
@@ -344,13 +347,14 @@ pd.DataFrame(chain).T.round(4)
 ```
 
 Bij $\gamma = 2$ is de premie 0,29 procentpunt bij een rente van 4,3%, vrijwel het
-toy-voorbeeld: de negatieve autocorrelatie verandert weinig. Bij $\gamma = 10$
-stijgt de premie naar 2,7 procentpunt, maar de rente naar 13,1%. Zoals de intuïtie
-voorspelde, tilt meer risicoaversie premie en rente samen op.
+toy-voorbeeld, omdat de negatieve autocorrelatie weinig verandert. Bij $\gamma = 10$
+stijgt de premie naar 2,7 procentpunt, maar de rente naar 13,1%. Meer risicoaversie tilt
+premie en rente dus samen op, zoals we in de intuïtie al verwachtten.
 
 De toelaatbare regio volgt door hetzelfde stelsel op te lossen voor 400 waarden van
 $\gamma \in (0, 10]$ maal 400 waarden van $\beta \in (0, 1)$. Daarvan houden we de
-paren met een rente tussen nul en vier procent, en zoeken de grootste premie.
+paren met een rente tussen nul en vier procent, en onder die paren zoeken we de grootste
+premie.
 
 ```{code-cell} ipython3
 rows = []
@@ -375,10 +379,10 @@ pd.Series({
 ```
 
 Het rooster geeft een grootste premie van 0,362%, tegen 0,35% bij Mehra en
-Prescott. Dat maximum ligt aan de rand: $\beta$ vlak bij één en een rente van vier
+Prescott. Dat maximum ligt aan de rand, met $\beta$ vlak bij één en een rente van vier
 procent. Het verschil van een honderdste procentpunt doet voor de conclusie niet
-ter zake. Let in de figuur hieronder op de schaal: links de regio zelf, rechts
-dezelfde regio naast de gemeten premie met twee standaardfouten.
+ter zake. Let in de figuur hieronder op de schaal, want links staat de regio zelf en
+rechts dezelfde regio naast de gemeten premie met twee standaardfouten.
 
 ```{code-cell} ipython3
 :label: cel-equity-premium-puzzle-regio
@@ -387,8 +391,11 @@ dezelfde regio naast de gemeten premie met twee standaardfouten.
 edges = np.linspace(0, 0.04, 81)
 centres = (edges[:-1] + edges[1:]) / 2
 bins = np.digitize(rf_grid[admissible], edges) - 1
-upper = np.array([prem_grid[admissible][bins == k].max() if np.any(bins == k) else np.nan for k in range(80)])
-lower = np.array([prem_grid[admissible][bins == k].min() if np.any(bins == k) else np.nan for k in range(80)])
+upper, lower = np.full(80, np.nan), np.full(80, np.nan)
+for k in range(80):
+    in_bin = prem_grid[admissible][bins == k]
+    if in_bin.size:
+        upper[k], lower[k] = in_bin.max(), in_bin.min()
 
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 axes[0].fill_between(100 * centres, 100 * lower, 100 * upper, color="C0", alpha=0.5, lw=0)
@@ -435,16 +442,16 @@ laatste subsectie van de theorie werkt die band uit als de risicovrije-rentepuzz
 *Waarom zou dit waar zijn?* Een belegger in de boom verliest in slechte jaren
 evenveel als consumptie daalt, want het dividend is consumptie. De covariantie van
 zijn rendement met consumptiegroei is dus de variantie van consumptiegroei, en die
-is klein. Meer risicoaversie maakt de premie evenredig groter. Een gladdere
-consumptie maakt haar kleiner, met het kwadraat.
+is klein. Meer risicoaversie maakt de premie evenredig groter, terwijl gladdere consumptie
+de premie met het kwadraat kleiner maakt.
 
 Vanaf hier zijn $\Delta c_{t+1} = \log g_{t+1}$ en $\ell_{t+1} = \log R_{t+1}$ logs.
 Neem iid lognormale groei, $\Delta c_{t+1} \sim N(\mu_c, \sigma_c^2)$.
 [](#eq-consumptie-capm-lognormaal) gaf voor die groei en een dividend dat met een
 hefboom op consumptie reageert de rente en de premie in gesloten vorm. We schrijven hier
 $\mu_c$ en $\sigma_c$ voor de $\mu$ en $\sigma$ van [](#eq-consumptie-capm-lognormaal),
-om ze te onderscheiden van de momenten van rendementen in deze lecture. Met hefboom één, dus
-met het dividend gelijk aan consumptie, geeft die vergelijking exact
+om ze te onderscheiden van de momenten van rendementen in dit college. Met hefboom één,
+dus met het dividend gelijk aan consumptie, geeft die vergelijking exact
 
 ```{math}
 :label: eq-equity-premium-puzzle-lognormaal
@@ -453,36 +460,37 @@ met het dividend gelijk aan consumptie, geeft die vergelijking exact
 \log(1 + R^f) = -\log\beta + \gamma\mu_c - \tfrac12\gamma^2\sigma_c^2 .
 ```
 
-In woorden: de premie is risicoaversie maal de covariantie van rendement en
+De premie is dus risicoaversie maal de covariantie van rendement en
 consumptiegroei, en in de boom is die covariantie de variantie van
 consumptiegroei. De rente stijgt met verwachte groei, omdat lenen dan aantrekkelijk
 is, en daalt met de variantie, omdat beleggers uit voorzorg sparen.
 
-Mehra zet de momenten van 1889–1978 om naar $\sigma_c^2 = \log(1 + 0{,}036^2/1{,}018^2) = 0{,}00125$
-en $\mu_c = 0{,}0172$ {cite}`Mehra2003` (p. 13–15). Bij $\gamma = 2$ is de premie
-dan $2 \cdot 0{,}00125 = 0{,}25$ procentpunt, vrijwel de 0,26 van het
-toy-voorbeeld. Bij $\gamma = 10$ is ze 1,25 procentpunt.
+Mehra zet de momenten van 1889–1978 om naar een variantie
+$\sigma_c^2 = \log(1 + \sigma(g)^2/\E[g]^2) = 0{,}00125$ {cite}`Mehra2003` (p. 13–15).
+De premie is dus klein, zoals verwacht, omdat ze de variantie van een gladde
+consumptiereeks maal $\gamma$ is. Bij $\gamma = 2$ komt ze op 0,25 procentpunt, vrijwel
+de 0,26 van het toy-voorbeeld, en zelfs bij $\gamma = 10$ op niet meer dan 1,25
+procentpunt.
 
 Voor het gemeten gemiddelde rendement van 6,98% bij een rente van 0,80% is
 $\gamma = 47{,}6$ nodig, en oefening 2 rekent dat na. Een echt aandeel beweegt niet
-perfect met consumptie mee, maar is wel veel volatieler. Welke van de twee wint,
-bepaalt of de benodigde $\gamma$ lager of hoger uitvalt. De simulatie rekent het uit.
-Zoals de intuïtie voorspelde, is de premie klein omdat consumptie glad is,
-met een factor $\gamma$ ervoor.
+perfect met consumptie mee, maar is wel veel volatieler. Of de benodigde $\gamma$ lager of
+hoger uitvalt, hangt ervan af welke van de twee wint, en dat rekent de simulatie uit.
 
 ### Hoe het getoetst wordt: de Hansen-Jagannathan-grens
 
-*Waarom zou dit waar zijn?* Een belegger die lang gaat in aandelen en kort in de
-obligatie, betaalt vandaag niets. De stochastische discontofactor moet die positie dus op nul
-waarderen. Heeft de positie een positief gemiddelde, dan lukt dat alleen als ze
-slecht betaalt wanneer de stochastische discontofactor hoog is. Hoe hoger het gemiddelde per
-eenheid risico, hoe harder de stochastische discontofactor moet schommelen.
+De grens volgt uit een positie die niets kost. Een belegger die aandelen koopt met geld
+dat hij tegen de obligatierente leent, betaalt vandaag niets. De stochastische
+discontofactor moet die positie dus op nul waarderen. Heeft de positie een positief
+gemiddelde, dan lukt dat alleen als ze slecht betaalt wanneer de stochastische
+discontofactor hoog is. Hoe hoger het gemiddelde per eenheid risico, hoe harder de
+stochastische discontofactor moet schommelen.
 
-:::{prf:theorem} Hansen-Jagannathan-grens (één excess rendement)
+:::{prf:theorem} Hansen-Jagannathan-grens (één overrendement)
 :label: thm-equity-premium-puzzle-hj
 
-Laat $m$ een stochastische discontofactor zijn met $\E[m] > 0$ en eindige variantie, en $R^e$
-een excess rendement met eindige variantie waarvoor $\E[m R^e] = 0$. Dan geldt
+Laat $m$ een stochastische discontofactor zijn met $\E[m] > 0$ en eindige variantie, en
+$R^e$ een overrendement met eindige variantie waarvoor $\E[m R^e] = 0$. Dan geldt
 
 ```{math}
 :label: eq-equity-premium-puzzle-hj
@@ -490,9 +498,10 @@ een excess rendement met eindige variantie waarvoor $\E[m R^e] = 0$. Dan geldt
 ```
 :::
 
-In woorden: de relatieve schommeling van de stochastische discontofactor is minstens de
-*Sharpe-ratio* (gemiddeld excess rendement gedeeld door zijn standaarddeviatie) van
-elk excess rendement, dus ook van het beste.
+De relatieve schommeling van de stochastische discontofactor is dus minstens de
+*Sharpe-ratio* (gemiddeld overrendement gedeeld door zijn standaarddeviatie) van elk
+overrendement. Het overrendement met de hoogste Sharpe-ratio stelt daarom de
+strengste eis.
 
 :::{prf:proof}
 Uit $0 = \E[mR^e] = \E[m]\,\E[R^e] + \Cov(m, R^e)$ volgt
@@ -518,29 +527,27 @@ for gamma_val in (2, 10, 25):
 pd.DataFrame(sdf_rows).T.rename_axis("gamma").round(4)
 ```
 
-Bij $\gamma = 2$ schommelt de stochastische discontofactor 7%, een vijfde van wat de grens eist.
-Het gemiddelde 0,9589 is de obligatieprijs uit stap 2 van het toy-voorbeeld. Bij
+Bij $\gamma = 2$ schommelt de stochastische discontofactor 7%, een vijfde van wat de grens
+eist. Het gemiddelde 0,9589 is de obligatieprijs uit stap 2 van het toy-voorbeeld. Bij
 $\gamma = 10$ komt de verhouding met 0,34 dicht bij 0,37, maar de rente is dan
 12,8%. Bij $\gamma = 25$ is de grens ruim gehaald, met 0,71, maar de rente is nog
 9,6%. De grens is noodzakelijk, niet voldoende.
 
-Tot hier ging het om één excess rendement. Met meerdere activa wordt de eis
-strenger, en daarvoor is een tweede stelling nodig.
-
-*Waarom zou dit waar zijn?* Een belegger
-die meer activa kan combineren, vindt een hogere Sharpe-ratio, en elk excess
-rendement is een extra eis aan de stochastische discontofactor. Zonder risicovrij activum ligt
+Tot hier ging het om één overrendement. Met meerdere activa wordt de eis strenger, en
+daarvoor is een tweede stelling nodig. Een belegger die meer activa kan combineren, vindt
+namelijk een hogere Sharpe-ratio, en elk overrendement is een extra eis aan de
+stochastische discontofactor. Zonder risicovrij activum ligt
 $\E[m]$ niet vast. Bij elke kandidaatwaarde $v$ hoort dan een minimale
-schommeling, en de stochastische discontofactor die haar haalt is een lineaire combinatie van de
-rendementen, net als de minimum-variantieportefeuille van [](#01-04-markowitz).
-
-Laat $\mathbf{R}$ een vector van $N$ bruto rendementen zijn met gemiddelde
-$\boldsymbol{\mu}$ en niet-singuliere covariantiematrix $\boldsymbol{\Sigma}$.
+schommeling, en de stochastische discontofactor met die minimale schommeling is een
+lineaire combinatie van de rendementen, net als de minimum-variantieportefeuille van
+[](#01-04-markowitz). Laat $\mathbf{R}$ een vector van $N$ bruto rendementen zijn met
+gemiddelde $\boldsymbol{\mu}$ en niet-singuliere covariantiematrix $\boldsymbol{\Sigma}$.
 
 :::{prf:theorem} Hansen-Jagannathan-grens met meerdere activa
 :label: thm-equity-premium-puzzle-frontier
 
-Voor elke stochastische discontofactor $m$ met $\E[m\mathbf{R}] = \mathbf{1}$ en $\E[m] = v$ geldt
+Voor elke stochastische discontofactor $m$ met $\E[m\mathbf{R}] = \mathbf{1}$ en
+$\E[m] = v$ geldt
 
 ```{math}
 :label: eq-equity-premium-puzzle-frontier
@@ -549,17 +556,18 @@ Voor elke stochastische discontofactor $m$ met $\E[m\mathbf{R}] = \mathbf{1}$ en
 ```
 :::
 
-In woorden: bij elk gemiddelde $v$ van de stochastische discontofactor hoort een minimale
-variantie. De grens wordt gehaald door een stochastische discontofactor die lineair is in de
-rendementen,
+Bij elk gemiddelde $v$ van de stochastische discontofactor hoort dus een minimale
+variantie. De grens wordt gehaald door een stochastische discontofactor die lineair is
+in de rendementen,
 $m^*_v = v + (\mathbf{1} - v\boldsymbol{\mu})'\boldsymbol{\Sigma}^{-1}(\mathbf{R} - \boldsymbol{\mu})$.
-Economisch
-is $v$ de prijs van een zekere euro. Zit er een risicovrij activum in
-$\mathbf{R}$, dan moet $v = 1/(1 + R^f)$ zijn, en daar valt de grens samen met de
-Sharpe-grens: in de data van Mehra en Prescott $\sigma(m) \ge 0{,}37/1{,}008 = 0{,}37$.
-Bij elke andere $v$ prijst $m$ dat activum verkeerd, en de grens wordt een smalle V
-rond $1/(1 + R^f)$. Het bewijsidee: elke toegestane $m$ heeft dezelfde covariantie
-met $\mathbf{R}$, en $m^*_v$ is de kleinste variabele met die covariantie.
+Economisch is $v$ de prijs van een zekere euro. Een echt risicovrij activum zou
+$\boldsymbol{\Sigma}$ singulier maken, maar de reële T-bill in $\mathbf{R}$ is bijna
+risicovrij en legt $v$ daardoor bijna vast op $1/(1 + R^f)$. Daar valt de grens ongeveer
+samen met de Sharpe-grens, in de data van Mehra en Prescott
+$\sigma(m) \ge 0{,}37/1{,}008 = 0{,}37$. Bij elke andere $v$ waardeert $m$ de T-bill
+verkeerd, en de grens wordt een smalle V rond $1/(1 + R^f)$. Het bewijs rust erop dat elke
+toegestane $m$ dezelfde covariantie
+met $\mathbf{R}$ heeft, terwijl $m^*_v$ de kleinste variabele met die covariantie is.
 
 :::{prf:proof}
 :class: dropdown
@@ -582,7 +590,7 @@ grens aanscherpt. De replicatie gebruikt de versie zonder die eis,
 ```{warning}
 De grens gebruikt geschatte $\boldsymbol{\mu}$ en $\boldsymbol{\Sigma}$. Met veel
 activa en weinig jaren is de hoogste Sharpe-ratio in de steekproef systematisch te
-hoog, net als de efficiënte rand van Markowitz in de steekproef. Elke portefeuille
+hoog, net als de efficiënte portefeuilles van Markowitz in de steekproef. Elke portefeuille
 voegt een beetje toevallig rendement toe, zodat het kwadraat van die Sharpe-ratio
 ongeveer $N/T$ te hoog ligt. Met 25 portefeuilles en 96 jaren is dat
 $25/96 = 0{,}26$, meer dan het kwadraat van de marktratio, $0{,}43^2 = 0{,}18$.
@@ -590,13 +598,13 @@ $25/96 = 0{,}26$, meer dan het kwadraat van de marktratio, $0{,}43^2 = 0{,}18$.
 
 ### Waarom de rente de uitweg afsluit
 
-*Waarom zou dit waar zijn?* Met CRRA-nut meet $\gamma$ zowel de afkeer van
-schommelingen tussen toestanden als die van schommelingen door de tijd. Een
-belegger met een hoge $\gamma$ wil de groei van zijn consumptie naar vandaag halen
-en dus lenen. Om hem tevreden te laten sparen, moet de rente stijgen, tenzij zijn
-geduld onwaarschijnlijk groot is.
+Met CRRA-nut meet $\gamma$ zowel de afkeer van schommelingen tussen toestanden als die
+van schommelingen door de tijd. Een belegger met een hoge $\gamma$ wil de groei van zijn
+consumptie naar vandaag halen en dus lenen. Om hem tevreden te laten sparen, moet de
+rente stijgen, tenzij zijn geduld onwaarschijnlijk groot is.
 
-Zonder onzekerheid en bij constante groei $g$ geeft de Euler-vergelijking
+We beginnen zonder onzekerheid, omdat de rente dan alleen van geduld en groei afhangt.
+Bij constante groei $g$ geeft de Euler-vergelijking
 $1 = \beta g^{-\gamma}(1 + R^f)$, dus
 
 ```{math}
@@ -606,11 +614,11 @@ $1 = \beta g^{-\gamma}(1 + R^f)$, dus
 \frac{\partial \log g}{\partial \log(1 + R^f)} = \frac{1}{\gamma} \equiv \psi .
 ```
 
-In woorden: één procentpunt meer rente verhoogt de gewenste consumptiegroei met
+Eén procentpunt meer rente verhoogt de gewenste consumptiegroei dus met
 $1/\gamma$ procentpunt. Die $\psi$ heet de *elasticity of intertemporal
 substitution* (EIS, intertemporele substitutie-elasticiteit: hoe sterk
-consumptiegroei op de rente reageert). Bij $\gamma = 10$ is $\psi = 0{,}1$, en
-verschuift een belegger zijn consumptie nauwelijks.
+consumptiegroei op de rente reageert). Bij $\gamma = 10$ is $\psi = 0{,}1$, zodat een
+belegger zijn consumptie nauwelijks verschuift.
 
 Met onzekerheid komt de voorzorgsterm $-\tfrac12\gamma^2\sigma_c^2$ uit
 [](#eq-equity-premium-puzzle-lognormaal) erbij. Die wint pas bij een zeer grote
@@ -631,15 +639,16 @@ print(f"beta < 1 alleen voor gamma < {roots[0]:.2f} of gamma > {roots[1]:.1f}")
 pd.DataFrame({"gamma": gammas_rf, "benodigde beta": beta_needed}).set_index("gamma").T.round(3)
 ```
 
-De grenzen van dat gebied volgen door $\beta = 1$ in te vullen:
+De twee waarden van $\gamma$ waarbij de benodigde $\beta$ precies één is, volgen door
+$\beta = 1$ in te vullen:
 $\tfrac12\sigma_c^2\gamma^2 - \mu_c\gamma + \log(1 + R^f) = 0$ is een kwadratische
 vergelijking in $\gamma$, met de wortels 0,47 en 27,1 uit de cel. De benodigde $\beta$
 is het grootst bij $\gamma = \mu_c/\sigma_c^2 = 13{,}8$, daarom staat die waarde in de
-tabel. [](#03-12-consumptie-capm) komt met 1,8% en 3,5% voor dezelfde uitdrukking op
-14,7. Het verschil zit in de kalibratie.
+tabel. [](#03-12-consumptie-capm) komt met 1,8% en 3,5% voor dezelfde uitdrukking op 14,7,
+en dat verschil komt uit de kalibratie.
 
 Voor elke $\gamma$ tussen ongeveer een half en 27 is een $\beta$ groter dan één
-nodig: beleggers moeten de toekomst zwaarder wegen dan het heden. Pas boven
+nodig, zodat beleggers de toekomst zwaarder moeten wegen dan het heden. Pas boven
 $\gamma \approx 27$ drukt het voorzorgssparen de rente weer omlaag. Bij
 $\gamma = 47{,}6$ hoort $\beta = 0{,}55$, de combinatie waarmee Mehra 1889–1978
 exact reproduceert {cite}`Mehra2003`. Die oplossing ligt op het scherp van de snede:
@@ -648,8 +657,8 @@ exact reproduceert {cite}`Mehra2003`. Die oplossing ligt op het scherp van de sn
 
 Weil schreef dit op in voorkeuren waarin $\gamma$ en $\psi$ los van elkaar worden
 gekozen {cite}`Weil1989,EpsteinZin1989`. Het losmaken lost de premie niet op, en
-legt een tweede puzzel bloot. Waarom is de rente zo laag, als beleggers zo ongaarne
-consumptie over de tijd verschuiven? Kocherlakota concludeerde in 1996 dat de lage
+legt een tweede puzzel bloot. Waarom is de rente zo laag, als beleggers hun consumptie
+zo weinig over de tijd willen verschuiven? Kocherlakota concludeerde in 1996 dat de lage
 rente plausibele verklaringen heeft, maar de hoge premie grotendeels een raadsel
 blijft {cite}`Kocherlakota1996`.
 
@@ -657,7 +666,7 @@ blijft {cite}`Kocherlakota1996`.
 :class: tip
 
 - De premie is $-(1+R^f)$ maal de covariantie van rendement en stochastische discontofactor,
-  [](#eq-equity-premium-puzzle-cov); in de lognormale boom is dat $\gamma\sigma_c^2$,
+  [](#eq-equity-premium-puzzle-cov), en in de lognormale boom is dat $\gamma\sigma_c^2$,
   0,25 procentpunt bij $\gamma = 2$, [](#eq-equity-premium-puzzle-lognormaal).
 
 - Met $\gamma \le 10$ en een rente tussen nul en vier procent is de grootste premie
@@ -665,7 +674,7 @@ blijft {cite}`Kocherlakota1996`.
   premie en rente samen op.
 
 - De stochastische discontofactor moet relatief minstens de Sharpe-ratio van de markt
-  schommelen, [](#eq-equity-premium-puzzle-hj); consumptie haalt dat pas bij
+  schommelen, [](#eq-equity-premium-puzzle-hj), en consumptie haalt dat pas bij
   net boven $\gamma = 10$.
 
 - Een rente van 0,80% vraagt $\beta > 1$ voor elke $\gamma$ tussen een half en 27,
@@ -677,28 +686,35 @@ blijft {cite}`Kocherlakota1996`.
 
 ## Simulatie: hoe zeker is de puzzel?
 
-De historische premie heeft een standaardfout van 1,76 procentpunt. Dat is de
-standaardfout van 2% uit [](#00-01-rendementen). De vraag over steekproeven:
-welke risicoaversie zou een onderzoeker met negentig jaar data schatten, als de
+De historische premie heeft een standaardfout van 1,76 procentpunt, dicht bij de twee
+procentpunt die [](#00-01-rendementen) voor een gemiddeld rendement over een eeuw vond.
+Welke risicoaversie zou een onderzoeker met negentig jaar data dan schatten, als de
 ware premie 6% is, of maar 3%?
 
 We trekken 10.000 steekproeven van negentig jaar uit een wereld met bivariaat
-normale consumptiegroei en excess rendementen. De standaarddeviaties zijn 3,57% en
-16,67%, uit tabel 1 van Mehra en Prescott; de 3,57% is vrijwel de $\delta = 0{,}036$ (3,6%)
-van het toy-voorbeeld. Voor de correlatie nemen we 0,37, die van consumptiegroei met
-het totale aandelenrendement in tabel 1 van Kocherlakota:
-$0{,}00219/\sqrt{0{,}0274 \cdot 0{,}00127} = 0{,}37$ {cite}`Kocherlakota1996`. Met
-het excess rendement is ze uit dezelfde tabel ongeveer 0,33. Een lagere correlatie
-maakt de geschatte $\gamma$ alleen groter, dus 0,37 is de voorzichtige keuze. Per
-steekproef schatten we $\hat\gamma = \overline{R^e}/\widehat{\Cov}(\Delta c, R^e)$,
-de $\gamma$ van [](#eq-equity-premium-puzzle-lognormaal) met de gemeten
-covariantie.
+normale consumptiegroei en overrendementen. De standaarddeviaties komen uit tabel 1 van
+Mehra en Prescott, en die van consumptie is vrijwel de $\delta = 0{,}036$ van het
+toy-voorbeeld. Per steekproef schatten we
+$\hat\gamma = \overline{R^e}/\widehat{\Cov}(\Delta c, R^e)$, de $\gamma$ van
+[](#eq-equity-premium-puzzle-lognormaal) met de gemeten covariantie.
 
-Die $\gamma$ is niet de 47,6 van de boom. Een echt aandeel is $16{,}67/3{,}57 = 4{,}7$
-keer zo volatiel als consumptie. De covariantie $0{,}37 \cdot 0{,}0357 \cdot 0{,}1667 = 0{,}0022$
-is daardoor groter dan $\sigma_c^2 = 0{,}00125$. De ware $\gamma$ bij 6% premie is
-0,06 gedeeld door die covariantie, 27,2 in de simulatietabel hieronder. De tabel
-aan het eind van de replicatie zet deze maatstaf naast de andere.
+Voor de correlatie nemen we 0,37, die van consumptiegroei met het totale
+aandelenrendement in tabel 1 van Kocherlakota {cite}`Kocherlakota1996`. Ze volgt uit de
+covariantie en de twee varianties in die tabel,
+
+$$
+0{,}00219/\sqrt{0{,}0274 \cdot 0{,}00127} = 0{,}37 .
+$$
+
+Met het overrendement is ze uit dezelfde tabel ongeveer 0,33. Een lagere correlatie
+maakt de geschatte $\gamma$ alleen groter, dus 0,37 is de voorzichtige keuze.
+
+Die $\gamma$ is niet de 47,6 van de boom, want een echt aandeel is
+$16{,}67/3{,}57 = 4{,}7$ keer zo volatiel als consumptie. De covariantie
+$0{,}37 \cdot 0{,}0357 \cdot 0{,}1667 = 0{,}0022$ is daardoor groter dan
+$\sigma_c^2 = 0{,}00125$. De ware $\gamma$ bij 6% premie is 0,06 gedeeld door die
+covariantie, 27,2 in de simulatietabel hieronder. De tabel aan het eind van de
+replicatie zet deze maatstaf naast de andere.
 
 ```{code-cell} ipython3
 n_sim, n_years = 10_000, 90
@@ -742,7 +758,7 @@ bins_g = np.linspace(-20, 100, 121)
 for k, (premium_true, draws) in enumerate(gamma_draws.items()):
     ax.hist(np.clip(draws, -20, 100), bins=bins_g, alpha=0.55, color=f"C{k}",
             label=f"ware premie {100 * premium_true:.0f}% (ware $\\gamma$ = {premium_true / cov_true:.1f})")
-ax.axvline(10, color="black", ls="--", lw=1, label="bovengrens van Mehra en Prescott")
+ax.axvline(10, color="black", ls="--", lw=1, label="$\\gamma$ = 10, het maximum van Mehra en Prescott")
 ax.set_xlabel("Geschatte risicoaversie $\\hat\\gamma$ uit 90 jaar data")
 ax.set_ylabel("Aantal steekproeven")
 ax.set_title("Hoe breed is de vereiste risicoaversie?")
@@ -755,21 +771,24 @@ plt.show()
 :width: 90%
 
 De risicoaversie die een onderzoeker uit negentig jaar data zou afleiden, in een
-wereld waarin de ware premie 3% respectievelijk 6% is. De verdelingen overlappen
-sterk: dezelfde steekproef past bij een ware $\gamma$ rond de dertien en rond de
+wereld waarin de ware premie 3% respectievelijk 6% is. De verdelingen overlappen sterk,
+zodat dezelfde steekproef past bij een ware $\gamma$ rond de dertien en rond de
 zevenentwintig. Maar ook in de wereld met 3% premie ligt het grootste deel van de
 massa boven de tien.
 :::
 
 De simulatie trekt twee conclusies, in tegengestelde richting. De eerste is
-bescheidenheid: bij een ware $\gamma$ van 27,2 kan negentig jaar data alles tussen
-tien en zeventig opleveren. In de wereld met 6% premie dragen beide momenten
-evenveel bij, met een relatieve spreiding van ongeveer 30% elk. In de wereld met 3%
-domineert het gemiddelde, met bijna 60%. Dat is de standaardfout van 2%: dezelfde
-absolute fout weegt zwaarder naarmate de premie kleiner is.
+bescheidenheid, want bij een ware $\gamma$ van 27,2 kan negentig jaar data alles tussen
+tien en zeventig opleveren. Welk geschat moment die spreiding veroorzaakt, hangt af van
+de ware premie.
 
-De tweede conclusie is dat de puzzel die onzekerheid overleeft. Ook als de ware
-premie 3% is, de helft van de gemeten premie, valt $\hat\gamma$ in twee derde van
+Bij de hoge premie dragen gemiddelde en covariantie evenveel bij, elk met een relatieve
+spreiding van ongeveer 30%. Bij de lage premie domineert het gemiddelde met bijna 60%,
+omdat dezelfde absolute fout zwaarder weegt naarmate de premie kleiner is. Dat verschil
+is [de standaardfout van 2%](#00-01-rendementen) in relatieve termen.
+
+De tweede conclusie is dat de puzzel ondanks die onzekerheid overeind blijft. Ook als de
+ware premie 3% is, de helft van de gemeten premie, valt $\hat\gamma$ in twee derde van
 de steekproeven boven de tien. De ware $\gamma$ is dan 13,6, nog steeds boven wat
 Mehra en Prescott toelieten.
 
@@ -798,8 +817,8 @@ hebben consumptie vanaf 1929. Hansen en Jagannathan gebruikten 1891–1985 en oo
 grens met positieve $m$, die wij weglaten.
 
 **Verwachte afwijking.** De premie ligt binnen een half procentpunt van 6,18 en de
-rente binnen drie tienden van 0,80, en consumptie vanaf 1929 wijkt in haar momenten
-af maar vraagt een risicoaversie boven tien. Geen consumptie-SDF met $\gamma \le 10$
+rente binnen drie tienden van 0,80, en consumptie vanaf 1929 wijkt in de momenten af,
+maar vraagt ook een risicoaversie boven tien. Geen consumptie-SDF met $\gamma \le 10$
 ligt binnen een grens, en valt er een met $\gamma \le 5$ binnen, dan zit er een fout
 in de code.
 ```
@@ -851,14 +870,14 @@ table1 = pd.concat(
 table1.round(2)
 ```
 
-**Geslaagd.** Premie en reële rente liggen ruim binnen de verwachte afwijking: de
-premie op vier honderdste procentpunt van 6,18, de rente op vijf honderdste van
-0,80. Ook de standaardfouten liggen op een honderdste van 1,76 en 0,60.
+**Geslaagd.** Premie en reële rente liggen ruim binnen de verwachte afwijking, want de
+premie ligt op vier honderdste procentpunt van 6,18 en de rente op vijf honderdste van
+0,80%. Ook de standaardfouten liggen op een honderdste van 1,76 en 0,60.
 
 Tot 2024 is de premie groter, 6,92%, en de standaardfout gezakt van 1,77 naar 1,34.
 Dat gaat langzaam, zoals $1/\sqrt{T}$ voorspelt, en een halve eeuw nieuwe data
-heeft de puzzel verscherpt. De 8,3% van [](#00-00-setup) meet iets anders: de
-French-marktfactor sinds 1926, uit maandrendementen.
+heeft de puzzel verscherpt. De 8,3% van [](#00-00-setup) meet iets anders, namelijk de
+French-marktfactor sinds 1926, berekend uit maandrendementen.
 
 ### Consumptie en de vereiste risicoaversie
 
@@ -899,18 +918,23 @@ rows_c["Mehra-Prescott 1985, 1889-1978"] = {"jaren": 90, "gemiddelde groei (%)":
 pd.DataFrame(rows_c).T.round(3)
 ```
 
-**Geslaagd.** Beide delen van de verwachte afwijking komen uit. De momenten wijken
-af zoals voorzien: onze standaarddeviatie is 2,58 tegen 3,57, en de autocorrelatie
-$+0{,}49$ tegen $-0{,}14$, door de Depressie en de oorlog. De risicoaversie ligt
-boven tien: over 1929–1978 is RRA(1) 22,0 en RRA(2) 13,0. Gladdere consumptie maakt
-de vereiste risicoaversie hoger dan bij Mehra en Prescott, en tot 2024 wordt ze nog
-gladder.
+**Geslaagd.** De uitkomst valt in beide delen binnen de verwachte afwijking. De momenten
+wijken af zoals voorzien, want in de tabel is onze consumptie gladder dan die van Mehra en
+Prescott, en door de Depressie en de oorlog positief in plaats van negatief
+geautocorreleerd. De risicoaversie ligt boven tien, met over 1929–1978 een RRA(1) van 22,0
+en een RRA(2) van 13,0.
+
+Op de momenten van Mehra en Prescott, met de correlatie van 0,37 uit de simulatie, is
+RRA(1) de 27,2 van de simulatie. RRA(2) is daar $0{,}0618/(0{,}0357 \cdot 0{,}1667) = 10{,}4$,
+zodat onze RRA(2) hoger ligt, omdat gladdere consumptie de noemer verkleint. Onze RRA(1)
+ligt lager, omdat de correlatie hier 0,59 is en die hogere correlatie de gladdere
+consumptie meer dan compenseert. Tot 2024 wordt de consumptie nog gladder.
 
 ### De Hansen-Jagannathan-grens
 
 We gebruiken kalenderjaarrendementen van French, gedefleerd met de decemberwaarde
-van de CPI en gekoppeld aan consumptiegroei in hetzelfde jaar. Eerst de data en de
-Sharpe-ratio van de markt.
+van de CPI en gekoppeld aan consumptiegroei in hetzelfde jaar. De eerste cel laadt de data
+en berekent de Sharpe-ratio van de markt.
 
 ```{code-cell} ipython3
 ff3 = hap_data.french("F-F_Research_Data_Factors")
@@ -943,14 +967,14 @@ print(f"{hj_data.index[0]}-{hj_data.index[-1]}, {len(hj_data)} jaar; Sharpe-rati
       f"gem. reële T-bill = {100 * (real_gross['RF'].mean() - 1):.2f}%")
 ```
 
-Over 1930–2025 is de Sharpe-ratio 0,43, iets hoger dan de 0,37 van Mehra en
-Prescott. De kandidaten zijn $m_t = \beta\,(c_t/c_{t-1})^{-\gamma}$
-met $\beta = 0{,}95$, de waarde van Hansen en Jagannathan. De Sharpe-grens hangt
-niet van $\beta$ af, want $\sigma(m)/\E[m]$ niet. Voor de grenzen met de T-bill
-bepaalt $\beta$ wel waar $\E[m]$ ligt, en daarom nemen we hun waarde. We vergelijken ze met drie grenzen: de Sharpe-grens
-[](#eq-equity-premium-puzzle-hj) van het excess marktrendement, en de grens met
-meerdere activa [](#eq-equity-premium-puzzle-frontier) voor markt plus T-bill en voor de 25
-portefeuilles plus T-bill.
+Over 1930–2025 is de Sharpe-ratio 0,43, iets hoger dan de 0,37 van Mehra en Prescott. De
+kandidaten zijn $m_t = \beta\,(c_t/c_{t-1})^{-\gamma}$ met $\beta = 0{,}95$, de waarde
+van Hansen en Jagannathan. De Sharpe-grens hangt niet van $\beta$ af, want
+$\sigma(m)/\E[m]$ niet. Voor de grenzen met de T-bill bepaalt $\beta$ wel waar $\E[m]$
+ligt, en daarom nemen we hun waarde. We vergelijken de kandidaten met drie grenzen: de
+Sharpe-grens [](#eq-equity-premium-puzzle-hj) van het overrendement van de markt, en de
+grens met meerdere activa [](#eq-equity-premium-puzzle-frontier) voor markt plus T-bill
+en voor de 25 portefeuilles plus T-bill.
 
 ```{code-cell} ipython3
 beta_hj = 0.95
@@ -972,15 +996,15 @@ first_mkt = gamma_hj[sdf_table["binnen grens markt en T-bill"].to_numpy()].min()
 first_25 = gamma_hj[sdf_table["binnen grens 25 en T-bill"].to_numpy()].min()
 print(f"eerste gamma binnen de grens: Sharpe {first_sharpe}, markt + T-bill {first_mkt}, "
       f"25 portefeuilles + T-bill {first_25}")
-sdf_table.loc[[1, 5, 10, 15, 20, 30, 40, 42, 43, 45, 50]].round(3)
+sdf_table.loc[[1, 5, 10, 15, 20, 30, 40, 42, 43, 45, 50], ["E[m]", "sigma(m)/E[m]", "impliciete rente (%)"]].round(3)
 ```
 
 **Geslaagd.** Geen consumptie-SDF met $\gamma \le 10$ ligt binnen een grens, zoals
 verwacht. De Sharpe-grens wordt pas gehaald bij $\gamma = 15$, met een impliciete
-reële rente van dertig procent: de equity premium puzzle. De grenzen die ook de
-T-bill laten prijzen, eisen bovendien een gemiddelde van $m$ vlak bij
-$1/(1 + R^f)$. Die haalt de consumptie-SDF pas bij $\gamma = 42$ en $43$: de
-risicovrije-rentepuzzel in de termen van Hansen en Jagannathan.
+reële rente van dertig procent, en in die combinatie zit de puzzel van de aandelenpremie.
+De grenzen die ook de T-bill correct moeten waarderen, eisen bovendien een gemiddelde van
+$m$ vlak bij $1/(1 + R^f)$. Dat gemiddelde haalt de consumptie-SDF pas bij $\gamma = 42$
+en $43$, en dat is de risicovrije-rentepuzzel in de termen van Hansen en Jagannathan.
 
 | grootheid | origineel of verwacht | hier, 1930–2025 |
 |---|---|---|
@@ -990,10 +1014,8 @@ risicovrije-rentepuzzel in de termen van Hansen en Jagannathan.
 | eerste $\gamma$ binnen de grens met 25 portefeuilles | strenger dan met de markt | 43 |
 
 Hansen en Jagannathan rapporteren geen enkele drempelwaarde. Hun figuur 1 laat de
-consumptie-SDF pas bij een grote $|\gamma|$ binnen de grens komen, en dat zien we
-hier ook.
-
-Let in de figuur op de gekleurde punten, de consumptie-SDF bij oplopende $\gamma$,
+consumptie-SDF pas bij een grote $|\gamma|$ binnen de grens komen, en dat zien we hier
+ook. Let in de figuur op de gekleurde punten, de consumptie-SDF bij oplopende $\gamma$,
 en op waar ze de drie grenzen kruisen.
 
 ```{code-cell} ipython3
@@ -1005,7 +1027,7 @@ frontier_mkt = hap.stats.hansen_jagannathan_bound(market_bill, v_grid)
 frontier_25 = hap.stats.hansen_jagannathan_bound(ff25_bill, v_grid)
 
 fig, ax = plt.subplots(figsize=(9, 5.5))
-ax.plot(v_grid, sharpe_mkt * v_grid, color="C2", ls="--", label="Sharpe-grens: excess marktrendement")
+ax.plot(v_grid, sharpe_mkt * v_grid, color="C2", ls="--", label="Sharpe-grens: overrendement van de markt")
 ax.plot(v_grid, frontier_mkt["sigma_m_min"], color="C0", label="grens: markt en T-bill")
 ax.plot(v_grid, frontier_25["sigma_m_min"], color="C1", label="grens: 25 size/BM-portefeuilles en T-bill")
 points = ax.scatter(mean_m, sd_m, c=gamma_hj, cmap="viridis", s=22, zorder=3,
@@ -1029,27 +1051,27 @@ plt.show()
 :label: fig-equity-premium-puzzle-hj
 :width: 100%
 
-Elke SDF die de activa correct prijst, ligt boven de grens. De consumptie-SDF
-schuift bij toenemende $\gamma$ eerst vooral naar links: meer risicoaversie
-verlaagt het gemiddelde van $m$, dus verhoogt de rente, zonder veel volatiliteit
+Elke SDF die de activa correct waardeert, ligt boven de grens. De consumptie-SDF
+schuift bij toenemende $\gamma$ eerst vooral naar links, omdat meer risicoaversie het
+gemiddelde van $m$ verlaagt en dus de rente verhoogt, zonder veel volatiliteit
 toe te voegen. De Sharpe-grens wordt gehaald waar de rente rond de dertig procent
 ligt. De grenzen met de T-bill zijn smalle V's rond de stippellijn. De
 consumptie-SDF haalt ze pas als de jaren met consumptiedalingen uit de Depressie het
 gemiddelde van $m$ weer omhoog trekken.
 :::
 
-De curve keert rond $\gamma = 25$ om. De impliciete rente is het hoogst tussen
-$\gamma = 20$ en $30$, rond 35%, en slaat tussen $\gamma = 40$ en $50$ om van ruim
-vijftien naar min vijftien procent. Dat is geen
-oplossing, maar een eigenschap van de steekproef. Bij zulke $\gamma$ bepalen een
-paar Depressiejaren het gemiddelde van $m$. Hansen en Jagannathan zagen hetzelfde
-(p. 250): een steekproef zonder grote rampen kan de schommeling van $m$ sterk
-onderschatten. Rietz bouwde daar zijn verklaring op {cite}`Rietz1988`.
+De curve keert rond $\gamma = 25$ om, waar de impliciete rente piekt op ongeveer 35%.
+Tussen $\gamma = 40$ en $50$ slaat die rente om van ruim vijftien naar min vijftien
+procent. Die omslag is geen oplossing, maar een eigenschap
+van de steekproef. Bij zulke $\gamma$ bepalen een paar Depressiejaren het gemiddelde van
+$m$. Hansen en Jagannathan zagen hetzelfde (p. 250) en wezen erop dat een steekproef
+zonder grote rampen de schommeling van $m$ sterk kan onderschatten. Rietz bouwde daar
+zijn verklaring op {cite}`Rietz1988`.
 
 ### Alle maatstaven voor de vereiste risicoaversie
 
 De vereiste $\gamma$ hangt af van de maatstaf. De tabel zet die van theorie,
-simulatie en replicatie naast die van de vorige lecture.
+simulatie en replicatie naast die uit het vorige college.
 
 | maatstaf | periode | vereiste $\gamma$ | waar |
 |---|---|---|---|
@@ -1057,40 +1079,40 @@ simulatie en replicatie naast die van de vorige lecture.
 | premie gedeeld door de ware covariantie | simulatie, 6% | 27,2 | Simulatie |
 | RRA(1): premie gedeeld door de gemeten covariantie | 1929–1978 | 22,0 | Replicatie |
 | Sharpe-grens van Hansen en Jagannathan | 1930–2025 | 15 | Replicatie |
-| grens die ook de T-bill prijst | 1930–2025 | 42 | Replicatie |
-| premie alleen: gewogen excess rendement nul | 1959–1978 | ongeveer 75 | [](#03-12-consumptie-capm) |
+| grens die ook de T-bill waardeert | 1930–2025 | 42 | Replicatie |
+| premie alleen: gewogen overrendement nul | 1959–1978 | ongeveer 75 | [](#03-12-consumptie-capm) |
 
 Alle maatstaven liggen boven de tien van Mehra en Prescott. Ze verschillen omdat ze
 een ander activum en een andere eis gebruiken.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** Kwalitatief alles wat het moest verklaren. Aandelen
-renderen meer dan obligaties omdat ze slecht betalen als consumptie tegenvalt, de
-rente is hoger als groei verwacht wordt, en de stochastische discontofactor is groot in slechte
-tijden. De puzzel overleeft andere groeiprocessen, een hefboom op dividenden, een
-halve eeuw extra data en andere landen {cite}`Campbell1999,Campbell2003`. Siegel
-en Thaler vonden haar in veel landen en perioden, en zagen geen verklaring in *survivorship bias* (vertekening doordat
-alleen markten die overleefden in de data zitten) {cite}`SiegelThaler1997`.
+**Wat het model verklaart.** Kwalitatief verklaart het model alles wat het moest
+verklaren. Aandelen renderen meer dan obligaties omdat ze slecht betalen als consumptie
+tegenvalt, de rente is hoger als groei verwacht wordt, en de stochastische
+discontofactor is groot in slechte tijden. De puzzel blijft overeind bij andere
+groeiprocessen, een hefboom op dividenden, een halve eeuw extra data en andere landen
+{cite}`Campbell1999,Campbell2003`. Siegel en Thaler vonden de puzzel in veel landen en
+perioden, en zagen geen verklaring in *survivorship bias* (vertekening doordat alleen
+markten die overleefden in de data zitten) {cite}`SiegelThaler1997`.
 
-**Waar het breekt.** Op getallen die we zelf hebben nagerekend. Met
+**Waar het breekt.** Het model breekt op getallen die we zelf hebben nagerekend. Met
 $\gamma \le 10$ en een rente tussen nul en vier procent is de grootste premie 0,36
-procentpunt, tegen 6,22 zoals hier gerepliceerd over 1889–1978 (6,18 bij Mehra
-en Prescott zelf). Zonder model zegt de
-Hansen-Jagannathan-grens hetzelfde: de consumptie-SDF haalt de Sharpe-ratio van de
-markt pas bij een rente van dertig procent. De simulatie laat zien dat de
-standaardfout van de premie de omvang van de puzzel onzeker maakt, maar haar niet
-opheft.
+procentpunt, tegen 6,22 zoals hier gerepliceerd over 1889–1978 (6,18 bij Mehra en
+Prescott zelf). De Hansen-Jagannathan-grens zegt zonder model hetzelfde, want de
+consumptie-SDF haalt de Sharpe-ratio van de markt pas bij een rente van dertig procent.
+De simulatie laat zien dat de standaardfout van de premie de omvang van de puzzel
+onzeker maakt, maar de puzzel niet opheft.
 
-**Risico of vergissing?** In de Chicago-lezing is de premie een echte
-risicopremie, maar zit het risico in een deel van de verdeling dat negentig jaar
-data nauwelijks laten zien. Rietz stelde voor dat een kleine kans op een zeer grote
-consumptiedaling de premie draagt {cite}`Rietz1988`. Mehra merkte op dat de rente
-dan tegen die kans in zou moeten bewegen, en zag dat niet terug {cite}`Mehra2003`.
-In de Yale-lezing zijn beleggers niet de consumptie-afvlakkers van het model, maar
-beleggers met verliesaversie die te vaak naar hun portefeuille kijken. Siegel en Thaler vonden de
-premie moeilijk te verklaren zonder enige irrationaliteit {cite}`SiegelThaler1997`.
-Wat de lezingen zou scheiden, de kans op rampen, is met een eeuw data niet te meten.
+**Risico of vergissing?** In de Chicago-lezing is de premie een echte risicopremie, maar
+zit het risico in een deel van de verdeling dat negentig jaar data nauwelijks laten
+zien. Rietz stelde voor dat een kleine kans op een zeer grote consumptiedaling de premie
+draagt {cite}`Rietz1988`. Mehra merkte op dat de rente dan tegen die kans in zou moeten
+bewegen, en zag dat niet terug {cite}`Mehra2003`. In de Yale-lezing zijn beleggers niet
+de consumptie-afvlakkers van het model, maar beleggers met verliesaversie die te vaak
+naar hun portefeuille kijken. Siegel en Thaler vonden de premie moeilijk te verklaren
+zonder enige irrationaliteit {cite}`SiegelThaler1997`. De kans op rampen, die de twee
+lezingen zou kunnen scheiden, is met een eeuw data niet te meten.
 
 **Wat er daarna kwam.** De grens van Hansen en Jagannathan hangt af van welke
 activa erin gaan, dus van wat "de markt" is. Dat die keuze een theorie ontoetsbaar
@@ -1128,11 +1150,12 @@ pd.Series({"R^f": rough["R^f"], "k": rough["k"], "premie": rough["premie"],
 ```
 
 **(2)** De premie wordt 1,04 procentpunt, bijna vier keer zo groot als de 0,26 van het
-toy-voorbeeld. Dat voorspelt de lognormale formule $\gamma\sigma_c^2$: $\sigma_c$
-verdubbelt, dus de premie verviervoudigt. De rente daalt, omdat het voorzorgssparen
-toeneemt. Wat dit leert: de premie is kwadratisch in de volatiliteit van
-consumptie. Om 6,18 procentpunt te halen met $\gamma = 2$ zou consumptie bijna vijf
-keer zo volatiel moeten zijn, want $\sqrt{6{,}18/0{,}26} \approx 4{,}9$.
+toy-voorbeeld. Dat voorspelt de lognormale formule $\gamma\sigma_c^2$, want als
+$\sigma_c$ verdubbelt, verviervoudigt de premie. De rente daalt, omdat het
+voorzorgssparen toeneemt. De oefening laat zien dat de premie kwadratisch is in de
+volatiliteit van consumptie. Om 6,18 procentpunt te halen met $\gamma = 2$ zou
+consumptie bijna vijf keer zo volatiel moeten zijn, want
+$\sqrt{6{,}18/0{,}26} \approx 4{,}9$.
 :::
 
 :::{exercise}
@@ -1154,8 +1177,9 @@ $\E[R] = 1{,}0698$ (Mehra 2003, tabel 4).
 :class: dropdown
 
 **(1)** De eerste vergelijking geeft $\gamma = (\log\E[R] - \log(1 + R^f))/\sigma_c^2$.
-De tweede geeft daarna $\log\beta = -\log(1 + R^f) + \gamma\mu_c - \tfrac12\gamma^2\sigma_c^2$.
-**(2)** Differentiëren van de rentevergelijking naar $\gamma$, bij vaste $\beta$, geeft
+De tweede geeft daarna
+$\log\beta = -\log(1 + R^f) + \gamma\mu_c - \tfrac12\gamma^2\sigma_c^2$. **(2)**
+Differentiëren van de rentevergelijking naar $\gamma$, bij vaste $\beta$, geeft
 $\mu_c - \gamma\sigma_c^2 \approx 0{,}0172 - 47{,}6 \cdot 0{,}00125 = -0{,}042$ per
 eenheid $\gamma$.
 
@@ -1172,7 +1196,7 @@ edge.round(2)
 **(3)** Eén eenheid $\gamma$ verschuift de reële rente met ruim vier procentpunt.
 De data zijn dus met één punt in de parameterruimte te reproduceren, en dat punt
 vereist $\beta = 0{,}55$: beleggers die volgend jaar half zo belangrijk vinden als
-dit jaar. Wat dit leert: een hoge $\gamma$ lost de premie alleen op door de rente
+dit jaar. Zo blijkt dat een hoge $\gamma$ de premie alleen oplost door de rente
 over te laten aan een voorzorgsterm die kwadratisch is in $\gamma$, en een model
 dat zo precies moet worden afgesteld, verklaart niets.
 :::
@@ -1187,7 +1211,7 @@ replicatie (`hj_data`).
    $\gamma \in \{1, \dots, 60\}$ waarvoor de consumptie-SDF
    [](#eq-equity-premium-puzzle-hj) haalt.
 2. Trek voor de volledige steekproef 2000 bootstrapsteekproeven van jaren (paren van
-   consumptiegroei en excess rendement). Rapporteer het 90%-interval van de
+   consumptiegroei en overrendement). Rapporteer het 90%-interval van de
    Sharpe-ratio en van de kleinste $\gamma$.
 :::
 
@@ -1224,11 +1248,13 @@ rows_ex3["bootstrap 95%"] = {"Sharpe-ratio": np.percentile(sr_boot, 95),
 pd.DataFrame(rows_ex3).T.astype(float).round(2)
 ```
 
-De tweede helft heeft een hogere Sharpe-ratio en veel gladdere consumptie. Ze
-vraagt daardoor $\gamma = 27$, tegen 11 in de eerste helft, waarin de Depressie de
-consumptie-SDF volatiel maakt. Het bootstrapinterval van de Sharpe-ratio loopt van
-0,25 tot 0,64: de standaardfout van 2% uit [](#00-01-rendementen), nu op de
-Sharpe-ratio. Het interval van de vereiste $\gamma$ is even breed, maar zelfs de
-onderkant ligt op de bovengrens van Mehra en Prescott. Wat dit leert: hoe groot de
-puzzel is, hangt sterk af van de periode, maar dat hij bestaat niet.
+De tweede helft heeft een hogere Sharpe-ratio en veel gladdere consumptie. Ze vraagt
+daardoor $\gamma = 27$, tegen 11 in de eerste helft, waarin de Depressie de
+consumptie-SDF volatiel maakt. Het bootstrapinterval van de Sharpe-ratio loopt van 0,25
+tot 0,64, zodat dezelfde meetonzekerheid als bij gemiddelde rendementen in
+[](#00-01-rendementen) nu de Sharpe-ratio treft. Het interval van de vereiste $\gamma$
+is naar verhouding even breed, want ook daar is de bovenkant ruim twee keer de onderkant,
+maar zelfs die onderkant ligt op het maximum van tien dat Mehra en Prescott toelieten. Hoe
+groot de puzzel is, hangt dus sterk af van de periode, maar dat hij bestaat, hangt er
+niet van af.
 :::
