@@ -115,3 +115,17 @@ Woorden per sectie: top 103, Overzicht 283, Intuïtie 350, Toy 419, Opzet 159, T
 **Niet in L8 op te lossen.** De naadpunten die alleen L6 of L9 raken (L6 $r$ als log, $M$ in L6, $\mathbb Q$ tegen $Q$, $d$ in L9, Merton-chronologie).
 
 **Na controle F6.** Jensen-zin gecorrigeerd: L6 paste Jensens regressie toe op hedendaagse fondsen, niet op Jensens fondsen; prose_stats PASS, gesynct.
+
+## R9-1 (F6b, ronde 9+)
+
+**Meting.** words 5732 (was 5634); `--check` PASS (p90 28, gt40 1, para_one 12). Sync en uitvoering met `HAP_OFFLINE=1` foutloos; `nb_outputs` voor/na verschilt alleen in de kolomnaam en de png-grootte; `nb_numbers` geen nieuwe meldingen (17, alleen regelnummers verschoven). rewrap gedraaid.
+
+**Feitelijke fout 1 (oordeelstabel, na BJS).** GRS van de French-decielen uit de celuitvoer: 2,025 > 1,843 ($p = 0{,}028$). De 4,20 > 1,52 blijft bij de 25 size/BM (GRS-sectie).
+**Feitelijke fout 2 (rand).** Alias "de rand" blijft de efficiënte grens (kopje en Overzicht). Het theorema van Black zegt nu dat $z$ op de minimum-variantierand ligt, onder de minimum-variantieportefeuille, op het ondoelmatige deel; de zin na het theorema en bewijsstap 3 zeggen "minimum-variantierand" en stap 3 legt uit waarom $z$ op het ondoelmatige deel ligt.
+**Excess.** Beide y-assen en de tabelkolom (ook in de figuurcel) heten nu "overrendement".
+**Hardop-toets.** Separatie-zin herschreven ("Dat is de separatiestelling ...: iedereen houdt ..."), Black-zin ("Black werkte deze redenering exact uit ... opgaat"), GRS-zin in tweeën met de $F$-verdeling als grens die bij normale residuen ook in een korte reeks klopt.
+**Helderheid, beter uitleggen.** FM 0,48 is "bij hen al $\gamma_0 - R^f$"; het minteken van −187,5 staat nu in de zin na de toy-tabel (herschreven, geen nieuwe zin).
+**Opbouw.** De attenuatie-`###` opent met de bewering zonder het etiket "Waarom zou dit waar zijn?".
+**Taal.** Toy stap 5 ("even precies") herschreven; de standaardzin vóór de toy-cel vervangen; "Wie niet kan lenen" → "Beleggers die niet kunnen lenen" (3 "Wie"-zinnen); "dat is het speciale geval" herschreven tot "Kan iedereen vrij lenen tegen $R^f$, dan ..."; "meet elke periode aan de verwachte afwijking" → "zet per periode naast elkaar wat we verwachtten ... en wat we vinden".
+**Toy stap 3.** Het 2×2-stelsel voor A en B staat nu uitgeschreven.
+**Afgewezen.** Uitleg van "marktclearing" op regel 42: de beoordelaar noemt het geen aanmerking en regel 31 zegt het al.
