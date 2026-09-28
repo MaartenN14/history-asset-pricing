@@ -245,7 +245,7 @@ naam wisselt (H7).
 | prijzen, geprijsd (*to price*); beprijsd | waarderen, de prijs bepalen van; met een risicopremie (of *priced*) |
 | excess rendement | overrendement |
 | in-sample, out-of-sample | in de steekproef, buiten de steekproef |
-| efficiënte rand, minimum-variantierand | efficiënte grens, minimum-variantiegrens |
+| efficiënte rand, "de rand" als alias | efficiënte grens (bovenste tak); de hele parabool heet minimum-variantierand, een eigen begrip |
 | equal-weighted, value-weighted | gelijkgewogen, waardegewogen |
 | detrenden, gedemeend | de trend verwijderen; min het gemiddelde |
 | marktruiming, de markt ruimt | evenwicht; vraag is gelijk aan aanbod |

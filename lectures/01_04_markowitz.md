@@ -44,7 +44,7 @@ niet gebruikt.
 
 In dit college
 
-- leiden we de efficiënte rand af en laten we zien dat alle efficiënte
+- leiden we de efficiënte grens af en laten we zien dat alle efficiënte
   portefeuilles mengsels zijn van twee fondsen;
 
 - voegen we met Tobin een risicovrij activum toe, waarna iedereen dezelfde
@@ -94,8 +94,8 @@ en voor risico dat verdwijnt, hoeft niemand betaald te worden.
 
 Omdat een belegger op twee grootheden let, verwacht rendement en variantie,
 ontstaat er een afruil. De portefeuilles met de laagste variantie bij elk verwacht
-rendement zijn niet te verslaan en vormen samen de *efficiënte rand* (*efficient
-frontier*). Roys belegger wil vooral een ramp vermijden, maar komt bij dezelfde
+rendement vormen samen de *minimum-variantierand*. Het bovenste deel daarvan is niet
+te verslaan en heet de *efficiënte grens* (*efficient frontier*). Roys belegger wil vooral een ramp vermijden, maar komt bij dezelfde
 portefeuilles uit.
 
 Toen Tobin schatkistpapier toevoegde, viel de keuze in twee stappen uiteen. Een
@@ -231,7 +231,7 @@ niet met obligaties meebewegen.
 
 We beginnen bij de eerste-ordevoorwaarde, met als eerste gevolg
 het recept uit het toy-voorbeeld. Daaruit volgt de kern van het college, namelijk
-dat de efficiënte rand een parabool is en dat elke portefeuille erop een mengsel is
+dat de minimum-variantierand een parabool is en dat elke portefeuille erop een mengsel is
 van twee vaste fondsen. Daarna voegen we een risicovrij activum toe (Tobin, met Roy
 als variant) en laten we zien waarom in een grote portefeuille alleen covariantie
 overblijft. We eindigen bij de reden waarom de theorie in de praktijk strandt,
@@ -273,15 +273,15 @@ Aanname 1 is de zwakste. Ze geldt bij normaal verdeelde rendementen of
 kwadratisch nut. In andere gevallen is ze een tweede-ordebenadering van elk nut,
 die volstaat zolang de verdeling niet te scheef is en geen dikke staarten heeft.
 
-### Het kernresultaat: de efficiënte rand
+### Het kernresultaat: de efficiënte grens
 
 Elke belegger die alleen op verwachting en variantie let (aanname 1), kiest een
-portefeuille op één vaste rand, en elke portefeuille op die rand is een mengsel
+portefeuille op de efficiënte grens, en elke portefeuille op die grens is een mengsel
 van twee vaste fondsen. Denk aan een belegger die een portefeuille ziet met
 hetzelfde verwachte rendement en minder variantie. Hij ruilt om, en bij elke ruil
 daalt zijn variantie terwijl zijn verwachte rendement gelijk blijft. Hij stopt pas
-als zo'n ruil niet meer bestaat, dus op de rand, en alleen welk punt van de rand
-hij kiest, hangt van zijn smaak af.
+als zo'n ruil niet meer bestaat, dus op de minimum-variantierand, en alleen welk punt van de
+efficiënte grens hij kiest, hangt van zijn smaak af.
 
 Formeel zoeken we de gewichten met de kleinste variantie, onder de eis dat het
 verwachte rendement $\mu_p$ is en de gewichten optellen tot één. Het probleem is
@@ -331,7 +331,7 @@ in, en om dat feit draait de tweede helft van dit college. In het toy-voorbeeld
 is deze portefeuille met 8,83% veiliger dan het veiligste activum (10%), en dat
 bevestigt de eerste verwachting uit de intuïtie.
 
-Om de rand te tekenen, moeten $\lambda$ en $\delta$ voor elk vereist rendement
+Om de minimum-variantierand te tekenen, moeten $\lambda$ en $\delta$ voor elk vereist rendement
 $\mu_p$ vastliggen. Daarvoor zijn vier getallen nodig:
 
 ```{math}
@@ -398,7 +398,7 @@ pd.DataFrame(
     {"met de hand": [128.125, 7.0625, 0.51125, 15.625, 0.0551, 0.0883, 0.1559],
      "code": [A, B, C, D, B / A, np.sqrt(1 / A), sigma_at_10]},
     index=["A", "B", "C", "D", "verwacht rendement minimum-variantie",
-           "standaarddeviatie minimum-variantie", "standaarddeviatie op de rand bij 10%"],
+           "standaarddeviatie minimum-variantie", "standaarddeviatie op de grens bij 10%"],
 ).round(4)
 ```
 
@@ -424,16 +424,16 @@ $$
 = \alpha\,\mathbf{w}(\mu_1) + (1-\alpha)\,\mathbf{w}(\mu_2).
 $$
 
-Anders gezegd zijn de portefeuilles op de rand precies de mengsels van twee
-willekeurige, van elkaar verschillende portefeuilles op die rand.
+Anders gezegd zijn de portefeuilles op de minimum-variantierand precies de mengsels van twee
+willekeurige, van elkaar verschillende portefeuilles erop.
 :::
 
 Het idee van het bewijs is om $\lambda$ en $\delta$ in [](#eq-markowitz-foc) in
 te vullen. De gewichten worden dan een vaste vector plus $\mu_p$ maal een tweede vaste
 vector, een
 *affiene* functie van $\mu_p$ (lineair plus een constante). Een mengsel van twee
-punten op zo'n rechte ligt weer op die rechte. Welke twee randportefeuilles
-als fondsen dienen, maakt niet uit, en een handig paar is de
+punten op zo'n rechte ligt weer op die rechte. Welke twee portefeuilles van de
+minimum-variantierand als fondsen dienen, maakt niet uit, en een handig paar is de
 minimum-variantieportefeuille $\boldsymbol{\Sigma}^{-1}\mathbf{1}/A$ en
 $\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}/B$, met verwacht rendement
 $C/B = 7{,}24\%$. In het toy-voorbeeld zijn dat $(0{,}171;\; 0{,}049;\; 0{,}780)'$
@@ -459,7 +459,7 @@ $\mathbf{w}(\alpha\mu_1 + (1-\alpha)\mu_2)
 = \alpha(\mathbf{g} + \mu_1\mathbf{h}) + (1-\alpha)(\mathbf{g} + \mu_2\mathbf{h})$,
 omdat $\alpha + (1-\alpha) = 1$, en dat is precies de bewering.
 
-*Stap 2: elk mengsel ligt op de rand.* Het mengsel
+*Stap 2: elk mengsel ligt op de minimum-variantierand.* Het mengsel
 $\alpha\mathbf{w}(\mu_1) + (1-\alpha)\mathbf{w}(\mu_2)$ telt op tot één en heeft
 verwacht rendement $\alpha\mu_1 + (1-\alpha)\mu_2$. Volgens stap 1 is het gelijk
 aan de minimaliserende portefeuille bij dat rendement. Die is uniek omdat
@@ -537,7 +537,7 @@ verwachte rendement en krijgen toch maar 22%, minder dan de saaie obligaties, om
 aandelen meebewegen en weinig toevoegen aan wat aandelen al leveren. Zo komt ook de
 tweede verwachting uit, want meebewegen kost gewicht, hoe hoog het rendement ook is.
 
-Stijgt $R^{f}$, dan bieden de veilige portefeuilles op de rand te weinig premie
+Stijgt $R^{f}$, dan bieden de veilige portefeuilles op de efficiënte grens te weinig premie
 en schuift de tangentportefeuille op naar riskantere portefeuilles, zolang $R^{f}$
 onder het rendement $B/A = 5{,}51\%$ van de minimum-variantieportefeuille blijft. Bij
 $R^{f} = 0$ heeft ze een verwacht rendement van $C/B = 7{,}24\%$, bij 2% is dat
@@ -565,8 +565,8 @@ pd.DataFrame(
 ```
 
 Ook hier geeft de code dezelfde getallen. De figuur brengt het hele toy-voorbeeld
-samen, en daarin gaat het om de afstand tussen elk activum en de rand en om het
-punt waar de gestreepte lijn de rand raakt.
+samen, en daarin gaat het om de afstand tussen elk activum en de minimum-variantierand en om het
+punt waar de gestreepte lijn haar raakt.
 
 ```{code-cell} ipython3
 :label: cel-markowitz-frontier
@@ -577,7 +577,7 @@ sigma_frontier = np.sqrt((A * grid**2 - 2 * B * grid + C) / D)
 sigma_cml_end = 2 * sigma_tan                     # kapitaalmarktlijn tot 2x sigma_tan
 
 fig, ax = plt.subplots()
-ax.plot(sigma_frontier * 100, grid * 100, lw=1.8, label="efficiënte rand")
+ax.plot(sigma_frontier * 100, grid * 100, lw=1.8, label="minimum-variantierand")
 ax.plot([0, sigma_cml_end * 100],
         [rf * 100, (rf + sharpe_max * sigma_cml_end) * 100],
         ls="--", lw=1.3, color=hap.plotting.COLORS[1],
@@ -593,7 +593,7 @@ ax.set_xlim(0, 32)
 ax.set_ylim(0, 16)
 ax.set_xlabel("Standaarddeviatie (procenten per jaar)")
 ax.set_ylabel("Verwacht rendement (procenten per jaar)")
-ax.set_title("De efficiënte rand van drie activa")
+ax.set_title("De minimum-variantierand van drie activa")
 ax.legend()
 plt.show()
 ```
@@ -602,15 +602,15 @@ plt.show()
 :label: fig-markowitz-frontier
 :width: 90%
 
-De drie activa (punten), de efficiënte rand en de kapitaalmarktlijn vanaf de
-risicovrije rente van 2%. Elk activum ligt rechts van de rand, omdat er telkens een
+De drie activa (punten), de minimum-variantierand en de kapitaalmarktlijn vanaf de
+risicovrije rente van 2%. Elk activum ligt rechts van de minimum-variantierand, omdat er telkens een
 mengsel is met hetzelfde verwachte rendement en minder risico. De
 minimum-variantieportefeuille (vierkant) ligt met 8,83% links van het veiligste
-activum. De tangentportefeuille (ruit) is het enige punt van de rand op de
+activum. De tangentportefeuille (ruit) is het enige punt van de minimum-variantierand op de
 kapitaalmarktlijn.
 :::
 
-De kapitaalmarktlijn ligt overal boven de rand, behalve in de
+De kapitaalmarktlijn ligt overal boven de efficiënte grens, behalve in de
 tangentportefeuille. Een belegger die risico wil dragen, doet dat dus het best
 langs die lijn.
 
@@ -653,7 +653,7 @@ van Roy (*safety first*, veiligheid eerst) en die van Tobin kiezen dus dezelfde
 portefeuille zodra $r_{\min} = R^{f}$. Hoe ruim de grens is, laat de
 tangentportefeuille uit het toy-voorbeeld zien (8,22%, standaarddeviatie 11,76%),
 ook al kiest Roys belegger bij een ramp van $r_{\min} = -20\%$ een ander punt op de
-rand. Die ramp ligt 2,4 standaarddeviaties onder het verwachte rendement, zodat de
+efficiënte grens. Die ramp ligt 2,4 standaarddeviaties onder het verwachte rendement, zodat de
 grens $1/2{,}4^2 = 17\%$ geeft, terwijl de kans onder normaliteit maar 0,8% is.
 
 ### Wat het voorspelt: alleen covariantie wordt beloond
@@ -757,7 +757,7 @@ fouten in de varianties, en eenentwintig keer zoveel als fouten in de
 covarianties {cite}`ChopraZiemba1993`.
 
 ```{warning}
-De geschatte rand is geen belegbare uitkomst, want hij meet het rendement op
+De geschatte efficiënte grens is geen belegbare uitkomst, want hij meet het rendement op
 dezelfde waarnemingen waaruit $\hat{\boldsymbol{\mu}}$ en
 $\hat{\boldsymbol{\Sigma}}$ komen. Vergelijk strategieën alleen buiten de
 steekproef, en altijd met een standaardfout bij elke Sharpe-ratio.
@@ -771,7 +771,7 @@ steekproef, en altijd met een standaardfout bij elke Sharpe-ratio.
   minimum-variantieportefeuille $\boldsymbol{\Sigma}^{-1}\mathbf{1}/A$ gebruikt
   $\boldsymbol{\mu}$ niet.
 
-- De kern is dat de efficiënte rand een parabool is in $(\mu_p, \sigma^2)$,
+- De kern is dat de minimum-variantierand een parabool is in $(\mu_p, \sigma^2)$,
   [](#eq-markowitz-frontier), en dat elke portefeuille erop een mengsel is van twee
   vaste fondsen, {prf:ref}`thm-markowitz-tweefonds`.
 
@@ -1273,10 +1273,10 @@ riskant wordt.
 theorie ($A = 128{,}125$, $B = 7{,}0625$, $C = 0{,}51125$, $D = 15{,}625$).
 
 1. Leid uit [](#eq-markowitz-foc) af dat de covariantie tussen twee
-   portefeuilles op de rand met verwachte rendementen $\mu_1$ en $\mu_2$ gelijk is
+   portefeuilles op de minimum-variantierand met verwachte rendementen $\mu_1$ en $\mu_2$ gelijk is
    aan $\left(A\mu_1\mu_2 - B(\mu_1+\mu_2) + C\right)/D$.
 2. Bepaal daaruit het verwachte rendement $\mu_z$ van de portefeuille op de
-   rand die *ongecorreleerd* is met de tangentportefeuille
+   minimum-variantierand die *ongecorreleerd* is met de tangentportefeuille
    ($\mu_{\mathrm{tan}} = 0{,}0822\overline{2}$). Reken het getal met de hand uit
    en controleer het in code.
 3. Dat getal heet het zero-beta-rendement. Vergelijk het met de risicovrije rente
@@ -1324,7 +1324,7 @@ $\Cov(r_v, r_{\mathrm{tan}}) \propto \mathbf{v}'(\boldsymbol{\mu} - R^{f}\mathbf
 = \mu_v - R^{f}$. Nulcovariantie betekent dus $\mu_v = R^{f}$. Op dit resultaat
 bouwt {cite:t}`Black1972`, want ook zonder risicovrij activum bestaat er dan een
 portefeuille die de rol van $R^{f}$ speelt. Zo blijkt dat de risicovrije rente in
-de meetkunde van de rand het rendement is van de portefeuille die niet met de
+de meetkunde van de minimum-variantierand het rendement is van de portefeuille die niet met de
 tangentportefeuille meebeweegt.
 :::
 
