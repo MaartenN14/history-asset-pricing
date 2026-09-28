@@ -23,7 +23,7 @@ kernelspec:
 **Wat we al weten.** [Het CAPM](#02-08-capm) zegt dat alleen bèta het verwachte
 rendement bepaalt. De eerste toetsen vonden een security market line die te vlak
 was, maar wel positief. [Shiller](#03-15-shiller-excess-volatility) liet daarna
-zien dat de markt als geheel meer beweegt dan haar dividenden rechtvaardigen. Die
+zien dat de markt als geheel meer beweegt dan de dividenden rechtvaardigen. Die
 barst zat in de tijdreeks van één index.
 
 **Welke vraag staat open.** Voorspellen eenvoudige kenmerken van een aandeel, zoals
@@ -33,13 +33,13 @@ beter dan bèta?
 
 ## Overzicht
 
-Voorspellen kenmerken als de winst-koersverhouding, de marktwaarde en de boekwaarde
-het rendement beter dan bèta? In de steekproeven van de eerste onderzoekers wel:
-goedkope en kleine aandelen hadden een positieve CAPM-*alpha* (het deel van het
+In de steekproeven van de eerste onderzoekers voorspelden de winst-koersverhouding,
+de marktwaarde en de boekwaarde het rendement beter dan bèta: goedkope en kleine aandelen
+hadden een positieve CAPM-*alpha* (het deel van het
 gemiddelde rendement dat bèta niet verklaart). Maar hetzelfde patroon past bij een
 gemist risico, bij een vergissing van de markt en bij toeval.
 
-In deze lecture:
+In dit college:
 
 - rekenen we met vijf aandelen na hoe een sortering een alpha oplevert;
 
@@ -56,30 +56,36 @@ In deze lecture:
   oorspronkelijke steekproeven en daarna, en het januari-effect van Keim.
 
 Tussen 1977 en 1985 verschenen vier artikelen die telkens één kenmerk naast bèta
-legden. Zo nam {cite:t}`Basu1977` de koers-winstverhouding, {cite:t}`Banz1981` de
-marktwaarde en {cite:t}`Reinganum1981` beide tegelijk. Daarna namen
-{cite:t}`RosenbergReidLanstein1985` de verhouding van boekwaarde tot marktwaarde, na
-een voorloper van {cite:t}`Stattman1980`. Ook vond {cite:t}`Keim1983` een groot deel
-van het size-effect in januari, en {cite:t}`Bhandari1988` hetzelfde patroon voor de
-schuldgraad. Het woord *anomalie* (een regelmaat in gemiddelde rendementen die het
+legden, met een voorloper en twee vervolgen eromheen:
+
+| jaar | artikel | kenmerk naast bèta |
+|---|---|---|
+| 1977 | {cite:t}`Basu1977` | koers-winstverhouding |
+| 1980 | {cite:t}`Stattman1980` | boekwaarde tot marktwaarde (voorloper) |
+| 1981 | {cite:t}`Banz1981` | marktwaarde |
+| 1981 | {cite:t}`Reinganum1981` | koers-winstverhouding en marktwaarde tegelijk |
+| 1983 | {cite:t}`Keim1983` | marktwaarde, met een groot deel van het effect in januari |
+| 1985 | {cite:t}`RosenbergReidLanstein1985` | boekwaarde tot marktwaarde |
+| 1988 | {cite:t}`Bhandari1988` | schuldgraad, vooral in januari |
+
+Het woord *anomalie* (een regelmaat in gemiddelde rendementen die het
 heersende model niet verklaart) kreeg in deze jaren zijn betekenis. Aan het eind van
 het tijdvak kwamen de eerste waarschuwingen tegen datamining
 {cite}`LoMacKinlay1990,Black1993`.
 
-Deze artikelen definiëren het tijdvak omdat ze het antwoord op de vraag theorie of
-feit verschoven. Het CAPM bleef een getoetste theorie, maar nu met een lijst
-afwijkingen: feiten zonder een model dat ze vooraf had voorspeld.
+Met deze artikelen begint een nieuw tijdvak, omdat ze het antwoord op de vraag theorie
+of feit verschoven. Het CAPM bleef een getoetste theorie, maar kreeg er een
+lijst afwijkingen bij: feiten zonder een model dat ze vooraf had voorspeld.
 
 ## Intuïtie: waarom zou dit waar zijn?
 
 In juli 1960 vroeg S. Francis Nicholson analisten en zakenmensen welke aandelen het
 over drie tot tien jaar beter zouden doen: die met een koers boven 25 keer de winst,
 of die onder 12 keer {cite}`Nicholson1960`. Bijna tien tegen één verwachtten ze meer
-van de dure aandelen. Meer stelde zijn enquête niet vast. De latere literatuur citeert
-Nicholson daarnaast als vroeg bewijs dat juist de goedkope het beter deden. Zijn
-tabellen hebben we niet kunnen inzien, dus die uitkomst nemen we niet over. Er was
-toen nog geen model om beter aan te meten. Zeventien jaar later stelde Basu dezelfde
-vraag, nu met bèta's.
+van de dure aandelen. Meer stelde zijn enquête niet vast, ook al citeert de latere
+literatuur Nicholson als vroeg bewijs dat juist de goedkope het beter deden. Er was
+toen ook nog geen model waaraan beter te meten viel. Zeventien jaar later stelde Basu
+dezelfde vraag opnieuw, met de bèta's van het CAPM als maatstaf.
 
 Waarom zou een goedkoop aandeel meer opleveren? Het eerste verhaal is een rekensom.
 De koers is de contante waarde van de toekomstige kasstromen. Van twee bedrijven met
@@ -94,23 +100,18 @@ rendement van goedkope aandelen is de trage correctie. De verwachting van Nichol
 analisten past in dat beeld, net als het werk van De Bondt en Thaler in
 [](#04-23-behavioral).
 
-Beide verhalen voorspellen hetzelfde feit, dus sorteren kan ze niet scheiden. Het kan
-hooguit laten zien *dat* er iets is, en zelfs dat is onzeker, want gemiddelde
-rendementen zijn slecht gemeten. We verwachten dus drie dingen:
-
-1. Goedkope en kleine aandelen hebben een positieve CAPM-alpha, ook als hun bèta niet
-   hoger is.
-
-2. Een kenmerk dat met de koers is berekend, voorspelt het verwachte rendement, ook
-   als elke prijs klopt.
-
-3. Een kenmerk dat in de data is gezocht, heeft in die data een grote $t$-waarde en
-   daarbuiten niet.
+Beide verhalen voorspellen hetzelfde feit, zodat een sortering ze niet kan scheiden.
+Ze kan hooguit laten zien *dat* er iets is, en zelfs dat is onzeker, want gemiddelde
+rendementen zijn slecht gemeten. We verwachten daarom een positieve CAPM-alpha voor
+goedkope en kleine aandelen, ook als hun bèta niet hoger is. Omdat het eerste verhaal
+geen vergissing nodig heeft, zou een kenmerk dat met de koers is berekend het verwachte
+rendement ook moeten voorspellen als elke prijs klopt. Een kenmerk dat juist in de data
+is gezocht, zal in die data een grote $t$-waarde hebben en daarbuiten niet.
 
 ## Toy-voorbeeld: vijf aandelen, twee portefeuilles
 
 Het toy-voorbeeld laat zien hoe een sortering op E/P een alpha oplevert. We laden
-eerst de pakketten voor de hele lecture.
+eerst de pakketten voor het hele college.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -125,11 +126,11 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-**Opzet.** Vijf aandelen, één periode. Van elk kennen we de bèta, de
+**Opzet.** We nemen vijf aandelen en één periode. Van elk aandeel kennen we de bèta, de
 winst-koersverhouding E/P (winst gedeeld door koers, het omgekeerde van de
 koers-winstverhouding), de marktwaarde ME aan het begin van de periode en het
-gerealiseerde netto rendement $r$. De risicovrije rente is $R^{f} = 1\%$. Het subscript $m$ staat voor de
-marktportefeuille, niet voor de SDF.
+gerealiseerde netto rendement $r$. De risicovrije rente is $R^{f} = 1\%$. Het subscript
+$m$ staat voor de marktportefeuille, niet voor de SDF.
 
 | aandeel | $\beta_{i,m}$ | E/P | ME | $r$ |
 |---|---|---|---|---|
@@ -139,21 +140,22 @@ marktportefeuille, niet voor de SDF.
 | D | 0,80 | 9% | 75 | 8,0% |
 | E | 0,55 | 12% | 50 | 10,0% |
 
-**Het recept.** De gerealiseerde Jensen-alpha over één periode is het excess
-rendement min bèta maal het excess marktrendement:
+**Het recept.** De gerealiseerde Jensen-alpha over één periode is het
+overrendement min bèta maal het overrendement van de markt:
 $\alpha_i = (r_i - R^{f}) - \beta_{i,m}(r_m - R^{f})$, het CAPM uit [](#02-08-capm)
-met een restterm.
+met een restterm. Een positieve alpha betekent dat het aandeel meer opleverde dan zijn
+bèta rechtvaardigt.
 
 **Stap 1, de markt.** De marktgewichten zijn ME gedeeld door 1000:
 $(0{,}50;\ 0{,}25;\ 0{,}125;\ 0{,}075;\ 0{,}05)$. Het marktrendement is
 $0{,}50 \cdot 5 + 0{,}25 \cdot 6{,}1 + 0{,}125 \cdot 7 + 0{,}075 \cdot 8 + 0{,}05
-\cdot 10 = 6{,}0\%$, het excess marktrendement dus $5{,}0\%$. De marktgewogen bèta
+\cdot 10 = 6{,}0\%$, het overrendement van de markt dus $5{,}0\%$. De marktgewogen bèta
 is $0{,}55 + 0{,}25 + 0{,}1125 + 0{,}06 + 0{,}0275 = 1{,}000$, zoals het hoort.
 
 **Stap 2, de alpha per aandeel.** $\alpha_A = 4{,}0 - 1{,}10 \cdot 5 = -1{,}50\%$,
 $\alpha_B = 5{,}1 - 5{,}00 = 0{,}10\%$, $\alpha_C = 6{,}0 - 4{,}50 = 1{,}50\%$,
 $\alpha_D = 7{,}0 - 4{,}00 = 3{,}00\%$ en $\alpha_E = 9{,}0 - 2{,}75 = 6{,}25\%$.
-Marktgewogen tellen ze op tot nul: de markt heeft ten opzichte van zichzelf geen
+Marktgewogen tellen ze op tot nul, want de markt heeft ten opzichte van zichzelf geen
 alpha.
 
 **Stap 3, de sortering.** Portefeuille H bevat de twee aandelen met de hoogste E/P
@@ -161,20 +163,20 @@ alpha.
 tussen de breekpunten. De long-short-portefeuille H − L koopt H en verkoopt L short,
 en kost dus niets.
 
-| | bèta | excess rendement | CAPM-voorspelling | alpha |
+| | bèta | overrendement | CAPM-voorspelling | alpha |
 |---|---|---|---|---|
 | H = (D, E) | 0,675 | 8,00% | 3,375% | 4,625% |
 | L = (A, B) | 1,050 | 4,55% | 5,250% | −0,700% |
 | H − L | −0,375 | 3,45% | −1,875% | 5,325% |
 
-**Stap 4, de alpha van H − L.** Het excess rendement van H − L is
-$8{,}00 - 4{,}55 = 3{,}45\%$, haar bèta $0{,}675 - 1{,}050 = -0{,}375$. Haar alpha is
-$3{,}45 - (-0{,}375)(5{,}0) = 5{,}325\%$, het verschil van de twee alpha's. Het ruwe
-rendementsverschil van 3,45% onderschat de alpha, want het CAPM voorspelt voor H − L een negatief
-rendement: de goedkope aandelen hebben een lagere bèta.
+**Stap 4, de alpha van H − L.** Het overrendement van H − L is
+$8{,}00 - 4{,}55 = 3{,}45\%$ en de bèta $0{,}675 - 1{,}050 = -0{,}375$. De alpha is
+dan $3{,}45 - (-0{,}375)(5{,}0) = 5{,}325\%$, het verschil van de twee alpha's. Het ruwe
+rendementsverschil van 3,45% onderschat de alpha, omdat het CAPM voor H − L een
+negatief rendement voorspelt: de goedkope aandelen hebben een lagere bèta.
 
-De code rekent hetzelfde na en kijkt welke aandelen een sortering op marktwaarde
-kiest.
+De code hieronder rekent hetzelfde na. Ze kijkt ook welke aandelen een sortering op
+marktwaarde zou kiezen.
 
 ```{code-cell} ipython3
 :label: cel-vroege-anomalieen-toy
@@ -195,33 +197,36 @@ def toy_portfolio(stocks):
     """Equal-weighted beta, excess return, CAPM prediction and alpha."""
     g = toy.loc[stocks]
     beta, excess = g["beta"].mean(), g["r"].mean() - rf_toy
-    return pd.Series({"bèta": beta, "excess": excess,
+    return pd.Series({"bèta": beta, "overrendement": excess,
                       "CAPM": beta * (r_market - rf_toy), "alpha": g["alpha"].mean()})
 
 high_ep, low_ep = toy.nlargest(2, "E/P").index, toy.nsmallest(2, "E/P").index
 sorted_toy = pd.DataFrame({"H": toy_portfolio(high_ep), "L": toy_portfolio(low_ep)}).T
 sorted_toy.loc["H - L"] = sorted_toy.loc["H"] - sorted_toy.loc["L"]
-print("zelfde portefeuilles bij sortering op ME:", set(toy.nsmallest(2, "ME").index) == set(high_ep))
+same_as_me = float(set(toy.nsmallest(2, "ME").index) == set(high_ep))      # 1 = yes
 pd.DataFrame(
-    {"met de hand": [0.06, 1.0, 0.0, 0.04625, -0.007, -0.375, 0.0345, 0.05325],
+    {"met de hand": [0.06, 1.0, 0.0, 0.04625, -0.007, -0.375, 0.0345, 0.05325, 1.0],
      "code": [r_market, weights @ toy["beta"], weights @ toy["alpha"], *sorted_toy["alpha"].iloc[:2],
-              *sorted_toy.loc["H - L", ["bèta", "excess", "alpha"]]]},
+              *sorted_toy.loc["H - L", ["bèta", "overrendement", "alpha"]], same_as_me]},
     index=["marktrendement", "marktbèta", "marktgewogen alpha", "alpha H", "alpha L",
-           "bèta H - L", "excess H - L", "alpha H - L"],
+           "bèta H - L", "overrendement H - L", "alpha H - L", "zelfde H en L bij ME-sortering (1 = ja)"],
 ).round(5)
 ```
 
-De code en de handberekening geven dezelfde getallen. Een sortering op marktwaarde
-kiest dezelfde twee portefeuilles, want de goedkoopste aandelen zijn ook de kleinste.
-Of dit een E/P- of een size-effect is, was de vraag van {cite:t}`Reinganum1981`. Wat
-we nu weten: een sortering meet de alpha van een kenmerk, maar niet welk kenmerk het
-werk doet. Of 5,3% toeval is, zegt één periode niet. Daarvoor is een tijdreeks nodig.
+De code en de handberekening geven dezelfde getallen. Volgens de laatste rij kiest
+een sortering op marktwaarde dezelfde twee portefeuilles, want de goedkoopste aandelen
+zijn ook de kleinste.
+Of dit een E/P- of een size-effect is, was de vraag van {cite:t}`Reinganum1981`. Een
+sortering meet dus de alpha van een kenmerk, maar zegt niet welk kenmerk het werk
+doet. Of 5,3% toeval is, valt uit één periode niet af te leiden, want daarvoor is een
+tijdreeks nodig.
 
 ## Theorie
 
-We leiden vier dingen af. Eerst is een portefeuillesortering een regressie zonder
-vorm, met voor hoog min laag een Jensen-alpha en een eigen standaardfout. Dan
-blijkt een Fama-MacBeth-helling op een kenmerk een long-short-portefeuille.
+We leiden vier dingen af. Eerst laten we zien dat een portefeuillesortering een
+regressie zonder vorm is, met voor hoog min laag een Jensen-alpha en een eigen
+standaardfout. Daarna blijkt een Fama-MacBeth-helling op een kenmerk een
+long-short-portefeuille te zijn.
 De kern volgt daarna: volgens Berk voorspelt marktwaarde het verwachte rendement
 zodra verwachte rendementen verschillen. Tot slot laten we zien hoe een kenmerk dat
 in de data is gezocht een grote $t$-waarde maakt.
@@ -231,15 +236,15 @@ in de data is gezocht een grote $t$-waarde maakt.
 Een portefeuillesortering schat het verwachte rendement als functie van een
 kenmerk, zonder die functie een vorm op te leggen. We schrijven $z_{i,t}$ voor een
 kenmerk van aandeel $i$ dat op $t$ bekend is, zoals E/P, $\log \mathrm{ME}$ of B/M,
-en $R^{e}_{i,t+1}$ voor het excess rendement daarna.
+en $R^{e}_{i,t+1}$ voor het overrendement daarna.
 
-*Waarom zou dit waar zijn?* Een onderzoeker wil weten of aandelen met een hoge E/P
-later meer opleveren. Hij zet de aandelen op volgorde van E/P, deelt de rij in tien
+Stel dat een onderzoeker wil weten of aandelen met een hoge E/P later meer
+opleveren. Hij zet de aandelen op volgorde van E/P, deelt de rij in tien
 groepen en neemt per groep het gemiddelde rendement. Stijgt dat gemiddelde van groep
 tot groep, dan stijgt het verwachte rendement met E/P, welke vorm het verband ook
 heeft.
 
-Laat $\mu(z) = \E[R^{e}_{i,t+1} \mid z_{i,t} = z]$ het verwachte excess rendement bij
+Laat $\mu(z) = \E[R^{e}_{i,t+1} \mid z_{i,t} = z]$ het verwachte overrendement bij
 kenmerk $z$ zijn, en $q_0 < q_1 < \dots < q_J$ de breekpunten, bijvoorbeeld de
 decielen van $z_{i,t}$ op $t$. Met $N_{j,t}$ aandelen in vakje $j$ is het
 gelijkgewogen rendement van portefeuille $j$
@@ -253,19 +258,20 @@ R^{e}_{j,t+1} = \frac{1}{N_{j,t}} \sum_{i:\ q_{j-1} < z_{i,t} \le q_j} R^{e}_{i,
 
 In woorden: portefeuille $j$ verdient gemiddeld de waarde van $\mu$ op vakje $j$, dus
 het tijdgemiddelde schat $\mu$ vakje voor vakje, als een histogram. Meer vakjes geven
-minder vertekening en meer ruis. Tien decielen kiezen voor weinig ruis. De prijs is
-dat een effect bij de kleinste paar procent van de aandelen, zoals dat van Banz, over
-het hele eerste deciel wordt uitgesmeerd.
+minder vertekening en meer ruis. Met tien decielen kiezen we voor weinig ruis. Het
+nadeel is dat een effect bij de kleinste paar procent van de aandelen, zoals dat van
+Banz, over het hele eerste deciel wordt uitgesmeerd.
 
 ### De alpha van een long-short-portefeuille
 
-De alpha van hoog min laag zegt of een kenmerk iets toevoegt aan het CAPM. Haar
-standaardfout is ongeveer de residuele volatiliteit gedeeld door $\sqrt{T}$.
+Of een kenmerk iets toevoegt aan het CAPM, blijkt uit de alpha van hoog min laag. De
+standaardfout van die alpha is ongeveer de residuele volatiliteit gedeeld door
+$\sqrt{T}$.
 
-*Waarom zou dit waar zijn?* Een belegger koopt de hoogste portefeuille en verkoopt de
-laagste short. Levert dat meer op dan het verschil in bèta rechtvaardigt, dan voegt
-het kenmerk iets toe. Hoe langer hij de positie volgt, hoe kleiner de toevalsfout in
-zijn gemiddelde.
+Denk aan een belegger die de hoogste portefeuille koopt en de laagste short verkoopt.
+Levert dat meer op dan het verschil in bèta rechtvaardigt, dan voegt het kenmerk iets
+toe, en hoe langer hij de positie volgt, hoe kleiner de toevalsfout in zijn
+gemiddelde.
 
 Laat $r^{\mathrm{LS}}_{t+1} = R^{e}_{J,t+1} - R^{e}_{1,t+1}$ het rendement zijn van de
 hoogste min de laagste portefeuille. Over $T$ maanden schatten we
@@ -275,8 +281,8 @@ hoogste min de laagste portefeuille. Over $T$ maanden schatten we
 r^{\mathrm{LS}}_{t+1} = \alpha_{\mathrm{LS}} + \beta_{\mathrm{LS}}\, R^{e}_{m,t+1} + \varepsilon_{t+1}.
 ```
 
-In woorden: hoog min laag verdient een alpha plus bèta maal het excess
-marktrendement. Dit is de CAPM-regressie uit [](#eq-capm-tijdreeks) op één reeks.
+Hoog min laag verdient een alpha plus bèta maal het overrendement van de markt. Het is
+de CAPM-regressie uit [](#eq-capm-tijdreeks), toegepast op één reeks.
 Omdat OLS lineair is in de afhankelijke variabele, is
 $\hat\alpha_{\mathrm{LS}} = \hat\alpha_J - \hat\alpha_1$, zoals in stap 4 van het
 toy-voorbeeld. Zijn de residuen onafhankelijk van de markt, met variantie
@@ -291,29 +297,29 @@ $\mathbf{X}$ een kolom enen naast de marktrendementen:
 ```
 
 met $\hat\mu_m$ en $\hat\sigma_m$ het steekproefgemiddelde en de standaarddeviatie
-van het excess marktrendement. In woorden: de standaardfout is de residuele
+van het overrendement van de markt. De standaardfout is dus de residuele
 volatiliteit gedeeld door $\sqrt{T}$, met een kleine correctie voor de Sharpe-ratio
 van de markt.
 
 Met de marktpremie van de simulatie hieronder, 0,5% per maand bij 4,5% volatiliteit,
 is die Sharpe-ratio 0,11 en de correctieterm 1,01. Bij een
 residuele volatiliteit van 5% per maand en veertig jaar data is de standaardfout
-$5/\sqrt{480} \approx 0{,}23\%$ per maand, bijna 3% per jaar. Dat is de standaardfout
-van 2% uit [](#00-01-rendementen), nu voor een alpha. De steekproeven van Basu
+$5/\sqrt{480} \approx 0{,}23\%$ per maand, bijna 3% per jaar. Voor een alpha is dat de
+standaardfout van 2% uit [](#00-01-rendementen), want ook veertig jaar data meten een
+gemiddelde maar grof. De steekproeven van Basu
 (veertien jaar) en van Rosenberg, Reid en Lanstein (twaalf jaar) konden dus alleen
 grote effecten significant maken.
 
 ### Fama-MacBeth met kenmerken
 
-Een Fama-MacBeth-regressie op een kenmerk doet hetzelfde als een sortering, met
-rechte lijnen als gewichten in plaats van stapfuncties.
-
-*Waarom zou dit waar zijn?* In [](#02-08-capm) was de maandelijkse Fama-MacBeth-helling
+Een Fama-MacBeth-regressie op een kenmerk doet hetzelfde als een sortering, maar met
+rechte lijnen als gewichten in plaats van stapfuncties. In [](#02-08-capm) was de
+maandelijkse Fama-MacBeth-helling
 op bèta het rendement van een portefeuille die niets kost en bèta één heeft. Een
 onderzoeker die bèta door E/P vervangt, krijgt als helling het rendement van een
 portefeuille die hoge E/P koopt en lage E/P short verkoopt. De gewichten stijgen
-lineair met E/P, dus de uitersten wegen zwaarder dan in een sortering.
-
+lineair met E/P, zodat de uitersten zwaarder wegen dan in een sortering met dezelfde
+blootstelling.
 Per maand draaien we over de aandelen $i = 1, \dots, N$ de regressie
 
 ```{math}
@@ -321,7 +327,7 @@ Per maand draaien we over de aandelen $i = 1, \dots, N$ de regressie
 R^{e}_{i,t+1} = \gamma_{0,t+1} + \gamma_{1,t+1}\,\hat\beta_{i,m} + \gamma_{2,t+1}\, z_{i,t} + \eta_{i,t+1}.
 ```
 
-In woorden: $\gamma_{2,t+1}$ is wat een eenheid kenmerk die maand opleverde, bij
+De helling $\gamma_{2,t+1}$ meet wat een eenheid kenmerk die maand opleverde, bij
 gegeven bèta. We rapporteren het tijdgemiddelde $\bar\gamma_2$ met de standaardfout
 uit de tijdreeks van de hellingen. In de code is dat `hap.stats.fama_macbeth`.
 
@@ -329,7 +335,7 @@ uit de tijdreeks van de hellingen. In de code is dat `hap.stats.fama_macbeth`.
 :label: prop-vroege-anomalieen-fm
 
 Elke OLS-helling in een cross-sectionele regressie van $\mathbf{R}^{e}_{t+1}$ is het
-rendement van een portefeuille die niets kost, blootstelling één heeft aan haar eigen
+rendement van een portefeuille die niets kost, blootstelling één heeft aan de eigen
 regressor en blootstelling nul aan de andere. Voor een constante en één niet-constant
 kenmerk $\mathbf{z}_t$ is de helling $\hat\gamma_{z,t+1} = \sum_i w_{i,t} R^{e}_{i,t+1}$, met
 
@@ -343,8 +349,8 @@ w_{i,t} = \frac{z_{i,t} - \bar z_t}{\sum_j \left(z_{j,t} - \bar z_t\right)^2},
 
 De index $z$ staat voor het kenmerk. In [](#eq-vroege-anomalieen-fm) is dat de helling
 $\gamma_{2,t+1}$. Staat bèta in de regressie, dan heeft de portefeuille bèta nul. Het
-bewijsidee: een helling is een covariantie gedeeld door een variantie, en die breuk
-is een gewogen som van rendementen.
+bewijs berust erop dat een helling een covariantie gedeeld door een variantie is, en
+die breuk is een gewogen som van rendementen.
 
 :::{prf:proof}
 :class: dropdown
@@ -359,10 +365,13 @@ $(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'\mathbf{X} = \mathbf{I}$ zegt dat rij $k
 blootstelling één heeft aan regressor $k$ en nul aan de rest. $\square$
 :::
 
-In het toy-voorbeeld is de gemiddelde E/P 7%. De afwijkingen zijn
-$(-0{,}04;\ -0{,}02;\ -0{,}01;\ 0{,}02;\ 0{,}05)$ en hun kwadratensom is $0{,}005$, dus
-de gewichten zijn $(-8, -4, -2, 4, 10)$. Dat is de richting van H − L, maar met C
-erbij en zwaardere uitersten. De cel haalt de gewichten uit de OLS-matrix.
+In het toy-voorbeeld is de gemiddelde E/P 7%. De afwijkingen zijn $(-0{,}04;\ -0{,}02;\
+-0{,}01;\ 0{,}02;\ 0{,}05)$ en hun kwadratensom is $0{,}005$, dus de gewichten zijn
+$(-8, -4, -2, 4, 10)$. Dat is de richting van H − L, maar met C erbij en zwaardere
+uitersten. H en L verschillen $10{,}5 - 4 = 6{,}5$ procentpunt in E/P, zodat H − L bij
+dezelfde blootstelling één elk van zijn vier aandelen $\pm 0{,}5/0{,}065 \approx \pm
+7{,}7$ geeft, tegen 10 voor E in de regressie. De cel haalt de gewichten uit de
+OLS-matrix.
 
 ```{code-cell} ipython3
 z_toy = toy["E/P"]
@@ -376,22 +385,22 @@ pd.DataFrame({"gewicht uit OLS": fm_weights, "formule": deviation / (deviation**
 
 De gewichten uit OLS en uit de formule zijn gelijk, tellen op tot nul en geven
 blootstelling één aan E/P. Met twee kenmerken tegelijk beantwoordt Fama-MacBeth de
-vraag van Reinganum, E/P of size, in één regressie. De prijs is lineariteit: extreme
-kenmerkwaarden krijgen extreme gewichten.
+vraag van Reinganum, E/P of size, in één regressie. Daar staat tegenover dat de
+regressie lineair is, zodat extreme kenmerkwaarden extreme gewichten krijgen.
 
 Rosenberg gebruikte dezelfde regressie voor een risicomodel
 {cite}`RosenbergMcKibben1973,Rosenberg1974`. Zijn bedrijf Barra bracht in 1975 het
 eerste commerciële multifactor-risicomodel voor Amerikaanse aandelen uit. Het nam van
-de maandelijkse hellingen op bedrijfstak, omvang, B/P en schuldgraad niet het slecht
-gemeten gemiddelde, maar de goed gemeten covariantiematrix: de standaardfout van 2%
-uit [](#00-01-rendementen) in omgekeerde richting.
+de maandelijkse hellingen op bedrijfstak, omvang, B/M en schuldgraad niet het slecht
+gemeten gemiddelde, maar de goed gemeten covariantiematrix. Zo omzeilde Barra het
+probleem van de slecht gemeten gemiddelden, want covarianties zijn met maanddata wel
+nauwkeurig te schatten.
 
 ### Het kernresultaat: marktwaarde voorspelt verwacht rendement
 
 Verschillen verwachte rendementen tussen bedrijven, om welke reden ook, dan voorspelt
-marktwaarde ze, ook als elke prijs klopt {cite}`Berk1995`.
-
-*Waarom zou dit waar zijn?* Neem twee bedrijven met dezelfde verwachte kasstroom.
+marktwaarde ze, ook als elke prijs klopt {cite}`Berk1995`. Neem twee bedrijven met
+dezelfde verwachte kasstroom.
 Beleggers eisen van het ene een hoger rendement en betalen er daarom minder voor. Wie
 op marktwaarde sorteert, sorteert dus deels op verwacht rendement, zonder dat iemand
 zich vergist. Mist het toetsmodel het risico dat die rendementen drijft, dan
@@ -422,12 +431,13 @@ Laat [](#eq-vroege-anomalieen-gordon) gelden. Een onderzoeker kent elk aandeel e
 verwacht rendement $\hat k_i$ toe met een model, en $k_i = \hat k_i + \alpha_i$. Is
 $\alpha_i$ niet ontaard en onafhankelijk van $\hat k_i$ en van $\log C_i$, dan is
 $\Cov(\log \mathrm{ME}_i, \alpha_i) < 0$: kleine bedrijven hebben gemiddeld een
-positieve alpha ten opzichte van het model, ook al is elke prijs correct.
+hogere alpha ten opzichte van het model dan grote, ook al is elke prijs correct.
 :::
 
 Geeft het model elk aandeel hetzelfde verwachte rendement, dan zegt de stelling dat
-marktwaarde en verwacht rendement negatief correleren. Het bewijsidee: bij gegeven
-$\hat k_i$ daalt de marktwaarde in $\alpha_i$, en de kasstroom voegt alleen ruis toe.
+marktwaarde en verwacht rendement negatief correleren. Het bewijs berust erop dat de
+marktwaarde bij gegeven $\hat k_i$ daalt in $\alpha_i$, terwijl de kasstroom alleen
+ruis toevoegt.
 
 :::{prf:proof}
 :class: dropdown
@@ -436,7 +446,7 @@ Schrijf $\psi(x) = \log(x - g)$, strikt stijgend op $x > g$. Omdat $\log C_i$
 onafhankelijk is van $\alpha_i$, is
 $\Cov(\log \mathrm{ME}_i, \alpha_i) = -\Cov(\psi(\hat k_i + \alpha_i), \alpha_i)$.
 
-*Stap 1: een stijgende functie correleert positief met haar argument.* Voor een
+*Stap 1: een stijgende functie correleert positief met het argument.* Voor een
 strikt stijgende $\phi$ en een onafhankelijke kopie $a'$ van $a$ is
 $2\Cov(\phi(a), a) = \E[(\phi(a) - \phi(a'))(a - a')] > 0$, want de integrand is
 nooit negatief en positief zodra $a \ne a'$.
@@ -455,26 +465,24 @@ thermometer van verwacht rendement. E/P en B/M zijn betere thermometers, want hu
 teller (winst, boekwaarde) schaalt mee met het kasstroomniveau en haalt zo een deel
 van die ruis weg.
 
-Dit lost de tweede verwachting uit de intuïtie in, met een verfijning. De stelling
-werkt voor elke $\alpha_i$, ook voor een alpha die ontstaat doordat beleggers kasstromen
-te zwaar verdisconteren. Een correlatie tussen marktwaarde en alpha bewijst dus risico noch
-vergissing.
+Een kenmerk dat met de koers is berekend, voorspelt het verwachte rendement dus ook bij
+correcte prijzen, zoals het eerste verhaal uit de intuïtie deed vermoeden. De stelling
+geldt echter voor elke $\alpha_i$, ook voor een alpha die ontstaat doordat beleggers
+kasstromen te zwaar verdisconteren. Een correlatie tussen marktwaarde en alpha bewijst
+dus risico noch vergissing.
 
 ### Data snooping: Lo en MacKinlay
 
-Een kenmerk dat in de data is gezocht, maakt in diezelfde data een grote $t$-waarde,
-ook als er niets is.
-
-*Waarom zou dit waar zijn?* Een onderzoeker kiest een kenmerk omdat het in de data
-iets leek te doen. Dan sorteert hij deels op de toevalsfout in de rendementen die hij
-daarna toetst: de aandelen met de grootste positieve fout komen in de hoogste
-portefeuille, die met de grootste negatieve in de laagste. De $t$-waarde van hoog min
-laag stijgt, en buiten de steekproef valt ze terug naar nul.
+Een kenmerk dat in de data is gezocht, geeft in diezelfde data een grote $t$-waarde,
+ook als er niets is. Kiest een onderzoeker een kenmerk omdat het in de data iets leek
+te doen, dan sorteert hij deels op de toevalsfout in de rendementen die hij daarna
+toetst. De aandelen met de grootste positieve fout komen in de hoogste portefeuille,
+die met de grootste negatieve in de laagste. Daardoor stijgt de $t$-waarde van hoog
+min laag, terwijl ze buiten de steekproef terugvalt naar nul.
 
 Het artikel van {cite:t}`LoMacKinlay1990` liet met berekeningen, simulaties en twee
-empirische voorbeelden zien dat dit effect groot kan zijn. Hun eigen formules hebben we niet in
-de primaire bron kunnen nalezen. Hieronder staat een eigen, eenvoudiger versie van
-hetzelfde mechanisme.
+empirische voorbeelden zien dat dit effect groot kan zijn. Hieronder staat een eigen,
+eenvoudiger versie van hetzelfde mechanisme.
 
 :::{prf:proposition} Sorteren op een kenmerk dat met de steekproefalpha correleert
 :label: prop-vroege-anomalieen-snooping
@@ -498,8 +506,11 @@ met $\varphi$ en $\Phi$ de dichtheid en de verdelingsfunctie van de standaardnor
 verdeling. Buiten de steekproef is de verwachte $t$-waarde nul.
 :::
 
-Het bewijsidee: de sortering kiest aandelen met een $s_i$ die gemiddeld
-$\rho\,\varphi(q_p)/p$ standaarddeviaties van nul ligt.
+Het bewijs berust erop dat de sortering aandelen kiest met een $s_i$ die gemiddeld
+$\rho\,\varphi(q_p)/p$ standaarddeviaties boven nul ligt, en in de korte poot evenveel
+eronder. Het verschil tussen de twee poten ligt dan tweemaal zo ver van nul, en gedeeld
+door de standaardfout van dat verschil, $\sqrt{2/n}$ in dezelfde eenheid, geeft dat de
+$t$-waarde.
 
 :::{prf:proof}
 :class: dropdown
@@ -510,15 +521,15 @@ correlatie $\rho$ is $\E[s \mid z] = \rho z$, en $\E[z \mid z > q_p] = \varphi(q
 de verwachting van een afgeknotte standaardnormale. De verwachte alpha is dus
 $2\rho\,\mathrm{sd}(\hat\alpha)\,\varphi(q_p)/p$, met
 $\mathrm{sd}(\hat\alpha) \approx \sigma/\sqrt{T}$. De residuele variantie van de
-long-short-portefeuille is $2\sigma^2/n$, dus haar alpha heeft standaardfout
-$\sqrt{2/n}\,\sigma/\sqrt{T}$. De correctie uit [](#eq-vroege-anomalieen-se) is
+long-short-portefeuille is $2\sigma^2/n$, zodat de alpha ervan standaardfout
+$\sqrt{2/n}\,\sigma/\sqrt{T}$ heeft. De correctie uit [](#eq-vroege-anomalieen-se) is
 verwaarloosbaar. Delen geeft [](#eq-vroege-anomalieen-snooping). Buiten de
 steekproef zijn de residuen onafhankelijk van $z$, dus de verwachte alpha is nul.
 $\square$
 :::
 
-In woorden: de verwachte $t$-waarde is evenredig met de correlatie $\rho$ tussen
-kenmerk en steekproeffout, en groeit met de wortel van het aantal aandelen per poot.
+De verwachte $t$-waarde is evenredig met de correlatie $\rho$ tussen kenmerk en
+steekproeffout, en ze groeit met de wortel van het aantal aandelen per poot.
 Met $N = 1000$ en decielen is $p = 0{,}1$, $n = 100$ en
 $\varphi(1{,}2816)/0{,}1 = 1{,}755$, dus $\E[t] \approx 24{,}8\,\rho$. Bestaat één
 procent van de variantie van het kenmerk uit steekproeffout ($\rho^2 = 0{,}01$, dus
@@ -529,7 +540,8 @@ De grovere vorm is veel kenmerken proberen. Met $K$ onafhankelijke kandidaten zo
 effect haalt minstens één een $t$ boven 1,96 met kans $1 - 0{,}975^{K}$ (eenzijdig),
 bij $K = 20$ al 40%. Daarom las {cite:t}`Black1993` de size- en waarde-effecten als
 waarschijnlijke datamining: regelmaten zonder een theorie die ze vooraf voorspelde.
-Dit lost de derde verwachting uit de intuïtie in. De systematische versie van het
+Een gezocht kenmerk heeft in de eigen steekproef dus een grote $t$ en daarbuiten geen,
+wat we in de intuïtie al vermoedden. De systematische versie van het
 argument is [](#06-34-factor-zoo).
 
 ```{admonition} Samengevat
@@ -551,8 +563,8 @@ argument is [](#06-34-factor-zoo).
   in decielen een verwachte $t$ van ongeveer $24{,}8\,\rho$,
   [](#eq-vroege-anomalieen-snooping), en erbuiten nul.
 
-- De simulatie vraagt: hoe vaak geeft een steekproef een significante kenmerk-alpha
-  die geen vergissing van de markt is?
+- De simulatie gaat na hoe vaak een steekproef een significante kenmerk-alpha geeft
+  die geen vergissing van de markt is.
 ```
 
 ## Simulatie: een size-effect zonder anomalie, en een anomalie zonder effect
@@ -560,14 +572,14 @@ argument is [](#06-34-factor-zoo).
 Hoe vaak vindt een onderzoeker een significante kenmerk-alpha in een wereld zonder
 vergissingen? In de eerste wereld zijn alle prijzen correct, maar toetst hij met het
 CAPM terwijl er een tweede risico is. In de tweede geldt het CAPM exact, maar kiest
-hij zijn kenmerk op basis van de steekproef. Het antwoord: de echte premie in de
-eerste wereld ziet hij in minder dan een op de vijf steekproeven. In de tweede ziet
-hij in ruim negen op de tien een premie die niet bestaat.
+hij zijn kenmerk op basis van de steekproef. De echte premie in de eerste wereld ziet
+hij in minder dan een op de vijf steekproeven, terwijl hij in de tweede in ruim negen
+op de tien een premie ziet die niet bestaat.
 
 ### (a) Een wereld met twee risico's
 
 Er zijn 1000 aandelen. Elk heeft een CAPM-bèta $\beta_{i,m}$ en een blootstelling
-$\delta_i$ aan een tweede beprijsde factor $h$ die onafhankelijk is van de markt,
+$\delta_i$ aan een tweede factor $h$ met een risicopremie, onafhankelijk van de markt,
 bijvoorbeeld een faillissements- of recessierisico:
 
 $$
@@ -585,7 +597,9 @@ $$
 | $g$ | groei van de kasstroom | 2% per jaar |
 | $\log C_i$ | kasstroomniveau, los van risico | $\mathcal{N}(0;\ 1{,}5^2)$ |
 
-Op het ware tweefactormodel is er geen alpha. De marktwaarde volgt uit
+Hier is $f_m$ het overrendement van de markt, dat in [](#eq-vroege-anomalieen-ls)
+$R^{e}_{m}$ heette, en $f_h$ dat van $h$. Op het ware tweefactormodel is er geen alpha. De
+marktwaarde volgt uit
 [](#eq-vroege-anomalieen-gordon), met een gemiddeld verwacht rendement van
 $3 + 12\,(0{,}5 + 0{,}4 \cdot 0{,}75) = 12{,}6\%$ per jaar. We sorteren eenmalig op
 marktwaarde in tien portefeuilles van honderd aandelen. De eerste cel bouwt de
@@ -623,9 +637,9 @@ pd.DataFrame(
 ).round(3)
 ```
 
-De correlatie tussen $\log \mathrm{ME}$ en het verwachte rendement is $-0{,}19$: zwak,
-want het kasstroomniveau bepaalt de meeste spreiding in marktwaarde, maar met het
-teken van {prf:ref}`thm-vroege-anomalieen-berk`. De volgende cel trekt 1000
+De correlatie tussen $\log \mathrm{ME}$ en het verwachte rendement is met $-0{,}19$
+zwak, want het kasstroomniveau bepaalt de meeste spreiding in marktwaarde, maar ze
+heeft het teken van {prf:ref}`thm-vroege-anomalieen-berk`. De volgende cel trekt 1000
 steekproeven van veertig jaar en schat telkens de alpha van klein min groot, op het
 CAPM en op het ware model.
 
@@ -657,8 +671,9 @@ $\delta$ tussen de uiterste portefeuilles maal de premie van $h$. Die alpha haal
 $t > 1{,}96$ maar in 18,6% van de steekproeven. Op het ware model haalt ze de drempel
 in 2,4%, zoals bij een eenzijdige toets hoort.
 
-Een correct beprijsd verschil van bijna een procentpunt per jaar blijft na veertig
-jaar dus meestal onzichtbaar: de standaardfout van 2% uit [](#00-01-rendementen).
+Een correcte risicopremie van bijna een procentpunt per jaar blijft na veertig jaar
+meestal onzichtbaar. Ook veertig jaar data meten een
+gemiddeld rendement te grof om zo'n verschil van nul te onderscheiden.
 
 ### (b) Kiezen wat werkt
 
@@ -667,7 +682,7 @@ per maand. Er zijn 500 aandelen zonder alpha en 100 kandidaat-kenmerken die pure
 zijn. Voor elk kenmerk vormt de onderzoeker een long-short-portefeuille van de 50
 hoogste en de 50 laagste aandelen en schat hij de CAPM-alpha over twintig jaar. Hij
 rapporteert het kenmerk met de hoogste $t$. Ter vergelijking volgt de cel ook één
-kenmerk dat vooraf is gekozen, en ze kijkt naar de twintig jaar erna.
+kenmerk dat vooraf is gekozen, en ze meet beide ook in de twintig jaar erna.
 
 ```{code-cell} ipython3
 n_sn, n_leg, T_in, T_out, n_cand, n_rep = 500, 50, 240, 240, 100, 400
@@ -708,8 +723,12 @@ in 93,2% van de gevallen $t > 1{,}96$ en in 13,8% zelfs $t > 3$. In de twintig j
 erna is er niets van over. Dit is geen anomalie die na publicatie verdwijnt, maar een
 die nooit heeft bestaan.
 
-Let in de figuur links op de afstand tussen de twee verdelingen, en rechts op waar
-het beste kenmerk ligt, in en na de steekproef.
+De propositie van Lo en MacKinlay verbindt de twee. Met vijftig in plaats van honderd
+aandelen per poot is de voorfactor in [](#eq-vroege-anomalieen-snooping) $\sqrt 2$
+kleiner dan de 24,8 bij decielen, zodat de gemiddelde $t$ van 2,5 van het beste kenmerk
+past bij één kenmerk met $\rho \approx 0{,}14$. Het zoeken maakt van ruis zo een kenmerk
+dat met de steekproeffout correleert. In de figuur gaat het links om de afstand tussen
+de twee verdelingen en rechts om de plek van het beste kenmerk, in en na de steekproef.
 
 ```{code-cell} ipython3
 :label: cel-vroege-anomalieen-sim
@@ -720,7 +739,7 @@ bins = np.linspace(-4, 7, 45)
 axes[0].hist(berk["CAPM"][:, 1], bins=bins, alpha=0.65, label="t(alpha), CAPM")
 axes[0].hist(berk["tweefactor"][:, 1], bins=bins, alpha=0.65, label="t(alpha), ware tweefactormodel")
 axes[0].axvline(1.96, color="black", lw=1, ls="--")
-axes[0].set_title("(a) Klein min groot in een wereld zonder mispricing")
+axes[0].set_title("(a) Klein min groot in een wereld zonder vergissingen")
 axes[0].set_xlabel("t-waarde van de alpha (1000 steekproeven van 40 jaar)")
 axes[0].set_ylabel("Aantal steekproeven")
 axes[0].legend()
@@ -766,7 +785,7 @@ cellen. Hun tabelwaarden per portefeuille hebben we niet in de primaire bronnen
 kunnen nalezen, dus we toetsen teken, orde van grootte en rangorde.
 
 **Data hier.** Decielen op E/P, B/M en marktwaarde uit de Kenneth French Data
-Library, value- en equal-weighted, met markt en risicovrije rente, via `hap.data`.
+Library, waardegewogen en gelijkgewogen, met markt en risicovrije rente, via `hap.data`.
 Elke oorspronkelijke steekproef zetten we naast de jaren na publicatie, tot 2026-07.
 
 **Verschil met het origineel.** French sorteert NYSE, AMEX en Nasdaq op
@@ -777,11 +796,12 @@ hielden size, E/P en bedrijfstak constant, wat een decielsortering op B/M niet d
 **Verwachte afwijking.** In de oorspronkelijke steekproeven heeft elke
 long-short-portefeuille (hoog min laag E/P en B/M, klein min groot) een positieve
 CAPM-alpha, en een ander teken wijst op een fout in de code. Na publicatie verwachten
-we kleinere value-weighted alpha's, en in Keims periode het grootste deel van de
+we kleinere waardegewogen alpha's, en in Keims periode het grootste deel van de
 size-premie in januari.
 ```
 
-De eerste cel laadt de decielen en bouwt de long-short-portefeuilles.
+De eerste cel laadt de decielen en bouwt daaruit de long-short-portefeuilles. Voor
+E/P en B/M is dat hoog min laag, voor size klein min groot.
 
 ```{code-cell} ipython3
 market = hap_data.market_monthly()
@@ -841,8 +861,8 @@ ls_table.index.names = ["sortering", "periode", "weging"]
 ls_table.round(3)
 ```
 
-De tabel hieronder zet de bevindingen van de auteurs naast de alpha's uit de cel, in
-procent per maand met de $t$-waarde tussen haakjes.
+De tabel hieronder zet de bevindingen van de auteurs, in hun eigen woorden, naast de
+alpha's uit de cel, in procent per maand met de $t$-waarde tussen haakjes.
 
 | | origineel | hier, oorspronkelijke steekproef | hier, na publicatie |
 |---|---|---|---|
@@ -850,18 +870,17 @@ procent per maand met de $t$-waarde tussen haakjes.
 | B/M, RRL 1973–1984 | hoge boekwaarde-koersverhouding: significant abnormaal rendement | VW 1,42 (3,31), EW 1,49 (4,07) | VW 0,09 (0,40), EW 1,12 (5,98) |
 | size, Banz 1936–1975 | kleine bedrijven: hoger rendement na correctie voor risico, vooral de allerkleinste | VW 0,23 (0,72), EW 0,59 (1,64) | VW −0,14 (−0,68), EW −0,02 (−0,11) |
 
-**Geslaagd.** Het teken is in alle zes combinaties van kenmerk en weging positief,
-zoals de verwachte afwijking eiste. Dat lost de eerste verwachting uit de intuïtie
-in. Na publicatie zijn de value-weighted alpha's kleiner, en voor size niet van nul
-te onderscheiden, ook zoals verwacht. Het effect is overal groter bij
-equal-weighting, want alle drie de kenmerken zijn het sterkst bij kleine aandelen. De long-short-bèta van E/P en B/M is in de
-oorspronkelijke steekproef negatief: goedkope aandelen waren in CAPM-zin niet
-riskanter.
+**Geslaagd.** Het teken is in alle zes combinaties van kenmerk en weging positief:
+goedkope en kleine aandelen hadden in de oorspronkelijke steekproeven een positieve
+CAPM-alpha. Na publicatie zijn de waardegewogen alpha's kleiner en nergens significant.
+Gelijkgewogen blijven E/P en B/M wel ($t = 4{,}64$ en $5{,}98$), omdat alle drie de
+kenmerken het sterkst zijn bij kleine aandelen en die bij gelijke weging zwaarder tellen. De
+long-short-bèta van E/P en B/M is in de oorspronkelijke steekproef negatief, zodat
+goedkope aandelen in CAPM-zin niet riskanter waren.
 
-De B/M-alpha van 1,42% per maand, ongeveer 17% per jaar, is groot genoeg om in
-twaalf jaar significant te zijn. Over de volle eeuw verklaart het CAPM de
-value-weighted B/M-premie grotendeels, met een alpha van 0,14% en een
-long-short-bèta van 0,44.
+Waardegewogen is alleen de B/M-alpha in de oorspronkelijke steekproef significant.
+Met ongeveer 17% per jaar was ze groot genoeg om in twaalf jaar boven de ruis uit te
+komen, terwijl de kleinere effecten van Basu en Banz dat bij deze weging niet haalden.
 
 Voor size in Banz' periode is de alpha op French' brede eerste deciel niet
 significant, omdat Banz' effect in een kleinere groep bedrijven zat. Ook
@@ -886,7 +905,7 @@ for ax, (sort, spans) in zip(axes, decile_periods.items()):
         ax.errorbar(np.arange(1, 11) + shift, table["alpha (% p.m.)"], yerr=2 * se_alpha,
                     fmt="o", capsize=2, color=color, label=label)
     ax.axhline(0, color="black", lw=0.8)
-    ax.set_title(f"CAPM-alpha per {sort}-deciel (value-weighted)")
+    ax.set_title(f"CAPM-alpha per {sort}-deciel (waardegewogen)")
     ax.set_xlabel("Deciel (1 = laagste kenmerk)")
     ax.set_xticks(range(1, 11))
     ax.legend(loc="upper left")
@@ -939,9 +958,10 @@ january.round(3)
 
 **Geslaagd.** In Keims periode valt in beide wegingen ongeveer vier vijfde van de
 jaarpremie in januari (kolom bijdrage januari), meer dan de bijna vijftig procent van
-Keim, die met voor risico gecorrigeerde dagrendementen werkte. Over 1926–1962 draagt januari
-eveneens het grootste deel. Na 1980 is januari nog positief, maar doen kleine aandelen het in de
-andere maanden slechter dan grote, zodat de jaarpremie vrijwel verdwijnt.
+Keim, die met voor risico gecorrigeerde dagrendementen werkte. Over 1926–1962 draagt
+januari eveneens het grootste deel. Na 1980 is januari nog positief, maar doen kleine
+aandelen het in de andere maanden slechter dan grote, zodat de jaarpremie vrijwel
+verdwijnt.
 
 Een premie die alleen in januari wordt betaald, is moeilijk als risicopremie te
 verdedigen. De gangbare verklaringen zijn institutioneel: verkopen in december om
@@ -950,32 +970,35 @@ verkopen vóór ze hun portefeuille rapporteren).
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het CAPM verklaart.** Nog steeds veel. Over de volle eeuw verklaart het de
-value-weighted B/M-premie grotendeels, met een alpha van 0,14% ($t = 0{,}83$). De
-anomalieën zijn verschillen van enkele
-tienden van een procent per maand, met standaardfouten van dezelfde orde. Geen van de
-vier artikelen stelde een ander model voor. Reinganum las zijn resultaten zelfs als
-een verkeerd gespecificeerd evenwichtsmodel, niet als inefficiëntie, omdat de
-abnormale rendementen minstens twee jaar aanhielden.
+**Wat het CAPM verklaart.** Het CAPM houdt nog steeds veel overeind. Over de volle
+eeuw verklaart het de waardegewogen B/M-premie grotendeels, met een alpha van 0,14%
+($t = 0{,}83$) bij een long-short-bèta van 0,44. De anomalieën zijn verschillen van enkele
+tienden van een procent per
+maand, met standaardfouten van dezelfde orde. Geen van de vier artikelen stelde een
+ander model voor. Reinganum las zijn resultaten zelfs als een verkeerd gespecificeerd
+evenwichtsmodel, niet als inefficiëntie, omdat de abnormale rendementen minstens twee
+jaar aanhielden.
 
 **Waar het breekt.** Goedkope aandelen hadden in de oorspronkelijke steekproeven
 positieve CAPM-alpha's, terwijl hun long-short-bèta rond nul of negatief lag. Het
-scherpste feit uit onze replicatie is de value-weighted B/M-alpha van 1,42% per
+scherpste feit uit onze replicatie is de waardegewogen B/M-alpha van 1,42% per
 maand ($t = 3{,}31$) in de twaalf jaar van Rosenberg, Reid en Lanstein. Keims
 seizoenspatroon is een barst van een andere soort: ongeveer vier vijfde van de
 size-premie in één maand.
 
-**Risico of vergissing?** Rosenberg, Reid en Lanstein kozen in hun titel de
-vergissing: een goedkoop aandeel is een fout van de markt. De andere lezing kwam van
+**Risico of vergissing?** Rosenberg, Reid en Lanstein kozen in hun titel de vergissing:
+een goedkoop aandeel is een fout van de markt. De andere lezing kwam van
 {cite:t}`Reinganum1981` en later {cite:t}`Berk1995`: een lage koers ten opzichte van
-winst, boekwaarde of omvang *is* een hoge discontovoet. De simulatie laat zien dat
-beide lezingen hetzelfde patroon geven. Scheiden kan alleen met een maat voor het
-gemiste risico die niet uit prijzen komt, en die had niemand. Het januari-effect en
-het verdwijnen na publicatie passen slecht bij een risicopremie, maar wel bij
-datamining. Dat de equal-weighted waarde-alpha na 1985 bleef, pleit daar weer tegen.
-Voor een belegger is het de vraag van Santa-Clara uit [](#00-00-setup): droeg wie in 1985 value kocht een
-beprijsd risico, of dacht hij iets te weten wat de prijs niet wist? Dezelfde
-transactie kan beide zijn geweest.
+winst, boekwaarde of omvang *is* een hoge discontovoet. De simulatie laat zien dat beide
+lezingen hetzelfde patroon geven. Scheiden kan alleen met een maat voor het gemiste
+risico die niet uit prijzen komt, en die had niemand. Een premie die vooral in januari
+valt, past slecht bij een risicopremie, maar evenmin bij datamining, want het patroon
+staat ook in 1926–1962, vóór Keims steekproef. Het verdwijnen van de waardegewogen
+premies na publicatie past wel bij datamining, terwijl de gelijkgewogen waarde-alpha die
+na 1985 bleef daar weer tegen pleit. Voor een belegger is het de vraag van Santa-Clara
+uit [](#00-00-setup): droeg wie in 1985 value kocht een risico waarvoor de markt een
+premie betaalt, of dacht hij iets te weten wat de prijs niet wist? Dezelfde transactie
+kan beide zijn geweest.
 
 **Wat er daarna kwam.** Zeven jaar later zouden Fama en French al deze kenmerken in
 één regressie zetten en er twee overhouden. Eerst wendde de theorie zich naar een
@@ -990,7 +1013,7 @@ rente en de waarde van flexibiliteit, in [](#03-17-termijnstructuur-real-options
 **Instap: een bredere sortering.** Zet in het toy-voorbeeld ook aandeel C in
 portefeuille H, zodat H = (C, D, E) en L = (A, B).
 
-1. Bereken met de hand de bèta, het excess rendement en de alpha van H en van H − L,
+1. Bereken met de hand de bèta, het overrendement en de alpha van H en van H − L,
    en controleer het antwoord met `toy_portfolio`.
 2. Waarom is de alpha van H − L kleiner dan 5,325%?
 :::
@@ -998,9 +1021,9 @@ portefeuille H, zodat H = (C, D, E) en L = (A, B).
 :::{solution} ex-vroege-anomalieen-1
 :class: dropdown
 
-**(1)** H heeft bèta $(0{,}90 + 0{,}80 + 0{,}55)/3 = 0{,}75$, excess rendement
+**(1)** H heeft bèta $(0{,}90 + 0{,}80 + 0{,}55)/3 = 0{,}75$, overrendement
 $(6 + 7 + 9)/3 = 7{,}33\%$ en alpha $(1{,}50 + 3{,}00 + 6{,}25)/3 = 3{,}58\%$. H − L
-heeft bèta $0{,}75 - 1{,}05 = -0{,}30$, excess rendement $7{,}33 - 4{,}55 = 2{,}78\%$
+heeft bèta $0{,}75 - 1{,}05 = -0{,}30$, overrendement $7{,}33 - 4{,}55 = 2{,}78\%$
 en alpha $2{,}78 + 0{,}30 \cdot 5 = 4{,}28\%$, gelijk aan $3{,}58 - (-0{,}70)$.
 
 ```{code-cell} ipython3
@@ -1009,8 +1032,8 @@ broad.loc["H - L"] = broad.loc["H"] - broad.loc["L"]
 broad.round(5)
 ```
 
-**(2)** C heeft een kleinere alpha (1,50%) dan D en E en verdunt het gemiddelde van
-H. Wat dit leert: een brede uiterste portefeuille smeert een effect in de uitersten
+**(2)** C heeft een kleinere alpha (1,50%) dan D en E en verdunt zo het gemiddelde
+van H. Wat dit leert: een brede uiterste portefeuille smeert een effect in de uitersten
 uit, zoals het effect van Banz in French' brede eerste deciel.
 :::
 
@@ -1056,9 +1079,9 @@ pd.DataFrame({"SD log C = 1.5": berk_approximation(1.5), "SD log C = 0.75": berk
 
 De benadering ligt dicht bij de steekproefwaarden. Het verschil komt van de kromming
 van de logaritme. Bij een halvering van de kasstroomspreiding wordt de correlatie
-bijna twee keer zo sterk. Wat dit leert: hoe minder ruis in het kasstroomniveau, hoe
-beter marktwaarde het verwachte rendement meet, en daarom meten B/M en E/P het beter
-dan marktwaarde alleen.
+bijna twee keer zo sterk. Hoe minder ruis er in het kasstroomniveau zit, hoe beter
+marktwaarde het verwachte rendement meet, en daarom meten B/M en E/P het beter dan
+marktwaarde alleen.
 
 **(4)**
 
@@ -1089,21 +1112,22 @@ pd.concat(fm_sim).round(3)
 Met $\delta$ erbij is de ware coëfficiënt op $\log \mathrm{ME}$ nul, want het
 verwachte rendement is lineair in bèta en $\delta$. In deze steekproef is hij zonder
 $\delta$ negatief, $-0{,}027\%$ per maand per standaarddeviatie ($t = -1{,}57$), en met
-$\delta$ vrijwel nul ($t = 0{,}54$). Zonder $\delta$ neemt marktwaarde dus een deel van
-de rol van de gemiste factor over, maar na veertig jaar niet significant. Wat dit
-leert: een kenmerk verklaart rendementen die bèta niet verklaart zolang de beprijsde
-blootstelling ontbreekt, en ook dat effect is een gemiddelde met een grote
-standaardfout.
+$\delta$ vrijwel nul ($t = 0{,}54$). Zonder $\delta$ neemt marktwaarde een deel van
+de rol van de gemiste factor over, maar na veertig jaar niet significant. Een kenmerk
+vangt zo rendementen op die bèta mist zolang de blootstelling aan de
+factor met een premie in de regressie ontbreekt, maar ook dat effect is een
+gemiddelde met een grote standaardfout.
 :::
 
 :::{exercise}
 :label: ex-vroege-anomalieen-3
 
 **Is value ook een januari-effect?** {cite:t}`Bhandari1988` vond zijn
-schuldgraad-effect vooral in januari.
+schuldgraad-effect vooral in januari, net als Keim voor de size-premie.
+Geldt dat ook voor de waarde-premie?
 
 1. Pas `january_split` toe op de hoog-min-laag-portefeuilles van E/P en B/M,
-   equal- en value-weighted, voor 1963–1984 en voor 1985–2026.
+   gelijkgewogen en waardegewogen, voor 1963–1984 en voor 1985–2026.
 2. Zit de waarde-premie net zo sterk in januari als de size-premie?
 3. Wat zegt het verschil over de vraag van {cite:t}`Reinganum1981`: zijn E/P en B/M
    gewoon size?
@@ -1122,24 +1146,26 @@ for sort in ("E/P", "B/M"):
 pd.DataFrame(value_rows).T.round(3)
 ```
 
-**(2)** In 1963–1984 zit de value-weighted waarde-premie net als de size-premie voor
-ongeveer twee derde in januari: 65% voor E/P en 67% voor B/M. Equal-weighted is dat
-24% en 45%, met significante premies in de overige maanden.
+**(2)** In 1963–1984 zit de waardegewogen waarde-premie voor ongeveer twee derde in
+januari (65% voor E/P en 67% voor B/M), minder dan de vier vijfde van de size-premie in
+Keims periode. Gelijkgewogen is dat 24% en 45%, met significante premies in de overige
+maanden.
 
-**(3)** Na 1985 verdient de equal-weighted B/M-portefeuille 0,78% per maand buiten
+**(3)** Na 1985 verdient de gelijkgewogen B/M-portefeuille 0,78% per maand buiten
 januari ($t = 4{,}17$), terwijl de size-premie buiten januari verdween. Een effect
-buiten januari is niet simpelweg size, al beslist één sortering dat niet definitief.
-Wat dit leert: het seizoenspatroon is een tweede dimensie waarop anomalieën
-verschillen, die jaargemiddelden verbergen.
+buiten januari is niet simpelweg size, al is één sortering daarvoor geen definitief
+bewijs. Het seizoenspatroon is zo een tweede dimensie waarop anomalieën verschillen,
+en jaargemiddelden verbergen die.
 :::
 
 :::{exercise}
 :label: ex-vroege-anomalieen-4
 
 **Voegt size iets toe naast bèta?** Banz stelde zijn vraag in de vorm van
-[](#eq-vroege-anomalieen-fm).
+[](#eq-vroege-anomalieen-fm). Hij legde de relatieve marktwaarde als kenmerk naast
+bèta.
 
-1. Draai Fama-MacBeth op de tien value-weighted size-decielen, met per deciel een
+1. Draai Fama-MacBeth op de tien waardegewogen size-decielen, met per deciel een
    rollende bèta uit de voorgaande 60 maanden en de log van zijn gemiddelde
    bedrijfsgrootte ten opzichte van het decielgemiddelde, beide bekend vóór de maand.
    Doe dat voor 1936–1975, met en zonder size, en na 1982.

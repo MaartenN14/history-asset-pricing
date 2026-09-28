@@ -108,3 +108,26 @@ STATUS 03_16_vroege_anomalieen F6b words=5276 prose=PASS open=0 cijfer=- min=-
 - Code-trucs: gedaan. Decielen met `pd.qcut`, gewichten van `long_short_weights` in benoemde stappen, `out.attrs = {}` met commentaar.
 - Twee werelden in één simulatie: gebleven, want ze beantwoorden één vraag (hoe vaak een significante kenmerk-alpha zonder vergissing) en delen één figuur; STYLE §11.7 eist één vraag, niet één wereld.
 - Gemiddelde zinslengte 16,0: binnen de norm van `prose_stats` (≤ 17); niet verder ingekort.
+
+## R9-1 (F6b, ronde 9+)
+
+Woorden 5.584, prose_stats PASS. Code: alleen labels (uitvoer voor/na vergeleken, getallen gelijk).
+- **Fout 1, bewijsschets snooping:** gedaan; twee poten, tweemaal de afstand, gedeeld door $\sqrt{2/n}$ ("men" weg).
+- **Fout 2, stelling van Berk:** gedaan; "hogere alpha ... dan grote".
+- **Fout 3, replicatie-oordeel:** gedaan; waardegewogen "kleiner en nergens significant", gelijkgewogen E/P en B/M blijven ($t$ 4,64 en 5,98) met de reden (kleine aandelen).
+- **Fout 4, januari en datamining:** gedaan; januari past bij geen van beide (ook 1926–1962), alleen het verdwijnen na publicatie past bij datamining.
+- **Fout 5, oefening 3:** gedaan; twee derde voor value tegen vier vijfde voor size.
+- **Opbouw, genummerde verwachtingen:** gedaan; doorlopende voorspelling, drie inlossingen elk anders zonder rangtelwoord.
+- **Opbouw, dubbele openingsvraag:** gedaan; Overzicht opent met het antwoord.
+- **Opbouw, zes citaties in één alinea:** gedaan; tabel jaar/artikel/kenmerk.
+- **Opbouw, simulatie (b) en $\rho$:** gedaan; alinea met voorfactor $\sqrt 2$ kleiner dan 24,8, $t = 2{,}5$ past bij $\rho \approx 0{,}14$.
+- **Taal, werkmeldingen (3x):** gedaan; alleen het replicatieblok noemt de beperking nog.
+- **Taal, "maar dan" (4x), "men", dubbel "verklaart", "dus" (282, 523, oef. 2):** gedaan.
+- **Hardop-toets 1–3:** gedaan (Barra, correcte risicopremie, bewijsschets).
+- **Helderheid, B/P:** gedaan (B/M). **FM-gewichten op dezelfde schaal:** gedaan ($\pm 7{,}7$ tegen 10 voor E; handberekening uit het toy).
+- **$f_m$ tegen $R^e_m$:** gedaan, in de zin na de modelvergelijking.
+- **Replicatie, alinea met vier getallen:** gedaan; volle-eeuwbèta 0,44 verplaatst naar Wat er brak, alinea met één conclusie.
+- **Code, Engelse figuurteksten en "excess":** gedaan ("waardegewogen", "zonder vergissingen", "overrendement").
+- **Toy-cel, print naast tabel:** gedaan; extra tabelrij (1 = ja).
+- **Simulatie, twee werelden:** afgewezen; rubriek aanvaardde dit, één vraag (STYLE §11.7).
+- nb_numbers: nieuw alleen 6,5 en 0,065 (handberekening uit de toy-tabel, zichtbaar in de zin).
