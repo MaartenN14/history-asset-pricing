@@ -21,11 +21,11 @@ kernelspec:
 **Jaartal.** 1926–2026. Dit is geen tijdvak maar een meetlat voor de rest van de
 reeks.
 
-**Wat we al weten.** [De vorige lecture](#00-00-setup) zette de gereedschapskist
-neer: acht gratis databronnen, een notatie en een handvol schatters. Ze eindigde
-met één getal: het rekenkundig gemiddelde marktrendement over honderd jaar is
-11,6% per jaar, met een standaardfout van 1,8 procentpunt. Wat een rendement
-precies is, bleef daar open.
+**Wat we al weten.** [Het vorige college](#00-00-setup) legde de gereedschapskist klaar, met acht gratis
+databronnen, een notatie en een handvol schatters. Aan het eind stond één getal, het
+rekenkundig gemiddelde marktrendement over honderd jaar, en dat is 11,6% per jaar met
+een standaardfout van 1,8 procentpunt. Wat een rendement precies is, bleef daar nog
+open.
 
 **Welke vraag staat open.** Wat meten we als we een gemiddeld rendement
 uitrekenen, en hoe nauwkeurig is die meting?
@@ -33,17 +33,17 @@ uitrekenen, en hoe nauwkeurig is die meting?
 
 ## Overzicht
 
-Wat meten we als we een gemiddeld rendement uitrekenen, en hoe nauwkeurig? We
-schatten het verwachte rendement, en dat heeft na een eeuw data nog een
-standaardfout van twee procentpunt, terwijl de volatiliteit dan al bijna exact
-vastligt. In deze lecture:
+Met een gemiddeld rendement schatten we het verwachte rendement, en die schatting heeft na
+een eeuw data nog een standaardfout van twee procentpunt, terwijl de volatiliteit dan al
+vrijwel vastligt.
+In dit college:
 
 - leggen we het verschil vast tussen simpele rendementen en logrendementen, en
   leiden we af dat het meetkundig gemiddelde een halve variantie onder het
   rekenkundige ligt;
 
 - leiden we de standaardfout van het gemiddelde af, en daarmee
-  [de standaardfout van 2%](#sec-rendementen-standaardfout): bij 20%
+  [de standaardfout van 2%](#sec-rendementen-standaardfout), want bij 20%
   volatiliteit per jaar is het gemiddelde na een eeuw op twee procentpunt na
   bekend;
 
@@ -54,60 +54,64 @@ vastligt. In deze lecture:
   we er de standaardfout bij.
 
 Het Center for Research in Security Prices (CRSP) zette in de jaren zestig de
-koersen van alle NYSE-aandelen vanaf 1926 op magneetband. Op die tape
-rapporteerden Lawrence Fisher en James Lorie in 1964 het gemiddelde rendement op
-Amerikaanse aandelen over 1926–1960 {cite}`FisherLorie1964`. Hun 9,0% per jaar
-was de eerste betrouwbare meting van die grootheid, zonder standaardfout.
-{cite:t}`Merton1980` gaf zestien jaar later de scherpe vorm van het probleem: de
-precisie van een geschat verwacht rendement hangt alleen af van de
-kalenderlengte van de steekproef. Door de reeks loopt de vraag theorie of feit:
-is een model een theorie die getoetst wordt, of een feit dat op een verklaring
-wacht? Deze lecture is een uitzondering: ze toetst geen theorie, want haar
-stellingen zijn wiskundig waar. Wel bepalen ze welke latere theorieën toetsbaar zijn.
+koersen van alle NYSE-aandelen vanaf 1926 op magneetband. Met die banden berekenden
+Lawrence Fisher en James Lorie in 1964 het gemiddelde rendement op Amerikaanse
+aandelen over 1926–1960 {cite}`FisherLorie1964`. Hun 9,0% per jaar was de eerste
+betrouwbare meting van die grootheid, maar er stond geen standaardfout bij. Zestien
+jaar later maakte {cite:t}`Merton1980` het probleem scherp, want hij liet zien dat de
+precisie van een geschat verwacht rendement alleen afhangt van de kalenderlengte van
+de steekproef. Door de hele reeks loopt de vraag of we met een theorie te maken hebben
+die we kunnen toetsen, of met een feit dat nog op een verklaring wacht. Dit college is
+daarop een uitzondering, omdat de stellingen erin wiskundig waar zijn en er dus niets
+te toetsen valt. Wel bepalen ze welke latere theorieën toetsbaar zijn, zoals de stelling
+van Merton bepaalt hoeveel de 9,0% van Fisher en Lorie waard is.
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-Denk aan iemand die met een meetpaal wil weten hoe hard het gemiddeld waait. Ze
-kan twee vragen stellen. Hoeveel lucht is er in totaal langsgekomen? En hoe hard
-schommelt de wind?
+Denk aan een meteorologe die met een meetpaal wil weten hoe hard het gemiddeld waait.
+Ze kan twee dingen willen weten: hoeveel lucht er in totaal is langsgekomen, en hoe
+hard de wind schommelt.
 
-Voor de eerste vraag maakt het niet uit hoe vaak ze meet. Wie elke seconde meet
-in plaats van elk uur, krijgt 3600 keer zoveel getallen over dezelfde lucht. Het
-totaal van het jaar ligt vast zodra het jaar voorbij is. Een beter gemiddelde
-vraagt meer jaren, niet meer metingen per jaar. Voor de tweede vraag ligt het
-omgekeerd: elke extra meting zegt iets over hoe hard het schommelt.
+Voor de eerste vraag maakt het niet uit hoe vaak ze meet. Als ze elke seconde meet in
+plaats van elk uur, krijgt ze 3600 keer zoveel getallen
+over dezelfde lucht, maar het totaal van het jaar ligt vast zodra het jaar voorbij is.
+Een beter gemiddelde vraagt dus meer jaren, niet meer metingen per jaar. Voor de
+tweede vraag ligt het omgekeerd, want elke extra meting zegt iets over hoe hard de
+wind schommelt.
 
-Voor een aandeel werkt het net zo. De totale koersverandering hangt alleen af
-van begin- en eindkoers, en het gemiddelde rendement is die verandering gedeeld
-door de tijd. Dagelijks meten geeft ruim 250 keer zoveel getallen, maar niet meer
-informatie over het gemiddelde. De *volatiliteit* (de standaarddeviatie van het
+Bij een aandeel werkt het net zo. De totale koersverandering hangt alleen af van
+begin- en eindkoers, en het gemiddelde rendement is die verandering gedeeld door de
+verstreken tijd. Dagelijks meten geeft ruim 250 keer zoveel getallen, maar geen extra
+informatie over het gemiddelde. De schatting van de *volatiliteit* (de standaarddeviatie
+van het
 rendement, per jaar) wordt daarentegen bij elke verfijning scherper.
 
-Daar komt een tweede asymmetrie bij. Een verlies van 20% en een winst van 25%
-heffen elkaar op in niveaus: $0{,}80 \times 1{,}25 = 1$. Het rekenkundig
-gemiddelde is toch $+2{,}5\%$, terwijl het vermogen gelijk bleef. Rendementen
-vermenigvuldigen zich, gemiddelden tellen op, en het verschil groeit met de
-schommelingen. Bij 20% volatiliteit is het $0{,}20^2/2 = 2$ procentpunt per jaar.
+Daar komt een tweede asymmetrie bij. Een verlies van 20% en een winst van 25% heffen
+elkaar in euro's op, want $0{,}80
+\times 1{,}25 = 1$. Toch is het rekenkundig gemiddelde $+2{,}5\%$, terwijl het
+vermogen gelijk bleef. Het vermogen groeit met het product van de rendementen terwijl
+het gemiddelde ze optelt, en het verschil tussen die twee groeit met de schommelingen. Bij
+20% volatiliteit is het $0{,}20^2/2 = 2$ procentpunt per jaar.
 
-Met de getallen van de echte wereld worden beide observaties knellend. De
-volatiliteit van aandelen is ongeveer 20% per jaar, de *equity premium* (het
+Met de getallen uit de echte wereld gaan beide asymmetrieën knellen. De volatiliteit
+van aandelen is ongeveer 20% per jaar, en de *equity premium* (het
 extra rendement van aandelen boven de risicovrije rente, hierna de premie)
-ongeveer 6%. Dat is een kalibratie, geen meting: {cite:t}`MehraPrescott1985`
-vonden 6,18% over 1889–1978, en [](#00-00-setup) meet 8,3% op de French-data
-sinds 1926. Het verschil komt van de periode. Voor de standaardfout doet het er
-niet toe, want die hangt alleen van de volatiliteit af. Met 20% tegen 6% is de
-ruis ruim drie keer zo groot als het signaal, en alleen
-verstrijkende tijd maakt het signaal zichtbaar.
+ongeveer 6%. Die 6% is een kalibratie en geen meting, want {cite:t}`MehraPrescott1985`
+vonden 6,18% over 1889–1978, terwijl [](#00-00-setup) 8,3% meet op de French-data
+sinds 1926. Het verschil komt van de periode, en voor de standaardfout is het niet van
+belang, omdat die alleen van de volatiliteit afhangt. Met 20% tegen 6% is de ruis ruim
+drie keer zo groot als het signaal, zodat alleen verstrijkende tijd het signaal
+zichtbaar maakt.
 
-We verwachten dus drie dingen. Vaker meten maakt de volatiliteit scherper, maar
-het gemiddelde niet. Het meetkundig gemiddelde ligt onder het rekenkundige,
-verder naarmate de schommelingen groter zijn. En omdat de ruis zo veel groter is
-dan het signaal, blijft het gemiddelde ook na een eeuw onzeker, met een fout van
-enkele procentpunten.
+We verwachten dus drie dingen. Vaker meten maakt de schatting van de volatiliteit
+scherper, maar die van het gemiddelde niet. Het meetkundig gemiddelde ligt onder het
+rekenkundige, en verder naarmate de schommelingen groter zijn. Omdat de ruis zo veel
+groter is dan het signaal, blijft het gemiddelde ten slotte ook na een eeuw onzeker,
+met een fout van enkele procentpunten.
 
 ## Toy-voorbeeld: drie jaar rendement, met de hand
 
-Eerst laden we de pakketten die de hele lecture gebruikt.
+Eerst laden we de pakketten die het hele college gebruikt.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -121,8 +125,8 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-**Opzet.** Een belegging doet in drie
-jaar het volgende:
+**Opzet.** Een belegging maakt drie jaar mee, met de rendementen in de tabel. Het
+tweede jaar is een verliesjaar en de andere twee zijn winstjaren.
 
 | jaar | netto rendement $r$ | bruto rendement $R = 1 + r$ |
 |---|---|---|
@@ -130,40 +134,43 @@ jaar het volgende:
 | 2 | $-0{,}20$ | $0{,}80$ |
 | 3 | $+0{,}10$ | $1{,}10$ |
 
-Het mechanisme is één ongelijkheid: het rekenkundig gemiddelde ligt boven het
-meetkundige. **Het recept**, dat de theorie als eerste afleidt: het meetkundig
-gemiddelde is ongeveer het rekenkundig gemiddelde min een halve variantie.
+Het voorbeeld draait om één ongelijkheid: het rekenkundig gemiddelde ligt boven het
+meetkundige. Hoeveel het scheelt, zegt **het recept** dat de theorie als eerste
+afleidt, en volgens dat recept is het meetkundig gemiddelde ongeveer het rekenkundige
+min een halve variantie.
 
-**Stap 1: het rekenkundig gemiddelde.** Optellen en delen door drie:
+**Stap 1: het rekenkundig gemiddelde.** We tellen de drie rendementen op en delen door drie:
 
 $$
 \bar r = \frac{0{,}25 - 0{,}20 + 0{,}10}{3} = \frac{0{,}15}{3} = 0{,}05 .
 $$
 
 **Stap 2: het meetkundig gemiddelde.** Het product van de bruto rendementen is
-$1{,}25 \times 0{,}80 \times 1{,}10 = 1{,}10$. Eén euro is na drie jaar $1{,}10$
-euro geworden, en het meetkundig gemiddelde is
+$1{,}25 \times 0{,}80 \times 1{,}10 = 1{,}10$, zodat één euro na drie jaar $1{,}10$
+euro is geworden. Het meetkundig gemiddelde is dan
 
 $$
 \bar R_g = 1{,}10^{1/3} = 1{,}032280, \qquad \text{dus } 3{,}2280\% \text{ per jaar.}
 $$
 
 Het verschil met het rekenkundig gemiddelde is $5 - 3{,}2280 = 1{,}772$
-procentpunt. Dat is geen afrondingsfout. Over dertig jaar is het het verschil
-tussen $1{,}05^{30} = 4{,}32$ en $1{,}03228^{30} = 2{,}59$ euro: twee derde meer.
+procentpunt, en dat is geen afrondingsfout. Over dertig jaar maakt het het verschil
+tussen $1{,}05^{30} = 4{,}32$ en $1{,}03228^{30} = 2{,}59$ euro, zodat het
+rekenkundige bedrag twee derde hoger uitvalt.
 
-**Stap 3: de logrendementen.** Ze zijn $\log 1{,}25 = 0{,}223144$,
-$\log 0{,}80 = -0{,}223144$ en $\log 1{,}10 = 0{,}095310$. De eerste twee vallen
-tegen elkaar weg. Daarom is 20% verlies pas met 25% winst goedgemaakt. Het
-gemiddelde is $0{,}031770$, en $e^{0{,}031770} - 1 = 0{,}032280$. Het gemiddelde
-logrendement is dus het meetkundig gemiddelde in een andere schrijfwijze.
+**Stap 3: de logrendementen.** De drie logrendementen zijn $\log 1{,}25 = 0{,}223144$,
+$\log 0{,}80 = -0{,}223144$ en $\log 1{,}10 = 0{,}095310$. De eerste twee vallen tegen
+elkaar weg, en daarom is 20% verlies pas met 25% winst goedgemaakt. Hun gemiddelde is
+$0{,}031770$, en omdat $e^{0{,}031770} - 1 = 0{,}032280$, is het gemiddelde
+logrendement het meetkundig gemiddelde in een andere schrijfwijze.
 
 **Stap 4: het recept.** De afwijkingen van $\bar r = 0{,}05$ zijn $0{,}20$,
-$-0{,}25$ en $0{,}05$. Hun kwadraten tellen op tot
-$0{,}04 + 0{,}0625 + 0{,}0025 = 0{,}105$. Gedeeld door drie is dat
-$\hat\sigma^2 = 0{,}035$, en de halve variantie is $0{,}0175$. Het recept geeft
-$0{,}05 - 0{,}0175 = 0{,}0325$, tegen de exacte $0{,}032280$: twee honderdste
-procentpunt ernaast, bij drie waarnemingen.
+$-0{,}25$ en $0{,}05$. Hun kwadraten tellen op tot $0{,}04 + 0{,}0625 + 0{,}0025 = 0{,}105$,
+en gedeeld door
+drie geeft dat $\hat\sigma^2 = 0{,}035$, dus $\hat\sigma = 18{,}7\%$ en een halve
+variantie van $0{,}0175$. Het
+recept geeft $0{,}05 - 0{,}0175 = 0{,}0325$, tegen de exacte $0{,}032280$, en zit er
+bij drie waarnemingen dus maar twee honderdste procentpunt naast.
 
 De codecel rekent dezelfde getallen na en zet ze naast de handberekening.
 
@@ -186,26 +193,27 @@ by_code = [arith, geom, geom_via_log, recipe, arith - geom]
 pd.DataFrame({"met de hand": by_hand, "code": by_code}, index=rows).round(6)
 ```
 
-De twee kolommen zijn gelijk, en het recept zit er 0,00022 naast. Wat de lezer
-nu weet: het meetkundig gemiddelde ligt ongeveer een halve variantie onder het
-rekenkundige. Dezelfde drie jaren geven in de theorie ook een eerste
-standaardfout.
+De twee kolommen zijn gelijk, en het recept zit er 0,00022 naast. Het meetkundig
+gemiddelde ligt dus ongeveer een halve variantie onder het rekenkundige, en bij drie
+jaren met zulke schommelingen scheelt dat al bijna twee procentpunt per jaar. Dezelfde
+drie jaren komen in de theorie terug, waar ze een eerste standaardfout opleveren.
 
 ## Theorie
 
-We leiden drie resultaten af. Eerst het recept uit het toy-voorbeeld: het
-meetkundig gemiddelde ligt een halve variantie onder het rekenkundige. Dan de
-kern: de standaardfout van het gemiddelde, en daarmee
-[de standaardfout van 2%](#sec-rendementen-standaardfout). Ten slotte de
-stelling van Merton, die zegt waarom vaker meten die standaardfout niet
-verkleint. Aan het eind kijken we wat autocorrelatie en dikke staarten
-veranderen.
+We leiden drie resultaten af. Eerst bewijzen we het recept uit het toy-voorbeeld, dat
+zegt dat het meetkundig gemiddelde een halve variantie onder het rekenkundige ligt.
+Daarna volgt de kern van het college, de standaardfout van het gemiddelde, die na een
+eeuw data nog [twee procentpunt](#sec-rendementen-standaardfout) is. Ten slotte laat de
+stelling
+van Merton zien waarom vaker meten die standaardfout niet verkleint, en aan het eind
+kijken we wat autocorrelatie en dikke staarten daaraan veranderen.
 
 ### Opzet: twee soorten rendement
 
 Er zijn twee rendementen nodig, omdat een belegger op twee manieren optelt: over
 de tijd en over aandelen. Laat $p_t$ de prijs zijn en $d_{t+1}$ het dividend dat
-tussen $t$ en $t+1$ wordt uitgekeerd, beide als niveaus, zoals in de hele reeks. Het *simpele* netto rendement en het bruto
+tussen $t$ en $t+1$ wordt uitgekeerd, beide als bedragen en niet als logs, zoals in de
+hele reeks. Het *simpele* netto rendement en het bruto
 rendement zijn
 
 ```{math}
@@ -215,10 +223,8 @@ r_{t+1} = \frac{p_{t+1} + d_{t+1}}{p_t} - 1,
 R_{t+1} = 1 + r_{t+1} = \frac{p_{t+1} + d_{t+1}}{p_t} .
 ```
 
-In woorden: het bruto rendement is wat een ingelegde euro na één periode waard
-is, koers en dividend samen.
-
-Zoals in [](#00-00-setup) is $r$ het netto simpele rendement, en krijgt het
+Het bruto rendement is dus wat een ingelegde euro na één periode waard is, koers en
+dividend samen. Zoals in [](#00-00-setup) is $r$ het netto simpele rendement, en krijgt het
 *logrendement* een eigen symbool:
 
 ```{math}
@@ -226,37 +232,37 @@ Zoals in [](#00-00-setup) is $r$ het netto simpele rendement, en krijgt het
 \ell_{t+1} \equiv \log R_{t+1} = \log\!\left(1 + r_{t+1}\right).
 ```
 
-In woorden: $\ell$ is het groeitempo dat, continu doorgerekend, dezelfde euro
-oplevert. Bij kleine rendementen liggen $\ell$ en $r$ dicht bij elkaar. Voor de
-standaarddeviatie gebruiken we één symbool: vanaf hier is $\sigma$ de
-volatiliteit van het logrendement. Die van het simpele rendement ligt er dicht
-bij: voor de maandreeks over de hele eeuw 18,34% tegen 18,32% per jaar (de
-dagtabel in de replicatie). Geen conclusie in deze lecture hangt van het verschil
-af.
+Het logrendement $\ell$ is het groeitempo dat, continu doorgerekend, dezelfde euro
+oplevert, en bij kleine rendementen liggen $\ell$ en $r$ dicht bij elkaar. Voor de
+standaarddeviatie gebruiken we één symbool, zodat $\sigma$ vanaf hier de volatiliteit
+van het logrendement is. Die van het simpele rendement ligt er dicht bij, met 18,34%
+tegen 18,32% per jaar voor de maandreeks over de hele eeuw (de tabel met maand- en
+dagdata in de replicatie). Geen conclusie in dit college hangt van dat verschil af.
 
-*Waarom zou dit waar zijn?* Een belegger die zijn vermogen twee jaar laat staan,
-krijgt het product van twee bruto rendementen, $R_{t+1}R_{t+2}$. Wie simpele
-rendementen over de tijd optelt, overschat dus wat hij overhoudt. Een belegger
-die zijn euro's over aandelen verdeelt, krijgt de gewogen som van hun simpele
-rendementen, want euro's tellen op. Wie daar logrendementen middelt, onderschat
-het portefeuillerendement.
+Waarom zijn er twee soorten nodig? Een belegger die zijn vermogen twee jaar laat
+staan, krijgt het product van twee bruto rendementen, $R_{t+1}R_{t+2}$, en wie simpele
+rendementen over de tijd optelt, overschat dus wat hij overhoudt. Een belegger die
+zijn euro's over aandelen verdeelt, krijgt daarentegen de gewogen som van hun simpele
+rendementen, omdat euro's optellen. Middelt hij daar logrendementen, dan onderschat
+hij het portefeuillerendement.
 
-Over de **tijd** maken logaritmen van het product een som:
+Over de **tijd** tellen logrendementen op, omdat de logaritme van een product de som
+van de logaritmen is. Voor een horizon van $k$ perioden geldt dus
 
 ```{math}
 :label: eq-rendementen-additief
 \ell_{t \to t+k} = \sum_{j=1}^{k} \ell_{t+j} .
 ```
 
-In woorden: het logrendement over $k$ perioden is de som van de logrendementen
-per periode. Horizonnen en annualiseren zijn daarom natuurlijk in logs. Over de
-**activa** tellen simpele rendementen op: een portefeuille met gewichten $w_i$
-heeft rendement $r_p = \sum_i w_i r_i$. Bèta's en portefeuillekeuze op gemiddelde
-en variantie zijn daarom natuurlijk in simpele rendementen.
+Het logrendement over $k$ perioden is de som van de logrendementen per periode, zodat
+horizonnen en annualiseren het natuurlijkst in logs gaan. Over de **activa** tellen
+juist simpele rendementen op, want een portefeuille met gewichten $w_i$ heeft
+rendement $r_p = \sum_i w_i r_i$. Bèta's en portefeuillekeuze op gemiddelde en
+variantie werken daarom het natuurlijkst met simpele rendementen.
 
 ```{warning}
-De twee zijn niet uitwisselbaar. Uit $\log(1+x) = x - x^2/2 + \dots$ volgt dat
-een maandrendement van 10% een logrendement van 9,53% geeft: bijna een half
+De twee rendementen zijn niet uitwisselbaar. Uit $\log(1+x) = x - x^2/2 + \dots$ volgt
+dat een maandrendement van 10% een logrendement van 9,53% geeft, bijna een half
 procentpunt verschil in één maand. Wie een eeuw lang elke maand 10% simpel als
 10% log boekt, overschat het eindvermogen met een factor
 $e^{0{,}0047 \times 1200} \approx 280$.
@@ -268,18 +274,18 @@ Het meetkundig gemiddelde ligt een halve variantie onder het rekenkundige. Dat
 verschil heet de *variance drag* (de rem die schommelingen op de groei van een
 vermogen zetten).
 
-*Waarom zou dit waar zijn?* Een belegger die jaar na jaar zijn
-vermogen laat staan, verdient een product. Na een daling van 50% is dan een
-stijging van 100% nodig om terug te zijn. Het rekenkundig gemiddelde behandelt
-$-50\%$ en $+100\%$ als een symmetrisch paar en ziet dat niet. Hoe groter de
-schommelingen, hoe verder wat hij overhoudt achterblijft bij wat hij gemiddeld
+*Waarom zou dit waar zijn?* Een belegger die jaar na jaar zijn vermogen laat staan,
+verdient het product van zijn bruto rendementen. Na een daling van 50% heeft hij
+daardoor een stijging van 100% nodig om terug te zijn. Het rekenkundig gemiddelde ziet dat
+niet, omdat het $-50\%$ en $+100\%$ als een symmetrisch paar behandelt. Hoe groter de
+schommelingen, hoe verder wat de belegger overhoudt achterblijft bij wat hij gemiddeld
 verdient.
 
 :::{prf:theorem} Variance drag
 :label: thm-rendementen-drag
 
-Zij $\ell_{t+1} = \log R_{t+1}$ onafhankelijk en gelijk verdeeld over de tijd,
-normaal met gemiddelde $\nu$ en variantie $\sigma^2$. Dan is het verwachte
+Stel dat $\ell_{t+1} = \log R_{t+1}$ onafhankelijk en gelijk verdeeld is over de
+tijd, normaal met gemiddelde $\nu$ en variantie $\sigma^2$. Dan is het verwachte
 bruto rendement
 
 ```{math}
@@ -298,14 +304,14 @@ $\mu_g = e^{\nu}-1$ geldt
 ```
 :::
 
-In woorden: [](#eq-rendementen-lognormaal) zegt dat de verwachting van een
-lognormale variabele boven de exponent van haar gemiddelde ligt, en
-[](#eq-rendementen-drag) dat het verwachte rendement daardoor een halve variantie
-boven het meetkundige groeitempo ligt. Omdat het gemiddelde logrendement naar
+Volgens [](#eq-rendementen-lognormaal) ligt de verwachting van een lognormale
+variabele boven de exponent van het gemiddelde logrendement, en volgens
+[](#eq-rendementen-drag) ligt het verwachte rendement daardoor een halve variantie
+boven het meetkundige groeitempo. Omdat het gemiddelde logrendement naar
 $\nu$ convergeert (de wet van de grote aantallen), groeit een lang pad met $\mu_g$,
-niet met $\mu_a$. Vier symbolen, twee grootheden: $\nu$ en $\mu_g = e^{\nu}-1$
-beschrijven het groeitempo, $\mu_a$ het verwachte simpele rendement, dat in de
-standaardfoutstelling kortweg $\mu$ heet. Het bewijs gebruikt de
+niet met $\mu_a$. Er staan vier symbolen voor twee grootheden, want $\nu$ en $\mu_g = e^{\nu}-1$
+beschrijven allebei het groeitempo, terwijl $\mu_a$ het verwachte simpele rendement
+is, dat in de stelling over de standaardfout kortweg $\mu$ heet. Het bewijs gebruikt de
 momentgenererende functie van de normale verdeling en staat ingeklapt.
 
 :::{prf:proof}
@@ -319,25 +325,26 @@ $e^{\nu} = 1+\mu_g$, is dat [](#eq-rendementen-drag). De benadering volgt uit
 $\log(1+x)\approx x$. $\square$
 :::
 
-Het toy-voorbeeld liet het al zien: $5\% - 1{,}75\% = 3{,}25\%$, tegen exact
-$3{,}23\%$. Zoals de intuïtie voorspelde, groeit het gat met de schommelingen:
-een grotere variantie maakt het groter, een kleinere kleiner. Bij
-$\sigma = 20\%$ is het 2 procentpunt per jaar, en over een eeuw een factor
-$1{,}02^{100} \approx 7{,}2$ in eindvermogen.
+In het toy-voorbeeld gaf het recept al $5\% - 1{,}75\% = 3{,}25\%$, tegen exact
+$3{,}23\%$. Het gat is de halve variantie en groeit dus met de schommelingen, zodat
+een onrustige markt het groter maakt en een rustige het kleiner. Bij $\sigma = 20\%$ gaat
+het om 2 procentpunt per jaar, en over een eeuw om
+een factor $1{,}02^{100} \approx 7{,}2$ in eindvermogen.
 
-Welk van de twee gemiddelden is het juiste? Beide, voor een andere vraag. Het
-rekenkundig gemiddelde schat het verwachte rendement zuiver. Een prijs is een
-verwachte uitkering, dus elke waarderingsformule in deze reeks gebruikt het
-rekenkundige. Het meetkundig gemiddelde zegt wat een belegger na dertig jaar
-overhoudt.
+Welk van de twee gemiddelden is het juiste? Ze zijn allebei juist, maar elk voor een
+andere vraag. Het rekenkundig gemiddelde
+schat het verwachte rendement zuiver, en omdat een prijs een verwachte uitkering is,
+gebruikt elke waarderingsformule in deze reeks het rekenkundige. Het meetkundig
+gemiddelde zegt daarentegen wat een belegger na dertig jaar overhoudt.
 
 ### Annualisatie en de wortel-$t$-regel
 
 Over $k$ perioden groeit het verwachte logrendement met $k$ en de
-standaarddeviatie met $\sqrt{k}$. *Waarom zou dit waar zijn?* Een belegger die $k$
-jaar vasthoudt, ziet goede en slechte jaren elkaar deels opheffen. Zijn verwachte
-opbrengst groeit met het aantal jaren, zijn spreiding trager. Zijn
-$\ell_{t+1}$ onafhankelijk en gelijk verdeeld met gemiddelde $\nu$ en variantie
+standaarddeviatie met $\sqrt{k}$. Een belegger die $k$ jaar vasthoudt, ziet goede en
+slechte jaren elkaar immers deels
+opheffen, zodat zijn verwachte opbrengst met het aantal jaren groeit en zijn spreiding
+trager. Zijn de $\ell_{t+1}$ onafhankelijk en gelijk verdeeld met gemiddelde $\nu$ en
+variantie
 $\sigma^2$ per periode, dan volgt uit [](#eq-rendementen-additief)
 
 ```{math}
@@ -349,16 +356,18 @@ $\sigma^2$ per periode, dan volgt uit [](#eq-rendementen-additief)
 \SD\!\left(\ell_{t\to t+k}\right) = \sqrt{k}\,\sigma .
 ```
 
-In woorden: verwachting en variantie groeien met $k$, de standaarddeviatie met
-$\sqrt{k}$. Met $n$ perioden per jaar ($n = 12$ voor maanddata) zijn de
-geannualiseerde grootheden dus $n\bar\ell$ en $\sqrt{n}\,\hat\sigma$.
+Verwachting en variantie groeien dus met $k$, terwijl de standaarddeviatie alleen met
+$\sqrt{k}$ groeit. Met $n$ perioden per jaar ($n =
+12$ voor maanddata) zijn de geannualiseerde grootheden daarom $n\bar\ell$ en
+$\sqrt{n}\,\hat\sigma$.
 
-Uit die asymmetrie tussen $k$ en $\sqrt{k}$ volgt de rest van de lecture. De
+Uit die asymmetrie tussen $k$ en $\sqrt{k}$ volgt de rest van het college. De
 verhouding van verwacht rendement tot standaarddeviatie, het signaal per eenheid
-ruis, groeit daardoor met $\sqrt{k}$. Voor de markt is ze per dag 0,04: het
-signaal is een vijfentwintigste van de ruis. Per jaar, met ongeveer 263
-handelsdagen, is ze $0{,}04 \times \sqrt{263} \approx 0{,}65$. De dagtabel in de
-replicatie rekent beide uit. Voor de premie heet deze verhouding de
+ruis, groeit daardoor met $\sqrt{k}$. Voor de markt is die verhouding per dag 0,04, zodat
+het signaal een vijfentwintigste
+van de ruis is. Per jaar, met ongeveer 263 handelsdagen, wordt ze $0{,}04 \times
+\sqrt{263} \approx 0{,}65$, en de tabel met maand- en dagdata in de replicatie rekent
+beide uit. Voor de premie heet deze verhouding de
 *Sharpe-ratio*.
 
 (sec-rendementen-standaardfout)=
@@ -366,18 +375,16 @@ replicatie rekent beide uit. Voor de premie heet deze verhouding de
 ### Het kernresultaat: de standaardfout van 2%
 
 Een gemiddeld rendement wordt nauwkeuriger met de wortel van het aantal jaren,
-niet met het aantal jaren zelf.
-
-*Waarom zou dit waar zijn?* Een onderzoeker die
-$T$ jaren middelt, laat toevallige goede en slechte jaren tegen elkaar wegvallen,
-maar dat gaat langzaam. In de finance knelt dat: de volatiliteit is groot, de
-premie klein, en het aantal jaren begrensd door de geschiedenis.
+niet met het aantal jaren zelf. *Waarom zou dit waar zijn?* Een onderzoeker die $T$
+jaren middelt, laat toevallige goede en slechte jaren tegen elkaar wegvallen, maar dat
+gaat langzaam. In de financiële economie knelt dat, omdat de volatiliteit groot is, de
+premie klein en het aantal jaren begrensd door de geschiedenis.
 
 :::{prf:theorem} De standaardfout van het gemiddelde rendement
 :label: thm-rendementen-se
 
-Zij $r_1,\dots,r_T$ onafhankelijk en gelijk verdeeld met gemiddelde $\mu$ en
-standaarddeviatie $\sigma$. Dan is $\bar r = T^{-1}\sum_t r_t$ zuiver en
+Stel dat $r_1,\dots,r_T$ onafhankelijk en gelijk verdeeld zijn met gemiddelde $\mu$
+en standaarddeviatie $\sigma$. Dan is $\bar r = T^{-1}\sum_t r_t$ zuiver en
 
 ```{math}
 :label: eq-rendementen-se
@@ -391,40 +398,44 @@ zijn en dezelfde variantie hebben.
 $\square$
 :::
 
-In woorden: de standaardfout van het gemiddelde is de volatiliteit gedeeld door
-de wortel van het aantal jaren. Ze geldt voor elke reeks rendementen, simpel of
-log, premie of totaalrendement; alleen $\sigma$ verschilt. Voor de drie jaren uit het toy-voorbeeld schatten
-we $\sigma$ met $s^2 = 0{,}105/2 = 0{,}0525$, dus $s = 22{,}9\%$. Delen door
-$T - 1 = 2$ corrigeert ervoor dat het gemiddelde zelf geschat is. Stap 4 deelde
-door drie en gaf 18,7%. Daar ging het om de drie jaren zelf, hier om het proces
-waaruit ze komen. De standaardfout is dan $22{,}9/\sqrt{3} = 13{,}2$ procentpunt, ruim
-tweeënhalf keer de 5% die we maten.
+De standaardfout van het gemiddelde is dus de volatiliteit gedeeld door de wortel van
+het aantal jaren. Die regel geldt voor elke reeks rendementen, simpel of log, premie
+of totaalrendement, en alleen $\sigma$ verschilt.
+
+Voor de drie jaren uit het toy-voorbeeld moeten we $\sigma$ eerst schatten. Stap 4
+deelde de kwadratensom door drie en beschreef zo de spreiding van de drie jaren zelf.
+Hier gaat het om het proces waaruit ze komen, en omdat ook het gemiddelde geschat is,
+delen we door $T - 1 = 2$. Dat geeft $s^2 = 0{,}0525$ en $s = 22{,}9\%$, iets meer dan
+de $\hat\sigma$ uit stap 4. De standaardfout is dan $22{,}9/\sqrt{3} = 13{,}2$
+procentpunt, ruim tweeënhalf keer het gemeten gemiddelde.
 
 Met $\sigma = 20\%$ en $T = 100$ jaar is
-$\SD(\bar r) = 20/\sqrt{100} = 2$ procentpunt. Dat is de standaardfout van 2%
-waar deze reeks omheen is gebouwd: een eeuw data kent een gemiddeld jaarrendement
-op twee procentpunt na. Een 95%-interval is ongeveer twee standaardfouten naar
-weerszijden. Rond een geschatte premie van 6% loopt het van 2% tot 10%: van een
-markt die risico nauwelijks beloont tot een die dat royaal doet.
+$\SD(\bar r) = 20/\sqrt{100} = 2$ procentpunt. Die onzekerheid komt in elk later
+college terug, want een eeuw data kent een gemiddeld jaarrendement maar op twee
+procentpunt na. Een 95%-interval reikt
+ongeveer twee standaardfouten naar weerszijden, zodat het rond een geschatte premie
+van 6% van 2% tot 10% loopt, van een markt die risico nauwelijks beloont tot een die
+dat royaal doet.
 
-Hoeveel jaren zijn nodig om een verschil te zien? De $t$-waarde van het
-gemiddelde is $\mu\sqrt{T}/\sigma$. Stel die gelijk aan een gewenste $t$-waarde
-$\tau$, bijvoorbeeld 2, en los op naar $T$:
+Hoeveel jaren zijn nodig om een verschil te zien? De $t$-waarde van het gemiddelde is
+$\mu\sqrt{T}/\sigma$, en als we die gelijkstellen
+aan een gewenste $t$-waarde $\tau$, bijvoorbeeld 2, en oplossen naar $T$, vinden we
 
 ```{math}
 :label: eq-rendementen-jaren
 T^{*} = \left(\frac{\tau\,\sigma}{\mu}\right)^{2} .
 ```
 
-In woorden: het aantal benodigde jaren groeit kwadratisch naarmate het te vinden
-verschil $\mu$ kleiner is. Om twee hypothesen $\mu_1 > \mu_0$ te scheiden,
+Het aantal benodigde jaren groeit dus kwadratisch naarmate het te vinden verschil
+$\mu$ kleiner is. Om twee hypothesen $\mu_1 > \mu_0$ te scheiden,
 vervangen we $\mu$ door $\mu_1 - \mu_0$.
 
 Het antwoord heeft twee kanten. Om een premie van 6% met $\tau = 2$ van nul te
-onderscheiden, zijn $(2 \times 0{,}20/0{,}06)^2 \approx 44$ jaar nodig. Daarom
-betwijfelt vrijwel niemand dat er een premie is. Maar stel dat twee verklaringen
-van de premie 4% en 6% voorspellen. Om die te scheiden zijn
-$(2 \times 0{,}20/0{,}02)^2 = 400$ jaar nodig. De tabel rekent
+onderscheiden, zijn $(2 \times 0{,}20/0{,}06)^2 \approx 44$ jaar nodig, en daarom
+betwijfelt vrijwel
+niemand dat er een premie is. Voorspellen twee verklaringen van de premie echter 4% en
+6%, dan zijn er $(2 \times 0{,}20/0{,}02)^2 = 400$ jaar nodig om ze te scheiden. De tabel
+rekent
 [](#eq-rendementen-jaren) uit voor vijf vragen, bij $\sigma = 20\%$.
 
 ```{code-cell} ipython3
@@ -451,31 +462,33 @@ targets = pd.DataFrame(
 targets.round(0)
 ```
 
-Alleen de eerste vraag past binnen een eeuw. Of er een premie is, valt te
-beantwoorden. Hoe groot hij is, vraagt honderden tot duizenden jaren. Zo lost de
-theorie de derde voorspelling uit de intuïtie in.
+Alleen de eerste vraag past binnen een eeuw. Of er een premie is, valt dus te
+beantwoorden, maar hoe groot hij is, vraagt honderden tot duizenden jaren. Na een eeuw
+blijft het gemiddelde dus enkele procentpunten onzeker, zoals de verhouding van ruis tot
+signaal in de intuïtie al deed vermoeden.
 
 ### Merton (1980): waarom fijner meten niet helpt
 
 Vaker kijken maakt de schatting van de variantie scherper, maar niet die van het
-verwachte rendement. *Waarom zou dit waar zijn?* Een onderzoeker die het jaar
-opknipt in maanden of minuten, verdeelt hetzelfde totale logrendement over meer
-stukjes. Volgens [](#eq-rendementen-additief) is de som van die stukjes het
-logrendement van begin tot eind, en dat verandert niet. De volatiliteit meet hij
-met de som van de *kwadraten* van de stukjes, en meer kwadraten geven een
+verwachte rendement. Hoe kan dat? Een onderzoeker die het jaar opknipt in maanden of
+minuten, verdeelt
+hetzelfde totale logrendement over meer stukjes. Volgens [](#eq-rendementen-additief)
+is de som van die stukjes het logrendement van begin tot eind, en die som verandert
+niet. De volatiliteit meet hij daarentegen met de som van de *kwadraten* van de stukjes,
+en meer kwadraten geven een
 nauwkeuriger schatting.
 
-In de stelling is $W_t$ een standaard Brownse beweging: een random walk in
-continue tijd met $\Var(W_t) = t$. De drift $\nu$ is het verwachte logrendement
-per jaar, en $\sigma$ zoals afgesproken de volatiliteit van het logrendement.
-De *maximum-likelihoodschatters* zijn de parameters die de
-waargenomen stappen het waarschijnlijkst maken. Bij normale stappen zijn dat het
-gemiddelde en de variantie van de stappen.
+In de stelling is $W_t$ een standaard Brownse beweging, een random walk in
+continue tijd met $\Var(W_t) = t$. De drift $\nu$ is het verwachte logrendement per jaar,
+en $\sigma$ is zoals
+afgesproken de volatiliteit van het logrendement. De *maximum-likelihoodschatters*
+zijn de parameterwaarden die de waargenomen stappen het waarschijnlijkst maken, en bij
+normale stappen zijn dat het gemiddelde en de variantie van de stappen.
 
 :::{prf:theorem} Merton (1980): frequentie versus kalenderlengte
 :label: thm-rendementen-merton
 
-Zij de logprijs een Brownse beweging met drift,
+Stel dat de logprijs een Brownse beweging met drift is,
 $d\log p_t = \nu\,dt + \sigma\,dW_t$, waargenomen over $T$ jaar op $n$ tijdstippen
 per jaar, dus met $N = nT$ waarnemingen. Dan hangt de precisie van de
 maximum-likelihoodschatter van de drift alleen af van $T$, en die van de
@@ -491,9 +504,9 @@ variantie van $N$:
 ```
 :::
 
-In woorden: de geschatte drift is het totale logrendement gedeeld door het
-aantal jaren. Zijn variantie hangt alleen van de kalenderlengte $T$ af, die van
-$\hat\sigma^2$ van het aantal waarnemingen $N$. Het bewijs staat ingeklapt.
+De geschatte drift is dus het totale logrendement gedeeld door het aantal jaren. De
+variantie van die schatter hangt alleen van de kalenderlengte $T$ af, terwijl die van
+$\hat\sigma^2$ van het aantal waarnemingen $N$ afhangt. Het bewijs staat ingeklapt.
 
 :::{prf:proof}
 :class: dropdown
@@ -511,33 +524,32 @@ $$
 want in de som vallen alle tussenliggende koersen tegen elkaar weg. De variantie
 is $\Var(\log p_T-\log p_0)/T^2 = \sigma^2 T/T^2 = \sigma^2/T$, onafhankelijk van $n$.
 
-Voor de variantie: $\hat\sigma^2 = (N\Delta)^{-1}\sum_i (\ell_i - \bar\ell)^2$.
+Voor de variantie geldt $\hat\sigma^2 = (N\Delta)^{-1}\sum_i (\ell_i - \bar\ell)^2$.
 Omdat de stappen normaal zijn, is
 $\sum_i(\ell_i-\bar\ell)^2/(\sigma^2\Delta) \sim \chi^2_{N-1}$, met variantie
 $2(N-1)$. Dus $\Var(\hat\sigma^2) = 2\sigma^4(N-1)/N^2 \approx 2\sigma^4/N$.
 $\square$
 :::
 
-De drift is een eigenschap van het pad als geheel. Honderd jaar dagkoersen
-bevatten daarover evenveel informatie als twee koersen: de eerste en de laatste.
-Alles daartussen zegt iets over de variantie. Bij 100 jaarwaarnemingen is de
+De drift is een eigenschap van het pad als geheel, zodat honderd jaar dagkoersen
+daarover evenveel informatie bevatten als twee koersen, de eerste en de laatste. Alles
+daartussen zegt iets over de variantie. Bij 100 jaarwaarnemingen is de
 relatieve standaardfout van de variantie $\sqrt{2/100} = 14\%$, bij
-$100 \times 252 = 25\,200$ dagwaarnemingen 0,9%. Zo lost de stelling de eerste
-voorspelling uit de intuïtie in: net als bij de windmeter verandert vaker meten
-niets aan het totaal, en alles aan wat we over de schommeling weten.
+$100 \times 252 = 25\,200$ dagwaarnemingen 0,9%. Net als bij de meetpaal verandert
+vaker meten dus niets aan het totaal en alles aan wat we over de schommeling weten.
 
 ### Wanneer de aannames niet gelden: autocorrelatie en dikke staarten
 
-[De standaardfout van 2%](#sec-rendementen-standaardfout) blijft ook zonder
-onafhankelijkheid en normaliteit vrijwel staan. Autocorrelatie maakt hem iets
-groter, dikke staarten laten hem ongemoeid.
+Ook zonder onafhankelijkheid en normaliteit verandert er weinig aan
+[de standaardfout van 2%](#sec-rendementen-standaardfout). Autocorrelatie maakt hem iets
+groter, terwijl dikke staarten hem ongemoeid laten.
 
-**Autocorrelatie.** *Waarom zou dit waar zijn?* Volgt op een goede maand vaak
-weer een goede, dan versterken de schokken elkaar, en wordt de spreiding over een
-jaar groter dan de wortel-$t$-regel zegt. Volgt op goed vaak slecht, dan wordt ze
-kleiner. Laat $\rho_j = \Corr(\ell_t,\ell_{t-j})$ de autocorrelatie bij lag $j$
-zijn: de correlatie tussen een rendement en dat van $j$ perioden eerder. Voor de
-som van $q$ opeenvolgende logrendementen geldt
+**Autocorrelatie.** Volgt op een goede maand vaak weer een goede, dan versterken de
+schokken elkaar en wordt de spreiding over een jaar groter dan de wortel-$t$-regel
+zegt. Volgt op goed vaak slecht, dan wordt die spreiding juist kleiner. Laat $\rho_j =
+\Corr(\ell_t,\ell_{t-j})$ de autocorrelatie bij lag $j$ zijn, dus de correlatie tussen
+een rendement en dat van $j$ perioden eerder. Voor de som van $q$ opeenvolgende
+logrendementen geldt dan
 
 ```{math}
 :label: eq-rendementen-vr
@@ -546,27 +558,27 @@ som van $q$ opeenvolgende logrendementen geldt
   \left[1 + 2\sum_{j=1}^{q-1}\left(1-\frac{j}{q}\right)\rho_j\right] .
 ```
 
-In woorden: de variantie over $q$ perioden is $q$ keer de variantie per periode,
-maal een correctie. Die correctie tussen haken heet de *variance ratio* $VR(q)$:
-één onder een random walk, boven één bij positieve en onder één bij negatieve
-autocorrelatie. De toets
-erop is van {cite:t}`LoMacKinlay1988`.
+De variantie over $q$ perioden is dus $q$ keer de variantie per periode, maal een
+correctie. Die correctie tussen haken heet de *variance ratio* $VR(q)$, en ze is één
+onder een random walk, groter dan één bij positieve en kleiner dan één bij negatieve
+autocorrelatie. De bijbehorende toets is van {cite:t}`LoMacKinlay1988`.
 
 De standaardfout van het gemiddelde krijgt dezelfde correctie. Met $N$
 waarnemingen op één frequentie, en $\sigma$ en $VR$ op die frequentie, wordt
-ze $\sigma\sqrt{VR(N)}/\sqrt{N}$. Neem maandrendementen: $N = 1200$ maanden,
-met een autocorrelatie bij lag 1 van 0,085 (zie de replicatie). Met alleen die
-ene autocorrelatie is $VR(1200) \approx 1 + 2 \times 0{,}085 = 1{,}17$, en de
-standaardfout groeit met $\sqrt{1{,}17} \approx 1{,}08$: van 2,0 naar ongeveer 2,2
-procentpunt. De conclusie verandert niet.
+ze $\sigma\sqrt{VR(N)}/\sqrt{N}$. Een eeuw maandrendementen geeft $N \approx 1200$, met
+een autocorrelatie bij lag 1 van 0,085 (zie de replicatie). Omdat de hogere lags
+elkaar grotendeels opheffen, nemen we alleen die ene autocorrelatie, en dan is $VR(1200) \approx 1 + 2
+\times 0{,}085 = 1{,}17$, zodat de standaardfout met een factor $\sqrt{1{,}17} \approx
+1{,}08$ groeit, van 2,0 naar ongeveer 2,2 procentpunt. Aan de conclusie verandert dat
+niets.
 
 **Dikke staarten.** {cite:t}`Mandelbrot1963` en {cite:t}`Fama1965` lieten zien
 dat dagelijkse koersveranderingen veel te veel massa in de staarten hebben voor
-een normale verdeling. De maat is de *kurtosis*
-$\kappa = \E[(\ell-\nu)^4]/\sigma^4$, het vierde gestandaardiseerde moment: drie
-onder normaliteit. Tabellen rapporteren meestal de *excess kurtosis*
-$\kappa - 3$. Voor dagelijkse logrendementen van de markt is die ongeveer
-zeventien, zoals de replicatie laat zien, dus $\kappa \approx 20$.
+een normale verdeling. De maat daarvoor is de *kurtosis* $\kappa = \E[(\ell-\nu)^4]/\sigma^4$,
+het vierde
+gestandaardiseerde moment, dat onder normaliteit drie is. Tabellen rapporteren meestal
+de *excess kurtosis* $\kappa - 3$, en voor dagelijkse logrendementen van de markt is
+die ongeveer zeventien, zoals de replicatie laat zien, zodat $\kappa \approx 20$.
 
 De variantieschatter is een gemiddelde van $N$ gekwadrateerde afwijkingen, die we
 nog wel onafhankelijk nemen. Eén kwadraat heeft variantie
@@ -582,10 +594,10 @@ Links staat het gemiddelde logrendement per jaar over $T$ jaar, met $\sigma$ per
 jaar. Rechts staat de variantie per waarneming, geschat uit $N$ waarnemingen, met
 $\sigma$ per waarneming. Bij $\kappa = 3$ staat er de $2\sigma^4/N$ van Merton.
 
-De eerste formule bevat
-geen kurtosis: zolang de variantie eindig is, laten dikke staarten de
-standaardfout van het gemiddelde ongemoeid. De tweede wel. Bij $\kappa \approx 20$
-is de standaardfout van de variantieschatting $\sqrt{19/2} \approx 3$ keer zo
+De eerste formule bevat geen kurtosis, zodat dikke staarten de standaardfout van het
+gemiddelde ongemoeid laten zolang de variantie eindig is. De tweede formule bevat de
+kurtosis wel, en bij $\kappa \approx 20$ is de standaardfout van de variantieschatting
+$\sqrt{19/2} \approx 3$ keer zo
 groot als onder normaliteit. Dikke staarten kosten dus alleen precisie in de
 grootheid die we al goed kenden.
 
@@ -599,30 +611,30 @@ grootheid die we al goed kenden.
   $\sqrt{k}$, [](#eq-rendementen-wortelt).
 
 - De standaardfout van het gemiddelde is $\sigma/\sqrt{T}$,
-  [](#eq-rendementen-se): bij $\sigma = 20\%$ en een eeuw data twee procentpunt.
+  [](#eq-rendementen-se), en dat is bij $\sigma = 20\%$ en een eeuw data twee procentpunt.
 
 - Die precisie hangt alleen af van de kalenderlengte, die van de variantie ook
   van de frequentie, [](#eq-rendementen-merton).
 
-- De simulatie hierna vraagt: wat gebeurt er met beide standaardfouten als we
-  dezelfde honderd jaar steeds fijner bekijken?
+- De simulatie hierna laat zien hoe beide standaardfouten reageren als we
+  honderd jaar gesimuleerde logprijzen steeds vaker waarnemen.
 ```
 
 ## Simulatie: de frequentie van waarnemen
 
-De simulatie beantwoordt één vraag over steekproeven: wat gebeurt er met de
-schatters van gemiddelde en variantie als we dezelfde honderd jaar steeds fijner
-bekijken? We bouwen een
-wereld waarin de logprijs een Brownse beweging volgt met een drift van 8% en een
-volatiliteit van 20% per jaar. De 8% is de drift $\nu$ van het logrendement: een totaalrendement, geen premie.
-Voor de standaardfout doet de drift er niet toe:
-die hangt volgens [](#eq-rendementen-se) alleen van de 20% af.
+Wat gebeurt er met de schatters van gemiddelde en variantie als we dezelfde honderd
+jaar steeds fijner bekijken? Om dat te zien bouwen we een wereld waarin de logprijs een
+Brownse beweging volgt met een drift van 8% en een
+volatiliteit van 20% per jaar. De 8% is de drift $\nu$ van het logrendement, dus een
+totaalrendement en geen premie.
+Voor de standaardfout maakt de drift niet uit, omdat de standaardfout volgens
+[](#eq-rendementen-se) alleen van de 20% afhangt.
 
 We genereren tweeduizend paden van honderd jaar met 252 handelsdagen per jaar.
-Elk pad bekijken we jaarlijks, per kwartaal, per maand en per dag: we lezen de
-logprijs af op $k$ momenten per jaar, dus elke $252/k$-ste dagkoers, en nemen de
-verschillen. De cel werkt in
-acht blokken van 250 paden, om geheugen te sparen.
+Elk pad bekijken we jaarlijks, per kwartaal, per maand en per dag, door de logprijs af
+te lezen op $k$ momenten per jaar, dus elke $252/k$-ste dagkoers, en daarvan de
+verschillen te nemen. Om geheugen te sparen werkt de cel in acht blokken van 250
+paden.
 
 ```{code-cell} ipython3
 n_paths, n_years, per_year = 2000, 100, 252
@@ -642,7 +654,7 @@ for block in np.array_split(np.arange(n_paths), 8):
     for name, k in freqs.items():
         step = per_year // k                            # dagen tussen twee waarnemingen
         observed = log_price[:, ::step]                 # elke step-de dagkoers
-        returns_k = np.diff(observed, axis=1)          # logrendement per periode
+        returns_k = np.diff(observed, axis=1)           # logrendement per periode
         means[name].append(returns_k.mean(axis=1) * k)
         variances[name].append(returns_k.var(axis=1, ddof=1) * k)
 
@@ -672,14 +684,14 @@ frequency.round(4)
 ```
 
 Het aantal waarnemingen groeit met een factor 252, maar de standaardfout van het
-gemiddelde blijft exact 1,99 procentpunt. Volgens [](#eq-rendementen-merton) is
-de schatter bij elke frequentie dezelfde functie van het pad: laatste min eerste
-logprijs, gedeeld door honderd. De relatieve fout van de variantie daalt
+gemiddelde blijft precies 1,99 procentpunt. Dat komt doordat de schatter volgens
+[](#eq-rendementen-merton) bij elke frequentie uitkomt op laatste min eerste logprijs,
+gedeeld door honderd. De relatieve fout van de variantie daalt
 intussen van 14% naar 0,9%, zoals $\sqrt{2/N}$ voorspelt.
 
-De figuur toont beide schatters voor jaarlijkse en dagelijkse waarneming. Let op
-de breedte van de histogrammen: links is maar één histogram zichtbaar, omdat de
-twee exact samenvallen.
+De figuur toont beide schatters bij jaarlijkse en dagelijkse waarneming, en het gaat
+vooral om de breedte van de histogrammen. Links is maar één histogram zichtbaar, omdat
+de twee precies samenvallen.
 
 ```{code-cell} ipython3
 :label: cel-rendementen-frequentie
@@ -715,15 +727,15 @@ plt.show()
 :label: fig-rendementen-frequentie
 :width: 100%
 
-Tweeduizend keer honderd jaar, twee keer bekeken. Links: het geschatte
-gemiddelde heeft bij jaarlijkse en dagelijkse waarneming dezelfde verdeling, want de
-twee histogrammen vallen samen. Rechts: de geschatte volatiliteit krimpt bij
-dagelijkse waarneming tot een streep. Alle extra informatie gaat naar de
-variantie.
+Elk van de tweeduizend gesimuleerde eeuwen is twee keer bekeken. Links heeft het
+geschatte gemiddelde bij jaarlijkse en dagelijkse waarneming dezelfde verdeling, want
+de twee histogrammen vallen samen. Rechts krimpt de geschatte volatiliteit bij
+dagelijkse waarneming tot een streep, zodat alle extra informatie naar de variantie
+gaat.
 :::
 
-Wie een verwacht rendement wil kennen, heeft geschiedenis nodig, en die komt op
-één snelheid binnen.
+Om een verwacht rendement te kennen is dus geschiedenis nodig, en die komt op één
+snelheid binnen. Geen meetfrequentie kan dat tempo opvoeren.
 
 ```{warning}
 Met 25 200 dagwaarnemingen lijkt een $t$-waarde op het gemiddelde veel
@@ -742,24 +754,25 @@ onzekerheid van iets anders dan hij beweert te meten.
 Common Stocks*, The Journal of Business 37(1), 1964, 1–21
 {cite}`FisherLorie1964`.
 
-**Wat.** Het hoofdresultaat: gelijke bedragen in elk NYSE-aandeel, gekocht in
-januari 1926 en met herbelegde dividenden vastgehouden tot december 1960, gaven
-een meetkundig gemiddelde van 9,0% per jaar. Het getal zonder herbelegging, 6,9%,
+**Wat.** Het hoofdresultaat is dat gelijke bedragen in elk NYSE-aandeel, gekocht in
+januari 1926 en met herbelegde dividenden vastgehouden tot december 1960, een
+meetkundig gemiddelde van 9,0% per jaar gaven. Het getal zonder herbelegging, 6,9%,
 repliceren we niet.
 
-**Data hier.** De maandelijkse value-weighted markt en de tien equal-weighted
-size-decielen (portefeuilles gesorteerd op marktwaarde) uit de Kenneth French
-Data Library, juli 1926 tot en met december 1960: zes maanden korter.
+**Data hier.** We gebruiken de maandelijkse waardegewogen (*value-weighted*) markt en
+de tien gelijkgewogen (*equal-weighted*) grootte-decielen (portefeuilles gesorteerd op
+marktwaarde) uit de Kenneth French Data Library. De reeksen lopen van juli 1926 tot en met december
+1960, zes maanden korter dan het origineel.
 
-**Verschil met het origineel.** Fisher en Lorie herbalanceerden nooit: een
-aandeel dat verdubbelt, weegt daarna dubbel, zodat hun portefeuille na enkele
-jaren op de value-weighted markt lijkt. Die is dus de replicatie, de maandelijks
-herbalanceerde equal-weighted reeks de controle.
+**Verschil met het origineel.** Fisher en Lorie herbalanceerden nooit, zodat een
+aandeel dat verdubbelt daarna dubbel weegt en hun portefeuille na enkele jaren op de
+waardegewogen markt lijkt. De waardegewogen markt is dus de replicatie, en de
+maandelijks herbalanceerde gelijkgewogen reeks de controle.
 
-**Verwachte afwijking.** De value-weighted markt binnen ongeveer één procentpunt
-van 9,0%: dezelfde beurs, dezelfde periode, dezelfde CRSP-bron. De
-equal-weighted variant moet *hoger* uitkomen, omdat kleine aandelen het in deze
-periode beter deden. Komt hij lager uit, dan zit er een fout in de code.
+**Verwachte afwijking.** We verwachten de waardegewogen markt binnen ongeveer één
+procentpunt van 9,0%, want het gaat om dezelfde beurs, dezelfde periode en dezelfde
+CRSP-bron. De gelijkgewogen variant moet *hoger* uitkomen, omdat kleine aandelen het
+in deze periode beter deden, en komt hij lager uit, dan zit er een fout in de code.
 ```
 
 We laden de twee reeksen.
@@ -777,8 +790,9 @@ equal_weighted = size_ew[deciles].loc[sample].mean(axis=1)
 ```
 
 Per reeks berekenen we het meetkundig en het rekenkundig gemiddelde per jaar, de
-volatiliteit en de standaardfout van het rekenkundig gemiddelde. De functie werkt
-voor elke frequentie, en we gebruiken haar straks ook voor dagdata.
+volatiliteit en de standaardfout van het rekenkundig gemiddelde. Omdat de functie voor
+elke frequentie werkt, gebruiken we dezelfde functie straks ook
+voor dagdata.
 
 ```{code-cell} ipython3
 def annual_summary(returns: pd.Series, per_year: float = 12) -> dict[str, float]:
@@ -791,30 +805,31 @@ def annual_summary(returns: pd.Series, per_year: float = 12) -> dict[str, float]
         "meetkundig": (1 + returns).prod() ** (1 / years) - 1,
         "rekenkundig": per_year * returns.mean(),
         "volatiliteit": sd_ann,
-        "SE van het gemiddelde": sd_ann / np.sqrt(years),
+        "standaardfout gemiddelde": sd_ann / np.sqrt(years),
     }
 
 
 fisher_lorie = pd.DataFrame(
     {
-        "value-weighted markt": annual_summary(value_weighted),
-        "equal-weighted (10 size-decielen)": annual_summary(equal_weighted),
+        "waardegewogen markt": annual_summary(value_weighted),
+        "gelijkgewogen (10 grootte-decielen)": annual_summary(equal_weighted),
     }
 ).T
 fisher_lorie.round(4)
 ```
 
-De value-weighted markt heeft een volatiliteit van 22,9%, dezelfde als de drie
+De waardegewogen markt heeft een volatiliteit van 22,9%, dezelfde als de drie
 jaren van het toy-voorbeeld. Het rekenkundig gemiddelde ligt ruim twee
-procentpunt boven het meetkundige, van de orde van de halve variantie
-$0{,}229^2/2 \approx 2{,}6$ procentpunt. De tabel hieronder zet het meetkundig
+procentpunt boven het meetkundige, in de orde van de halve variantie van
+$0{,}229^2/2 \approx 2{,}6$ procentpunt, want het recept is een benadering die bij een
+crash als 1929–1932 minder goed past. De volgende tabel zet het meetkundig
 gemiddelde naast het gepubliceerde getal.
 
 ```{code-cell} ipython3
 published = 0.090    # Fisher en Lorie (1964), met herbelegde dividenden
 replicated = fisher_lorie["meetkundig"]
 
-se = fisher_lorie["SE van het gemiddelde"]
+se = fisher_lorie["standaardfout gemiddelde"]
 
 pd.DataFrame(
     {"origineel": published, "hier": replicated, "verschil": replicated - published,
@@ -823,30 +838,31 @@ pd.DataFrame(
 ).round(4)
 ```
 
-**Geslaagd.** De value-weighted markt ligt een half procentpunt boven de 9,0%,
-binnen het ene procentpunt dat het replicatieblok verwachtte. De equal-weighted
-variant ligt zoals verwacht hoger. Dat verschil scheidt twee effecten niet.
-Kleine aandelen deden het beter. En bij kleine aandelen springt de slotkoers
-heen en weer tussen bied- en laatkoers (*bid-ask bounce*). Maandelijks
-herbalanceren verkoopt na elke sprong omhoog en koopt na elke sprong omlaag, en
-boekt dat heen-en-weer zo als rendement.
+**Geslaagd.** De waardegewogen markt ligt een half procentpunt boven de 9,0%, binnen
+het ene procentpunt dat we vooraf verwachtten. De gelijkgewogen variant ligt zoals
+verwacht hoger, maar in dat verschil zitten twee effecten die we niet kunnen scheiden.
+Kleine aandelen deden het beter, en bovendien springt bij kleine aandelen de slotkoers
+heen en weer tussen bied- en laatkoers (*bid-ask bounce*). Een portefeuille die elke
+maand herbalanceert, verkoopt na elke sprong omhoog en koopt na elke sprong omlaag, en
+boekt het heen-en-weer zo als rendement.
 
-De onzekerheid werd in 1964 niet gerapporteerd. Het interval in de tabel
-gebruikt de standaardfout van het rekenkundig gemiddelde, 3,9 procentpunt: het
-meetkundig gemiddelde ligt een vaste halve variantie lager en is even onzeker.
-Voor de value-weighted markt loopt het interval van ongeveer 2% tot 17%. Het
-beroemde 9,0% zei dus weinig meer dan dat het rendement positief was.
+In 1964 werd de onzekerheid niet gerapporteerd. Het interval in de tabel gebruikt de
+standaardfout van het rekenkundig gemiddelde, 3,9 procentpunt. Het meetkundig
+gemiddelde ligt ongeveer een halve variantie lager, en omdat de variantie volgens Merton
+veel nauwkeuriger bekend is dan het gemiddelde, is het vrijwel even onzeker. Voor de
+waardegewogen markt loopt het interval van ongeveer 2% tot 17%, zodat het beroemde
+9,0% weinig meer zei dan dat het rendement positief was.
 
-De figuur toont het pad van één dollar. Let op waar de lijnen eindigen ten
-opzichte van het groeipad van 9,0%, en op de val van 1929–1932.
+De figuur toont het pad van één dollar. Van belang zijn vooral waar de lijnen eindigen
+ten opzichte van het groeipad van 9,0%, en de val van 1929–1932.
 
 ```{code-cell} ipython3
 :label: cel-rendementen-fisherlorie
 :tags: [hide-input]
 
 cumulative = pd.DataFrame(
-    {"value-weighted": (1 + value_weighted).cumprod(),
-     "equal-weighted": (1 + equal_weighted).cumprod()}
+    {"waardegewogen": (1 + value_weighted).cumprod(),
+     "gelijkgewogen": (1 + equal_weighted).cumprod()}
 )
 years_elapsed = np.arange(1, len(cumulative) + 1) / 12
 path_9pct = 1.09 ** years_elapsed
@@ -869,22 +885,22 @@ plt.show()
 :label: fig-rendementen-fisherlorie
 :width: 90%
 
-De periode die Fisher en Lorie bekeken. De stippellijn groeit met hun 9,0% per
-jaar. De value-weighted reeks eindigt er vlak boven, de equal-weighted reeks ver
-erboven. De crash van 1929–1932, een terugval van meer dan 80%, zit er volledig
-in. Daarom vonden tijdgenoten het resultaat opzienbarend: zelfs met de Grote
+De figuur beslaat de periode die Fisher en Lorie bekeken. De stippellijn groeit met
+hun 9,0% per jaar, en de waardegewogen reeks eindigt er vlak boven, de gelijkgewogen
+reeks ver erboven. De crash van 1929–1932, een terugval van meer dan 80%, valt er
+volledig in. Daarom vonden tijdgenoten het resultaat opzienbarend: zelfs met de Grote
 Depressie erbij was het langetermijnrendement ruim positief.
 :::
 
 ### Dezelfde eeuw, maand- en dagdata
 
 Deze subsectie en de volgende zijn geen replicatie maar illustraties van
-[](#thm-rendementen-merton) op echte data. De verwachting: dagdata verbeteren de
-standaardfout van het gemiddelde nauwelijks, en de schatting van volatiliteit en
-staarten sterk. We nemen de hele French-reeks van juli 1926 tot
-juli 2026, op maand- en op dagbasis. Tot 1952 werd ook op zaterdag gehandeld.
-Daarom annualiseren we de dagreeks met het werkelijke aantal handelsdagen per
-jaar, niet met 252.
+[](#thm-rendementen-merton) op echte data. We verwachten dat dagdata de standaardfout van
+het gemiddelde nauwelijks verbeteren,
+en de schatting van volatiliteit en staarten sterk. Daarvoor nemen we de hele
+French-reeks van juli 1926 tot juli 2026, op maand- en op dagbasis. Omdat tot 1952 ook
+op zaterdag werd gehandeld, annualiseren we de dagreeks met het werkelijke aantal
+handelsdagen per jaar, en niet met 252.
 
 ```{code-cell} ipython3
 market_monthly = hap_data.market_monthly()["Mkt"].dropna()
@@ -911,21 +927,22 @@ comparison = pd.DataFrame(
 comparison.round(4)
 ```
 
-De tabel laat zien wat de stelling van Merton voorspelt. De dagreeks heeft 22
-keer zoveel waarnemingen, maar de standaardfout van het gemiddelde daalt alleen
-van 1,83 naar 1,75 procentpunt. Ook die kleine daling komt van een lagere
-volatiliteit, niet van meer waarnemingen. De 1,83 is de gemeten tegenhanger van
-de standaardfout van 2%, met een gemeten volatiliteit onder de ronde 20%.
+De tabel laat zien wat de stelling van Merton voorspelt. De dagreeks heeft ruim
+twintig keer zoveel waarnemingen, maar de standaardfout van het gemiddelde daalt alleen
+van 1,83 naar 1,75 procentpunt. Zelfs die kleine daling komt van een lagere
+volatiliteit, en niet van meer waarnemingen. Dat de maandwaarde iets onder de twee
+procentpunt uit de theorie ligt, komt doordat de gemeten volatiliteit lager is dan de
+ronde waarde die we daar namen.
 
 Dat de volatiliteit op dagbasis lager uitvalt, volgt uit [](#eq-rendementen-vr)
 met dagen binnen een maand. Dagrendementen zijn licht positief gecorreleerd (zie
 de tabel hierna), zodat een maand meer schommelt dan de dagen apart doen
-vermoeden. De excess kurtosis springt omhoog: de dagreeks vertelt veel meer over
-de staarten en niets meer over het midden.
+vermoeden. De excess kurtosis springt omhoog, want de dagreeks vertelt veel meer over de
+staarten, maar niets meer over het midden.
 
 ### Wat wél in de data zit: clustering van volatiliteit
 
-Het rendement zelf heeft nauwelijks geheugen, de volatiliteit wel. De tabel toont
+Het rendement zelf heeft nauwelijks geheugen, maar de volatiliteit wel. De tabel toont
 de autocorrelatie van het logrendement en van het absolute logrendement, een maat
 voor de volatiliteit van die dag.
 
@@ -945,18 +962,19 @@ diagnostics.round(3)
 ```
 
 De autocorrelatie van het rendement is bij elke lag kleiner dan 0,09 en bij de
-meeste kleiner dan 0,03. Die van het absolute rendement is ongeveer 0,30, bij lag
-1 en nog bij lag 6: volatiliteit klontert. Zo staat de asymmetrie nog één keer
-in de data. De grootheid die we goed kunnen meten, is ook voorspelbaar. De
-grootheid die we slecht kunnen meten, vertoont nauwelijks een patroon.
+meeste kleiner dan 0,03. Die van het absolute rendement is ongeveer 0,30, bij lag 1 en nog
+steeds bij lag 6,
+zodat volatiliteit duidelijk klontert. Zo staat de asymmetrie nog één keer in de data,
+want de grootheid die we goed kunnen meten, is ook voorspelbaar, terwijl de grootheid
+die we slecht kunnen meten nauwelijks een patroon vertoont.
 
 ## Wat er brak, en wat daarna kwam
 
 **Wat de meetlat oplevert.** Met [](#eq-rendementen-additief),
 [](#eq-rendementen-wortelt) en [](#eq-rendementen-se) wordt elke bewering over
-een gemiddeld rendement een uitspraak met een standaardfout erbij. Die vertaling
-vraagt geen model, geen aanname over voorkeuren en geen theorie. Van elke
-schatter is de precisie bekend, en dat kunnen weinig vakgebieden van hun meetlat
+een gemiddeld rendement een uitspraak met een standaardfout erbij. Die vertaling vraagt
+geen model, geen aanname over voorkeuren en geen theorie, zodat
+van elke schatter de precisie bekend is. Dat kunnen weinig vakgebieden van hun meetlat
 zeggen.
 
 **Waar het breekt.** Het instrument is scherp genoeg om zijn eigen grenzen te
@@ -970,19 +988,20 @@ een paar procentpunt.
 **Risico of vergissing?** Stel dat de markt in 1932 goedkoop was. Volgens de
 Chicago-lezing (Fama: prijzen kloppen) eisten beleggers voor het risico van dat
 moment een hogere vergoeding. Volgens de Yale-lezing (Shiller: prijzen kunnen
-ernaast zitten) stond de prijs door paniek te laag. Beide voorspellen hoge
-rendementen na 1932. Ze verschillen in welk deel daarvan vergoeding voor risico
-was: het verwachte rendement volgens een risicomodel, tegen het rendement dat
-volgde. Is dat verschil twee procentpunt per jaar, dan kost het volgens
-[](#eq-rendementen-jaren) vierhonderd jaar data om het te zien, en een crisis
-levert er hooguit een paar. De data zijn te dun om te kiezen.
+ernaast zitten) stond de prijs door paniek te laag. Beide lezingen voorspellen hoge
+rendementen na 1932, maar ze verschillen in welk deel
+daarvan vergoeding voor risico was, dus in het verschil tussen het verwachte rendement
+volgens een risicomodel en het rendement dat werkelijk volgde. Is dat verschil twee
+procentpunt per jaar, dan kost het volgens [](#eq-rendementen-jaren) vierhonderd jaar
+data om het te zien, terwijl een crisis hooguit een paar jaar bruikbare data oplevert.
+Uit de data valt dus niet te kiezen tussen de twee lezingen.
 
 **Wat er daarna kwam.** De wortel-$t$-regel [](#eq-rendementen-wortelt) komt niet
-uit een statistiekboek maar van een handelsvloer. In 1863 schreef Jules Regnault,
-beambte aan de Parijse beurs, dat de koersuitslag met de wortel van de tijd
-groeit: 37 jaar vóór Bachelier. Daarover gaat [](#01-02-bachelier): de regel als
-empirisch feit, de Brownse beweging als model erachter, en de eerste toetsen of
-koersen geheugenloos zijn.
+uit een statistiekboek maar van een handelsvloer. In 1863, 37 jaar vóór Bachelier, schreef
+Jules Regnault, beambte aan de Parijse beurs,
+dat de koersuitslag met de wortel van de tijd groeit. Daarover gaat
+[](#01-02-bachelier), met de regel als empirisch feit, de Brownse beweging als model
+erachter en de eerste toetsen of koersen geheugenloos zijn.
 
 ## Oefeningen
 
@@ -1001,8 +1020,8 @@ koersen geheugenloos zijn.
 :::{solution} ex-rendementen-instap
 :class: dropdown
 
-**(1)** Geen enkel getal. De som, het product en de variantie hangen niet af van
-de volgorde.
+**(1)** Er verandert geen enkel getal. De som, het product en de variantie hangen
+immers niet af van de volgorde.
 
 **(2)** Het rekenkundig gemiddelde is $(0{,}25 - 0{,}30 + 0{,}10)/3 = 0{,}016667$.
 Het product van de bruto rendementen is $1{,}25 \times 0{,}70 \times 1{,}10 =
@@ -1026,9 +1045,8 @@ pd.Series({
 ```
 
 Het verschil groeit van 1,77 naar 2,93 procentpunt, omdat het grotere verlies de
-variantie vergroot. Het rekenkundig gemiddelde is nog positief, maar de belegger
-heeft geld verloren. Wat dit leert: een positief gemiddeld rendement zegt nog
-niets over het vermogen aan het eind.
+variantie vergroot. Het rekenkundig gemiddelde is nog positief, maar de belegger heeft geld verloren. Een
+positief gemiddeld rendement zegt dus nog niets over het vermogen aan het eind.
 :::
 
 :::{exercise}
@@ -1057,8 +1075,8 @@ $\E[\hat\nu] = \nu$ en $\Var(\hat\nu) = T\sigma^2/T^2 = \sigma^2/T$, zonder $n$.
 Elke stap is $n$ keer kleiner en $n$ keer minder variabel, maar er zijn er $n$
 keer zoveel.
 
-**(2)** Met [](#eq-rendementen-jaren), $\tau = 2$ en $\mu_1 - \mu_0 = 0{,}02$:
-$(2 \times 0{,}20/0{,}02)^2 = 400$ jaar bij $\sigma = 20\%$ en
+**(2)** We gebruiken [](#eq-rendementen-jaren) met $\tau = 2$ en $\mu_1 - \mu_0 =
+0{,}02$. Dat geeft $(2 \times 0{,}20/0{,}02)^2 = 400$ jaar bij $\sigma = 20\%$ en
 $(2 \times 0{,}15/0{,}02)^2 = 225$ jaar bij $\sigma = 15\%$.
 
 **(3)** Analytisch is de standaardfout $20/\sqrt{100} = 2$ procentpunt. Een
@@ -1087,9 +1105,9 @@ pd.DataFrame(
 
 In 0,16% van de gesimuleerde eeuwen concludeert een onderzoeker met een perfect
 gespecificeerd model dat aandelen minder opbrengen dan niets, dicht bij de
-analytische 0,13%. In ongeveer 84% haalt hij $t > 2$: de toets of de premie nul
-is, werkt behoorlijk. Wat dit leert: óf er een premie is, is met een eeuw data
-te beantwoorden, hoe groot hij is niet.
+analytische 0,13%. In ongeveer 84% haalt hij $t > 2$, zodat de toets of de premie nul is behoorlijk
+werkt. Met een eeuw data valt dus wel te beantwoorden óf er een premie is, maar niet hoe
+groot hij is.
 :::
 
 :::{exercise}
@@ -1099,7 +1117,7 @@ te beantwoorden, hoe groot hij is niet.
 1960-12, 1961-01 t/m 1993-12 en 1994-01 t/m 2026-07.
 
 1. Rapporteer per periode het meetkundig en het rekenkundig gemiddelde per jaar
-   van het totaalrendement van de value-weighted markt, de volatiliteit en de
+   van het totaalrendement van de waardegewogen markt, de volatiliteit en de
    standaardfout van het gemiddelde.
 2. Toets of het rekenkundig gemiddelde van de eerste periode verschilt van dat
    van de derde. Neem aan dat de perioden onafhankelijk zijn.
@@ -1110,7 +1128,7 @@ te beantwoorden, hoe groot hij is niet.
 :::{solution} ex-rendementen-2
 :class: dropdown
 
-Eerst de samenvatting per periode.
+Eerst maken we de samenvatting per periode.
 
 ```{code-cell} ipython3
 periods = {
@@ -1126,18 +1144,17 @@ by_period = pd.DataFrame(
 by_period.round(4)
 ```
 
-De rekenkundige gemiddelden liggen dicht bij elkaar, de meetkundige lopen
-uiteen. Dan het verschil tussen de eerste en de laatste periode. Voor twee
-onafhankelijke gemiddelden over elk $T$ jaar is de standaardfout van het verschil
-$\sqrt{(\sigma_1^2 + \sigma_3^2)/T}$; $t = 2$ bij een verschil $\Delta$ vraagt
-dus $T = 4(\sigma_1^2 + \sigma_3^2)/\Delta^2$.
+De rekenkundige gemiddelden liggen dicht bij elkaar, terwijl de meetkundige
+uiteenlopen. Daarna toetsen we het verschil tussen de eerste en de laatste periode.
+Voor twee onafhankelijke gemiddelden over elk $T$ jaar is de standaardfout van het
+verschil $\sqrt{(\sigma_1^2 + \sigma_3^2)/T}$, zodat $t = 2$ bij een verschil $\Delta$ om $T = 4(\sigma_1^2 + \sigma_3^2)/\Delta^2$ jaar vraagt.
 
 ```{code-cell} ipython3
 first, last = by_period.index[0], by_period.index[-1]
 difference = by_period.loc[first, "rekenkundig"] - by_period.loc[last, "rekenkundig"]
 se_difference = np.sqrt(
-    by_period.loc[first, "SE van het gemiddelde"] ** 2
-    + by_period.loc[last, "SE van het gemiddelde"] ** 2
+    by_period.loc[first, "standaardfout gemiddelde"] ** 2
+    + by_period.loc[last, "standaardfout gemiddelde"] ** 2
 )
 vol_first = by_period.loc[first, "volatiliteit"]
 vol_last = by_period.loc[last, "volatiliteit"]
@@ -1152,16 +1169,15 @@ pd.DataFrame(
 
 De rekenkundige gemiddelden van de drie perioden liggen binnen een kwart
 procentpunt van elkaar, met een $t$-waarde van 0,01 tussen de eerste en de
-laatste. Het meetkundig gemiddelde stijgt wel, van 9,46% naar 10,92%. Dat komt
-uit [](#thm-rendementen-drag): de volatiliteit daalde van 22,9% naar ruim 15%,
+laatste. Het meetkundig gemiddelde stijgt wel, van 9,46% naar 10,92%. Dat volgt uit
+[](#thm-rendementen-drag), want de volatiliteit daalde van 22,9% naar ruim 15%,
 en een kleinere halve variantie geeft meer groei bij hetzelfde verwachte
-rendement. Wie de twee gemiddelden door elkaar haalt, ziet een stijging die er
-niet is. Let wel: dit is het totaalrendement, niet de premie, want de risicovrije
+rendement. Wie de twee gemiddelden door elkaar haalt, ziet dus een stijging die er niet is.
+Het gaat hier overigens om het totaalrendement en niet om de premie, want de risicovrije
 rente verschilde sterk per periode.
 
 Om een verschil van twee procentpunt te zien, zou elke periode ruim
-zevenhonderd jaar moeten duren. Wat dit leert: een veranderd meetkundig
-gemiddelde is nog geen veranderd verwacht rendement, en een echt veranderd
+zevenhonderd jaar moeten duren. Een veranderd meetkundig gemiddelde is dus nog geen veranderd verwacht rendement, en een echt veranderd
 verwacht rendement is met rendementsdata alleen niet te zien.
 :::
 

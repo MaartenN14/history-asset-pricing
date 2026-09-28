@@ -136,3 +136,24 @@ Afgewezen: blokverwerking in de simulatiecel (STYLE §5, looptijd en geheugen: �
 1 en 2: gedaan (zie feitelijke fout en punt 1; $P_t$, $D_{t+1}$ → $p_t$, $d_{t+1}$ volgens de correctie van de orkestrator). 3 ($R$ bruto): L1 volgt al de setup, niets te doen. 5 (premie): gedaan. Eén zin in de Intuïtie: 6% is een kalibratie (Mehra-Prescott 6,18% over 1889–1978); de setup meet 8,3% op French-data sinds 1926; het verschil komt van de periode, en voor de standaardfout doet het er niet toe. 6 ($T$ jaren of waarnemingen): gedaan, in L1 is $T$ nu overal jaren en $N$ waarnemingen (autocorrelatie: $\sigma\sqrt{VR(N)}/\sqrt{N}$, $N = 1200$ maanden). 7 ($\kappa$): de dubbele betekenis zit in de Bachelier-lecture; L1 niet aangepast. 4 en 8–10 raken L1 niet.
 
 **Verificatie na de correctie ($p_t$, $d_{t+1}$).** Geen $P_t$ of $D_{t+1}$ meer in de lecture. `--check` PASS (5085 woorden), sync en HAP_OFFLINE=1-execute foutloos, geen warnings. nb_outputs identiek aan de stand vóór de correctie; tegen het voor-bestand alleen de verschillen uit §F1, §F5-1 en de rij "volatiliteit logrendement". Alleen `ex-rendementen-3` is weg (nergens aangehaald); `thm-rendementen-se`, `thm-rendementen-merton` en `sec-rendementen-standaardfout` bestaan.
+
+## R9-1 (F6b, ronde 9+)
+
+Uitgevoerd op `notes/eind-00_01_rendementen.md` (8,9). Woorden 5.510 (was 5.448), `--check` PASS, `nb_numbers` 55 meldingen (was 56, geen nieuwe), celuitvoer op labels na gelijk.
+
+- **Verbetering 1 / Taal, "namelijk" (r. 70, 131, 204, 661):** gedaan; twee keer een dubbele punt vóór opsomming of verklaring, r. 661 herschreven tot "uitkomt op", r. 131–134 volgens de hardop-toets zonder "want".
+- **Verbetering 1 / Taal, drie inlossingen (r. 319, 446, 514):** gedaan; drie eigen vormen, r. 319 zonder verwijzing naar de intuïtie, r. 514 via de meetpaal.
+- **Verbetering 1 / Taal, motiefnaam 5×:** gedaan; nu twee keer bij naam (Overzicht, autocorrelatie, beide met link) plus het kopje; r. 198, 396, 901 beschrijven de betekenis. r. 524 niet meer als onderwerp.
+- **Verbetering 2 / Code, labels:** gedaan; "waardegewogen markt", "gelijkgewogen (10 grootte-decielen)", "standaardfout gemiddelde" (ook in oefening 3), legenda "waardegewogen"/"gelijkgewogen"; admonition zegt nu ook "grootte-decielen" (H7). Commentaaruitlijning simulatiecel gelijkgetrokken. Notebook opnieuw uitgevoerd.
+- **Verbetering 3 / Helderheid, 18,7% (r. 161–165, 390–391):** gedaan in stap 4 zelf ($\hat\sigma = 18{,}7\%$); geen extra tabelregel in de toy-cel (opdracht: code alleen voor labels). De dichte alinea van het kernresultaat is gesplitst en draagt minder getallen.
+- **Verbetering 3 / Replicatie, 2,2 tegen 2,6 (r. 793–795):** gedaan; "in de orde van", en het recept als benadering die bij 1929–1932 minder goed past.
+- **Helderheid, "de dagtabel" (r. 229, 355):** gedaan; "de tabel met maand- en dagdata in de replicatie".
+- **Opbouw, Overzicht-vraag dubbel (r. 36):** gedaan; het Overzicht begint met de bewering.
+- **Opbouw, motief-alinea (r. 62–65):** gedaan volgens de hardop-toets, en verbonden met Fisher-Lorie via Merton.
+- **Taal, herbalanceren (r. 816–817) en "standaardfoutstelling" (r. 303):** gedaan.
+- **Beter uitleggen, overige lags (r. 545):** gedaan in de bestaande zin; ook $N \approx 1200$ in plaats van $N = 1200$.
+- **Beter uitleggen / Replicatie, interval meetkundig (r. 822):** gedaan; de variantie is volgens Merton veel nauwkeuriger bekend, dus de onzekerheid komt uit het gemiddelde.
+- **Replicatie, vijf getallen (r. 898–902):** gedaan; één getalpaar (1,83 / 1,75), de rest in woorden.
+- **Oefeningen, "Let wel dat" (r. 1138):** gedaan.
+- **Feitelijke fouten:** geen; de onnauwkeurigheid $N = 1200$ is verholpen.
+- Open: 0. `rewrap.py` gedraaid.

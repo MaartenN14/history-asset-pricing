@@ -1,0 +1,17 @@
+STATUS 00_01_rendementen T words=5448 prose=PASS
+- Waar we zijn: "lecture" wordt "college", dubbele punten vervangen door voegwoorden en een bijstelling.
+- Overzicht: "In deze lecture" wordt "In dit college", de dubbele punt in een lijstitem wordt "want", de geschiedenisalinea hangt aan elkaar met maar/want/dus, en "haar stellingen" (college) is herschreven.
+- Intuïtie: windmeter-alinea's samengevoegd (namelijk, maar, want), "Wie"-zin wordt "Als ze", calque "in niveaus" wordt "in euro's", "observaties knellend" wordt "asymmetrieën knellen", "doet er niet toe" wordt "niet van belang".
+- Toy: Opzet is een hele zin, stappen verbonden met zodat/omdat, "Wat de lezer nu weet:" is vervangen door een gewone slotzin, "lecture" wordt "college".
+- Theorie, routekaart: telegramzinnen ("Eerst het recept:", "Dan de kern:") zijn hele zinnen geworden.
+- Opzet: vier keer "In woorden:" geschrapt en als gewone leeszin herschreven, "Waarom zou" wordt een eigen vraag, twee "Wie"-zinnen weg, "beide als niveaus" is herschreven.
+- Variance drag: "Zij" (stelling) wordt "Stel dat", "haar gemiddelde" (variabele) is herschreven, "Vier symbolen, twee grootheden:" is een hele zin, "Zoals de intuïtie voorspelde" is gevarieerd.
+- Annualisatie: "Waarom zou" en "In woorden" weg, de Sharpe-alinea is verbonden met zodat.
+- Kernresultaat: de openingszin is met de intuïtie samengevoegd, "finance" wordt "financiële economie", puntkomma en dubbele punten weg, en "Zo lost de theorie ... in" (regeltaal) is herschreven.
+- Merton: "Waarom zou" wordt "Hoe kan dat?", "In woorden" weg, "Zo lost de stelling ... in" is herschreven, "Zij" wordt "Stel dat".
+- Aannames: "Waarom zou" en "In woorden" weg, "Neem maandrendementen:" wordt een hele zin, de kurtosisalinea is verbonden, en de Samengevat-slotregel is herschreven (was letterlijke herhaling).
+- Simulatie: regeltaal "één vraag over steekproeven" weg, "die" krijgt een eenduidig antecedent, figuurtekst zonder "Links:/Rechts:", "Wie"-slotzin herschreven, "exact" wordt "precies".
+- Replicatie: value-/equal-weighted wordt waardegewogen/gelijkgewogen (alias één keer), "het replicatieblok verwachtte" wordt "we vooraf verwachtten", staccato in Geslaagd samengevoegd, "gebruiken we haar" (functie) is herschreven.
+- Wat er brak: "De data zijn te dun om te kiezen" wordt "Uit de data valt niet te kiezen", en de Regnault-zin loopt zonder dubbele punten.
+- Oefeningen: "Wat dit leert" 3 wordt 0 (gewone slotzinnen), telegrammen "Eerst de samenvatting" en "Dan het verschil" zijn hele zinnen, "Let wel:" wordt een bijzin, en "value-weighted" wordt waardegewogen.
+- Niets gewijzigd aan code, display- en inline-wiskunde, labels, kopjes, citaties en links (gecontroleerd). Het aantal alinea's gaat van 215 naar 213 doordat twee alinea's zijn samengevoegd, de volgorde blijft gelijk. De getallen van nb_numbers zijn identiek aan vóór (56 niet in celuitvoer).
