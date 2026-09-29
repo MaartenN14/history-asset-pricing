@@ -1,5 +1,7 @@
 STATUS 02_09_black_scholes F6c words=5870 prose=PASS open=0 cijfer=9,0 min=9,0
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,7. Ronde 9+: T, F6 8,7 -> F6c 9,0. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,7
@@ -33,7 +35,7 @@ Met deze drie wordt het gewogen cijfer 0,25·9 + 0,2·9 + 0,2·9 + 0,1·9 + 0,1�
 0,1·9 + 0,05·9 = 8,95, dus 9,0; met ook de codepunten (criterium 5) 9,0 zonder
 afronding.
 
-## Eindcijfer: 8,7
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,7
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
@@ -408,4 +410,4 @@ gevraagd, tot één bijzin beperkt.
 Gewogen: 0,25·9 + 0,2·9 + 0,2·9 + 0,1·9 + 0,1·9 + 0,1·9 + 0,05·9 = 9,0. Laagste
 deelcijfer 9,0; taal blokkeert niet.
 
-## Eindcijfer (F6c): 9,0
+## Eindcijfer van record (F6c): 9,0

@@ -1,4 +1,6 @@
 STATUS 01_04_markowitz F6c words=5889 prose=PASS open=0 cijfer=9,3 min=9,0
+
+**Eindcijfer van record: 9,3** (F6c). Verloop: Vorig: 8,7. Ronde 9+: T, F6 9,0 -> F6c 9,4, van record 9,3 (plafond §11.3). Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
 Cijfer van record 9,3: F6c gaf 9,4 met code en replicatie op 9,5 zonder F6-punt; met die twee op 9 (plafond §11.3) is het gewogen cijfer 9,3.
 
 # Eindbeoordeling (F6): Markowitz, Roy en Tobin
@@ -33,7 +35,7 @@ hand (toy, Roy, diversificatie, oefeningen) en tegen de celuitvoer zoals vastgel
    met de jaarlijkse 0,50 en 0,47 uit de simulatie heeft vergeleken; ze hoort bij de
    eerste tabel met Sharpe-ratio's (:1030-1032).
 
-## Eindcijfer: 9,0
+## Cijfer F6, vóór herstel (niet het eindcijfer): 9,0
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

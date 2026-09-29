@@ -1,5 +1,7 @@
 STATUS 03_14_roll F6c words=5708 prose=PASS open=1 cijfer=9,0 min=9
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,9. Ronde 9+: T, F6 8,8 (1 feitfout) -> F6c 9,0; rand->grens boekbreed uitgesteld. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,9
@@ -28,7 +30,7 @@ oefeningen 5. Bij twijfel het lagere cijfer. Cijfers nagerekend tegen
    staan, en de overclaim "vlak voor elke waarneembare proxy" (r. 1121) inperken tot de
    gangbare indices.
 
-## Eindcijfer: 8,8
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,8
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

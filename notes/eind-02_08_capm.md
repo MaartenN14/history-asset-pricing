@@ -1,5 +1,7 @@
 STATUS 02_08_capm F6c words=5732 prose=PASS open=0 cijfer=9,0 min=9
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,6. Ronde 9+: T, F6 8,7 (2 feitfouten, 'de rand' uit T) -> F6c 9,0. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,6
@@ -39,7 +41,7 @@ woord zelf ook (42, 273) en regel 31 zegt al wat het betekent. Eén uitleg bij d
 keer op regel 42 ("vraag gelijk aan aanbod voor elk aandeel") is genoeg; dat telt niet als
 aanmerking.
 
-## Eindcijfer: 8,7
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,7
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
@@ -311,7 +313,7 @@ r. 407). Geen van beide beweert iets onjuists — de context ontleedt het binnen
 dezelfde alinea — dus geen feitelijke fout en geen nieuw punt, maar wel dubbelzinnig;
 niet in de oorspronkelijke beoordeling genoemd, dus buiten de plafondregel.
 
-## Eindcijfer (Controle 1): 9,0
+## Eindcijfer van record (F6c): 9,0
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

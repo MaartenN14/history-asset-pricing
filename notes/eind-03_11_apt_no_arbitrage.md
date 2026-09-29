@@ -1,5 +1,7 @@
 STATUS 03_11_apt_no_arbitrage F6c words=5763 prose=PASS open=0 cijfer=9,2 min=9
 
+**Eindcijfer van record: 9,2** (F6c). Verloop: Vorig: 9,0. Ronde 9+: T, F6 9,0 (1 feitfout) -> F6c 9,2 (plafond 9,3). Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Eindbeoordeling: Ross, APT en de fundamentele stelling (F6)
 
 ## Ronde 9+
@@ -14,7 +16,7 @@ Gelezen na de taalredactie (notes/taal-03_11_apt_no_arbitrage.md). `prose_stats 
 2. **De martingaalzin corrigeren** (helderheid blijft 9,5 alleen met deze correctie; feitelijke fout 1). Na [](#eq-apt-no-arbitrage-martingaal), dat een dividend bevat, staat "De prijs, gemeten in spaarrekeningen, is dus een *martingaal*" (:413). Met dividend is dat onjuist.
 3. **Vijf stroeve zinnen herschrijven** (taal 9 → 9,5). Zie de hardop-toets onderaan en de aanmerkingen bij taal (:545–546, :919–921, :868–869, :67, :578–581).
 
-## Cijfers
+## Cijfers F6, vóór herstel (niet het eindcijfer)
 
 | nr | criterium | gewicht | cijfer |
 |---|---|---|---|

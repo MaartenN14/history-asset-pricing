@@ -1,5 +1,7 @@
 STATUS 02_05_crsp_tape F6c words=5671 prose=PASS open=0 cijfer=9,0 min=9,0
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,5. Ronde 9+: T, F6 8,7 (2 feitfouten) -> F6c 9,0. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,5
@@ -34,7 +36,7 @@ alinea 49, colon_mid 0,9, tmpl 2, wie_open 2).
    marktreeks en van `ew_all` over dezelfde jaren naast de 9,0%, of zeg in de admonition
    dat deze replicatie geen origineel getal nabootst en alleen de weging meet.
 
-## Eindcijfer: 8,7
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,7
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
@@ -329,7 +331,7 @@ Criterium stond al op het maximum van 9 en blijft daar.
 **Nieuwe punten.** Geen. Geen verslechtering en geen nieuwe feitelijke fout gevonden bij het
 opnieuw lezen van het college.
 
-## Eindcijfer: 9,0
+## Eindcijfer van record (F6c): 9,0
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

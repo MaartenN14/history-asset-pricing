@@ -1,5 +1,7 @@
 STATUS 03_10_merton_icapm F6c words=5899 prose=PASS open=0 cijfer=9,0 min=9
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,9. Ronde 9+: T, F6 8,8 (code 8, 1 feitfout) -> F6c 9,0 (gewogen 9,1, plafond §11.3). Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Eindbeoordeling: Merton, continue tijd en het ICAPM (F6)
 
 ## Ronde 9+
@@ -45,7 +47,7 @@ Oordeel over wat de redacteur bewust liet staan:
    daarom niet in de tabel staat. Schrijf in r. 679 "het verwachte log-rendement" in plaats
    van "het log-rendement".
 
-## Cijfers
+## Cijfers F6, vóór herstel (niet het eindcijfer)
 
 | nr | criterium | gewicht | cijfer |
 |---|---|---|---|

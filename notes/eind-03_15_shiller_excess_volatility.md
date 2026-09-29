@@ -1,5 +1,7 @@
 STATUS 03_15_shiller_excess_volatility F6c words=5748 prose=PASS open=0 cijfer=9,0 min=9,0
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,8. Ronde 9+: T, F6 8,7 -> F6c 9,0. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,8
@@ -27,7 +29,7 @@ regelnummers in `lectures/03_15_shiller_excess_volatility.md`.
    `shiller_test` (623–658) met ruim dertig regels lang, en de trendschatting kan eruit
    [onderzoek A].
 
-## Eindcijfer: 8,7
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,7
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
@@ -368,4 +370,3 @@ verslechtering aangetroffen.
 
 Gewogen: alle deelcijfers 9 → eindcijfer 9,0.
 
-STATUS 03_15_shiller_excess_volatility F6c words=5748 prose=PASS open=0 cijfer=9,0 min=9,0

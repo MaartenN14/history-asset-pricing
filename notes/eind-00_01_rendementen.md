@@ -1,4 +1,6 @@
 STATUS 00_01_rendementen F6c words=5510 prose=PASS open=0 cijfer=9,3 min=8,5
+
+**Eindcijfer van record: 9,3** (F6c). Verloop: Vorig: 8,7. Ronde 9+: T, F6 8,9 -> F6c 9,4, van record 9,3 (plafond §11.3). Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
 Cijfer van record 9,3: F6c gaf 9,4, plafond is de F6-projectie bij volledige oplossing (§11.3).
 
 # Ronde 9+
@@ -36,7 +38,7 @@ staan op 8,5 en trekken het omlaag.
 
 Na punten 1 en 2 komt het eindcijfer op 9,1, en na alle drie op 9,3.
 
-## Cijfers
+## Cijfers F6, vóór herstel (niet het eindcijfer)
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

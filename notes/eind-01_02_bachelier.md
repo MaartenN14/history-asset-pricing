@@ -1,5 +1,7 @@
 STATUS 01_02_bachelier F6c words=5884 prose=PASS open=0 cijfer=9,0 min=9
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,6. Ronde 9+: T, F6 8,6 -> F6c 9,0. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,6
@@ -27,7 +29,7 @@ woorden, waarvan één de opsomming in het Overzicht).
    (r. 1331–1336) vijf. [onderzoek C, D5] De getallen die het oordeel dragen staan al in
    de uitvoertabellen; de tekst kan ernaar wijzen en er één per bewering noemen.
 
-## Eindcijfer: 8,6
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,6
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
@@ -363,7 +365,7 @@ intuïtie … houdt dus bijna stand") staan niet meer letterlijk in de tekst.
 
 Geen. Geen verslechtering en geen feitelijke fout aangetroffen.
 
-## Eindcijfer: 9,0
+## Eindcijfer van record (F6c): 9,0
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

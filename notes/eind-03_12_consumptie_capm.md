@@ -1,5 +1,7 @@
 STATUS 03_12_consumptie_capm F6c words=5612 prose=PASS open=0 cijfer=9,2 min=9
 
+**Eindcijfer van record: 9,2** (F6c). Verloop: Vorig: 8,7. Ronde 9+: T, F6 8,8 (4 feitfouten) -> F6c 9,2 (plafond 9,2). Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Eindbeoordeling: Lucas, Breeden en de SDF (F6)
 
 ## Ronde 9+
@@ -14,7 +16,7 @@ Gelezen na de taalredactie (`notes/taal-03_12_consumptie_capm.md`). `prose_stats
 2. **De taal op de laatste plekken natuurlijk maken** (criterium 3, 8,5 → 9). Het gaat om de drie hardop-zinnen hieronder, "leverage (hefboom)" [onderzoek C], de SDF-definitie met dubbele punt tussen haakjes [onderzoek C], "lags" tegen "vertraging", vijf keer "op vier decimalen nul" [onderzoek C] en de tweede "standaardfout van 2%" zonder link.
 3. **De slotclaim in "Waar het breekt" laten passen bij de waarschuwing en de simulatie** (criterium 2 en 6, 9 → 9,5). "De simulatie laat zien dat dit geen artefact van een kleine steekproef is" botst met de waarschuwing dat tijdsaggregatie $J_T$ te groot maakt. Ook noemt de tekst een verwerping "zeldzaam" terwijl de simulatie er één op de tien geeft.
 
-## Cijfers
+## Cijfers F6, vóór herstel (niet het eindcijfer)
 
 | nr | criterium | gewicht | cijfer |
 |---|---|---|---|

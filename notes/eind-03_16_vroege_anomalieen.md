@@ -1,5 +1,7 @@
 STATUS 03_16_vroege_anomalieen F6c words=5584 prose=PASS open=0 cijfer=9,0 min=9,0
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,9. Ronde 9+: T, F6 8,6 (5 feitpunten) -> F6c 9,0. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,9
@@ -36,7 +38,7 @@ bewijsschets aangevuld met een deelstap die een factor $\sqrt 2$ mist (feitelijk
    nul te onderscheiden" en de januari-datamining-zin in "Wat er brak" rechtzetten
    (feitelijke fouten 3 en 4); de alinea `:865–868` zonder tabelgetallen.
 
-## Eindcijfer: 8,6
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,6
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
@@ -393,7 +395,7 @@ Nagerekend tegen `uv run python tools/nb_outputs.py lectures/03_16_vroege_anomal
 **Nieuwe punten:** geen. Bij het nalezen is geen nieuwe feitelijke fout en geen
 verslechtering gevonden.
 
-## Eindcijfer: 9,0
+## Eindcijfer van record (F6c): 9,0
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

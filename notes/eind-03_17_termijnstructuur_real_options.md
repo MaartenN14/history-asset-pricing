@@ -1,5 +1,7 @@
 STATUS 03_17_termijnstructuur_real_options F6c words=5678 prose=PASS open=0 cijfer=9,0 min=9,0
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,9. Ronde 9+: T, F6 8,7 (1 feitfout uit T) -> F6c 9,0. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,9
@@ -25,7 +27,7 @@ woorden, de opsomming in het Overzicht; semicol 13; colon_mid 2,3; wie_open 3).
    de simulatie ook de lengte van de echte steekproef gebruiken (55 jaar in plaats van 40,
    r. 745 en r. 768), of zeg in één zin waarom het 40 jaar is.
 
-## Eindcijfer: 8,7
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,7
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
@@ -372,7 +374,7 @@ afwijking gevonden.
 7,5% (Vasicek) voor de oneindig lange yield sluiten aan bij de al bevestigde padentabel
 (0,0516/0,0750), en 4,4829 − 4,4779 = 0,0050 is de juiste aftrekking.
 
-## Eindcijfer: 9,0
+## Eindcijfer van record (F6c): 9,0
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

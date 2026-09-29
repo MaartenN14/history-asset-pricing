@@ -587,6 +587,12 @@ colleges tegelijk, één commit per college, push per deel.
 | F6b | schrijver, Opus | 30 | eind-bestand, STYLE §11, college | college; rapport §R9-1 (per punt gedaan of afgewezen met reden) |
 | F6c | controle, Sonnet | 12 | eind-bestand, `git diff` | "Controle 1" in eind-bestand; cijfer van record |
 
+Opmaak van het eind-bestand, zodat er maar één eindcijfer te lezen valt: regel 1 de
+statusregel; regel 3 `**Eindcijfer van record: x,x** (F6c). Verloop: <de Vorig/Ronde-regel
+van de commit>`; de cijferkop van F6 heet `## Cijfer F6, vóór herstel (niet het eindcijfer):
+x,x`; de kop van F6c na "Controle 1" heet `## Eindcijfer van record (F6c): x,x`. Nooit twee
+koppen "Eindcijfer" (2026-09-29: de 8,7 van F6 bij L17 werd voor het eindcijfer aangezien).
+
 Regels voor T: leest het college in één keer, noteert per sectie wat stroef is,
 en herschrijft daarna per sectie met één Write of één Python-script per sectie.
 Verandert geen getal, label, kopje, code of cel; wel elke zin die de lezer

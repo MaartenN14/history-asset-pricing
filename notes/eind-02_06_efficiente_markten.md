@@ -1,4 +1,6 @@
 STATUS 02_06_efficiente_markten F6c words=5812 prose=PASS open=0 cijfer=9,0 min=8,7
+
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,8. Ronde 9+: T, F6 8,7 -> F6c 9,0 (code 8,7: SPY-reden daarna toegevoegd). Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
 Open punt (SPY-cel zonder reden voor vijf tickers) door de orchestrator opgelost met één bijzin over de offline cache, 2026-09-28.
 
 # Ronde 9+

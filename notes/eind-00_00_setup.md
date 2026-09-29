@@ -1,5 +1,7 @@
 STATUS 00_00_setup F6c words=5424 prose=PASS open=0 cijfer=9,0 min=9,0
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,6. Ronde 9+: T, F6 8,9 (3 feitfouten) -> F6c 9,0. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,6
@@ -27,7 +29,7 @@ Onderzoeken: alleen onderzoek A noemt dit college; B–E niet. De A-punten bij r
    de tabelrij "standaardfout, spreiding of Newey-West" (r. 970) stopt twee verschillende
    grootheden in één rij.
 
-## Eindcijfer: 8,9
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,9
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|

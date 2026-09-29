@@ -1,5 +1,7 @@
 STATUS 03_13_equity_premium_puzzle F6c words=5651 prose=PASS open=1 cijfer=9,0 min=8,8
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,6. Ronde 9+: T, F6 8,7 -> F6c 9,0 (taal 8,8, gewogen 8,96). Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,6
@@ -25,7 +27,7 @@ Getallen zijn nagerekend tegen `nb_outputs` (18 cellen) en met de hand. Verwijzi
    simulatie op de MP-momenten. Het label "Sharpe-grens: excess marktrendement" (1011) is
    Engels.
 
-## Cijfers
+## Cijfers F6, vóór herstel (niet het eindcijfer)
 
 | nr | criterium | gewicht | cijfer |
 |---|---|---|---|
@@ -285,7 +287,7 @@ ongewijzigd, zoals de vorige beoordeling toestond.
 **Nieuwe punten.** Geen; geen verslechtering of nieuwe feitelijke fout
 gevonden.
 
-## Cijfers (Controle 1)
+## Eindcijfer van record (F6c): 9,0
 
 | nr | criterium | gewicht | vorig | nieuw |
 |---|---|---|---|---|

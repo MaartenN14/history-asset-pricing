@@ -1,5 +1,7 @@
 STATUS 02_07_event_studies F6c words=5443 prose=PASS open=0 cijfer=9,0 min=9,0
 
+**Eindcijfer van record: 9,0** (F6c). Verloop: Vorig: 8,9. Ronde 9+: T, F6 8,7 (1 feitfout) -> F6c 9,0. Het cijfer onder de kop "F6, vóór herstel" is dus niet het eindcijfer.
+
 # Ronde 9+
 
 Vorige ronde: 8,9
@@ -36,7 +38,7 @@ werkmeldingen nu meetellen, en taal weegt 20% in plaats van 15%.
 
 Na alle drie: 9,0·0,25 + 9,0·0,20 + 9,0·0,20 + 9,0·0,10 + 9,0·0,10 + 9,0·0,10 + 9,0·0,05 = 9,0.
 
-## Eindcijfer: 8,7
+## Cijfer F6, vóór herstel (niet het eindcijfer): 8,7
 
 | nr | criterium | gewicht | deelcijfer |
 |---|---|---|---|
