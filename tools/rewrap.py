@@ -47,6 +47,8 @@ def rewrap(text):
         if math or len(ln) <= WIDTH + 2 or SKIP.match(ln) or "$$" in ln:
             out.append(ln); continue
         out.extend(wrap(ln))
+    # ponytail: een onafgesloten fence verschuift alle paren erna en breekt dan codecellen af
+    assert fence is None and not math, "onafgesloten fence of $$-blok: bestand niet herschreven"
     return "\n".join(out)
 
 if __name__ == "__main__":

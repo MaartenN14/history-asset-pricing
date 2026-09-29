@@ -123,7 +123,8 @@ def prose_of(t):
     t = re.sub(r"```\{code-cell\}.*?```", "\n\nCODECELL\n\n", t, flags=re.S)
     t = re.sub(r"\s*(```\{math\}.*?```|\$\$.*?\$\$)\s*", _display, t, flags=re.S)
     dash = t.count("—")
-    p = re.sub(r"\$[^$]*\$", "X", t)
+    p = re.sub(r"\\\$", "", t)  # een geëscapete dollar (\$2 million) is geen wiskundegrens
+    p = re.sub(r"\$[^$]*\$", "X", p)
     p = re.sub(r"\{cite[^}]*\}`[^`]*`", "", p)
     p = re.sub(r"\[\]\(#[^)]*\)", "REF", p)
     p = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", p)  # [tekst](url) -> tekst
