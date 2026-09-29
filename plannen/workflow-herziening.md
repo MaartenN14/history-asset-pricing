@@ -625,3 +625,26 @@ ruimer dan een verse lezer. Daarom: het cijfer van record is het laagste van het
 F6c-cijfer en het cijfer dat de eindbeoordelaar in F6 noemde voor het geval alle
 punten zijn opgelost. Deelcijfers stijgen bij F6c alleen voor criteria waar F6 een
 punt had. De orchestrator zet het plafond in de statusregel en de commitregel.
+
+## 12. Deel IV en later: eerste herziening in één ronde (besluit eigenaar, 2026-09-29)
+
+Colleges die nog niet herzien zijn (L18 en verder) gaan in één ronde naar het niveau
+van §11, met verse agents en de budgetten van §10. Fasen per college:
+
+| fase | rol, model | budget | doet |
+|---|---|---|---|
+| F1 | schrijver, Opus | 35 | F0 en F1 uit §2.1 onder de STYLE van na 2026-09-28 (§11.1, §11.12); rapport §F0, §F1 |
+| C | orchestrator | – | `check12.sh <slug>` tegen HEAD; ijkkopie `<slug>-ijk-1.md/.ipynb` in de scratchpad |
+| F23 | feiten en lezer, Sonnet | 25 | §9.1 |
+| F4T | schrijver én taalredacteur, Opus | 40 | eerst F4 (§2.4), dan T (§11.1); rapport §F4, `notes/taal-<slug>.md`, feiten bijgewerkt |
+| C | orchestrator | – | `check12.sh <slug> ijk`: code en uitvoer gelijk aan de ijkkopie, labels, secties, PASS |
+| F6, F6b, F6c | als §11.1 | 22, 30, 14 | eind-bestand in de opmaak van §11.1, plafond §11.3 |
+
+Onder 9,0 na F6c: één extra F6b/F6c, daarna tussenstand. Commit:
+`L<nr> <slug>: herzien volgens workflow §12 (eindcijfer <x,x>)` met de prose_stats-regel
+en `Eerste herziening: F1, F23, F4T, F6 <x> -> F6c <y>.`; bestanden: college (.md en
+.ipynb), rapport, feiten, taal, eind; het lezer-bestand wordt verwijderd (§3.4). Vier
+colleges tegelijk in F1, F6 hoogstens drie tegelijk, push per deel. Naadnotities uit
+eerdere delen (04_20 notatie en Campbell-Shiller, 04_21 toeschrijving aan het ICAPM)
+gaan mee in de F1-prompt van het college dat ze betreffen. Prompts: sjablonen
+`prompt-F1/F23/F4T.txt` plus de sjablonen van §11 met `mk12.py` in de scratchpad.
