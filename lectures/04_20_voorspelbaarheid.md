@@ -18,60 +18,94 @@ kernelspec:
 ```{admonition} Waar we zijn in het verhaal
 :class: important
 
-**Jaartal.** 1988–2011, van Fama-French en Campbell-Shiller tot Cochrane's
-presidential address.
+**Jaartal.** 1988–2011, van Fama en French en van Campbell en Shiller tot de rede van
+Cochrane als voorzitter van de American Finance Association.
 
-**Wat we al weten.** In [](#01-03-williams-ddm) voorspelde de
-prijs-dividend-ratio het tienjaarsrendement en niet de tienjaarsgroei van
-dividenden; onder de identiteit van Williams betekent dat dat de discontovoet
-beweegt. In [](#03-15-shiller-excess-volatility) bleek dezelfde ratio meer te
-bewegen dan dividendnieuws kan dragen, en in [](#03-10-merton-icapm) zagen we dat
-een langetermijnbelegger zijn portefeuille op die voorspelbaarheid zou bouwen,
-terwijl de helling waarop alles rust een $t$-waarde rond de twee heeft en omhoog
-vertekend is. [](#04-19-momentum) liet een voortzetting van rendementen zien in
-de *cross-sectie*; hier gaat het om de tijdreeks van de markt als geheel.
+**Wat we al weten.** In [](#03-15-shiller-excess-volatility) bewoog de
+prijs-dividend-ratio meer dan het dividendnieuws kon verklaren, zodat de discontovoet
+zelf moest bewegen. In [](#04-19-momentum) zetten relatieve rendementen zich voort in
+de cross-sectie. Of ook de markt als geheel een voorspelbaar rendement heeft, bleef
+daar open.
 
-**Welke vraag staat open.** Zijn rendementen op de aandelenmarkt voorspelbaar, en
-zo ja: kun je dat met een eeuw data aantonen, en kun je er iets mee?
+**Welke vraag staat open.** Zijn rendementen op de aandelenmarkt voorspelbaar, en zo ja,
+is dat met een eeuw data aan te tonen en kan een belegger er iets mee?
 ```
 
 ## Overzicht
 
-In 1988 verschenen twee artikelen die de vraag "zijn rendementen voorspelbaar?"
-van een randprobleem tot een hoofdprobleem maakten. Eugene Fama en Kenneth French
-lieten zien dat de dividendopbrengst maandrendementen nauwelijks voorspelt maar
-twee- tot vierjaarsrendementen des te beter {cite}`FamaFrench1988`. John
-Campbell en Robert Shiller gaven het boekhoudkundige kader waarin zo'n
-bevinding moet worden gelezen: een log-lineaire versie van de
-contante-waardeformule die de variantie van de dividend-prijsratio exact
-verdeelt over verwachte rendementen en verwachte dividendgroei
-{cite}`CampbellShiller1988`. Samen verschoven ze de discussie over efficiënte
-markten van "zijn rendementen onvoorspelbaar?" naar "*hoeveel* van de variatie in
-prijzen is variatie in verwachte rendementen?". Twintig jaar later gaf John
-Cochrane het antwoord dat vandaag de standaard is: vrijwel alles
-{cite}`Cochrane2008,Cochrane2011`.
+Zijn rendementen op de aandelenmarkt voorspelbaar? Ja, want de dividend-prijsratio $D/P$
+beweegt vrijwel alleen doordat verwachte rendementen bewegen, en
+niet doordat verwachte dividendgroei beweegt. Toch verklaart die voorspelling per jaar
+maar een paar procent van de variantie, zodat een belegger die de helling zelf moet
+schatten, er buiten de steekproef zelden het historische gemiddelde mee verslaat. In de
+termen van *theorie of feit* gaat dit college over een feit, want dat de ratio door
+verwachte rendementen beweegt, volgt uit een boekhoudidentiteit en de data. De theorieën
+die dat feit verklaren, komen pas later.
 
-Die twintig jaar zijn het interessante deel. Stambaugh liet zien dat de
-voorspellende regressie in kleine steekproeven omhoog vertekend is
-{cite}`Stambaugh1999`; Hodrick en Valkanov dat de $t$-waarden van
-lange-horizonregressies met overlappende waarnemingen te optimistisch zijn
-{cite}`Hodrick1992,Valkanov2003`; en Goyal en Welch dat vrijwel geen enkele
-voorspeller het historische gemiddelde *uit de steekproef* verslaat
-{cite}`GoyalWelch2008`. Daartegenover staan drie verdedigingen: Cochrane's
-argument dat niet de aanwezigheid van rendementsvoorspelbaarheid maar de
-*afwezigheid* van dividendvoorspelbaarheid het bewijs levert, het argument van
-Campbell en Thompson dat een kleine $R^2$ economisch groot kan zijn
-{cite}`CampbellThompson2008`, en de methode van Ferreira en Santa-Clara die
-het rendement in drie stukken knipt en elk stuk apart voorspelt
-{cite}`FerreiraSantaClara2011`.
+- We leiden uit de Campbell-Shiller-identiteit de identiteit van Cochrane af, die de
+  voorspelling van rendement, dividendgroei en de ratio zelf aan elkaar koppelt;
+- We laten zien waarom de $R^2$ met de horizon groeit, en waarom overlap en de
+  Stambaugh-bias de rendementsregressie te gunstig maken;
+- We simuleren 78 jaar data, eerst met onvoorspelbare rendementen en daarna met de
+  voorspelbaarheid die Cochrane schat;
+- We repliceren op `hap.data.goyal_welch()` de tabellen van Fama en French, van Cochrane,
+  van Goyal en Welch en van Ferreira en Santa-Clara.
 
-Epistemisch is dit een lecture over een *feit*, niet over een theorie: dat de
-dividend-prijsratio beweegt door verwachte rendementen volgt uit boekhouding plus
-data, en de theorieën die het moeten verklaren komen pas later. Motief 1 staat
-centraal: de $R^2$ is klein, de economische waarde groot, en de data die nodig zijn
-om dat te zien, zijn er nauwelijks. We repliceren Fama en French' lange-horizontabel,
-Cochrane's tabellen 1–3, de out-of-sampletabel van Goyal en Welch en de
-sum-of-the-parts-$R^2$ van Ferreira en Santa-Clara op `hap.data.goyal_welch()`.
+In 1988 lieten Eugene Fama en Kenneth French zien dat de dividend-prijsratio
+maandrendementen nauwelijks voorspelt, maar rendementen over twee tot vier jaar des te
+beter {cite}`FamaFrench1988`. In hetzelfde jaar gaven John Campbell en Robert Shiller het
+kader om zo'n uitkomst te lezen {cite}`CampbellShiller1988`. Hun loglineaire
+contante-waardeformule verdeelt de variantie van de ratio over verwachte rendementen en
+verwachte dividendgroei. Daarna volgden twintig jaar bezwaren, want de
+helling bleek in kleine steekproeven omhoog vertekend {cite}`Stambaugh1999`, de
+$t$-waarden van overlappende regressies te hoog {cite}`Hodrick1992,Valkanov2003`, en
+buiten de steekproef versloeg vrijwel geen voorspeller het gemiddelde
+{cite}`GoyalWelch2008`. Cochrane sloot het tijdvak af met het argument dat juist de
+onvoorspelbaarheid van dividenden het bewijs levert {cite}`Cochrane2008,Cochrane2011`.
+Campbell en Thompson {cite}`CampbellThompson2008` en Ferreira en Santa-Clara
+{cite}`FerreiraSantaClara2011` lieten daarnaast zien dat een kleine $R^2$ veel waard kan
+zijn.
+
+## Intuïtie: waarom zou dit waar zijn?
+
+Een aandeel is om twee redenen duur ten opzichte van zijn dividend. Ofwel verwachten
+beleggers dat het dividend hard gaat groeien, ofwel nemen ze genoegen met een laag
+rendement. Een derde reden bestaat niet, afgezien van een zeepbel die eeuwig blijft
+groeien, want het rendement bestaat per definitie uit koerswinst en dividend. Een hoge of
+lage
+dividend-prijsratio moet dus iets voorspellen, namelijk dividendgroei, rendementen of een
+mengsel van beide.
+
+Kijk nu naar de Amerikaanse data. Sinds 1926 schommelt de dividend-prijsratio tussen
+ruwweg 1% en 8%. Hij keert zo traag terug naar zijn gemiddelde dat een afwijking na
+tien jaar nog voor ruim de helft bestaat. Als die schommelingen over dividenden gingen,
+zou na dure jaren snelle dividendgroei volgen, maar die groei blijft uit. Dan blijft er
+maar één kanaal over, namelijk dat na dure jaren lage rendementen volgen. Cochrane
+noemde die ontbrekende dividendgroei de hond die niet blafte, naar het verhaal van
+Sherlock Holmes waarin de hond
+die 's nachts níet blafte de beslissende aanwijzing was.
+
+Toch is die voorspelbaarheid moeilijk te zien, omdat het verwachte rendement weinig
+beweegt vergeleken met het rendement zelf. Als het verwachte jaarrendement schommelt met
+een standaarddeviatie van vier procentpunt en het gerealiseerde rendement met twintig,
+dan verklaart de voorspeller per jaar hooguit $4^2/20^2 = 4\%$ van de variantie. Die
+vier procentpunt houden echter jaren aan. Een belegger die vanuit een dure markt tien
+jaar belegt, krijgt die hele periode een iets lager verwacht rendement, en die kleine
+verschillen tellen op, terwijl de ruis uitmiddelt. Daarom groeit de $R^2$ met de horizon,
+en daarom zochten Fama en French het bewijs bij rendementen over meerdere jaren.
+
+Dezelfde traagheid maakt de statistiek verraderlijk. Een voorspeller die bijna een
+random walk is, maakt in een eeuw maar een handvol onafhankelijke schommelingen. Daardoor
+is de geschatte helling vertekend en vallen de $t$-waarden te gunstig uit. Bovendien had
+een belegger destijds zijn helling moeten schatten op de data van dat moment. We verwachten
+daarom dat een hoge ratio hoge rendementen voorspelt en geen lage dividendgroei, en dat de
+voorspelling buiten de steekproef zwak is, ook al bewegen verwachte
+rendementen wel degelijk.
+
+## Toy-voorbeeld: vier jaar data en de identiteit van Cochrane
+
+De eerste cel laadt de pakketten die het hele college gebruikt en legt het startpunt van
+de toevalsgenerator vast.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -87,70 +121,42 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-## Intuïtie: waarom zou dit waar zijn?
+Het kleinste voorbeeld van het mechanisme heeft vier jaar data en drie regressies op
+één regressor. We meten alles als afwijking van het langjarige gemiddelde, zodat de
+constanten wegvallen. Vanaf hier zijn kleine letters logs, zoals in
+[](#03-15-shiller-excess-volatility). Zo zijn $p_t$ en $d_t$ de log van prijs en dividend,
+is $dp_t = d_t - p_t$ de log dividend-prijsratio en is $\ell_{t+1} = \log R_{t+1}$ het
+logrendement.
 
-Een aandeel is duur ten opzichte van zijn dividend om precies twee redenen: of
-beleggers verwachten dat het dividend hard gaat groeien, of ze nemen genoegen met
-een laag rendement. Een derde reden is er niet, afgezien van een bel die voor altijd
-blijft groeien; dat volgt uit de definitie van rendement. De dividend-prijsratio moet
-dus *iets* voorspellen: dividendgroei, rendementen, of een mengsel.
+Eén formule nemen we hier als recept en leiden we in de theorie af, de
+Campbell-Shiller-benadering $\ell_{t+1} = dp_t - \rho\, dp_{t+1} + \Delta d_{t+1}$ met
+$\rho = 0{,}96$. Volgens dat recept is het rendement hoog als het aandeel goedkoop was
+(hoge $dp_t$), als de koers daarna stijgt (dalende $dp$) en als het dividend groeit. De
+tabel geeft de ratio en de dividendgroei in de vier jaren.
 
-Neem nu de data. De Amerikaanse dividend-prijsratio schommelt sinds 1926 tussen
-ruwweg 1% en 8% en keert traag terug naar zijn gemiddelde: een afwijking is na tien
-jaar nog voor ruim de helft aanwezig. Als die schommelingen over dividenden gingen,
-zou je na dure jaren snelle dividendgroei moeten zien. Die zie je niet. Dan blijft er
-maar één kanaal over: na dure jaren komen lage rendementen. Dat is Cochrane's "dog
-that did not bark", naar het verhaal van Sherlock Holmes waarin de hond die 's nachts
-níet blafte de beslissende aanwijzing was.
+| jaar $t$ | 0 | 1 | 2 | 3 |
+|---|---|---|---|---|
+| log dividend-prijsratio $dp_t$ | −0,10 | 0,00 | 0,10 | 0,16 |
+| log dividendgroei $\Delta d_t$ | | 0,02 | 0,06 | 0,01 |
 
-Waarom is de voorspelbaarheid dan zo moeilijk te zien? Omdat het verwachte
-rendement weinig beweegt ten opzichte van het rendement zelf. Als het verwachte
-jaarrendement schommelt met een standaarddeviatie van vier procentpunt en het
-gerealiseerde rendement met twintig, dan verklaart de voorspeller per jaar
-hooguit $4^2/20^2 = 4\%$ van de variantie. Maar die vier procentpunt is persistent:
-wie tien jaar belegt vanuit een dure markt, krijgt tien jaar lang een iets lager
-verwacht rendement, en tien kleine verschillen tellen op tot één groot verschil.
-De ruis daarentegen middelt uit. Daarom groeit de $R^2$ met de horizon, en daarom
-zochten Fama en French het bewijs bij twee- tot vierjaarsrendementen en niet bij
-maandrendementen.
-
-Dezelfde persistentie maakt de statistiek verraderlijk. Een voorspeller die bijna
-een random walk is, heeft over een eeuw maar een handvol onafhankelijke
-schommelingen; de schatter is vertekend en de $t$-waarden zijn te mooi. En wie de
-voorspelling in realtime had willen gebruiken, had zijn helling moeten schatten op
-de data van dat moment. Zo komen we bij de paradox van dit tijdvak: het bewijs dat
-verwachte rendementen variëren is sterk, het bewijs dat je daar als belegger iets
-aan hebt, is zwak, en die twee uitspraken zijn met elkaar te verzoenen.
-
-## Toy-voorbeeld: vier jaar data en de identiteit van Cochrane
-
-We nemen vier jaar data, gemeten als afwijking van het langjarige gemiddelde
-zodat alle constanten wegvallen. De log dividend-prijsratio $dp_t = d_t - p_t$ is
-
-$$
-dp_0 = -0{,}10, \qquad dp_1 = 0{,}00, \qquad dp_2 = 0{,}10, \qquad dp_3 = 0{,}16 ,
-$$
-
-en de log dividendgroei in jaar 1, 2 en 3 is $\Delta d_1 = 0{,}02$,
-$\Delta d_2 = 0{,}06$, $\Delta d_3 = 0{,}01$. De rendementen volgen uit de
-Campbell-Shiller-benadering die we in de theorie afleiden,
-$r_{t+1} = dp_t - \rho\, dp_{t+1} + \Delta d_{t+1}$, met $\rho = 0{,}96$:
+**Stap 1, de rendementen.** Zonder de constante $\kappa$ geeft het recept rendementen als
+afwijking van hun langjarige gemiddelde, zodat een negatief rendement hier "onder het
+gemiddelde" betekent en geen verlies. Dat ze in deze vier jaren alle drie onder dat
+gemiddelde liggen, komt doordat de markt steeds goedkoper werd, want $dp$ stijgt elk jaar.
+Het recept geeft voor de drie jaren
 
 $$
 \begin{aligned}
-r_1 &= -0{,}10 - 0{,}96 \times 0{,}00 + 0{,}02 = -0{,}0800, \\
-r_2 &= \phantom{-}0{,}00 - 0{,}96 \times 0{,}10 + 0{,}06 = -0{,}0360, \\
-r_3 &= \phantom{-}0{,}10 - 0{,}96 \times 0{,}16 + 0{,}01 = -0{,}0436 .
+\ell_1 &= -0{,}10 - 0{,}96 \times 0{,}00 + 0{,}02 = -0{,}0800, \\
+\ell_2 &= \phantom{-}0{,}00 - 0{,}96 \times 0{,}10 + 0{,}06 = -0{,}0360, \\
+\ell_3 &= \phantom{-}0{,}10 - 0{,}96 \times 0{,}16 + 0{,}01 = -0{,}0436 .
 \end{aligned}
 $$
 
-Het zijn afwijkingen van een gemiddeld rendement, dus negatieve getallen
-betekenen hier "onder het gemiddelde", geen verlies.
-
-**Drie regressies met de hand.** De regressor is $x = (dp_0, dp_1, dp_2) =
-(-0{,}10;\ 0{,}00;\ 0{,}10)$ met gemiddelde nul en $\sum x^2 = 0{,}02$. Omdat
-$\sum x = 0$ is een OLS-helling gewoon $\sum x\,y / 0{,}02$, zonder eerst $y$ te
-demeanen:
+**Stap 2, drie hellingen.** De regressor is $x = (dp_0, dp_1, dp_2) = (-0{,}10;\
+0{,}00;\ 0{,}10)$, met gemiddelde nul en $\sum x^2 = 0{,}02$. Omdat $\sum x = 0$, is
+elke OLS-helling gewoon $\sum x\,y / 0{,}02$, zonder dat we eerst het gemiddelde van $y$
+aftrekken.
 
 $$
 \begin{aligned}
@@ -160,221 +166,137 @@ $$
 \end{aligned}
 $$
 
-**De identiteit.** Nu de controle die de hele lecture draagt:
+**Stap 3, de identiteit.** De drie hellingen hangen aan elkaar, want
 $1 - \rho\hat\phi + \hat b_d = 1 - 0{,}96 \times 0{,}80 - 0{,}05 = 1 - 0{,}768 - 0{,}05 =
-0{,}182 = \hat b_r$. De drie hellingen zijn niet onafhankelijk: wie er twee kent,
-kent de derde. Delen door $1 - \rho\hat\phi = 0{,}232$ geeft de "lange-termijn"-versie,
-$\hat b_r/0{,}232 = 0{,}7845$ en $\hat b_d/0{,}232 = -0{,}2155$, en hun verschil is
-precies één. In dit verzonnen voorbeeld komt dus 78% van de beweging in $dp$ uit
+0{,}182$, en dat is precies $\hat b_r$. Wie er twee kent, kent dus ook de derde.
+
+**Stap 4, de verdeling.** Delen door $1 - \rho\hat\phi = 0{,}232$ geeft
+$\hat b_r/0{,}232 = 0{,}7845$ en $\hat b_d/0{,}232 = -0{,}2155$, en het verschil van die
+twee is precies één. In dit verzonnen voorbeeld komt 78% van de beweging in $dp$ dus uit
 verwachte rendementen en 22% uit verwachte dividendgroei.
 
-**De lange horizon.** Neem Cochrane's afgeronde schattingen $b_r = 0{,}10$ en
-$\phi = 0{,}94$. Als $dp$ een AR(1) is, voorspelt $dp_t$ het rendement over jaar
-$t+j$ met helling $b_r\phi^{j-1}$, en de helling op het cumulatieve rendement over
-$k$ jaar is de meetkundige som
-
-$$
-b_r^{(k)} = b_r \frac{1-\phi^k}{1-\phi}: \qquad
-b_r^{(1)} = 0{,}100,\quad
-b_r^{(5)} = 0{,}10 \times \frac{1 - 0{,}7339}{0{,}06} = 0{,}4435,\quad
-b_r^{(10)} = 0{,}10 \times \frac{1 - 0{,}5386}{0{,}06} = 0{,}7690 ,
-$$
-
-oplopend naar $0{,}10/0{,}06 = 1{,}667$ op oneindige horizon. Met de discontering
-$\rho$ uit de identiteit wordt de oneindige som $b_r/(1-\rho\phi) = 0{,}10/(1 - 0{,}96
-\times 0{,}94) = 0{,}10/0{,}0976 = 1{,}0246$: één log-punt hogere $dp$ voorspelt ongeveer één log-punt
-hoger verdisconteerd rendement. Dat is het getal dat Cochrane $b_r^{lr}$ noemt.
+De codecel rekent de vier stappen na en zet de uitkomsten naast de handberekening.
 
 ```{code-cell} ipython3
 rho_toy = 0.96
-dp_toy = np.array([-0.10, 0.00, 0.10, 0.16])
-dd_toy = np.array([0.02, 0.06, 0.01])
-r_toy = dp_toy[:-1] - rho_toy * dp_toy[1:] + dd_toy
+dp_toy = np.array([-0.10, 0.00, 0.10, 0.16])   # dp_0, ..., dp_3
+dd_toy = np.array([0.02, 0.06, 0.01])          # dividend growth in years 1, 2, 3
+ell_toy = dp_toy[:-1] - rho_toy * dp_toy[1:] + dd_toy   # step 1: Campbell-Shiller returns
 
 
 def ols_slope(y, x):
     """OLS slope of y on x with an intercept."""
-    xd = x - x.mean()
-    return float((xd * (y - y.mean())).sum() / (xd**2).sum())
+    x_dev = x - x.mean()
+    return float((x_dev * (y - y.mean())).sum() / (x_dev**2).sum())
 
 
 x_toy = dp_toy[:-1]
-phi_toy = ols_slope(dp_toy[1:], x_toy)
-bd_toy = ols_slope(dd_toy, x_toy)
-br_toy = ols_slope(r_toy, x_toy)
+phi_toy = ols_slope(dp_toy[1:], x_toy)   # step 2: persistence of dp
+bd_toy = ols_slope(dd_toy, x_toy)        # step 2: dividend-growth slope
+br_toy = ols_slope(ell_toy, x_toy)       # step 2: return slope
+denom_toy = 1 - rho_toy * phi_toy        # step 4: 1 - rho * phi
 
-print("rendementen        :", np.round(r_toy, 4), "  (hand: -0.0800, -0.0360, -0.0436)")
-print(f"phi, b_d, b_r      : {phi_toy:.4f}, {bd_toy:.4f}, {br_toy:.4f}   (hand: 0.8000, -0.0500, 0.1820)")
-print(f"1 - rho*phi + b_d  : {1 - rho_toy * phi_toy + bd_toy:.4f}   (hand: 0.1820)")
-print(f"b_r^lr, b_d^lr     : {br_toy / (1 - rho_toy * phi_toy):.4f}, "
-      f"{bd_toy / (1 - rho_toy * phi_toy):.4f}   (hand: 0.7845, -0.2155)")
-
-b_c, phi_c = 0.10, 0.94
-horizon_coef = {k: b_c * (1 - phi_c**k) / (1 - phi_c) for k in (1, 5, 10)}
-print("b_r^(k), k = 1, 5, 10:", {k: round(v, 4) for k, v in horizon_coef.items()},
-      "  (hand: 0.1000, 0.4435, 0.7690)")
-print(f"b_r / (1 - rho*phi) : {b_c / (1 - rho_toy * phi_c):.4f}   (hand: 1.0246)")
+pd.DataFrame(
+    {
+        "met de hand": [-0.0800, -0.0360, -0.0436, 0.8000, -0.0500, 0.1820, 0.1820,
+                        0.7845, -0.2155],
+        "code": [*ell_toy, phi_toy, bd_toy, br_toy, denom_toy + bd_toy,
+                 br_toy / denom_toy, bd_toy / denom_toy],
+    },
+    index=["rendement jaar 1", "rendement jaar 2", "rendement jaar 3", "helling phi",
+           "helling b_d", "helling b_r", "1 - rho*phi + b_d", "b_r^lr", "b_d^lr"],
+).round(4)
 ```
 
-De code geeft dezelfde getallen als de hand. De identiteit in de derde regel geldt
-in de steekproef exact zodra de rendementen uit de linearisatie komen; in echte data
-op een paar duizendsten na.
+Code en hand geven dezelfde getallen. De identiteit uit stap 3 geldt in elke steekproef
+exact zodra de rendementen uit de benadering komen, en in echte data op een paar
+duizendsten na. In dit voorbeeld voorspelt een goedkope markt dus vooral een hoog
+rendement, en slechts voor een klein deel lage dividendgroei.
 
 ## Theorie
 
-Vanaf hier zijn kleine letters logs: $p_t = \log P_t$, $d_t = \log D_t$,
-$r_{t+1} = \log R_{t+1}$, en $dp_t = d_t - p_t$ is de log dividend-prijsratio. We
-volgen de tekenconventie van Cochrane ($d - p$, dus hoog is goedkoop) in plaats
-van die van Campbell en Shiller ($p - d$); de formules verschillen alleen in
-het teken.
+De theorie heeft één kern. Het rendement bestaat per definitie uit de ratio van vandaag,
+die van morgen en de dividendgroei. Daardoor zijn de voorspellende regressies van
+rendement, dividendgroei en ratio aan elkaar gekoppeld, en is een ontbrekende
+dividendvoorspelling bewijs voor een rendementsvoorspelling. We herhalen eerst de
+Campbell-Shiller-identiteit, leiden daaruit de koppeling van Cochrane af en laten zien
+wat die voor de lange horizon voorspelt. Daarna volgen de drie toetsproblemen van dit
+tijdvak, namelijk overlappende waarnemingen, de Stambaugh-bias en de toets buiten de
+steekproef.
 
-### De Campbell-Shiller-loglinearisatie
+### Opzet: de Campbell-Shiller-identiteit
 
-*Waarom zou dit waar zijn?* Het rendement is het dividendrendement plus de
-koerswinst. In logs wordt dat een niet-lineaire functie van de prijs-dividendratio
-van morgen, maar die ratio schommelt rond een stabiel gemiddelde, en een gladde
-functie is dicht bij zijn gemiddelde bijna een rechte lijn. Vervang de functie door
-die lijn en het rendement wordt een lineaire combinatie van de ratio van vandaag,
-de ratio van morgen en de dividendgroei. Een lineaire differentievergelijking kun
-je vooruit oplossen, en dan staat er een contante-waardeformule in logs.
+De ratio van vandaag is gelijk aan verdisconteerde toekomstige rendementen min
+verdisconteerde toekomstige dividendgroei. Een belegger die een goedkope markt koopt, met
+een hoge $dp$, verdient dus later een hoog rendement of ziet het dividend dalen. Een derde
+uitweg is er niet. [](#03-15-shiller-excess-volatility) leidde die
+identiteit af voor $pd_t = p_t - d_t$, in [](#eq-shiller-excess-volatility-cs). Wij volgen
+de tekenconventie van Cochrane, $dp_t = -pd_t$, zodat een hoge $dp$ een goedkope markt
+betekent en de hellingen positief uitkomen.
 
 :::{prf:proposition} Campbell-Shiller-identiteit
 :label: thm-voorspelbaarheid-cs
 
-Laat $\overline{pd}$ het gemiddelde van $p_t - d_t$ zijn en definieer
+Laat $\overline{pd}$ het gemiddelde van $p_t - d_t$ zijn, en definieer
 $\rho = e^{\overline{pd}}/(1 + e^{\overline{pd}})$ en
-$\kappa = \log(1 + e^{\overline{pd}}) - \rho\,\overline{pd}$. Tot op tweede-orde
-termen in $pd_{t+1} - \overline{pd}$ geldt
+$\kappa = \log(1 + e^{\overline{pd}}) - \rho\,\overline{pd}$. Tot op tweede-ordetermen in
+$pd_{t+1} - \overline{pd}$ geldt
 
 ```{math}
 :label: eq-voorspelbaarheid-cs-rendement
-r_{t+1} \approx \kappa - \rho\, dp_{t+1} + \Delta d_{t+1} + dp_t .
+\ell_{t+1} \approx \kappa + dp_t - \rho\, dp_{t+1} + \Delta d_{t+1} .
 ```
 
-Als bovendien $\lim_{k\to\infty}\rho^k dp_{t+k} = 0$, dan geldt ex post en dus
-ook in verwachting op $t$
+Als bovendien $\lim_{k\to\infty}\rho^k dp_{t+k} = 0$, dan geldt achteraf ook de contante-waardevorm. Omdat $dp_t$ op $t$ bekend is, geldt die ook in verwachting:
 
 ```{math}
 :label: eq-voorspelbaarheid-cs-pv
 dp_t \approx -\frac{\kappa}{1-\rho}
-  + \sum_{j=1}^{\infty} \rho^{j-1} r_{t+j}
+  + \sum_{j=1}^{\infty} \rho^{j-1} \ell_{t+j}
   - \sum_{j=1}^{\infty} \rho^{j-1} \Delta d_{t+j}
 \;=\; -\frac{\kappa}{1-\rho}
-  + \E_t\!\sum_{j=1}^{\infty} \rho^{j-1} r_{t+j}
+  + \E_t\!\sum_{j=1}^{\infty} \rho^{j-1} \ell_{t+j}
   - \E_t\!\sum_{j=1}^{\infty} \rho^{j-1} \Delta d_{t+j} .
 ```
 :::
 
-:::{prf:proof}
-:class: dropdown
+Het bewijs staat bij [](#eq-shiller-excess-volatility-cs). Het logrendement is een gladde
+functie van de prijs-dividendratio van morgen, en omdat die ratio rond een stabiel
+gemiddelde schommelt, vervangen we de functie door de raaklijn. Zo ontstaat
+[](#eq-voorspelbaarheid-cs-rendement), en vooruit oplossen geeft
+[](#eq-voorspelbaarheid-cs-pv).
 
-Schrijf het bruto rendement als
+$\rho$ is geen voorkeursparameter maar een getal uit de data. Bij een gemiddelde
+prijs-dividendratio van 25 is $\rho = 25/26 = 0{,}96$, de waarde uit het toy-voorbeeld.
+De benaderingsfout is klein, want bij een afwijking van 0,5 in de log-ratio is de
+tweede-ordeterm $\tfrac12 \times 0{,}96 \times 0{,}04 \times 0{,}25 = 0{,}005$.
 
-$$
-R_{t+1} = \frac{P_{t+1} + D_{t+1}}{P_t}
-= \left(1 + \frac{P_{t+1}}{D_{t+1}}\right)\frac{D_{t+1}}{D_t}\,\frac{D_t}{P_t} .
-$$
+### Het kernresultaat: de identiteit van Cochrane
 
-Neem logs, met $pd = p - d$:
-$r_{t+1} = \log\!\left(1 + e^{pd_{t+1}}\right) + \Delta d_{t+1} - pd_t$. Dit is exact.
-De functie $f(x) = \log(1 + e^x)$ heeft $f'(x) = e^x/(1+e^x)$ en
-$f''(x) = f'(x)\,(1 - f'(x))$. Een eerste-orde Taylorbenadering rond $\overline{pd}$
-geeft $f(pd_{t+1}) \approx f(\overline{pd}) + \rho\,(pd_{t+1} - \overline{pd}) =
-\kappa + \rho\, pd_{t+1}$, met een fout van
-$\tfrac12\rho(1-\rho)(pd_{t+1} - \overline{pd})^2$ plus hogere termen. Invullen en
-$pd = -dp$ gebruiken geeft [](#eq-voorspelbaarheid-cs-rendement).
-
-Herschrijf [](#eq-voorspelbaarheid-cs-rendement) als
-$dp_t = -\kappa + r_{t+1} - \Delta d_{t+1} + \rho\, dp_{t+1}$ en substitueer
-dezelfde vergelijking voor $dp_{t+1}$, $dp_{t+2}$, enzovoort. Na $k$ stappen:
-
-$$
-dp_t = -\kappa\sum_{j=0}^{k-1}\rho^j + \sum_{j=1}^{k}\rho^{j-1}\left(r_{t+j} - \Delta d_{t+j}\right) + \rho^k dp_{t+k}.
-$$
-
-Omdat $0 < \rho < 1$ convergeert $\sum \rho^j$ naar $1/(1-\rho)$, en onder de
-voorwaarde $\rho^k dp_{t+k} \to 0$ verdwijnt de laatste term. Dit is een uitspraak
-over gerealiseerde grootheden; omdat $dp_t$ bekend is op $t$, geldt hij ook na het
-nemen van $\E_t$ aan beide kanten. $\square$
-:::
-
-Drie opmerkingen. $\rho$ is geen voorkeursparameter maar een getal uit de data: bij
-een gemiddelde prijs-dividendratio van 25 is $\rho = 25/26 = 0{,}96$.
-[](#eq-voorspelbaarheid-cs-pv) is de log-lineaire tegenhanger van Williams'
-[](#eq-williams-ddm-pd), die in [](#03-15-shiller-excess-volatility) al als
-variantiegrens diende. En de benaderingsfout is klein: bij een afwijking van 0,5 in
-de log-ratio is de tweede-ordeterm $\tfrac12 \times 0{,}96 \times 0{,}04 \times 0{,}25
-= 0{,}005$.
-
-### De variantiedecompositie
-
-*Waarom zou dit waar zijn?* Als de ratio van vandaag gelijk is aan verdisconteerde
-toekomstige rendementen min verdisconteerde toekomstige dividendgroei, dan moet
-elke afwijking van de ratio van zijn gemiddelde terugkomen in een van die twee
-sommen. Vermenigvuldig beide kanten met die afwijking en neem verwachtingen: links
-staat de variantie, rechts twee covarianties, en die covarianties zijn niets anders
-dan voorspelbaarheid.
-
-Vermenigvuldig [](#eq-voorspelbaarheid-cs-pv) met $dp_t - \E[dp_t]$ en neem
-onvoorwaardelijke verwachtingen:
-
-```{math}
-:label: eq-voorspelbaarheid-decompositie
-\Var(dp_t) = \Cov\!\Big(dp_t,\ \sum_{j\ge1}\rho^{j-1} r_{t+j}\Big)
-           - \Cov\!\Big(dp_t,\ \sum_{j\ge1}\rho^{j-1} \Delta d_{t+j}\Big) .
-```
-
-Deel door $\Var(dp_t)$ en de covarianties worden regressiecoëfficiënten:
-
-```{math}
-:label: eq-voorspelbaarheid-lr
-1 = b_r^{lr} - b_d^{lr}, \qquad
-b_r^{lr} = \beta\!\Big(\sum_{j\ge1}\rho^{j-1} r_{t+j},\ dp_t\Big), \qquad
-b_d^{lr} = \beta\!\Big(\sum_{j\ge1}\rho^{j-1} \Delta d_{t+j},\ dp_t\Big),
-```
-
-met $\beta(y, x)$ de helling van $y$ op $x$. Dit is dezelfde decompositie die in
-[](#eq-shiller-excess-volatility-decompositie) als verlengstuk van Shillers grens
-opdook, nu met een schatbare betekenis: $b_r^{lr}$ is het aandeel van de variantie
-van de dividend-prijsratio dat door verwachte rendementen wordt gedragen,
-$-b_d^{lr}$ het aandeel van verwachte dividendgroei. De twee aandelen hoeven niet
-tussen nul en één te liggen, want de decompositie is niet orthogonaal: als
-dividendgroei "de verkeerde kant op" voorspeld wordt, is $b_r^{lr} > 1$.
-
-Campbell en Shiller schatten deze decompositie in 1988 met een VAR en
-concludeerden dat de dividend-prijsratio vooral nieuws over toekomstige
-rendementen bevat; Cochrane {cite}`Cochrane1992` kwam met een directe schatting
-tot dezelfde conclusie. De getallen die wij als maatstaf gebruiken, zijn die van
-Cochrane 2008, tabel 4: over 1927–2004 is $\hat b_r^{lr} = 1{,}09$ (standaardfout
-0,44) en $\hat b_d^{lr} = 0{,}09$ (0,44). Vrijwel alle variantie van de
-dividend-prijsratio komt van verwachte rendementen, en de puntschatting zegt
-zelfs iets meer dan alles.
-
-### Cochrane's identiteit en de nulhypothese die blaft
-
-*Waarom zou dit waar zijn?* Zet de drie éénjaarsregressies naast elkaar — van
-rendement, dividendgroei en $dp$ zelf op $dp_t$ — en neem de lineaire identiteit
-[](#eq-voorspelbaarheid-cs-rendement) regel voor regel. Een projectie van een som
-is de som van de projecties. De drie hellingen zijn dus aan elkaar vastgebonden, en
-wie beweert dat één ervan nul is, beweert automatisch iets over de andere twee.
-
-Schrijf het VAR van Cochrane
+De voorspellende regressies van rendement, dividendgroei en ratio zijn niet
+onafhankelijk. Regresseren we elke term van [](#eq-voorspelbaarheid-cs-rendement) op
+$dp_t$, dan is de helling van de som de som van de hellingen. De rendementshelling ligt
+dus vast zodra de andere twee bekend zijn. Cochrane schrijft het systeem als een
+vectorautoregressie (VAR), drie regressies op de ratio van vorig jaar, en we houden zijn
+namen $b_r$ en $b_d$ voor de
+hellingen:
 
 ```{math}
 :label: eq-voorspelbaarheid-var
 \begin{aligned}
-r_{t+1} &= a_r + b_r\, dp_t + \varepsilon^{r}_{t+1}, \\
+\ell_{t+1} &= a_r + b_r\, dp_t + \varepsilon^{r}_{t+1}, \\
 \Delta d_{t+1} &= a_d + b_d\, dp_t + \varepsilon^{d}_{t+1}, \\
 dp_{t+1} &= a_{dp} + \phi\, dp_t + \varepsilon^{dp}_{t+1} .
 \end{aligned}
 ```
 
-:::{prf:proposition} Cochrane's identiteit
+Hier is $\phi$ de persistentie van de ratio, ongeveer 0,94 per jaar. De schokken
+$\varepsilon^r$, $\varepsilon^d$ en $\varepsilon^{dp}$ zijn het onvoorspelbare deel.
+
+:::{prf:proposition} Identiteit van Cochrane
 :label: thm-voorspelbaarheid-cochrane
 
-Als [](#eq-voorspelbaarheid-cs-rendement) met gelijkheid geldt en de drie
-regressies in [](#eq-voorspelbaarheid-var) met OLS op dezelfde steekproef zijn
-geschat, dan geldt
+Neem aan dat [](#eq-voorspelbaarheid-cs-rendement) met gelijkheid geldt en dat de drie regressies in [](#eq-voorspelbaarheid-var) met OLS op dezelfde steekproef zijn geschat. Dan geldt
 
 ```{math}
 :label: eq-voorspelbaarheid-identiteit
@@ -384,99 +306,134 @@ b_r = 1 - \rho\phi + b_d,
 \qquad
 b_r^{lr} = \frac{b_r}{1-\rho\phi},\quad b_d^{lr} = \frac{b_d}{1-\rho\phi} .
 ```
-
-In het bijzonder vereist de nulhypothese $b_r = 0$ van onvoorspelbare rendementen
-dat $b_d = \rho\phi - 1 < 0$ zolang $\phi < 1/\rho$.
 :::
 
 :::{prf:proof}
-OLS is lineair in de afhankelijke variabele: de helling van $y_1 + y_2$ op $x$ is
-de som van de hellingen. Pas dat toe op
-$r_{t+1} = \kappa + dp_t - \rho\, dp_{t+1} + \Delta d_{t+1}$: de helling van
-$dp_t$ op zichzelf is 1, die van $dp_{t+1}$ is $\phi$, die van $\Delta d_{t+1}$ is
-$b_d$. Dus $b_r = 1 - \rho\phi + b_d$. Hetzelfde argument op de residuen geeft
+:class: dropdown
+
+OLS is lineair in de afhankelijke variabele, zodat de helling van $y_1 + y_2$ op $x$ de
+som van de hellingen is. Pas dat toe op
+$\ell_{t+1} = \kappa + dp_t - \rho\, dp_{t+1} + \Delta d_{t+1}$. De helling van $dp_t$ op
+zichzelf is 1, die van $dp_{t+1}$ is $\phi$ en die van $\Delta d_{t+1}$ is $b_d$, dus
+$b_r = 1 - \rho\phi + b_d$. Hetzelfde argument op de residuen geeft
 $\varepsilon^r = \varepsilon^d - \rho\varepsilon^{dp}$, want $dp_t$ zelf heeft geen
-residu. Voor de lange-termijncoëfficiënten: in het VAR voorspelt $dp_t$ het
-rendement in jaar $t+j$ met helling $b_r\phi^{j-1}$, dus
-$b_r^{lr} = \sum_{j\ge1}\rho^{j-1}\phi^{j-1}b_r = b_r/(1-\rho\phi)$, en idem voor
-$b_d$. Deel de eerste identiteit door $1-\rho\phi$ en [](#eq-voorspelbaarheid-lr)
-volgt. $\square$
+residu. In het VAR voorspelt $dp_t$ het rendement in jaar $t+j$ met helling
+$b_r\phi^{j-1}$, zodat $b_r^{lr} = \sum_{j\ge1}\rho^{j-1}\phi^{j-1}b_r = b_r/(1-\rho\phi)$,
+en hetzelfde geldt voor $b_d$. $\square$
 :::
 
-Hier zit Cochrane's argument in één regel. Met $\phi = 0{,}941$ en $\rho = 0{,}9638$ is
-$1 - \rho\phi = 0{,}093$. Zijn rendementen onvoorspelbaar, dan moet dividendgroei
-voorspelbaar zijn met helling $-0{,}093$: een dure markt (lage $dp$) moet dan snelle
-dividendgroei voorspellen. De nulhypothese voorspelt dus niet alleen $\hat b_r = 0$
-maar ook $\hat b_d \approx -0{,}09$.
-Cochrane's tabel 1 geeft over 1926–2004 in jaardata $\hat b_r = 0{,}097$
-($t = 1{,}92$, $R^2 = 4{,}0\%$) en $\hat b_d = 0{,}008$ ($t = 0{,}18$, $R^2 = 0{,}00\%$);
-zijn tabel 2 geeft $\hat\phi = 0{,}941$ met standaardfout 0,047. Afgerond:
-$b_r \approx 0{,}10$, $b_d \approx 0$, $\phi \approx 0{,}94$. De rendementsregressie
-alleen is marginaal, maar de dividendregressie ligt twee standaardfouten boven wat
-de nulhypothese eist. Dat is de hond die niet blaft.
+De lange-termijncoëfficiënten verdelen de variantie van de ratio. Vermenigvuldigen we
+[](#eq-voorspelbaarheid-cs-pv) met $dp_t - \E[dp_t]$ en nemen we verwachtingen, dan volgt
+net als bij [](#eq-shiller-excess-volatility-decompositie)
 
-Een nulhypothese die ook $\phi$ vrij laat, kan hieraan ontsnappen: bij $\phi$
-dichtbij $1/\rho \approx 1{,}04$ is $1 - \rho\phi$ klein en is de vereiste $b_d$
-dicht bij nul. Cochrane's antwoord is dat zo'n wereld er zelf vreemd uitziet —
-$\phi \ge 1$ betekent een dividend-prijsratio met een eenheidswortel, en
-$\phi > 1/\rho$ een explosieve prijs — en dat een zinvolle nulhypothese een
-bovengrens op $\phi$ moet bevatten. Wie die grens accepteert, verwerpt de nul.
+```{math}
+:label: eq-voorspelbaarheid-decompositie
+\Var(dp_t) = \Cov\!\Big(dp_t,\ \sum_{j\ge1}\rho^{j-1} \ell_{t+j}\Big)
+           - \Cov\!\Big(dp_t,\ \sum_{j\ge1}\rho^{j-1} \Delta d_{t+j}\Big) .
+```
 
-### Lange-horizonregressies en waarom de $R^2$ groeit
+Na deling door $\Var(dp_t)$ worden de covarianties regressiecoëfficiënten:
 
-*Waarom zou dit waar zijn?* De voorspelbare component van rendementen is klein maar
-traag; de onvoorspelbare component is groot maar vergeet zichzelf. Over $k$ jaar
-telt de voorspelbare component bijna lineair op, zodat zijn variantie bijna met
-$k^2$ groeit, terwijl de variantie van de ruis met $k$ groeit. De verhouding, de
-$R^2$, stijgt dus met de horizon — tot de persistentie opraakt.
+```{math}
+:label: eq-voorspelbaarheid-lr
+1 = b_r^{lr} - b_d^{lr}, \qquad
+b_r^{lr} = \beta\!\Big(\sum_{j\ge1}\rho^{j-1} \ell_{t+j},\ dp_t\Big), \qquad
+b_d^{lr} = \beta\!\Big(\sum_{j\ge1}\rho^{j-1} \Delta d_{t+j},\ dp_t\Big),
+```
 
-Schrijf $r^{(k)}_{t} = \sum_{j=1}^{k} r_{t+j}$. In het VAR is
-$\beta(r^{(k)}_t, dp_t) = b_r(1-\phi^k)/(1-\phi)$, zoals in het toy-voorbeeld. De
-populatie-$R^2$ is
+met $\beta(y, x)$ de helling van $y$ op $x$. $b_r^{lr}$ is het deel van de variantie van
+de ratio dat verwachte rendementen verklaren, en $-b_d^{lr}$ het deel dat verwachte
+dividendgroei verklaart. In het toy-voorbeeld kwam 78% van de beweging van rendementen en
+22% van dividendgroei. Omdat de decompositie niet orthogonaal is, hoeven de delen niet
+tussen nul en één te liggen. Als dividendgroei de verkeerde kant op voorspeld wordt, is
+$b_r^{lr}$ groter dan één. De tabel zet de schattingen van Cochrane over 1926–2004 naast
+wat de nulhypothese van onvoorspelbare rendementen eist.
+
+| | $\hat b_r$ | $\hat b_d$ | $\hat\phi$ | $\hat b_r^{lr}$ |
+|---|---|---|---|---|
+| Cochrane (2008), tabel 1, 2 en 4 | 0,097 ($t$ = 1,92) | 0,008 ($t$ = 0,18) | 0,941 (SE 0,047) | 1,09 (SE 0,44) |
+| nulhypothese $b_r = 0$ | 0 | −0,093 | 0,941 | 0 |
+
+Met $\phi = 0{,}941$ en $\rho = 0{,}9638$ is $1 - \rho\phi = 0{,}093$. Zijn rendementen
+onvoorspelbaar, dan moet dividendgroei dus voorspelbaar zijn met helling $-0{,}093$,
+zodat een dure markt (lage $dp$) snelle dividendgroei voorspelt. De rendementsregressie
+alleen is net niet significant, maar de dividendhelling ligt ruim twee standaardfouten
+boven wat de nulhypothese eist. Het bewijs komt dus niet uit de rendementsregressie, maar
+uit een dividendregressie die nul geeft. Het teken dat de intuïtie verwachtte, klopt, en
+$\hat b_r^{lr} = 1{,}09$ zegt zelfs dat de variantie van de ratio vrijwel volledig uit
+verwachte rendementen komt.
+
+Een nulhypothese die ook $\phi$ vrijlaat, kan aan dit argument ontsnappen. Bij $\phi$
+dicht bij $1/\rho \approx 1{,}04$ is $1 - \rho\phi$ klein, zodat de vereiste $b_d$ ook
+bijna nul is. Cochrane antwoordt dat zo'n wereld er zelf vreemd uitziet, omdat
+$\phi \ge 1$ een ratio met een eenheidswortel betekent en $\phi > 1/\rho$ een explosieve
+prijs. Een zinvolle nulhypothese heeft daarom een bovengrens op $\phi$, en onder die
+grens wordt ze verworpen.
+
+### Wat het voorspelt: een $R^2$ die met de horizon groeit
+
+Uit de identiteit en de traagheid van de ratio volgt dat de helling en de $R^2$ met de
+horizon groeien, zonder dat er informatie bijkomt. Een belegger die een goedkope markt
+koopt en vijf jaar vasthoudt, verdient vijf jaar lang een iets hoger verwacht rendement,
+terwijl de onverwachte schokken elkaar deels opheffen. In het VAR voorspelt $dp_t$ het
+rendement in jaar $t+j$ met helling $b_r\phi^{j-1}$, zodat de helling op het cumulatieve
+rendement $\ell^{(k)}_t = \sum_{j=1}^{k} \ell_{t+j}$ een meetkundige som is:
+
+$$
+b_r^{(k)} = b_r \frac{1-\phi^k}{1-\phi} .
+$$
+
+Met de afgeronde $b_r = 0{,}10$ en $\phi = 0{,}94$ is
+$b_r^{(5)} = 0{,}10 \times (1 - 0{,}7339)/0{,}06 = 0{,}4435$ en
+$b_r^{(10)} = 0{,}10 \times (1 - 0{,}5386)/0{,}06 = 0{,}7690$, oplopend naar
+$0{,}10/0{,}06 = 1{,}667$ op oneindige horizon. Verdisconteren we met $\rho = 0{,}96$,
+dan wordt de oneindige som $0{,}10/(1 - 0{,}96 \times 0{,}94) = 1{,}0246$. Een log-punt
+hogere $dp$ voorspelt dus ongeveer een log-punt hoger verdisconteerd rendement, en dat
+getal is de $b_r^{lr}$ uit [](#eq-voorspelbaarheid-lr).
+
+Ook de $R^2$ groeit. De populatiewaarde is
 
 ```{math}
 :label: eq-voorspelbaarheid-r2k
-R^2(k) = \frac{\left[b_r (1-\phi^k)/(1-\phi)\right]^2 \Var(dp_t)}{\Var\!\left(r^{(k)}_t\right)} .
+R^2(k) = \frac{\left[b_r (1-\phi^k)/(1-\phi)\right]^2 \Var(dp_t)}{\Var\!\left(\ell^{(k)}_t\right)} ,
 ```
 
-Als rendementen niet autogecorreleerd zouden zijn, was
-$\Var(r^{(k)}) = k\Var(r)$ en dus $R^2(k) = R^2(1)\,[(1-\phi^k)/(1-\phi)]^2/k$. Bij
-$R^2(1) = 4\%$ en $\phi = 0{,}94$ geeft dat $15{,}7\%$ op vijf jaar en $23{,}7\%$ op tien
-jaar. Fama en French wezen op een tweede effect dat de $R^2$ nog verder opdrijft:
-een schok die het verwachte rendement verhoogt, verlaagt de prijs vandaag
-(het *discount-rate effect*: hogere discontovoeten maken toekomstige
-kasstromen minder waard), zodat onverwachte rendementen en latere verwachte
-rendementen negatief gecorreleerd zijn en $\Var(r^{(k)})$ *langzamer* dan $k$ groeit.
-In hun inleiding verklaren regressies op de dividendopbrengst "less than 5% of
-monthly or quarterly return variances", maar "often explain more than 25% of the
-variances of two- to four-year returns" {cite}`FamaFrench1988`.
+en als rendementen niet autogecorreleerd waren, gold $\Var(\ell^{(k)}) = k\Var(\ell)$ en
+dus $R^2(k) = R^2(1)\,[(1-\phi^k)/(1-\phi)]^2/k$. Bij $R^2(1) = 4\%$ en $\phi = 0{,}94$
+geeft dat 15,7% op vijf jaar en 23,7% op tien jaar. Fama en French wezen op een tweede
+effect dat de $R^2$ nog verder opdrijft. Een schok die het verwachte rendement verhoogt,
+verlaagt de prijs vandaag, omdat een hogere discontovoet toekomstige kasstromen minder
+waard maakt. Daardoor zijn onverwachte rendementen en latere verwachte rendementen
+negatief gecorreleerd, en groeit $\Var(\ell^{(k)})$ langzamer dan $k$.
 
-De stijgende $R^2$ is echter geen *nieuw* bewijs: alles wat de lange-horizonregressie
-weet, zit al in $b_r$ en $\phi$, en de horizon herschikt die informatie alleen.
+In hun artikel verklaart de dividend-prijsratio maar een klein deel van de variantie van
+maand- en kwartaalrendementen, maar van rendementen over twee tot vier jaar vaak meer
+dan 25% {cite}`FamaFrench1988`. Die stijgende $R^2$ is echter geen nieuw
+bewijs, want alles wat de lange-horizonregressie weet, zit al in $b_r$ en $\phi$, en de
+horizon herschikt die informatie alleen.
 
-### Standaardfouten: overlap, Hodrick en Valkanov
+### Hoe het getoetst wordt: overlap en de Stambaugh-bias
 
-*Waarom zou dit waar zijn?* Opeenvolgende vijfjaarsrendementen delen vier jaar; de
-residuen zijn een MA(4)-proces, en een gewone standaardfout telt elke waarneming
-alsof hij nieuw is. De correctie moet die overlap terugrekenen uit dezelfde korte
-steekproef.
+Twee eigenschappen van de data maken de gewone $t$-waarde te gunstig, namelijk de
+overlap tussen lange-horizonrendementen en de traagheid van de regressor. Opeenvolgende
+vijfjaarsrendementen delen vier jaar, zodat de residuen een MA(4)-proces vormen, waarin
+elk residu een gewogen som is van de laatste vijf jaarschokken. Een gewone standaardfout
+telt elke waarneming dan alsof hij nieuw is. Fama en French corrigeerden met de schatter
+van Hansen en Hodrick, die de autocovarianties van de overlappende residuen schat, maar
+met een trage regressor vallen die schattingen in kleine steekproeven te klein uit, zodat
+de toets te vaak verwerpt.
 
-**Hansen-Hodrick.** Fama en French gebruikten een HAC-schatter met rechthoekige
-kernel en $k-1$ vertragingen: consistent, maar met een persistente regressor in
-eindige steekproeven te vaak verwerpend, en soms met een negatieve variantie.
-
-**Hodrick 1B.** Hodrick {cite}`Hodrick1992` draaide de som om. Onder de
-nulhypothese van onvoorspelbaarheid is
+Hodrick {cite}`Hodrick1992` draaide daarom de som om. Op randtermen na is de teller van de
+lange-horizonhelling ook te schrijven als een éénjaarsrendement maal een achterwaartse som
+van de regressor:
 
 $$
-\sum_t dp_t\, r^{(k)}_t = \sum_t dp_t \sum_{j=1}^{k} r_{t+j}
-= \sum_t r_{t+1} \sum_{j=0}^{k-1} dp_{t-j}
+\sum_t dp_t\, \ell^{(k)}_t = \sum_t dp_t \sum_{j=1}^{k} \ell_{t+j}
+= \sum_t \ell_{t+1} \sum_{j=0}^{k-1} dp_{t-j} .
 $$
 
-(op randtermen na). De teller van de lange-horizonhelling is dus ook te schrijven
-als een *éénperiode*-rendement maal een achterwaartse som van de regressor. De
-éénperiode-residuen zijn onder de nul niet autogecorreleerd, dus de
-variantie-matrix kan zonder HAC-correctie worden geschat:
+Onder de nulhypothese zijn éénjaarsresiduen niet autogecorreleerd, zodat de variantie te
+schatten is zonder correctie voor overlap:
 
 ```{math}
 :label: eq-voorspelbaarheid-hodrick
@@ -486,30 +443,23 @@ variantie-matrix kan zonder HAC-correctie worden geschat:
 \qquad \mathbf z_t = \sum_{j=0}^{k-1} \mathbf x_{t-j},
 ```
 
-met $\mathbf x_t = (1, dp_t)'$ en $\hat u_{t+1}$ het gedemeande éénperiode-rendement.
-In Hodricks simulaties heeft deze "1B"-standaardfout veel betere omvang dan
-Hansen-Hodrick, en de $t$-waarden voor lange horizonnen zakken fors.
+met $\mathbf x_t = (1, dp_t)'$ en $\hat u_{t+1}$ het éénjaarsrendement min zijn
+gemiddelde. Deze standaardfout, Hodricks variant "1B", hoeft geen autocovarianties te
+schatten en heeft daardoor ook in kleine steekproeven ongeveer het juiste niveau, en ermee
+zakken de $t$-waarden voor lange horizonnen fors. Valkanov {cite}`Valkanov2003` liet
+bovendien zien dat de gewone
+$t$-waarde divergeert als de horizon met de steekproef meegroeit.
 
-**Valkanov.** Valkanov {cite}`Valkanov2003` liet zien dat als de horizon meegroeit
-met de steekproef ($k/T \to \lambda > 0$) en de regressor bijna een eenheidswortel
-heeft, de gewone $t$-waarde divergeert en de $R^2$ niet naar zijn populatiewaarde
-convergeert; hij stelde $t/\sqrt{T}$ voor, met kritieke waarden uit simulatie. Een
-$R^2$ van 40% op vijf jaar met overlap is dus niet te vergelijken met 4% op één jaar.
-
-### De Stambaugh-bias: formule en correctie
-
-*Waarom zou dit waar zijn?* De OLS-schatter van $\phi$ is in kleine steekproeven
-naar beneden vertekend (Kendall). Een koersstijging verhoogt het rendement en verlaagt
-$dp$ tegelijk, dus de schokken zijn sterk negatief gecorreleerd. Een steekproef
-waarin $\hat\phi$ te laag uitvalt, is een steekproef waarin de regressor
-"te snel terugkeerde", en die ruis landt via de correlatie in $\hat b_r$. We hebben
-dit in [](#03-10-merton-icapm) al gesimuleerd (figuur [](#fig-merton-icapm-steekproef));
-hier de formule.
-
-Schrijf $u = \varepsilon^r$ en $v = \varepsilon^{dp}$. Projecteer $u$ op $v$:
-$u_{t+1} = (\sigma_{uv}/\sigma_v^2)\, v_{t+1} + \eta_{t+1}$ met $\eta$ ongecorreleerd
-met $v$ en met de regressor. Dan is $\hat b_r - b_r = (\sigma_{uv}/\sigma_v^2)(\hat\phi - \phi)
-+ (\text{term in } \eta)$, en omdat de $\eta$-term gemiddeld nul is,
+De traagheid van de regressor werkt subtieler. Een koersstijging verhoogt het rendement
+en verlaagt $dp$ tegelijk, zodat de schokken in rendement en ratio sterk negatief
+gecorreleerd zijn. De OLS-schatter van $\phi$ is in kleine steekproeven naar beneden
+vertekend, zoals Kendall liet zien. Een steekproef waarin $\hat\phi$ te laag uitvalt, is
+dus een steekproef waarin de ratio te snel terugkeerde, en via de negatieve correlatie
+lijkt het rendement dan achteraf voorspelbaar. [](#03-10-merton-icapm) liet dat al zien in
+[](#fig-merton-icapm-steekproef). Schrijf $u = \varepsilon^r$ en $v = \varepsilon^{dp}$
+en projecteer $u$ op $v$, zodat $u_{t+1} = (\sigma_{uv}/\sigma_v^2)\, v_{t+1} +
+\eta_{t+1}$ met $\eta$ ongecorreleerd met $v$. De term in $\eta$ is gemiddeld nul, en er
+blijft over
 
 ```{math}
 :label: eq-voorspelbaarheid-stambaugh
@@ -517,106 +467,120 @@ met $v$ en met de regressor. Dan is $\hat b_r - b_r = (\sigma_{uv}/\sigma_v^2)(\
 \approx -\frac{\sigma_{uv}}{\sigma_v^2}\cdot\frac{1 + 3\phi}{T} ,
 ```
 
-met $\E[\hat\phi - \phi] \approx -(1+3\phi)/T$ voor een AR(1) met intercept
-{cite}`Stambaugh1999`. Met Cochrane's getallen ($\sigma_{uv}/\sigma_v^2 = -0{,}70
-\times 19{,}6/15{,}3 = -0{,}90$, $\phi = 0{,}94$, $T = 78$) is de bias
-$0{,}90 \times 3{,}82/78 = 0{,}044$: bijna de helft van de geschatte $\hat b_r$. De
-eenvoudigste correctie trekt die term eraf, met $\hat\phi$ in plaats van $\phi$:
-$\hat b_r^{c} = \hat b_r + (\hat\sigma_{uv}/\hat\sigma_v^2)(1+3\hat\phi)/T$. Stambaugh
-liet ook zien wat dit doet met de toets: in maanddata worden OLS-$p$-waarden van 6%
-(1927–1996) en 2% (1952–1996) na correctie 17% en 15%, zoals Cochrane
-samenvat.
+met $\E[\hat\phi - \phi] \approx -(1+3\phi)/T$ voor een AR(1) met constante
+{cite}`Stambaugh1999`. De bias is groter naarmate de schokken sterker negatief
+gecorreleerd zijn, de ratio trager is en de steekproef korter. Met de getallen van
+Cochrane, $\sigma_{uv}/\sigma_v^2 = -0{,}70 \times 19{,}6/15{,}3 = -0{,}90$, $\phi = 0{,}94$
+en $T = 78$, is de bias $0{,}90 \times 3{,}82/78 = 0{,}044$, bijna de helft van de
+geschatte $\hat b_r$.
 
-### Out-of-sample $R^2$ en de Clark-West-toets
+De eenvoudigste correctie trekt die term af, met $\hat\phi$ in plaats van $\phi$.
 
-*Waarom zou dit waar zijn?* Een regressie op de hele steekproef kiest haar helling
-met kennis van de toekomst. Een belegger in 1965 had alleen de data tot 1965. De
-eerlijke vraag is dus: als je elk jaar opnieuw schat op wat er toen bekend was, en
-daarmee het volgende jaar voorspelt, doe je het dan beter dan iemand die simpelweg
-het historische gemiddelde gebruikt?
+### Hoe het getoetst wordt: buiten de steekproef
 
-Met $\hat r_{t+1}$ de voorspelling uit een regressie geschat tot $t$ en $\bar r_t$ het
-gemiddelde tot $t$ is
+Een regressie op de hele steekproef kiest de helling met kennis van de toekomst, terwijl
+een belegger in 1965 alleen de data tot 1965 kende. De eerlijke toets schat daarom elk
+jaar opnieuw op wat toen bekend was en vergelijkt de voorspelling met het historische
+gemiddelde tot dat moment. Noem $\hat y_{t+1}$ de voorspelling uit een regressie die tot
+$t$ is geschat en $\bar y_t$ het gemiddelde tot $t$, met $y$ het rendement of het
+overrendement. De $R^2$ buiten de steekproef is dan
 
 ```{math}
 :label: eq-voorspelbaarheid-oos
-R^2_{OOS} = 1 - \frac{\sum_t (r_{t+1} - \hat r_{t+1})^2}{\sum_t (r_{t+1} - \bar r_{t})^2} .
+R^2_{OOS} = 1 - \frac{\sum_t (y_{t+1} - \hat y_{t+1})^2}{\sum_t (y_{t+1} - \bar y_{t})^2} .
 ```
 
-Goyal en Welch {cite}`GoyalWelch2008` rapporteren een voor vrijheidsgraden
-gecorrigeerde versie en tekenen daarnaast de cumulatieve som van
-$(r_{t+1} - \bar r_t)^2 - (r_{t+1} - \hat r_{t+1})^2$ in de tijd: stijgt de lijn, dan
-voorspelde het model beter. Hun conclusie, uit het abstract: "these models have
-predicted poorly both in-sample (IS) and out-of-sample (OOS) for 30 years now; these
-models seem unstable, as diagnosed by their out-of-sample predictions".
+Een positieve $R^2_{OOS}$ betekent dat
+de regressie het gemiddelde verslaat. Goyal en Welch vonden voor vrijwel alle
+voorspellers een negatieve waarde. Ze concludeerden dat deze modellen al dertig jaar
+slecht voorspellen, in en buiten de steekproef, en bovendien instabiel zijn
+{cite}`GoyalWelch2008`.
 
-Twee kanttekeningen. Een negatieve $R^2_{OOS}$ is te verwachten zelfs als de
-voorspeller echt werkt: de regressie draagt de schattingsfout van twee parameters,
-het gemiddelde van één, en bij een kleine ware $R^2$ weegt die ruis zwaarder dan de
-winst. En de gewone toets op gelijke voorspelfouten is niet standaardnormaal als de
-modellen *genest* zijn (het gemiddelde is de regressie met helling nul). Clark en West
-{cite}`ClarkWest2007` tellen daarom de verwachte extra ruis van het grote model bij
-zijn fout op:
-
+Een negatieve $R^2_{OOS}$ is echter te verwachten, ook als de voorspeller echt werkt,
+omdat de regressie de schattingsfout van twee parameters draagt en het gemiddelde die
+van één. Bij een kleine ware $R^2$ weegt die extra ruis zwaarder dan de winst. Omdat het
+gemiddelde de regressie met helling nul is, zijn de modellen bovendien genest, zodat de
+gewone toets op gelijke voorspelfouten niet standaardnormaal is. Clark en West
+{cite}`ClarkWest2007` tellen daarom de verwachte extra ruis van het grote model bij zijn
+fout op:
 ```{math}
 :label: eq-voorspelbaarheid-cw
-f_{t+1} = (r_{t+1} - \bar r_t)^2 - \Big[(r_{t+1} - \hat r_{t+1})^2 - (\bar r_t - \hat r_{t+1})^2\Big],
+f_{t+1} = (y_{t+1} - \bar y_t)^2 - \Big[(y_{t+1} - \hat y_{t+1})^2 - (\bar y_t - \hat y_{t+1})^2\Big] .
 ```
 
-en toetsen eenzijdig met een gewone $t$-waarde of het gemiddelde van $f$ positief is.
+Daarna toetsen ze eenzijdig, met een gewone $t$-waarde, of het gemiddelde van $f$ positief
+is.
 
-Campbell en Thompson {cite}`CampbellThompson2008` voegden er een praktisch argument
-aan toe. Geen belegger gebruikt een helling met het verkeerde teken of een negatieve
-verwachte premie; leg die twee restricties op (helling nul als hij het verkeerde
-teken heeft, voorspelling nul als zij negatief is) en veel voorspellers verslaan
-het gemiddelde alsnog, zij het met een kleine $R^2_{OOS}$.
-
-### Kleine $R^2$, grote economische waarde
-
-*Waarom zou dit waar zijn?* De Sharpe-ratio van de markt per maand is ook klein.
-Wat een voorspeller waard is, hangt niet af van de $R^2$ op zich maar van de $R^2$
-*ten opzichte van* wat de belegger zonder voorspeller verdient. Is die verhouding
-groot, dan verandert de voorspeller de portefeuille wezenlijk.
-
-Campbell en Thompson maken dit precies. Laat het excess rendement
-$r_{t+1} = \mu + x_t + \varepsilon_{t+1}$ zijn, met $x_t$ een voorspeller met
-gemiddelde nul, en een mean-variance-belegger met risicoaversie $\gamma$. Zonder
-$x_t$ kiest hij gewicht $\mu/(\gamma(\sigma_x^2 + \sigma_\varepsilon^2))$ en verdient hij
-gemiddeld $S^2/\gamma$, met $S$ de Sharpe-ratio. Met $x_t$ kiest hij
-$(\mu + x_t)/(\gamma\sigma_\varepsilon^2)$ en verdient hij
-$(S^2 + R^2)/(\gamma(1 - R^2))$. De proportionele toename van het verwachte
-portefeuillerendement is
+Campbell en Thompson {cite}`CampbellThompson2008` merkten op dat geen belegger een helling
+met het verkeerde teken of een negatieve verwachte premie gebruikt. Met die twee
+restricties verslaan veel voorspellers het gemiddelde alsnog, zij het nipt. Ze lieten met
+een
+eenvoudige mean-variance-rekensom ook zien dat een kleine $R^2$ veel waard kan zijn. Laat
+het overrendement
+$R^e_{t+1} = \mu + x_t + \varepsilon_{t+1}$ zijn, met $x_t$ een voorspeller met gemiddelde
+nul, bijvoorbeeld de helling maal de afwijking van de dividend-prijsratio van zijn
+gemiddelde. Een mean-variance-belegger met risicoaversie $\gamma$ kiest zonder $x_t$ het
+gewicht $\mu/(\gamma(\sigma_x^2 + \sigma_\varepsilon^2))$ en verdient gemiddeld
+$S^2/\gamma$, met $S$ de Sharpe-ratio van rond de 0,1 per maand. Met $x_t$ kiest hij
+$(\mu + x_t)/(\gamma\sigma_\varepsilon^2)$ en verdient hij $(S^2 + R^2)/(\gamma(1 - R^2))$,
+zodat het verwachte portefeuillerendement proportioneel stijgt met een factor waaruit
+$\gamma$ is weggevallen,
 
 ```{math}
 :label: eq-voorspelbaarheid-ct
 \frac{R^2}{1-R^2}\cdot\frac{1+S^2}{S^2} \;\approx\; \frac{R^2}{S^2} .
 ```
 
-In hun werkpaperversie (NBER 11468, 2005) is de maandelijkse Sharpe-ratio sinds
-1871 gelijk aan 0,108, dus $S^2 = 1{,}2\%$, en geeft een out-of-sample $R^2$ van
-0,25% voor de earnings-prijsratio een toename van $0{,}25/1{,}2 = 21\%$. Dat is een
-halve procent per maand verklaarde variantie, en een vijfde meer rendement.
+Hoe kleiner de Sharpe-ratio zonder voorspeller, hoe meer een gegeven $R^2$ waard is,
+omdat de voorspeller dan een groter deel van de haalbare winst levert. In hun
+werkpaperversie (NBER 11468, 2005) is de maandelijkse Sharpe-ratio sinds 1871 gelijk aan
+0,108, dus $S^2 = 1{,}2\%$. Zelfs een maandelijkse $R^2$ van 0,25% verhoogt het
+verwachte rendement dan al met $0{,}25/1{,}2 = 21\%$.
 
-Hier sluit motief 1 zich. De standaardfout van $\hat b_r$ is ongeveer
-$\sigma_\varepsilon/(\sqrt{T}\,\sigma_{dp})$; met $\sigma_\varepsilon \approx 0{,}196$,
-een onvoorwaardelijke $\sigma_{dp} \approx 0{,}153/\sqrt{1-0{,}941^2} = 0{,}45$ en een
-ware $b_r = 0{,}10$ heb je $T = (2 \times 0{,}196/(0{,}10 \times 0{,}45))^2 \approx 76$
-jaar nodig om gemiddeld een $t$-waarde van twee te zien. Dat is precies de lengte
-van Cochrane's steekproef. Omgekeerd zou een grote $R^2$ te winstgevend zijn om te
-geloven: een $R^2$ die klein genoeg is om over te twijfelen, is wat een evenwicht met
-tijdvariërende premies voorspelt.
+Hier keert de [standaardfout van 2%](#00-01-rendementen) terug in een nieuwe vorm, want
+een klein effect vraagt een lange steekproef. De standaardfout van $\hat b_r$ is ongeveer
+$\sigma_\varepsilon/(\sqrt{T}\,\sigma_{dp})$. Met $\sigma_\varepsilon \approx 0{,}196$,
+een onvoorwaardelijke $\sigma_{dp} \approx 0{,}153/\sqrt{1-0{,}941^2} = 0{,}45$ en een ware
+$b_r = 0{,}10$ zijn $T = (2 \times 0{,}196/(0{,}10 \times 0{,}45))^2 \approx 76$ jaren
+nodig om gemiddeld een $t$-waarde van twee te zien. Zo lang is ongeveer de steekproef van
+Cochrane. Omgekeerd zou een grote $R^2$ te winstgevend zijn om te geloven, zodat een $R^2$
+die
+klein genoeg is om aan te twijfelen, precies past bij een evenwicht met
+wisselende premies.
 
-## Simulatie: de hond die niet blaft, en het uitzicht van Goyal en Welch
+```{admonition} Samengevat
+:class: tip
 
-### Cochrane's nulhypothese op schaal
+- Het logrendement is de ratio van vandaag min de verdisconteerde ratio van morgen plus
+  de dividendgroei, [](#eq-voorspelbaarheid-cs-rendement). De ratio is dus een contante waarde van rendementen en dividendgroei, [](#eq-voorspelbaarheid-cs-pv).
+- Daardoor hangen de hellingen aan elkaar, [](#eq-voorspelbaarheid-identiteit). Een
+  dividendhelling van nul betekent een rendementshelling van ongeveer $1 - \rho\phi =
+  0{,}09$, en een hogere $\phi$ maakt die eis kleiner.
+- De $R^2$ groeit met de horizon omdat de voorspelbare component traag is,
+  [](#eq-voorspelbaarheid-r2k), maar dat voegt geen informatie toe.
+- Overlap en de Stambaugh-bias, [](#eq-voorspelbaarheid-stambaugh), maken de
+  rendementsregressie te gunstig. Buiten de steekproef, [](#eq-voorspelbaarheid-oos),
+  kost het schatten van de helling veel, terwijl een kleine $R^2$ economisch groot kan
+  zijn, [](#eq-voorspelbaarheid-ct).
+- De simulatie trekt steekproeven van 78 jaar uit [](#eq-voorspelbaarheid-var). Ze telt hoe vaak $\hat b_d$ zo hoog uitvalt als in de data bij onvoorspelbare rendementen, en hoe vaak $R^2_{OOS}$ negatief is bij voorspelbare.
+```
 
-We simuleren Cochrane's nulhypothese zoals hij hem opschrijft: $b_r = 0$,
-$\phi = 0{,}941$, $\rho = 0{,}9638$, en dus $b_d = \rho\phi - 1 = -0{,}0931$. We
-simuleren $dp$ en $\Delta d$ met de schokvolatiliteiten uit zijn tabel 2
-($\sigma(\varepsilon^{dp}) = 15{,}3\%$, $\sigma(\varepsilon^{d}) = 14{,}0\%$,
-correlatie 7,5%), en het rendement volgt uit de identiteit:
-$r_{t+1} = \varepsilon^d_{t+1} - \rho\,\varepsilon^{dp}_{t+1}$. Elke steekproef heeft
-78 jaar, zoals 1927–2004, en we schatten per steekproef de drie regressies.
+## Simulatie: wat 78 jaar data kunnen laten zien
+
+De simulatie vraagt wat een onderzoeker met 78 jaar jaardata te zien krijgt. We kijken
+eerst naar een wereld met onvoorspelbare rendementen en daarna naar de wereld die Cochrane
+schat.
+
+### Onder de nulhypothese: welke helling verraadt de wereld?
+
+We simuleren de nulhypothese zoals Cochrane die opschrijft, met $b_r = 0$,
+$\phi = 0{,}941$ en $\rho = 0{,}9638$, zodat $b_d = \rho\phi - 1 = -0{,}0931$. Dat is
+dezelfde $\rho$ van ongeveer 0,96 als in het toy-voorbeeld, nu met meer decimalen.
+
+De schokken in $dp$ en in dividendgroei hebben de standaarddeviaties uit zijn tabel 2,
+15,3% en 14,0%, met een correlatie van 7,5%. Het rendement volgt uit de identiteit als
+$\ell_{t+1} = \varepsilon^d_{t+1} - \rho\,\varepsilon^{dp}_{t+1}$, en per steekproef van 78
+jaar, zoals 1927–2004, schatten we de drie regressies.
 
 ```{code-cell} ipython3
 RHO_C, PHI_C, T_C = 0.9638, 0.941, 78
@@ -629,7 +593,7 @@ chol_shocks = np.linalg.cholesky(cov_shocks)
 
 
 def simulate_var(n_samples, n_years, b_r, phi=PHI_C, rho=RHO_C):
-    """Simulate Cochrane's VAR: dp is AR(1), dividend growth from b_d, returns from the identity.
+    """Simulate the Cochrane VAR: dp is AR(1), dividend growth from b_d, returns from the identity.
 
     Returns arrays of shape (n_samples, n_years + 1) for dp and (n_samples, n_years)
     for dividend growth and returns; dp[:, t] is known when r[:, t] is earned.
@@ -660,28 +624,32 @@ blr_null = br_null / (1 - RHO_C * phi_null)
 
 pd.DataFrame(
     {
-        "simulatie": [np.mean(br_null > SAMPLE_C["b_r"]), np.mean(bd_null > SAMPLE_C["b_d"]),
-                      np.mean(blr_null > SAMPLE_C["b_lr"])],
+        "hier (simulatie)": [np.mean(br_null > SAMPLE_C["b_r"]), np.mean(bd_null > SAMPLE_C["b_d"]),
+                             np.mean(blr_null > SAMPLE_C["b_lr"])],
         "Cochrane (2008), tabel 3 en 4": [0.223, 0.0177, "0.0139-0.0183"],
     },
-    index=["P(b_r-dak > 0.097)", "P(b_d-dak > 0.008)", "P(b_r^lr-dak > 1.09)"],
+    index=["kans op b_r-dak > 0.097", "kans op b_d-dak > 0.008", "kans op b_r^lr-dak > 1.09"],
 ).round(4)
 ```
 
-De simulatie reproduceert Cochrane's kansen: onder de nul ziet een op de vijf
-steekproeven een rendementshelling groter dan in de data, maar nog geen twee op de
-honderd een dividendhelling boven de 0,008 die de data laten zien. Hetzelfde
-bewijs, in één getal samengevat, geeft de lange-termijncoëfficiënt: minder dan 2%
-van de steekproeven haalt $\hat b_r^{lr} > 1{,}09$.
+De simulatie reproduceert de kansen van Cochrane. Onder de nulhypothese heeft een op de
+vijf steekproeven een grotere rendementshelling dan de data, maar een dividendhelling boven
+de 0,008 uit de data halen er nog geen twee op de honderd. De lange-termijncoëfficiënt vat
+hetzelfde bewijs samen in één getal, want minder dan 2% van de steekproeven haalt
+$\hat b_r^{lr} > 1{,}09$.
+
+In de linkerhelft van de figuur gaat het om de hoek rechtsboven, waar de steekproeven
+liggen die zowel de rendementshelling als de dividendhelling van de data halen.
 
 ```{code-cell} ipython3
-:tags: [hide-input]
 :label: cel-voorspelbaarheid-hond
+:tags: [hide-input]
 
 show = slice(0, 3000)
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.3))
 ax = axes[0]
-ax.scatter(br_null[show], bd_null[show], s=4, alpha=0.35, label="steekproeven onder de nul")
+ax.scatter(br_null[show], bd_null[show], s=4, alpha=0.35,
+           label="steekproeven onder de nulhypothese")
 ax.scatter([0.0], [RHO_C * PHI_C - 1], marker="^", s=90, color="black", label="nulhypothese")
 ax.scatter([SAMPLE_C["b_r"]], [SAMPLE_C["b_d"]], s=90, color=hap.plotting.COLORS[1],
            label="Cochrane 1927-2004")
@@ -697,7 +665,7 @@ ax.hist(blr_null, bins=np.linspace(-1.5, 2.0, 71), edgecolor="white")
 ax.axvline(SAMPLE_C["b_lr"], color=hap.plotting.COLORS[1], lw=1.6, label="Cochrane: 1,09")
 ax.set_xlabel("Geschatte $b_r^{lr} = b_r/(1-\\rho\\phi)$")
 ax.set_ylabel("Aantal steekproeven")
-ax.set_title("Lange-termijncoëfficiënt onder de nul")
+ax.set_title("Lange-termijncoëfficiënt onder de nulhypothese")
 ax.legend()
 plt.show()
 ```
@@ -707,15 +675,17 @@ plt.show()
 :width: 100%
 
 Links: 3000 van de 50 000 gesimuleerde steekproeven van 78 jaar met onvoorspelbare
-rendementen. De wolk ligt schuin: een toevallig hoge $\hat b_r$ gaat samen met een hoge
-$\hat b_d$, want beide volgen uit een te lage $\hat\phi$. Rechts van de verticale lijn
-liggen veel steekproeven, boven de horizontale vrijwel geen. Rechts: de
-lange-termijncoëfficiënt telt precies die hoek, en is daarom een krachtiger toets.
+rendementen. Rechts van de verticale lijn liggen veel steekproeven, boven de horizontale
+vrijwel geen. Rechts: de lange-termijncoëfficiënt vat $\hat b_r$ en $\hat\phi$ samen in één getal, en is daarom een krachtigere toets dan de rendementshelling alleen.
 :::
 
-De wolk heeft nog een tweede boodschap: zijn zwaartepunt ligt niet op nul. Het
-gemiddelde van $\hat b_r$ onder de nul is de Stambaugh-bias, en we kunnen
-[](#eq-voorspelbaarheid-stambaugh) er direct naast leggen.
+De wolk ligt schuin, omdat dezelfde dividendschok via $\varepsilon^r = \varepsilon^d - \rho\,\varepsilon^{dp}$
+in het rendement en in de dividendgroei terechtkomt, zodat een steekproef met een
+toevallig hoge $\hat b_d$ ook een hoge $\hat b_r$ heeft. Een te lage $\hat\phi$ verschuift
+de wolk alleen naar rechts, want volgens $\hat b_r = 1 - \rho\hat\phi + \hat b_d$ drijft
+hij $\hat b_r$ op en laat hij $\hat b_d$ vrijwel ongemoeid. Daardoor ligt het zwaartepunt
+niet op $\hat b_r = 0$, en die verschuiving is de Stambaugh-bias, die de volgende cel
+naast [](#eq-voorspelbaarheid-stambaugh) legt.
 
 ```{code-cell} ipython3
 sigma_uv = cov_shocks[0, 1] - RHO_C * SD_DP**2        # Cov(eps_r, eps_dp) from the identity
@@ -727,30 +697,35 @@ pd.DataFrame(
 ).round(4)
 ```
 
-De formule voorspelt 0,044, de simulatie geeft ongeveer 0,05; het verschil komt
-van de benadering $-(1+3\phi)/T$ voor de bias in $\hat\phi$, die bij $\phi$ dicht
-bij één de werkelijke bias onderschat.
+De simulatie geeft een bias van ongeveer 0,05, en de formule voorspelt 0,044, iets minder.
+Het verschil komt van de benadering $-(1+3\phi)/T$ voor de bias in $\hat\phi$, die bij
+$\phi$ dicht bij
+één de werkelijke bias onderschat.
 
-### Hoe vaak verliest echte voorspelbaarheid van het gemiddelde?
+### Met echte voorspelbaarheid: hoe vaak wint het gemiddelde?
 
-Nu de omgekeerde vraag. Stel dat Cochrane gelijk heeft: $b_r = 0{,}10$, en dus
-$b_d = 0{,}10 + \rho\phi - 1 = 0{,}007$, dicht bij wat de data laten zien. De ware
-éénjaars-$R^2$ is dan ongeveer 5%. Een belegger begint na 20 jaar data, schat elk
-jaar opnieuw met een expanding window en voorspelt het volgende jaar. Hoe vaak eindigt
-hij na $T$ jaar met een negatieve $R^2_{OOS}$? En hoe vaak zou dat gebeuren als hij
-de ware helling kende?
+Neem nu aan dat Cochrane gelijk heeft, met $b_r = 0{,}10$ en dus
+$b_d = 0{,}10 + \rho\phi - 1 = 0{,}007$, dicht bij de data. De ware éénjaars-$R^2$ is dan
+5%, iets meer dan de 4% die de intuïtie en de theorie met ronde getallen aannamen. Een
+belegger begint na 20 jaar data, schat elk jaar opnieuw op alle data tot
+dan (een *expanding window*) en voorspelt het volgende jaar. We tellen hoe vaak hij na
+$T$ jaar een negatieve $R^2_{OOS}$ heeft, met een geschatte en met de ware helling.
 
 ```{code-cell} ipython3
 def oos_r2_sim(n_samples, n_years, b_r=0.10, burn_in=20):
     """OOS R^2 of expanding-window OLS forecasts vs the expanding mean, per simulated sample."""
     dp, _, r = simulate_var(n_samples, n_years, b_r=b_r)
     x = dp[:, :-1]
-    n = np.arange(1, n_years + 1)[burn_in - 1:-1]
-    cum = lambda a: np.cumsum(a, axis=1)[:, burn_in - 1:-1]
-    mx, my = cum(x) / n, cum(r) / n
-    beta = (cum(x * r) / n - mx * my) / (cum(x * x) / n - mx**2)
-    alpha = my - beta * mx
-    target, x_now = r[:, burn_in:], x[:, burn_in:]
+    n_obs = np.arange(1, n_years + 1)[burn_in - 1:-1]   # years of data at each forecast date
+
+    def mean_up_to_t(a):
+        """Mean of a over years 1..t, for every forecast date t at once (expanding window)."""
+        return np.cumsum(a, axis=1)[:, burn_in - 1:-1] / n_obs
+
+    mx, my = mean_up_to_t(x), mean_up_to_t(r)
+    beta = (mean_up_to_t(x * r) - mx * my) / (mean_up_to_t(x * x) - mx**2)   # OLS slope on data up to t
+    alpha = my - beta * mx                                                  # OLS intercept on data up to t
+    target, x_now = r[:, burn_in:], x[:, burn_in:]   # the return to forecast and dp at t
     sse_mean = ((target - my) ** 2).sum(axis=1)
     r2_est = 1 - ((target - alpha - beta * x_now) ** 2).sum(axis=1) / sse_mean
     r2_known = 1 - ((target - b_r * x_now) ** 2).sum(axis=1) / sse_mean
@@ -773,18 +748,23 @@ oos_table = pd.DataFrame(oos_rows).set_index("T (jaren)").round(3)
 oos_table
 ```
 
+Met een geschatte helling verliest de voorspeller na 60 tot 80 jaar in ongeveer de helft
+van de steekproeven van het gemiddelde. Met de ware helling gebeurt dat maar in 5 tot 8%
+van de steekproeven. De figuur toont links de verdeling van $R^2_{OOS}$ na 60 en na 150
+jaar en rechts hoe de kans op verlies daalt met de lengte van de steekproef.
+
 ```{code-cell} ipython3
-:tags: [hide-input]
 :label: cel-voorspelbaarheid-oos-sim
+:tags: [hide-input]
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.2))
 for T_years, colour in [(60, hap.plotting.COLORS[0]), (150, hap.plotting.COLORS[2])]:
     axes[0].hist(100 * r2_draws[T_years], bins=np.linspace(-30, 25, 56), histtype="step",
                  lw=1.6, color=colour, label=f"T = {T_years} jaar")
 axes[0].axvline(0, color="black", lw=1.0)
-axes[0].set_xlabel("Out-of-sample $R^2$ (procent)")
+axes[0].set_xlabel("$R^2$ buiten de steekproef (procent)")
 axes[0].set_ylabel("Aantal steekproeven")
-axes[0].set_title("Echte voorspelbaarheid, gemeten out-of-sample")
+axes[0].set_title("Echte voorspelbaarheid, gemeten buiten de steekproef")
 axes[0].legend()
 
 axes[1].plot(oos_table.index, oos_table["P(OOS R2 < 0), geschat"], marker="o",
@@ -793,8 +773,8 @@ axes[1].plot(oos_table.index, oos_table["P(OOS R2 < 0), ware helling"], marker="
              label="ware helling bekend")
 axes[1].axhline(0.5, color="grey", lw=0.8, ls=":")
 axes[1].set_xlabel("Lengte van de steekproef (jaren, eerste 20 om te schatten)")
-axes[1].set_ylabel("Kans op negatieve OOS $R^2$")
-axes[1].set_title("Hoeveel data je nodig hebt")
+axes[1].set_ylabel("Kans op negatieve $R^2$ buiten de steekproef")
+axes[1].set_title("Hoeveel data er nodig zijn")
 axes[1].legend()
 plt.show()
 ```
@@ -803,75 +783,51 @@ plt.show()
 :label: fig-voorspelbaarheid-oos-sim
 :width: 100%
 
-Een wereld waarin de dividend-prijsratio per constructie 5% van het
-éénjaarsrendement voorspelt. Links: de out-of-sample $R^2$ na 60 en na 150 jaar.
-Rechts: de kans dat de voorspeller het gemiddelde niet verslaat. Met 60 tot 80 jaar
-data is dat een munt opgooien; na twee eeuwen nog een op de zeven. Wie de ware helling
-kent, verliest bij 60 jaar in ongeveer 8% van de steekproeven.
+Een wereld waarin de dividend-prijsratio per constructie 5% van het éénjaarsrendement
+voorspelt. Links de $R^2$ buiten de steekproef na 60 en na 150 jaar, rechts de kans dat
+de voorspeller het gemiddelde niet verslaat. Met 60 tot 80 jaar data is dat kruis of
+munt, en na twee eeuwen nog een op de zeven.
 :::
 
-Dit is het 2%-motief in de taal van Goyal en Welch. Een negatieve $R^2_{OOS}$ is
-nauwelijks bewijs tegen voorspelbaarheid; Cochrane vond in zijn eigen simulaties
-"out-of-sample performance as bad or worse than that in the data" in 30–40% van de
-steekproeven. Maar Goyal en Welch hebben gelijk voor de belegger: zolang de helling
-geschat moet worden, is de winst in elke realistische steekproef klein en onzeker.
+De voorspeller is echt, maar met 60 tot 80 jaar data kost het schatten van zijn helling
+meer dan hij oplevert. Een negatieve $R^2_{OOS}$ is dus nauwelijks bewijs tegen
+voorspelbaarheid, en ook Cochrane vond in zijn simulaties dat een even slechte prestatie
+buiten de steekproef als in de data geen uitzondering is.
 
 ## Replicatie op echte data
 
 ```{admonition} Replicatie
 :class: seealso
 
-**Bron.** (1) Fama en French, *Dividend Yields and Expected Stock Returns*, Journal
-of Financial Economics 1988 {cite}`FamaFrench1988`. (2) Cochrane, *The Dog That Did
-Not Bark: A Defense of Return Predictability*, Review of Financial Studies 2008
-{cite}`Cochrane2008`. (3) Welch en Goyal, *A Comprehensive Look at the Empirical
-Performance of Equity Premium Prediction*, Review of Financial Studies 2008
-{cite}`GoyalWelch2008`, met de restricties van {cite:t}`CampbellThompson2008`. (4)
-Ferreira en Santa-Clara, *Forecasting Stock Market Returns: The Sum of the Parts Is
-More Than the Whole*, Journal of Financial Economics 2011
-{cite}`FerreiraSantaClara2011`.
+**Bron.** Fama en French {cite}`FamaFrench1988`, Cochrane {cite}`Cochrane2008`, Goyal en
+Welch {cite}`GoyalWelch2008` met de restricties van {cite:t}`CampbellThompson2008`, en
+Ferreira en Santa-Clara {cite}`FerreiraSantaClara2011`.
 
-**Wat.** (1) Tabel 3: waardegewogen NYSE-rendementen op de dividendopbrengst voor
-horizons van één tot vier jaar; over 1941–1986 met $D(t)/P(t)$ en nominale
-rendementen stijgt de $R^2$ van 0,14 (één jaar) via 0,35 en 0,51 naar 0,64 (vier
-jaar), met een vierjaarshelling van 15,35 ($t = 5{,}62$). (2) Tabel 1 en 2: over
-1926–2004 $\hat b_r = 0{,}097$ ($t = 1{,}92$), $\hat b_d = 0{,}008$ ($t = 0{,}18$),
-$\hat\phi = 0{,}941$, $\rho = 0{,}9638$; tabel 4: $\hat b_r^{lr} = 1{,}09$. (3)
-Tabel 1, kolom "Forecasts begin 1965": de gecorrigeerde OOS-$\bar R^2$ over
-1965–2005 in jaardata, onder meer $-3{,}69\%$ voor d/p, $-1{,}10\%$ voor e/p,
-$-12{,}71\%$ voor b/m en $-2{,}96\%$ voor de term spread. (4) In de NBER-versie (2008,
-sectie 3.2) geeft alleen dividendopbrengst plus winstgroei een $R^2_{OOS}$ van
-1,32% in maanddata en 13,43% in jaardata over 1948–2007 (het abstract van het
-tijdschriftartikel: "more than 1.3%" en "13.4%").
+**Wat.** Tabel 3 van Fama en French (1941–1986), tabel 1, 2 en 4 van Cochrane (1926–2004) en tabel 1 van Goyal en Welch (vanaf 1965). Van Ferreira en Santa-Clara repliceren we de som-van-de-delenvoorspelling in maand- en jaardata.
 
-**Data hier.** `hap.data.goyal_welch("annual")` en `("monthly")`, 1871–2025. Voor (2)
-volgen we Cochrane's voetnoot 5: $D_t/P_t = (1+R_t)/(1+R^x_t) - 1$ uit het
-S&P 500-rendement met (`CRSP_SPvw`) en zonder dividend (`CRSP_SPvwx`), reëel gemaakt
-met `infl`. Voor (1), (3) en (4) gebruiken we `D12`, `E12` en `Index`. Voor 1926
-ontbreken CRSP-rendementen in het bestand; daar gebruiken we
-$(P_t + D_t)/P_{t-1} - 1$ uit Shillers index, zoals Goyal en Welch zelf.
+**Data hier.** `hap.data.goyal_welch()` in jaar- en maanddata, van 1871 tot 2025 beschikbaar. De dividenden
+voor Cochrane halen we, zoals in zijn voetnoot 5, uit het S&P 500-rendement met en
+zonder dividend.
 
-**Verschil met het origineel.** Fama en French gebruiken de NYSE-portefeuille van
-CRSP, wij de S&P 500 van Goyal en Welch; Cochrane de hele CRSP-markt. Goyal en
-Welch rapporteren een gecorrigeerde $\bar R^2$ met data tot 2005 en schatten vanaf
-het begin van elke reeks; wij tonen ongecorrigeerde $R^2$, een gecorrigeerde versie
-voor de vergelijking, en dezelfde regressies tot 2025. Ferreira en Santa-Clara
-voegen in hun beste varianten een voorspelling van de groei van de
-koers-winstverhouding toe; wij repliceren alleen de variant met die groei gelijk
-aan nul.
+**Verschil met het origineel.** Wij gebruiken de S&P 500 in plaats van de NYSE- of de CRSP-markt, en herhalen elke regressie tot 2025.
+Van Ferreira en Santa-Clara repliceren we alleen de variant waarin de
+koers-winstverhouding niet groeit.
 
-**Verwachte afwijking.** (1) De $R^2$ moet monotoon stijgen met de horizon en op vier
-jaar boven 0,5 liggen voor 1941–1986; over de volle steekproef tot 2025 moet hij
-duidelijk lager zijn. (2) $\hat b_r$ positief tussen 0,07 en 0,13, $\hat b_d$ binnen
-0,05 van nul, $\hat\phi$ tussen 0,90 en 0,97, en de identiteit
-$\hat b_r - \hat b_d \approx 1 - \rho\hat\phi$ tot op 0,01. (3) Het *teken* van de
-OOS-$R^2$ over 1965–2005 moet voor de grote meerderheid van de voorspellers negatief
-zijn, zoals bij Goyal en Welch. (4) De sum-of-the-parts-$R^2_{OOS}$ moet positief
-zijn, in maanddata in de orde van 1% en in jaardata in de orde van 10%, met een
-Clark-West-$t$ boven 1,65. Wijkt een teken af, dan zit de fout in de code.
+**Verwachte afwijking.** Teken en orde van grootte moeten kloppen, en wijkt een teken af, dan zit de fout in de code. We verwachten
+
+- bij Fama en French een $R^2$ die met de horizon stijgt tot boven 0,5,
+- bij Cochrane een $\hat b_r$ tussen 0,07 en 0,13 en een $\hat b_d$ binnen 0,05 van nul,
+- bij Goyal en Welch een negatieve $R^2$ buiten de steekproef voor de meeste voorspellers,
+- en bij de som van de delen een positieve.
 ```
 
 ### De data
+
+De replicaties gebruiken twee reeksen. De eerste, voor Fama en French en voor Goyal en
+Welch, is het logrendement van de S&P 500 inclusief dividend, met daarnaast het
+overrendement boven de rente, ook in logs. De tweede volgt Cochrane, die de
+dividend-prijsratio afleidt uit het rendement met en zonder dividend, en maakt alles
+reëel.
 
 ```{code-cell} ipython3
 gw_a = hap_data.goyal_welch("annual")
@@ -883,7 +839,7 @@ ret_a = gw_a["CRSP_SPvw"].fillna((gw_a["Index"] + gw_a["D12"]) / gw_a["Index"].s
 log_ret_a = np.log1p(ret_a)
 eq_prem_a = log_ret_a - np.log1p(gw_a["Rfree"])
 
-# Cochrane's construction (footnote 5): dividends from returns with and without dividends
+# Cochrane (2008), footnote 5: dividends from returns with and without dividends
 div_yield = (1 + gw_a["CRSP_SPvw"]) / (1 + gw_a["CRSP_SPvwx"]) - 1
 price_idx = (1 + gw_a["CRSP_SPvwx"]).cumprod()
 cochrane = pd.DataFrame(
@@ -897,7 +853,16 @@ cochrane = pd.DataFrame(
 cochrane.loc[1926:].describe().round(4)
 ```
 
+Het reële logrendement heeft over 1926–2025 een gemiddelde van 7% en een
+standaarddeviatie van 19%, en de log dividend-prijsratio schommelt met een
+standaarddeviatie van 0,47 rond zijn gemiddelde. Beide liggen dicht bij de orden van
+grootte waarmee de simulatie is gekalibreerd.
+
 ### Fama en French: de $R^2$ stijgt met de horizon
+
+Ook in onze data stijgt de $R^2$ met de horizon als we het logrendement over één tot vier
+jaar regresseren op de dividend-prijsratio van het jaar ervoor. De tabel toont beide
+$t$-waarden en de $R^2$ uit tabel 3 van Fama en French.
 
 ```{code-cell} ipython3
 def hodrick_tstat(r, x, h):
@@ -935,6 +900,18 @@ ff_1941["R2 Fama-French"] = [0.14, 0.35, 0.51, 0.64]
 ff_1941[["helling", "t (Hansen-Hodrick)", "t (Hodrick 1B)", "r2", "R2 Fama-French", "nobs"]].round(3)
 ```
 
+Geslaagd, want over 1941–1986 stijgt de $R^2$ met de horizon tot 0,64 op vier jaar, ruim
+boven de 0,5 die we vooraf verwachtten, en ligt hij bij elke horizon dicht bij die van
+Fama en French.
+
+De twee $t$-waarden vertellen wel een ander verhaal. De $t$ van Hansen en Hodrick
+verdubbelt met de horizon tot 6,1, maar de Hodrick-1B-$t$ daalt licht, van 2,8 naar 2,4 op
+vier jaar. Het extra bewijs van de lange horizon is dus overlap, en de informatie zat al
+in het eerste
+jaar.
+
+Dezelfde regressies over langere steekproeven laten zien hoe stabiel het patroon is.
+
 ```{code-cell} ipython3
 pd.concat(
     {f"{a}-{b}": ff_table(a, b)[["helling", "t (Hansen-Hodrick)", "t (Hodrick 1B)", "r2"]]
@@ -943,22 +920,19 @@ pd.concat(
 ).round(3)
 ```
 
-Over 1941–1986 reproduceren we Fama en French' patroon bijna getal voor getal: de
-$R^2$ loopt van 0,16 op één jaar via 0,36 en 0,50 naar 0,64 op vier jaar, tegen
-0,14, 0,35, 0,51 en 0,64 in hun tabel 3, en de vierjaarshelling van ongeveer 14,6
-ligt dicht bij hun 15,35. Twee dingen staan er ook. De Hansen-Hodrick-$t$ stijgt
-mee met de horizon, van 3,1 naar 6,1, maar de Hodrick-1B-$t$ daalt zelfs licht, van
-2,8 naar 2,4: het "extra bewijs" van de lange horizon is overlap, en de werkelijke
-informatie zit al in het eerste jaar. En over de volle steekproef tot 2025 is er van
-het patroon weinig over; de vierjaars-$R^2$ zakt naar 6%, met een Hodrick-$t$ van 1,3.
-Naoorlogs (1950–2025) is het patroon er nog, zwakker: 0,21 op vier jaar, maar met een
-Hodrick-$t$ die vanaf drie jaar onder de twee zakt. Dat is niet omdat de identiteit
-niet meer geldt, maar omdat de
-dividendopbrengst sinds 1990 op een ander niveau is gaan liggen (inkoop van eigen
-aandelen vervangt dividend), en een regressie op niveaus dat als een grote,
-nooit gecorrigeerde afwijking ziet.
+Over de volle steekproef tot 2025 blijft er weinig van over, want de $R^2$ zakt naar 0,06
+en de Hodrick-$t$ naar 1,3 bij een horizon van vier jaar. Na de oorlog is het patroon er
+nog, maar zwakker, en de Hodrick-$t$ zakt vanaf drie jaar onder de twee. De identiteit
+geldt nog steeds, maar
+de dividend-prijsratio ligt sinds 1990 op een lager niveau, omdat bedrijven dividend
+vervangen door de inkoop van eigen aandelen. Een regressie op niveaus ziet dat als een
+grote afwijking die nooit wordt gecorrigeerd.
 
 ### Cochrane: rendementen, dividenden en de identiteit
+
+Ook op onze data voorspelt de ratio het rendement en niet de dividendgroei. De functie
+hieronder schat de drie regressies van Cochrane en de afgeleide grootheden over een
+gekozen steekproef, eerst over 1927–2004.
 
 ```{code-cell} ipython3
 def predictive_ols(y, x):
@@ -995,8 +969,15 @@ tab_2004["Cochrane t"] = [1.92, 0.18, np.nan, np.nan]
 tab_2004.round(3)
 ```
 
+Geslaagd, want op de steekproef van Cochrane liggen onze hellingen binnen een vijfde
+standaardfout van de zijne, ruim binnen de marges die we vooraf stelden, en ook hier is de
+dividendhelling nul. De tweede cel zet de afgeleide grootheden
+naast die van Cochrane en herhaalt alles tot 2025.
+
 ```{code-cell} ipython3
 tab_2025, extra_2025 = cochrane_table(1927, 2025)
+
+
 def summary_column(table, extra):
     """Stack slopes, the return t-statistic and the derived quantities into one column."""
     return pd.concat([table["b"].rename(lambda s: f"b ({s})"),
@@ -1013,28 +994,29 @@ pd.DataFrame(
 ).round(3)
 ```
 
-Op Cochrane's eigen steekproef komen we uit op $\hat b_r = 0{,}101$ ($t = 2{,}09$),
-$\hat b_d = 0{,}002$ ($t = 0{,}05$) en $\hat\phi = 0{,}932$, tegen $0{,}097$, $0{,}008$ en
-$0{,}941$: binnen een vijfde standaardfout, met S&P 500-dividenden in plaats van de
-hele markt. De identiteit sluit tot op 0,004 en $\hat b_r^{lr} = 0{,}98$. De nul vroeg
-om $b_d \approx -0{,}09$; de data geven nul.
+De identiteit sluit tot op 0,004, en $\hat b_r^{lr} = 0{,}98$ zegt dat de variantie
+van de ratio vrijwel volledig uit verwachte rendementen komt. De nulhypothese vroeg om
+$b_d \approx -0{,}09$, en de data geven nul.
 
-De Stambaugh-correctie haalt ruim 0,04 van $\hat b_r$ af, bijna de helft, precies de
-orde die [](#eq-voorspelbaarheid-stambaugh) voorspelde. Op de dividendhelling is de
-correctie verwaarloosbaar: met Cochrane's getallen is
-$\sigma_{d,dp}/\sigma_{dp}^2 = 0{,}075 \times 14{,}0/15{,}3 = 0{,}07$, en dus de bias
-$0{,}07 \times 3{,}82/78 \approx 0{,}003$, omdat dividendschokken bijna ongecorreleerd zijn
-met $dp$-schokken. Ook dat is een reden om naar de hond te kijken en niet naar de
-rendementsregressie: het bewijs uit $\hat b_d$ is vrijwel niet vertekend.
+De Stambaugh-correctie haalt ruim 0,04 van $\hat b_r$ af, bijna de helft, zoals
+[](#eq-voorspelbaarheid-stambaugh) voorspelde. Op de dividendhelling is de correctie
+verwaarloosbaar, omdat dividendschokken bijna ongecorreleerd zijn met schokken in $dp$.
+Met de getallen van Cochrane is $\sigma_{d,dp}/\sigma_{dp}^2 = 0{,}075 \times 14{,}0/15{,}3
+= 0{,}07$, zodat de bias $0{,}07 \times 3{,}82/78 \approx 0{,}003$ is. Ook daarom levert
+de dividendregressie het sterkere bewijs, want ze is vrijwel niet vertekend.
 
 Tot 2025 verzwakt de rendementsregressie ($\hat b_r = 0{,}062$, $t = 1{,}57$) en stijgt
-$\hat\phi$ naar 0,96: de dividend-prijsratio is na 1995 laag gebleven. Maar
-$\hat b_d$ blijft nul ($-0{,}006$), en daarmee blijft ook de conclusie staan dat de
-beweging in $dp$ niet van dividenden komt. Wat wel verandert, is dat een $\phi$ dichter bij
-$1/\rho$ de ruimte voor een coherente nulhypothese vergroot, precies de zwakke plek
-die Cochrane zelf aanwees.
+$\hat\phi$ naar 0,96, omdat de ratio sinds het midden van de jaren negentig laag is
+gebleven. De dividendhelling blijft nul, zodat de beweging in $dp$ nog steeds niet van
+dividenden komt. Wel vergroot een $\phi$ dichter bij $1/\rho$ de ruimte voor een
+samenhangende nulhypothese, en dat is de zwakke plek die Cochrane zelf aanwees.
 
-### Goyal en Welch: out-of-sample tegen het gemiddelde
+### Goyal en Welch: buiten de steekproef tegen het gemiddelde
+
+Ook in onze data verslaat vrijwel geen voorspeller buiten de steekproef het gemiddelde.
+Voor zestien voorspellers uit de data van Goyal en Welch schatten we vanaf 1965 elk jaar
+opnieuw een regressie van het overrendement in logs op de voorspeller van vorig jaar. Daarna
+vergelijken we de $R^2$ buiten de steekproef met hun tabel 1.
 
 ```{code-cell} ipython3
 PREDICTORS = ["dp", "dy", "ep", "de", "svar", "b/m", "ntis", "eqis",
@@ -1078,16 +1060,29 @@ for name in PREDICTORS:
     r2_25, cw_25 = oos_stats(oos_forecasts(eq_prem_a, gw_a[name], 1965, 2025))
     gw_rows[name] = {
         "OOS R2 1965-2005": 100 * r2_05,
-        "idem, gecorrigeerd": 100 * (1 - (1 - r2_05) * (41 - 1) / (41 - 2)),
-        "Goyal-Welch R2-streep": GW_PUBLISHED[name],
+        "OOS R2 1965-2005, gecorrigeerd": 100 * (1 - (1 - r2_05) * (41 - 1) / (41 - 2)),
+        "Goyal-Welch, gecorrigeerd": GW_PUBLISHED[name],
         "OOS R2 1965-2025": 100 * r2_25,
         "Clark-West t": cw_25,
     }
 gw_table = pd.DataFrame(gw_rows).T
-same_sign = np.mean(np.sign(gw_table["idem, gecorrigeerd"]) == np.sign(gw_table["Goyal-Welch R2-streep"]))
+same_sign = np.mean(np.sign(gw_table["OOS R2 1965-2005, gecorrigeerd"]) == np.sign(gw_table["Goyal-Welch, gecorrigeerd"]))
 print(f"zelfde teken als Goyal-Welch: {same_sign:.0%} van de voorspellers")
 gw_table.round(2)
 ```
+
+Goyal en Welch rapporteren een $R^2_{OOS}$ die, net als de gewone gecorrigeerde $R^2$, is
+gecorrigeerd voor de twee geschatte parameters, en de tabel doet hetzelfde. Geslaagd, want
+over 1965–2005 is die gecorrigeerde waarde bij 15 van de 16 voorspellers negatief, zoals
+we vooraf verwachtten, en in dezelfde orde als bij hen. De enige uitzondering is de
+verhouding van investeringen tot kapitaal (`ik`), die in de bijgewerkte data positief
+uitkomt, terwijl Goyal en Welch een negatieve waarde rapporteren.
+
+Twintig jaar extra data veranderen het beeld nauwelijks. Ook over 1965–2025 verliest de
+dividend-prijsratio van het gemiddelde, en alleen `ik` en, nipt, `svar` halen een
+Clark-West-$t$ boven 1,65, de kritieke waarde van een eenzijdige toets.
+
+De restricties van Campbell en Thompson passen we toe op vier van de voorspellers.
 
 ```{code-cell} ipython3
 ct_rows = {}
@@ -1100,20 +1095,14 @@ for name in ["dp", "ep", "b/m", "tms"]:
 pd.DataFrame(ct_rows).T.round(2)
 ```
 
-Het teken klopt: over 1965–2005 is de gecorrigeerde OOS-$\bar R^2$ bij 15 van de 16
-voorspellers negatief, in dezelfde orde als bij Goyal en Welch (voor d/p
-$-4{,}3\%$ tegen hun $-3{,}69\%$, voor b/m $-14{,}8\%$ tegen $-12{,}71\%$, voor de term
-spread $-2{,}7\%$ tegen $-2{,}96\%$). De enige uitzondering is de
-investment-capitalratio `ik`, die in de bijgewerkte data positief uitkomt; bij Goyal en
-Welch begon die reeks twee jaar later en was hij negatief. Twintig jaar extra data
-verandert het beeld nauwelijks: over 1965–2025 heeft de dividend-prijsratio een
-$R^2_{OOS}$ van $-4{,}2\%$, en slechts twee voorspellers (`ik` en, net, `svar`) halen een
-Clark-West-$t$ boven 1,65. De Campbell-Thompson-restricties helpen: voor e/p halveert het verlies
-en voor b/m slinkt het, maar ze maken van geen van de vier een winnaar.
+De restricties helpen, want voor e/p halveert het verlies en voor b/m slinkt het, maar
+geen van de vier verslaat het gemiddelde. De volgende figuur laat zien in welke jaren de
+voorspellers hun voorsprong winnen en verliezen, en een stijgende lijn betekent dat het
+model beter voorspelde dan het gemiddelde.
 
 ```{code-cell} ipython3
-:tags: [hide-input]
 :label: cel-voorspelbaarheid-cumsse
+:tags: [hide-input]
 
 fig, ax = plt.subplots(figsize=(10, 4.4))
 for name, colour in zip(["dp", "ep", "b/m", "tms", "ik"], hap.plotting.COLORS):
@@ -1133,30 +1122,30 @@ plt.show()
 :label: fig-voorspelbaarheid-cumsse
 :width: 95%
 
-Cumulatief verschil in gekwadrateerde voorspelfouten tussen het historische
-gemiddelde en vijf voorspellende regressies voor het log equity premium, met
-expanding-window-schattingen vanaf 1965; de grijze band is de oliecrisis van
-1973–1975. De dividend-prijsratio wint zijn voorsprong grotendeels in de crisis van
-1973–1975 en verliest hem in de hausse van de late jaren negentig, toen lage ratio's
-een lage premie voorspelden die pas rond 2000–2002 kwam; na 2008 zakken d/p en e/p
-opnieuw weg. Dat is het instabiliteitsargument van Goyal en Welch: de prestaties
-zitten in een paar jaren, en die jaren zijn niet steeds dezelfde.
+Cumulatief verschil in gekwadrateerde voorspelfouten tussen het historische gemiddelde en
+vijf voorspellende regressies voor het overrendement in logs. De regressies zijn vanaf 1965 geschat met een expanding window, en de grijze band markeert de oliecrisis van 1973–1975.
 :::
+
+De dividend-prijsratio wint zijn voorsprong grotendeels in de oliecrisis en verliest hem
+in de hausse van de late jaren negentig. Lage ratio's voorspelden toen een lage premie,
+die pas rond 2000–2002 kwam. Na 2008 zakken d/p en e/p opnieuw weg. De prestaties zitten
+dus in een paar jaren, en dat zijn niet steeds dezelfde, wat Goyal en Welch instabiliteit
+noemden.
 
 ### Ferreira en Santa-Clara: de som van de delen
 
-*Waarom zou dit werken?* Het log totaalrendement is exact de som van de groei van de
+Een voorspelling zonder geschatte helling heeft geen last van de schattingsfout waardoor
+de regressie in de simulatie zo vaak verloor. Het logrendement inclusief dividend is exact
+de som van de groei van de
 koers-winstverhouding, de groei van de winst en $\log(1 + D_{t+1}/P_{t+1})$
-{cite}`FerreiraSantaClara2011`. Het eerste deel heeft een verwachting van ongeveer nul,
-het tweede wordt goed benaderd door een lang gemiddelde, het derde is zo persistent
-dat de huidige waarde volstaat. Er hoeft geen helling geschat te worden, en juist die
-schattingsfout deed de regressie in de simulatie de das om.
+{cite}`FerreiraSantaClara2011`. Het eerste deel heeft een verwachting van ongeveer nul en
+het tweede benaderen we met een gemiddelde over twintig jaar. Het derde is zo traag dat
+de huidige waarde volstaat.
 
-De voorspelling voor jaar $s+1$ is dus $\E_s[r_{s+1}] = 0 + \bar g^{E}_{s,20} +
-\log(1 + D_s/P_s)$, met $\bar g^{E}_{s,20}$ het gemiddelde van de log winstgroei over
-de laatste twintig jaar. In maanddata delen we de laatste twee termen door 12 en
-240. Het doel is het log *totaal*rendement (niet het equity premium), en de maatstaf
-is het historische gemiddelde vanaf 1927; de voorspellingen beginnen in 1948.
+De voorspelling voor jaar $s+1$ is dus $\E_s[\ell_{s+1}] = \bar g^{E}_{s,20} +
+\log(1 + D_s/P_s)$, met $\bar g^{E}_{s,20}$ de gemiddelde log winstgroei over de laatste
+twintig jaar. In maanddata nemen we beide termen per maand. De te voorspellen grootheid is
+het logrendement inclusief dividend, en de voorspellingen beginnen in 1948.
 
 ```{code-cell} ipython3
 def sop_oos(y, forecast, first, last, mean_from):
@@ -1176,80 +1165,111 @@ for label, (first, last) in {"1948-2007": (1948, 2007), "1948-2025": (1948, 2025
     r2_a, cw_a = sop_oos(log_ret_a, sop_annual, first, last, 1927)
     r2_m, cw_m = sop_oos(log_ret_m, sop_monthly, f"{first}-01", f"{last}-12", "1927-12")
     dp_reg = oos_stats(oos_forecasts(log_ret_a.loc[1927:], gw_a["dp"], first, last))
-    sop_rows[label] = {"SOP maand: OOS R2 (%)": 100 * r2_m, "SOP maand: Clark-West t": cw_m,
-                       "SOP jaar: OOS R2 (%)": 100 * r2_a, "SOP jaar: Clark-West t": cw_a,
+    sop_rows[label] = {"som van de delen, maand: OOS R2 (%)": 100 * r2_m, "som van de delen, maand: Clark-West t": cw_m,
+                       "som van de delen, jaar: OOS R2 (%)": 100 * r2_a, "som van de delen, jaar: Clark-West t": cw_a,
                        "regressie op dp, jaar: OOS R2 (%)": 100 * dp_reg[0]}
 sop_table = pd.DataFrame(sop_rows)
 sop_table["Ferreira-Santa-Clara (1948-2007)"] = [1.32, np.nan, 13.43, np.nan, np.nan]
 sop_table.round(2)
 ```
 
-Over hun eigen periode, 1948–2007, geeft de som van de delen een $R^2_{OOS}$ van
-1,32% in maanddata — gelijk aan het getal van Ferreira en Santa-Clara — en 12,1% in
-jaardata, tegen hun 13,43%, met een Clark-West-$t$ van 3,6 en 2,8. Dezelfde
-dividend-prijsratio als regressor met geschatte helling verliest over dezelfde jaren
-van het gemiddelde: het verschil zit niet in de informatie maar in wat er geschat
-moet worden. Tot 2025 halveert de $R^2_{OOS}$ ongeveer (de auteurs vonden zelf al een
-zwakkere tweede helft), maar hij blijft positief en significant.
+Geslaagd, want over 1948–2007 geeft de som van de delen in maanddata dezelfde $R^2_{OOS}$
+als Ferreira en Santa-Clara en in jaardata iets minder, en beide zijn positief, zoals we
+vooraf verwachtten. De Clark-West-$t$-waarden liggen ruim boven de kritieke waarde.
+Dezelfde dividend-prijsratio als regressor met een geschatte helling verliest over
+dezelfde jaren van het gemiddelde, zodat het verschil niet in de informatie zit maar in
+wat er geschat moet worden.
 
-Volgens [](#eq-voorspelbaarheid-ct) is een maandelijkse $R^2$ van 1,32% bij
-$S^2 \approx 1{,}2\%$ ruwweg een verdubbeling van het verwachte portefeuillerendement;
-het tijdschriftartikel rapporteert een Sharpe-ratiowinst van 0,3.
+Tot 2025 halveert de $R^2_{OOS}$ ongeveer, zoals de auteurs al in de tweede helft van hun
+steekproef zagen, maar hij blijft positief en significant. Volgens
+[](#eq-voorspelbaarheid-ct) verdubbelt de maandelijkse $R^2$ uit de tabel, bij $S^2 \approx 1{,}2\%$,
+ongeveer het verwachte portefeuillerendement.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** De Campbell-Shiller-identiteit maakte van de oude
-vraag of rendementen voorspelbaar zijn een boekhoudkundige vraag met een exact
-antwoord: de variantie van de dividend-prijsratio moet ergens heen, en de data
-wijzen maar één kant op. Onze replicatie over 1927–2004 geeft een dividendhelling
-van nul en een rendementshelling van 0,10; Cochrane's nulhypothese komt in onder de
-2% van de gesimuleerde steekproeven zo ver. Het is hetzelfde feit dat in
-[](#01-03-williams-ddm) de constante discontovoet verwierp en in
-[](#03-15-shiller-excess-volatility) als excess volatility verscheen, en het verklaart
-ook waarom de $R^2$ met de horizon groeit.
+**Wat het model verklaart.** De Campbell-Shiller-identiteit maakte van de oude vraag of
+rendementen voorspelbaar zijn, een boekhoudkundige vraag met een scherp antwoord. De
+variantie van de dividend-prijsratio moet ergens vandaan komen, en de data wijzen één bron
+aan.
+Onze replicatie over 1927–2004 geeft een dividendhelling van nul en een rendementshelling
+van 0,10. Onder de nulhypothese van Cochrane komt minder dan 2% van de gesimuleerde
+steekproeven zo ver. Hetzelfde feit verwierp in [](#01-03-williams-ddm) de constante
+discontovoet en verscheen in [](#03-15-shiller-excess-volatility) als overmatige
+volatiliteit.
 
-**Waar het breekt.** In het gebruik. Over 1965–2025 heeft de dividend-prijsratio
-een out-of-sample $R^2$ van ongeveer $-4\%$, en de lange-horizon-$R^2$ van Fama en French
-verdwijnt zodra de steekproef tot 2025 doorloopt. De simulatie laat zien dat dat te
-verwachten is met 60 tot 80 jaar data, maar een voorspeller die de helft van de keren
-van het gemiddelde verliest, is er geen om een pensioen op te bouwen. Alleen methoden
-die bijna niets schatten, zoals de som van de delen, winnen stabiel. Het tweede moment
-van $dp$ is uitstekend gemeten, de helling waarmee het rendementen voorspelt niet.
+**Waar het breekt.** Het model breekt in het gebruik. Over 1965–2025 heeft de
+dividend-prijsratio buiten de steekproef een $R^2$ van ongeveer −4%, en het
+lange-horizonpatroon van Fama en French verdwijnt zodra de steekproef tot 2025 doorloopt.
+De echte toets schat vanaf het begin van de reeks in de jaren 1870 en heeft dus ongeveer
+150 jaar data, en ook bij die lengte verliest in de simulatie een echte voorspeller nog in
+een kwart van de steekproeven. Het verlies van de ratio past dus bij echte
+voorspelbaarheid, maar een methode die in een op de vier steekproeven van het gemiddelde
+verliest, is geen basis voor een pensioen. Alleen methoden die bijna niets schatten, zoals
+de som van de delen, winnen stabiel. Dat de discontovoet beweegt, is dus uitstekend
+gemeten, maar de helling waarmee de ratio het rendement voorspelt niet.
 
-**Risico of vergissing?** Beide lezingen verklaren dezelfde tabel. De
-Chicago-lezing, van Fama en Cochrane: de verwachte premie is hoog als beleggers arm
-zijn en risico slecht verdragen, dus in en na recessies; prijzen zijn dan laag en
-rendementen daarna hoog, en een belegger die dan koopt, draagt beprijsd risico. De
-Yale-lezing, van Shiller: beleggers extrapoleren goede jaren, prijzen schieten door,
-en de voorspelbaarheid is de langzame correctie van die vergissing. De identiteit
-scheidt ze niet; ze zegt alleen *dat* de discontovoet beweegt, niet *waarom*.
-Scheiden kan alleen een onafhankelijke meting: gaan hoge verwachte rendementen samen
-met hoog marginaal nut (recessies, lage consumptie), of met aantoonbaar foute
-verwachtingen van beleggers? Een overtuigende meting van dat soort bestaat nog niet. Voor Santa-Clara's praktijkmotief is het verschil concreet: wie
-bijkoopt na een crash omdat de dividendopbrengst hoog is, oogst ofwel een
-risicopremie die er blijvend is, ofwel denkt hij iets te weten wat de prijs niet
-weet. Cochrane maakte van de eerste lezing het programma van zijn presidential
-address {cite}`Cochrane2011`: als discontovoeten zo sterk variëren, moet elk
-waarderingsvraagstuk, van aandelen tot obligaties en valuta, over discontovoeten
-gaan en niet over kasstromen. Dat debat komt terug in
+**Risico of vergissing?** De identiteit zegt dat de discontovoet beweegt, maar niet
+waarom, en twee lezingen verklaren dezelfde tabel. Volgens Fama en Cochrane is de
+verwachte premie hoog als beleggers arm zijn en risico slecht verdragen, dus in en na
+recessies. Een belegger die dan koopt, ontvangt een risicopremie. Volgens Shiller
+extrapoleren beleggers goede jaren, zodat prijzen doorschieten, en is de voorspelbaarheid de
+langzame correctie van die vergissing. Alleen een onafhankelijke meting kan de twee
+scheiden, bijvoorbeeld of hoge verwachte rendementen samengaan met hoog marginaal nut of
+met aantoonbaar foute verwachtingen. Cochrane maakte van de eerste lezing het programma
+van zijn rede {cite}`Cochrane2011`, en het debat komt terug in
 [Fama, Shiller en "Discount Rates"](#05-33-fama-vs-shiller).
 
-**Wat er daarna kwam.** Als het eerste moment van rendementen zo moeilijk te
-voorspellen is, dan is het tweede moment het tegenovergestelde: volatiliteit is
-persistent, goed gemeten en uitstekend voorspelbaar, en daarover gaat
-[ARCH, GARCH, realized volatility en de VIX](#04-21-volatiliteit).
+**Wat er daarna kwam.** Het eerste moment van rendementen is moeilijk te voorspellen. Het
+tweede moment is daarentegen persistent, goed gemeten en goed voorspelbaar, en daarover
+gaat [ARCH, GARCH, realized volatility en de VIX](#04-21-volatiliteit).
 
 ## Oefeningen
 
 :::{exercise}
 :label: ex-voorspelbaarheid-1
 
-**De $R^2$ op lange horizon in het VAR.** Neem het VAR
-[](#eq-voorspelbaarheid-var) met $b_r = 0{,}10$, $\phi = 0{,}941$, $\rho = 0{,}9638$ en
-de schokken uit Cochrane's tabel 2.
+**Voorspelbare dividenden in het toy-voorbeeld.** Vervang in het toy-voorbeeld de
+dividendgroei in jaar 3 door $\Delta d_3 = -0{,}03$ en laat de rest gelijk.
 
-1. Leid af dat $\Cov(r_{t+1}, r_{t+1+j}) = b_r\phi^{j-1}\Cov(dp_{t+1}, r_{t+1})$ voor
-   $j \ge 1$, en schrijf daarmee $\Var(r^{(k)}_t)$ als functie van $b_r$, $\phi$,
+1. Bereken $\ell_3$, $\hat b_d$ en $\hat b_r$ met de hand, en controleer de identiteit
+   $\hat b_r = 1 - \rho\hat\phi + \hat b_d$.
+2. Bereken $\hat b_r^{lr}$ en $\hat b_d^{lr}$. Waar komt de beweging in $dp$ nu vandaan?
+:::
+
+:::{solution} ex-voorspelbaarheid-1
+:class: dropdown
+
+**(1)** Het nieuwe rendement is $\ell_3 = 0{,}10 - 0{,}1536 - 0{,}03 = -0{,}0836$, terwijl
+$\ell_1$, $\ell_2$ en $\hat\phi = 0{,}80$ niet veranderen. De dividendhelling wordt
+$[(-0{,}10)(0{,}02) + (0{,}10)(-0{,}03)]/0{,}02 = -0{,}25$ en de rendementshelling
+$[(-0{,}10)(-0{,}08) + (0{,}10)(-0{,}0836)]/0{,}02 = -0{,}018$. De identiteit klopt, want
+$1 - 0{,}768 - 0{,}25 = -0{,}018$.
+
+**(2)** Delen door $0{,}232$ geeft $\hat b_r^{lr} = -0{,}0776$ en
+$\hat b_d^{lr} = -1{,}0776$, met een verschil van één. De code rekent het na.
+
+```{code-cell} ipython3
+dd_alt = np.array([0.02, 0.06, -0.03])
+ell_alt = dp_toy[:-1] - rho_toy * dp_toy[1:] + dd_alt
+bd_alt, br_alt = ols_slope(dd_alt, x_toy), ols_slope(ell_alt, x_toy)
+pd.Series({"rendement jaar 3": ell_alt[-1], "helling b_d": bd_alt, "helling b_r": br_alt,
+           "b_r^lr": br_alt / denom_toy, "b_d^lr": bd_alt / denom_toy}).round(4)
+```
+
+Zodra een goedkope markt lage dividendgroei voorspelt, verklaart dividendgroei meer dan
+alle beweging in de ratio, en voorspelt de ratio het rendement zelfs licht de verkeerde
+kant op. In de echte data geldt juist het omgekeerde.
+:::
+
+:::{exercise}
+:label: ex-voorspelbaarheid-2
+
+**De $R^2$ op lange horizon in het VAR.** Neem het VAR [](#eq-voorspelbaarheid-var) met
+$b_r = 0{,}10$, $\phi = 0{,}941$, $\rho = 0{,}9638$ en de schokken uit tabel 2 van
+Cochrane.
+
+1. Leid af dat $\Cov(\ell_{t+1}, \ell_{t+1+j}) = b_r\phi^{j-1}\Cov(dp_{t+1}, \ell_{t+1})$
+   voor $j \ge 1$, en schrijf daarmee $\Var(\ell^{(k)}_t)$ als functie van $b_r$, $\phi$,
    $\Var(dp)$, $\Cov(\varepsilon^r, \varepsilon^{dp})$ en $\Var(\varepsilon^r)$.
 2. Bereken de populatie-$R^2(k)$ uit [](#eq-voorspelbaarheid-r2k) voor
    $k = 1, 2, 5, 10$, en vergelijk met de naïeve formule
@@ -1257,27 +1277,28 @@ de schokken uit Cochrane's tabel 2.
 3. Controleer (2) met een simulatie van één lang pad van 200 000 jaar.
 :::
 
-:::{solution} ex-voorspelbaarheid-1
+:::{solution} ex-voorspelbaarheid-2
 :class: dropdown
 
-**(1)** Voor $j \ge 1$ is $r_{t+1+j} = a_r + b_r\,dp_{t+j} + \varepsilon^r_{t+1+j}$, en de
-laatste schok is onafhankelijk van $r_{t+1}$. Dus
-$\Cov(r_{t+1}, r_{t+1+j}) = b_r\Cov(r_{t+1}, dp_{t+j})$. Uit de AR(1) volgt
-$dp_{t+j} = \phi^{j-1}dp_{t+1} + (\text{schokken na } t+1)$, dus
-$\Cov(r_{t+1}, r_{t+1+j}) = b_r\phi^{j-1}\Cov(dp_{t+1}, r_{t+1})$, met
+**(1)** Voor $j \ge 1$ is $\ell_{t+1+j} = a_r + b_r\,dp_{t+j} + \varepsilon^r_{t+1+j}$, en
+de laatste schok is onafhankelijk van $\ell_{t+1}$. Dus
+$\Cov(\ell_{t+1}, \ell_{t+1+j}) = b_r\Cov(\ell_{t+1}, dp_{t+j})$. Uit de AR(1) volgt
+$dp_{t+j} = \phi^{j-1}dp_{t+1} + (\text{schokken na } t+1)$, zodat
+$\Cov(\ell_{t+1}, \ell_{t+1+j}) = b_r\phi^{j-1}\Cov(dp_{t+1}, \ell_{t+1})$, met
 
 $$
-\Cov(dp_{t+1}, r_{t+1}) = \Cov\big(\phi\,dp_t + \varepsilon^{dp}_{t+1},\ b_r dp_t + \varepsilon^r_{t+1}\big)
+\Cov(dp_{t+1}, \ell_{t+1}) = \Cov\big(\phi\,dp_t + \varepsilon^{dp}_{t+1},\ b_r dp_t + \varepsilon^r_{t+1}\big)
 = \phi\, b_r\Var(dp) + \sigma_{r,dp} .
 $$
 
-Tel de covarianties op over alle paren binnen het $k$-jaarsvenster:
-$\Var(r^{(k)}) = k\Var(r) + 2\sum_{j=1}^{k-1}(k-j)\,b_r\phi^{j-1}\Cov(dp_{t+1}, r_{t+1})$,
-met $\Var(r) = b_r^2\Var(dp) + \Var(\varepsilon^r)$. Omdat $\sigma_{r,dp}$ sterk negatief is,
-is $\Cov(dp_{t+1}, r_{t+1}) < 0$: rendementen zijn negatief autogecorreleerd, het
-discount-rate effect van Fama en French.
+Tel de covarianties op over alle paren binnen het venster van $k$ jaar:
+$\Var(\ell^{(k)}) = k\Var(\ell) + 2\sum_{j=1}^{k-1}(k-j)\,b_r\phi^{j-1}\Cov(dp_{t+1}, \ell_{t+1})$,
+met $\Var(\ell) = b_r^2\Var(dp) + \Var(\varepsilon^r)$. Omdat $\sigma_{r,dp}$ sterk
+negatief is, is $\Cov(dp_{t+1}, \ell_{t+1}) < 0$, zodat rendementen negatief
+autogecorreleerd zijn, het discontovoeteffect van Fama en French.
 
-**(2) en (3)**
+**(2) en (3)** De cel rekent de formule uit en vergelijkt de uitkomst met de naïeve versie en met
+één lang gesimuleerd pad.
 
 ```{code-cell} ipython3
 b_ex = 0.10
@@ -1305,24 +1326,25 @@ for k in (1, 2, 5, 10):
 pd.DataFrame(rows_ex1).T.rename_axis("horizon k").round(4)
 ```
 
-De formule en de simulatie liggen binnen enkele tienden van een procentpunt van
-elkaar, en de formule ligt boven de naïeve berekening: de negatieve autocorrelatie van rendementen die uit $\sigma_{r,dp} < 0$
-volgt, remt de groei van $\Var(r^{(k)})$ en duwt de $R^2$ omhoog. Les: de stijgende
-$R^2$ volgt volledig uit $b_r$, $\phi$ en de schokcorrelatie; de lange horizon voegt
+De formule en de simulatie liggen binnen enkele tienden van een procentpunt van elkaar,
+en de formule ligt boven de naïeve berekening, omdat de negatieve autocorrelatie die uit
+$\sigma_{r,dp} < 0$ volgt de groei van $\Var(\ell^{(k)})$ remt. De stijgende $R^2$ volgt
+dus volledig uit $b_r$, $\phi$ en de correlatie van de schokken, en de lange horizon voegt
 geen informatie toe.
 :::
 
 :::{exercise}
-:label: ex-voorspelbaarheid-2
+:label: ex-voorspelbaarheid-3
 
-**Excess rendementen en de naoorlogse steekproef.** Herhaal de Cochrane-tabel voor
-1947–2025 en rapporteer $\hat b_r$ voor reële én excess rendementen, $\hat b_d$,
-$\hat\phi$, de Stambaugh-gecorrigeerde $\hat b_r$ en $\hat b_r^{lr}$. Simuleer daarna
-Cochrane's nulhypothese met de $\hat\phi$ en de lengte van deze steekproef, en
-rapporteer $P(\hat b_d > \text{schatting})$. Is de hond ook naoorlogs stil?
+**Overrendementen en de naoorlogse steekproef.** Herhaal de tabel van Cochrane voor
+1947–2025 en rapporteer $\hat b_r$ voor reële rendementen en voor overrendementen,
+$\hat b_d$, $\hat\phi$, de Stambaugh-gecorrigeerde $\hat b_r$ en $\hat b_r^{lr}$.
+Simuleer daarna de nulhypothese van Cochrane met de $\hat\phi$ en de lengte van deze
+steekproef, en rapporteer $P(\hat b_d > \text{schatting})$. Blijft de dividendhelling ook
+na de oorlog uit?
 :::
 
-:::{solution} ex-voorspelbaarheid-2
+:::{solution} ex-voorspelbaarheid-3
 :class: dropdown
 
 ```{code-cell} ipython3
@@ -1334,17 +1356,21 @@ dp_p, dd_p, r_p = simulate_var(20_000, n_post, b_r=0.0, phi=phi_post)
 bd_sim_post = slopes(dd_p, dp_p[:, :-1])
 br_sim_post = slopes(r_p, dp_p[:, :-1])
 
-print(f"n = {n_post}, phi-dak = {phi_post:.3f}, b_d onder de nul = {RHO_C * phi_post - 1:.3f}")
-print(f"P(b_r-dak > schatting) onder de nul: {np.mean(br_sim_post > tab_post.loc['r', 'b']):.3f}")
-print(f"P(b_d-dak > schatting) onder de nul: {np.mean(bd_sim_post > tab_post.loc['dd', 'b']):.3f}")
+print(f"n = {n_post}, phi-dak = {phi_post:.3f}, "
+      f"b_d onder de nulhypothese = {RHO_C * phi_post - 1:.3f}")
+print(f"P(b_r-dak > schatting) onder de nulhypothese: "
+      f"{np.mean(br_sim_post > tab_post.loc['r', 'b']):.3f}")
+print(f"P(b_d-dak > schatting) onder de nulhypothese: "
+      f"{np.mean(bd_sim_post > tab_post.loc['dd', 'b']):.3f}")
 pd.concat([tab_post[["b", "t", "R2 (%)"]], extra_post.to_frame("b")]).round(3)
 ```
 
-Naoorlogs is $\hat\phi = 0{,}978$, dus eist de nul maar $b_d = -0{,}057$. De
-rendementsregressie is marginaal ($\hat b_r = 0{,}075$, $t = 1{,}88$) en halveert na de
-Stambaugh-correctie; de dividendhelling is licht positief, wat onder de nul in
-ongeveer 2% van de steekproeven voorkomt: de hond is ook naoorlogs stil. Bij
-$\rho\hat\phi = 0{,}95$ blazen $\hat b_r^{lr}$ en $\hat b_d^{lr}$ allebei op, terwijl hun
-verschil één blijft. Les: hoe dichter $\hat\phi$ bij $1/\rho$, hoe minder de hond hoeft
-te blaffen om de nul te steunen.
+Na de oorlog is $\hat\phi = 0{,}978$, zodat de nulhypothese maar $b_d = -0{,}057$ eist. De
+rendementsregressie is net niet significant ($\hat b_r = 0{,}075$, $t = 1{,}88$) en
+halveert na de Stambaugh-correctie. De dividendhelling is licht positief, wat onder de
+nulhypothese in ongeveer 2% van de steekproeven voorkomt, zodat ook na de oorlog de
+dividendvoorspelling uitblijft. Bij $\rho\hat\phi = 0{,}95$ worden $\hat b_r^{lr}$ en
+$\hat b_d^{lr}$ allebei groot, terwijl hun verschil één blijft. Hoe dichter $\hat\phi$ bij
+$1/\rho$ ligt, hoe kleiner de dividendhelling die de nulhypothese eist, en hoe zwakker
+het argument van Cochrane dus wordt.
 :::
