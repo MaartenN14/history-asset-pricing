@@ -18,63 +18,90 @@ kernelspec:
 ```{admonition} Waar we zijn in het verhaal
 :class: important
 
-**Jaartal.** 2022–2026: van de lancering van ChatGPT op 30 november 2022 tot
-het moment waarop Santa-Clara zijn terugblik schreef.
+**Jaartal.** 2022–2026, van de lancering van ChatGPT op 30 november 2022 tot de terugblik
+van Santa-Clara.
 
-**Wat we al weten.** [De vorige lecture](#06-36-inelastische-markten) liet zien
-dat het geaggregeerde aandelenniveau wordt gezet door geldstromen die op een
-inelastische vraag stuiten, niet door een arbitrageur die de fundamentele waarde
-kent. Daarvoor had [machine learning](#06-35-machine-learning) de cross-sectie
-voorspeld zonder te zeggen waarom. En al in
-[de lecture over efficiënte markten](#02-06-efficiente-markten) stond de paradox
-van Grossman en Stiglitz: een prijs kan niet alle informatie bevatten als
-informatie geld kost.
+**Wat we al weten.** [Het vorige college](#06-36-inelastische-markten) maakte aannemelijk
+dat geldstromen die op een inelastische vraag stuiten, het niveau van de aandelenmarkt sterk
+bewegen. Het eindigde met de vraag wie prijzen dan nog informatief maakt. Het klassieke antwoord is
+de belegger die voor informatie betaalt. Al in
+[het college over efficiënte markten](#02-06-efficiente-markten) bleek echter dat een prijs
+niet alle informatie kan bevatten als informatie geld kost.
 
-**Welke vraag staat open.** Wat gebeurt er met beleggingsadvies en met de
-efficiëntie van prijzen als het lezen, samenvatten en interpreteren van
-informatie bijna niets meer kost?
+**Welke vraag staat open.** Wat gebeurt er met beleggingsadvies en met de efficiëntie van
+prijzen als het lezen en interpreteren van informatie bijna niets meer kost?
 ```
 
 ## Overzicht
 
-Santa-Clara sluit zijn geschiedenis af met de vraag wat de volgende machine doet, en
-presenteert zijn antwoord als verwachting, niet als bevinding {cite}`SantaClara2026`.
-Krijgen particulieren beter advies nu een taalmodel het werk van een adviseur tegen nul
-marginale kosten doet? En worden markten efficiënter nu machines elke jaarrekening en
-elk transcript binnen seconden lezen? Op de eerste vraag verwacht hij een betere mediaan
-en een slechtere staart, op de tweede een tweedeling: relatieve prijzen worden
-efficiënter, het marktniveau niet.
+Santa-Clara sluit zijn geschiedenis af met twee vragen over het taalmodel
+{cite}`SantaClara2026`. Krijgen particulieren beter advies nu een machine het werk van een
+adviseur bijna gratis doet, en worden markten efficiënter nu machines elke jaarrekening in
+seconden lezen? Hij verwacht een betere mediaan met een slechtere staart voor advies, en
+efficiëntere relatieve prijzen bij een marktniveau dat niet efficiënter wordt. Dat brengt
+hij zelf als verwachting, niet als bevinding.
 
-Het theoretische anker is {cite:t}`GrossmanStiglitz1980`: als informatie goedkoper
-wordt, worden meer beleggers geïnformeerd en verraadt de prijs meer, maar volledig
-informatief wordt ze nooit zolang informatie iets kost en er ruis in de handel zit. We
-leiden dat evenwicht af en voegen er twee dingen aan toe: modelfouten die veel beleggers
-delen, en advies als portefeuillekeuze met een adviseur wiens belang afwijkt van dat van
-de klant. Daaromheen staat het empirische werk over robo-advies
-{cite}`DAcuntoPrabhalaRossi2019`, handel door aandacht
-{cite}`BarberHuangOdeanSchwarz2022`, ChatGPT als nieuwslezer {cite}`LopezLiraTang2023`,
-bedrijven die voor machines schrijven {cite}`CaoJiangYangZhang2023` en de koersreactie
-op ChatGPT zelf {cite}`EisfeldtSchubertZhang2023`.
+In dit college:
 
-Aan het eind repliceren we een event study in de geest van Eisfeldt, Schubert en Zhang
-rond 30 november 2022, met 50 grote Amerikaanse aandelen die we zelf indelen naar
-blootstelling aan generatieve AI, en meten we de halfwaardetijd van informatie indirect
-via de dagelijkse autocorrelatie van de markt per decennium sinds 1930.
+- leiden we met {cite:t}`GrossmanStiglitz1980` af hoeveel beleggers zich laten informeren
+  als informatie goedkoper wordt, en waarom de prijs toch nooit volledig informatief wordt
+- laten we zien dat fouten die veel beleggers delen niet wegmiddelen, zodat relatieve
+  prijzen wel en het marktniveau niet efficiënter worden
+- rekenen we uit wat spreiding en weinig handelen een particulier over dertig jaar
+  opleveren, en zetten we dat naast het werk over robo-advies en Robinhood
+- simuleren we wat één jaar data laat zien van goedkopere informatie en van een gedeeld
+  model
+- repliceren we een event study rond de lancering van ChatGPT
+  {cite}`EisfeldtSchubertZhang2023`, het ene moment waarop de kosten van informatie in één
+  keer daalden, en meten we hoe snel prijzen sinds 1930 nieuws verwerken
 
-```{admonition} Epistemische status van deze lecture
-:class: warning
+In 1980 lieten Grossman en Stiglitz zien dat een volledig efficiënte markt onmogelijk is
+als informatie geld kost, want dan betaalt niemand meer om informatie te verzamelen. De
+kosten van informatie daalden daarna geleidelijk, met elektronische jaarverslagen en
+internet, en met ChatGPT eind 2022 in één sprong. Sindsdien volgde empirisch werk over
+ChatGPT als nieuwslezer
+{cite}`LopezLiraTang2023`
+en over bedrijven die voor machines schrijven {cite}`CaoJiangYangZhang2023`.
 
-Deze lecture mengt drie soorten uitspraken. **Stellingen**: het
-Grossman-Stiglitz-evenwicht en de variantie van een gemiddelde van gecorreleerde fouten
-zijn wiskunde onder expliciete aannames. **Feiten**: dat robo-advies portefeuilles
-veranderde, dat Robinhood-kopers verloren en dat prijzen sneller reageren dan vroeger,
-is gemeten. **Speculatie**: dat taalmodellen de mediane belegger helpen, dat een
-monocultuur van modellen crashes veroorzaakt en dat passief beleggen via AI het
-marktniveau minder efficiënt maakt, is niet getoetst en met de huidige data ook niet
-toetsbaar. Santa-Clara presenteert het zelf als verwachting. In de termen van motief 3
-gaat de reeks hier over van feiten-met-concurrerende-theorieën naar
-vermoedens-zonder-feiten.
-```
+Tot nu toe toetsten we theorieën aan feiten of zochten we een verklaring bij een feit
+(theorie of feit). Hier staat alleen de stelling van Grossman en Stiglitz vast, en is
+gemeten dat prijzen nieuws sneller verwerken. Wat taalmodellen met advies en crashes doen,
+is nog een vermoeden
+waarvoor de feiten ontbreken.
+
+## Intuïtie: waarom zou dit waar zijn?
+
+Het standaardadvies van het vak past op een bierviltje: spreid, houd de kosten laag,
+handel weinig en verkoop niet in paniek. Het ontbrak nooit aan kennis, maar aan iemand die
+het advies herhaalt op het moment dat de klant in de verleiding komt. Zo'n adviseur kost
+een vaste vergoeding, en die is voor een klein vermogen te hoog. Volgens Santa-Clara kost
+zulk advies, waarvoor vroeger een mens nodig was, per extra klant nu vrijwel niets meer
+{cite}`SantaClara2026`. Omdat
+de mediane particulier te weinig spreidt en te veel handelt
+([](#04-23-behavioral)), helpt zelfs een middelmatige digitale adviseur. Een app die een
+klant kan afremmen, kan hem echter ook tot handel aanzetten, en een platform dat per
+transactie
+verdient, heeft daar belang bij.
+
+Informatie komt in prijzen doordat beleggers ervoor betalen en dat terugverdienen met hun
+handel. Als lezen goedkoper wordt, doen meer beleggers het, en dan bevat de prijs meer
+informatie. Toch merkt het marktniveau daar om twee redenen weinig van. Ten eerste lijken
+machines op elkaar. Tien analisten met elk hun eigen fouten middelen die fouten weg, maar
+tien algoritmen die op dezelfde data zijn getraind, maken dezelfde fout tegelijk. Ten
+tweede kan een arbitrageur een relatieve fout verhandelen door het goedkope aandeel te kopen
+en het dure te verkopen, terwijl tegenover een gok op het marktniveau geen hedge staat.
+
+We verwachten daarom dat goedkopere informatie het aandeel geïnformeerde beleggers doet
+stijgen en de prijs informatiever maakt, maar niet volledig informatief. Een fout die veel
+beleggers delen, blijft in het gemiddelde staan, hoeveel beleggers er ook meedoen. Van
+goedkoop advies verwachten we dat de mediane particulier erop vooruitgaat, terwijl de
+slechtste
+uitkomsten slechter kunnen worden.
+
+## Toy-voorbeeld: meer geïnformeerden als informatie goedkoper wordt
+
+We laden eerst de pakketten en leggen het toeval vast, zodat elke uitvoering dezelfde
+getallen geeft.
 
 ```{code-cell} ipython3
 import itertools
@@ -91,76 +118,44 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-## Intuïtie: waarom zou dit waar zijn?
+Een risicovol activum betaalt $x = s + \varepsilon$, de som van een signaal $s$ en ruis
+$\varepsilon$. Een fractie $\lambda$ van de beleggers betaalt $c$ en ziet het signaal,
+terwijl de rest alleen de prijs ziet. Omdat het aanbod van het activum ruist, verraadt de
+prijs het signaal maar gedeeltelijk. We willen weten hoe groot $\lambda$ wordt als
+informatie goedkoper wordt, bij deze getallen:
 
-**Advies.** Het standaardadvies van het vak past op een systeemkaart: spreid, houd de
-kosten laag, handel weinig, verkoop niet in paniek. Het probleem was nooit de inhoud
-maar de aflevering: een menselijke adviseur die het op het moment van verleiding
-herhaalt, kost ongeveer één procent per jaar. Santa-Clara: *"Advice that was scarce
-because it required a person now costs nothing at the margin"* {cite}`SantaClara2026`.
-Omdat de mediane particulier ver van dat advies af zit — te weinig spreiding, te veel
-handel, zoals [de lecture over behavioral finance](#04-23-behavioral) liet zien — helpt
-zelfs een middelmatige digitale adviseur. Maar wat een klant kan afremmen, kan hem ook
-aanzetten, en een platform dat per transactie verdient, heeft daar belang bij. Zijn
-verwachting: *"the median investor does better [...] and the tail of gamified losses
-gets worse."*
+| grootheid | symbool | waarde |
+|---|---|---|
+| absolute risicoaversie | $a$ | 2 |
+| variantie van het signaal | $\sigma^2_s$ | 1 |
+| variantie van de ruis in de payoff | $\sigma^2_\varepsilon$ | 1 |
+| variantie van het aanbod | $\sigma^2_z$ | 0,04 |
+| informatiekosten, duur of goedkoop | $c$ | $\ln(1{,}5)/4 \approx 0{,}101$ of $\ln(1{,}2)/4 \approx 0{,}046$ |
 
-**Efficiëntie.** Informatie komt in prijzen omdat iemand ervoor betaalt en dat
-terugverdient door te handelen voordat de prijs het weet. Wordt lezen en interpreteren
-goedkoper, dan doen meer mensen het en bevat de prijs meer informatie. Drie dingen maken
-dat goede nieuws minder eenvoudig.
-
-Het eerste is de monocultuur. Tien analisten met elk hun eigen fouten middelen die
-fouten weg; tien algoritmen die met hetzelfde soort model op dezelfde data zijn
-getraind, maken dezelfde fout tegelijk. *"Correlated errors are what turn a mispricing
-into a crash"*, schrijft Santa-Clara.
-
-Het tweede is het verschil tussen relatieve en geaggregeerde prijzen. Een relatieve fout
-kan een arbitrageur handelen: koop het ondergewaardeerde aandeel, verkoop het
-overgewaardeerde, en het marktrisico valt weg. Tegenover een gok op het marktniveau
-staat geen hedge; dat niveau wordt gezet door stromen die op een inelastisch aanbod
-stuiten, en een slimmere machine verandert daar niets aan.
-
-Het derde is de joint hypothesis. Efficiëntie betekende: prijzen zijn verwachtingen
-onder het ware model. Als beleggers zelf uit hoogdimensionale data leren en dat model
-niet kunnen kennen, verliest het begrip zijn houvast {cite}`MartinNagel2022`.
-
-## Toy-voorbeeld: Grossman-Stiglitz en een monocultuur met de hand
-
-### (a) Het evenwichtsaandeel geïnformeerden voor twee informatiekosten
-
-Een risicovol activum betaalt $x = s + \varepsilon$, met signaal $s \sim
-\mathcal{N}(\mu_s, \sigma^2_s)$ en ruis $\varepsilon \sim \mathcal{N}(0,
-\sigma^2_\varepsilon)$. Een fractie $\lambda$ van de CARA-beleggers (risicoaversie $a$)
-betaalt $c$ en ziet $s$; de rest ziet alleen de prijs, en het aanbod ruist met variantie
-$\sigma^2_z$. De theorie hieronder geeft de *informativiteit* van de prijs, $\rho^2 =
-\Corr^2(s, p)$, als functie van $\lambda$:
+De theorie hieronder leidt het volgende recept af.
 
 $$
-\rho^2(\lambda) = \frac{\lambda^2}{\lambda^2 + m},
-\qquad m = \frac{a^2 \sigma^4_\varepsilon \sigma^2_z}{\sigma^2_s}.
+\lambda^* = \sqrt{\nu(1-k)/k}, \qquad
+\nu = \frac{a^2 \sigma^4_\varepsilon \sigma^2_z}{\sigma^2_s}, \qquad
+k = \frac{\sigma^2_\varepsilon}{\sigma^2_s}\left(e^{2ac} - 1\right),
 $$
 
-En in een evenwicht waarin beide typen voorkomen, moet gelden
+Hierin meet $\nu$ de aanbodruis ten opzichte van het signaal. De factor $e^{2ac}$ is in
+evenwicht de restvariantie van een ongeïnformeerde gedeeld door die van een geïnformeerde,
+en $k$ zet de kosten $c$ zo om naar de schaal van de varianties. Bij dit aandeel
+geïnformeerden is het kwadraat van de
+correlatie tussen signaal en prijs, de informativiteit, gelijk aan $\rho^2 = 1 - k$. Met
+de hand gaat de berekening in vijf stappen.
 
-$$
-1 - \rho^2 = k, \qquad k = \frac{\sigma^2_\varepsilon}{\sigma^2_s}\left(e^{2ac} - 1\right).
-$$
+1. De ruisparameter is $\nu = 2^2 \times 1 \times 0{,}04 / 1 = 0{,}16$.
+2. Bij dure informatie is $e^{2ac} = e^{\ln 1{,}5} = 1{,}5$, dus $k = 0{,}5$.
+3. Dan is $\lambda^* = \sqrt{0{,}16 \times 0{,}5 / 0{,}5} = 0{,}4$ en $\rho^2 = 0{,}5$.
+4. Bij goedkope informatie is $e^{2ac} = 1{,}2$, dus $k = 0{,}2$.
+5. Dan is $\lambda^* = \sqrt{0{,}16 \times 0{,}8 / 0{,}2} = \sqrt{0{,}64} = 0{,}8$ en
+   $\rho^2 = 0{,}8$.
 
-Neem $a = 2$, $\sigma^2_s = \sigma^2_\varepsilon = 1$ en $\sigma^2_z = 0{,}04$.
-Dan is $m = 4 \times 1 \times 0{,}04 / 1 = 0{,}16$.
-
-**Dure informatie**, $c = \ln(1{,}5)/4 \approx 0{,}101$: $e^{2ac} = 1{,}5$ en $k =
-0{,}5$, dus $\rho^2 = 0{,}5$, en $\lambda^2/(\lambda^2 + 0{,}16) = 0{,}5$ geeft
-$\lambda^2 = 0{,}16$, dus $\lambda = 0{,}4$.
-
-**Goedkope informatie**, $c = \ln(1{,}2)/4 \approx 0{,}046$: $k = 0{,}2$, dus $\rho^2 =
-0{,}8$, en $\lambda^2/(\lambda^2 + 0{,}16) = 0{,}8$ geeft $\lambda^2 = 0{,}64$, dus
-$\lambda = 0{,}8$.
-
-Ruim de helft goedkopere informatie verdubbelt het aandeel geïnformeerden. De
-restvariantie van de payoff voor wie alleen de prijs ziet, $\sigma^2_\varepsilon
-e^{2ac}$ (1,5 of 1,2, tegen 1,0 voor een geïnformeerde), is in nut precies $c$ waard.
+De codecel lost hetzelfde evenwicht op met een functie die we in de simulatie opnieuw
+gebruiken, en zet de uitkomst naast de handberekening.
 
 ```{code-cell} ipython3
 def gs_equilibrium(c, a, var_s, var_e, var_z):
@@ -169,154 +164,135 @@ def gs_equilibrium(c, a, var_s, var_e, var_z):
     Returns the fraction of informed traders lam, price informativeness
     rho2 = Corr^2(s, p) and the gross certainty-equivalent value of the signal.
     """
-    m = a**2 * var_e**2 * var_z / var_s
+    nu = a**2 * var_e**2 * var_z / var_s
     k = var_e / var_s * np.expm1(2 * a * c)
     if k >= 1:
         lam = 0.0
     elif k <= 0:
         lam = 1.0
     else:
-        lam = min(1.0, np.sqrt(m * (1 - k) / k))
-    rho2 = lam**2 / (lam**2 + m)
+        lam = min(1.0, np.sqrt(nu * (1 - k) / k))
+    rho2 = lam**2 / (lam**2 + nu)
     value = np.log1p(var_s * (1 - rho2) / var_e) / (2 * a)
     return lam, rho2, value
 
 
 a, var_s, var_e, var_z = 2.0, 1.0, 1.0, 0.04
-toy_gs = pd.DataFrame(
-    [dict(zip(["c", "lambda", "rho2", "waarde signaal"], [np.log(g) / 4, *gs_equilibrium(np.log(g) / 4, a, var_s, var_e, var_z)]))
-     for g in (1.5, 1.2)],
-    index=["dure informatie", "goedkope informatie"],
-)
-assert np.allclose(toy_gs[["lambda", "rho2"]].to_numpy(), [[0.4, 0.5], [0.8, 0.8]])
-assert np.allclose(toy_gs["waarde signaal"], toy_gs["c"])
+cases = {"dure informatie": (np.log(1.5) / 4, 0.4, 0.5),
+         "goedkope informatie": (np.log(1.2) / 4, 0.8, 0.8)}
+rows = {}
+for case, (c, lam_hand, rho2_hand) in cases.items():
+    lam, rho2, value = gs_equilibrium(c, a, var_s, var_e, var_z)
+    rows[case] = {"c": c,
+                  "lambda met de hand": lam_hand, "lambda code": lam,
+                  "rho2 met de hand": rho2_hand, "rho2 code": rho2,
+                  "waarde signaal (code)": value}
+toy_gs = pd.DataFrame(rows).T
+
+assert np.allclose(toy_gs["lambda code"], toy_gs["lambda met de hand"])
+assert np.allclose(toy_gs["rho2 code"], toy_gs["rho2 met de hand"])
+assert np.allclose(toy_gs["waarde signaal (code)"], toy_gs["c"])
 toy_gs.round(4)
 ```
 
-### (b) Vier arbitrageurs, gedeelde of eigen fouten
-
-Vier arbitrageurs schatten de waarde van een aandeel. Elk maakt een fout van
-$+1$ of $-1$ met kans $\tfrac12$, dus elk heeft variantie 1: ze zijn individueel
-even nauwkeurig. De prijs is hun gemiddelde schatting.
-
-**Eigen modellen.** Van de $2^4 = 16$ even waarschijnlijke combinaties van
-onafhankelijke fouten geeft er één een gemiddelde van $-1$, vier $-\tfrac12$, zes $0$,
-vier $+\tfrac12$ en één $+1$. De variantie is $2 \cdot \tfrac1{16} + 2 \cdot \tfrac4{16}
-\cdot \tfrac14 = \tfrac14$, en de kans op de grootste daling is $\tfrac1{16} =
-6{,}25\%$.
-
-**Eén model.** Alle vier gebruiken hetzelfde model en maken dezelfde fout. Het
-gemiddelde is $\pm 1$ met kans $\tfrac12$: variantie 1 en een kans van 50% op de
-grootste daling.
-
-**Half-half.** Twee delen een model, twee hebben een eigen model. Het gemiddelde is
-$(2f + u_3 + u_4)/4$ met variantie $(4 + 1 + 1)/16 = 0{,}375$; de grootste daling
-vereist $f = u_3 = u_4 = -1$, kans $\tfrac18$.
-
-De algemene regel, die we hieronder bewijzen, is $\Var = \rho^2 + (1-\rho)/N$ met
-$\rho$ de fractie die het model deelt: $\tfrac14$, $0{,}375$ en $1$.
-
-```{code-cell} ipython3
-def average_error_distribution(n, n_shared):
-    """Exact distribution of the mean of n +-1 errors when n_shared traders share one draw."""
-    n_draws = n - n_shared + (1 if n_shared else 0)
-    dist = {}
-    for d in itertools.product([-1, 1], repeat=n_draws):
-        total = d[0] * n_shared + sum(d[1:]) if n_shared else sum(d)
-        dist[total / n] = dist.get(total / n, 0.0) + 0.5**n_draws
-    return pd.Series(dist).sort_index()
-
-
-toy_mono = pd.DataFrame(
-    {label: {"variantie": (dist := average_error_distribution(4, k)) @ dist.index.to_numpy() ** 2,
-             "formule rho^2 + (1-rho)/N": (k / 4) ** 2 + (1 - k / 4) / 4,
-             "P(grootste daling)": dist.loc[-1.0]}
-     for label, k in [("eigen modellen", 0), ("half-half", 2), ("een model", 4)]}
-).T
-assert np.allclose(toy_mono["variantie"], [0.25, 0.375, 1.0])
-assert np.allclose(toy_mono["P(grootste daling)"], [1 / 16, 1 / 8, 1 / 2])
-toy_mono.round(4)
-```
-
-De code reproduceert beide handberekeningen exact. In (b) is elke arbitrageur steeds
-even nauwkeurig; alleen de samenhang van de fouten verandert, en die bepaalt de staart.
+Code en hand komen overeen, en de laatste kolom laat zien dat het signaal in beide
+evenwichten precies zijn kosten waard is. Informatie die ruim de helft goedkoper wordt,
+verdubbelt dus het aandeel geïnformeerde beleggers. De prijs verklaart dan 80% van de
+variantie van het signaal in plaats van 50%, maar geen van beide evenwichten komt bij
+100%.
 
 ## Theorie
 
-### Opzet: CARA, normaliteit en ruis in het aanbod
+De theorie gaat in drie stappen van het toy-voorbeeld naar de tweedeling van Santa-Clara.
+Eerst leiden we het evenwicht van Grossman en Stiglitz af. Goedkopere informatie maakt de
+prijs daarin informatiever, tot een grens die door risicoaversie wordt gezet en niet door
+kosten. Daarna laten we zien dat gedeelde modelfouten niet wegmiddelen, zodat
+relatieve prijzen wel en het marktniveau niet efficiënter worden. Tot slot meten we
+snelheid met de halfwaardetijd van informatie en rekenen we uit wat advies een particulier
+oplevert.
 
-We volgen {cite:t}`GrossmanStiglitz1980` in de notatie van deze reeks (zij schrijven
-$\theta$ voor het signaal en $x$ voor het aanbod, wij $s$ en $z$). Er is één periode,
-een risicovrij activum met rente nul, en een risicovol activum met payoff $x = s +
-\varepsilon$. Beleggers hebben nut $u(W) = -e^{-aW}$, en het aanbod per belegger is $z
-\sim \mathcal{N}(\bar z, \sigma^2_z)$, onafhankelijk van $s$ en $\varepsilon$. Zonder
-die ruis zou de prijs het signaal volledig verraden, zou niemand voor informatie
-betalen, en bestond er geen evenwicht.
+### Opzet en aannames
 
-Een CARA-belegger met normaal verdeelde payoff kiest de vraag $D = (\E[x \mid
-\mathcal{I}] - p)/(a \Var(x \mid \mathcal{I}))$. Voor een geïnformeerde is
-$\mathcal{I} = \{s, p\}$ en dus $D_I = (s - p)/(a\sigma^2_\varepsilon)$; voor een
-ongeïnformeerde is $\mathcal{I} = \{p\}$.
+We volgen {cite:t}`GrossmanStiglitz1980`, maar schrijven $s$ voor het signaal en $z$ voor
+het aanbod, waar zij $\theta$ en $x$ gebruiken. Het model rust op vier aannames.
 
-### Het evenwicht
+1. Er is één periode, een risicovrij activum met rente nul en een risicovol activum met
+   payoff $x = s + \varepsilon$, met $s \sim \mathcal{N}(\mu_s, \sigma^2_s)$ en
+   $\varepsilon \sim \mathcal{N}(0, \sigma^2_\varepsilon)$ onafhankelijk.
+2. Alle beleggers hebben nut $u(W) = -e^{-aW}$ met absolute risicoaversie $a$ (CARA).
+3. Het aanbod per belegger is $z \sim \mathcal{N}(\bar z, \sigma^2_z)$, onafhankelijk van
+   $s$ en $\varepsilon$, bijvoorbeeld aandelen die liquiditeitshandelaren (*noise traders*)
+   om persoonlijke redenen verkopen.
+4. Een fractie $\lambda$ betaalt $c$ en ziet $s$, de rest ziet alleen de prijs $p$.
 
-*Waarom zou dit waar zijn?* Geïnformeerden handelen op $s$, dus de prijs draagt een
-spoor van $s$. Omdat het aanbod ruist, weet een ongeïnformeerde niet of een hoge prijs
-goed nieuws of weinig aanbod betekent; hoe meer geïnformeerden, hoe minder ruizig het
-spoor. In evenwicht laat de keuze om voor $s$ te betalen iedereen onverschillig.
+Zonder de ruis van aanname 3 zou de prijs het signaal volledig verraden, zodat niemand voor
+informatie zou betalen en er geen evenwicht bestond. Een CARA-belegger met een normaal
+verdeelde payoff vraagt $D = (\E[x \mid \mathcal{I}] - p)/(a \Var(x \mid \mathcal{I}))$
+stuks, en dus meer naarmate de verwachte winst per stuk groter en het risico kleiner is.
+Voor een geïnformeerde is de informatie $\mathcal{I} = \{s, p\}$, zodat
+$D_I = (s - p)/(a\sigma^2_\varepsilon)$, en voor een ongeïnformeerde is ze $\{p\}$.
+
+Omdat geïnformeerden op $s$ handelen en het aanbod ruist, blijkt de prijs een lineaire
+functie te zijn van $w = s - (a\sigma^2_\varepsilon/\lambda)(z - \bar z)$, het signaal
+vervuild met aanbodruis. De informativiteit van de prijs is het kwadraat van de correlatie
+tussen $s$ en $w$:
+
+```{math}
+:label: eq-llms-en-efficientie-rho
+\rho^2(\lambda) \equiv \Corr^2(s, w) = \frac{\lambda^2}{\lambda^2 + \nu},
+\qquad \nu = \frac{a^2\sigma^4_\varepsilon\sigma^2_z}{\sigma^2_s}.
+```
+
+Hoe meer geïnformeerden er zijn, hoe kleiner de ruis per eenheid signaal in $w$, en hoe
+dichter de informativiteit bij 1 komt. In het toy-voorbeeld is $\nu = 0{,}16$, zodat
+$\lambda = 0{,}4$ een informativiteit van 0,5 geeft.
+
+### Het kernresultaat: het evenwicht
+
+Steeds meer beleggers kopen het signaal, tot het precies zijn kosten waard is. Een
+belegger die ervoor
+betaalt, koopt meer als het signaal goed is, zodat de prijs met het signaal stijgt en er
+een spoor van draagt. Omdat het aanbod ruist, weet een ongeïnformeerde niet of een hoge
+prijs goed nieuws of weinig aanbod betekent. Naarmate meer beleggers betalen, wordt het
+spoor duidelijker en daalt de waarde van het signaal, tot die de kosten net dekt.
 
 :::{prf:proposition} Grossman-Stiglitz-evenwicht
 :label: thm-llms-en-efficientie-gs
 
-Definieer $w = s - \frac{a\sigma^2_\varepsilon}{\lambda}(z - \bar z)$ voor
-$\lambda > 0$. Dan geldt:
+Stel $k = (\sigma^2_\varepsilon/\sigma^2_s)(e^{2ac} - 1)$. Dan is het evenwichtsaandeel
+geïnformeerde beleggers
 
-1. Er is een lineair evenwicht met prijs $p = \pi_0 + \pi_1 w$, en $p$ en $w$
-   bevatten dezelfde informatie. De informativiteit van de prijs is
+```{math}
+:label: eq-llms-en-efficientie-lambda
+\lambda^* =
+\begin{cases}
+0 & k \ge 1,\\
+\min\Bigl\{1,\ \sqrt{\nu(1-k)/k}\Bigr\} & 0 < k < 1,
+\end{cases}
+```
 
-   ```{math}
-   :label: eq-llms-en-efficientie-rho
-   \rho^2(\lambda) \equiv \Corr^2(s, w) = \frac{\lambda^2}{\lambda^2 + m},
-   \qquad m = \frac{a^2\sigma^4_\varepsilon\sigma^2_z}{\sigma^2_s}.
-   ```
-
-2. Voor elke $w$ is de verhouding van de verwachte nutten van een geïnformeerde en
-   een ongeïnformeerde belegger
-
-   ```{math}
-   :label: eq-llms-en-efficientie-ratio
-   \frac{\E[u(W_I) \mid w]}{\E[u(W_U) \mid w]} = e^{ac}\sqrt{\frac{\sigma^2_\varepsilon}{\Var(x \mid w)}},
-   \qquad \Var(x \mid w) = \sigma^2_\varepsilon + \sigma^2_s\bigl(1 - \rho^2(\lambda)\bigr).
-   ```
-
-3. Met $k = (\sigma^2_\varepsilon/\sigma^2_s)(e^{2ac} - 1)$ is het evenwichtsaandeel
-   geïnformeerden
-
-   ```{math}
-   :label: eq-llms-en-efficientie-lambda
-   \lambda^* =
-   \begin{cases}
-   0 & k \ge 1,\\
-   \min\Bigl\{1,\ \sqrt{m(1-k)/k}\Bigr\} & 0 < k < 1,
-   \end{cases}
-   ```
-
-   en in een inwendig evenwicht ($0 < \lambda^* < 1$) is $\rho^2 = 1 - k$.
+en in een inwendig evenwicht ($0 < \lambda^* < 1$) is de informativiteit van de prijs
+$\rho^2 = 1 - k$.
 :::
+
+Het bewijs vergelijkt het verwachte nut van beide typen beleggers bij een gegeven prijs.
+Die verhouding blijkt niet van de prijs af te hangen, zodat onverschilligheid betekent dat
+de restvariantie van een ongeïnformeerde, $\Var(x \mid w)$, precies $e^{2ac}$ keer die van
+een geïnformeerde is. In het toy-voorbeeld is die restvariantie 1,5 bij dure en 1,2 bij
+goedkope informatie, tegen 1 voor een geïnformeerde. Invullen in
+[](#eq-llms-en-efficientie-rho) geeft $\lambda^*$.
 
 :::{prf:proof}
 :class: dropdown
 
-*Deel 1.* Veronderstel $p = \pi_0 + \pi_1 w$ met $\pi_1 \neq 0$. Dan is $w$ uit
-$p$ te berekenen en omgekeerd. Omdat $\Cov(s, w) = \sigma^2_s$ en
-$\Var(w) = \sigma^2_s + (a\sigma^2_\varepsilon/\lambda)^2\sigma^2_z$, is
-$\Corr^2(s,w) = \sigma^2_s/\Var(w) = \lambda^2/(\lambda^2 + m)$. De normale
-projectie geeft $\E[x \mid w] = \mu_s + \rho^2(w - \mu_s)$ en $\Var(x \mid w) =
-\sigma^2_\varepsilon + \sigma^2_s(1-\rho^2)$.
-
-Marktclearing is $\lambda D_I + (1-\lambda) D_U = z$. Schrijf $\lambda s/(a
-\sigma^2_\varepsilon) - z = \frac{\lambda}{a\sigma^2_\varepsilon} w - \bar z$. Dan
-wordt de clearingvoorwaarde
+*Stap 1: de prijs is lineair in $w$.* Neem als proefoplossing $p = \pi_0 + \pi_1 w$ met
+$\pi_1 \neq 0$, zodat $w$ uit $p$ te berekenen is en omgekeerd. Omdat $\Cov(s, w) =
+\sigma^2_s$ en $\Var(w) = \sigma^2_s + (a\sigma^2_\varepsilon/\lambda)^2\sigma^2_z$, is
+$\Corr^2(s,w) = \lambda^2/(\lambda^2 + \nu)$. De normale projectie geeft $\E[x \mid w] =
+\mu_s + \rho^2(w - \mu_s)$ en $\Var(x \mid w) = \sigma^2_\varepsilon + \sigma^2_s(1-\rho^2)$.
+In evenwicht is de vraag gelijk aan het aanbod, $\lambda D_I + (1-\lambda) D_U = z$. Met
+$\lambda s/(a\sigma^2_\varepsilon) - z = \frac{\lambda}{a\sigma^2_\varepsilon} w - \bar z$
+wordt dat
 
 $$
 p\left[\frac{\lambda}{a\sigma^2_\varepsilon} + \frac{1-\lambda}{a\Var(x\mid w)}\right]
@@ -324,321 +300,330 @@ p\left[\frac{\lambda}{a\sigma^2_\varepsilon} + \frac{1-\lambda}{a\Var(x\mid w)}\
 + \frac{(1-\lambda)\bigl(\mu_s + \rho^2(w - \mu_s)\bigr)}{a\Var(x\mid w)},
 $$
 
-die lineair is in $w$. Dat bevestigt de gok, met $\pi_1 > 0$.
+lineair in $w$ met $\pi_1 > 0$, zodat de proefoplossing klopt.
 
-*Deel 2.* Een geïnformeerde met beginvermogen $W_0$ die de optimale vraag kiest,
-heeft conditioneel op $(s, w)$ nut
-$-\exp\bigl(-a(W_0 - c) - (s - p)^2/(2\sigma^2_\varepsilon)\bigr)$. Neem de
+*Stap 2: de nutsverhouding hangt niet van $w$ af.* Een geïnformeerde met beginvermogen
+$W_0$ en optimale vraag heeft conditioneel op $(s, w)$ nut
+$-\exp\bigl(-a(W_0 - c) - (s - p)^2/(2\sigma^2_\varepsilon)\bigr)$. We nemen de
 verwachting over $s$ gegeven $w$, met $s - p \mid w \sim \mathcal{N}(\E[x\mid w] - p,
 \sigma^2_s(1-\rho^2))$. Voor $Y \sim \mathcal{N}(\mu, v)$ is
 $\E[e^{-Y^2/(2\sigma^2)}] = \sqrt{\sigma^2/(\sigma^2 + v)}\,e^{-\mu^2/(2(\sigma^2 + v))}$,
-en $\sigma^2_\varepsilon + \sigma^2_s(1-\rho^2) = \Var(x\mid w)$. Dus
+en de ongeïnformeerde heeft hetzelfde nut zonder de factor $e^{ac}$ en zonder de wortel.
+De verhouding is dus
 
-$$
-\E[u(W_I)\mid w] = -e^{-a(W_0 - c)}\sqrt{\frac{\sigma^2_\varepsilon}{\Var(x \mid w)}}
-\exp\left(-\frac{(\E[x\mid w] - p)^2}{2\Var(x\mid w)}\right).
-$$
+```{math}
+:label: eq-llms-en-efficientie-ratio
+\frac{\E[u(W_I) \mid w]}{\E[u(W_U) \mid w]} = e^{ac}\sqrt{\frac{\sigma^2_\varepsilon}{\Var(x \mid w)}}.
+```
 
-De ongeïnformeerde heeft hetzelfde zonder de factor $e^{ac}$ en zonder de wortel.
-De verhouding is [](#eq-llms-en-efficientie-ratio), en die hangt niet van $w$ af.
-
-*Deel 3.* Beide nutten zijn negatief, dus een verhouding groter dan 1 betekent dat de
-geïnformeerde slechter af is. Een inwendig evenwicht vereist verhouding 1, dus
-$\Var(x\mid w) = \sigma^2_\varepsilon e^{2ac}$ en $1 - \rho^2 = k$. Invullen in
-[](#eq-llms-en-efficientie-rho) geeft $\lambda^2 = m(1-k)/k$. Is dat groter dan 1, dan
-blijft informatie ook met iedereen geïnformeerd strikt de moeite waard en is $\lambda^*
-= 1$; is $k \ge 1$, dan is ze zelfs bij een oninformatieve prijs de kosten niet waard en
-is $\lambda^* = 0$. $\square$
+*Stap 3: onverschilligheid legt $\rho^2$ vast.* Beide nutten zijn negatief, dus een
+verhouding boven 1 betekent dat de geïnformeerde slechter af is. Een inwendig evenwicht
+vraagt verhouding 1, dus $\Var(x\mid w) = \sigma^2_\varepsilon e^{2ac}$ en $1 - \rho^2 =
+k$. Invullen in [](#eq-llms-en-efficientie-rho) geeft $\lambda^2 = \nu(1-k)/k$. Is dat
+groter dan 1, dan loont informatie ook als iedereen geïnformeerd is en is $\lambda^* = 1$.
+Is $k \ge 1$, dan is ze zelfs bij een oninformatieve prijs de kosten niet waard en is
+$\lambda^* = 0$. $\square$
 :::
 
-### Wat goedkopere informatie doet
+### Wat het voorspelt: goedkopere informatie
 
-*Waarom zou dit waar zijn?* Als informatie goedkoper wordt, stijgt het rendement van
-geïnformeerd zijn, en treden er beleggers toe tot hun handel de prijs zo informatief
-heeft gemaakt dat het extra rendement weer precies de kosten dekt. De prijs absorbeert
-de besparing.
+Goedkopere informatie maakt de prijs informatiever, zoals we verwachtten. Omdat $k$ met
+$c$ stijgt, dalen $\lambda^*$ en $\rho^2 = 1 - k$ allebei als informatie duurder wordt, en
+stijgen ze als ze goedkoper wordt. Het model voegt daar twee dingen aan toe.
 
-Uit [](#eq-llms-en-efficientie-lambda) volgen drie eigenschappen.
+Ten eerste bepaalt de aanbodruis hoeveel beleggers meedoen, maar niet hoe informatief de
+prijs
+wordt. In een inwendig evenwicht is $\rho^2 = 1 - k$, en $k$ bevat $\sigma^2_z$ niet. Meer
+ruis trekt daarom meer geïnformeerden aan ($\lambda^*$ is evenredig met $\sigma_z$), en hun
+extra handel compenseert de extra ruis precies. De liquiditeitshandelaren van aanname 3
+zijn in dit model dus geen vijand van
+efficiëntie maar de voorwaarde ervoor.
 
-**Monotoon.** $k$ stijgt in $c$, dus $\lambda^*$ en $\rho^2 = 1-k$ dalen in $c$:
-goedkopere informatie geeft meer geïnformeerden en een informatievere prijs.
+Ten tweede is er een grens. Als $c$ naar nul gaat, gaat $\lambda^*$ naar 1, maar dan is
+nog altijd
+$\rho^2 = 1/(1+\nu) < 1$, in het toy-voorbeeld $1/1{,}16 \approx 0{,}86$. Zelfs een
+belegger die $s$ kent, handelt voorzichtig omdat $\varepsilon$ onzeker blijft, zodat de
+aanbodruis zichtbaar blijft in de prijs. Een taalmodel verlaagt $c$, maar niet de
+risicoaversie $a$ of de fundamentele onzekerheid $\sigma^2_\varepsilon$, en juist die
+twee zetten de grens.
 
-**Ruis bepaalt de deelname, niet de informativiteit.** In een inwendig evenwicht is
-$\rho^2 = 1 - k$, en $k$ bevat $\sigma^2_z$ niet. Meer ruis trekt meer geïnformeerden
-aan ($\lambda^* \propto \sigma_z$), en hun extra handel compenseert de extra ruis
-precies. De noise traders van {cite:t}`DeLongShleiferSummersWaldmann1990` uit
-[](#04-23-behavioral) zijn in dit model geen vijand van efficiëntie maar de voorwaarde
-ervoor.
+### Gedeelde modelfouten
 
-**De grens.** Bij $c \to 0$ gaat $\lambda^* \to 1$, maar ook dan is $\rho^2 = 1/(1+m) <
-1$: wie $s$ kent, handelt zo voorzichtig dat de ruis zichtbaar blijft. De prijs wordt
-dan niet meer tegengehouden door de kostprijs van informatie maar door risicoaversie en
-fundamentele onzekerheid, $a$ en $\sigma^2_\varepsilon$ in $m$. Een taalmodel verlaagt
-$c$; het verlaagt $\sigma^2_\varepsilon$ niet.
-
-### Relatieve en geaggregeerde fouten: de factorstructuur van modelfouten
-
-*Waarom zou dit waar zijn?* Grossman en Stiglitz nemen aan dat alle geïnformeerden
-hetzelfde ware signaal zien. In werkelijkheid maakt elke belegger een eigen schatting
-met een eigen model. Verschillen de modellen, dan middelen hun fouten weg; lijken ze op
-elkaar, dan niet. Goedkopere informatie verkleint de eigen fout van elk model, niet de
-gedeelde, en die kan door een handvol dominante taalmodellen juist groeien.
+Grossman en Stiglitz nemen aan dat alle geïnformeerden hetzelfde ware signaal zien, terwijl
+in werkelijkheid elke belegger een eigen schatting maakt met een eigen model. Als de
+modellen
+verschillen, middelen hun fouten weg, en als ze op elkaar lijken, gebeurt dat niet.
+Goedkopere informatie verkleint de eigen fout van elk model, maar niet de gedeelde, en die
+kan door een handvol dominante taalmodellen juist groeien.
 
 :::{prf:proposition} Variantie van de geaggregeerde fout
 :label: thm-llms-en-efficientie-mono
 
-$N$ arbitrageurs schatten een waarde met fout $e_i$, elk met variantie $\sigma^2$.
-Een fractie $\rho$ gebruikt hetzelfde model en maakt dezelfde fout $f$; de overige
-$(1-\rho)N$ maken onafhankelijke fouten $u_i$. De prijsfout is het gemiddelde
-$\bar e = \frac1N\sum_i e_i$. Dan
+$N$ arbitrageurs schatten een waarde, elk met een fout met variantie $\sigma^2$. Een
+fractie $\omega$ gebruikt hetzelfde model en maakt dezelfde fout $f$, en de overige
+$(1-\omega)N$ maken onafhankelijke fouten $u_i$. De prijsfout is het gemiddelde
+$\bar e$ van alle fouten. Dan is
 
 ```{math}
 :label: eq-llms-en-efficientie-mono
-\Var(\bar e) = \sigma^2\left(\rho^2 + \frac{1-\rho}{N}\right).
+\Var(\bar e) = \sigma^2\left(\omega^2 + \frac{1-\omega}{N}\right).
 ```
-
-Algemener: als $e_i = \sqrt{\varrho}\,f + \sqrt{1-\varrho}\,u_i$ met paarsgewijze
-correlatie $\varrho$, dan $\Var(\bar e) = \sigma^2\bigl(\varrho + (1-\varrho)/N\bigr)$.
 :::
 
 :::{prf:proof}
-$\bar e = \rho f + \frac1N\sum_{i \notin \text{gedeeld}} u_i$, met $\rho N$ keer
-dezelfde $f$ gedeeld door $N$. De twee termen zijn onafhankelijk, dus $\Var(\bar e)
-= \rho^2\sigma^2 + (1-\rho)N\sigma^2/N^2$. De tweede uitspraak is
-[de clusteringformule uit de lecture over event studies](#thm-eventstudies-cluster)
-met gewichten $1/N$. $\square$
+Het gemiddelde is $\bar e = \omega f + \frac1N\sum_i u_i$, met de som over de arbitrageurs
+met een eigen model. De twee termen zijn onafhankelijk, dus $\Var(\bar e) =
+\omega^2\sigma^2 + (1-\omega)N\sigma^2/N^2$. $\square$
 :::
 
-Bij $N \to \infty$ blijft $\rho^2\sigma^2$ over. Dezelfde logica werkt over aandelen:
-schrijf de fout van een model in aandeel $j$ als $e_j = \beta_j g + \eta_j$, met $g$ een
-fout die alle aandelen raakt en $\eta_j$ aandeelspecifiek. Een long-short portefeuille
-met bèta nul heeft fout $\sum_j w_j\eta_j$, die wegdiversifieert; de marktportefeuille
-heeft fout $\bar\beta g$, die blijft ([](#ex-llms-en-efficientie-2)).
+Als $N$ groot wordt, blijft $\omega^2\sigma^2$ over, zodat meer arbitrageurs alleen tegen
+de eigen fouten helpen. Met vier arbitrageurs is dat met de hand na te gaan. Elk maakt een
+fout van $+1$ of $-1$ met kans $\tfrac12$, zodat ze individueel even nauwkeurig zijn. Met
+eigen modellen zijn er $2^4 = 16$ even waarschijnlijke combinaties, waarvan er één een
+gemiddelde van $-1$ geeft, vier $-\tfrac12$, zes $0$, vier $+\tfrac12$ en één $+1$. Delen
+twee van de vier een model, dan is het gemiddelde $(2f + u_3 + u_4)/4$, en vraagt de
+grootste daling $f = u_3 = u_4 = -1$. Gebruiken alle vier hetzelfde model, dan is het
+gemiddelde $\pm 1$ met kans $\tfrac12$.
 
-Dat is Santa-Clara's tweedeling: *"Machines make relative prices more efficient, because
-relative mispricing is what a well-funded arbitrageur can trade. Nothing about machines
-makes the aggregate market more efficient, because the aggregate is set by flows meeting
-inelastic supply"* {cite}`SantaClara2026`. De eerste helft is
-[](#eq-llms-en-efficientie-mono) toegepast op $\eta_j$. De tweede helft is [de vorige
-lecture](#06-36-inelastische-markten): als een dollar instroom de geaggregeerde waarde
-met ongeveer vijf dollar verhoogt {cite}`GabaixKoijen2021,KoijenYogo2019`, bepalen
-stromen het niveau. Passieve stromen, en adviseurs die klanten in dezelfde
-modelportefeuilles leiden, vergroten het deel van de vraag dat niet op prijs reageert en
-maken het aggregaat gevoeliger voor stromen, niet voor nieuws.
+| modellen | $\omega$ | variantie met de hand | kans op de grootste daling |
+|---|---|---|---|
+| vier eigen | 0 | $2 \cdot \tfrac1{16} + 2 \cdot \tfrac4{16} \cdot \tfrac14 = \tfrac14$ | $\tfrac1{16}$ |
+| twee delen er een | $\tfrac12$ | $(4 + 1 + 1)/16 = 0{,}375$ | $\tfrac18$ |
+| één gedeeld | 1 | 1 | $\tfrac12$ |
 
-### Crowding, leverage en crashes
+De formule geeft met $\omega = 0$, $\tfrac12$ en 1 dezelfde varianties. De code telt alle
+combinaties af en zet ze naast de handberekening.
 
-*Waarom zou dit waar zijn?* Een gedeelde fout wordt pas een crash als iedereen
-tegelijk moet verkopen. Dat gebeurt als de handelaren niet weten hoeveel anderen
-dezelfde positie hebben, en als ze die positie met geleend geld financieren.
+```{code-cell} ipython3
+def average_error_distribution(n, n_shared):
+    """Exact distribution of the mean of n +-1 errors when n_shared traders share one draw."""
+    n_draws = n - n_shared + (1 if n_shared else 0)
+    dist = {}
+    for draws in itertools.product([-1, 1], repeat=n_draws):
+        if n_shared:
+            total = n_shared * draws[0] + sum(draws[1:])
+        else:
+            total = sum(draws)
+        dist[total / n] = dist.get(total / n, 0.0) + 0.5**n_draws
+    return pd.Series(dist).sort_index()
 
-{cite:t}`Stein2009` noemde het eerste probleem *crowding* (te veel arbitrageurs die,
-zonder het van elkaar te weten, dezelfde positie innemen): voor strategieën zonder vast
-fundamenteel anker kan een arbitrageur *"not know how many of his peers are
-simultaneously entering the same trade"*. Het tweede is *leverage* (de verhouding tussen
-positie en eigen vermogen): wie die privé optimaal kiest, *"may create a fire-sale
-externality that raises the likelihood of a severe crash."* Een monocultuur van modellen
-verergert het eerste: iedereen zit ongemerkt in dezelfde trade.
 
-Het best gedocumenteerde voorbeeld ligt vóór de taalmodellen. {cite:t}`KhandaniLo2011`
-bestudeerden de week van 6 augustus 2007, waarin kwantitatieve
-long-short-aandelenfondsen *"experienced unprecedented losses"*. Met gesimuleerde
-portefeuilles op vijf waarderingsfactoren vonden ze dat de afbouw van zulke
-portefeuilles al in juli begon, en met transactiedata dat een eenvoudige
-market-makingstrategie juist die week sterk negatief rendeerde: de quant meltdown was
-*"the combined effects of portfolio deleveraging [...] and a temporary withdrawal of
-marketmaking risk capital."* Dat bewijst niet dat taalmodellen hetzelfde zullen doen;
-het is het mechanisme, met eenvoudiger machines. {cite:t}`ChincoFos2021` wijzen op de
-keerzijde: als veel fondsen hetzelfde activum om uiteenlopende redenen met drempelregels
-handelen, gedraagt hun gezamenlijke vraag zich als ruis. Een monocultuur zou die ruis
-kunnen wegnemen, en in het Grossman-Stiglitz-model is ruis juist wat informatie loont.
+by_hand = {"vier eigen": (0, 1 / 4, 1 / 16),
+           "twee delen er een": (2, 3 / 8, 1 / 8),
+           "één gedeeld": (4, 1.0, 1 / 2)}
+rows = {}
+for label, (n_shared, var_hand, p_hand) in by_hand.items():
+    dist = average_error_distribution(4, n_shared)
+    omega = n_shared / 4
+    rows[label] = {"variantie met de hand": var_hand,
+                   "variantie code": (dist * dist.index.to_numpy() ** 2).sum(),
+                   "formule omega^2 + (1-omega)/N": omega**2 + (1 - omega) / 4,
+                   "P(grootste daling) met de hand": p_hand,
+                   "P(grootste daling) code": dist.loc[-1.0]}
+toy_mono = pd.DataFrame(rows).T
 
-### De halfwaardetijd van informatie
+assert np.allclose(toy_mono["variantie code"], toy_mono["variantie met de hand"])
+assert np.allclose(toy_mono["P(grootste daling) code"], toy_mono["P(grootste daling) met de hand"])
+toy_mono.round(4)
+```
 
-*Waarom zou dit waar zijn?* Als een prijs elke periode maar een deel van de afstand tot
-de nieuwe waarde overbrugt, loopt de reactie op nieuws van vandaag door in het rendement
-van morgen, en hoe trager de aanpassing, hoe sterker die correlatie.
+Elke arbitrageur is in alle drie de gevallen even nauwkeurig. Toch stijgt de kans op de
+grootste daling van 1/16 naar 1/2, omdat alleen de samenhang van de fouten verandert.
+
+Dezelfde redenering werkt over aandelen. Schrijf de fout van een model in aandeel $j$ als
+$e_j = \beta_j g + \eta_j$. Hier is $g$ een fout die alle aandelen raakt, zoals een te
+optimistische kijk op de conjunctuur, en $\eta_j$ een fout in één aandeel. De fout $g$ is
+wat aandelen gemeen hebben, en $\omega$ bepaalt of die fout over arbitrageurs uitmiddelt.
+Een portefeuille die ondergewaardeerde aandelen koopt en overgewaardeerde verkoopt, met
+gewichten $w_j$ die optellen tot nul en samen bèta nul hebben, heeft fout
+$\sum_j w_j\eta_j$, en die diversifieert weg. De marktportefeuille heeft een gemiddelde
+bèta $\bar\beta$ van ongeveer 1 en houdt fout $\bar\beta g$, zoals de tweede oefening laat
+uitrekenen.
+
+Santa-Clara vat de tweedeling in twee zinnen samen:
+
+> Machines make relative prices more efficient, because relative mispricing is what a
+> well-funded arbitrageur can trade. Nothing about machines makes the aggregate market
+> more efficient, because the aggregate is set by flows meeting inelastic supply.
+> {cite}`SantaClara2026`
+
+De eerste zin volgt uit de alinea hierboven, want een portefeuille met bèta nul houdt
+alleen de fouten per aandeel over, en die middelen weg. De tweede sluit aan bij
+[het vorige college](#06-36-inelastische-markten), dat aannemelijk maakte dat een dollar
+instroom de waarde van de markt met twee tot acht dollar verhoogt, met vijf als midden
+{cite}`GabaixKoijen2021,KoijenYogo2019`. Als dat klopt, hangt het niveau sterk van stromen
+af. Passieve
+stromen, en adviseurs die klanten in dezelfde modelportefeuilles leiden, kunnen het deel van
+de vraag vergroten dat niet op de prijs reageert, zodat het marktniveau gevoeliger wordt
+voor stromen dan voor nieuws.
+
+Een gedeelde fout wordt pas een crash als iedereen tegelijk moet verkopen. Volgens
+{cite:t}`Stein2009` gebeurt dat als arbitrageurs niet weten hoeveel anderen dezelfde
+positie hebben (*crowding*) en die positie met geleend geld financieren. Gedwongen verkopen
+versterken elkaar dan. Het best gedocumenteerde voorbeeld ligt vóór de taalmodellen. In de
+week van 6 augustus 2007 leden kwantitatieve aandelenfondsen met dezelfde
+waarderingsfactoren grote verliezen, wat volgens
+{cite:t}`KhandaniLo2011` past bij een gelijktijdige afbouw van hun posities. Een
+monocultuur van taalmodellen zou dat mechanisme versterken.
+
+### Hoe het gemeten wordt: de halfwaardetijd van informatie
+
+Hoe snel een prijs nieuws verwerkt, is af te lezen aan de correlatie tussen het rendement
+van vandaag en dat van gisteren. Als een prijs elke dag maar een deel van de afstand tot de
+nieuwe waarde overbrugt, loopt de reactie op nieuws door in het rendement van morgen. Hoe
+trager de aanpassing, hoe sterker die correlatie. Vanaf hier zijn kleine letters logs.
 
 :::{prf:proposition} Gedeeltelijke aanpassing
 :label: thm-llms-en-efficientie-halfwaarde
 
-Laat de fundamentele waarde een random walk zijn, $v_t = v_{t-1} +
-\varepsilon_t$, en laat de (log)prijs elke periode een fractie $1-\theta$ van de
-afstand overbruggen: $p_t = p_{t-1} + (1-\theta)(v_t - p_{t-1})$, $0 \le \theta <
-1$. Dan volgt het rendement $r_t = p_t - p_{t-1}$ een AR(1):
+Laat de fundamentele waarde een random walk zijn, $v_t = v_{t-1} + \xi_t$, en laat de prijs
+elke periode een fractie $1-\theta$ van de afstand overbruggen, $p_t = p_{t-1} +
+(1-\theta)(v_t - p_{t-1})$ met $0 \le \theta < 1$. Dan volgt het log rendement $\ell_t =
+p_t - p_{t-1}$ een AR(1)-proces,
 
 ```{math}
 :label: eq-llms-en-efficientie-ar1
-r_t = \theta\, r_{t-1} + (1-\theta)\,\varepsilon_t,
-\qquad \Corr(r_t, r_{t-1}) = \theta,
-\qquad h_{1/2} = \frac{\ln 2}{-\ln\theta}.
+\ell_t = \theta\, \ell_{t-1} + (1-\theta)\,\xi_t,
+\qquad \Corr(\ell_t, \ell_{t-1}) = \theta,
+\qquad h_{1/2} = \frac{\ln 2}{-\ln\theta},
 ```
 
-Hier is $h_{1/2}$ het aantal perioden waarna de helft van een schok in de prijs zit.
+met $h_{1/2}$ het aantal perioden waarna de helft van een schok in de prijs zit.
 :::
 
 :::{prf:proof}
-Schrijf $q_t = p_t - v_t$. Uit de aanpassingsregel volgt $q_t = \theta(p_{t-1} -
-v_t) = \theta q_{t-1} - \theta\varepsilon_t$, dus $q_{t-1} = -\sum_{j\ge0}
-\theta^{j+1}\varepsilon_{t-1-j}$. Dan $r_t = (1-\theta)(v_t - p_{t-1}) =
-(1-\theta)(\varepsilon_t - q_{t-1}) = (1-\theta)\sum_{j\ge0}\theta^j
-\varepsilon_{t-j}$, een AR(1) met coëfficiënt $\theta$. Na $h$ perioden is een
-fractie $1 - \theta^{h}$ van een schok verwerkt; die is $\tfrac12$ bij $h =
-\ln 2/(-\ln\theta)$. $\square$
+:class: dropdown
+
+Schrijf $q_t = p_t - v_t$ voor de afstand tot de waarde. Uit de aanpassingsregel volgt $q_t
+= \theta(p_{t-1} - v_t) = \theta q_{t-1} - \theta\xi_t$, dus $q_{t-1} = -\sum_{j\ge0}
+\theta^{j+1}\xi_{t-1-j}$. Dan is $\ell_t = (1-\theta)(v_t - p_{t-1}) = (1-\theta)(\xi_t -
+q_{t-1}) = (1-\theta)\sum_{j\ge0}\theta^j \xi_{t-j}$, een AR(1) met coëfficiënt $\theta$.
+Na $h$ perioden is een fractie $1 - \theta^{h}$ van een schok verwerkt, en die is
+$\tfrac12$ bij $h = \ln 2/(-\ln\theta)$. $\square$
 :::
 
-Met $\theta = 0{,}2$ per dag is de halfwaardetijd $0{,}43$ dag, ongeveer drie
-handelsuren; met $\theta = 0{,}02$ ruim een uur. Wie weet dat nieuws in minuten wordt
-verwerkt, verwacht dus een dagelijkse autocorrelatie van vrijwel nul, en [variance
-ratios](#02-06-efficiente-markten) boven 1 meten hetzelfde. De maat is indirect: in een
-index van veel aandelen geeft *niet-synchrone handel* (slotkoersen van dun verhandelde
-aandelen die van eerder op de dag zijn) ook positieve autocorrelatie zonder dat iemand
-traag is.
+De autocorrelatie van het rendement is dus de fractie van de afstand die de prijs elke dag
+laat liggen. Met $\theta = 0{,}2$ per dag is de halfwaardetijd $\ln 2/\ln 5 \approx 0{,}43$
+dag, ongeveer drie handelsuren, zodat nieuws dat in minuten wordt verwerkt een dagelijkse
+autocorrelatie van vrijwel nul geeft. De maat is wel indirect, want in een index van veel
+aandelen geeft ook *niet-synchrone handel* positieve autocorrelatie. Dun verhandelde
+aandelen hebben vaak een slotkoers van eerder op de dag, zodat de index een deel van het
+nieuws van vandaag pas morgen toont, zonder dat iemand traag reageert.
 
-Santa-Clara vat de meetgeschiedenis samen: *"event-study half-lives that were days in
-1969 and hours in 2000 are now seconds for anything in a filing, a transcript or a
-satellite image"* {cite}`SantaClara2026`. {cite:t}`FamaFisherJensenRoll1969` konden met
-maanddata niet eens zien of het dagen waren; {cite:t}`BusseGreen2002` zagen koersen
-binnen minuten reageren op aandelen die live op CNBC werden besproken
-([](#02-07-event-studies)); en in de wapenwedloop die {cite:t}`BudishCramtonShim2015`
-documenteerden ([](#04-24-microstructuur)) zijn seconden al traag.
+Santa-Clara vat de meetgeschiedenis samen als halfwaardetijden die in 1969 dagen waren, in
+2000 uren, en nu seconden {cite}`SantaClara2026`. Met maanddata konden
+{cite:t}`FamaFisherJensenRoll1969` niet eens zien of het dagen waren. Later zagen
+{cite:t}`BusseGreen2002` koersen binnen minuten reageren op aandelen die live op CNBC werden
+besproken ([](#02-07-event-studies)).
 
-### Machines die lezen, en bedrijven die voor machines schrijven
+Dat taalmodellen nieuws in koersen brengen, is inmiddels ook direct gemeten.
+In het werk van {cite:t}`LopezLiraTang2023` zei ChatGPT per krantenkop of het bericht
+goed, slecht of irrelevant was voor de koers. In hun eerste versie voorspelt die score het
+rendement van de volgende dag met een coëfficiënt van 0,231 procentpunt ($t = 4{,}7$). Voor
+kleine aandelen is het effect bijna driemaal zo sterk, terwijl oudere taalmodellen als GPT-2
+en BERT niets voorspelden. In de gepubliceerde versie {cite}`LopezLiraTang2026` dalen de
+rendementen van de strategie naarmate meer beleggers taalmodellen gebruiken. Goedkopere
+informatie trekt dus geïnformeerden aan tot het voordeel verdwijnt, zoals
+[](#eq-llms-en-efficientie-lambda) voorspelt.
 
-{cite:t}`LopezLiraTang2023` vroegen ChatGPT per krantenkop of het bericht goed, slecht
-of irrelevant was voor de koers, en codeerden dat als $+1$, $-1$ of $0$. In de eerste
-versie (april 2023), met CRSP-dagrendementen en koppen van RavenPack van oktober 2021
-tot december 2022, heeft de score in hun Tabel 3 een coëfficiënt van 0,231 op het
-rendement van de volgende dag in procentpunt ($t = 4{,}689$, 60 370 waarnemingen, met
-bedrijfs- en datumeffecten); voor kleine aandelen 0,652 ($t = 5{,}022$), voor de overige
-0,118 ($t = 2{,}437$). Het gemiddelde rendement de volgende dag was 0,13% na een
-positieve en $-0{,}13\%$ na een negatieve score (Tabel 7); GPT-1, GPT-2 en BERT
-voorspelden niets. Hun figuur 1 toont een long-short portefeuille die over vijftien
-maanden ruwweg verdrievoudigt, *zonder transactiekosten*; Sharpe-ratio's uit latere
-versies hebben we niet kunnen verifiëren. De laatste werkversie (oktober 2025),
-gepubliceerd in de *Journal of Financial Economics* {cite}`LopezLiraTang2026`, legt een
-ander accent: volgens de samenvatting haalt GPT-4 een trefkans van ongeveer 90% voor de
-*niet verhandelbare* eerste koersreactie, voorspelt het de drift daarna vooral bij
-kleine aandelen en slecht nieuws, en *"strategy returns decline as LLM adoption rises,
-consistent with improved price efficiency."* Dat is Grossman en Stiglitz, gemeten.
-
-De terugkoppeling loopt ook andersom. {cite:t}`CaoJiangYangZhang2023` vonden dat een
-groeiend machinaal lezerspubliek bedrijven ertoe brengt *"to prepare filings friendlier
-to machine processing and to mitigate linguistic tones that are unfavorably perceived by
-algorithms."* Een signaal waar iedereen naar kijkt, wordt door de afzender gemanaged:
-een gedeelde vertekening, precies het soort fout dat [](#eq-llms-en-efficientie-mono)
-niet laat wegmiddelen.
+De terugkoppeling loopt ook de andere kant op. Volgens {cite:t}`CaoJiangYangZhang2023`
+schrijven bedrijven met veel machinale lezers hun jaarverslagen zo dat machines ze
+gemakkelijk verwerken, en vermijden ze woorden die algoritmen negatief opvatten. Een
+signaal waar iedereen naar kijkt, wordt dus door de afzender gestuurd, en zo'n gedeelde
+vertekening middelt volgens [](#eq-llms-en-efficientie-mono) niet weg.
 
 ### Advies als portefeuillekeuze
 
-*Waarom zou dit waar zijn?* Een adviseur verandert twee dingen in de vermogensgroei van
-een particulier: onbeloond risico (te weinig spreiding) en handelskosten. Beide drukken
-de mediane uitkomst, en na dertig jaar samengestelde groei is een procentpunt per jaar
-een kwart van het eindvermogen.
-
-Houdt een belegger $n$ aandelen in gelijke gewichten, elk met marktbèta 1 en
-idiosyncratische volatiliteit $\sigma_\eta$, handelt hij met omloopsnelheid $\tau$
-per jaar tegen kosten $\kappa$ per eenheid omloop en betaalt hij een vergoeding $\phi$,
-dan is de verwachte groei van zijn log-vermogen
+Te weinig spreiding en te veel handel kosten een particulier samen ongeveer drie
+procentpunt groei per jaar, en aan beide kan een adviseur iets doen. Ze drukken allebei de
+mediane uitkomst, die bij samengestelde groei van het log rendement afhangt. Te weinig
+spreiding kost daarin rendement via de variantie, en handel via spread en commissie. Stel
+dat een belegger $n$ aandelen in gelijke gewichten houdt, elk met
+marktbèta 1 en idiosyncratische volatiliteit $\sigma_\eta$. Hij handelt met
+omloopsnelheid $\tau$ per jaar tegen kosten $\kappa$ per eenheid omloop en betaalt een
+vergoeding $\phi$. Zijn log-vermogen groeit dan verwacht met $g(n,\tau)$.
 
 ```{math}
 :label: eq-llms-en-efficientie-groei
-g(n,\tau) = R^f - 1 + \mu^e - \tfrac12\left(\sigma^2_m + \frac{\sigma^2_\eta}{n}\right) - \kappa\tau - \phi .
+g(n,\tau) = R^f + \mu^e - \tfrac12\left(\sigma^2_m + \frac{\sigma^2_\eta}{n}\right) - \kappa\tau - \phi ,
 ```
 
-De term $\sigma^2_\eta/(2n)$ is de prijs van onbeloond risico: wie
-[volgens Markowitz](#01-04-markowitz) spreidt, krijgt hetzelfde verwachte rendement
-met minder variantie, en in log-groei is minder variantie meer rendement. Met
-$\sigma_\eta = 35\%$ en $n = 4$ kost dat $0{,}35^2/8 = 1{,}5$ procentpunt per jaar.
-De term $\kappa\tau$ is [de rekenkunde van actief beheer](#04-25-industrie) op
-huishoudniveau: {cite:t}`BarberOdean2000` vonden bij 66 465 huishoudens een
-gemiddelde omloopsnelheid van 75% per jaar, en *"those that trade most earn an annual
-return of 11.4 percent, while the market returns 17.9 percent."* Met $\kappa = 2\%$
-(spread, commissie en het nadeel van kopen wat net in het nieuws was) kost die omloop
-1,5 procentpunt. Samen drie procentpunt per jaar is na dertig jaar een factor
-$e^{-0{,}9} \approx 0{,}41$ op het mediane eindvermogen.
+Hier is $R^f$ de netto risicovrije rente, $\mu^e$ de verwachte aandelenpremie en $\sigma_m$
+de volatiliteit van de markt. De groei daalt met elke kostenterm en stijgt met het aantal
+aandelen, omdat [spreiden volgens Markowitz](#01-04-markowitz) hetzelfde verwachte rendement
+met minder variantie geeft. Met $\sigma_\eta = 35\%$ en $n = 4$ kost te weinig spreiding
+$0{,}35^2/8 \approx 1{,}5$ procentpunt per jaar.
 
-Het bewijs over robo-advies is minder eenduidig dan dit rekensommetje.
-{cite:t}`DAcuntoPrabhalaRossi2019` bestudeerden de introductie van een robo-adviseur bij
-een beleggingsplatform: *"Ex ante undiversified investors increase stock holdings and
-hold portfolios with less volatility and better returns. Already well-diversified
-investors hold fewer stocks, yet see some reduction in volatility, and trade more after
-adoption. All investors increase attention based on online account logins."* Gebruikers
-vertonen minder *"disposition, trend chasing, and rank effect."* Beter gespreid en
-minder vertekend dus, maar niet eenduidig minder handel: wie al gespreid was, ging méér
-handelen, en iedereen keek vaker.
+De term $\kappa\tau$ is [de rekenkunde van actief beheer](#04-25-industrie) op het niveau
+van een huishouden. Bij {cite:t}`BarberOdean2000` hadden huishoudens een gemiddelde omloop
+van 75% per jaar. Met kosten van 2% per eenheid omloop, voor spread en commissie, kost de
+gemiddelde omloop 1,5 procentpunt per jaar.
+Samen is dat drie procentpunt groei per jaar, en na dertig jaar een factor $e^{-0{,}9}
+\approx 0{,}41$ op het mediane eindvermogen.
 
-De andere kant is {cite:t}`BarberHuangOdeanSchwarz2022`. Robinhood-gebruikers handelen
-meer op aandacht dan andere particulieren, deels door wie de app aantrekt en deels door
-*"the app's unique features"*, en *"Robinhood outages disproportionately reduce trading
-in high-attention stocks."* De aandelen die zij op een dag het meest kopen, hebben over
-twintig dagen een gemiddeld abnormaal rendement van $-4{,}7\%$. Een platform dat
-aandacht vergroot, vergroot de handel die [prospect theory](#04-23-behavioral) en
-overconfidence voorspellen {cite}`KahnemanTversky1979,BarberOdean2001`.
+Het bewijs over robo-advies is minder eenduidig dan dit rekensommetje. Na de invoering van
+een robo-adviseur hielden slecht gespreide beleggers meer aandelen, met minder volatiliteit
+en betere rendementen {cite}`DAcuntoPrabhalaRossi2019`. Ze verkochten ook minder vaak
+winnaars te vroeg en joegen minder trends na. Beleggers
+die al goed gespreid waren, gingen daarentegen meer handelen, en alle gebruikers logden
+vaker in. Advies maakt de portefeuille dus beter, maar niet vanzelf rustiger.
 
-### Het engagementrisico als afwijking van het nut van de klant
+De andere kant laat {cite:t}`BarberHuangOdeanSchwarz2022` zien. Gebruikers van Robinhood
+handelen meer op aandacht dan andere particulieren, en dat komt deels door de app zelf,
+want als die uitvalt, daalt vooral de handel in aandelen met veel aandacht. De aandelen
+die deze gebruikers op een dag het meest kopen, hebben
+over de volgende twintig dagen een gemiddeld abnormaal rendement van $-4{,}7\%$.
 
-*Waarom zou dit waar zijn?* Een adviseur die per transactie verdient, weegt het nut van
-de klant af tegen zijn omzet. Rond het optimum van de klant kosten kleine afwijkingen
-weinig; grote kosten kwadratisch veel.
+Een adviseur die per transactie verdient, duwt de omloop van zijn klant boven wat de klant
+zelf zou kiezen. Omdat het nut van de klant rond zijn optimum vlak is, groeit het verlies
+met het kwadraat van de duw, zodat een kleine duw bijna niets kost en een grote veel. Een
+platform dat de omloop van het gemiddelde naar 300% per jaar duwt, kost de klant bij
+dezelfde kosten per eenheid omloop 4,5 procentpunt groei per jaar extra, drie keer wat te
+weinig spreiding kost. De mediane klant van een goedkope adviseur wint dus aan spreiding,
+terwijl de klant die het platform tot veel handel verleidt het meeste verliest, en in die
+klanten zit de slechtere staart.
 
-:::{prf:proposition} Kosten van een adviseur die engagement beloont
-:label: thm-llms-en-efficientie-engagement
+```{admonition} Samengevat
+:class: tip
 
-Het jaarlijkse zekerheidsequivalent van de klant als functie van zijn omloopsnelheid
-is $U(\tau) = -\tfrac{b}{2}(\tau - \tau_r)^2 - \kappa\tau$, met $\tau_r$ de omloop die
-herbalancering en fiscaal verliezen oogsten nodig hebben en $b > 0$. Een adviseur
-maximeert $U(\tau) + \eta\,\varphi\,\tau$, met $\varphi$ zijn opbrengst per eenheid
-omloop en $\eta \ge 0$ het gewicht dat hij op die opbrengst legt. Dan
-
-```{math}
-:label: eq-llms-en-efficientie-engagement
-\tau^* = \tau_r - \frac{\kappa}{b} + \frac{\eta\varphi}{b},
-\qquad
-U(\tau_c) - U(\tau^*) = \frac{(\eta\varphi)^2}{2b},
+- Goedkopere informatie verhoogt het aandeel geïnformeerden en de informativiteit $\rho^2 =
+  1 - k$ ([](#eq-llms-en-efficientie-lambda)). In het toy-voorbeeld stijgen ze van 0,4 en
+  0,5 naar 0,8. Meer ruis in het aanbod trekt meer geïnformeerden aan, maar laat $\rho^2$
+  gelijk.
+- Ook gratis informatie laat de prijs onvolledig informatief, met $\rho^2 = 1/(1+\nu)
+  \approx 0{,}86$, omdat risicoaversie en fundamentele onzekerheid blijven.
+- Een gedeelde fout blijft in het gemiddelde staan ([](#eq-llms-en-efficientie-mono)), zodat
+  een grotere $\omega$ de fout in het marktniveau vergroot. Relatieve prijzen worden wel
+  efficiënter, omdat de fout per aandeel in een portefeuille met bèta nul wegmiddelt.
+- Een hogere dagelijkse autocorrelatie $\theta$ betekent tragere prijzen, omdat de prijs
+  elke dag een groter deel van de afstand laat liggen ([](#eq-llms-en-efficientie-ar1)).
+- Te weinig spreiding en veel handel kosten een particulier samen ongeveer drie
+  procentpunt groei per jaar ([](#eq-llms-en-efficientie-groei)), zodat goedkoop advies de
+  mediaan verbetert en een platform dat tot handel aanzet de staart verslechtert.
+- De simulatie meet in jaren van 250 perioden de informativiteit $\rho^2$, de handelswinst
+  van geïnformeerden en de prijsfout van vijftig arbitrageurs met een gedeeld model.
 ```
 
-met $\tau_c = \tau_r - \kappa/b$ de omloop die de klant zelf zou kiezen.
-:::
+## Simulatie: wat één jaar data laat zien
 
-:::{prf:proof}
-De eerste-ordevoorwaarde van $U(\tau) + \eta\varphi\tau$ is $-b(\tau - \tau_r) -
-\kappa + \eta\varphi = 0$. Omdat $U$ kwadratisch is met maximum in $\tau_c$, geldt
-$U(\tau_c) - U(\tau) = \tfrac b2(\tau - \tau_c)^2$; invullen van $\tau^* - \tau_c =
-\eta\varphi/b$ geeft het welvaartsverlies. $\square$
-:::
+Hoeveel ziet een onderzoeker in één jaar data van goedkopere informatie en van een
+gedeeld model? We simuleren telkens 2000 jaren van 250 perioden. Eerst
+doen we dat in de economie van Grossman en Stiglitz met de parameters van het
+toy-voorbeeld, daarna in een markt van vijftig arbitrageurs met een gedeeld model.
 
-Het verlies hangt af van waarvoor de adviseur wordt betaald, niet van hoe slim hij is.
-Santa-Clara: *"An adviser owned by the client's custodian and paid a flat fee is a
-different animal from one owned by the venue and paid per trade, and regulation will
-have to notice the difference."*
+### Informatiekosten en handelswinst
 
-### De joint hypothesis wordt dieper
-
-Tot slot het begrip zelf. Fama definieerde efficiëntie als: prijzen zijn verwachtingen
-onder het juiste model. Als beleggers zelf uit honderden voorspellers leren, zoals de
-machines uit [](#06-35-machine-learning) {cite}`GuKellyXiu2020`, en het ware model niet
-kunnen kennen, dan ontstaat in-sample voorspelbaarheid die niemand ex ante kon
-uitbuiten. {cite:t}`MartinNagel2022` concluderen, in Santa-Clara's woorden, dat *"the
-textbook notion of efficiency, prices equal to expectations under the true model, stops
-being well defined."* De joint hypothesis was een meetprobleem; hier wordt ze een
-definitieprobleem.
-
-## Simulatie: goedkopere informatie, gedeelde modellen en dertig jaar advies
-
-### (a) Grossman-Stiglitz bij dalende informatiekosten
-
-Eerst de populatie: $\lambda^*$, $\rho^2$ en de bruto waarde van het signaal als functie
-van $c$. Daarna de steekproef: voor vijf waarden van $c$ simuleren we 2000 "jaren" van
-250 perioden uit [](#thm-llms-en-efficientie-gs), met $\mu_s = \bar z = 1$, en meten per
-jaar de geschatte informativiteit $\widehat{\rho^2}$ en het handelsresultaat van een
-geïnformeerde minus een ongeïnformeerde, na aftrek van $c$.
+Voor vijf waarden van $c$ simuleren we de economie uit [](#thm-llms-en-efficientie-gs) met
+$\mu_s = \bar z = 1$. Per jaar schatten we de informativiteit van de prijs en meten we de
+handelswinst van een geïnformeerde min die van een ongeïnformeerde, na aftrek van $c$, omdat
+een onderzoeker in data die winst ziet en niet het nut.
 
 ```{code-cell} ipython3
 def gs_price(lam, rho2, a, var_s, var_e, mu_s, z_bar):
     """Coefficients of the linear equilibrium price p = p0 + p1 * w (lam > 0) and Var(x | p)."""
     V = var_e + var_s * (1 - rho2)
     A = lam / (a * var_e) + (1 - lam) / (a * V)
+    # p0 and p1 solve the market-clearing equation in step 1 of the proof
     p0 = (-z_bar + (1 - lam) * mu_s * (1 - rho2) / (a * V)) / A
     p1 = (lam / (a * var_e) + (1 - lam) * rho2 / (a * V)) / A
     return p0, p1, V
@@ -655,20 +640,33 @@ def simulate_gs(c, n_years=2000, T=250, mu_s=1.0, z_bar=1.0):
     p = p0 + p1 * w
     d_inf = (s - p) / (a * var_e)
     d_uninf = (mu_s + rho2 * (w - mu_s) - p) / (a * V)
-    assert np.allclose(lam * d_inf + (1 - lam) * d_uninf, z)       # markets clear
+    assert np.allclose(lam * d_inf + (1 - lam) * d_uninf, z)       # demand equals supply
     gain = (d_inf - d_uninf) * (x - p) - c
-    sc, pc = s - s.mean(1, keepdims=True), p - p.mean(1, keepdims=True)
-    rho2_hat = (sc * pc).sum(1) ** 2 / ((sc**2).sum(1) * (pc**2).sum(1))
+    s_dev = s - s.mean(1, keepdims=True)
+    p_dev = p - p.mean(1, keepdims=True)
+    rho2_hat = (s_dev * p_dev).sum(1) ** 2 / ((s_dev**2).sum(1) * (p_dev**2).sum(1))
     year_gain = gain.mean(1)
-    return {"c": c, "lambda": lam, "rho2": rho2, "rho2 geschat (gem.)": rho2_hat.mean(),
-            "rho2 geschat (sd)": rho2_hat.std(), "winst na c (gem.)": year_gain.mean(),
-            "winst na c (sd per jaar)": year_gain.std(),
-            "P(jaar met verlies)": (year_gain < 0).mean()}
+    return {"c": c,
+            "aandeel geïnformeerd": lam,
+            "informativiteit theorie": rho2,
+            "informativiteit geschat, gemiddelde": rho2_hat.mean(),
+            "informativiteit geschat, sd over jaren": rho2_hat.std(),
+            "handelswinst na c, gemiddelde": year_gain.mean(),
+            "handelswinst na c, sd over jaren": year_gain.std(),
+            "aandeel jaren met verlies": (year_gain < 0).mean()}
 
 
 sim_gs = pd.DataFrame([simulate_gs(c) for c in [0.01, 0.03, 0.06, 0.10, 0.15]]).set_index("c")
 sim_gs.round(4)
 ```
+
+De geschatte informativiteit ligt gemiddeld binnen 0,003 van de theoretische waarde, met
+een spreiding over jaren van 0,016 tot 0,045. Eén jaar data volstaat dus om de
+informativiteit te meten.
+Bij $c = 0{,}01$ en $0{,}03$ is iedereen geïnformeerd en staat de informativiteit op de
+grens
+van 0,86 uit de theorie. De figuur toont links de drempel waaronder iedereen
+geïnformeerd is, en rechts het teken van de handelswinst.
 
 ```{code-cell} ipython3
 :label: cel-llms-en-efficientie-gs
@@ -687,7 +685,8 @@ axes[0].set_xlabel("Informatiekosten $c$")
 axes[0].set_ylabel("Niveau")
 axes[0].set_title("Evenwicht als functie van de informatiekosten")
 axes[0].legend()
-axes[1].errorbar(sim_gs.index, sim_gs["winst na c (gem.)"], yerr=1.96 * sim_gs["winst na c (sd per jaar)"],
+axes[1].errorbar(sim_gs.index, sim_gs["handelswinst na c, gemiddelde"],
+                 yerr=1.96 * sim_gs["handelswinst na c, sd over jaren"],
                  fmt="o", capsize=4, label="gemiddelde en 95% van de jaren")
 axes[1].axhline(0, color="black", lw=0.8)
 axes[1].set_xlabel("Informatiekosten $c$")
@@ -701,34 +700,30 @@ plt.show()
 :label: fig-llms-en-efficientie-gs
 :width: 100%
 
-Links het evenwicht: onder een drempel van $c$ is iedereen geïnformeerd en is informatie
-meer waard dan ze kost; daarboven daalt $\lambda^*$ en is de bruto waarde van het
-signaal precies $c$. Rechts steekproeven van één jaar: geïnformeerden verdienen na
-aftrek van $c$ elk jaar meer, en meer naarmate informatie duurder is, ook waar ze in nut
-niet beter af zijn.
+Links staat het evenwicht. Onder een drempel van $c$ is iedereen geïnformeerd en is
+informatie meer waard dan ze kost, en daarboven is de bruto waarde van het signaal precies
+$c$. Rechts verdienen geïnformeerden na aftrek van $c$ elk jaar meer, vanaf $c = 0{,}03$
+meer naarmate informatie duurder is, ook waar ze in nut niet beter af zijn.
 :::
 
-De populatie klopt met [](#thm-llms-en-efficientie-gs), en de informativiteit van de
-prijs is in één jaar data goed meetbaar: de geschatte $\rho^2$ ligt gemiddeld binnen
-0,003 van de ware waarde, met een spreiding van 0,02 tot 0,04. Het is een tweede moment.
+De handelswinst is geen informatierente. In alle 2000 jaren verdient een geïnformeerde na
+aftrek van $c$ meer dan een ongeïnformeerde, en vanaf $c = 0{,}03$ groeit dat voordeel met
+de kosten, tot 2,59 per periode bij $c = 0{,}15$. Toch is in een inwendig evenwicht
+niemand in nut beter af, omdat de geïnformeerde grotere
+posities neemt en meer risico draagt. Een onderzoeker die in de winst van professionele
+beleggers een informatierente ziet, meet dus een vergoeding voor kosten en risico. Een
+voordeel dat krimpt als informatie goedkoper wordt, is dan een kenmerk van het evenwicht en
+geen verdwenen ontdekking.
 
-De handelswinst vertelt iets anders dan de naïeve lezing. In alle 2000 jaren verdient
-een geïnformeerde na aftrek van $c$ meer dan een ongeïnformeerde, en het voordeel groeit
-met de kosten: 0,30 per periode bij $c = 0{,}01$, 2,59 bij $c = 0{,}15$. Toch is in het
-inwendige evenwicht niemand in nut beter af: de geïnformeerde neemt grotere posities en
-draagt meer risico. Wie de winst van professionele beleggers meet en er een
-informatierente in ziet, meet de vergoeding voor kosten en risico, en een krimpend
-voordeel bij dalende $c$ is dan een kenmerk van het evenwicht, geen verdwenen
-ontdekking.
+### Een gedeeld model onder vijftig arbitrageurs
 
-### (b) Een markt van AI-arbitrageurs met een gedeeld model
-
-Nu [](#thm-llms-en-efficientie-mono) op schaal. Vijftig arbitrageurs schatten elke dag
-de waarde van een activum, elk met een fout met eenheidsvariantie en dikke staarten
-(Student-$t$ met vier vrijheidsgraden); de prijsfout is hun gemiddelde. Een fractie
-$\rho$ deelt één model en dus één fout per dag. We simuleren 2000 jaren van 250 dagen en
-kijken naar de dagelijkse prijsfout en naar de slechtste dag per jaar: wat een
-risicomanager in één jaar data ziet.
+Nu schalen we [](#thm-llms-en-efficientie-mono) op. Vijftig arbitrageurs schatten elke dag
+de waarde van een activum, elk met een fout met variantie 1. De fouten hebben dikke
+staarten (een Student-$t$-verdeling met vier vrijheidsgraden), en de prijsfout is hun
+gemiddelde. Een
+fractie $\omega$ deelt één model en dus één fout per dag. We kijken naar de dagelijkse
+prijsfout en naar de slechtste dag van elk jaar, omdat een risicomanager precies dat in één
+jaar data ziet.
 
 ```{code-cell} ipython3
 def t_unit(size, df=4):
@@ -758,6 +753,13 @@ mono = pd.DataFrame(mono_rows).set_index("fractie gedeeld")
 mono.round(3)
 ```
 
+De standaarddeviatie volgt [](#eq-llms-en-efficientie-mono) op hoogstens 0,006 na, van
+0,14 zonder gedeeld model tot 0,61 bij 60% gedeeld. De staart groeit sneller. De kurtosis
+is het hoogst in een gemengde markt, omdat de onafhankelijke fouten daar meestal wegmiddelen
+en het gedeelde model af en toe een uitschieter maakt. Rechts laat de figuur zien hoe snel
+de
+slechtste dag van een jaar daalt als het gedeelde deel groeit.
+
 ```{code-cell} ipython3
 :label: cel-llms-en-efficientie-mono
 :tags: [hide-input]
@@ -775,7 +777,7 @@ axes[0].legend()
 axes[1].plot(mono.index, mono["slechtste dag (mediaan jaar)"], marker="o", label="mediaan jaar")
 axes[1].plot(mono.index, mono["slechtste dag (1 op 20 jaar)"], marker="o", label="1 op 20 jaar")
 axes[1].plot(mono.index, -3 * mono["sd theorie"], color="black", ls="--", lw=1, label="$-3 \\times$ sd theorie")
-axes[1].set_xlabel("Fractie arbitrageurs met hetzelfde model $\\rho$")
+axes[1].set_xlabel("Fractie arbitrageurs met hetzelfde model $\\omega$")
 axes[1].set_ylabel("Slechtste dagelijkse prijsfout in een jaar")
 axes[1].set_title("De staart groeit met het gedeelde model")
 axes[1].legend()
@@ -786,183 +788,57 @@ plt.show()
 :label: fig-llms-en-efficientie-mono
 :width: 100%
 
-Elke arbitrageur is in alle scenario's even nauwkeurig, maar hoe groter het gedeelde
-deel, hoe breder de verdeling van de prijsfout en hoe dikker de staarten. De slechtste
-dag van een jaar volgt de gedeelde fout.
+Elke arbitrageur is in alle scenario's even nauwkeurig, maar hoe groter het gedeelde deel,
+hoe breder de verdeling van de prijsfout en hoe dikker de staarten. De slechtste dag van
+een jaar volgt de gedeelde fout.
 :::
 
-De standaarddeviatie volgt [](#eq-llms-en-efficientie-mono) tot op de derde decimaal:
-0,14 zonder gedeeld model, 0,32 met 30% en 0,61 met 60% gedeeld. De staart groeit
-sneller. Bij 30% gedeeld gaat het 0,1%-kwantiel van $-0{,}46$ naar $-1{,}59$, en de
-slechtste dag die één keer in twintig jaar voorkomt van $-0{,}56$ naar $-2{,}44$. De
-kurtosis is het hoogst in een gemengde markt (23 bij 30%): meestal middelen de
-onafhankelijke fouten weg, en af en toe maakt het gedeelde model een uitschieter. Bij
-100% is de fout één $t_4$-trekking met theoretisch oneindige kurtosis, en de
-steekproefwaarde is dan instabiel. Het verraderlijke zit in de mediaan: de slechtste dag
-van een gewoon jaar is bij 10% gedeeld $-0{,}51$ tegen $-0{,}41$ zonder. Eén jaar data
-laat een beginnende monocultuur meestal niet zien.
-
-### (c) Tienduizend particulieren, dertig jaar
-
-Tot slot advies: 10 000 particulieren over dertig jaar, elk met een eigen marktpad,
-onder vier regimes met dezelfde schokken:
-
-- **zelf handelen** (Barber-Odean-achtig): $n = 1 + \text{Poisson}(3)$ aandelen,
-  omloop lognormaal met gemiddelde 75% per jaar, geen vergoeding;
-- **robo/LLM-adviseur**: gespreid ($n \to \infty$), omloop 10%, vergoeding 0,25%;
-- **adviseur met engagement-bias**: gespreid, geen vergoeding, maar omloop
-  lognormaal met gemiddelde 100% en een brede staart;
-- **markt, kosteloos**: de referentie.
-
-Aannames: $R^f - 1 = 2\%$, $\mu^e = 5\%$, $\sigma_m = 16\%$, $\sigma_\eta = 35\%$,
-$\kappa = 2\%$ per eenheid omloop, en lognormale jaarrendementen met de drift van
-[](#eq-llms-en-efficientie-groei), zodat de mediaan de formule volgt en de simulatie de
-spreiding eromheen laat zien. Welvaart meten we als zekerheidsequivalent jaarrendement
-bij CRRA-nut met $\gamma = 3$.
-
-```{code-cell} ipython3
-N_INV, YEARS, GAMMA = 10_000, 30, 3.0
-RF, MU_E, SIG_M, SIG_ETA, KAPPA = 0.02, 0.05, 0.16, 0.35, 0.02
-
-z_m = rng.standard_normal((N_INV, YEARS))
-z_eta = rng.standard_normal((N_INV, YEARS))
-n_diy = 1 + rng.poisson(3, N_INV)
-
-
-def lognormal_turnover(mean, sd_log):
-    """Heterogeneous annual turnover with a given cross-sectional mean."""
-    return mean * np.exp(sd_log * rng.standard_normal(N_INV) - sd_log**2 / 2)
-
-
-regimes = {
-    "zelf handelen": dict(n=n_diy, tau=lognormal_turnover(0.75, 0.8), fee=0.0),
-    "robo/LLM-adviseur": dict(n=np.inf, tau=np.full(N_INV, 0.10), fee=0.0025),
-    "engagement-bias": dict(n=np.inf, tau=lognormal_turnover(1.00, 1.0), fee=0.0),
-    "markt, kosteloos": dict(n=np.inf, tau=np.zeros(N_INV), fee=0.0),
-}
-
-log_returns = {}
-for name, r in regimes.items():
-    idio_var = SIG_ETA**2 / r["n"]
-    drift = RF + MU_E - 0.5 * (SIG_M**2 + idio_var) - KAPPA * r["tau"] - r["fee"]
-    log_returns[name] = (drift[:, None] if np.ndim(drift) else drift) + SIG_M * z_m + \
-        (np.sqrt(idio_var)[:, None] if np.ndim(idio_var) else np.sqrt(idio_var)) * z_eta
-
-wealth = pd.DataFrame({k: np.exp(v.sum(1)) for k, v in log_returns.items()})
-diff = log_returns["zelf handelen"] - log_returns["robo/LLM-adviseur"]
-t_own = diff.mean(1) / (diff.std(1, ddof=1) / np.sqrt(YEARS))
-advice = pd.DataFrame({
-    "mediaan eindvermogen": wealth.median(),
-    "1%-kwantiel": wealth.quantile(0.01),
-    "5%-kwantiel": wealth.quantile(0.05),
-    "95%-kwantiel": wealth.quantile(0.95),
-    "CE-rendement (gamma=3)": (wealth.pow(1 - GAMMA).mean() ** (1 / (1 - GAMMA))) ** (1 / YEARS) - 1,
-    "P(slechter dan robo)": wealth.lt(wealth["robo/LLM-adviseur"], axis=0).mean(),
-})
-print(f"zelf handelen vs robo: mediane groeiachterstand {np.median(diff.mean(1)):.2%} per jaar; "
-      f"t < -2 bij {np.mean(t_own < -2):.1%} van de particulieren")
-advice.round(3)
-```
-
-```{code-cell} ipython3
-:label: cel-llms-en-efficientie-advies
-:tags: [hide-input]
-
-fig, ax = plt.subplots(figsize=(9, 4.5))
-bins = np.linspace(-1.5, 2.5, 121)
-for name in regimes:
-    ax.hist(np.log10(wealth[name]), bins=bins, histtype="step", lw=1.5, density=True, label=name)
-ax.set_xlabel("Eindvermogen na 30 jaar per euro ingelegd ($\\log_{10}$)")
-ax.set_ylabel("Dichtheid")
-ax.set_title("Advies verschuift de mediaan; engagement verbreedt de onderkant")
-ax.legend()
-plt.show()
-```
-
-:::{figure} #cel-llms-en-efficientie-advies
-:label: fig-llms-en-efficientie-advies
-:width: 90%
-
-Eindvermogen van 10 000 gesimuleerde particulieren. Spreiding en lage omloop schuiven de
-verdeling naar rechts; de adviseur met engagement-bias behoudt de spreiding maar
-verliest via de handel, het meest bij wie het meest handelt.
-:::
-
-De mediane zelfhandelaar eindigt met 2,09 euro per ingelegde euro, met de robo-adviseur
-4,76, in de kosteloze markt 5,44. De verhouding 0,44 ligt dicht bij de $e^{-0{,}9} =
-0{,}41$ uit [](#eq-llms-en-efficientie-groei). Van de zelfhandelaars eindigt 78%
-slechter dan met de robo-adviseur, en onderaan is het verschil het grootst: een
-5%-kwantiel van 0,15 tegen 1,15.
-
-De adviseur met engagement-bias laat Santa-Clara's verwachting in getallen zien. Zijn
-mediane klant (3,25) en zijn 1%- en 5%-kwantiel (0,08 en 0,45) doen het beter dan wie
-zelf handelt, omdat de spreiding blijft. Maar 84% van zijn klanten doet het slechter dan
-met de robo-adviseur, en het zekerheidsequivalente rendement ($-17{,}8\%$ per jaar) is
-lager dan dat van zelf handelen ($-9{,}4\%$). Dat komt uit de uiterste staart: wie het
-platform tot een omloop van tien keer per jaar of meer verleidt, verliest in dertig jaar
-vrijwel alles, en een belegger met $\gamma = 3$ weegt die uitkomsten zwaar. Betere
-mediaan, slechtere staart.
-
-En de steekproef: slechts 14,7% van de zelfhandelaars zou na dertig jaar met een
-$t$-toets op de eigen jaarrendementen zien dat hij achterblijft. Bijna drie procentpunt
-per jaar is groot voor het vermogen en klein naast de 17,5 procentpunt idiosyncratische
-volatiliteit van vier aandelen. Wie alleen uit eigen ervaring leert, leert dit niet: het
-2%-motief, op huishoudniveau.
+Het verraderlijke zit in de mediaan. De slechtste dag van een gewoon jaar zakt bij 10%
+gedeeld maar van $-0{,}41$ naar $-0{,}51$. De slechtste dag die eens in twintig jaar
+voorkomt, ligt bij 30% gedeeld daarentegen op $-2{,}44$, ruim vier keer zo diep als zonder
+gedeeld model.
+Een beginnende monocultuur is in één jaar data dus meestal niet te zien, en wanneer ze wel
+zichtbaar wordt, gebeurt dat in een zeldzaam jaar. Een zeldzame uitkomst laat zich met
+weinig jaren niet meten, en daarmee keert [de standaardfout van 2%](#00-01-rendementen)
+hier terug.
 
 ## Replicatie op echte data
 
 ```{admonition} Replicatie
 :class: seealso
 
-**Bron.** (1) Eisfeldt, Schubert & Zhang, *Generative AI and Firm Values*, NBER
-Working Paper 31222, 2023 {cite}`EisfeldtSchubertZhang2023`. (2) De halfwaardetijd van
-informatie zoals samengevat door Santa-Clara {cite}`SantaClara2026`, gemeten met de
-autocorrelatie- en variance-ratiotoetsen van
-[de lecture over efficiënte markten](#02-06-efficiente-markten)
-{cite}`LoMacKinlay1988`. (3) Lopez-Lira & Tang {cite}`LopezLiraTang2023` repliceren we
-niet.
+**Bron.** (1) Eisfeldt, Schubert en Zhang, *Generative AI and Firm Values*, NBER-werkdocument
+31222, 2023 {cite}`EisfeldtSchubertZhang2023`. (2) De halfwaardetijd van informatie volgens
+Santa-Clara {cite}`SantaClara2026`, gemeten met de toetsen uit
+[het college over efficiënte markten](#02-06-efficiente-markten) {cite}`LoMacKinlay1988`.
 
-**Wat.** (1) Het meerrendement van bedrijven met een hoge blootstelling aan
-generatieve AI ten opzichte van bedrijven met een lage, na de lancering van ChatGPT
-op 30 november 2022; volgens hun samenvatting *"0.4% higher on a daily basis"* voor
-hun long-short portefeuille. (2) De dagelijkse eerste-orde-autocorrelatie en
-$VR(5)$ van het marktrendement per decennium.
+**Wat.** (1) Het meerrendement van bedrijven met een hoge blootstelling aan generatieve AI
+ten opzichte van bedrijven met een lage na de lancering van ChatGPT, volgens hun
+samenvatting 0,4% per dag. (2) De dagelijkse autocorrelatie van het marktrendement per
+decennium.
 
-**Data hier.** (1) Dagelijkse gecorrigeerde slotkoersen van 50 grote Amerikaanse
-aandelen, 2002-01 t/m 2026-07, via `hap.data.yahoo(...)`, en het marktrendement van
-French via `hap.data.market_daily()`. De indeling is van ons, vastgelegd vóór de
-berekening: *hoog* zijn software, IT-beveiliging, internetplatforms en
-betalingsnetwerken, waar het personeel vooral code, tekst en data verwerkt (ADBE,
-CRM, NOW, PANW, FTNT, GOOGL, MA, V); *laag* zijn bedrijven met overwegend fysiek
-werk in detailhandel, horeca, transport, energie, industrie en consumptiegoederen
-(CMG, CPRT, CSX, CTAS, CVX, DE, FAST, KO, MNST, NKE, ODFL, ORLY, PG, ROST, SBUX,
-SHW, TJX, TSCO, UNP, WMT). Chips en hardware (AAPL, ANET, APH, AVGO, LRCX, NVDA,
-QCOM, SMCI) vallen buiten het verschil omdat hun blootstelling via het *product*
-loopt, niet via het personeel; de overige veertien aandelen (financiële instellingen,
-zorg, AMZN, NFLX, TSLA) zijn niet eenduidig in te delen en doen niet mee. Marktmodel
-op dagen $[-280, -31]$, eventvenster $[0, +10]$ met dag 0 = 30 november 2022.
-(2) French dagelijkse marktrendementen 1930–2026-07. (3) Geen: nieuwskoppen en
-LLM-toegang zijn niet gratis; we noemen hun getallen hierboven letterlijk.
+**Data hier.** (1) Koersen van 50 grote Amerikaanse aandelen via `hap.data.yahoo`, vooraf
+ingedeeld in acht bedrijven met vooral code-, tekst- en datawerk (*hoog*), acht chip- en
+hardwarebedrijven, twintig met fysiek werk (*laag*) en veertien die niet eenduidig in te
+delen zijn. (2) Dagelijkse marktrendementen van French, 1930 tot juli 2026.
 
-**Verschil met het origineel.** Eisfeldt, Schubert en Zhang meten blootstelling per
-bedrijf uit de beroepensamenstelling van het personeel en de taken die generatieve
-AI kan overnemen, voor alle Amerikaanse beursgenoteerde bedrijven; wij hebben 28
-aandelen in twee groepen, ingedeeld naar sector, en bovendien geselecteerd omdat ze
-*nu* groot zijn. Hun portefeuilles zijn breed en gewogen; de onze gelijkgewogen en
-klein, zodat sectorschokken niet wegmiddelen. Voor (2) is het CRSP-marktindex van
-French in de vroege decennia een index met veel dun verhandelde aandelen, zodat
-niet-synchrone handel de autocorrelatie opdrijft.
+**Verschil met het origineel.** Zij meten blootstelling per bedrijf uit beroepen en taken,
+terwijl wij 28 aandelen naar sector indelen die bovendien nu groot zijn. De vroege
+marktindex bevat veel dun verhandelde aandelen, wat de autocorrelatie opdrijft.
 
-**Verwachte afwijking.** (1) Het teken moet gelijk zijn: een positief CAR$[0,+10]$
-van *hoog* minus *laag*, van de orde van enkele procenten (hun 0,4% per dag over elf
-handelsdagen is ruim 4%). Met twee kleine portefeuilles en één eventdatum is het
-95%-interval breed; een $t$-waarde onder 2 is geen verrassing, een negatief teken wel.
-(2) De dagelijkse autocorrelatie van de markt is in de vroege decennia positief en
-significant en daalt over de decennia naar ongeveer nul: de hoogste waarde ligt vóór
-1990, en na 2000 ligt ze in elk decennium binnen 0,1 van nul.
+**Verwachte afwijking.** (1) Hoog min laag heeft over dag 0 tot en met 10 een positief
+abnormaal rendement van enkele procenten, al is een $t$-waarde onder 2 hier normaal. (2) De autocorrelatie is vóór 1990 het hoogst en
+ligt na 2000 in elk decennium binnen 0,1 van nul.
 ```
 
-### (1) De lancering van ChatGPT als event
+### De lancering van ChatGPT als event
+
+De lancering van ChatGPT is het ene moment waarop de kosten van informatie in één keer
+zichtbaar daalden, en de event study vraagt of de markt dat meteen in de koersen van
+blootgestelde bedrijven verwerkte. Een markt die nieuws in uren verwerkt, zou die
+herwaardering binnen elf handelsdagen moeten tonen. De eerste cel laadt de koersen en
+bouwt gelijkgewogen portefeuilles, met een eigen groep voor chips en hardware, omdat hun
+blootstelling via het product loopt en niet via het personeel.
 
 ```{code-cell} ipython3
 GROUPS = {
@@ -972,8 +848,8 @@ GROUPS = {
              "ODFL", "ORLY", "PG", "ROST", "SBUX", "SHW", "TJX", "TSCO", "UNP", "WMT"],
 }
 OTHER = ["AMZN", "BAC", "BRK-B", "DHR", "DXCM", "EW", "GILD", "IDXX", "ISRG", "NFLX",
-         "TSLA", "UNH", "WFC", "WRB"]
-TICKERS = sorted(sum(GROUPS.values(), OTHER))
+         "TSLA", "UNH", "WFC", "WRB"]                              # not classifiable
+TICKERS = sorted(OTHER + [t for group in GROUPS.values() for t in group])
 assert len(TICKERS) == 50
 
 prices = hap_data.yahoo(TICKERS, start="2002-01-01", end="2026-08-01")
@@ -987,6 +863,10 @@ port["hoog - laag"] = port["hoog"] - port["laag"]
 EVENT = dates.searchsorted(pd.Timestamp("2022-11-30"))
 print(f"dag 0 = {dates[EVENT]:%Y-%m-%d}; {len(dates)} handelsdagen {dates[0]:%Y-%m-%d} t/m {dates[-1]:%Y-%m-%d}")
 ```
+
+Voor elke portefeuille schatten we een marktmodel op de dagen $-280$ tot $-31$, met 30
+november 2022 als dag 0. Daarna tellen we de abnormale rendementen op over dag 0 tot en met
+10.
 
 ```{code-cell} ipython3
 def market_model_car(y, m, i0, lo=0, hi=10, est=(-280, -31)):  # TODO: naar hap.stats
@@ -1017,10 +897,10 @@ event_table = pd.DataFrame(event_rows).T
 event_table.round(4)
 ```
 
-Met één eventdatum klopt de standaardfout uit het schattingsvenster alleen als dat
-venster representatief is. Een eerlijkere meetlat is de verdeling van hetzelfde CAR in
-alle niet-overlappende elfdaagse vensters van 2011 tot het event, elk met een eigen
-marktmodel.
+Het cumulatieve abnormale rendement van hoog min laag is 0,15%, met een standaardfout van
+4,1 procentpunt. Met één eventdatum klopt die standaardfout alleen als het schattingsvenster
+representatief is. Daarom vergelijken we het event ook met alle niet-overlappende vensters
+van elf dagen sinds 2011, elk met een eigen marktmodel.
 
 ```{code-cell} ipython3
 y_ls = port["hoog - laag"].to_numpy()
@@ -1037,6 +917,10 @@ pd.Series({
     "CAR[-20,-1], vóór het event": market_model_car(y_ls, m_arr, EVENT, -20, -1)[0],
 }).round(4)
 ```
+
+Het event valt op het 51e percentiel van 268 placebovensters met een spreiding van 3,4
+procentpunt. In de vier weken vóór de lancering had hoog min laag bovendien al 8,5%
+abnormaal verloren. De vraag bij de figuur is of de lijn na dag 0 de band verlaat.
 
 ```{code-cell} ipython3
 :label: cel-llms-en-efficientie-chatgpt
@@ -1068,31 +952,37 @@ plt.show()
 :width: 90%
 
 Cumulatief abnormaal rendement van acht software-, platform- en betalingsbedrijven minus
-twintig bedrijven met overwegend fysiek werk, nul op de dag vóór de lancering van
-ChatGPT. De band groeit met de wortel van de horizon en is geschaald op de spreiding van
-268 elfdaagse placebovensters uit 2011–2022; de gestreepte lijn markeert het eind van
-$[0,+10]$.
+twintig bedrijven met overwegend fysiek werk, nul op de dag vóór de lancering van ChatGPT.
+De band groeit met de wortel van de horizon en is geschaald op de spreiding van de
+placebovensters. De gestreepte lijn markeert dag 10.
 :::
 
-Het teken is positief, zoals verwacht, maar daar houdt de overeenstemming op. Het
-CAR$[0,+10]$ van hoog minus laag is 0,15% (standaardfout 4,1 procentpunt, $t = 0{,}04$),
-op het 51e percentiel van 268 placebovensters (spreiding 3,4 procentpunt). De verwachte
-ruim 4% halen we niet, en het teken is niet robuust: $-1{,}25\%$ over $[0,+5]$,
-$-1{,}57\%$ over $[0,+20]$, $+1{,}5\%$ met de hardwareaandelen erbij
-([](#ex-llms-en-efficientie-3)). In de vier weken vóór de lancering had hoog minus laag
-al 8,5% abnormaal verloren; pas in januari 2023 loopt het verschil op tot ongeveer 7%,
-binnen de band.
+De lijn blijft binnen de band, zodat ook de figuur geen koerseffect laat zien. De tabel
+zet het resultaat naast het origineel.
 
-Drie redenen. Ten eerste de steekproef: met een ruis van 3,4 procentpunt over elf dagen
-zou zelfs een effect van 4% hier een $t$ van ruim 1 geven, dus ook het resultaat van
-Eisfeldt, Schubert en Zhang zou in deze opzet niet significant zijn — het 2%-motief in
-eventtijd. Ten tweede meten zij blootstelling per bedrijf uit beroepen en taken, met
-*"wide variation across and within industries"*; een sectorindeling mist dat. Ten derde
-valt het event in de koersdaling van technologieaandelen van 2022. De replicatie zegt
-dus niet dat hun effect niet bestaat, maar dat het met gratis data van 50 aandelen niet
-te zien is.
+| grootheid | origineel | hier |
+|---|---|---|
+| cumulatief meerrendement hoog − laag, dag 0 t/m 10 | ruim 4% (0,4% per dag uit de samenvatting) | 0,15% |
+| $t$-waarde | niet vermeld voor dit venster | 0,04 |
+| teken over dag 0 t/m 5 en dag 0 t/m 20 | positief | negatief |
 
-### (2) Snellere prijzen: autocorrelatie per decennium
+Niet geslaagd, want over het afgesproken venster is het teken wel positief, maar met 0,15%
+en $t = 0{,}04$ haalt de omvang de enkele procenten bij lange na niet. Het teken wisselt
+bovendien met het venster en met de hardwareaandelen, zoals de derde oefening laat zien.
+Met een ruis van 3,4 procentpunt
+over elf dagen zou zelfs een effect van 4% een $t$-waarde van ruim 1 geven, en dat is [de standaardfout van 2%](#00-01-rendementen)
+in eventtijd. Daarnaast meten Eisfeldt,
+Schubert en Zhang blootstelling per bedrijf, met grote verschillen binnen sectoren. De
+replicatie zegt dus niet dat hun effect niet bestaat, maar wel dat het met gratis data van
+50 aandelen niet te
+zien is.
+
+### Snellere prijzen: autocorrelatie per decennium
+
+Voor elk decennium sinds 1930 berekenen we de autocorrelatie van het dagelijkse log
+marktrendement en de variance ratio over vijf dagen met een robuuste $z$-waarde. Daarnaast
+berekenen we de volatiliteit en de halfwaardetijd die [](#eq-llms-en-efficientie-ar1) bij
+die autocorrelatie geeft, met 6,5 handelsuur per dag.
 
 ```{code-cell} ipython3
 r_daily = np.log1p(hap_data.market_daily()["Mkt"])
@@ -1111,6 +1001,10 @@ decades = pd.DataFrame(decade_rows).set_index("decennium")
 decades.round(3)
 ```
 
+De autocorrelatie is in de eerste zeven decennia positief en significant en piekt in de
+jaren zeventig op 0,29. Daarna daalt ze, tot onder nul in deze eeuw. De figuur laat zien
+welke decennia na 1990 buiten hun interval rond nul vallen.
+
 ```{code-cell} ipython3
 :label: cel-llms-en-efficientie-autocorr
 :tags: [hide-input]
@@ -1128,58 +1022,85 @@ plt.show()
 :label: fig-llms-en-efficientie-autocorr
 :width: 85%
 
-Eerste-orde-autocorrelatie van het dagelijkse log-marktrendement (French, CRSP
-value-weighted) per decennium, met 95%-interval onder de nulhypothese van
-onafhankelijkheid.
+Eerste-orde-autocorrelatie van het dagelijkse log marktrendement (French, CRSP,
+waardegewogen) per decennium, met een 95%-interval onder de nulhypothese van
+onafhankelijkheid. Alleen de jaren 2020 liggen meer dan 0,1 onder nul, en de jaren 2000
+vallen net buiten het interval.
 :::
 
-De autocorrelatie is in de eerste zeven decennia positief en significant, piekt in de
-jaren zeventig op 0,29 (standaardfout 0,02, $VR(5) = 1{,}51$) en daalt daarna: 0,13 in
-de jaren tachtig, 0,08 in de jaren negentig, en $-0{,}06$ en $-0{,}04$ na 2000. Het
-eerste deel van de verwachting klopt: het maximum ligt vóór 1990. Het tweede niet: de
-jaren 2020 hebben $-0{,}15$, verder dan 0,1 van nul. Dat komt vrijwel geheel uit de
-coronacrash: 2020 alleen geeft $-0{,}34$, 2021 tot en met juli 2026 $-0{,}02$, en de
-rangcorrelatie over het decennium is $-0{,}04$; de robuuste variance-ratiotoets vindt
-geen significante afwijking ($z = -1{,}04$).
+De balk van de jaren 2020 ligt als enige meer dan 0,1 onder nul, en de volgende cel zet
+2020 apart om te zien waar dat vandaan komt.
 
-Met [](#eq-llms-en-efficientie-ar1) vertaald is de halfwaardetijd in de jaren zeventig
-3,6 handelsuur en in de jaren negentig 1,8. Dat is een bovengrens voor traagheid, geen
-meting ervan: de CRSP-index bevatte veel aandelen met een slotkoers van uren eerder, en
-niet-synchrone handel geeft precies dit patroon. De daling valt samen met de komst van
-indexfutures (vanaf 1982) en ETF's (vanaf 1993). Het resultaat is verenigbaar met
-snellere informatieverwerking, maar bewijst haar niet.
+```{code-cell} ipython3
+r_2020s = r_daily.loc["2020-01-01":].to_numpy()
+pd.Series({
+    "rho1, alleen 2020": r_daily.loc["2020-01-01":"2020-12-31"].autocorr(1),
+    "rho1, 2021 t/m 2026-07": r_daily.loc["2021-01-01":].autocorr(1),
+    "rangcorrelatie rho1, jaren 2020": stats.spearmanr(r_2020s[1:], r_2020s[:-1]).statistic,
+}).round(3)
+```
+
+De negatieve autocorrelatie van de jaren 2020 komt vrijwel geheel uit de coronacrash,
+want 2020 alleen geeft $-0{,}34$ en de jaren daarna $-0{,}02$. De tabel zet de meting naast
+de samenvatting van Santa-Clara.
+
+| grootheid | origineel (Santa-Clara) | hier |
+|---|---|---|
+| halfwaardetijd rond 1970 | dagen | 3,6 handelsuur (jaren zeventig) |
+| halfwaardetijd rond 2000 | uren | 1,8 handelsuur (jaren negentig) |
+| autocorrelatie jaren 2020 | – | $-0{,}15$, zonder 2020 $-0{,}02$ |
+
+Gedeeltelijk geslaagd, want het maximum ligt vóór 1990, zoals verwacht, maar de jaren 2020
+liggen met $-0{,}15$ verder dan 0,1 van nul, al vindt de robuuste variance-ratiotoets daar
+geen significante afwijking ($z = -1{,}04$). Santa-Clara bedoelt bovendien de verwerking van
+nieuws per aandeel, terwijl onze maat voor de hele markt geldt, zodat de tabel alleen de
+richting vergelijkt. Onze halfwaardetijden zijn een bovengrens voor traagheid, omdat
+niet-synchrone handel in de oude index precies dit patroon geeft, en de daling valt samen
+met de komst van indexfutures (vanaf 1982) en ETF's (vanaf 1993). Het resultaat is dus
+verenigbaar met snellere informatieverwerking, maar bewijst die niet.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** Grossman en Stiglitz lossen de paradox uit [de lecture over
-efficiënte markten](#02-06-efficiente-markten) op: goedkopere informatie trekt meer
-geïnformeerden aan, maakt prijzen informatiever en laat het gemeten voordeel krimpen,
-zoals Lopez-Lira en Tang later rapporteren. Prijzen werden sneller: de dagelijkse
-autocorrelatie van de markt daalde van 0,29 in de jaren zeventig naar vrijwel nul. En
-robo-advies leverde beter gespreide portefeuilles en minder gedragsvertekening op.
+**Wat het model verklaart.** Grossman en Stiglitz lossen de paradox uit
+[het college over efficiënte markten](#02-06-efficiente-markten) op. Goedkopere
+informatie trekt meer geïnformeerden aan, maakt prijzen informatiever en laat het gemeten
+voordeel krimpen, zoals Lopez-Lira en Tang later rapporteerden. De dagelijkse autocorrelatie
+van de markt daalde van 0,29 in de jaren zeventig naar onder nul in deze eeuw, in lijn met
+snellere prijzen, en robo-advies leverde beter gespreide portefeuilles en minder
+gedragsvertekening op.
 
-**Waar het breekt.** Bij het aggregaat en bij de meetbaarheid. Snellere prijzen maakten
-de markt niet rustiger: de jaarvolatiliteit van het dagrendement was 10% in de jaren
-vijftig en zestig, en 22% en 21% in de jaren 2000 en 2020. Grossman-Stiglitz zegt hoe
-dicht een prijs bij het signaal ligt, niets over stromen die het niveau verplaatsen. En
-op het ene moment waarop we precies weten wanneer de nieuwe machine kwam, meten we met
-50 aandelen geen koerseffect (CAR 0,15%, $t = 0{,}04$). De speculatieve helft, de
-monocultuur en de adviseur die per transactie wordt betaald, heeft nog geen toets.
+**Waar het breekt.** Het model breekt bij het marktniveau en bij de meting. Ook met
+snellere prijzen werd de markt niet rustiger. De jaarvolatiliteit van het dagrendement was
+10% in de jaren vijftig en zestig, tegen 22% in het eerste decennium van deze eeuw, een
+decennium dat 2008 bevat.
+Grossman en
+Stiglitz zeggen hoe dicht een
+prijs bij het signaal ligt, maar niets over stromen die het niveau verplaatsen. Op het ene
+moment waarop we precies weten wanneer de nieuwe machine kwam, meten we met 50 aandelen geen
+koerseffect. Als beleggers ten slotte zelf uit honderden voorspellers leren en het ware
+model niet kennen, verliest het begrip efficiëntie zijn houvast, want dat begrip
+veronderstelt prijzen die verwachtingen zijn onder het ware model {cite}`MartinNagel2022`.
 
-**Risico of vergissing?** In de Chicago-lezing is de koersreactie op ChatGPT een
-herwaardering van kasstromen en discontovoeten, is het voordeel van geïnformeerden een
-vergoeding voor kosten en risico (simulatie (a)), en is crashrisico uit gedeelde
-modellen beprijsd risico. In de Yale-lezing is dezelfde reactie aandacht en geldstroom
+**Risico of vergissing?** In de Chicago-lezing, waarin de markt rationeel waardeert, is de
+koersreactie op ChatGPT een
+herwaardering van kasstromen en discontovoeten. Het voordeel van geïnformeerden is dan een
+vergoeding voor kosten en risico, zoals in de simulatie, en het crashrisico van gedeelde
+modellen is risico met een premie. In de Yale-lezing, waarin beleggers zich vergissen, is
+dezelfde reactie aandacht en
+geldstroom
 {cite}`BarberHuangOdeanSchwarz2022`, en is de monocultuur de crowding van
-{cite:t}`Stein2009`: een vergissing die niemand ziet. Scheiden zou kunnen met de
-posities en modellen van AI-gedreven fondsen en met de kasstromen van blootgestelde
-bedrijven na 2022; het eerste is niet openbaar, het tweede nog te kort. Santa-Clara's
-les: *"Everything I made that lasted came from bearing risk that was priced. Everything
-I lost came from thinking I knew something the price did not"* {cite}`SantaClara2026`.
-Een taalmodel dat vertelt wat er in een krantenkop staat, vertelt wat de prijs al weet.
+{cite:t}`Stein2009`, een vergissing die niemand ziet. De posities en modellen van
+AI-gedreven fondsen zouden de lezingen kunnen scheiden, net als de kasstromen van
+blootgestelde bedrijven sinds de lancering. De eerste zijn echter niet openbaar, en de
+tweede reeks is nog te kort.
+Santa-Clara vat zijn loopbaan samen in het motto uit [](#00-00-setup): wat hij blijvend
+verdiende, kwam uit het dragen van risico met een premie, en wat hij verloor, uit de
+gedachte iets te weten wat de prijs niet wist. Voor taalmodellen volgt daaruit dat een
+model dat krantenkoppen leest, vertelt wat de prijs al weet zodra veel beleggers dezelfde
+score gebruiken.
 
-**Wat er daarna kwam.** Hier eindigt de geschiedenis en begint de balans: welke
-uitspraken na anderhalve eeuw overeind staan, is het onderwerp van
+**Wat er daarna kwam.** Hier eindigt de geschiedenis en begint de balans. Welke uitspraken
+na anderhalve eeuw overeind staan, en hoe zeker we van elk ervan zijn, onderzoekt
 [](#08-38-wat-we-weten).
 
 ## Oefeningen
@@ -1187,41 +1108,41 @@ uitspraken na anderhalve eeuw overeind staan, is het onderwerp van
 :::{exercise}
 :label: ex-llms-en-efficientie-1
 
-**Ruis en de grens van volledige deelname.** Gebruik de parameters van het
-toy-voorbeeld ($a = 2$, $\sigma^2_s = \sigma^2_\varepsilon = 1$, $\sigma^2_z = 0{,}04$).
+**Ruis en de grens van volledige deelname.** Deze oefening varieert het toy-voorbeeld. Gebruik dezelfde parameters
+($a = 2$, $\sigma^2_s = \sigma^2_\varepsilon = 1$, $\sigma^2_z = 0{,}04$).
 
 1. Verdubbel de ruis in het aanbod naar $\sigma^2_z = 0{,}08$ bij $c = \ln(1{,}5)/4$.
-   Bereken met de hand $\lambda^*$ en $\rho^2$ en leg uit waarom het ene verandert en
-   het andere niet.
-2. Leid af bij welke informatiekosten $c^*$ iedereen geïnformeerd wordt, en bereken
-   $c^*$ voor het toy-voorbeeld.
+   Bereken met de hand $\lambda^*$ en $\rho^2$ en leg uit waarom het ene verandert en het
+   andere niet.
+2. Leid af bij welke informatiekosten $c^*$ iedereen geïnformeerd wordt, en bereken $c^*$
+   voor het toy-voorbeeld.
 3. Controleer beide antwoorden met `gs_equilibrium`.
 :::
 
 :::{solution} ex-llms-en-efficientie-1
 :class: dropdown
 
-**(1)** Nu is $m = 0{,}32$ en nog steeds $k = 0{,}5$, dus $\rho^2 = 0{,}5$ ongewijzigd
-en $\lambda^* = \sqrt{0{,}32} = 0{,}566$. Meer ruis maakt informatie aantrekkelijker; er
-treden beleggers toe tot de informativiteit weer op het niveau staat waar informatie
-precies $c$ waard is.
+**(1)** Nu is $\nu = 0{,}32$ en nog steeds $k = 0{,}5$, dus $\rho^2 = 0{,}5$ blijft gelijk
+en $\lambda^* = \sqrt{0{,}32} = 0{,}566$. Meer ruis maakt informatie aantrekkelijker, en er
+treden beleggers toe tot de informativiteit weer op het niveau staat waar informatie precies
+$c$ waard is.
 
-**(2)** $\lambda^* = 1$ zodra $m(1-k)/k \ge 1$, dus $k \le m/(1+m)$. Met $k =
+**(2)** $\lambda^* = 1$ zodra $\nu(1-k)/k \ge 1$, dus zodra $k \le \nu/(1+\nu)$. Met $k =
 (\sigma^2_\varepsilon/\sigma^2_s)(e^{2ac}-1)$ geeft dat
-$c^* = \ln\bigl(1 + \tfrac{\sigma^2_s}{\sigma^2_\varepsilon}\tfrac{m}{1+m}\bigr)/(2a)$.
-Voor $m = 0{,}16$: $c^* = \ln(1{,}1379)/4 = 0{,}0323$.
+$c^* = \ln\bigl(1 + \tfrac{\sigma^2_s}{\sigma^2_\varepsilon}\tfrac{\nu}{1+\nu}\bigr)/(2a)$,
+en voor $\nu = 0{,}16$ is $c^* = \ln(1{,}1379)/4 = 0{,}0323$.
 
 ```{code-cell} ipython3
 print("sigma_z^2 = 0.08:", np.round(gs_equilibrium(np.log(1.5) / 4, a, var_s, var_e, 0.08)[:2], 4))
-m_toy = a**2 * var_e**2 * var_z / var_s
-c_star = np.log1p(var_s / var_e * m_toy / (1 + m_toy)) / (2 * a)
-print(f"c* = {c_star:.4f}; lambda net onder en boven c*:",
-      [round(float(gs_equilibrium(c, a, var_s, var_e, var_z)[0]), 4) for c in (c_star * 0.99, c_star * 1.01)])
+nu_toy = a**2 * var_e**2 * var_z / var_s
+c_star = np.log1p(var_s / var_e * nu_toy / (1 + nu_toy)) / (2 * a)
+lam_around = [round(float(gs_equilibrium(c, a, var_s, var_e, var_z)[0]), 4) for c in (c_star * 0.99, c_star * 1.01)]
+print(f"c* = {c_star:.4f}; lambda net onder en boven c*: {lam_around}")
 ```
 
-De oefening laat zien waarom goedkope informatie de prijs alleen tot een grens
-informatiever maakt: onder $c^*$ doet iedereen al mee, en wat de prijs dan nog
-tegenhoudt is risicoaversie, geen kostprijs.
+De oefening laat zien waarom goedkope informatie de prijs maar tot een grens informatiever
+maakt. Onder $c^*$ doet iedereen al mee, en wat de prijs dan nog tegenhoudt, is
+risicoaversie en geen kostprijs.
 :::
 
 :::{exercise}
@@ -1229,25 +1150,25 @@ tegenhoudt is risicoaversie, geen kostprijs.
 
 **Relatieve en geaggregeerde fouten.** Een model maakt in elk van $K$ aandelen een fout
 $e_j = g + \eta_j$, met $\Var(g) = \sigma^2_g$ (een fout die alle aandelen raakt) en
-$\eta_j$ onafhankelijk met variantie $\sigma^2_\eta$.
+$\eta_j$ onafhankelijk met variantie $\sigma^2_\eta$. De fout $g$ is de gedeelde modelfout uit de theorie, nu over aandelen in plaats van over arbitrageurs.
 
-1. Leid de variantie af van de fout in een gelijkgewogen marktportefeuille en in een
-   long-short portefeuille die $1/(K/2)$ long gaat in de eerste helft en $1/(K/2)$
-   short in de tweede helft.
-2. Neem $\sigma_g = \sigma_\eta = 1$ en $K = 2, 10, 100, 1000$. Controleer met een
-   simulatie van 20 000 dagen.
-3. Wat betekent dit voor Santa-Clara's bewering dat machines relatieve prijzen
-   efficiënter maken, maar het aggregaat niet?
+1. Leid de variantie af van de fout in een gelijkgewogen marktportefeuille. Doe hetzelfde
+   voor een portefeuille die de eerste helft van de aandelen koopt en de tweede helft
+   verkoopt, elk met gewicht $1/(K/2)$.
+2. Neem $\sigma_g = \sigma_\eta = 1$ en $K = 2, 10, 100, 1000$, en controleer de
+   uitkomsten met een simulatie van 20 000 dagen.
+3. Wat betekent dit voor de bewering van Santa-Clara dat machines relatieve prijzen
+   efficiënter maken, maar het marktniveau niet?
 :::
 
 :::{solution} ex-llms-en-efficientie-2
 :class: dropdown
 
-**(1)** Marktportefeuille: $\bar e = g + \bar\eta$, variantie $\sigma^2_g +
-\sigma^2_\eta/K$. Long-short: $g$ valt weg, en de fout is het verschil van twee
-gemiddelden van $K/2$ onafhankelijke $\eta$'s, variantie $4\sigma^2_\eta/K$.
+**(1)** De marktportefeuille heeft fout $\bar e = g + \bar\eta$ met variantie $\sigma^2_g +
+\sigma^2_\eta/K$. In de tweede portefeuille valt $g$ weg, en de fout is het verschil van twee
+gemiddelden van $K/2$ onafhankelijke $\eta$'s, met variantie $4\sigma^2_\eta/K$.
 
-**(2)**
+**(2)** De simulatie volgt beide formules.
 
 ```{code-cell} ipython3
 rows = []
@@ -1255,16 +1176,16 @@ for K in [2, 10, 100, 1000]:
     g = rng.standard_normal((20_000, 1))
     eta = rng.standard_normal((20_000, K))
     e = g + eta
-    rows.append({"K": K, "markt sim": e.mean(1).var(), "markt theorie": 1 + 1 / K,
-                 "long-short sim": (e[:, :K // 2].mean(1) - e[:, K // 2:].mean(1)).var(),
-                 "long-short theorie": 4 / K})
+    long_short = e[:, :K // 2].mean(1) - e[:, K // 2:].mean(1)
+    rows.append({"K": K, "markt, simulatie": e.mean(1).var(), "markt, theorie": 1 + 1 / K,
+                 "koop-verkoop, simulatie": long_short.var(), "koop-verkoop, theorie": 4 / K})
 pd.DataFrame(rows).set_index("K").round(3)
 ```
 
-**(3)** De relatieve fout gaat met $1/K$ naar nul, de geaggregeerde blijft $\sigma^2_g$.
-Een beter model verkleint $\sigma^2_\eta$, maar geen aantal aandelen of arbitrageurs
-haalt $g$ weg: het aggregaat wordt alleen efficiënter als de modellen verschillender
-worden, niet beter.
+**(3)** De relatieve fout gaat met $1/K$ naar nul, terwijl de geaggregeerde fout
+$\sigma^2_g$ blijft. Een beter model verkleint $\sigma^2_\eta$, maar geen aantal aandelen of
+arbitrageurs haalt $g$ weg. Het marktniveau wordt dus alleen efficiënter als de modellen
+verschillender worden, niet als ze beter worden.
 :::
 
 :::{exercise}
@@ -1273,11 +1194,12 @@ worden, niet beter.
 **Hoe gevoelig is de ChatGPT-event study?** Gebruik `port`, `m_arr`, `EVENT` en
 `market_model_car` uit de replicatie.
 
-1. Bereken het CAR van *hoog* minus *laag* voor de vensters $[0,+5]$, $[0,+10]$ en
-   $[0,+20]$, en voor dag $-5$ tot $-1$ (een placebo vóór het event).
-2. Herhaal $[0,+10]$ met de hardwareaandelen toegevoegd aan *hoog*.
-3. Vergelijk elk CAR met de spreiding van placebo-CAR's van dezelfde lengte. Welke
-   conclusie overleeft alle keuzes?
+1. Bereken het cumulatieve abnormale rendement van *hoog* min *laag* over dag 0 tot en met
+   5, tot en met 10 en tot en met 20. Doe hetzelfde voor dag $-5$ tot en met $-1$, als
+   placebo vóór het event.
+2. Herhaal het venster tot en met dag 10 met de hardwareaandelen toegevoegd aan *hoog*.
+3. Vergelijk elk resultaat met de spreiding van placebovensters van dezelfde lengte. Welke
+   conclusie blijft bij alle keuzes staan?
 :::
 
 :::{solution} ex-llms-en-efficientie-3
@@ -1290,24 +1212,22 @@ def placebo_sd(y, length):
 
 
 hoog_plus = rets[GROUPS["hoog"] + GROUPS["hardware"]].mean(axis=1) - port["laag"]
-variants = {"hoog - laag": y_ls, "hoog+hardware - laag": hoog_plus.to_numpy()}
+windows = [("hoog - laag", y_ls, lo, hi) for lo, hi in [(-5, -1), (0, 5), (0, 10), (0, 20)]]
+windows.append(("hoog+hardware - laag", hoog_plus.to_numpy(), 0, 10))
 rows = []
-for name, y in variants.items():
-    for lo, hi in [(-5, -1), (0, 5), (0, 10), (0, 20)]:
-        if name != "hoog - laag" and (lo, hi) != (0, 10):
-            continue
-        car, se, _, _ = market_model_car(y, m_arr, EVENT, lo, hi)
-        rows.append({"portefeuille": name, "venster": f"[{lo},{hi}]", "CAR": car, "SE model": se,
-                     "sd placebo": placebo_sd(y, hi - lo + 1)})
+for name, y, lo, hi in windows:
+    car, se, _, _ = market_model_car(y, m_arr, EVENT, lo, hi)
+    rows.append({"portefeuille": name, "venster": f"[{lo},{hi}]", "CAR": car, "SE model": se,
+                 "sd placebo": placebo_sd(y, hi - lo + 1)})
 sens = pd.DataFrame(rows)
 sens["CAR / sd placebo"] = sens["CAR"] / sens["sd placebo"]
 sens.round(4)
 ```
 
 Geen variant komt verder dan ruim een halve placebo-standaarddeviatie van nul. Het teken
-wisselt met het venster, de hardwareaandelen maken het $+1{,}46\%$, en de placebo vóór
-het event ($+0{,}44\%$) is niet te onderscheiden van de echte vensters. Wat alle keuzes
-overleeft, is de omvang van de ruis, ongeveer drie procentpunt over elf dagen: een event
-study met één datum en een paar dozijn aandelen kan een effect van de gepubliceerde
-omvang bevestigen noch verwerpen.
+wisselt met het venster, de hardwareaandelen maken het $+1{,}46\%$, en de placebo vóór het
+event ($+0{,}44\%$) is niet te onderscheiden van de echte vensters. Bij alle keuzes blijft
+alleen de omvang van de ruis staan, ruim drie procentpunt over elf dagen. Een event study
+met één datum en een paar dozijn aandelen kan een effect van de gepubliceerde omvang dus
+bevestigen noch verwerpen.
 :::

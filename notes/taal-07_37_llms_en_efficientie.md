@@ -1,0 +1,15 @@
+STATUS 07_37_llms_en_efficientie T words=5592 prose=PASS
+- Waar we zijn: flowthese voorwaardelijk ("maakte aannemelijk", "sterk bewegen").
+- Overzicht: sjabloonzin over de reeks vervangen door gewone zinnen; dubbel "daarna" weg; geschiedenis ingekort.
+- Intuïtie: calques (systeemkaart, aflevering, marginaal) weg; "aanzetten" krijgt een object; losse "En"-zin herschreven.
+- Toy: verwijswoord "dat aandeel" weg; nu en k in een gewone zin benoemd.
+- Opzet: noise traders één keer bij liquiditeitshandelaren; daarna één naam (aanbodruis).
+- Evenwicht: vaste opening "Waarom zou dit waar zijn?" weg, conclusie vooraan.
+- Wat het voorspelt: dubbele punt als lijm weg; "Ten eerste / Ten tweede" maakt de twee toevoegingen zichtbaar.
+- Gedeelde modelfouten: "De eerste zin is eq-mono" en "namelijk" herschreven; Khandani-Lo als interpretatie.
+- Halfwaardetijd: haakje over niet-synchrone handel werd een zin met "want" en "zodat".
+- Advies: conclusie vooraan, "Beide ... Beide" gevarieerd, "Daar zit" (vaag antecedent) weg.
+- Simulatie: "naïeve lezing" weg; "In de figuur gaat het om" niet meer vier keer; "Het is hetzelfde probleem als" herschreven.
+- Replicatie: los "Gedeeltelijk geslaagd." verbonden met "want"; staccato bij de band verbonden; verwijswoorden bij de figuren.
+- Wat er brak: "want" zonder dekking weg; losse "En"-zinnen verbonden; motto als Nederlandse parafrase; slotzin met één verband.
+- Vaktermen: niets vervangen; "informativiteit" en "aanbodruis" bleven als enige namen. Geen twijfelgevallen.

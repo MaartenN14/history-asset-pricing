@@ -1,0 +1,43 @@
+STATUS 07_37_llms_en_efficientie F4 open=0 punten=15
+
+# Feitencontrole 07_37_llms_en_efficientie (F23)
+
+Gebaseerd op `nb_numbers` (12 getallen niet in celuitvoer; alle twaalf zijn handberekeningen, bronnen of opmaak) en `nb_outputs`. Externe bronnen voor de open punten uit rapport §F1: arXiv 2304.07619 (v1-pdf en huidige samenvatting), OpenAlex-samenvattingen van D'Acunto e.a., Khandani-Lo en Eisfeldt e.a., en het LinkedIn-stuk van Santa-Clara (SantaClara2026).
+
+## Open punten (onjuist / onzeker / niet herleidbaar)
+
+| nr | regel | bewering | oordeel | bron of cel | voorgestelde correctie | status |
+|---|---|---|---|---|---|---|
+| 1 | 636-637 | "spreiding over jaren van 0,017 tot 0,045" | onjuist (klein) | cel 4: min 0,0162, max 0,0446 | "van 0,016 tot 0,045" | opgelost (0,016) |
+| 2 | 683-684 | voordeel "groeit bovendien met de kosten, van 0,30 bij c = 0,01 tot 2,59" | onjuist (klein) | cel 4: 0,3029, 0,2834, 0,5783, 1,1853, 2,5867; niet monotoon tussen 0,01 en 0,03 | "groeit vanaf c = 0,03 met de kosten, tot 2,59 bij c = 0,15" | opgelost (vanaf c = 0,03; ook figuurtekst) |
+| 3 | 935 (tabel) | origineel "ruim 4% (0,4% per dag)" voor dag 0 t/m 10 | onzeker | samenvatting Eisfeldt e.a.: "0,4% higher on a daily basis following the release"; 4% over elf dagen is eigen vermenigvuldiging, venster van het origineel staat niet in de samenvatting | kolom "0,4% per dag (samenvatting)"; "ruim 4%" schrappen | opgelost (kolom: 0,4% per dag, samenvatting) |
+| 4 | 946 | "event valt midden in de koersdaling van technologieaandelen in dat jaar" | niet herleidbaar | geen cel of bron; cel 10 geeft alleen CAR[-20,-1] = -0,0847 voor hoog min laag | zin schrappen (r. 893 zegt al: hoog verloor 8,5% in vier weken ervoor) | opgelost (zin geschrapt) |
+| 5 | 24-26, 436-441 | "Als een dollar instroom ... ongeveer vijf dollar verhoogt ... bepalen stromen namelijk het niveau"; "passieve stromen vergroten het deel van de vraag dat niet reageert" | onzeker | 06_36 r. 736-739: multiplier tussen ongeveer 2 en 8, vijf is het midden; 06_36 r. 1002: voorwaardelijk ("Als flows het niveau zetten"), "Santa-Clara vermoedt"; SantaClara2026: "if anything ... make the flows larger" (verwachting) | "tussen twee en acht dollar, met vijf als midden"; "bepalen stromen namelijk" naar "hangt het niveau sterk van stromen af"; "vergroten" naar "kunnen vergroten" | opgelost (2 tot 8, vijf als midden; kunnen vergroten; Waar we zijn: maakte aannemelijk) |
+| 6 | 975-977, 998, 1001 | "Alleen de jaren 2020 vallen ver onder nul"; vraag of de balken na 1990 "binnen hun interval rond nul vallen" | onzeker | cel 12: 2000s rho1 -0,062 met SE 0,020 (buiten het 95%-interval); 2010s -0,038 (binnen); 2020s -0,152 | "alleen de jaren 2020 liggen meer dan 0,1 onder nul; de jaren 2000 liggen er net buiten"; vraagzin aanpassen | opgelost (tekst, figuurtekst, vraagzin) |
+| 7 | 447-449 | kwantfondsen "leden grote verliezen, doordat ze tegelijk hun posities afbouwden" | onzeker | Khandani-Lo 2011 (samenvatting): simulaties van long/short-portefeuilles, verliezen "suggesting" marktbrede deleveraging, unwinds op 1 en 6 augustus; het oorzakelijke verband is hun interpretatie | "leden ... grote verliezen, wat volgens Khandani en Lo past bij een gelijktijdige afbouw" | opgelost (volgens Khandani en Lo past bij) |
+| 8 | 1038-1039 | "Prijzen werden ook sneller, want de dagelijkse autocorrelatie daalde van 0,29 ... naar vrijwel nul" | onzeker | cel 12: 0,289 naar -0,062 / -0,038 / -0,152, dat is niet "vrijwel nul"; r. 1027-1030 zegt zelf "verenigbaar met, bewijst niet" (niet-synchrone handel, futures, ETF's) | "De dagelijkse autocorrelatie daalde ..., in lijn met snellere prijzen" | opgelost (in lijn met snellere prijzen; naar onder nul) |
+| 9 | 1043-1044 | "Snellere prijzen maakten de markt niet rustiger, want de jaarvolatiliteit ... 10% ... tegen 22%" | onzeker | getallen juist (cel 12: 0,101, 0,099, 0,223), maar de inferentie is niet gedekt (2000s bevat 2008) | "de markt werd niet rustiger: de jaarvolatiliteit was ..." zonder "want" | opgelost (geen want; 2008 genoemd) |
+| 10 | 1062-1065 | Santa-Clara-motto, naadnotitie eind-deel-6 naad 4 | onjuist t.o.v. de naadopdracht | 00_00 r. 127-128 is de plek van het motto; hier staat het één keer, maar als volledig Engels blokcitaat zonder verwijzing naar `#00-00-setup` (06_34 r. 1157 verwijst wel) | zet het om in een verwijzing: "het motto uit [](#00-00-setup)", met een zin eromheen (risico met premie behouden, vermeend weten verloren), citaat eruit | opgelost (verwijzing naar 00-00-setup, citaat eruit) |
+
+## Naadnotitie (eind-deel-6, naad 4)
+
+- Flowthese: de herziene tekst noemt nergens meer dat stromen "het niveau zetten" als bevinding in het Overzicht, maar r. 24-26 ("geldstromen die op een inelastische vraag stuiten het niveau ... zetten") en r. 436-441 zijn nog steeds sterker dan 06_36 (punt 5). "Maakte aannemelijk" en de multiplier 2 tot 8 staan niet in dit college.
+- Het woord "lecture" komt in het college niet voor (grep: geen treffer). Opgelost.
+- Motto: één keer, maar geen verwijzing (punt 10).
+
+## Juist (per sectie samengevat)
+
+- **Waar we zijn / Overzicht**: ChatGPT 30 november 2022; Grossman-Stiglitz 1980; Santa-Clara verwacht betere mediaan en slechtere staart ("median investor does better ... tail of gamified losses gets worse", bevestigd), de woordelijke zin "Machines make relative prices more efficient ..." en halfwaardetijden dagen 1969, uren 2000, seconden nu (bevestigd); Cao e.a. 2023 (bevestigd); Eisfeldt e.a. vonden stijging voor blootgestelde bedrijven (bevestigd). De zin "kosten bleven veertig jaar lang hoog" is een oordeel zonder bron, onschuldig.
+- **Toy GS**: nu = 0,16; k = 0,5 en 0,2; lambda 0,4 en 0,8; rho2 0,5 en 0,8; c = 0,1014 en 0,0456 (cel 2); "ruim de helft goedkoper" (-55%); "verdubbelt"; grens 1/1,16 = 0,86; restvariantie 1,5 en 1,2. Afleiding stap 1 tot 3 nagerekend (verhouding e^{ac} sqrt(sigma_e^2/Var(x|w)) klopt, inclusief de randgevallen).
+- **Gedeelde fouten**: Var = omega^2 + (1-omega)/N; 1/4, 3/8, 1 en kansen 1/16, 1/8, 1/2 (cel 3); telling 1, 4, 6, 4, 1; bewijs klopt.
+- **Halfwaardetijd**: bewijs AR(1) nagerekend; ln 2/ln 5 = 0,43 dag = 2,8 uur ("ongeveer drie"); tabel 1970s 3,6 en 1990s 1,8 uur (cel 12: 3,631 en 1,763); eerste zeven decennia positief en significant (alle z boven 2,9); piek 0,29.
+- **Lopez-Lira en Tang**: 0,231 (t = 4,689) en 0,652 (2,8 keer) in v1 (arXiv 2304.07619v1, tabellen); GPT-1, GPT-2 en BERT voorspellen niet; huidige samenvatting: "Strategy returns decline as LLM adoption rises"; JFE-artikel 2026 bestaat (Crossref). Eenheid "procentpunt" niet apart nagezocht.
+- **Advies**: 0,35^2/8 = 0,0153; 75% x 2% = 1,5 pp; samen 3 pp; e^{-0,9} = 0,407; D'Acunto e.a.: alle beweringen komen overeen met de samenvatting; Barber-Odean (75%, 11,4% tegen 17,9%) en Robinhood (-4,7% over twintig dagen, uitvalexperiment): geen brontekst geraadpleegd, getallen komen overeen met de bekende samenvattingen; aanbevolen bij de volgende ronde met de bron te vergelijken. Aannames zonder bron maar als aanname gebracht: sigma_eta 35%, n = 4, kosten 2%; de vergoeding phi is niet ingevuld, dus "drie procentpunt" is exclusief phi.
+- **Simulatie**: binnen 0,003 (max 0,0027); iedereen geïnformeerd bij c = 0,01 en 0,03 (c* = 0,0323); 0% jaren met verlies; sd 0,141 tot 0,607; afwijking hoogstens 0,006; kurtosis hoogst bij 30% (23,5); slechtste dag -0,405 naar -0,507 en -2,442 (4,4 keer -0,558).
+- **Replicatie**: CAR 0,0015, SE 0,0411, t 0,04; 268 placebovensters, sd 0,0339, percentiel 51; -8,5% in de vier weken ervoor; tekens 0 t/m 5 en 0 t/m 20 negatief; 4/3,4 = 1,18; 8 + 8 + 20 + 14 = 50 en 28 aandelen; autocorrelatie 2020 -0,336 en 2021 t/m 2026-07 -0,019; 2020s -0,152, z VR -1,04; rangcorrelatie -0,042 (niet in de tekst).
+- **Oefeningen**: 0,32, 0,566, c* = 0,0323; tabel K (1,096 tegen 1,100 enz.); oefening 3: 0,0146 ("+1,46%"), 0,0044 placebo, 0,514 ("ruim een halve"), ruis 3,39 ("ruim drie procentpunt").
+- **Zonder citatie**: indexfutures 1982 en ETF's 1993 zijn juist (algemene kennis); Busse-Green, FFJR, Stein, Martin-Nagel in lijn met de literatuur, niet opnieuw opgehaald.
+
+## Cross-refs
+
+Alle ankers bestaan: 00-01-rendementen, 01-04-markowitz, 02-06-efficiente-markten, 02-07-event-studies, 04-23-behavioral, 04-25-industrie, 06-36-inelastische-markten, 08-38-wat-we-weten. Alle cite-sleutels staan in references.bib. Terugverwijzingen juist: 02_07 r. 1056, 06_36 r. 1006, 08_38 r. 23 (de zin over de krantenkop staat er nog). De zin "Een model dat vertelt wat er in een krantenkop staat, bleek te vertellen wat de prijs al weet" blijft dus nodig, maar spreekt de eigen Lopez-Lira-alinea tegen (zie lezer, punt 1).
