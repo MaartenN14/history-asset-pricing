@@ -18,50 +18,85 @@ kernelspec:
 ```{admonition} Waar we zijn in het verhaal
 :class: important
 
-**Jaartal.** 1976–2010, van Mertons sprongmodel tot Santa-Clara en Yan.
+**Jaartal.** 1976–2010. Het college loopt van Mertons sprongmodel tot het werk van
+Santa-Clara en Yan.
 
-**Wat we al weten.** In [](#02-09-black-scholes) waren diepe puts duur en lag de VIX
-gemiddeld vier volatiliteitspunten boven de latere volatiliteit; [](#04-21-volatiliteit)
-maakte van de VIX de risiconeutrale verwachte variantie. [De vorige
-lecture](#05-28-termijnstructuur-premies) vond ook in obligaties tijdvariërende premies.
-De rampenmodellen uit [](#05-27-drie-antwoorden) laten een kleine kans op een grote crash
-de equity premium dragen, maar een eeuw rendementen bevat te weinig crashes om dat te
+**Wat we al weten.** In [](#02-09-black-scholes) bleken diepe puts duur, en lag de VIX
+gemiddeld vier volatiliteitspunten boven de volatiliteit die daarna werd gerealiseerd. De
+rampenmodellen uit [](#05-27-drie-antwoorden) laten een kleine kans op een grote crash de
+aandelenpremie dragen. Een eeuw rendementen bevat echter te weinig crashes om dat te
 toetsen.
 
-**Welke vraag staat open.** Kunnen optieprijzen, die de markt elke dag opnieuw
-vaststelt, meten hoeveel beleggers betalen om van crashrisico af te komen — en is die
-prijs een risicopremie of een vergissing?
+**Welke vraag staat open.** Optieprijzen worden elke dag opnieuw vastgesteld. Kunnen ze
+meten hoeveel beleggers betalen om van crashrisico af te komen, en is die prijs een beloning
+voor risico of een vergissing?
 ```
 
 ## Overzicht
 
-Een putoptie op de index is een verzekering tegen een crash, en haar premie verraadt
-hoe groot en hoe erg de markt de schade vindt. Dat maakt opties tot een meetinstrument
-voor wat rendementsdata het slechtst meten: de staart. Pedro Santa-Clara en
-Shu Yan schatten in *Crashes, Volatility, and the Equity Premium: Lessons from S&P 500
-Options* {cite}`SantaClaraYan2010` een model met stochastische volatiliteit én een
-stochastische crashintensiteit op de dagelijkse prijzen van S&P 500-opties, en haalden
-er de equity premium uit die beleggers op elk moment eisen. Dit werk definieert het
-tijdvak omdat het de equity premium puzzle uit [](#03-13-equity-premium-puzzle) omdraait:
-niet het gerealiseerde gemiddelde met zijn standaardfout van twee procentpunt, maar
-de prijs van risico zoals die elke dag in de optiemarkt wordt vastgesteld.
+Wat kost verzekering tegen een crash, en wat zegt die prijs over de aandelenpremie?
+Optieprijzen geven een crash een risiconeutrale kans die een veelvoud is van de werkelijke,
+zodat een flink deel van de aandelenpremie crashpremie is. De winst van wie die verzekering
+verkoopt, is in rendementsdata echter niet te meten. In dit college:
 
-De tweede helft gaat over wie die verzekering verkoopt. Alessio Saretto en Santa-Clara
-lieten in *Option Strategies: Good Deals and Margin Calls* {cite}`SarettoSantaClara2009`
-zien dat puts verkopen op papier uitstekend renderen en in de praktijk gevaarlijk is:
-margeverplichtingen dwingen de verkoper te sluiten precies wanneer de verzekering
-uitbetaalt. Epistemisch is dit een lecture over een feit met concurrerende
-theorieën (motief 3). Dat puts duur zijn, betwist niemand; of dat een beloning is voor
-risico dat niet te diversifiëren valt, of een mispricing die blijft bestaan omdat de
-arbitrageur geen kapitaal heeft, is de open vraag.
+- lezen we uit de kromming van optieprijzen de risiconeutrale verdeling af;
+- leiden we af waarom de variance risk premium positief is, hoe sprongen de smirk maken en
+  welk deel van de aandelenpremie crashpremie is;
+- simuleren we een verkoper van puts en vragen we welke Sharpe-ratio twintig jaar data hem
+  laten zien;
+- repliceren we de linksscheve risiconeutrale verdeling van SPY, de voorspelregressie van
+  Bollerslev, Tauchen en Zhou {cite}`BollerslevTauchenZhou2009` en het rendement van de
+  Cboe PutWrite-index.
 
-We beginnen met drie toestanden waarin een crash met twee procent kans een
-risiconeutrale kans van vijftien procent krijgt. De theorie loopt van Breeden en
-Litzenberger via de variance risk premium en Mertons sprongmodel naar Coval en Shumway en
-de rekenkunde van marges. De simulatie vindt de risiconeutrale dichtheid terug uit
-gesimuleerde prijzen en laat een verkoper van puts dertig jaar handelen. De replicatie
-schat de risiconeutrale dichtheid van SPY, herhaalt de regressie van Bollerslev, Tauchen
-en Zhou {cite}`BollerslevTauchenZhou2009`, en zet de Cboe PutWrite-index naast de S&P 500.
+Merton gaf in 1976 een prijsformule voor opties
+op een koers die kan springen {cite}`Merton1976`, en twee jaar later lieten Breeden en
+Litzenberger zien dat optieprijzen de hele risiconeutrale verdeling bevatten
+{cite}`BreedenLitzenberger1978`. In 2010 haalden Pedro Santa-Clara en Shu Yan uit dagelijkse
+optieprijzen de aandelenpremie die beleggers op elk moment eisen, met een model waarin
+volatiliteit en crashintensiteit in de tijd variëren {cite}`SantaClaraYan2010`. Daarmee
+verschoof de vraag
+uit [](#03-13-equity-premium-puzzle) van een gerealiseerd gemiddelde naar een prijs die de
+optiemarkt elke dag vaststelt. Rond dezelfde tijd toonden Saretto en Santa-Clara dat puts
+verkopen op papier uitstekend
+rendeert, maar dat marge-eisen de verkoper dwingen te sluiten juist wanneer de verzekering
+uitbetaalt {cite}`SarettoSantaClara2009`. Dat puts duur zijn, betwist niemand, maar of die
+prijs een beloning voor risico is of een fout die arbitrageurs zonder kapitaal laten
+bestaan, daarover heeft nog geen theorie het laatste woord.
+
+## Intuïtie: waarom zou dit waar zijn?
+
+Op 19 oktober 1987 verloor de S&P 500 ruim twintig procent op één dag. Bij een
+dagvolatiliteit van ongeveer één procent is dat onder Black-Scholes een uitschieter van
+twintig standaarddeviaties, met een kans die praktisch nul is. Sinds die dag zijn puts ver
+onder de koers duur, gemeten in volatiliteit. Dat patroon, te zien in
+[](#fig-black-scholes-smirk), heet de *smirk* (een implied volatility die daalt naarmate de
+uitoefenprijs stijgt), en Bates zag erin de angst voor een nieuwe crash {cite}`Bates2000`.
+
+Waarom is die angst wel in optieprijzen te zien en nauwelijks in rendementen? Een optieprijs
+weegt hoe waarschijnlijk een toestand is en hoeveel een dollar in die toestand waard is. In
+een crash is iedereen tegelijk armer, zodat een dollar die dan wordt uitbetaald veel waard
+is.
+Daarom kost een put zoveel als hij zou kosten bij een veel grotere crashkans. Die opgeblazen
+kans heet de *risiconeutrale* kans (de kans waaronder elke belegging gemiddeld de rente
+oplevert), en het verschil met de werkelijke kans is de prijs van crashrisico.
+
+Een verkoper van die verzekering verdient meestal een beetje en verliest zelden veel. Zijn
+gemiddelde hangt dus af van gebeurtenissen die in twintig jaar één keer of nooit voorkomen.
+Verkoopt hij met geleend geld, dan moet hij bovendien onderpand bijstorten zodra de markt
+daalt, zodat hij gedwongen stopt op het slechtste moment.
+
+We verwachten daarom dat puts gemiddeld minder opleveren dan de rente, en dat de verwachte
+variantie onder risiconeutrale kansen hoger is dan de werkelijke. Een verkoper van puts
+verdient dan een positieve premie, maar in een korte steekproef zonder crash lijkt die
+premie
+veel groter dan ze is. In de termen van Santa-Clara draagt de verkoper risico waarvoor een
+premie wordt betaald, maar een onderzoeker die de hoge Sharpe-ratio van een rustige
+periode als bewijs neemt, denkt meer te weten dan de markt die de optieprijs vaststelt
+{cite}`SantaClara2026`.
+
+## Toy-voorbeeld: normaal op, normaal neer, crash
+
+We laden eerst de pakketten die de rest van het college gebruikt.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -77,151 +112,132 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-## Intuïtie: waarom zou dit waar zijn?
+We nemen een Lucas-boom als in [](#03-12-consumptie-capm), waarin de markt een claim op
+consumptie is, zodat het bruto rendement van de markt gelijk is aan de consumptiegroei
+$g$. Er zijn drie
+toestanden, en de representatieve belegger heeft CRRA-nut met $\gamma = 4$ en
+$\beta = 0{,}97$.
 
-Op maandag 19 oktober 1987 verloor de S&P 500 ruim twintig procent op één dag. Bij een
-dagvolatiliteit van ongeveer één procent is dat onder Black-Scholes een uitschieter van
-twintig standaarddeviaties, met een kans die praktisch nul is. De optiemarkt trok haar
-conclusie sneller dan de theorie: sinds die dag zijn puts ver onder de koers duur in
-volatiliteitstermen, de *smirk* (een implied volatility die daalt naarmate de
-uitoefenprijs stijgt) uit [](#fig-black-scholes-smirk). David Bates noemde het
-verschijnsel in de titel van zijn artikel *post-'87 crash fears* {cite}`Bates2000`.
+| toestand | groei $g$ | kans $p$ |
+|---|---|---|
+| op | $1{,}10$ | $0{,}65$ |
+| neer | $0{,}95$ | $0{,}33$ |
+| crash | $0{,}60$ | $0{,}02$ |
 
-Waarom is crashangst wel in optieprijzen te zien en nauwelijks in rendementen? Een
-optieprijs vat twee dingen samen: hoe waarschijnlijk een toestand is, en hoeveel een euro
-dan waard is. In een crash is iedereen tegelijk armer, dus een euro die dan uitbetaalt is
-veel waard, en de markt prijst een put alsof de crash veel waarschijnlijker is dan hij is. Die opgeblazen kans heet de *risiconeutrale* kans (de
-kans waaronder elke belegging gemiddeld precies de rente oplevert), en het verschil met
-de werkelijke kans is de prijs van crashrisico.
+**Het recept.** De *stochastic discount factor* (SDF: de toestandsafhankelijke factor
+waarmee payoffs worden verdisconteerd) is $m = \beta g^{-\gamma}$, en de prijs van een
+payoff
+$x$ is $\E[mx]$. De risiconeutrale kans van toestand $s$ is $q_s = p_s m_s/\E[m]$. Die
+kansen
+tellen op tot één, en elke prijs is de verwachte payoff onder $q$ gedeeld door
+$R^f = 1/\E[m]$.
 
-Daaruit volgen drie dingen. Wie alle optieprijzen kent, kent de risiconeutrale verdeling:
-drie opties met naburige uitoefenprijzen betalen samen alleen uit als de koers precies
-daar eindigt. Wie verzekering verkoopt, verdient meestal een beetje en verliest zelden
-veel; zijn gemiddelde hangt aan gebeurtenissen die in twintig jaar één keer of nooit
-voorkomen, en een steekproef zonder crash toont een Sharpe-ratio die niets met de
-werkelijkheid te maken heeft (motief 1). En wie met geleend geld verkoopt, moet onderpand
-bijstorten zodra de markt daalt, en wordt gedwongen te stoppen op het slechtste moment.
+**Stap 1, de SDF.** Per toestand is $m_{\text{op}} = 0{,}97/1{,}10^4 = 0{,}97/1{,}4641 = 0{,}6625$,
+$m_{\text{neer}} = 0{,}97/0{,}8145 = 1{,}1909$ en $m_{\text{crash}} = 0{,}97/0{,}1296 = 7{,}4846$.
+In de crash is een dollar dus ruim elf keer zoveel waard als in de goede toestand.
 
-Een put verkopen is Santa-Clara's "bearing risk that was priced" {cite}`SantaClara2026`;
-de Sharpe-ratio van een periode zonder crash voor informatie aanzien is "thinking I knew
-something the price did not". De optieprijs wist van de crash, de steekproef niet.
+**Stap 2, de rente.** De verwachte SDF is $\E[m] = 0{,}65 \cdot 0{,}6625 + 0{,}33 \cdot 1{,}1909 +
+0{,}02 \cdot 7{,}4846 = 0{,}4306 + 0{,}3930 + 0{,}1497 = 0{,}9733$. De rente is dan
+$R^{f} = 1/0{,}9733 = 1{,}0274$.
 
-## Toy-voorbeeld: normaal op, normaal neer, crash
+**Stap 3, de risiconeutrale kansen.** $q_{\text{crash}} = 0{,}1497/0{,}9733 = 0{,}1538$,
+en op
+dezelfde manier is $q_{\text{op}} = 0{,}4424$ en $q_{\text{neer}} = 0{,}4038$. De crash
+krijgt
+dus $0{,}1538/0{,}02 = 7{,}7$ keer zijn werkelijke kans.
 
-Een Lucas-boom als in [](#03-12-consumptie-capm), met drie toestanden op $t+1$. De
-markt levert een bruto rendement gelijk aan de consumptiegroei $g$: $1{,}10$ als het
-goed gaat (kans $0{,}65$), $0{,}95$ in een gewone tegenvaller (kans $0{,}33$) en
-$0{,}60$ in een crash (kans $0{,}02$, eens in de vijftig jaar). De representatieve
-belegger heeft CRRA-nut met $\gamma = 4$ en $\beta = 0{,}97$.
+**Stap 4, de markt.** De prijs is $\E[mg] = 0{,}65 \cdot 0{,}7288 + 0{,}33 \cdot 1{,}1314 +
+0{,}02 \cdot 4{,}4908 = 0{,}9369$ en de verwachte payoff is $\E[g] = 1{,}0405$. Het verwachte
+rendement is dan $1{,}0405/0{,}9369 = 1{,}1106$ en de aandelenpremie
+$1{,}1106 - 1{,}0274 = 8{,}32\%$. Zonder crashtoestand, met de kansen herschaald tot
+$0{,}65/0{,}98 = 0{,}663$ en $0{,}33/0{,}98 = 0{,}337$, geeft dezelfde rekensom $2{,}44\%$.
 
-**De SDF.** De *stochastic discount factor* (SDF: de toestandsafhankelijke factor waarmee
-payoffs worden verdisconteerd) is $m = \beta g^{-\gamma}$ per toestand:
+**Stap 5, een put en een call.** Een put met uitoefenprijs $0{,}90$ betaalt alleen in de
+crash uit, en wel $0{,}30$. Hij kost $0{,}02 \cdot 7{,}4846 \cdot 0{,}30 = 0{,}0449$ en
+betaalt gemiddeld $0{,}0060$ uit, een bruto rendement van $0{,}1336$ en dus een gemiddeld
+verlies van $86{,}6\%$. Een call met uitoefenprijs $1{,}05$ kost
+$0{,}65 \cdot 0{,}6625 \cdot 0{,}05 = 0{,}0215$ en betaalt gemiddeld $0{,}0325$ uit, een
+bruto rendement van $1{,}5094$ en dus een gemiddelde winst van $50{,}9\%$.
 
-$$
-m_{\text{op}} = \frac{0{,}97}{1{,}10^4} = \frac{0{,}97}{1{,}4641} = 0{,}6625, \quad
-m_{\text{neer}} = \frac{0{,}97}{0{,}8145} = 1{,}1909, \quad
-m_{\text{crash}} = \frac{0{,}97}{0{,}1296} = 7{,}4846 .
-$$
+**Stap 6, de variantie.** Neem als gerealiseerde variantie $(\log g)^2$, dus $0{,}0091$,
+$0{,}0026$ en $0{,}2609$. Onder $p$ is de verwachting $0{,}0120$, onder $q$ is ze
+$0{,}4424 \cdot 0{,}0091 + 0{,}4038 \cdot 0{,}0026 + 0{,}1538 \cdot 0{,}2609 = 0{,}0452$, en
+het verschil van $0{,}0332$ komt vrijwel geheel uit de crash.
 
-Dan is $\E[m] = 0{,}65 \cdot 0{,}6625 + 0{,}33 \cdot 1{,}1909 + 0{,}02 \cdot 7{,}4846
-= 0{,}4306 + 0{,}3930 + 0{,}1497 = 0{,}9733$ en $R^{f} = 1/\E[m] = 1{,}0274$.
-
-**De risiconeutrale kansen.** $q_s = p_s m_s/\E[m]$, zodat $\sum_s q_s = 1$ en elke
-prijs gelijk is aan $\E^{\mathbb Q}[x]/R^{f}$:
-
-| toestand | $g$ | $p$ | $m$ | $q$ | $q/p$ |
-|---|---|---|---|---|---|
-| op | $1{,}10$ | $0{,}65$ | $0{,}6625$ | $0{,}4424$ | $0{,}68$ |
-| neer | $0{,}95$ | $0{,}33$ | $1{,}1909$ | $0{,}4038$ | $1{,}22$ |
-| crash | $0{,}60$ | $0{,}02$ | $7{,}4846$ | $0{,}1538$ | $7{,}69$ |
-
-De crash, die twee procent van de tijd voorkomt, krijgt vijftien procent van de
-risiconeutrale kansmassa.
-
-**De markt.** De prijs is $\E[mg] = 0{,}65 \cdot 0{,}7288 + 0{,}33 \cdot 1{,}1314 +
-0{,}02 \cdot 4{,}4908 = 0{,}9369$, het verwachte rendement $1{,}0405/0{,}9369 = 1{,}1106$,
-en de equity premium $8{,}32\%$. Zonder crashtoestand (de andere kansen herschaald) is ze
-$2{,}44\%$.
-
-**Een put.** Een put met uitoefenprijs $0{,}90$ betaalt alleen in de crash, $0{,}30$. Zijn
-prijs is $0{,}02 \cdot 7{,}4846 \cdot 0{,}30 = 0{,}0449$, zijn verwachte payoff
-$0{,}02 \cdot 0{,}30 = 0{,}0060$, en zijn verwachte bruto rendement $0{,}0060/0{,}0449 =
-0{,}1336$: een verwacht verlies van $86{,}6\%$ per periode. Een at-the-money-put
-($K = 1$) kost $0{,}33 \cdot 1{,}1909 \cdot 0{,}05 + 0{,}02 \cdot 7{,}4846 \cdot 0{,}40 =
-0{,}0795$ en verwacht $0{,}0245$ terug ($-69\%$); driekwart van zijn prijs komt uit de
-crash. Een call met $K = 1{,}05$ kost $0{,}65 \cdot 0{,}6625 \cdot 0{,}05 = 0{,}0215$ en
-verwacht $0{,}0325$ terug: $+50{,}9\%$, ruim boven de markt, de ordening van
-[](#thm-opties-crashrisico-cs).
-
-**De variance risk premium.** Neem als gerealiseerde variantie $(\log g)^2$: $0{,}0091$,
-$0{,}0026$ en $0{,}2609$. Onder $p$ is de verwachting $0{,}0120$ (een volatiliteit van
-$11{,}0\%$), onder $q$ is ze $0{,}4424 \cdot 0{,}0091 + 0{,}4038 \cdot 0{,}0026 + 0{,}1538 \cdot
-0{,}2609 = 0{,}0452$ ($21{,}3\%$). Het verschil, $0{,}0332$, komt bijna geheel uit de
-crashtoestand.
+De code rekent de zes stappen na en zet de uitkomsten naast de handberekening.
 
 ```{code-cell} ipython3
 beta_toy, gamma_toy = 0.97, 4.0
-states = ["op", "neer", "crash"]
 growth = np.array([1.10, 0.95, 0.60])          # gross market return = consumption growth
-prob = np.array([0.65, 0.33, 0.02])            # physical probabilities
+prob = np.array([0.65, 0.33, 0.02])            # physical probabilities: up, down, crash
 
-m_toy = beta_toy * growth ** (-gamma_toy)      # SDF per state
-Em = prob @ m_toy
+m_toy = beta_toy * growth ** (-gamma_toy)      # step 1: SDF per state
+Em = prob @ m_toy                              # step 2
 Rf_toy = 1 / Em
-q_toy = prob * m_toy / Em                      # risk-neutral probabilities
+q_toy = prob * m_toy / Em                      # step 3: risk-neutral probabilities
 
-payoffs = {
-    "markt": growth,
-    "put K = 0,90": np.maximum(0.90 - growth, 0.0),
-    "put K = 1,00": np.maximum(1.00 - growth, 0.0),
-    "call K = 1,05": np.maximum(growth - 1.05, 0.0),
-}
-rows = {}
-for name, x in payoffs.items():
-    price = prob @ (m_toy * x)
-    rows[name] = {"prijs": price, "prijs via Q": (q_toy @ x) / Rf_toy,
-                  "E[x]": prob @ x, "E[R]": (prob @ x) / price}
-assets_toy = pd.DataFrame(rows).T
 
-rv_toy = np.log(growth) ** 2
+def expected_return(x, p=prob, m=m_toy):
+    """Expected gross return E[x] / E[m x] of a payoff x."""
+    return (p @ x) / (p @ (m * x))
+
+
+premium = expected_return(growth) - Rf_toy                        # step 4
+p_no_crash = prob[:2] / prob[:2].sum()                            # same economy without the crash
+premium_no_crash = expected_return(growth[:2], p_no_crash, m_toy[:2]) - 1 / (p_no_crash @ m_toy[:2])
+put_toy = np.maximum(0.90 - growth, 0.0)                          # step 5
+call_toy = np.maximum(growth - 1.05, 0.0)
+rv_toy = np.log(growth) ** 2                                      # step 6
 vrp_toy = q_toy @ rv_toy - prob @ rv_toy
 
-p_nc, m_nc, g_nc = prob[:2] / prob[:2].sum(), m_toy[:2], growth[:2]   # same economy without the crash
-premium_nc = (p_nc @ g_nc) / (p_nc @ (m_nc * g_nc)) - 1 / (p_nc @ m_nc)
-
-assert np.allclose(m_toy, [0.6625, 1.1909, 7.4846], atol=5e-5)
-assert np.allclose(q_toy, [0.4424, 0.4038, 0.1538], atol=5e-5)
-assert np.isclose(assets_toy.loc["put K = 0,90", "prijs"], 0.0449, atol=5e-5)
-print(pd.DataFrame({"groei": growth, "p": prob, "m": m_toy, "q": q_toy, "q/p": q_toy / prob,
-                    "(log groei)^2": rv_toy}, index=states).round(4))
-print(f"E[m] = {Em:.4f}, R_f = {Rf_toy:.4f}, equity premium = {assets_toy.loc['markt', 'E[R]'] - Rf_toy:.4f}")
-print(f"E^P[RV] = {prob @ rv_toy:.5f}, E^Q[RV] = {q_toy @ rv_toy:.5f}, VRP = {vrp_toy:.5f}")
-print(f"equity premium zonder crashtoestand = {premium_nc:.4f}")
-assets_toy.round(4)
+hand = {"m crash": 7.4846, "E[m]": 0.9733, "R^f": 1.0274, "q crash": 0.1538,
+        "aandelenpremie": 0.0832, "premie zonder crash": 0.0244, "prijs put 0,90": 0.0449,
+        "E[R] put 0,90": 0.1336, "E[R] call 1,05": 1.5094, "variance risk premium": 0.0332}
+code = {"m crash": m_toy[2], "E[m]": Em, "R^f": Rf_toy, "q crash": q_toy[2],
+        "aandelenpremie": premium, "premie zonder crash": premium_no_crash,
+        "prijs put 0,90": prob @ (m_toy * put_toy), "E[R] put 0,90": expected_return(put_toy),
+        "E[R] call 1,05": expected_return(call_toy), "variance risk premium": vrp_toy}
+pd.DataFrame({"met de hand": hand, "code": code}).round(4)
 ```
 
-De code reproduceert elke handberekening tot op vier decimalen; de kolom "prijs via Q"
-bevestigt dat waarderen met $m$ onder $p$ en met de rente onder $q$ samenvallen.
+De code en de handberekening komen overeen. Omdat de markt de crash waardeert alsof hij
+bijna acht keer zo vaak voorkomt als hij doet, verliest de put gemiddeld 86,6%, komt ruim
+twee derde van de aandelenpremie uit de crash en vrijwel de hele premie op variantie.
 
 ## Theorie
 
+De theorie gaat van optieprijzen naar de prijs van crashrisico. De kromming van
+optieprijzen geeft de risiconeutrale dichtheid, en daaruit volgen de
+momenten en het teken van de variance risk premium. Mertons sprongmodel verklaart de smirk
+en
+splitst de aandelenpremie in een diffusiedeel en een crashdeel. Tot slot volgen de
+rendementen van opties en de verkopers met hefboom.
+
 ### Opzet en notatie
 
-Zoals in [](#02-09-black-scholes) heet de indexprijs $S_t$, en zijn $C_t(K,T)$ en
-$P_t(K,T)$ de prijzen van Europese calls en puts met uitoefenprijs $K$ en expiratie $T$;
-$\tau = T - t$. De rente $r$ is continu samengesteld en constant, $F_t = S_t
-e^{(r-\delta)\tau}$ is de termijnkoers bij dividendrendement $\delta$. $\mathbb P$ is de
-werkelijke kansmaat, $\mathbb Q$ de risiconeutrale, en $m_T$ de SDF tussen $t$ en $T$,
-met $\E^{\mathbb Q}_t[X] = \E_t[m_T X]/\E_t[m_T]$ en $\E_t[m_T] = e^{-r\tau}$. De
-risiconeutrale dichtheid van $S_T$ heet $q(s)$, de werkelijke $p(s)$.
+De notatie volgt [](#02-09-black-scholes). De indexprijs heet $S_t$, en $C_t(K,T)$ en
+$P_t(K,T)$ zijn de prijzen van Europese calls en puts met uitoefenprijs $K$, expiratie $T$
+en
+looptijd $\tau = T - t$. De rente $r$ is continu samengesteld en constant, in de simulatie
+3%
+per jaar, en $F_t = S_t e^{(r-\delta)\tau}$ is de termijnkoers bij dividendrendement
+$\delta$. De werkelijke kansmaat heet $\mathbb P$ en de risiconeutrale $\mathbb Q$, met
+dichtheden $p(s)$ en $q(s)$ voor $S_T$. Zoals in het toy-voorbeeld krijgt elke toestand
+onder
+$\mathbb Q$ het gewicht van de SDF $m_T$,
+
+$$
+\E^{\mathbb Q}_t[X] = \frac{\E_t[m_T X]}{\E_t[m_T]}, \qquad \E_t[m_T] = e^{-r\tau}.
+$$
 
 ### Breeden-Litzenberger: de verdeling zit in de kromming
 
-*Waarom zou dit waar zijn?* Koop een call met uitoefenprijs $K - h$, verkoop er twee met
-$K$ en koop er één met $K + h$. Deze *butterfly* (een driehoekige payoff rond $K$)
-betaalt, gedeeld door $h^2$, één eenheid als de koers bij $K$ eindigt: een
-Arrow-Debreu-effect uit [](#03-11-apt-no-arbitrage), en zijn prijs is een verdisconteerde
-dichtheid {cite}`BreedenLitzenberger1978`.
+Uit de prijzen van calls bij alle uitoefenprijzen volgt de hele risiconeutrale verdeling.
+Een handelaar die een call met uitoefenprijs $K - h$ koopt, er twee met $K$ verkoopt en een
+met $K + h$ koopt, heeft een *butterfly* (een driehoekige payoff rond $K$). Gedeeld door
+$h^2$ betaalt die één dollar als de koers bij $K$ eindigt, zoals een Arrow-Debreu-effect uit
+[](#03-11-apt-no-arbitrage). Zijn prijs is dus de verdisconteerde kans op die toestand
+{cite}`BreedenLitzenberger1978`.
 
 :::{prf:theorem} Breeden-Litzenberger
 :label: thm-opties-crashrisico-bl
@@ -235,8 +251,6 @@ $C_t(K) = e^{-r\tau}\E^{\mathbb Q}_t[(S_T - K)^{+}]$ voor alle $K > 0$. Dan geld
 \qquad
 \frac{\partial^2 C_t}{\partial K^2} = e^{-r\tau}\, q(K).
 ```
-
-Voor puts geldt $\partial^2 P_t/\partial K^2 = e^{-r\tau} q(K)$ eveneens.
 :::
 
 :::{prf:proof}
@@ -244,28 +258,30 @@ Schrijf $C_t(K) = e^{-r\tau}\int_K^\infty (s - K)\, q(s)\,\mathrm ds$. De integr
 nul in $s = K$, dus de regel van Leibniz geeft
 $\partial C_t/\partial K = -e^{-r\tau}\int_K^\infty q(s)\,\mathrm ds$, en nog eens
 differentiëren geeft $e^{-r\tau} q(K)$ omdat $q$ continu is. Put-call-pariteit
-$C_t - P_t = e^{-r\tau}(F_t - K)$ is lineair in $K$, dus de tweede afgeleiden zijn gelijk.
+$C_t - P_t = e^{-r\tau}(F_t - K)$ is lineair in $K$, dus voor puts geldt dezelfde tweede
+afgeleide.
 $\square$
 :::
 
-Twee opmerkingen maken de stelling bruikbaar. Eén: de stelling geeft $q$, niet $p$.
-Delen geeft de SDF als functie van de index,
-$\E_t[m_T \mid S_T = s] = e^{-r\tau}\, q(s)/p(s)$, zoals $q/p$ in het toy-voorbeeld.
-Jens Jackwerth schatte $q$ uit S&P 500-opties en $p$ uit historische rendementen over
-2 april 1986 tot 29 december 1995, en rekende de impliciete risicoaversie uit
-{cite}`Jackwerth2000`: "Precrash, they are positive and decreasing in wealth and largely
-consistent with standard assumptions made in economic theory. Postcrash, they are
-partially negative and partially increasing and irreconcilable with those assumptions.
-Mispricing in the option market is the most likely cause." Een SDF die ergens *stijgt*
-in de index heet sindsdien de *pricing kernel puzzle*. Twee: een tweede afgeleide
-versterkt ruis; een prijsfout $\varepsilon$ wordt een dichtheidsfout van orde $\varepsilon/h^2$.
+De helling van de callprijs is dus min de verdisconteerde kans dat de call uitbetaalt, en
+de kromming is de verdisconteerde dichtheid. Met ook $p$ in handen volgt de SDF als functie
+van de index, $\E_t[m_T \mid S_T = s] = e^{-r\tau}\, q(s)/p(s)$, de continue vorm van de
+factor $7{,}7$ uit het toy-voorbeeld. Jackwerth schatte zo de risicoaversie uit S&P
+500-opties over 1986–1995 {cite}`Jackwerth2000`. Na de crash van 1987 vond hij op een deel
+van de index negatieve waarden, dus een SDF die daar stijgt in plaats van daalt. Hij
+schreef dat vooral aan mispricing toe, en het verschijnsel heet sindsdien de *pricing
+kernel puzzle*.
+
+Een praktisch bezwaar is dat een tweede afgeleide ruis versterkt, omdat een prijsfout
+$\varepsilon$ een fout in de dichtheid van orde $\varepsilon/h^2$ wordt. De numerieke
+oplossing hieronder laat zien hoe snel dat misgaat.
 
 ### Modelvrije momenten
 
-*Waarom zou dit waar zijn?* Als elke butterfly een toestand is, dan is elke payoff die
-alleen van $S_T$ afhangt een portefeuille van butterflies, en dus van opties. De
-verwachting van $(\log S_T/F)^n$ onder $\mathbb Q$ is dan een prijs, en een prijs lees je
-af.
+Omdat elke butterfly een toestand is, is elke payoff die alleen van $S_T$ afhangt een
+portefeuille van opties. De risiconeutrale verwachting van zo'n payoff is daardoor in de
+markt
+af te lezen, en dat geldt ook voor de momenten van het rendement.
 
 :::{prf:proposition} Spanning en risiconeutrale momenten
 :label: prop-opties-crashrisico-momenten
@@ -278,48 +294,42 @@ out-of-the-money-optie ($P_t(K)$ voor $K < F$, $C_t(K)$ voor $K \geq F$),
 e^{-r\tau}\E^{\mathbb Q}_t[H(S_T)] = e^{-r\tau}H(F) + \int_0^\infty H''(K)\, Q(K)\,\mathrm dK .
 ```
 
-Met $R = \log(S_T/F)$ volgt
-$\E^{\mathbb Q}_t[R] = -e^{r\tau}\int_0^\infty Q(K)K^{-2}\,\mathrm dK$,
-$\E^{\mathbb Q}_t[R^2] = e^{r\tau}\int_0^\infty 2\bigl(1 - \log\tfrac KF\bigr)K^{-2}Q(K)\,\mathrm dK$ en
-$\E^{\mathbb Q}_t[R^3] = e^{r\tau}\int_0^\infty \bigl(6\log\tfrac KF - 3\log^2\tfrac KF\bigr)K^{-2}Q(K)\,\mathrm dK$.
+Met $\ell = \log(S_T/F)$, het log rendement ten opzichte van de termijnkoers, zijn dus ook
+de eerste drie momenten prijzen:
+$\E^{\mathbb Q}_t[\ell] = -e^{r\tau}\int_0^\infty Q(K)K^{-2}\,\mathrm dK$,
+$\E^{\mathbb Q}_t[\ell^2] = e^{r\tau}\int_0^\infty 2\bigl(1 - \log\tfrac KF\bigr)K^{-2}Q(K)\,\mathrm dK$ en
+$\E^{\mathbb Q}_t[\ell^3] = e^{r\tau}\int_0^\infty \bigl(6\log\tfrac KF - 3\log^2\tfrac KF\bigr)K^{-2}Q(K)\,\mathrm dK$.
 :::
 
-:::{prf:proof}
-Taylor met integraalrestterm rond $F$ geeft voor elke $s > 0$:
-$H(s) = H(F) + H'(F)(s - F) + \int_0^F H''(K)(K - s)^{+}\mathrm dK + \int_F^\infty H''(K)(s - K)^{+}\mathrm dK$
-(controleer voor $s > F$: de eerste integraal is nul en de tweede is
-$\int_F^s H''(K)(s-K)\,\mathrm dK = H(s) - H(F) - H'(F)(s-F)$ na partiële integratie).
-Neem $e^{-r\tau}\E^{\mathbb Q}_t$ en gebruik $\E^{\mathbb Q}_t[S_T - F] = 0$. Voor
-$H = \log(s/F)$, $\log^2(s/F)$ en $\log^3(s/F)$ zijn $H(F) = 0$ en de tweede afgeleiden
-$-1/s^2$, $2(1 - \log\frac sF)/s^2$ en $(6\log\frac sF - 3\log^2\frac sF)/s^2$. $\square$
-:::
-
-De eerste regel is de VIX-formule uit [](#thm-volatiliteit-vix); de andere twee geven
-variantie en scheefheid, zoals Bakshi, Kapadia en Madan ze schreven. Zij vonden dat "individual
-risk-neutral distributions differ from that of the market index by being far less
-negatively skewed" {cite}`BakshiKapadiaMadan2003`: de linkerstaart is een eigenschap
-van de *markt*, van het risico dat niet weg te diversifiëren valt, en niet van aandelen
-in het algemeen.
+Het bewijs is een Taylorontwikkeling van $H$ rond $F$ met integraalrestterm, waarin elke
+restterm de payoff van een optie buiten het geld is. Het eerste moment levert de
+VIX-formule uit [](#thm-volatiliteit-vix) op, want zonder sprongen is de risiconeutrale
+verwachte variantie min
+tweemaal $\E^{\mathbb Q}_t[\ell]$. Met het tweede en derde moment vonden Bakshi, Kapadia en
+Madan dat
+afzonderlijke aandelen veel minder linksscheef zijn dan de index
+{cite}`BakshiKapadiaMadan2003`.
+De linkerstaart is dus een eigenschap van het marktrisico, dat niet weg te diversifiëren
+valt.
 
 ### De variance risk premium
 
-*Waarom zou dit waar zijn?* Een *variance swap* (een termijncontract dat op $T$ de
-gerealiseerde variantie min een vooraf vastgestelde prijs uitbetaalt) kost niets om aan
-te gaan, dus die vaste prijs is de risiconeutrale verwachting van de variantie. Of die
-boven de werkelijke ligt, hangt af van *wanneer* de variantie hoog is: is een euro dan veel
-waard, dan betaalt de koper graag te veel.
-
-Laat $\mathrm{RV}_{t,T}$ de gerealiseerde variantie over $[t, T]$ zijn. We definiëren
+Opties zijn gemiddeld duur, omdat de variantie hoog is op de momenten dat een dollar veel
+waard is. Een *variance swap* betaalt op $T$ de gerealiseerde variantie min een vaste
+prijs uit.
+Het contract kost niets om aan te gaan, zodat die vaste prijs de risiconeutrale verwachting
+van de variantie is. Met $\mathrm{RV}_{t,T}$ de gerealiseerde
+variantie over $[t, T]$ definiëren we
 
 ```{math}
 :label: eq-opties-crashrisico-vrp
 \mathrm{VRP}_t \equiv \E^{\mathbb Q}_t\!\left[\mathrm{RV}_{t,T}\right] - \E_t\!\left[\mathrm{RV}_{t,T}\right].
 ```
 
-Carr en Wu gebruiken [](#eq-opties-crashrisico-vrp) met het omgekeerde teken: de verwachte opbrengst
-van een gekochte variance swap, $\E_t[\mathrm{RV}] - \E^{\mathbb Q}_t[\mathrm{RV}]$
-{cite}`CarrWu2009`. Wij volgen Bollerslev, Tauchen en Zhou en de replicatie in
-[](#02-09-black-scholes), zodat het getal positief is als opties duur zijn.
+De premie is dus het bedrag waarmee de risiconeutrale verwachte variantie boven de
+werkelijke
+ligt. Carr en Wu gebruiken het omgekeerde teken {cite}`CarrWu2009`, maar wij volgen
+Bollerslev, Tauchen en Zhou, zodat het getal positief is als opties duur zijn.
 
 :::{prf:proposition} Het teken van de variance risk premium
 :label: prop-opties-crashrisico-vrp
@@ -334,39 +344,44 @@ $\E^{\mathbb Q}_t[X] = \E_t[m_T X]/\E_t[m_T] = \bigl(\E_t[m_T]\E_t[X] + \Cov_t(m
 $\square$
 :::
 
-De SDF is hoog als de markt daalt, en de variantie ook: het *leverage effect* (volatiliteit
-stijgt na dalingen) uit [](#04-21-volatiliteit). Samen geven ze $\Cov(m, \mathrm{RV}) > 0$
-en een positieve premie; in het toy-voorbeeld $0{,}0332$, vrijwel geheel uit de
-crashtoestand. Het niveau is gemeten in [](#fig-black-scholes-vrp). Bollerslev, Tauchen en
-Zhou voegden toe dat een tijdvariërende prijs van risico een voorspeller moet zijn: de
-premie "is able to explain a nontrivial fraction of the time-series variation in post-1990
-aggregate stock market returns, with high (low) premia predicting high (low) future
-returns" {cite}`BollerslevTauchenZhou2009`.
+De SDF is hoog als de markt daalt, en de variantie ook, door het *leverage effect*
+(volatiliteit stijgt na dalingen) uit [](#04-21-volatiliteit). Samen maken ze de premie
+positief,
+wat de verwachting uit het begin van het college bevestigt. In het toy-voorbeeld is ze
+$0{,}0332$, en op
+echte data lag ze in [](#fig-black-scholes-vrp) gemiddeld rond vier volatiliteitspunten.
+Bollerslev, Tauchen en Zhou vonden bovendien dat een hoge premie na 1990 hoge latere
+marktrendementen voorspelde {cite}`BollerslevTauchenZhou2009`.
 
 ### Sprongen: het model van Merton
 
-*Waarom zou dit waar zijn?* In [](#02-09-black-scholes) was de delta-hedge risicovrij
-omdat de koers continu beweegt. Een sprong laat geen tijd om bij te stellen: de markt is
-niet compleet, de optieprijs hangt af van hoe beleggers sprongrisico prijzen, en omdat een
-sprong vooral de staart raakt, raakt hij vooral diepe puts.
-
-Merton schreef in 1976 onder $\mathbb Q$
+Een sprong in de koers maakt vooral diepe puts duur, omdat hij de linkerstaart dikker maakt
+en omdat een optieverkoper zich er niet tegen kan hedgen. De delta-hedge uit
+[](#02-09-black-scholes) werkt alleen als de koers continu beweegt. Een sprong laat geen
+tijd
+om bij te stellen, zodat de optieprijs afhangt van hoe beleggers sprongrisico waarderen.
+Merton schreef onder $\mathbb Q$
 
 ```{math}
 :label: eq-opties-crashrisico-merton-sde
 \frac{\mathrm dS_t}{S_{t-}} = (r - \delta - \lambda\kappa)\,\mathrm dt + \sigma\,\mathrm dW_t + (J - 1)\,\mathrm dN_t,
-\qquad \log J \sim \mathcal N(\mu_J, \delta_J^2),
+\qquad \log J \sim \mathcal N(\mu_J, \delta_J^2).
 ```
 
-met $N$ een Poisson-proces met intensiteit $\lambda$ en $\kappa = \E[J - 1] =
-e^{\mu_J + \delta_J^2/2} - 1$; de term $-\lambda\kappa$ compenseert de verwachte sprong, zodat
-de index onder $\mathbb Q$ nog steeds de rente verdient {cite}`Merton1976`.
-We zetten hieronder $\delta = 0$.
+Hier telt $N$ de sprongen, met intensiteit $\lambda$ (in de simulatie $0{,}165$ per jaar,
+ongeveer eens in de zes jaar). De factor $J$ is de koers na een sprong gedeeld door de
+koers ervoor,
+in
+de simulatie gemiddeld $0{,}70$, en $\kappa = \E[J - 1] = e^{\mu_J + \delta_J^2/2} - 1$ is
+de
+gemiddelde relatieve sprong. De term $-\lambda\kappa$ compenseert de verwachte sprong, zodat
+de index onder $\mathbb Q$ de rente blijft verdienen {cite}`Merton1976`.
 
 :::{prf:theorem} Mertons prijsformule
 :label: thm-opties-crashrisico-merton
 
-Onder [](#eq-opties-crashrisico-merton-sde) met $\delta = 0$ is
+Laat $C^{\mathrm{BS}}$ de Black-Scholes-formule zijn bij rente $r_n$ en volatiliteit
+$\sigma_n$. Onder [](#eq-opties-crashrisico-merton-sde) met $\delta = 0$ is
 
 ```{math}
 :label: eq-opties-crashrisico-merton
@@ -377,95 +392,95 @@ C_t = \sum_{n=0}^{\infty} \frac{e^{-\lambda'\tau}(\lambda'\tau)^n}{n!}\,
 \sigma_n^2 = \sigma^2 + \frac{n\delta_J^2}{\tau},\quad
 r_n = r - \lambda\kappa + \frac{n\log(1+\kappa)}{\tau},
 ```
-
-met $C^{\mathrm{BS}}$ de Black-Scholes-formule bij rente $r_n$ en volatiliteit $\sigma_n$.
 :::
 
-:::{prf:proof}
-:class: dropdown
+Het bewijs conditioneert op het aantal sprongen $n$. Gegeven $n$ is $\log S_T$ normaal, met
+dezelfde verwachting en variantie als onder Black-Scholes met $r_n$ en $\sigma_n$, en
+middelen
+over de Poisson-kansen geeft de formule. De optieprijs is dus een gewogen gemiddelde van
+Black-Scholes-prijzen in werelden met nul, één of meer sprongen. Zo'n mengsel van normale
+verdelingen heeft dikke staarten, met $\mu_J < 0$ vooral links, zodat diepe puts een hoge
+implied volatility krijgen, het sterkst bij korte looptijden.
 
-Gegeven $N_T - N_t = n$ is $\log S_T$ normaal met gemiddelde
-$\log S_t + (r - \lambda\kappa - \sigma^2/2)\tau + n\mu_J$ en variantie $\sigma^2\tau + n\delta_J^2$.
-Onder Black-Scholes met $(r_n, \sigma_n)$ heeft $\log S_T$ variantie $\sigma_n^2\tau$, dezelfde,
-en gemiddelde $\log S_t + (r_n - \sigma_n^2/2)\tau = \log S_t + (r - \lambda\kappa)\tau +
-n\log(1+\kappa) - \sigma^2\tau/2 - n\delta_J^2/2$; omdat $\log(1+\kappa) = \mu_J + \delta_J^2/2$ is
-dat hetzelfde gemiddelde. Dus $\E^{\mathbb Q}[(S_T-K)^{+}\mid n] = e^{r_n\tau}C^{\mathrm{BS}}(r_n,\sigma_n)$, en
-$e^{-r\tau}\E^{\mathbb Q}[(S_T-K)^{+}\mid n] = e^{-\lambda\kappa\tau}(1+\kappa)^n C^{\mathrm{BS}}(r_n,\sigma_n)$.
-Middelen met Poisson-gewichten $e^{-\lambda\tau}(\lambda\tau)^n/n!$ en samenvoegen van
-$e^{-\lambda\tau}e^{-\lambda\kappa\tau}(1+\kappa)^n\lambda^n = e^{-\lambda'\tau}\lambda'^n$ geeft
-[](#eq-opties-crashrisico-merton). $\square$
-:::
+Merton nam aan dat sprongrisico diversifieerbaar is, zodat sprongen onder $\mathbb Q$ even
+vaak voorkomen als onder $\mathbb P$, maar de data spreken dat tegen. Bates vond op
+S&P 500-futuresopties dat stochastische volatiliteit zonder sprongen de scheefheid alleen
+met
+onplausibele parameters verklaart {cite}`Bates2000`. Pan schatte de index en de optieprijzen
+in één model en vond een premie op sprongrisico die stijgt als de markt volatiel wordt
+{cite}`Pan2002`.
 
-De formule is een mengsel van Black-Scholes-werelden met nul, één of meer sprongen. Een
-mengsel van normale verdelingen heeft dikke staarten, met $\mu_J < 0$ vooral links: diepe
-puts krijgen een hoge implied volatility, het sterkst bij korte looptijden, zoals in
-[](#fig-black-scholes-smirk).
+### Hoeveel van de aandelenpremie is crashpremie?
 
-Merton nam aan dat sprongrisico diversifieerbaar is, zodat sprongen onder $\mathbb Q$ en
-$\mathbb P$ gelijk zijn. De data zeggen van niet.
-Bates vond op S&P 500-futuresopties over 1988–1993 dat een model met alleen stochastische
-volatiliteit de scheefheid kan verklaren "only under extreme parameters [...] that are
-implausible given the time series properties of option prices" (samenvatting van de
-NBER-werkdocumentversie) {cite}`Bates2000`. Pan schatte in één model de tijdreeks van de
-index en de optieprijzen, en concludeerde dat "jump-risk premia uncovered from the joint
-data respond quickly to market volatility, becoming more prominent during volatile
-markets" {cite}`Pan2002`.
+Als crashes onder $\mathbb Q$ vaker of dieper zijn dan onder $\mathbb P$, betalen beleggers
+voor crashrisico een eigen premie, naast de premie voor gewone schommelingen. Het deel van
+de
+drift dat de verwachte sprong compenseert, verschilt daardoor tussen de twee maten, en dat
+verschil is het extra rendement voor sprongen.
 
-### Hoeveel van de equity premium is crashpremie?
-
-*Waarom zou dit waar zijn?* Onder $\mathbb P$ en onder $\mathbb Q$ loopt dezelfde koers
-dezelfde paden af; alleen de kansen verschillen. Het deel van de drift dat het
-compensatiemechanisme voor sprongen is, verschilt dus tussen de twee maten, en dat
-verschil moet het rendement goedmaken dat beleggers voor sprongen eisen.
-
-:::{prf:proposition} Ontbinding van de equity premium
+:::{prf:proposition} Ontbinding van de aandelenpremie
 :label: prop-opties-crashrisico-premie
 
 Laat onder $\mathbb P$ gelden
 $\mathrm dS_t/S_{t-} = (\mu - \lambda^{\mathbb P}\kappa^{\mathbb P})\,\mathrm dt + \sigma\,\mathrm dW^{\mathbb P}_t + (J-1)\,\mathrm dN_t$,
-met sprongintensiteit $\lambda^{\mathbb P}$ en gemiddelde sprong $\kappa^{\mathbb P}$, en onder
-$\mathbb Q$ dezelfde vorm met $r$, $W^{\mathbb Q}_t = W^{\mathbb P}_t + \eta t$,
-$\lambda^{\mathbb Q}$ en $\kappa^{\mathbb Q}$. Dan
+met sprongintensiteit $\lambda^{\mathbb P}$ en gemiddelde sprong $\kappa^{\mathbb P}$. Onder
+$\mathbb Q$ geldt dezelfde vorm met $r$, $W^{\mathbb Q}_t = W^{\mathbb P}_t + \eta t$,
+$\lambda^{\mathbb Q}$ en $\kappa^{\mathbb Q}$, waarin $\eta$ de prijs per eenheid
+diffusierisico is. Dan
 
 ```{math}
 :label: eq-opties-crashrisico-premie
 \mu - r = \underbrace{\sigma\eta}_{\text{diffusiepremie}}
-        + \underbrace{\lambda^{\mathbb Q}\,\lvert\kappa^{\mathbb Q}\rvert - \lambda^{\mathbb P}\,\lvert\kappa^{\mathbb P}\rvert}_{\text{sprongpremie}}
+        + \underbrace{\lambda^{\mathbb Q}\,\lvert\kappa^{\mathbb Q}\rvert - \lambda^{\mathbb P}\,\lvert\kappa^{\mathbb P}\rvert}_{\text{crashpremie}}
         \qquad (\kappa^{\mathbb P}, \kappa^{\mathbb Q} < 0).
 ```
 :::
 
 :::{prf:proof}
-Schrijf de $\mathbb Q$-dynamiek uit in $W^{\mathbb P}$: $\sigma\,\mathrm dW^{\mathbb Q} = \sigma\,\mathrm dW^{\mathbb P} + \sigma\eta\,\mathrm dt$,
-dus $\mathrm dS/S = (r - \lambda^{\mathbb Q}\kappa^{\mathbb Q} + \sigma\eta)\,\mathrm dt + \sigma\,\mathrm dW^{\mathbb P} + (J-1)\,\mathrm dN$.
-Een maatwissel verandert de paden niet, dus de continue driftterm is in beide
-schrijfwijzen dezelfde: $\mu - \lambda^{\mathbb P}\kappa^{\mathbb P} = r - \lambda^{\mathbb Q}\kappa^{\mathbb Q} + \sigma\eta$. $\square$
+Schrijf de $\mathbb Q$-dynamiek uit in $W^{\mathbb P}$ met
+$\sigma\,\mathrm dW^{\mathbb Q} = \sigma\,\mathrm dW^{\mathbb P} + \sigma\eta\,\mathrm dt$. Een
+maatwissel verandert de paden niet, dus de driftterm is in beide schrijfwijzen dezelfde:
+$\mu - \lambda^{\mathbb P}\kappa^{\mathbb P} = r - \lambda^{\mathbb Q}\kappa^{\mathbb Q} + \sigma\eta$. $\square$
 :::
 
-Zijn crashes onder $\mathbb Q$ vaker of dieper dan onder $\mathbb P$, dan is de sprongpremie
-positief. Santa-Clara en Yan lieten diffusievolatiliteit en sprongintensiteit allebei
-stochastisch variëren en schatten ze dagelijks uit Europese S&P 500-opties van de CBOE,
-januari 1996 tot december 2002.
-De getallen staan in de werkdocumentversie {cite}`SantaClaraYan2004`. De gemiddelde
-volatiliteit is $18{,}3\%$. De gemiddelde risiconeutrale sprongintensiteit is $16{,}5\%$
-per jaar met een gemiddelde sprong van $-31{,}6\%$ (tabel 3). De werkelijke intensiteit is
-ongeveer de helft, $0{,}078$ tegen $0{,}165$ (tabel 4), wat neerkomt op "crashes in the
-magnitude of -29.5 percent once every 12.8 years". De onvoorwaardelijke equity premium is
-$10{,}1\%$, tegen $5{,}8\%$ als men alleen gerealiseerde volatiliteit beprijst. Het
-sprongdeel is "on average 2.9 percent, or a bit less than one third of the total
-premium", en schommelt van nul tot bijna twee derde (§5.3). De gepubliceerde versie: "The average premium that compensates the investor for the ex ante risks is
-70% higher than the premium for realized volatility", en voegt toe dat de uit opties
-afgeleide equity premium "is shown to significantly predict subsequent stock market
-returns" {cite}`SantaClaraYan2010`. De gerealiseerde excess return van de S&P 500 in hun
-steekproef was $-2{,}2\%$ per jaar. Dat is motief 1 in één zin: zeven jaar
-gerealiseerde rendementen zeggen niets over de premie, zeven jaar optieprijzen wel iets.
+De aandelenpremie bestaat dus uit een vergoeding $\sigma\eta$ voor gewone schommelingen (in
+de kalibratie hieronder $3{,}5\%$ bij $\sigma = 15\%$) en een crashpremie. Santa-Clara en
+Yan schatten
+beide dagelijks uit S&P 500-opties van 1996 tot en met 2002 {cite}`SantaClaraYan2004`. De
+tabel zet hun hoofdgetallen uit de werkdocumentversie naast onze kalibratie.
+
+| grootheid | Santa-Clara en Yan | onze kalibratie |
+|---|---|---|
+| volatiliteit | $18{,}3\%$ diffusie | $15\%$ diffusie, $18{,}3\%$ met sprongen |
+| sprongintensiteit onder $\mathbb Q$ (per jaar) | $0{,}165$ | $0{,}165$ |
+| sprongintensiteit onder $\mathbb P$ (per jaar) | $0{,}078$ | $0{,}078$ |
+| gemiddelde sprong onder $\mathbb Q$ | $-31{,}6\%$ | $-30\%$ |
+| aandelenpremie | $10{,}1\%$ | $6{,}1\%$ |
+| waarvan crashpremie | $2{,}9\%$ | $2{,}6\%$ |
+
+Crashes zijn bij Santa-Clara en Yan onder $\mathbb Q$ twee keer zo waarschijnlijk als onder
+$\mathbb P$, zodat beleggers crashes zwaarder wegen dan hun kans. Het crashdeel is iets
+minder dan
+een derde van de premie en schommelt tussen nul en bijna twee derde. De gepubliceerde versie
+meldt bovendien dat de uit opties afgeleide premie latere marktrendementen voorspelt
+{cite}`SantaClaraYan2010`.
+
+In hun steekproef was het gerealiseerde overrendement van de S&P 500 $-2{,}2\%$ per jaar,
+zodat zeven jaar rendementen niets over de premie zeggen en zeven jaar optieprijzen wel.
+Over zo'n korte horizon speelt [de standaardfout van 2%](#00-01-rendementen) in versterkte
+vorm, want bij een
+volatiliteit van $18{,}3\%$ heeft een gemiddeld rendement over zeven jaar een
+standaardfout van $0{,}183/\sqrt 7 = 6{,}9$ procentpunt.
 
 ### Verwachte optierendementen
 
-*Waarom zou dit waar zijn?* Een call is een gehefboomde claim op de goede toestanden, een
-put op de slechte. Daalt de SDF in de index, dan zijn goede toestanden goedkoop en slechte
-duur: calls leveren meer op dan de index, puts minder dan de rente, en sterker naarmate de
-claim meer in de staart zit.
+Een verkoper van puts ontvangt precies wat de koper gemiddeld verliest, dus voordat we de
+verkoper bekijken, ordenen we de verwachte rendementen van opties. Als de SDF daalt in de
+index, leveren calls meer op dan de index en puts minder dan de
+rente.
+Het effect is sterker naarmate de optie verder in de staart ligt. Een call is namelijk een
+gehefboomde claim op de goede toestanden en een put op de slechte, en goede toestanden zijn
+goedkoop terwijl slechte duur zijn.
 
 :::{prf:theorem} Coval-Shumway
 :label: thm-opties-crashrisico-cs
@@ -474,57 +489,41 @@ Laat $m_T = m(S_T)$ niet-stijgend zijn in $S_T$, en schrijf $\E[R_x] = \E[x]/\E[
 voor het verwachte bruto rendement van een payoff $x(S_T) \geq 0$. Dan geldt voor
 $K_1 < K_2$:
 
-1. $\E[R_{C(K_2)}] \geq \E[R_{C(K_1)}] \geq \E[R_S]$ — calls verslaan de index, en meer naarmate de uitoefenprijs hoger ligt;
-2. $\E[R_{P(K_1)}] \leq \E[R_{P(K_2)}] \leq R^{f}$ — puts verliezen ten opzichte van de rente, en meer naarmate de uitoefenprijs lager ligt.
+1. calls verslaan de index, en meer naarmate de uitoefenprijs hoger ligt,
+   $\E[R_{C(K_2)}] \geq \E[R_{C(K_1)}] \geq \E[R_S]$;
+2. puts blijven onder de rente, en meer naarmate de uitoefenprijs lager ligt,
+   $\E[R_{P(K_1)}] \leq \E[R_{P(K_2)}] \leq R^{f}$.
 :::
 
-:::{prf:proof}
-:class: dropdown
+Het bewijs schrijft elke optie als de vorige payoff maal een monotone functie van $S_T$,
+bijvoorbeeld $(S_T - K)^{+} = S_T (1 - K/S_T)^{+}$. Twee functies van $S_T$ met
+tegengestelde
+monotonie hebben een negatieve covariantie, zodat een factor die stijgt in $S_T$ het
+verwachte
+rendement verhoogt en een factor die daalt het verlaagt.
 
-*Lemma.* Laat $x_1 \geq 0$ met $\E[x_1] > 0$, en $x_2 = h(S_T)\,x_1 \geq 0$. Is $h$
-niet-dalend, dan $\E[R_{x_2}] \geq \E[R_{x_1}]$; is $h$ niet-stijgend, dan
-$\E[R_{x_2}] \leq \E[R_{x_1}]$. Definieer de kansmaat $\nu$ met
-$\mathrm d\nu/\mathrm d\mathbb P = x_1/\E[x_1]$. Dan is $\E[x_2]/\E[x_1] = \E_\nu[h]$ en
-$\E[m x_2]/\E[m x_1] = \E_\nu[mh]/\E_\nu[m]$, dus
-$\E[R_{x_2}]/\E[R_{x_1}] = \E_\nu[h]\,\E_\nu[m]/\E_\nu[mh]$. Twee functies van dezelfde
-variabele met tegengestelde monotonie hebben volgens de covariantie-ongelijkheid van
-Chebyshev een niet-positieve covariantie, met gelijke monotonie een niet-negatieve. Voor
-niet-dalende $h$ is dus $\E_\nu[mh] \leq \E_\nu[m]\E_\nu[h]$, voor niet-stijgende $h$ omgekeerd.
-
-(1) $(S_T - K_1)^{+} = h\,S_T$ met $h = (1 - K_1/S_T)^{+}$ niet-dalend: de call verslaat de
-index. $(S_T - K_2)^{+} = h\,(S_T - K_1)^{+}$ met $h = (S_T - K_2)^{+}/(S_T - K_1)$ op
-$\{S_T > K_1\}$ en $h = 0$ elders, niet-dalend: de hogere uitoefenprijs verslaat de lagere.
-(2) $(K_2 - S_T)^{+} = h \cdot 1$ met $h$ niet-stijgend: de put blijft onder de obligatie,
-dus onder $R^{f}$. $(K_1 - S_T)^{+} = h\,(K_2 - S_T)^{+}$ met $h = (K_1 - S_T)^{+}/(K_2 - S_T)$
-op $\{S_T < K_2\}$ en $h = 0$ elders; op $\{S_T < K_1\}$ is de afgeleide
-$-(K_2 - K_1)/(K_2 - S_T)^2 < 0$ en daarboven is $h = 0$, dus $h$ is niet-stijgend en de
-put met de lagere uitoefenprijs heeft het lagere verwachte rendement. $\square$
-:::
-
-De enige aanname is een dalende SDF, en volgens Coval en Shumway "S&P index option returns
-consistently exhibit these characteristics" {cite}`CovalShumway2001`. Scherper is de
-volgende zin uit hun samenvatting: "zero-beta, at-the-money straddle positions produce average losses of
-approximately three percent per week." Een *straddle* (een call plus een put met dezelfde
-uitoefenprijs en looptijd) met bèta nul zou onder het CAPM de rente moeten verdienen; dat hij drie
-procent per week verliest, is de variance risk premium in de vorm van een rendement.
-
-Broadie, Chernov en Johannes relativeerden dat: "the large returns to writing
-out-of-the-money puts, is not inconsistent (i.e., is statistically insignificant)
-relative to the Black-Scholes model or the Heston stochastic volatility model due to the
-extreme sampling uncertainty associated with put returns" {cite}`BroadieChernovJohannes2009`.
-De simulatie laat zien hoe slecht een gemiddelde gemeten is dat van een paar crashes afhangt.
+Het toy-voorbeeld laat de ordening al zien. De call met uitoefenprijs $1{,}05$ levert
+$50{,}9\%$ op, ruim boven de $11{,}1\%$ van de markt, en de put met $0{,}90$ verliest
+gemiddeld $86{,}6\%$. Coval en Shumway vonden dat S&P 500-opties deze ordening consequent
+vertonen {cite}`CovalShumway2001`. Een *straddle* (een call plus een put met dezelfde
+uitoefenprijs en looptijd) met bèta nul verloor bij hen ongeveer drie procent per week,
+terwijl zo'n positie onder het CAPM de
+rente zou moeten verdienen. Broadie, Chernov en Johannes relativeerden die verliezen,
+omdat het gemiddelde rendement van een put zo onzeker is dat zulke verliezen met
+Black-Scholes verenigbaar blijven
+{cite}`BroadieChernovJohannes2009`.
 
 ### Marges en de verkoper van puts
 
-*Waarom zou dit waar zijn?* De verkoper van een put belooft te betalen als de index daalt,
-en het onderpand dat de beurs vraagt groeit met die belofte. Dat is de gehefboomde
-arbitrageur uit [](#04-22-risk-management), maar met een verlies dat in een sprong komt.
+Een verkoper van puts met hefboom gaat al failliet bij een crash die veel kleiner is dan de
+daling waarbij hij het volle notionele bedrag moet betalen. Deze verkoper is de
+gehefboomde arbitrageur
+uit [](#04-22-risk-management), maar dan met een verlies dat in één sprong komt. Laat een
+belegger met eigen vermogen $E$ een aantal $n$ puts verkopen met uitoefenprijs
+$K = (1-k)S_0$ tegen premie $P_0 = p_0 S_0$, en noem $L = nK/E$ zijn *notionele hefboom*
+(de nominale verplichting per dollar eigen vermogen).
 
-Laat een belegger met eigen vermogen $E$ een aantal $n$ puts verkopen met uitoefenprijs
-$K = (1-k)S_0$ tegen premie $P_0 = p_0 S_0$, en noem $L = nK/E$ zijn *notionele
-hefboom* (de nominale verplichting per euro eigen vermogen).
-
-:::{prf:proposition} Ruïnedrempel van een short put
+:::{prf:proposition} Ruïnedrempel van een verkochte put
 :label: prop-opties-crashrisico-ruine
 
 Een onmiddellijke daling van de index met een fractie $j$ vaagt het eigen vermogen
@@ -532,10 +531,10 @@ minstens weg zodra
 
 ```{math}
 :label: eq-opties-crashrisico-ruine
-j \;\geq\; j^{*} = k + p_0 + \frac{1-k}{L} .
+j \;\geq\; j^{*} = k + p_0 + \frac{1-k}{L} ,
 ```
 
-Een volledig gecollateraliseerde verkoper ($L \leq 1$) kan dus niet failliet gaan, een
+zodat een volledig gecollateraliseerde verkoper ($L \leq 1$) niet failliet kan gaan. Een
 verkoper met $L = 5$ en $k = 5\%$ gaat failliet bij een crash van ongeveer $24\%$.
 :::
 
@@ -545,33 +544,40 @@ verlies ten opzichte van de ontvangen premie is minstens $n\bigl(K - (1-j)S_0 - 
 Dit is minstens $E = nK/L$ als $(1-k) - (1-j) - p_0 \geq (1-k)/L$. $\square$
 :::
 
-Net als in [](#prop-risk-management-drempel) daalt de drempel met $1/L$ terwijl de
-Sharpe-ratio niet van $L$ afhangt. De *margin call* (de eis van de beurs of broker om
-onderpand bij te storten, op straffe van gedwongen sluiting) komt eerder dan de ruïne,
-omdat de beurs een buffer boven de intrinsieke waarde eist; wie niet kan bijstorten, koopt
-terug tegen de prijs van dat moment. Saretto en Santa-Clara namen die regels mee voor
-S&P 500-futuresopties (januari 1985 – mei 2001) en SPX-opties (1996–2002). In de werkdocumentversie verdient een verkochte put op 10% onder de
-koers met de kortste looptijd "59.1% per month on average, with a SR of 0.358" (per maand,
-tegen $0{,}189$ voor de futures), met een scheefheid van $-11{,}06$; transactiekosten
-drukken het rendement van short puts "4% to 6.9%", en "taking margin calls into account
-turns the Sharpe ratio of some of the best strategies negative". Hun conclusie: "Our
-results support the existence of large misspricings in option markets which cannot be
-arbitraged away due to a combination of high transaction costs and heavy margin
-requirements" {cite}`SarettoSantaClara2009`. Dat is de Shleifer-Vishny-logica uit
-[](#04-23-behavioral), met de verliesspiraal uit [](#eq-risk-management-spiraal).
+De drempel daalt dus met $1/L$, net als de verbreding waarbij het gehefboomde fonds in
+[](#prop-risk-management-drempel) moet stoppen, terwijl de
+Sharpe-ratio niet van $L$ afhangt. De *margin call* (de eis om onderpand bij te storten, op
+straffe van gedwongen sluiting) komt nog eerder, omdat de beurs een buffer boven de
+intrinsieke waarde eist. Saretto en Santa-Clara namen die regels mee voor opties op de S&P
+500 van 1985 tot 2002 {cite}`SarettoSantaClara2009`. In hun werkdocumentversie verdient een
+verkochte put op 10% onder de koers gemiddeld $59{,}1\%$ van de ontvangen premie per
+maand, met een scheefheid van
+$-11{,}06$. Die scheefheid is het mechanisme van de propositie, want één crash vaagt in één
+keer jaren premie weg.
 
-## Simulatie: sprongen, smirk en een verkoper van puts
+Als transactiekosten en margin calls worden meegenomen, wordt de Sharpe-ratio van sommige
+van
+de beste strategieën negatief. De auteurs concluderen dat optiemarkten grote mispricings
+bevatten die door die kosten en marge-eisen niet weg te arbitreren zijn. Die conclusie
+volgt de logica van Shleifer en Vishny uit [](#04-23-behavioral) en de verliesspiraal uit
+[](#eq-risk-management-spiraal), waarin een arbitrageur die verliest moet verkopen, zodat
+de prijs verder van zijn waarde raakt.
 
-### (a) Een gekalibreerd sprongmodel en Breeden-Litzenberger op gesimuleerde prijzen
+### Numerieke oplossing: een gekalibreerd sprongmodel
 
-We kalibreren [](#eq-opties-crashrisico-merton-sde) in de orde van grootte van Santa-Clara
-en Yan: diffusievolatiliteit $15\%$, een gemiddelde sprong van $-30\%$ met spreiding
-$\delta_J = 10\%$, een risiconeutrale intensiteit van $0{,}165$ en een werkelijke van $0{,}078$
-per jaar, en $r = 3\%$. Met een diffusiepremie $\sigma\eta = 3{,}5\%$ geeft
-[](#prop-opties-crashrisico-premie) een equity premium van ongeveer zes procent, waarvan
-iets meer dan twee procentpunt crashpremie. De implementatie van
-[](#thm-opties-crashrisico-merton) gebruikt de Black-formule, zodat dezelfde functies
-straks op SPY-opties werken.
+Een concrete kalibratie laat zien dat één crashtoestand genoeg is voor een steile smirk en
+een crashpremie van ruim twee procentpunt. We kiezen de orde van grootte van Santa-Clara en
+Yan:
+
+- een diffusievolatiliteit van 15% en een rente van 3% per jaar;
+- een gemiddelde sprong van $-30\%$ met spreiding $\delta_J = 10\%$;
+- een sprongintensiteit van $0{,}165$ per jaar onder $\mathbb Q$ en $0{,}078$ onder
+  $\mathbb P$;
+- een diffusiepremie $\sigma\eta$ van 3,5%.
+
+De code rekent [](#thm-opties-crashrisico-merton) uit met de Black-formule voor opties op
+een
+termijnkoers, zodat dezelfde functies straks ook op SPY-opties werken.
 
 ```{code-cell} ipython3
 def black_price(F, K, T, sigma, DF, kind="call"):
@@ -640,17 +646,19 @@ smirk_table = pd.DataFrame(
 (100 * smirk_table).round(2)
 ```
 
-De sprongpremie is $2{,}61\%$ van een equity premium van $6{,}11\%$, iets meer dan de
-"bit less than one third" van Santa-Clara en Yan. De risiconeutrale volatiliteit is
-$21{,}4\%$, de werkelijke $18{,}3\%$: ruim drie volatiliteitspunten variance risk premium, in
-de orde van [](#fig-black-scholes-vrp). De smirk ([](#fig-opties-crashrisico-merton)) loopt
-bij één maand van $42{,}3\%$ op 80% van de spot naar $16{,}7\%$ at-the-money, bij een jaar
-van $23{,}6\%$ naar $19{,}7\%$.
+Volgens [](#prop-opties-crashrisico-premie) is de crashpremie
+$(0{,}165 - 0{,}078) \cdot 0{,}30 = 2{,}61\%$, ruim twee vijfde van een aandelenpremie van
+$6{,}11\%$. De risiconeutrale volatiliteit is $21{,}4\%$ en de werkelijke $18{,}3\%$, een
+variance risk premium van ruim drie volatiliteitspunten. In de tabel daalt de implied
+volatility bij één maand van $42{,}3\%$ op 80% van de spot naar $16{,}7\%$ at-the-money,
+terwijl ze bij een jaar veel vlakker loopt. De diffusiespreiding groeit namelijk met de
+looptijd, terwijl één sprong even groot
+blijft, zodat een sprong van $-30\%$ over een jaar veel minder uitsteekt en het mengsel
+[](#eq-opties-crashrisico-merton) dichter bij een normale verdeling komt.
 
-Nu de omgekeerde weg: twee miljoen koersen op één maand onder $\mathbb Q$, calls als
-gemiddelde verdisconteerde payoff, en [](#thm-opties-crashrisico-bl) als tweede differentie
-met $\Delta K = 2$, $1$ en $0{,}25$. Ter vergelijking: de exacte prijzen, en de exacte
-prijzen met een afrondingsfout tot een halve cent.
+Daarna gaan we de omgekeerde weg. We simuleren twee miljoen koersen op één maand onder
+$\mathbb Q$ en nemen de tweede differentie uit [](#thm-opties-crashrisico-bl) van de
+gesimuleerde, de exacte en de afgeronde callprijzen.
 
 ```{code-cell} ipython3
 T_BL, N_MC = 1 / 12, 2_000_000
@@ -687,6 +695,15 @@ for dK in (2.0, 1.0, 0.25):
 pd.DataFrame(bl_rows).set_index(["Delta K", "prijzen"]).round(5)
 ```
 
+Met exacte prijzen daalt de fout met $\Delta K^2$, en met Monte Carlo-prijzen blijft ze door
+simulatieruis steken. Een afronding op een halve cent laat de fout daarentegen exploderen,
+want bij $\Delta K = 0{,}25$ is de RMSE $0{,}113$, 57 keer zoveel als bij $\Delta K = 2$.
+Dichtere uitoefenprijzen maken het dus erger, en daarom fitten we in de replicatie eerst een
+gladde smile.
+
+De figuur toont links de smirk per looptijd en rechts de tweede bult in de dichtheid rond
+een koers van 70.
+
 ```{code-cell} ipython3
 :label: cel-opties-crashrisico-merton
 :tags: [hide-input]
@@ -722,32 +739,46 @@ plt.show()
 :width: 100%
 
 Links: één crashtoestand volstaat voor een smirk die steil is bij korte en vlak bij lange
-looptijden. Rechts: de risiconeutrale dichtheid heeft een tweede bult rond een koers van
-70, de crash, die de lognormale verdeling met dezelfde at-the-money-volatiliteit volledig
-mist; Breeden-Litzenberger vindt haar uit gesimuleerde prijzen terug.
+looptijden. Rechts: de risiconeutrale dichtheid heeft een tweede bult rond 70, de crash, die
+de lognormale verdeling met dezelfde at-the-money-volatiliteit volledig mist.
 :::
 
-Met exacte prijzen daalt de fout met $\Delta K^2$; met Monte Carlo-prijzen blijft ze bij
-$\Delta K = 0{,}25$ op $0{,}00012$ steken (simulatieruis). Met een halve cent afronding
-explodeert ze: de RMSE is $0{,}002$ bij $\Delta K = 2$, $0{,}007$
-bij $\Delta K = 1$ en $0{,}113$ bij $\Delta K = 0{,}25$ — groter dan de hoogste waarde
-van de dichtheid zelf ($0{,}09$), een factor 57 bij een factor 64 in $1/\Delta K^2$. Dichter
-liggende uitoefenprijzen maken het dus erger, tenzij men eerst glad strijkt; daarom fitten
-we in de replicatie eerst een smile.
+De risiconeutrale dichtheid is dus tweetoppig, en Breeden-Litzenberger vindt de tweede top
+uit
+gesimuleerde prijzen terug. Een belegger die alleen de at-the-money-volatiliteit kent, ziet
+de crash niet.
 
-### (b) Dertig jaar puts verkopen
+```{admonition} Samengevat
+:class: tip
 
-Nu de werkelijke maat. Een belegger verkoopt elke maand (21 handelsdagen) een put op 5%
-onder de koers, en in een tweede variant at-the-money zoals de Cboe PutWrite-index. In de
-*gecollateraliseerde* variant staat de uitoefenprijs in kas: de belegger kan niet failliet,
-en het rendement is premie plus rente min uitbetaling, gedeeld door $K$. In de
-*gehefboomde* variant stort hij een veelvoud van een gestileerde marge-eis (premie plus
-het maximum van 15% van de index min het bedrag waarmee de put out-of-the-money is, en
-10% van de uitoefenprijs; gestileerd, niet de exacte beursregel), wordt hij dagelijks
-gewaardeerd met [](#eq-opties-crashrisico-merton), en wordt hij *uitgeschud* (gedwongen
-tegen de dagprijs terug te kopen en te stoppen) zodra zijn vermogen onder de eis zakt.
-Tweeduizend paden van dertig jaar; prijzen uit $\mathbb Q$, koersen uit $\mathbb P$; een
-crash is een sprong van meer dan $-15\%$.
+- De kromming van callprijzen is de verdisconteerde risiconeutrale dichtheid,
+  [](#eq-opties-crashrisico-bl), en uit dezelfde prijzen volgen de momenten,
+  [](#eq-opties-crashrisico-spanning).
+- De variance risk premium [](#eq-opties-crashrisico-vrp) is positief omdat de variantie hoog
+  is als de SDF hoog is, en groter naarmate de volatiliteit sterker stijgt na dalingen.
+- Sprongen maken de smirk, het steilst bij korte looptijden, [](#eq-opties-crashrisico-merton).
+  Een hogere $\lambda^{\mathbb Q}$ bij gelijke $\lambda^{\mathbb P}$ verhoogt de crashpremie in
+  [](#eq-opties-crashrisico-premie), in onze kalibratie 2,6 van 6,1 procentpunt.
+- Een hogere hefboom $L$ verlaagt de crash die een verkoper van puts ruïneert,
+  [](#eq-opties-crashrisico-ruine).
+
+```
+
+## Simulatie: dertig jaar puts verkopen
+
+We willen weten welke Sharpe-ratio een onderzoeker met twintig jaar data ziet bij het
+verkopen van puts, terwijl de crashpremie uit de numerieke oplossing werkelijk bestaat. Een
+belegger verkoopt elke maand een put op 5% onder de koers, en in een tweede variant
+at-the-money, zoals de Cboe PutWrite-index. In de *gecollateraliseerde* variant staat de
+uitoefenprijs in kas, zodat hij niet failliet kan gaan.
+
+In de *gehefboomde* variant stort hij een veelvoud van een gestileerde marge-eis en wordt
+hij
+dagelijks gewaardeerd met [](#eq-opties-crashrisico-merton). Zakt zijn vermogen onder de
+eis,
+dan wordt hij *uitgeschud*, wat betekent dat hij tegen de dagprijs moet terugkopen en
+stoppen. We simuleren tweeduizend paden van dertig jaar, met prijzen uit $\mathbb Q$ en
+koersen uit $\mathbb P$, en noemen een sprong van meer dan $-15\%$ een crash.
 
 ```{code-cell} ipython3
 def merton_put_fast(S, K, tau):
@@ -792,11 +823,15 @@ for month in range(12 * YEARS):
         cash = cash * np.exp(R_SIM * DT)
         P_t = merton_put_fast(S, K, TAU - day * DT) if day < DAYS_M else np.maximum(K - S, 0.0)
         marked = cash - contracts * P_t
-        if day < DAYS_M:                                        # daily margin check, forced close-out
+        if day < DAYS_M:
+            # during the month: a margin call forces a close-out at today's price
             call = alive & (marked < contracts * margin_requirement(S, K, P_t))
         else:
+            # expiry: the seller is ruined only if the payout exceeds his cash
             call = alive & (marked <= 0)
-        equity = np.where(alive & ~call & (day == DAYS_M), marked, equity)
+            # expiry without ruin: the marked-to-market equity funds next month
+            equity = np.where(alive & ~call, marked, equity)
+        # close-out: equity is what is left after buying back, floored at zero
         equity = np.where(call, np.maximum(marked, 0.0), equity)
         alive &= ~call
     growth_rf = np.exp(R_SIM * TAU)
@@ -812,6 +847,12 @@ print(f"{N_PATHS} paden x {YEARS} jaar; crashes per jaar: {crash.mean() * 12:.4f
 print(f"put 5% OTM bij S = 100: premie {p0_start:.4f}, initiële marge "
       f"{float(margin_requirement(100.0, 95.0, p0_start)):.4f}")
 ```
+
+Crashes komen $0{,}076$ keer per jaar voor, dicht bij de kalibratie. De put op 5% onder de
+koers kost bij een index van 100 een premie van $0{,}51$, tegen een marge-eis van $10{,}51$.
+
+Voor de gecollateraliseerde strategieën berekenen we de Sharpe-ratio, de scheefheid en de
+maximale drawdown, per pad en over alle paden samen.
 
 ```{code-cell} ipython3
 def path_stats(returns):
@@ -835,38 +876,40 @@ sim_summary = pd.DataFrame(
             "max drawdown (mediaan)": np.median(path_stats(r)["max drawdown"])}
      for name, r in strategies.items()}
 ).T
+sim_summary.round(3)
+```
+
+Over alle paden samen heeft de verkoper van puts op 5% onder de koers een Sharpe-ratio van
+$0{,}326$, tegen $0{,}355$ voor de markt. Omdat in dit model alleen de sprongen onder
+$\mathbb Q$ duurder zijn en de gewone schommelingen niet, is die Sharpe-ratio een ondergrens
+voor wat een verkoper haalt in een markt waarin ook schommelingen in de volatiliteit een
+premie dragen. De maandelijkse scheefheid van de verkochte put is
+$-10{,}5$, dicht bij de waarde van Saretto en Santa-Clara. Per pad van dertig jaar loopt
+de Sharpe-ratio van de verkoper tussen het 5%- en het 95%-kwantiel van nul tot $1{,}79$.
+
+De tweede tabel geeft voor de gehefboomde verkoper de notionele hefboom en de kans om binnen
+dertig jaar uitgeschud te worden.
+
+```{code-cell} ipython3
 margin_summary = pd.DataFrame(
     {"kapitaal / initiële marge": MULTIPLES.ravel(),
      "notionele hefboom (gem.)": np.nanmean(np.array(notional), axis=(0, 2)),
      "P(uitgeschud binnen 30 jaar)": 1 - alive.mean(1)}
 ).set_index("kapitaal / initiële marge")
-sim_summary.round(3)
-```
-
-In de populatie — alle tweeduizend paden samen, zestigduizend jaar — heeft de
-gecollateraliseerde verkoper van 5%-OTM-puts een Sharpe-ratio van $0{,}33$, de
-at-the-money-verkoper $0{,}36$ en de markt $0{,}36$. In onze kalibratie zijn alleen de
-sprongen duurder onder $\mathbb Q$; zonder de premie op volatiliteitsrisico die
-Santa-Clara en Yan daarnaast vinden, is dit een ondergrens. De maandelijkse scheefheid van de short put is $-10{,}5$, dicht bij de $-11{,}06$ die
-Saretto en Santa-Clara voor hun 10%-OTM-put rapporteren. De mediane maximale drawdown is
-$-32\%$ tegen $-47\%$ voor de markt, maar de spreiding van de Sharpe-ratio over
-dertig jaar is groot: van $0{,}00$ tot $1{,}79$ tussen het 5%- en 95%-kwantiel, tegen
-$0{,}06$ tot $0{,}69$ voor de markt.
-
-```{code-cell} ipython3
 margin_summary.round(3)
 ```
 
-De marge-eis bij de start is $10{,}51$ per put op een index van 100, voor een premie van
-$0{,}51$. Wie tien keer de marge stort, heeft een notionele hefboom onder één en wordt in
-een half procent van de paden uitgeschud. Wie vijf keer de marge stort ($L = 1{,}8$), in
-80%; bij drie keer ($L = 3$) in 89%, bij twee keer ($L = 4{,}5$) vrijwel altijd. Volgens
-[](#prop-opties-crashrisico-ruine) vraagt ruïne bij $L = 1{,}8$ een crash van ruim 58%, maar
-de margin call komt veel eerder: een sprong van $-30\%$ maakt de put 25 punten
-in-the-money, en de nieuwe eis is premie plus 15% van de lagere index. Uitgeschud worden
-is hier nagenoeg de eerste crash meemaken.
+Een verkoper die tien keer de marge stort, heeft een hefboom onder één en wordt in een
+half procent van
+de
+paden uitgeschud. Bij vijf keer de marge, een hefboom van $1{,}8$, gebeurt dat al in 80% van
+de paden. Ruïne vraagt bij die hefboom volgens [](#prop-opties-crashrisico-ruine) een crash
+van ruim 58%, maar de margin call komt veel eerder, omdat een sprong van $-30\%$ de put
+diep in het geld brengt. Uitgeschud worden is hier dus bijna hetzelfde als de eerste crash
+meemaken.
 
-Tot slot motief 1. Welke Sharpe-ratio ziet een onderzoeker die twintig jaar data heeft?
+Welke Sharpe-ratio ziet dan een onderzoeker met twintig jaar data? We knippen elk pad na 240
+maanden af en splitsen de steekproeven naar de vraag of er een crash in zat.
 
 ```{code-cell} ipython3
 window = 240
@@ -883,6 +926,12 @@ pd.DataFrame(
     index=["geen crash in 20 jaar", "minstens één crash"],
 ).round(3)
 ```
+
+Zonder crash ligt de mediane Sharpe-ratio van de verkoper op $1{,}85$, met minstens één
+crash
+op $0{,}28$. Links in de figuur liggen de twee histogrammen ver uit elkaar, en rechts
+stijgt de kans op
+uitschudden steil met de hefboom.
 
 ```{code-cell} ipython3
 :label: cel-opties-crashrisico-shortput
@@ -912,23 +961,22 @@ plt.show()
 :label: fig-opties-crashrisico-shortput
 :width: 100%
 
-Links: twintig jaar short puts zonder crash geven een Sharpe-ratio rond de twee, met
-één crash rond de populatiewaarde van een derde. De twee verdelingen overlappen nauwelijks:
-de steekproef-Sharpe meet vooral óf er een crash in de steekproef zat. Rechts: de kans om
-uitgeschud te worden stijgt steil met de hefboom, lang voordat het vermogen op nul staat.
+Links: twintig jaar verkochte puts zonder crash geven een Sharpe-ratio rond de twee, met één
+crash rond de populatiewaarde van een derde. Rechts: de kans om uitgeschud te worden stijgt
+steil met de hefboom, lang voordat het vermogen op nul staat.
 :::
 
-In 21,4% van de twintigjarige steekproeven ([](#fig-opties-crashrisico-shortput)) komt
-geen enkele crash voor, precies wat een
-Poisson-proces met $0{,}076$ crashes per jaar voorspelt ($e^{-20 \cdot 0{,}076} = 0{,}22$). In
-die steekproeven is de mediane Sharpe-ratio $1{,}85$, meer dan vijf keer de populatiewaarde
-van $0{,}33$, en in *elke* steekproef zonder crash is ze meer dan het dubbele. Een
-onderzoeker met zo'n steekproef rapporteert naar alle maatstaven een significante anomalie:
-de gebruikelijke standaardfout van een Sharpe-ratio over twintig jaar is ongeveer
-$\sqrt{(1 + 1{,}85^2/2)/20} = 0{,}35$, dus $t \approx 5$, maar die formule veronderstelt
-dunne staarten. Dat is de "extreme sampling uncertainty" van Broadie, Chernov en Johannes,
-en het praktijkmotief in cijfers: een steekproef zonder crash leert de verkoper iets wat de
-prijs niet weet, en het is niet waar.
+De twee verdelingen overlappen nauwelijks, zodat de Sharpe-ratio van een steekproef vooral
+meet of er een crash in zat. In 21,4% van de steekproeven komt geen crash voor, zoals een
+Poisson-proces voorspelt, want $e^{-20 \cdot 0{,}076} = 0{,}22$. In elk van die steekproeven
+is de Sharpe-ratio meer dan het dubbele van de populatiewaarde.
+
+Een onderzoeker met zo'n steekproef rapporteert een significante anomalie. De gebruikelijke
+standaardfout van een Sharpe-ratio over twintig jaar is $\sqrt{(1 + 1{,}85^2/2)/20} = 0{,}37$,
+zodat hij een $t$-waarde rond vijf vindt, maar die formule veronderstelt dunne staarten.
+Net als een gemiddeld rendement over enkele decennia is ook de Sharpe-ratio dus slecht
+gemeten zodra het rendement van zeldzame crashes afhangt. Dat een rustige steekproef de
+premie overdrijft, verwachtten we al, maar niet dat de overdrijving zo groot zou zijn.
 
 ## Replicatie op echte data
 
@@ -942,27 +990,23 @@ Prices*, Journal of Business 1978 {cite}`BreedenLitzenberger1978`; Bakshi, Kapad
 Madan, *Stock Return Characteristics, Skew Laws, and the Differential Pricing of
 Individual Equity Options*, Review of Financial Studies 2003 {cite}`BakshiKapadiaMadan2003`.
 
-**Wat.** De methode van Breeden en Litzenberger, en de bevinding van Bakshi, Kapadia en
-Madan dat de risiconeutrale verdeling van de index sterk linksscheef is. Hun tabellen
-hebben we niet ingezien; we toetsen alleen het teken, en vergelijken met de werkelijke
-verdeling over dezelfde horizon.
+**Wat.** De bevinding dat de risiconeutrale verdeling van de index sterk linksscheef is,
+vergeleken met de werkelijke verdeling over dezelfde horizon.
 
-**Data hier.** Een momentopname van de SPY-optieketen van 11 september 2026 (28
-expiraties) via `hap.data.yahoo_options("SPY", 28)`, met de expiraties van 9 oktober
-(28 dagen) en 18 december 2026 (98 dagen); rente `hap.data.fred("DGS3MO")`; historische
-maand- en kwartaalrendementen uit `hap.data.market_daily()`, 1926–2026.
+**Data hier.** De SPY-optieketen van 11 september 2026 met expiraties op 28 en 98 dagen, de
+driemaandsrente en dagrendementen van de markt over 1926–2026, alle via `hap.data`.
 
-**Verschil met het origineel.** Bakshi, Kapadia en Madan gebruikten OEX-opties en
-modelvrije momenten; wij gebruiken één dag, Amerikaanse opties op een ETF, een SVI-fit
-(de vijfparametervorm van Gatheral voor de totale implied variance) binnen het bereik van
-genoteerde uitoefenprijzen, en daarna [](#eq-opties-crashrisico-bl). Buiten dat bereik
-extrapoleren we niet; de massa die buiten valt, rapporteren we.
+**Verschil met het origineel.** Bakshi, Kapadia en Madan gebruikten OEX-opties en modelvrije
+momenten, wij één dag opties op een ETF met een SVI-fit (de vijfparametervorm van Gatheral
+voor de totale implied variance). Buiten de genoteerde uitoefenprijzen extrapoleren we niet.
 
-**Verwachte afwijking.** Niveaus hangen van de dag af. Het teken moet identiek zijn: de
-risiconeutrale scheefheid is voor beide looptijden negatief en negatiever dan de
-historische scheefheid over 1926–2026 op dezelfde horizon; de dichtheid is nergens
-negatief. Is de scheefheid positief, dan zit de fout in de code.
+**Verwachte afwijking.** Niveaus hangen van de dag af, maar de risiconeutrale scheefheid
+moet voor beide looptijden negatief zijn en negatiever dan de historische, en de dichtheid
+nergens negatief. Een positieve scheefheid wijst op een fout in de code.
 ```
+
+We laden de optieketen en de rente, en bepalen per expiratie de termijnkoers uit
+put-call-pariteit en de implied volatility van de opties buiten het geld.
 
 ```{code-cell} ipython3
 chain = hap_data.yahoo_options("SPY", 28)
@@ -1034,6 +1078,11 @@ smiles = {label: smile_for_expiry(T) for label, T in (("1 maand", 1 / 12), ("3 m
 print(f"waarderingsmoment {valuation}, spot {spot:.2f}, r = {r_cc:.4f}")
 ```
 
+De koers was op het waarderingsmoment $764{,}29$ en de rente $3{,}82\%$. Voor beide
+looptijden
+fitten we nu de smile, nemen de tweede afgeleide en vergelijken de momenten met die van
+historische rendementen over dezelfde horizon.
+
 ```{code-cell} ipython3
 daily_log = np.log1p(hap_data.market_daily()["Mkt"])
 rn_rows, densities = {}, {}
@@ -1055,6 +1104,26 @@ for label, sm in smiles.items():
             "vol (jaarbasis)": agg.std() * np.sqrt(252 / h), "scheefheid": agg.skew(), "exces-kurtosis": agg.kurt()}
 pd.DataFrame(rn_rows).T.round(4)
 ```
+
+De tabel hieronder zet de risiconeutrale en de historische momenten naast de verwachting.
+
+| grootheid | verwachting | 1 maand | 3 maanden |
+|---|---|---|---|
+| scheefheid onder $\mathbb Q$ | negatief | $-1{,}23$ | $-1{,}30$ |
+| historische scheefheid, 1926–2026 | minder negatief | $-0{,}61$ | $-0{,}55$ |
+| laagste waarde van de dichtheid | niet negatief | $0{,}103$ | $0{,}014$ |
+
+**Geslaagd.** Het teken klopt voor beide looptijden, en de optiemarkt maakt de linkerstaart
+ongeveer twee keer zo scheef als een eeuw data. De grootte is minder robuust, want over
+1990–2026
+is de historische kwartaalscheefheid $-1{,}33$, even negatief als de risiconeutrale, terwijl
+de momenten rechtstreeks uit de prijzen met [](#prop-opties-crashrisico-momenten) een
+scheefheid van $-2{,}1$ en $-2{,}3$ geven (oefening 3). De eeuw blijft de maatstaf, omdat
+een scheefheid uit ruim drie decennia kwartalen vooral meet hoeveel crisiskwartalen erin
+vielen.
+
+Rechts in de figuur ligt de linkerstaart ver boven de normale verdeling met dezelfde
+at-the-money-volatiliteit.
 
 ```{code-cell} ipython3
 :label: cel-opties-crashrisico-spy-dichtheid
@@ -1088,25 +1157,14 @@ plt.show()
 :label: fig-opties-crashrisico-spy-dichtheid
 :width: 100%
 
-Links: de SVI-fit volgt de genoteerde implied volatilities op een tiende volatiliteitspunt.
-Rechts: de risiconeutrale dichtheid van SPY heeft een linkerstaart die ordes van grootte
-dikker is dan de normale verdeling met dezelfde at-the-money-volatiliteit, en een
-rechterstaart die dunner is.
+Links: de SVI-fit volgt de genoteerde implied volatilities op ongeveer een tiende
+volatiliteitspunt. Rechts: de risiconeutrale dichtheid van SPY heeft een linkerstaart die
+ordes van grootte dikker is dan de normale verdeling, en een rechterstaart die dunner is.
 :::
 
-De SVI-fit wijkt $0{,}11$ en $0{,}08$ volatiliteitspunt af, de dichtheid
-([](#fig-opties-crashrisico-spy-dichtheid)) is nergens negatief, en binnen de genoteerde
-uitoefenprijzen ligt $99{,}1\%$ en $98{,}7\%$ van de massa. De risiconeutrale scheefheid is $-1{,}23$ op een
-maand en $-1{,}30$ op een kwartaal. Historisch was de scheefheid van niet-overlappende
-maandrendementen over 1926–2026 $-0{,}61$ en van kwartaalrendementen $-0{,}55$: de
-optiemarkt maakt de linkerstaart ongeveer twee keer zo scheef als een eeuw data. Twee
-kanttekeningen. Over 1990–2026 is de historische kwartaalscheefheid $-1{,}33$, even
-negatief als de risiconeutrale: welke crashes in de steekproef zitten, bepaalt de
-vergelijking (motief 1 in het derde moment). En de exces-kurtosis ($2{,}7$ en $3{,}0$) ligt
-*onder* de historische ($5{,}4$ en $6{,}3$), omdat we de staart voorbij de laagste put
-afsnijden, op een rustige dag. Het teken van de scheefheid is robuust, de grootte niet:
-rechtstreeks uit de prijzen ([](#prop-opties-crashrisico-momenten)) is ze $-2{,}1$ en
-$-2{,}3$ ([](#ex-opties-crashrisico-2)).
+Binnen de genoteerde uitoefenprijzen ligt $99{,}1\%$ (één maand) en $98{,}7\%$ (drie
+maanden) van de massa, zodat de fit weinig mist. De dikke linkerstaart is de crash uit de
+numerieke oplossing, nu in marktprijzen.
 
 ### De variance risk premium als voorspeller
 
@@ -1116,28 +1174,24 @@ $-2{,}3$ ([](#ex-opties-crashrisico-2)).
 **Bron.** Bollerslev, Tauchen en Zhou, *Expected Stock Returns and Variance Risk Premia*,
 Review of Financial Studies 2009 {cite}`BollerslevTauchenZhou2009`.
 
-**Wat.** Tabel 2: regressies van het geannualiseerde excess rendement over $h$ maanden op
-de variance risk premium, januari 1990 – december 2007, met Hodrick-$t$-waarden.
-Gepubliceerd: bij $h = 1$ helling $0{,}39$ ($t = 1{,}76$, aangepaste $R^2$ $1{,}07\%$), bij
-$h = 3$ $0{,}47$ ($t = 2{,}86$, $6{,}82\%$), bij $h = 6$ $0{,}30$ ($2{,}15$, $5{,}42\%$), bij
-$h = 12$ $0{,}12$ ($1{,}00$, $1{,}23\%$), met "the largest t-statistic and maximum R2 occurring
-at the quarterly horizon".
+**Wat.** Tabel 2: regressies van het geannualiseerde overrendement over $h$ maanden op de
+variance risk premium, januari 1990 tot december 2007, met Hodrick-$t$-waarden.
 
-**Data hier.** $\mathrm{VRP}_t = \mathrm{VIX}_t^2/12 - \mathrm{RV}_t$ in maand-$\%^2$, met de
-VIX van FRED (`hap.data.fred("VIXCLS")`) op maandeinde en $\mathrm{RV}_t$ de som van
-gekwadrateerde dagelijkse log-rendementen van de French-marktportefeuille in maand $t$
-(`hap.data.market_daily()`); excess log-rendementen uit `hap.data.market_monthly()`.
+**Data hier.** $\mathrm{VRP}_t = \mathrm{VIX}_t^2/12 - \mathrm{RV}_t$ in maand-$\%^2$, met
+$\mathrm{RV}_t$ de som van gekwadrateerde dagelijkse log-rendementen van de markt in maand
+$t$, via `hap.data`. De steekproef loopt door tot juli 2026.
 
-**Verschil met het origineel.** BTZ berekenen $\mathrm{RV}$ uit vijfminutenrendementen van de
-S&P 500; onze dagelijkse versie is ruiziger. Onze $t$-waarden zijn Newey-West met $h-1$
-vertragingen (`hap.long_horizon_regression`), die bij overlappende waarnemingen doorgaans
-hoger uitvallen dan Hodrick-$t$-waarden. We verlengen de steekproef tot juli 2026.
+**Verschil met het origineel.** Het origineel berekent $\mathrm{RV}$ uit
+vijfminutenrendementen, zodat onze versie ruiziger is. Onze Newey-West-$t$-waarden met $h-1$
+lags vallen doorgaans hoger uit dan die van Hodrick.
 
-**Verwachte afwijking.** Op 1990–2007 een positieve helling bij elke horizon, in de orde
-van de gepubliceerde, met $t > 2$ bij de kwartaalhorizon en de hoogste $R^2$ tussen drie en
-zes maanden. Na 2007 zwakker. Een negatieve helling op 1990–2007 betekent een fout in de
-code.
+**Verwachte afwijking.** Op 1990–2007 een positieve helling bij elke horizon, in de orde van
+de gepubliceerde, met $t > 2$ bij drie maanden en de hoogste $R^2$ tussen drie en zes
+maanden. Een negatieve helling op 1990–2007 wijst op een fout in de code.
 ```
+
+We bouwen de premie uit de VIX en de gerealiseerde variantie en schatten de regressie voor
+drie perioden en zes horizonnen.
 
 ```{code-cell} ipython3
 vix = hap_data.fred("VIXCLS")["VIXCLS"].dropna()
@@ -1162,8 +1216,29 @@ btz_table = pd.concat(btz_rows).set_index(["periode", "horizon"])
 print(f"{btz.index[0]:%Y-%m} t/m {btz.index[-1]:%Y-%m}: gemiddelde IV {btz['IV'].mean():.2f}, "
       f"RV {btz['RV'].mean():.2f}, VRP {btz['VRP'].mean():.2f} (maand-%^2); VRP > 0 in "
       f"{(btz['VRP'] > 0).mean():.1%} van de maanden")
-btz_table.round(3)
+btz_table.rename(columns={"beta": "helling", "se": "standaardfout", "tstat": "t-waarde",
+                          "r2": "R2", "nobs": "waarnemingen"}).round(3)
 ```
+
+De schattingen over 1990–2007 staan hieronder naast die uit tabel 2 van het origineel. De
+$t$-waarden zijn niet één op één vergelijkbaar, omdat de twee methoden verschillen.
+
+| horizon (maanden) | helling origineel | helling hier | $t$ origineel (Hodrick) | $t$ hier (Newey-West) | aangepaste $R^2$ origineel | aangepaste $R^2$ hier |
+|---|---|---|---|---|---|---|
+| 1 | $0{,}39$ | $0{,}42$ | $1{,}76$ | $1{,}66$ | $1{,}07\%$ | $1{,}3\%$ |
+| 3 | $0{,}47$ | $0{,}45$ | $2{,}86$ | $3{,}68$ | $6{,}82\%$ | $5{,}3\%$ |
+| 6 | $0{,}30$ | $0{,}35$ | $2{,}15$ | $3{,}69$ | $5{,}42\%$ | $7{,}2\%$ |
+| 12 | $0{,}12$ | $0{,}22$ | $1{,}00$ | $2{,}24$ | $1{,}23\%$ | $5{,}3\%$ |
+
+**Geslaagd** voor 1990–2007. De hellingen hebben het goede teken en de gepubliceerde orde
+van
+grootte, de $t$-waarde bij drie maanden ligt ruim boven twee en de hoogste $R^2$ valt bij
+zes
+maanden. Daarna houdt het verband op, want over 1990–2026 is geen enkele helling significant
+($t \leq 0{,}6$).
+
+Het linkerpaneel toont de diep negatieve maanden, het rechter de $t$-waarden die na 2007
+wegzakken.
 
 ```{code-cell} ipython3
 :label: cel-opties-crashrisico-btz
@@ -1181,7 +1256,7 @@ for i, period in enumerate(["1990-2007", "1990-2026", "2008-2026"]):
     axes[1].plot(btz_table.loc[period].index, btz_table.loc[period, "tstat"], "o-",
                  color=hap.plotting.COLORS[i], label=period)
 axes[1].axhline(1.96, color="black", lw=0.8, ls="--")
-axes[1].set_title("(b) Voorspelt de VRP het excess rendement?")
+axes[1].set_title("(b) Voorspelt de VRP het overrendement?")
 axes[1].set_xlabel("Horizon (maanden)")
 axes[1].set_ylabel("Newey-West $t$-waarde van de helling")
 axes[1].legend()
@@ -1193,27 +1268,20 @@ plt.show()
 :label: fig-opties-crashrisico-btz
 :width: 100%
 
-Links: de variance risk premium is in 87% van de maanden positief; de negatieve maanden
-zijn crisismaanden waarin de gerealiseerde variantie de VIX inhaalt (de twee diepste, maart
-2020 en oktober 2008, zijn afgekapt). Rechts: de voorspelkracht die Bollerslev, Tauchen en Zhou tot 2007
-vonden, is in de steekproef daarna verdwenen.
+Links: de variance risk premium is meestal positief, en de negatieve maanden zijn
+crisismaanden waarin de gerealiseerde variantie de VIX inhaalt (de twee diepste zijn
+afgekapt). Rechts: de voorspelkracht van vóór 2007 is daarna verdwenen.
 :::
 
-Over 1990–2007 komen de hellingen dicht bij de gepubliceerde: $0{,}42$ bij één maand
-(tegen $0{,}39$), $0{,}45$ bij drie maanden (tegen $0{,}47$), $0{,}35$ bij zes (tegen $0{,}30$)
-en $0{,}22$ bij twaalf (tegen $0{,}12$). De aangepaste $R^2$ is $1{,}3\%$, $5{,}3\%$, $7{,}2\%$
-en $5{,}3\%$, met het maximum bij zes maanden in plaats van drie; de Newey-West-$t$-waarden
-($1{,}66$, $3{,}68$, $3{,}69$, $2{,}24$) zijn zoals verwacht hoger dan die van Hodrick. Het
-teken, de orde van grootte en de bult tussen één en twaalf maanden zijn gerepliceerd.
-
-Daarna houdt het op. Over 1990–2026 is geen enkele helling significant ($t \leq 0{,}6$),
-en over 2008–2026 is de kwartaalhelling $0{,}05$ met $t = 0{,}35$. Het mechanisme is zichtbaar
-in [](#fig-opties-crashrisico-btz): in oktober 2008 en maart 2020 schoot de gerealiseerde variantie ver
-boven de VIX, werd de premie diep negatief, en volgden er juist hoge rendementen. Een
-voorspeller die de crash zelf als lage premie meet, voorspelt verkeerd op de momenten die
-voor het gemiddelde tellen. Het weerlegt [](#prop-opties-crashrisico-vrp) niet, maar toont
-hoe dun achttien jaar bewijs voor een rendementsvoorspeller is: motief 1, en het patroon
-van Goyal en Welch uit [](#04-20-voorspelbaarheid).
+De premie is in 87% van de maanden positief. In oktober 2008 en maart 2020 schoot de
+gerealiseerde variantie echter ver boven de VIX en werd de premie diep negatief. Na oktober
+2008 volgden nog verdere verliezen, maar na maart 2020 juist hoge rendementen. Een
+voorspeller die de crash zelf als lage premie meet, kan dus ver naast zitten op de momenten
+die het gemiddelde bepalen. Dat weerlegt niet dat de premie
+positief is omdat de SDF en de variantie samen stijgen ([](#prop-opties-crashrisico-vrp)),
+maar het laat zien hoe dun achttien jaar bewijs is,
+net
+als bij de voorspellers uit [](#04-20-voorspelbaarheid) die buiten de steekproef faalden.
 
 ### Verkopers van puts in het echt: de Cboe PutWrite-index
 
@@ -1225,26 +1293,26 @@ Journal of Financial Markets 2009 {cite}`SarettoSantaClara2009`; Israelov en Nie
 *Covered Calls Uncovered*, Financial Analysts Journal 2015 {cite}`IsraelovNielsen2015b`;
 Cboe, methodologie van de PutWrite-index {cite}`Cboe2026`.
 
-**Wat.** De bewering dat het verkopen van indexputs een aantrekkelijke risico-rendementsverhouding
-heeft met een extreme linkerstaart. De PUT-index verkoopt volgens zijn methodologie
-"SPX puts [...] struck at-the-money [...] on a monthly basis", gedekt door een
-T-bill-rekening; de BuyWrite-index BXM verkoopt calls op een aandelenportefeuille.
+**Wat.** De bewering dat indexputs verkopen een aantrekkelijke verhouding tussen rendement en
+risico heeft, met een extreme linkerstaart. De PUT-index verkoopt elke maand at-the-money
+SPX-puts, gedekt door schatkistpapier, en de BuyWrite-index BXM verkoopt calls.
 
-**Data hier.** Dagelijkse niveaus van `^PUT`, `^BXM` en `^SP500TR` via
-`hap.data.yahoo(...)`, maandrendementen september 1996 – juni 2026 (358 maanden),
-risicovrije rente uit `hap.data.market_monthly()`.
+**Data hier.** Dagelijkse niveaus van `^PUT`, `^BXM` en `^SP500TR` via `hap.data.yahoo(...)`,
+als maandrendementen van september 1996 tot juni 2026. De waarden vóór de lancering in 2007
+zijn teruggerekend.
 
-**Verschil met het origineel.** Saretto en Santa-Clara gebruikten individuele
-optiecontracten, OTM-puts en expliciete marges; de PUT-index is at-the-money en volledig
-gecollateraliseerd, dus zonder hefboom en zonder margin calls. De index heeft 1 juni 1988
-als basisdatum en werd op 20 juni 2007 gelanceerd, zodat de waarden daarvoor teruggerekend
-zijn; Yahoo levert de reeks pas vanaf augustus 1996.
+**Verschil met het origineel.** Saretto en Santa-Clara gebruikten afzonderlijke contracten,
+puts buiten het geld en expliciete marges, terwijl de PUT-index at-the-money is en zonder
+hefboom werkt.
 
 **Verwachte afwijking.** PUT heeft een lagere volatiliteit dan de S&P 500, een negatievere
-scheefheid en een hogere kurtosis. Het verschil in Sharpe-ratio is kleiner dan één
-standaardfout. In 2008 en in februari–maart 2020 verliest PUT een groot deel van wat de
-index verliest, ondanks een bèta ver onder één.
+scheefheid, een hogere kurtosis en een Sharpe-ratio binnen één standaardfout. In 2008 en
+begin 2020 verliest PUT een groot deel van wat de index verliest, ondanks een bèta ver onder
+één.
 ```
+
+We berekenen de overrendementen, de samenvattende statistieken, de verliezen in de twee
+crises en een regressie van elke strategie op de index.
 
 ```{code-cell} ipython3
 levels = hap_data.yahoo(["^GSPC", "^PUT", "^BXM"], "1986-01-01").join(hap_data.yahoo("^SP500TR", "1986-01-01"))
@@ -1265,9 +1333,39 @@ for name in cboe_excess:
     stats_cboe.loc[name, "t(alpha)"] = fit.tvalues.iloc[0]
     stats_cboe.loc[name, "beta"] = fit.params.iloc[1]
 print(f"{cboe.index[0]:%Y-%m} t/m {cboe.index[-1]:%Y-%m}, {len(cboe)} maanden")
+labels_nl = {"mean_ann": "gem. overrendement (jaar)", "std_ann": "volatiliteit (jaar)",
+             "sharpe_ann": "Sharpe-ratio (jaar)", "SE Sharpe": "standaardfout Sharpe",
+             "skew": "scheefheid", "kurtosis": "exces-kurtosis", "beta": "bèta"}
 stats_cboe[["mean_ann", "std_ann", "sharpe_ann", "SE Sharpe", "skew", "kurtosis", "max drawdown",
-            "nov 2007 - feb 2009", "feb - mrt 2020", "alpha (jaar)", "t(alpha)", "beta"]].T.round(3)
+            "nov 2007 - feb 2009", "feb - mrt 2020", "alpha (jaar)", "t(alpha)", "beta"]].rename(
+    columns=labels_nl).T.round(3)
 ```
+
+Over 358 maanden haalde PUT een iets hogere Sharpe-ratio dan de index, bij een veel lagere
+volatiliteit. De tabel hieronder zet de verwachtingen naast de uitkomsten.
+
+| grootheid | verwachting | S&P 500 | PUT |
+|---|---|---|---|
+| volatiliteit per jaar | PUT lager | $15{,}4\%$ | $10{,}5\%$ |
+| scheefheid | PUT negatiever | $-0{,}55$ | $-1{,}66$ |
+| scheefheid, één put 10% onder de koers (origineel) | veel negatiever dan PUT | | $-11{,}06$ |
+| exces-kurtosis | PUT hoger | $0{,}8$ | $6{,}8$ |
+| Sharpe-ratio (standaardfout) | verschil onder één standaardfout | $0{,}58$ ($0{,}20$) | $0{,}62$ ($0{,}20$) |
+| november 2007 – februari 2009 | groot deel van de index | $-51\%$ | $-32\%$ |
+| februari – maart 2020 | groot deel van de index | $-19{,}6\%$ | $-19{,}8\%$ |
+| bèta op de index | ver onder één | $1$ | $0{,}58$ |
+
+**Geslaagd.** Alle verwachtingen komen uit. Het verschil in Sharpe-ratio is een vijfde van
+één standaardfout, zodat dertig jaar data de twee strategieën niet kunnen onderscheiden,
+terwijl de staart van PUT wel duidelijk meetbaar is. Bij Saretto en Santa-Clara is de
+scheefheid ruim zes keer zo extreem, omdat PUT
+at-the-money
+verkoopt en het rendement op het volle onderpand meet in plaats van op de premie. Tegen de
+index geregresseerd heeft PUT
+een alpha van 1,3% per jaar met $t = 1{,}1$.
+
+De figuur laat zien dat de PutWrite-index in 2020 even diep valt als de S&P 500 en
+in 2008 ongeveer twee derde zo diep.
 
 ```{code-cell} ipython3
 :label: cel-opties-crashrisico-put-index
@@ -1293,95 +1391,113 @@ plt.show()
 :width: 95%
 
 De PutWrite-index loopt tot 2020 gelijk op met de S&P 500 bij twee derde van de
-volatiliteit, en valt in de crisismaanden van 2008 en 2020 bijna even diep. Na 2020 blijft
-hij achter: wie verzekering verkoopt, doet niet mee met een sterk stijgende markt.
+volatiliteit, en valt in 2020 even diep en in 2008 ongeveer twee derde zo diep. Het onderste
+paneel toont hoe diep, gemeten vanaf de vorige top.
 :::
 
-Over 358 maanden had de S&P 500 een excess rendement van $9{,}0\%$ per jaar bij $15{,}4\%$
-volatiliteit, een Sharpe-ratio van $0{,}58$. De PUT-index haalde $6{,}5\%$ bij $10{,}5\%$, een
-Sharpe-ratio van $0{,}62$; BXM $0{,}50$. Het verschil van $0{,}04$ tussen PUT en de index
-is een vijfde van één standaardfout ($0{,}20$): dertig jaar data kunnen de twee niet van elkaar
-onderscheiden. De scheefheid van PUT is $-1{,}66$ en de exces-kurtosis $6{,}8$, tegen
-$-0{,}55$ en $0{,}8$ voor de index. De maximale drawdown ([](#fig-opties-crashrisico-put-index)) was $-33\%$ tegen $-51\%$, bijna
-geheel in november 2007 – februari 2009 ($-32\%$). In februari–maart 2020 verloor PUT
-$19{,}8\%$, *meer* dan de S&P 500 met $19{,}6\%$, bij een bèta van $0{,}58$. Tegen de
-index geregresseerd is de alfa van PUT $1{,}3\%$ per jaar met $t = 1{,}1$.
-
-De drie verwachtingen zijn uitgekomen, zoals in de simulatie: een premie die nauwelijks
-meetbaar is, een staart die dat wel is. Israelov en Nielsen ontleedden de
-BuyWrite-strategie en vonden: "The short volatility exposure realized a Sharpe ratio of
-nearly 1.0 but contributed only 10% of the risk" {cite}`IsraelovNielsen2015b`; de premie is
-reëel, maar in een indexproduct verdund door aandelenrisico. De koper komt er niet beter
-vanaf: beschermende puts zijn volgens Israelov "quite ineffective at reducing drawdowns
-versus the simple alternative of statically reducing exposure to the underlying asset"
-{cite}`Israelov2019`, en in rustige markten geldt: "Option prices may be low, but their
-expected values tend to be even lower" {cite}`IsraelovNielsen2015a`.
+Na 2020 blijft de PutWrite-index achter, omdat een verkoper van verzekering niet meedoet met
+een sterk stijgende markt. Israelov en Nielsen vonden in de BuyWrite-strategie dat de
+verkochte volatiliteit een Sharpe-ratio van bijna één had, maar slechts 10% van het risico
+droeg {cite}`IsraelovNielsen2015b`. De premie is dus reëel, maar in een indexproduct
+verdund door aandelenrisico.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** Opties maakten van crashrisico een dagelijks gemeten prijs.
-Sprongen verklaren de vorm van de smirk, de ordening van Coval en Shumway volgt uit een
-dalende SDF, en de variance risk premium heeft het teken dat het leverage effect voorspelt. Santa-Clara en Yan haalden uit zeven jaar optieprijzen een equity premium van
-tien procent waarvan bijna een derde crashpremie, in een steekproef waarin het
-gerealiseerde excess rendement negatief was. Op echte data vonden we de linksscheve
-risiconeutrale verdeling, de voorspelkracht van de premie over 1990–2007, en een
-PutWrite-index die niet onderdoet voor de markt.
+**Wat het model verklaart.** Sprongen verklaren de smirk, de ordening van Coval en Shumway
+volgt uit een
+dalende SDF, en de variance risk premium heeft het teken dat het leverage effect voorspelt.
+Santa-Clara en Yan haalden uit zeven jaar optieprijzen een aandelenpremie van tien procent,
+waarvan bijna een derde crashpremie, in een steekproef met een negatief gerealiseerd
+overrendement. Op echte data vonden we de linksscheve risiconeutrale verdeling terug, net
+als
+de voorspelkracht van de premie over 1990–2007.
 
-**Waar het breekt.** Twee meetbare feiten. De voorspelkracht van de variance risk premium
-verdwijnt na 2007: over 1990–2026 is de $t$-waarde bij drie maanden $0{,}6$. En de
-"good deal" van het verkopen van puts is in dertig jaar indexdata niet te meten: $0{,}62$
-tegen $0{,}58$ met een standaardfout van $0{,}20$. In één op de vijf twintigjarige
-steekproeven zit geen crash, en dan lijkt een Sharpe-ratio van een derde er een van twee. Wat de optiemarkt goed meet, is de *prijs* van crashrisico;
-wat ze niet levert, is een bewijs dat die prijs te hoog is.
+**Waar het breekt.** Twee meetbare feiten passen niet in dit beeld. De voorspelkracht van de
+variance risk premium verdwijnt na 2007, zodat de $t$-waarde bij drie maanden over 1990–2026
+nog maar $0{,}6$ is. Daarnaast is de hoge beloning voor het verkopen van puts in dertig jaar
+indexdata niet te meten, omdat de Sharpe-ratio's van $0{,}62$ en $0{,}58$ minder dan een
+standaardfout verschillen. De optiemarkt meet de *prijs* van crashrisico dus goed, maar
+levert geen bewijs dat die prijs te hoog is.
 
-**Risico of vergissing?** De Chicago-lezing: crashes zijn de toestanden waarin een euro
-het meest waard is, sprongrisico is niet te hedgen, en de premie is de beloning voor een
-risico dat iemand moet dragen, en dat in crises duurder wordt, zoals Pan vond. De
-Yale-lezing: Jackwerth vond een SDF die na 1987 ergens stijgt in de index en noemde
-mispricing "the most likely cause", en Saretto en Santa-Clara lazen hun resultaten als
-"large misspricings in option markets which cannot be arbitraged away" door
-transactiekosten en marges — *limits of arbitrage* (de grenzen aan wat kapitaalbeperkte
-arbitrageurs kunnen corrigeren) in hun zuiverste vorm. Scheiden vraagt de
-SDF in crashtoestanden, en die zijn per definitie zeldzaam. De data van deze lecture kiezen
-niet, en Santa-Clara zelf staat met één been in elk kamp: hij schatte de premie als
-beloning voor risico en liet zien dat marges haar onbereikbaar maken.
+**Risico of vergissing?** In de Chicago-lezing zijn crashes de toestanden waarin een dollar
+het meest waard is, en beloont de premie een risico dat niet te hedgen is en in crises
+duurder
+wordt, zoals Pan vond. In de Yale-lezing wijst de stijgende SDF van Jackwerth op mispricing.
+Saretto en Santa-Clara lazen hun resultaten als mispricings die kosten en marges in stand
+houden, *limits of arbitrage* (de grenzen aan wat arbitrageurs met beperkt kapitaal kunnen
+corrigeren) in zuivere vorm. Om de lezingen te scheiden is de SDF in crashtoestanden nodig,
+en die toestanden zijn zeldzaam, zodat de data van dit college geen uitsluitsel geven.
+Santa-Clara zelf staat met één been in elk kamp, want hij schatte de premie als beloning
+voor
+risico en liet zien dat marges die premie onbereikbaar maken.
 
-**Wat er daarna kwam.** Hetzelfde patroon — vaak een beetje winnen, zelden veel verliezen —
-bleek ook de valutamarkt te beheersen, waar de *carry trade* een premie verdient die in
-crises in één keer verdampt: zie [](#05-30-wisselkoersen).
+**Wat er daarna kwam.** Hetzelfde patroon, vaak een beetje winnen en zelden veel verliezen,
+bleek ook in de valutamarkt te bestaan. Daar verdient de *carry trade* (lenen in een valuta
+met lage rente en beleggen in een valuta met hoge rente) een premie die in crises in één
+keer
+verdampt, zoals [](#05-30-wisselkoersen) laat zien.
 
 ## Oefeningen
 
 :::{exercise}
 :label: ex-opties-crashrisico-1
 
-**Sprongpremies uit een machtsfunctie-SDF.** Laat op een sprongmoment de SDF met factor
-$J^{-\gamma}$ springen (de index is een claim op consumptie, zoals in het toy-voorbeeld),
-met $\log J \sim \mathcal N(\mu_J, \delta_J^2)$ onder $\mathbb P$ en intensiteit $\lambda^{\mathbb P}$.
+**Een zeldzamere crash.** Halveer in het toy-voorbeeld de crashkans tot $0{,}01$ en geef de
+toestand "op" de kans $0{,}66$. Groei, $\beta$ en $\gamma$ blijven gelijk.
 
-1. Toon aan dat onder $\mathbb Q$ de intensiteit $\lambda^{\mathbb Q} = \lambda^{\mathbb P}\,
-   \E^{\mathbb P}[J^{-\gamma}] = \lambda^{\mathbb P}\exp(-\gamma\mu_J + \tfrac12\gamma^2\delta_J^2)$ is en
-   dat $\log J$ onder $\mathbb Q$ normaal is met gemiddelde $\mu_J - \gamma\delta_J^2$ en dezelfde
-   spreiding.
-2. Welke $\gamma$ geeft bij de sprongverdeling van de simulatie de verhouding
-   $\lambda^{\mathbb Q}/\lambda^{\mathbb P} = 0{,}165/0{,}078$? Wat is dan de gemiddelde sprong
-   onder $\mathbb Q$?
+1. Bereken $\E[m]$ en $q_{\text{crash}}$.
+2. Bereken de prijs en het verwachte bruto rendement van de put met uitoefenprijs $0{,}90$.
+   Waarom verandert dat rendement niet?
 :::
 
 :::{solution} ex-opties-crashrisico-1
 :class: dropdown
 
-**(1)** Over een kort interval $\mathrm dt$ is de kans op een sprong met grootte in
-$\mathrm dj$ gelijk aan $\lambda^{\mathbb P}\mathrm dt\, f(j)\,\mathrm dj$, met $f$ de lognormale dichtheid.
-De risiconeutrale kans is die kans maal $m/\E[m]$, en $\E[m] = 1 + O(\mathrm dt)$; op een
-sprongmoment is $m$ evenredig met $j^{-\gamma}$ ten opzichte van geen sprong. Dus
-$\lambda^{\mathbb Q} f^{\mathbb Q}(j) = \lambda^{\mathbb P} f(j)\, j^{-\gamma}$. Integreren over $j$ geeft
-$\lambda^{\mathbb Q} = \lambda^{\mathbb P}\E[J^{-\gamma}]$, en met $x = \log j$ is
-$f(j)j^{-\gamma} \propto \exp\bigl(-(x-\mu_J)^2/2\delta_J^2 - \gamma x\bigr)$; kwadraat afmaken geeft
-een normale dichtheid met gemiddelde $\mu_J - \gamma\delta_J^2$ en vermenigvuldigingsfactor
-$\exp(-\gamma\mu_J + \gamma^2\delta_J^2/2)$.
+De SDF hangt niet van de kansen af, dus $\E[m] = 0{,}66 \cdot 0{,}6625 + 0{,}33 \cdot 1{,}1909 +
+0{,}01 \cdot 7{,}4846 = 0{,}9051$ en $q_{\text{crash}} = 0{,}0748/0{,}9051 = 0{,}0827$. De put
+kost $0{,}01 \cdot 7{,}4846 \cdot 0{,}30 = 0{,}0225$ en verwacht $0{,}0030$ terug, zodat zijn
+verwachte bruto rendement weer $0{,}1336 = 1/m_{\text{crash}}$ is.
 
-**(2)**
+```{code-cell} ipython3
+prob_rare = np.array([0.66, 0.33, 0.01])
+Em_rare = prob_rare @ m_toy
+put_price_rare = prob_rare @ (m_toy * put_toy)
+pd.Series({"E[m]": Em_rare, "q crash": prob_rare[2] * m_toy[2] / Em_rare,
+           "prijs put 0,90": put_price_rare, "E[R] put 0,90": (prob_rare @ put_toy) / put_price_rare,
+           "1 / m crash": 1 / m_toy[2]}).round(4)
+```
+
+De code bevestigt de handberekening. Het verwachte rendement van een put die alleen in de
+crash uitbetaalt, meet hoeveel een dollar in de crash waard is. Hoe vaak de crash voorkomt,
+doet er niet toe.
+:::
+
+:::{exercise}
+:label: ex-opties-crashrisico-2
+
+**Crashpremies uit een machtsfunctie-SDF.** De index is een claim op consumptie, zoals in
+het toy-voorbeeld. Laat op een sprongmoment de SDF met factor $J^{-\gamma}$ springen, met $\log J \sim \mathcal N(\mu_J, \delta_J^2)$ onder $\mathbb P$ en
+intensiteit $\lambda^{\mathbb P}$.
+
+1. Toon aan dat $\lambda^{\mathbb Q} = \lambda^{\mathbb P}\exp(-\gamma\mu_J + \tfrac12\gamma^2\delta_J^2)$
+   en dat $\log J$ onder $\mathbb Q$ normaal is met gemiddelde $\mu_J - \gamma\delta_J^2$ en
+   dezelfde spreiding.
+2. Welke $\gamma$ geeft bij de sprongverdeling van de simulatie de verhouding
+   $\lambda^{\mathbb Q}/\lambda^{\mathbb P} = 0{,}165/0{,}078$, en wat is dan de gemiddelde
+   sprong onder $\mathbb Q$?
+:::
+
+:::{solution} ex-opties-crashrisico-2
+:class: dropdown
+
+**(1)** De risiconeutrale kans op een sprong ter grootte $j$ is de werkelijke kans maal
+$j^{-\gamma}$, de sprong in de SDF, dus $\lambda^{\mathbb Q} f^{\mathbb Q}(j) = \lambda^{\mathbb P}
+f(j)\, j^{-\gamma}$. Integreren geeft $\lambda^{\mathbb Q} = \lambda^{\mathbb P}\E[J^{-\gamma}]$, en
+met $x = \log j$ geeft het kwadraat afmaken in
+$\exp\bigl(-(x-\mu_J)^2/2\delta_J^2 - \gamma x\bigr)$ een normale dichtheid met gemiddelde
+$\mu_J - \gamma\delta_J^2$.
+
+**(2)** We lossen de vergelijking voor $\gamma$ numeriek op.
 
 ```{code-cell} ipython3
 ratio = LAM_Q / LAM_P
@@ -1392,24 +1508,22 @@ print(f"gemiddelde sprong onder P: {KAPPA:.4f}, onder Q: {mean_jump_q:.4f}")
 ```
 
 Een risicoaversie van ongeveer twee verdubbelt de intensiteit en maakt de gemiddelde crash
-iets dieper ($-31{,}4\%$ tegen $-30\%$), dicht bij Santa-Clara en Yan, die met $\gamma = 2$
-werken en $-31{,}6\%$ tegen $-29{,}5\%$ vinden. Een crashpremie van deze omvang vraagt geen
-extreme risicoaversie, alleen grote crashes die met de consumptie samenvallen: de logica
-van Rietz en Barro uit [](#05-27-drie-antwoorden).
+iets dieper, $-31{,}4\%$ tegen $-30\%$, dicht bij de $-31{,}6\%$ van Santa-Clara en Yan. Een
+crashpremie van deze omvang vraagt dus geen extreme risicoaversie, alleen grote crashes die
+met de consumptie samenvallen, zoals bij Rietz en Barro in [](#05-27-drie-antwoorden).
 :::
 
 :::{exercise}
-:label: ex-opties-crashrisico-2
+:label: ex-opties-crashrisico-3
 
-**Modelvrije scheefheid.** Bereken voor de twee SPY-expiraties uit de replicatie
-$\E^{\mathbb Q}[R]$, $\E^{\mathbb Q}[R^2]$ en $\E^{\mathbb Q}[R^3]$ met
-[](#prop-opties-crashrisico-momenten), rechtstreeks uit de out-of-the-money-midkoersen
-(trapeziumregel over de genoteerde uitoefenprijzen, zonder fit). Vergelijk de volatiliteit
-en scheefheid met die van de Breeden-Litzenberger-dichtheid. Welke van de twee geeft de
-extreemste getallen, en waarom?
+**Modelvrije scheefheid.** Bereken voor de twee SPY-expiraties uit de replicatie de eerste
+drie risiconeutrale momenten met [](#prop-opties-crashrisico-momenten), rechtstreeks uit de
+midkoersen van opties buiten het geld (trapeziumregel, zonder fit). Vergelijk volatiliteit en
+scheefheid met die van de Breeden-Litzenberger-dichtheid. Welke geeft de extreemste getallen,
+en waarom?
 :::
 
-:::{solution} ex-opties-crashrisico-2
+:::{solution} ex-opties-crashrisico-3
 :class: dropdown
 
 ```{code-cell} ipython3
@@ -1429,58 +1543,11 @@ for label, sm in smiles.items():
 pd.DataFrame(bkm_rows).T.round(4)
 ```
 
-Hetzelfde teken, maar de modelvrije getallen zijn veel extremer: een volatiliteit van
-$14{,}8\%$ en $18{,}1\%$ tegen $12{,}3\%$ en $14{,}4\%$, een scheefheid van $-2{,}14$ en
-$-2{,}26$ tegen $-1{,}23$ en $-1{,}30$. Het verschil zit voorbij de laagste genoteerde put: de
-dichtheid houdt daar op en wordt genormeerd, maar in [](#eq-opties-crashrisico-spanning)
-bevat de prijs van die laatste put nog de waarde van alle toestanden daaronder. Afkappen onderschat dus vooral het derde moment;
-tegelijk hebben juist de randquotes de breedste bied-laatmarges, zodat midkoersen de staart
-kunnen overschatten. De oefening leert dat de linkerstaart ook in optieprijzen het slechtst
-gemeten deel van de verdeling is.
-:::
-
-:::{exercise}
-:label: ex-opties-crashrisico-3
-
-**De straddle van Coval en Shumway.** Koop in het gekalibreerde model een
-at-the-money-straddle op één maand tegen de $\mathbb Q$-prijs, houd hem één week (vijf
-handelsdagen) aan onder $\mathbb P$, en waardeer hem dan opnieuw met
-[](#eq-opties-crashrisico-merton). Bereken met een miljoen paden het verwachte
-weekrendement, met standaardfout. Herhaal met $\lambda^{\mathbb P} = \lambda^{\mathbb Q}$ (geen
-sprongpremie). Vergelijk met de "approximately three percent per week" van Coval en
-Shumway.
-:::
-
-:::{solution} ex-opties-crashrisico-3
-:class: dropdown
-
-```{code-cell} ipython3
-def straddle_week(lam_p, n_paths=1_000_000, S0=100.0, tau=21 / 252, days=5):
-    """Mean and s.e. of the one-week return on an ATM straddle bought at the Q price."""
-    price0 = sum(merton_price(S0, S0, tau, R_SIM, SIGMA_SIM, LAM_Q, MU_J, DELTA_J, kind)
-                 for kind in ("call", "put"))
-    dt_w = days / 252
-    n = rng.poisson(lam_p * dt_w, n_paths)
-    drift = R_SIM + ETA_SIGMA + (lam_p - LAM_Q) * KAPPA - lam_p * KAPPA - 0.5 * SIGMA_SIM**2
-    S1 = S0 * np.exp(drift * dt_w + SIGMA_SIM * np.sqrt(dt_w) * rng.standard_normal(n_paths)
-                     + n * MU_J + np.sqrt(n) * DELTA_J * rng.standard_normal(n_paths))
-    price1 = sum(merton_price(S1, S0, tau - dt_w, R_SIM, SIGMA_SIM, LAM_Q, MU_J, DELTA_J, kind, n_max=8)
-                 for kind in ("call", "put"))
-    ret = price1 / price0 - 1
-    return ret.mean(), ret.std(ddof=1) / np.sqrt(n_paths)
-
-
-pd.DataFrame(
-    {label: dict(zip(["gem. weekrendement", "SE"], straddle_week(lam)))
-     for label, lam in (("met sprongpremie (lambda^P = 0,078)", LAM_P), ("zonder (lambda^P = lambda^Q)", LAM_Q))}
-).T.round(4)
-```
-
-Met de sprongpremie verliest de straddle $0{,}86\%$ per week (standaardfout $0{,}03$), zonder
-wint hij $0{,}32\%$: een at-the-money-straddle is niet delta-neutraal (elasticiteit ongeveer
-$3{,}3$) en verdient de rente plus ruim drie keer de diffusiepremie. Coval en Shumway kijken
-naar straddles met bèta nul, dus de vergelijkbare grootheid is het verschil, ongeveer
-$-1{,}2$ procentpunt per week: minder dan hun drie procent. Onze kalibratie prijst alleen
-crashes te hoog; drie procent per week vraagt opties die ook buiten crashes duur zijn, een
-premie op gewone volatiliteit.
+De modelvrije momenten zijn allebei extremer. De volatiliteit is bij één maand $14{,}8\%$
+tegen $12{,}3\%$ voor de dichtheid. De scheefheid heeft hetzelfde teken, maar is met
+$-2{,}14$ en $-2{,}26$ veel negatiever dan de $-1{,}23$ en $-1{,}30$ van de dichtheid. De dichtheid houdt op bij de laagste
+genoteerde put, terwijl in [](#eq-opties-crashrisico-spanning) de prijs van die put nog de
+waarde van alle toestanden daaronder bevat. Afkappen onderschat dus beide momenten en vooral het derde,
+maar de randnoteringen hebben ook de breedste marge tussen bied en laat. De linkerstaart is
+daardoor ook in optieprijzen het slechtst gemeten deel van de verdeling.
 :::

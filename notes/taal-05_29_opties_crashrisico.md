@@ -1,0 +1,16 @@
+STATUS 05_29_opties_crashrisico T words=5859 prose=PASS
+- Waar we zijn: ongewijzigd, al natuurlijk.
+- Overzicht: regeltaal "voor de vraag theorie of feit" geschrapt; slotzin samengevoegd tot één zin met "maar" die zegt wat nog open is.
+- Intuïtie: "voor inzicht aanziet ... wat de prijs niet weet" herschreven tot een zin met een onderzoeker als handelend onderwerp; één "Wie"-zin minder.
+- Toy: ongewijzigd (stappen al hele zinnen met persoonsvorm).
+- Theorie, inleiding: "volgen de gevolgen" vervangen door "komen ... aan bod".
+- Breeden-Litzenberger: "Dat de SDF ... stijgt, heet" (H8) herschreven; negatieve risicoaversie nu direct uitgelegd als stijgende SDF.
+- Modelvrije momenten: "de eerste regel / de andere twee regels" (dubbelzinnig) vervangen door het eerste, tweede en derde moment.
+- Variance risk premium, Merton: ongewijzigd.
+- Crashpremie: "Dat is [de standaardfout van 2%]" (H8, motief als predicaat) herschreven met de horizon als onderwerp.
+- Verwachte optierendementen: "relativeerden dat" kreeg een antecedent ("die verliezen").
+- Marges: "Het is de gehefboomde arbitrageur" en "Dat is de logica van" (H8) herschreven; twee staccatozinnen over de verliesspiraal samengevoegd met "waarin ... zodat".
+- Numerieke oplossing, Simulatie, Replicaties: ongewijzigd; geen staccato, telegram of sjabloon gevonden.
+- Wat er brak: "Het model breekt" na kop "Waar het breekt" (herhaling) vervangen.
+- Oefeningen: ongewijzigd.
+- Vaktermen: geen vervangingen; "margin call", "mispricing", "smirk" blijven Engels volgens §3.
