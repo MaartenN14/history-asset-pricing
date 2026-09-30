@@ -18,53 +18,77 @@ kernelspec:
 ```{admonition} Waar we zijn in het verhaal
 :class: important
 
-**Jaartal.** 2007–2017, van de run op de repomarkt tot de kapitaalratio van de primary
-dealers als risicofactor.
+**Jaartal.** 2007–2017, van de run op de repomarkt tot de kapitaalratio van de *primary dealers* (de banken die rechtstreeks met de Federal Reserve in staatsobligaties handelen) als risicofactor. In die jaren verschoof de marginale belegger in de modellen van het huishouden naar de bank.
 
-**Wat we al weten.** Elk prijsmodel is een uitspraak over de stochastic discount factor,
-en elke factor is een kandidaat voor $m_{t+1}$ ([](#05-26-sdf-unificatie)). De
-[vorige lecture](#05-31-portfolio-choice) liet zien hoe een belegger die de
-schattingsfout in gemiddelden serieus neemt, zijn portefeuille kiest. Uit
-[LTCM](#04-22-risk-management), [limits of arbitrage](#04-23-behavioral) en
-[liquiditeit](#04-24-microstructuur) weten we dat een gehefboomde arbitrageur kan
-omvallen voordat zijn gelijk uitbetaalt, en dat liquiditeit verdwijnt wanneer iedereen haar
-nodig heeft. Wat ontbrak, was de stap van één fonds naar de prijzen van alle activa.
+**Wat we al weten.** Elk prijsmodel is een uitspraak over de stochastic discount factor, en in [](#05-31-portfolio-choice) zagen we hoe een belegger die de schattingsfout in gemiddelden serieus neemt, zijn portefeuille kiest. Uit [LTCM](#04-22-risk-management) weten we dat een gehefboomde arbitrageur kan omvallen voordat zijn gelijk uitbetaalt. Wat nog ontbrak, was de stap van één fonds naar de prijzen van alle activa.
 
-**Welke vraag staat open.** Als de marginale belegger geen huishouden is maar een
-gefinancierde tussenpersoon, prijst diens balans dan de verwachte rendementen, en waarom
-explodeerden de risicopremies in 2008?
+**Welke vraag staat open.** Als de marginale belegger geen huishouden is maar een gefinancierde intermediair, bepaalt de balans van die intermediair dan de verwachte rendementen, en waarom explodeerden de risicopremies in 2008?
 ```
 
 ## Overzicht
 
-In de herfst van 2008 gebeurde wat de consumptiemodellen van [](#03-12-consumptie-capm)
-niet kunnen beschrijven. De consumptie van huishoudens daalde matig, maar credit- en
-financieringsspreads schoten omhoog en obligaties met identieke kasstromen kregen
-verschillende prijzen. De verliezen zaten bij de dealers en banken die de markten maakten en
-hun posities kortlopend financierden. Santa-Clara vat de verschuiving
-samen: "What the crisis changed was the field's idea of who the marginal investor is. The
-representative consumer of Lucas and Breeden holds the whole market and prices it off his
-consumption; the models that fit the crisis put a leveraged intermediary in his place, whose
-balance-sheet capacity is the state variable" {cite}`SantaClara2026`.
+Dit college vraagt of de balans van gefinancierde intermediairs, zoals dealerbanken, de
+risicopremies in alle markten bepaalt. Het antwoord is een voorzichtig ja: als hun
+kapitaal schaars wordt, stijgt de premie sneller dan evenredig, en schokken in hun
+kapitaalratio krijgen een positieve prijs, al is die kapitaalratio moeilijk te meten.
 
-De theorie lag deels klaar. {cite:t}`ShleiferVishny1997` en {cite:t}`GrombVayanos2002`
-hadden arbitrageurs met beperkt kapitaal gemodelleerd; {cite:t}`BrunnermeierPedersen2009`
-lieten zien dat marktliquiditeit en financieringsliquiditeit elkaar versterken;
-{cite:t}`GarleanuPedersen2011` maakten van marges een prijsbepalende grootheid. Daarna
-kwam de empirie. {cite:t}`AdrianShin2010` documenteerden dat de leverage van broker-dealers
-procyclisch is, {cite:t}`HeKrishnamurthy2013` bouwden een evenwichtsmodel waarin de
-kapitaalratio van de intermediair de toestandsvariabele is, en
-{cite:t}`AdrianEtulaMuir2014` en {cite:t}`HeKellyManela2017` maakten van de balans van de
-intermediair een factor in de cross-sectie. Dat laatste werk definieert het tijdvak: het
-bracht de theorie-met-tests terug (motief 3), met een voorspelling over het *teken* van de
-prijs van risico, en het leverde twee factoren op met tegengestelde tekens die allebei
-significant heetten.
+- We rekenen met de hand na hoe één intermediair na een prijsdaling van 2% zijn balans
+  afbouwt en daarmee de daling versterkt.
+- We leiden af waarom markt- en financieringsliquiditeit elkaar versterken, en waarom de
+  premie omgekeerd evenredig is met de kapitaalratio.
+- We simuleren hoe vaak een factortoets op vijftig jaar kwartaaldata een ware prijs van
+  intermediairrisico ziet.
+- We repliceren de kapitaalratio en de cross-sectionele toets van
+  {cite:t}`HeKellyManela2017`, de broker-dealer-leverage van {cite:t}`AdrianEtulaMuir2014`
+  en de voorspellende kracht van de kapitaalratio.
 
-Na een handberekening, de spiraal van Brunnermeier en Pedersen, een vereenvoudigd
-He-Krishnamurthy-model en drie simulaties repliceren we de kapitaalratio en de
-cross-sectionele toets van {cite:t}`HeKellyManela2017`, de broker-dealer-leverage van
-{cite:t}`AdrianEtulaMuir2014` uit de Flow of Funds, en de voorspellende kracht van de
-kapitaalratio.
+De theorie lag voor een deel klaar toen de crisis kwam. Zo hadden
+{cite:t}`ShleiferVishny1997` en {cite:t}`GrombVayanos2002` arbitrageurs met beperkt
+kapitaal gemodelleerd, en {cite:t}`BrunnermeierPedersen2009` lieten zien dat markt- en
+financieringsliquiditeit elkaar versterken. Na de crisis bouwden
+{cite:t}`HeKrishnamurthy2013` een evenwichtsmodel met de kapitaalratio van de intermediair
+als toestandsvariabele. Daarna maakten {cite:t}`AdrianEtulaMuir2014` en
+{cite:t}`HeKellyManela2017` van die balans een factor in de cross-sectie, en daarmee begon
+een tijdvak waarin een theorie weer het teken van een prijs van risico voorspelt. Voor de
+vraag theorie of feit is dat een stap terug naar de theorie. Santa-Clara vat de
+verschuiving samen als een nieuwe opvatting over de marginale belegger, die niet meer de
+representatieve consument is maar een gehefboomde intermediair {cite}`SantaClara2026`.
+
+## Intuïtie: waarom zou dit waar zijn?
+
+In de herfst van 2008 schoten de spreads op krediet en financiering omhoog, en de grote
+verliezen zaten niet bij huishoudens maar bij de dealers die de markten maakten. Dat past
+slecht bij de consumptiemodellen van [](#03-12-consumptie-capm), waarin het marginale nut
+van huishoudens de prijzen bepaalt.
+
+Zo'n dealerbank koopt obligaties met een klein beetje eigen geld en veel geleend geld. De
+geldgever houdt een *haircut* in (het deel van de waarde dat de bank met eigen vermogen
+moet financieren). Bij een haircut van 10% mag de balans dus hoogstens tien keer het eigen
+vermogen zijn, een *leverage* (activa gedeeld door eigen vermogen) van tien.
+
+Daalt de prijs 2%, dan verliest zo'n bank een vijfde van het eigen vermogen en moet ze
+verkopen. Als veel banken tegelijk verkopen, daalt de prijs verder en dwingt het nieuwe
+verlies tot nieuwe verkopen, wat de *verliesspiraal* heet. Wanneer de geldgevers bovendien
+hun haircuts verhogen, moet de balans ook zonder nieuw verlies krimpen, en dat is de
+*margespiraal*. Volgens {cite:t}`GortonMetrick2012` steeg het gemiddelde haircut op
+onderpand dat geen staatsobligatie was, van nul begin 2007 tot bijna 50% eind 2008.
+
+Als de dealer de marginale belegger is, bepaalt zijn marginale nut de stochastic discount
+factor. Een dollar is voor hem het meest waard als zijn kapitaal schaars is. Een activum
+dat juist dan slecht rendeert, moet daarom gemiddeld meer opleveren. Volgens
+Santa-Clara zegt de aandelenpremie misschien minder over de risicoaversie van
+huishoudens dan over wie het risico mag dragen {cite}`SantaClara2026`.
+
+We verwachten dus twee dingen. De risicopremie stijgt als de kapitaalratio van de
+intermediairs daalt, en wel sneller dan evenredig, omdat de spiralen ook de volatiliteit
+opdrijven. Bovendien is de prijs van het risico dat die kapitaalratio daalt positief, en
+omdat dealers in bijna elke markt handelen, hoort in elke activaklasse dezelfde prijs te
+gelden.
+
+## Toy-voorbeeld: één intermediair, één schok, twee rondes verkopen
+
+Alle cellen van dit college gebruiken dezelfde pakketten en één toevalsgenerator met een
+vaste seed.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -79,70 +103,42 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-## Intuïtie: waarom zou dit waar zijn?
+Het voorbeeld draait om één intermediair die precies aan zijn financieringsgrens zit. De
+tabel geeft zijn balans en de markt waarop hij moet verkopen.
 
-Een dealerbank koopt obligaties met een klein beetje eigen geld en veel geleend geld. De
-geldgever eist onderpand en houdt een *haircut* in (het deel van de waarde dat de bank met
-eigen vermogen moet financieren). Bij een haircut van 10% mag de balans hoogstens tien keer
-het eigen vermogen zijn. Zolang prijzen stabiel zijn, is dat een rustig bedrijf.
+| grootheid | symbool | waarde |
+|---|---|---|
+| eigen vermogen | $E$ | 10 |
+| activa, tegen prijs $p = 1$ | $A$ | 100 |
+| leverage | $L = A/E$ | 10 |
+| kapitaalratio | $\eta = E/A$ | 10% |
+| haircut, met restrictie $E \ge hA$ | $h$ | 10% |
+| vermogen van buitenstaanders | $W$ | 1000 |
+| vraagelasticiteit van buitenstaanders | $\varepsilon$ | 2 |
 
-Daalt de prijs 2%, dan verliest een bank met hefboom tien een vijfde van haar eigen vermogen en
-moet ze verkopen. Verkopen veel banken tegelijk, dan moeten kopers buiten de sector worden
-verleid met een lagere prijs, en die lagere prijs is een nieuw verlies dat nieuwe verkopen
-afdwingt: de *verliesspiraal*. Verhogen de geldgevers door de grotere koersschommelingen ook nog
-hun haircuts, dan moet de balans krimpen zonder nieuw verlies: de *margespiraal*. Gorton en Metrick lieten zien dat het gemiddelde haircut op onderpand
-anders dan staatsobligaties "rises from zero in early 2007 to nearly 50 percent at the peak
-of the crisis in late 2008" (werkversie, p. 4) {cite}`GortonMetrick2012`.
+De enige formule die we nog niet hebben afgeleid, is het recept voor de prijsimpact. Een
+verkoop ter waarde $S$ moet door de buitenstaanders worden opgenomen en drukt de prijs
+daardoor met $S/(\varepsilon W) = S/2000$.
 
-Zo'n spiraal is niet-lineair: een kleine schok verdwijnt in de buffers, een grote wordt
-versterkt. Er kunnen zelfs twee evenwichten zijn bij hetzelfde fundament: een liquide markt
-waarin dealers de verkoopdruk opvangen, en een illiquide markt waarin de lage prijs hun
-kapitaal al heeft opgegeten.
+1. **Schok.** De prijs daalt 2%, dus het verlies is $0{,}02 \times 100 = 2$, met $E = 8$
+   en $A = 98$. De kapitaalratio daalt tot $8/98 = 8{,}16\%$.
+2. **Eerste verkoop.** Met $E = 8$ mag de balans hoogstens $8/0{,}10 = 80$ zijn, dus de
+   intermediair verkoopt $S_1 = 98 - 80 = 18$. De prijs daalt $18/2000 = 0{,}9\%$, wat op de
+   resterende 80 een verlies van $0{,}72$ geeft.
+3. **Tweede verkoop.** Na dat verlies is het eigen vermogen $7{,}28$ en de balans $79{,}28$.
+   De toegestane balans is dan $72{,}8$, dus $S_2 = 79{,}28 - 72{,}8 = 6{,}48$.
+4. **Waarom het ophoudt.** Elke dollar verlies dwingt $(1-h)/h = 9$ dollar verkoop af. Op
+   een balans van ongeveer 80 is elke ronde daardoor ongeveer $80 \times 9/2000 = 0{,}36$
+   keer zo groot als de vorige.
+5. **Margespiraal.** Stijgt de haircut na de schok naar 12,5%, dan mag de balans hoogstens
+   $8/0{,}125 = 64$ zijn. De eerste verkoop is dan $S_1 = 98 - 64 = 34$, die de prijs
+   $34/2000 = 1{,}7\%$ drukt, met een verlies van $64 \times 0{,}017 = 1{,}088$. Het eigen
+   vermogen is dan $6{,}91$ en de balans $62{,}91$, zodat de toegestane balans
+   $6{,}91/0{,}125 = 55{,}30$ is
+   en de tweede verkoop $62{,}91 - 55{,}30 = 7{,}61$.
 
-Als de dealer de marginale belegger is, is zijn marginale nut de stochastic discount factor.
-Een euro is voor hem het meest waard als zijn kapitaal schaars is; een activum dat juist dan
-slecht rendeert, moet gemiddeld meer opleveren. Omdat dealers in bijna elke markt handelen,
-moet dezelfde prijs van dat risico in aandelen, obligaties en valuta terugkomen: een scherpe,
-toetsbare voorspelling. Santa-Clara noemt het de nieuwe agenda van het decennium, met een
-bekentenis erbij: "the equity premium may be less a fact about households' risk aversion than
-about who is allowed to hold the risk" {cite}`SantaClara2026`.
-
-## Toy-voorbeeld: één intermediair, één schok, twee rondes verkopen
-
-Een intermediair heeft eigen vermogen $E = 10$ en activa $A = 100$ tegen prijs $p = 1$,
-gefinancierd met schuld $90$. Zijn leverage is $L = A/E = 10$ en zijn kapitaalratio
-$\eta = E/A = 10\%$. De geldgever eist $E \ge hA$ met haircut $h = 10\%$: de restrictie bindt
-precies. Buiten de bankensector staan beleggers met vermogen $W = 1000$ en vraagelasticiteit
-$\varepsilon = 2$: een verkoop ter waarde $S$ drukt de prijs met $S/(\varepsilon W) = S/2000$.
-
-**Schok.** De fundamentele prijs daalt 2%. Het verlies is $0{,}02 \times 100 = 2$, dus
-$E = 8$ en $A = 98$. De kapitaalratio is gedaald tot $8/98 = 8{,}16\%$ en de leverage gestegen
-tot $12{,}25$.
-
-**Eerste gedwongen verkoop.** Met $E = 8$ mag de balans hoogstens $8/0{,}10 = 80$ zijn, dus de
-intermediair verkoopt $S_1 = 98 - 80 = 18$. De prijsimpact is $18/2000 = 0{,}9\%$, en die kost
-op de resterende $80$ een verlies van $0{,}72$: $E = 7{,}28$, $A = 79{,}28$.
-
-**Tweede ronde.** De toegestane balans is nu $72{,}8$, dus $S_2 = 79{,}28 - 72{,}8 = 6{,}48$,
-met prijsimpact $0{,}324\%$ en een verlies van $72{,}8 \times 0{,}00324 = 0{,}236$. De
-verkopen krimpen per ronde met ongeveer een factor $0{,}36$: elke euro verlies dwingt
-$(1-h)/h = 9$ euro verkoop af, die $9/2000$ prijsdaling veroorzaakt op een balans van ongeveer
-$80$, samen $80 \times 9/2000 = 0{,}36$. De reeks convergeert (de code rekent hem af) naar een
-eigen vermogen van $6{,}94$ en een totale prijsdaling van $3{,}35\%$, waarvan $1{,}35$
-procentpunt door de eigen verkopen komt. De kapitaalratio is na afloop weer $10\%$, maar bij
-een eigen vermogen dat 31% lager is dan vóór de schok.
-
-**Margespiraal.** Stel nu dat de geldgever na de schok het haircut verhoogt naar $12{,}5\%$
-omdat de koersen beweeglijker zijn geworden. Dan mag de balans hoogstens $8/0{,}125 = 64$ zijn:
-$S_1 = 34$, prijsimpact $1{,}7\%$, verlies $64 \times 0{,}017 = 1{,}088$, $E = 6{,}912$. In de
-tweede ronde is de toegestane balans $55{,}30$ en de verkoop $62{,}91 - 55{,}30 = 7{,}62$.
-Na convergentie is de prijs $4{,}12\%$ gedaald, is het eigen vermogen $6{,}65$ en de leverage
-$8$.
-
-Op het moment van de schok *daalt* de kapitaalratio (van 10% naar 8,16%); daarna *daalt* de
-leverage door de gedwongen verkoop (van 10 naar 8 bij het hogere haircut). Dezelfde slechte
-toestand geeft dus een dalende kapitaalratio én een dalende leverage, een paradox die
-terugkomt bij de factoren van He-Kelly-Manela en Adrian-Etula-Muir.
+De code rekent beide spiralen af tot er niets meer verkocht hoeft te worden, en zet de
+handstappen naast de uitkomsten van de code.
 
 ```{code-cell} ipython3
 :label: cel-intermediaries-toy
@@ -174,74 +170,96 @@ E0, A0, H0, EPS, W_OUT, SHOCK = 10.0, 100.0, 0.10, 2.0, 1000.0, 0.02
 eta_impact, const_rounds, const_price = deleverage(E0, A0, H0, EPS * W_OUT, SHOCK)
 _, margin_rounds, margin_price = deleverage(E0, A0, H0, EPS * W_OUT, SHOCK, h_after=0.125)
 
-print(f"kapitaalratio direct na de schok: {eta_impact:.4f}")
-print("eerste twee rondes, vaste haircut:\n", const_rounds.head(2).round(4).to_string())
-print("eerste twee rondes, haircut 12,5%:\n", margin_rounds.head(2).round(4).to_string())
+for name, rounds, price in [("haircut 10%", const_rounds, const_price), ("haircut 10% → 12,5%", margin_rounds, margin_price)]:
+    final_equity, final_assets = rounds["E"].iloc[-1], rounds["A"].iloc[-1]
+    print(f"{name}: {len(rounds)} rondes, eigen vermogen na afloop {final_equity:.3f}, "
+          f"leverage na afloop {final_assets / final_equity:.1f}, prijsdaling {100 * (1 - price):.3f}%")
 
-hand = [8 / 98, 18.0, 0.72, 6.48, 34.0, 1.088, 7.616]
-code = [eta_impact, const_rounds.loc[0, "verkoop"], const_rounds.loc[0, "verlies"], const_rounds.loc[1, "verkoop"],
-        margin_rounds.loc[0, "verkoop"], margin_rounds.loc[0, "verlies"], margin_rounds.loc[1, "verkoop"]]
-print("code == handberekening:", np.allclose(code, hand, atol=5e-4))
-
-pd.DataFrame(
-    {name: {"rondes": len(r), "totaal verkocht": r["verkoop"].sum(), "eigen vermogen na afloop": r["E"].iloc[-1],
-            "leverage na afloop": r["A"].iloc[-1] / r["E"].iloc[-1], "prijsdaling (%)": 100 * (1 - p),
-            "versterking (prijsdaling / 2%)": (1 - p) / SHOCK}
-     for name, r, p in [("haircut 10%", const_rounds, const_price), ("haircut 10% → 12,5%", margin_rounds, margin_price)]}
-).T.round(3)
+steps = ["kapitaalratio na de schok", "verkoop ronde 1", "verlies ronde 1", "verkoop ronde 2",
+         "verkoop ronde 1, haircut 12,5%", "verlies ronde 1, haircut 12,5%", "verkoop ronde 2, haircut 12,5%"]
+by_hand = [8 / 98, 18.0, 0.72, 6.48, 34.0, 1.088, 7.616]
+by_code = [eta_impact, const_rounds.loc[0, "verkoop"], const_rounds.loc[0, "verlies"], const_rounds.loc[1, "verkoop"],
+           margin_rounds.loc[0, "verkoop"], margin_rounds.loc[0, "verlies"], margin_rounds.loc[1, "verkoop"]]
+pd.DataFrame({"met de hand": by_hand, "code": by_code}, index=steps).round(4)
 ```
 
+Code en handberekening komen op elke stap overeen. Bij een vaste haircut is de prijs na
+afloop 3,35% gedaald, zodat de eigen verkopen 1,35 procentpunt aan de schok toevoegen. Het
+eigen vermogen is dan 31% lager dan vóór de schok.
+
+Bij de hogere haircut daalt de prijs 4,12%, en daalt de leverage na afloop tot 8, tegen 10
+bij een vaste haircut. Dezelfde slechte toestand geeft dus eerst een dalende
+kapitaalratio, omdat het verlies het eigen vermogen raakt, en daarna een dalende leverage,
+omdat de balans krimpt. Die tegenstelling komt terug bij twee empirische factoren die
+allebei een positieve prijs krijgen.
+
 ## Theorie
+
+De theorie gaat in drie stappen van de balans van één intermediair naar de prijzen van
+alle activa. Eerst laten we zien dat de twee spiralen een markt met twee evenwichten
+kunnen opleveren. Daarna leiden we af dat de risicopremie omgekeerd evenredig is met de
+kapitaalratio, en dat de volatiliteit dat verband versterkt. Tot slot maken we van het
+marginale nut van de intermediair een factormodel. Alles draait om de gedachte dat de
+prijs van risico afhangt van het kapitaal van wie het risico draagt.
 
 ### Opzet en notatie
 
 Een intermediair heeft op $t$ eigen vermogen $E_t$, activa $A_t$ en schuld $A_t - E_t$. We
 schrijven $L_t = A_t/E_t$ voor de leverage en $\eta_t = E_t/A_t = 1/L_t$ voor de
-kapitaalratio, het symbool van {cite:t}`HeKellyManela2017`. De haircut is $h$, zodat de
-financieringsrestrictie $E_t \ge hA_t$ luidt. De stochastic discount factor is zoals altijd
-$m_{t+1}$ en de prijs van risico van factor $f$ is $\lambda_f$. De papers gebruiken andere
-symbolen (Brunnermeier en Pedersen schrijven $m$ voor de marge, He en Krishnamurthy $m$ voor de
-maximale inbreng van huishoudens); we vertalen alles naar deze notatie. Een verliesspiraal
-met vaste haircut hebben we in [](#prop-risk-management-spiraal) al afgeleid; die herhalen we
-niet. Nieuw is dat de haircut, en daarmee de toegestane balans, zelf van de marktliquiditeit
-afhangt.
+kapitaalratio, het symbool van {cite:t}`HeKellyManela2017`. Voor de primary dealers daalde
+die ratio in 2009 tot ongeveer 2%. De financieringsrestrictie luidt $E_t \ge hA_t$ met
+haircut $h$, in het toy-voorbeeld 10%.
+
+De artikelen gebruiken $m$ voor de marge of voor de inbreng van huishoudens, maar hier
+blijft $m_{t+1}$ de stochastic discount factor. Een verliesspiraal met vaste haircut is al
+afgeleid in [](#prop-risk-management-spiraal). Nieuw is dat de haircut, en daarmee de
+toegestane balans, zelf van de marktliquiditeit afhangt.
 
 ### Marktliquiditeit en financieringsliquiditeit
 
-*Waarom zou dit waar zijn?* Speculanten (dealers, hedgefondsen) vangen tijdelijke
-verkoopdruk van klanten op en verdienen daar de prijskorting mee. Hoeveel ze kunnen opvangen,
-hangt af van hun kapitaal en de marge. Is de markt illiquide, met een grote korting, dan
-hebben ze op hun bestaande posities verloren, en schatten geldgevers de risico's hoger in en
-eisen ze een hogere marge. Minder kapitaal en een hogere marge betekenen minder opvangcapaciteit,
-en dus een nog grotere korting. De twee vormen van liquiditeit versterken elkaar, en er kan
-een evenwicht bestaan waarin de markt liquide is omdat de speculanten kapitaal hebben, naast
-een evenwicht waarin ze illiquide is omdat ze dat niet hebben.
+Markt- en financieringsliquiditeit versterken elkaar, en daardoor kan dezelfde markt
+liquide of illiquide zijn. *Waarom zou dit waar zijn?* Speculanten zoals dealers vangen
+tijdelijke verkoopdruk op en verdienen daarmee de prijskorting. Is de korting groot, dan
+hebben ze op hun bestaande posities verloren, en vragen geldgevers bovendien een hogere
+marge. Met minder kapitaal en een hogere marge kunnen ze minder opvangen, zodat de korting
+verder oploopt.
 
-We vereenvoudigen het model van {cite:t}`BrunnermeierPedersen2009` tot één periode. Klanten
-bieden $z > 0$ eenheden aan van een activum met fundamentele waarde $v$. Speculanten kopen
-$x \ge 0$; de rest wordt opgevangen door buitenstaanders met vraaghelling $\varepsilon$, zodat
-de prijskorting $\Delta = v - p = (z - x)/\varepsilon$ is. Speculanten zijn risiconeutraal en
-kopen zoveel ze mogen zolang $\Delta > 0$. Ze hebben een bestaande positie $x_0$, zodat hun
-kapitaal na de korting $K(\Delta) = \max\{K_0 - x_0\Delta, 0\}$ is, en ze moeten een marge
-$h(\Delta) = h_0 + \theta\Delta$ per eenheid storten, stijgend in de illiquiditeit
-($\theta \ge 0$). Dan is $x = \min\{z, K(\Delta)/h(\Delta)\}$, en een evenwicht is een vast punt
-van
+We vereenvoudigen het model van {cite:t}`BrunnermeierPedersen2009` tot één periode.
+Klanten bieden $z > 0$ eenheden aan van een activum met fundamentele waarde $v$.
+Speculanten kopen $x \ge 0$ en buitenstaanders met vraaghelling $\varepsilon$ nemen de
+rest, zodat de prijskorting $\Delta = v - p = (z - x)/\varepsilon$ is. Dat is de prijsimpact
+uit het toy-voorbeeld, waarin de vraaghelling $\varepsilon W = 2000$ was, de elasticiteit
+maal het vermogen van de buitenstaanders.
+
+De speculanten zijn risiconeutraal en kopen zoveel ze mogen zolang $\Delta > 0$. Door hun
+bestaande positie $x_0$ is hun kapitaal na de korting $K(\Delta) = \max\{K_0 - x_0\Delta, 0\}$.
+Per eenheid storten ze een marge (de haircut uit het toy-voorbeeld) $h(\Delta) = h_0 + \theta\Delta$,
+die met de korting
+stijgt als $\theta > 0$. Ze kopen dus $x = \min\{z, K(\Delta)/h(\Delta)\}$, en een
+evenwicht is een vast punt van
 
 ```{math}
 :label: eq-intermediaries-bp-vastpunt
 \Delta = G(\Delta) \equiv \max\left\{0,\; \frac{1}{\varepsilon}\left(z - \frac{K(\Delta)}{h(\Delta)}\right)\right\}.
 ```
 
-:::{prf:proposition} Meervoudige evenwichten en de liquiditeitsspiraal
+Rechts staat de korting die ontstaat als de speculanten bij korting $\Delta$ zoveel
+mogelijk kopen. In een evenwicht is dat dezelfde korting als die waarmee we begonnen.
+
+:::{prf:proposition} Meervoudige evenwichten
 :label: thm-intermediaries-bp
 
 1. $\Delta = 0$ (een liquide markt) is een evenwicht dan en slechts dan als $z \le K_0/h_0$.
-2. $\Delta = z/\varepsilon$ (speculanten zijn weggevaagd en kopen niets) is een evenwicht dan en
-   slechts dan als $z x_0/\varepsilon \ge K_0$.
-3. Geldt $z x_0/\varepsilon > K_0$ en $z < K_0/h_0$, dan zijn er minstens drie evenwichten: de
-   twee hierboven en een instabiel evenwicht ertussen.
-4. In een evenwicht met $0 < \Delta^* < K_0/x_0$ en bindende restrictie is de reactie op extra
-   verkoopdruk
+2. $\Delta = z/\varepsilon$ (de speculanten kopen niets meer) is een evenwicht dan en slechts dan als $z x_0/\varepsilon \ge K_0$.
+3. Geldt $z x_0/\varepsilon > K_0$ en $z < K_0/h_0$, dan zijn er minstens drie evenwichten, de twee hierboven en een instabiel evenwicht ertussen.
+:::
+
+:::{prf:proof}
+Punt 1 en 2 volgen door $\Delta = 0$ en $\Delta = z/\varepsilon$ in $G$ in te vullen. Voor punt 3 ligt $G$ vlak bij nul onder de 45-graden-lijn, omdat $z < K_0/h_0$. Bij $\hat\Delta = K_0/x_0 < z/\varepsilon$ is het kapitaal op en ligt $G(\hat\Delta) = z/\varepsilon$ erboven. Omdat $G$ continu is, snijdt $G$ de lijn ertussen van onder naar boven, dus met $G' \ge 1$, en daar convergeert de iteratie $\Delta_{k+1} = G(\Delta_k)$ niet. $\square$
+:::
+
+Hoe hard reageert een evenwicht op extra aanbod? Impliciet differentiëren van
+[](#eq-intermediaries-bp-vastpunt) bij $0 < \Delta^* < K_0/x_0$ geeft
 
 ```{math}
 :label: eq-intermediaries-bp-multiplier
@@ -251,31 +269,24 @@ G'(\Delta) = \underbrace{\frac{x_0}{\varepsilon\, h(\Delta)}}_{\text{verliesspir
 + \underbrace{\frac{\theta\, K(\Delta)}{\varepsilon\, h(\Delta)^2}}_{\text{margespiraal}} ,
 ```
 
-   zolang $G'(\Delta^*) < 1$. Bij $G'(\Delta^*) > 1$ is het evenwicht instabiel: een
-   willekeurig kleine extra schok duwt de markt naar het illiquide evenwicht.
-:::
+zolang $G'(\Delta^*) < 1$. Extra verkoopdruk verhoogt de korting dus met de directe impact
+$1/\varepsilon$, vermenigvuldigd met een factor die groeit met beide spiralen. Een grotere
+positie $x_0$ zet elke extra korting om in meer verlies, en een marge die met de korting
+oploopt, holt de koopkracht verder uit.
 
-:::{prf:proof}
-(1) $G(0) = 0$ desda $z - K_0/h_0 \le 0$. (2) Bij $\Delta = z/\varepsilon$ is
-$G(\Delta) = \Delta$ desda $K(z/\varepsilon)/h = 0$, dus desda $K_0 - x_0 z/\varepsilon \le 0$.
-(3) Laat $H(\Delta) = G(\Delta) - \Delta$. Omdat $z < K_0/h_0$ is $G = 0$ op een omgeving van
-nul, dus $H < 0$ net rechts van nul. Bij $\hat\Delta = K_0/x_0 < z/\varepsilon$ is het kapitaal
-nul en $H(\hat\Delta) = z/\varepsilon - K_0/x_0 > 0$. $H$ is continu, dus heeft een nulpunt in
-$(0, \hat\Delta)$; daar gaat $G$ van onder naar boven de 45-graden-lijn, dus $G' \ge 1$, en het
-evenwicht is instabiel. (4) Differentieer $\Delta = (z - K(\Delta)/h(\Delta))/\varepsilon$ impliciet:
-$\mathrm{d}\Delta = \mathrm{d}z/\varepsilon + G'(\Delta)\,\mathrm{d}\Delta$ met
-$G' = -\frac{1}{\varepsilon}\frac{\mathrm{d}}{\mathrm{d}\Delta}\frac{K}{h} = \frac{1}{\varepsilon}\frac{x_0 h + \theta K}{h^2}$.
-Stabiliteit volgt uit de iteratie $\Delta_{k+1} = G(\Delta_k)$, die bij een vast punt convergeert
-desda $|G'| < 1$. $\square$
-:::
+In het toy-voorbeeld is $x_0$ de resterende balans van 80 en $\varepsilon$ de vraaghelling
+van 2000, zodat de verliesterm $80/(2000 \times 0{,}10) = 0{,}4$ is. De factor per ronde was
+daar 0,36, omdat het verlies de balans zelf al verkleint en elke dollar verlies dus
+$(1-h)/h$ in plaats van $1/h$ dollar verkoop afdwingt. Met $G' \approx 0{,}36$ wordt de
+eerste impact ongeveer anderhalf keer zo groot, zoals de eerste daling van 0,9% daar tot
+1,35 procentpunt opliep.
 
-De twee termen in [](#eq-intermediaries-bp-multiplier) zijn de twee spiralen uit het
-toy-voorbeeld. In het volledige model stijgen marges met de illiquiditeit omdat geldgevers
-een liquiditeitsschok niet van een fundamentele schok kunnen onderscheiden; marges werken dan
-destabiliserend, en markt- en financieringsliquiditeit versterken elkaar
-{cite}`BrunnermeierPedersen2009`. Dat verklaart waarom liquiditeit plotseling en in veel
-effecten tegelijk opdroogt, samenhangt met volatiliteit en samengaat met een vlucht naar
-kwaliteit.
+In het volledige model stijgen marges omdat geldgevers een liquiditeitsschok niet van een
+fundamentele schok kunnen onderscheiden. Zo verklaart het model waarom liquiditeit
+plotseling en in veel effecten tegelijk opdroogt {cite}`BrunnermeierPedersen2009`. Voor de
+figuur kiezen we $K_0 = 1$, $x_0 = 8$, $h_0 = 0{,}08$, $\theta = 2$ en $\varepsilon = 60$,
+en tekenen we $G$ voor drie niveaus van aanbod. Elk snijpunt met de 45-graden-lijn is een
+evenwicht.
 
 ```{code-cell} ipython3
 :label: cel-intermediaries-bp
@@ -292,9 +303,12 @@ grid_d = np.linspace(0.0, 0.25, 5001)
 fig, ax = plt.subplots()
 for i, z_supply in enumerate([7.0, 10.0, 13.0]):
     gap = bp_map(grid_d, z_supply, **BP) - grid_d
-    roots = [optimize.brentq(lambda d: bp_map(d, z_supply, **BP) - d, grid_d[k], grid_d[k + 1])
-             for k in np.flatnonzero(np.diff(np.sign(gap)) != 0) if gap[k] != 0]
-    roots = sorted(set([0.0] if gap[0] == 0 else []) | set(np.round(roots, 6)))
+    roots = [0.0] if gap[0] == 0 else []          # Delta = 0 is an equilibrium when G(0) = 0
+    for k in np.flatnonzero(np.diff(np.sign(gap)) != 0):
+        if gap[k] != 0:                              # sign change between grid points k and k + 1
+            root = optimize.brentq(lambda d: bp_map(d, z_supply, **BP) - d, grid_d[k], grid_d[k + 1])
+            roots.append(round(float(root), 6))
+    roots = sorted(set(roots))
     ax.plot(grid_d, bp_map(grid_d, z_supply, **BP), color=hap.plotting.COLORS[i], label=f"$G(\\Delta)$, aanbod $z$ = {z_supply:g}")
     ax.plot(roots, roots, "o", color=hap.plotting.COLORS[i])
     print(f"z = {z_supply:>4}: evenwichten Delta* = {roots}")
@@ -310,174 +324,13 @@ plt.show()
 :label: fig-intermediaries-bp
 :width: 90%
 
-Bij $z = 7$ en $z = 10$ bestaan een liquide evenwicht ($\Delta = 0$) en een illiquide evenwicht
-naast elkaar, gescheiden door een instabiel evenwicht (bij $z = 10$ al bij een korting van
-0,9%): welke markt er komt, hangt af van verwachtingen en kleine schokken. Bij $z = 7$ hebben de
-speculanten in het illiquide evenwicht nog kapitaal, maar is hun marge opgelopen tot 30%; bij
-$z = 10$ zijn ze weggevaagd. Bij $z = 13$ overschrijdt het aanbod de opvangcapaciteit
-$K_0/h_0 = 12{,}5$ en blijft alleen de illiquide markt over.
+Bij $z = 7$ en $z = 10$ liggen een liquide en een illiquide evenwicht naast elkaar, gescheiden door een instabiel evenwicht. Welke markt er komt, hangt dan af van verwachtingen en kleine schokken. Bij $z = 7$ geldt voorwaarde 3 van de propositie niet, want $z x_0/\varepsilon = 7 \times 8/60 < 1 = K_0$, maar die voorwaarde is voldoende en niet nodig. De margespiraal met $\theta = 2$ drukt de koopkracht daar zo ver dat er toch drie evenwichten zijn, en het illiquide evenwicht ligt op 0,11, net onder $z/\varepsilon$, omdat de speculanten nog wat kapitaal over hebben. Bij $z = 13$ is het aanbod groter dan de opvangcapaciteit $K_0/h_0 = 12{,}5$, en blijft alleen de illiquide markt over.
 :::
 
-### Kapitaalratio en risicopremie: He en Krishnamurthy
+::::{note} Twintig intermediairs: de spiraal op schaal
+:class: dropdown
 
-*Waarom zou dit waar zijn?* Stel dat alleen intermediairs het risicovolle activum kunnen
-houden, en dat huishoudens bij hen hoogstens een vast veelvoud van het vermogen van de
-bankiers als eigen vermogen willen inleggen. Zolang de bankiers rijk genoeg zijn, bindt die
-grens niet. Na verliezen wel: het eigen vermogen van de sector krimpt, de activa moeten toch
-gehouden worden, en de zwaarder gehefboomde marginale houder eist per eenheid risico meer.
-{cite:t}`HeKrishnamurthy2013` kalibreren een model met deze *equity capital constraint* en
-reproduceren de niet-lineaire sprong van crisispremies en hun snelle terugval; in hun
-beleidsanalyse is "injecting equity capital [...] particularly effective".
-
-We nemen de kern over in een vereenvoudigde, lokale versie. De bankiers hebben vermogen
-$w_t$, relatieve risicoaversie $\gamma$, en mogen van huishoudens hoogstens $\chi w_t$ eigen
-vermogen ophalen. Het risicovolle activum heeft waarde $p_t$, verwacht excess rendement $\pi_t$
-en volatiliteit $\sigma_{R,t}$. De intermediair houdt het hele activum, dus zijn kapitaalratio
-is $\eta_t = (1+\chi)w_t/p_t$ zolang de restrictie bindt, en een vaste $\bar\eta$ als huishoudens
-vrij kapitaal kunnen bijleggen.
-
-:::{prf:proposition} Risicopremie bij een bindende kapitaalrestrictie
-:label: thm-intermediaries-hk
-
-Kiest de intermediair zijn portefeuille zoals een Merton-belegger en ruimt de markt, dan is
-
-```{math}
-:label: eq-intermediaries-hk-premie
-\pi_t = \frac{\gamma\,\sigma_{R,t}^2}{\eta_t}
-\quad\text{als } \eta_t < \bar\eta,
-\qquad
-\pi_t = \frac{\gamma\,\sigma_{R,t}^2}{\bar\eta}
-\quad\text{als de restrictie niet bindt.}
-```
-
-Bij gegeven volatiliteit is de risicopremie in het beperkte gebied dus omgekeerd evenredig met
-de kapitaalratio. Omdat de intermediair de marginale belegger is, is zijn marginale nut de SDF:
-$m_{t+1} = \beta\,(w_{t+1}/w_t)^{-\gamma}$ bij consumptie evenredig met vermogen.
-:::
-
-:::{prf:proof}
-Het optimale aandeel van het eigen vermogen in het risicovolle activum is voor een
-CRRA-belegger met constante kansen (zie [](#03-10-merton-icapm)) $\alpha_t = \pi_t/(\gamma\sigma_{R,t}^2)$.
-Het eigen vermogen van de sector is $(1+\chi)w_t$ als de restrictie bindt, en het hele activum
-moet door de sector gehouden worden, dus $\alpha_t (1+\chi) w_t = p_t$, oftewel
-$\alpha_t = p_t/((1+\chi)w_t) = 1/\eta_t$. Gelijkstellen geeft $\pi_t = \gamma\sigma_{R,t}^2/\eta_t$.
-Bindt de restrictie niet, dan leggen huishoudens eigen vermogen bij tot de kapitaalratio
-$\bar\eta$ is, en geldt hetzelfde met $\bar\eta$. De SDF volgt uit de Euler-vergelijking van
-de marginale belegger, [](#eq-intermediaries-sdf) hieronder. $\square$
-:::
-
-Maar de volatiliteit is niet gegeven. *Waarom zou dit waar zijn?* Een dividendschok verlaagt
-de prijs; de gehefboomde intermediair verliest daarop een veelvoud; zijn kapitaalratio daalt;
-de risicopremie stijgt; en een hogere vereiste premie verlaagt de prijs verder. Hoe lager de
-kapitaalratio, hoe sterker die terugkoppeling.
-
-Neem een reduced-form prijsregel: dividenden groeien met volatiliteit $\sigma_D$, en een
-verhoging van de premie met $\mathrm{d}\pi$ verlaagt de log-prijs met $\tau\,\mathrm{d}\pi$, waarbij
-$\tau$ de verwachte duur van een premieschok in jaren is. In het beperkte gebied is
-$\eta_t \propto w_t/p_t$ en verandert het vermogen van de bankiers met $1/\eta_t$ maal het
-rendement.
-
-:::{prf:proposition} Volatiliteitsversterking
-:label: thm-intermediaries-hk-vol
-
-In eerste-orde-benadering, met $\sigma_R$ lokaal constant in de afgeleide van $\pi$, voldoet
-de rendementsvolatiliteit in het beperkte gebied aan
-
-```{math}
-:label: eq-intermediaries-hk-vol
-\sigma_{R}(\eta) = \frac{\sigma_D}{1 - \tau\,\pi(\eta)\left(\frac{1}{\eta} - 1\right)},
-\qquad
-\pi(\eta) = \frac{\gamma\,\sigma_R(\eta)^2}{\eta}.
-```
-
-De kleinste oplossing $\sigma_R(\eta) \ge \sigma_D$ stijgt als $\eta$ daalt, en daarmee stijgt
-$\pi(\eta)$ sneller dan $1/\eta$. Onder een kritieke kapitaalratio bestaat geen eindige
-oplossing: de terugkoppeling heeft een lusversterking van één of meer.
-:::
-
-:::{prf:proof}
-Schrijf $\mathrm{d}\log p = \mathrm{d}\log D - \tau\,\mathrm{d}\pi$ en
-$\mathrm{d}\log\eta = \mathrm{d}\log w - \mathrm{d}\log p = (1/\eta - 1)\,\mathrm{d}\log p$, omdat
-het vermogen van de bankiers met hefboom $1/\eta$ op de prijs reageert. Met
-$\pi = \gamma\sigma_R^2/\eta$ en $\sigma_R$ lokaal vast is $\mathrm{d}\pi = -\pi\,\mathrm{d}\log\eta$.
-Invullen geeft $\mathrm{d}\log p = \mathrm{d}\log D + \tau\pi(1/\eta - 1)\,\mathrm{d}\log p$; oplossen
-naar $\mathrm{d}\log p$ en de standaarddeviatie nemen geeft [](#eq-intermediaries-hk-vol). Laat
-$T_\eta(\sigma) = \sigma_D/(1 - \tau\gamma\sigma^2\eta^{-1}(\eta^{-1} - 1))$. $T_\eta$ is stijgend in
-$\sigma$, en bij elke $\sigma$ stijgend in $1/\eta$ voor $\eta < 1$. De iteratie
-$\sigma_{k+1} = T_\eta(\sigma_k)$ vanaf $\sigma_0 = \sigma_D$ is dus monotoon stijgend en convergeert
-naar het kleinste vaste punt als dat bestaat. Voor $\eta' < \eta$ is $T_{\eta'} \ge T_\eta$
-puntsgewijs, dus elk iteraat en het kleinste vaste punt zijn groter. Bestaat geen vast punt, dan
-divergeert de iteratie. $\square$
-:::
-
-De benadering is ruw op één punt: bij $\bar\eta$ springt de volatiliteit, omdat onze prijsregel
-het binden van de restrictie niet anticipeert; in het volledige model is de overgang glad.
-
-### Van theorie naar factormodel
-
-*Waarom zou dit waar zijn?* Als het marginale nut van de intermediair de SDF is, moet elk
-verwacht excess rendement een beloning zijn voor covariantie met dat marginale nut. Het
-marginale nut stijgt als het vermogen van de intermediair daalt, en dat vermogen is het
-product van het totale vermogen in de economie en het aandeel van de intermediair daarin.
-
-{cite:t}`HeKellyManela2017` schrijven het vermogen van de intermediair als $\eta_t W_t$, met
-$W_t$ het totale vermogen. Met consumptie evenredig met vermogen is dan
-
-```{math}
-:label: eq-intermediaries-sdf
-m_{t+1} = \beta\left(\frac{\eta_{t+1}W_{t+1}}{\eta_t W_t}\right)^{-\gamma}
-\approx a - \gamma\,\frac{\Delta W_{t+1}}{W_t} - \gamma\,\eta^{\Delta}_{t+1},
-```
-
-een lineaire SDF in het marktrendement en de groei van de kapitaalratio. Hun factor
-$\eta^\Delta_{t+1} = u_{t+1}/\eta_t$ is de innovatie $u_{t+1}$ uit een AR(1) voor de
-kapitaalratio, gedeeld door de vorige ratio; ze rapporteren een AR(1)-coëfficiënt van 0,94 per
-kwartaal (werkversie, voetnoot 18). Via de bèta-representatie uit [](#02-08-capm) wordt
-[](#eq-intermediaries-sdf)
-
-```{math}
-:label: eq-intermediaries-twee-factor
-\E[R^e_{i}] = \beta_{i,W}\,\lambda_W + \beta_{i,\eta}\,\lambda_\eta,
-\qquad \lambda_W > 0,\ \lambda_\eta > 0 .
-```
-
-{cite:t}`AdrianEtulaMuir2014` kozen een andere toestandsvariabele. Ze motiveren haar met
-Brunnermeier en Pedersen: de Lagrange-multiplier op de financieringsrestrictie is hoog als de
-leverage laag is, omdat intermediairs dan gedwongen hebben afgebouwd. Hun SDF is
-$m_{t+1} = 1 - b\,\mathrm{LevFac}_{t+1}$, met $\mathrm{LevFac}$ de seizoensgecorrigeerde
-verandering in de log-leverage van broker-dealers volgens de Flow of Funds, en $b > 0$. Een
-activum dat slecht rendeert als de leverage daalt, is riskant en moet een positieve premie
-opleveren: $\lambda_{\mathrm{Lev}} > 0$.
-
-Hier zit de puzzel: AEM vinden een positieve prijs voor schokken in *leverage*, HKM voor
-schokken in de *kapitaalratio*, het omgekeerde. HKM schrijven zelf: "These two results are
-contradictory because leverage, defined as assets over equity, is just the reciprocal of the
-equity capital ratio" (werkversie, p. 4). Twee verschillen maken beide consistent.
-
-Het eerste is boekwaarde tegenover marktwaarde. AEM meten boekleverage uit de Flow of Funds, en
-{cite:t}`AdrianShin2010` lieten zien dat "marked-to-market leverage is strongly procyclical":
-dealers krimpen hun balans hard als prijzen dalen. HKM meten het eigen vermogen tegen
-beurswaarde, die in een crisis veel sneller daalt, omdat de beurs verwachte verliezen meteen
-verdisconteert. Het tweede is de samenstelling: de Flow of Funds bevat alleen de
-broker-dealeractiviteiten, HKM nemen de beursgenoteerde moeders van de primary dealers. HKM
-vinden "little evidence that the accounting treatment of book versus market leverage drives
-these differences" en wijzen de samenstelling aan (p. 5). Beide metingen kunnen dus in dezelfde
-slechte toestand dalen, zoals in het toy-voorbeeld: de leverage omdat de balans krimpt, de
-kapitaalratio omdat het eigen vermogen instort.
-
-## Simulatie: fire sales, premies en de kracht van een factortoets
-
-### (a) Fire sales met twintig intermediairs
-
-Twintig intermediairs met eigen vermogen 1 en leverage uniform tussen 6 en 12 houden hetzelfde
-activum; de haircut is $h_0 = 8\%$, dus de maximale leverage 12,5. Een fundamentele schok
-verlaagt de prijs; iedere intermediair die boven zijn toegestane balans zit, verkoopt; de
-totale verkoop drukt de prijs met $S/(\varepsilon W)$ met $\varepsilon W = 2000$; en we herhalen tot
-niemand meer hoeft te verkopen. We vergelijken drie werelden bij dezelfde schokken: zonder
-prijsimpact, met fire sales bij een vaste haircut, en met fire sales én een haircut die
-oploopt met de cumulatieve prijsdaling, $h = h_0 + \theta(1 - p)$ met $\theta = 1$. De
-fundamentele schokken zijn de absolute waarde van een normale trekking met een standaarddeviatie
-van 3%, twintigduizend keer.
+Hier houden twintig intermediairs met een leverage tussen 6 en 12 hetzelfde activum, en wie na een schok te groot is, verkoopt tegen afgeprijsde koersen (een *fire sale*). We vergelijken drie werelden bij dezelfde twintigduizend schokken, getrokken met een standaarddeviatie van 3%.
 
 ```{code-cell} ipython3
 def fire_sale(shock, leverage, h0, theta, absorb, max_rounds=300):
@@ -523,6 +376,8 @@ pd.DataFrame(
 ).T.round(3)
 ```
 
+Kleine schokken worden met een vaste haircut nauwelijks versterkt, grote wel. De figuur toont links die knik en rechts de kans op een grote daling.
+
 ```{code-cell} ipython3
 :label: cel-intermediaries-firesale
 :tags: [hide-input]
@@ -547,30 +402,90 @@ fig.tight_layout()
 plt.show()
 ```
 
-:::{figure} #cel-intermediaries-firesale
-:label: fig-intermediaries-firesale
-:width: 100%
+De kans op een daling van meer dan 10% stijgt van 0,1% zonder prijsimpact naar 12% met de margespiraal. Een risicomodel dat alleen de fundamentele schokken kent, zit er dus twee ordes van grootte naast.
+::::
 
-Links: kleine schokken worden nauwelijks versterkt, grote wel; de knik ligt waar de eerste
-intermediairs hun restrictie raken. Rechts: bij dezelfde verdeling van fundamentele schokken
-maken fire sales en vooral de margespiraal de staart van de prijsdalingen veel dikker. Een
-risicomodel dat de fundamentele verdeling kent, onderschat de kans op een grote daling met een
-orde van grootte.
+### Kapitaalratio en risicopremie
+
+Als alleen intermediairs het risicovolle activum kunnen houden, is de risicopremie
+omgekeerd evenredig met hun kapitaalratio. Na verliezen krimpt het eigen vermogen van de
+sector, terwijl het activum toch gehouden moet worden. Elke dollar eigen vermogen draagt
+dan meer risico, en de bankiers vragen per eenheid risico een hogere premie. Het model van
+{cite:t}`HeKrishnamurthy2013` reproduceert zo de sprong van de crisispremies en hun snelle
+terugval, met een grens aan het eigen vermogen dat huishoudens bij intermediairs willen
+inleggen.
+
+We nemen de kern over in een lokale versie. De bankiers hebben vermogen $w_t$ en relatieve
+risicoaversie $\gamma$, en halen bij huishoudens hoogstens $\chi w_t$ aan extra eigen
+vermogen op, met $\chi$ de inbreng die huishoudens per dollar bankiersvermogen willen
+doen. Het activum heeft waarde $p_t$, verwacht overrendement $\pi_t$ en volatiliteit
+$\sigma_{R,t}$. Zolang de restrictie bindt, is de kapitaalratio $\eta_t = (1+\chi)w_t/p_t$,
+en anders ligt ze op een vaste $\bar\eta$.
+
+:::{prf:proposition} Risicopremie bij een bindende kapitaalrestrictie
+:label: thm-intermediaries-hk
+
+De intermediair kiest zijn portefeuille zoals een Merton-belegger, en vraag is gelijk aan aanbod. Dan is
+
+```{math}
+:label: eq-intermediaries-hk-premie
+\pi_t = \frac{\gamma\,\sigma_{R,t}^2}{\eta_t}
+\quad\text{als } \eta_t < \bar\eta,
+\qquad
+\pi_t = \frac{\gamma\,\sigma_{R,t}^2}{\bar\eta}
+\quad\text{als de restrictie niet bindt.}
+```
 :::
 
-Bij schokken kleiner dan 2% is de mediane versterking met vaste haircut vrijwel nul (factor
-1,03) en met margespiraal 1,29; bij schokken boven 6% worden die factoren 1,68 en 1,87. De kans
-op een daling van meer dan 10% gaat van 0,1% zonder prijsimpact naar 4,7% met fire sales en 12%
-met de margespiraal. Dat is de niet-lineariteit uit [](#thm-intermediaries-bp): het systeem
-gedraagt zich normaal tot het dat niet meer doet, en een steekproef uit de normale jaren zegt
-niets over de staart.
+:::{prf:proof}
+Volgens de Merton-regel uit [](#03-10-merton-icapm) stopt een CRRA-belegger het deel $\pi_t/(\gamma\sigma_{R,t}^2)$ van zijn eigen vermogen in het risicovolle activum. Omdat de sector met eigen vermogen $(1+\chi)w_t$ het hele activum houdt, moet dat deel $p_t/((1+\chi)w_t) = 1/\eta_t$ zijn. Gelijkstellen geeft het resultaat, en zonder bindende restrictie geldt hetzelfde met $\bar\eta$. $\square$
+:::
 
-### (b) Risicopremie en volatiliteit in een He-Krishnamurthy-economie
+Bij gegeven volatiliteit is de premie in het beperkte gebied dus omgekeerd evenredig met
+de kapitaalratio. Ze stijgt met $\gamma$, omdat de bankiers dan meer beloning per eenheid
+risico vragen. Met $\gamma = 2$ en $\sigma_R = 12\%$ is de premie bij $\eta = 0{,}5$
+gelijk aan $2 \times 0{,}0144/0{,}5 = 5{,}8\%$. Het teken uit de intuïtie klopt dus, maar
+bij vaste volatiliteit groeit de premie precies evenredig met $1/\eta$.
 
-We lossen [](#eq-intermediaries-hk-vol) op voor $\gamma = 2$, $\sigma_D = 12\%$ per jaar,
-$\tau = 0{,}25$ jaar en $\bar\eta = 0{,}5$. De kapitaalratio in dit model is het deel van de
-activa dat met eigen vermogen van de sector gefinancierd is, niet de beurswaarde-ratio van de
-primary dealers (die ligt rond 5%); de vorm van de curve telt, niet het niveau.
+### Numerieke oplossing: de volatiliteit versterkt de premie
+
+Dat de premie sneller dan evenredig groeit, komt door de volatiliteit, die zelf stijgt als
+de kapitaalratio daalt. Een dividendschok verlaagt de prijs, waarop de gehefboomde
+intermediair een veelvoud verliest. Daardoor daalt zijn kapitaalratio en stijgt de
+vereiste premie, die de prijs nog verder drukt.
+
+Om dat uit te rekenen, nemen we een eenvoudige prijsregel. Dividenden groeien met
+volatiliteit $\sigma_D$, en een hogere premie $\mathrm{d}\pi$ verlaagt de log-prijs met
+$\tau\,\mathrm{d}\pi$, waarbij $\tau$ de verwachte duur van een premieschok in jaren is.
+In het beperkte gebied verandert het vermogen van de bankiers met $1/\eta_t$ maal het
+rendement.
+
+:::{prf:proposition} Volatiliteitsversterking
+:label: thm-intermediaries-hk-vol
+
+In eerste-orde-benadering voldoet de rendementsvolatiliteit in het beperkte gebied aan
+
+```{math}
+:label: eq-intermediaries-hk-vol
+\sigma_{R}(\eta) = \frac{\sigma_D}{1 - \tau\,\pi(\eta)\left(\frac{1}{\eta} - 1\right)},
+\qquad
+\pi(\eta) = \frac{\gamma\,\sigma_R(\eta)^2}{\eta}.
+```
+
+De kleinste oplossing $\sigma_R(\eta) \ge \sigma_D$ stijgt als $\eta$ daalt.
+:::
+
+:::{prf:proof}
+Een daling van de log-prijs verlaagt de log-kapitaalratio met $(1/\eta - 1)$ keer zoveel, en met $\sigma_R$ lokaal vast verhoogt dat de premie met $\pi$ keer die daling. Die hogere premie verlaagt de log-prijs met $\tau$ keer zoveel. Oplossen van $\mathrm{d}\log p = \mathrm{d}\log D + \tau\pi(1/\eta - 1)\,\mathrm{d}\log p$ geeft [](#eq-intermediaries-hk-vol). De rechterkant stijgt in $\sigma_R$ en in $1/\eta$, zodat itereren vanaf $\sigma_D$ naar het kleinste vaste punt leidt, en dat punt ligt hoger naarmate $\eta$ lager is. $\square$
+:::
+
+De volatiliteit is dus de dividendvolatiliteit gedeeld door één min de lusversterking
+$\tau\pi(1/\eta - 1)$. Onder een kritieke kapitaalratio is die versterking één of meer, en
+bestaat er geen eindige oplossing. We lossen [](#eq-intermediaries-hk-vol) op voor $\gamma = 2$,
+$\sigma_D = 12\%$ en $\tau = 0{,}25$ jaar, met een restrictie die onder $\bar\eta = 0{,}5$
+gaat binden. Deze $\eta$ is het deel van de activa dat met eigen vermogen is gefinancierd,
+niet de beurswaarde-ratio van de dealers, dus de vorm van de curve telt en niet het
+niveau.
 
 ```{code-cell} ipython3
 def hk_premium_vol(eta, gamma=2.0, sigma_d=0.12, tau=0.25, eta_bar=0.5, max_iter=5000):
@@ -595,6 +510,9 @@ print(f"kritieke kapitaalratio (eerste eindige oplossing op het rooster): {eta_c
 hk_curve.iloc[[int(np.abs(eta_grid - e).argmin()) for e in (1.0, 0.5, 0.4, 0.3, 0.25, 0.2)]].round(3)
 ```
 
+Onder een kapitaalratio van 0,198 bestaat er geen eindige oplossing meer. De figuur laat
+zien hoe ver de getrokken premie uitstijgt boven de premie zonder versterking.
+
 ```{code-cell} ipython3
 :label: cel-intermediaries-hk
 :tags: [hide-input]
@@ -618,27 +536,89 @@ plt.show()
 :label: fig-intermediaries-hk
 :width: 90%
 
-Rechts van $\bar\eta = 0{,}5$ zijn premie en volatiliteit constant. Links daarvan stijgt de
-premie eerst ongeveer als $1/\eta$ (grijze stippellijn) en daarna veel sneller, omdat de
-volatiliteit zelf toeneemt. Bij de gestreepte lijn is de lusversterking één: daaronder bestaat
-in deze benadering geen evenwicht meer, het model van een crash.
+Rechts van $\bar\eta = 0{,}5$ zijn premie en volatiliteit constant. Links daarvan stijgt de premie eerst ongeveer als $1/\eta$ en daarna veel sneller, omdat de volatiliteit toeneemt. Onder de gestreepte lijn bestaat in deze benadering geen evenwicht meer, wat het model van een crash is.
 :::
 
-Bij $\eta = 0{,}5$ is de premie 5,8% en de volatiliteit 12%; bij $0{,}3$ is de premie 11,0%,
-bij $0{,}2$ is ze 27,1% met een volatiliteit van 16,5%. Een halvering van de kapitaalratio van
-0,4 naar 0,2 verdubbelt de premie niet maar ruim verdrievoudigt haar. Dat is wat
-{cite:t}`HeKrishnamurthy2013` de niet-lineariteit van crisispremies noemen.
+Halveert de kapitaalratio van $\eta = 0{,}4$ tot $0{,}2$, dan stijgt de premie van 7,6% naar
+27,1%, veel meer dan de verdubbeling die bij evenredigheid hoort. De premie groeit dus
+sneller dan $1/\eta$, wat {cite:t}`HeKrishnamurthy2013` de niet-lineariteit van
+crisispremies noemen.
 
-### (c) Hoe vaak ziet een factortoets een ware prijs van intermediary-risico?
+### Wat het voorspelt: een factormodel
 
-Stel dat het model waar is: hoe vaak geeft een tweestapstoets op vijftig jaar kwartaaldata een
-significante $\lambda_\eta$? We simuleren 35 portefeuilles met marktbèta's rond 1 en
-intermediary-bèta's met gemiddelde 0,07 en standaarddeviatie 0,11, de waarden die HKM voor de
-25 Fama-French-portefeuilles rapporteren (werkversie, p. 16). De factor heeft een
-kwartaalvolatiliteit van 12%, ongeveer die van de HKM-factor, de residuen 4% per kwartaal, en
-elke portefeuille een kleine vaste pricing error (standaarddeviatie 0,5% per kwartaal). We
-variëren de ware $\lambda_\eta$ van 0 tot 7% per kwartaal, en voegen een *nutteloze factor* toe
-die met geen enkel rendement samenhangt {cite}`KanZhang1999`.
+Uit het marginale nut van de intermediair volgt een factormodel met de markt en de groei
+van de kapitaalratio. *Waar komt dat vandaan?* Een intermediair die een activum koopt
+dat slecht rendeert wanneer zijn vermogen krimpt, verliest op het slechtste moment. Hij
+koopt het daarom alleen tegen een lagere prijs, zodat het verwachte rendement stijgt.
+Omdat zijn vermogen het totale vermogen maal zijn aandeel daarin is, krijgen een daling
+van het totale vermogen en een daling van dat aandeel elk een eigen beloning.
+
+He, Kelly en Manela (hierna HKM) schrijven het vermogen van de intermediair als $\eta_t W_t$,
+met $W_t$ het totale vermogen. Omdat de intermediair in het model alle activa houdt, is zijn
+eigen vermogen gedeeld door de activa, de kapitaalratio $\eta_t = E_t/A_t$, ook zijn aandeel
+in het totale vermogen. Met consumptie evenredig met vermogen is de SDF dan
+
+```{math}
+:label: eq-intermediaries-sdf
+m_{t+1} = \beta\left(\frac{\eta_{t+1}W_{t+1}}{\eta_t W_t}\right)^{-\gamma}
+\approx a - \gamma\,\frac{\Delta W_{t+1}}{W_t} - \gamma\,\eta^{\Delta}_{t+1},
+```
+
+zodat een dollar het meest waard is als de markt en de kapitaalratio allebei dalen. De
+factor $\eta^\Delta_{t+1} = u_{t+1}/\eta_t$ is de innovatie uit een AR(1) voor de
+kapitaalratio, gedeeld door de vorige ratio. HKM rapporteren een AR(1)-coëfficiënt van
+0,94 per kwartaal. Met de bèta-representatie uit [](#02-08-capm), die een lineaire SDF
+omzet in premies evenredig met bèta's, wordt [](#eq-intermediaries-sdf)
+
+```{math}
+:label: eq-intermediaries-twee-factor
+\E[R^e_{i}] = \beta_{i,W}\,\lambda_W + \beta_{i,\eta}\,\lambda_\eta,
+\qquad \lambda_W > 0,\ \lambda_\eta > 0 .
+```
+
+Het verwachte overrendement is dus een beloning voor de bèta op de markt plus een beloning
+voor de bèta op de kapitaalratio, en beide prijzen zijn positief. Dat is de voorspelling
+uit de intuïtie, met als extra eis dat $\lambda_\eta$ in elke activaklasse gelijk is.
+
+Adrian, Etula en Muir (hierna AEM) kozen de leverage als toestandsvariabele. De
+schaduwprijs van de financieringsrestrictie is volgens hen hoog wanneer de leverage laag
+is, omdat intermediairs dan onder dwang hun balans hebben ingekrompen. Hun SDF is $m_{t+1} = 1 - b\,\mathrm{LevFac}_{t+1}$
+met $b > 0$, waarin $\mathrm{LevFac}$ de verandering in de log-leverage van broker-dealers
+is, in het laatste kwartaal van 2008 bijvoorbeeld $-0{,}35$. Ook bij hen is de prijs van
+leverage-risico positief.
+
+Hier zit een puzzel, want leverage is het omgekeerde van de kapitaalratio, en toch krijgen
+schokken in allebei een positieve prijs. Twee verschillen maken de resultaten verenigbaar.
+AEM meten de boekleverage uit de Flow of Funds, die volgens {cite:t}`AdrianShin2010` sterk
+procyclisch is, omdat dealers hun balans laten krimpen als prijzen dalen. HKM meten het
+eigen vermogen tegen beurswaarde, en die daalt in een crisis veel sneller. Bovendien bevat
+de Flow of Funds alleen de broker-dealeractiviteiten, terwijl HKM de beursgenoteerde
+moederbedrijven nemen. Beide maten kunnen dus in dezelfde slechte toestand dalen, net als
+in het toy-voorbeeld.
+
+```{admonition} Samengevat
+:class: tip
+
+- Markt- en financieringsliquiditeit versterken elkaar, zodat één markt liquide of illiquide kan zijn ([](#eq-intermediaries-bp-vastpunt)). De multiplier stijgt met de positie $x_0$ en de margegevoeligheid $\theta$, omdat beide een korting in minder koopkracht omzetten ([](#eq-intermediaries-bp-multiplier)).
+- Bij een bindende restrictie is de premie omgekeerd evenredig met de kapitaalratio, omdat elke dollar eigen vermogen dan meer risico draagt, en ze stijgt met $\gamma$, omdat de bankiers per eenheid risico meer beloning vragen ([](#eq-intermediaries-hk-premie)).
+- Omdat de volatiliteit meestijgt, groeit de premie sneller dan $1/\eta$, van 5,8% bij $\eta = 0{,}5$ tot 27,1% bij $\eta = 0{,}2$ ([](#eq-intermediaries-hk-vol)).
+- De SDF van de intermediair geeft twee positieve prijzen van risico, voor de markt en de kapitaalratio ([](#eq-intermediaries-twee-factor)).
+- Leverage tegen boekwaarde en kapitaalratio tegen beurswaarde kunnen in dezelfde slechte toestand allebei dalen, zodat zowel de factor van AEM als die van HKM een positieve prijs krijgt.
+```
+
+## Simulatie: ziet een factortoets de prijs van intermediairrisico?
+
+Stel dat het model waar is. Hoe vaak geeft een tweestapstoets op vijftig jaar kwartaaldata
+dan een significante $\lambda_\eta$? Zo'n toets schat eerst per portefeuille de bèta's en
+regresseert daarna per kwartaal de rendementen op die bèta's, zoals bij Fama en MacBeth.
+De standaardfouten van Shanken corrigeren ervoor dat de bèta's zelf geschat zijn.
+
+We simuleren 35 portefeuilles waarvan de intermediairbèta's gemiddeld 0,07 zijn, met een
+standaarddeviatie van 0,11, zoals HKM voor de 25 Fama-French-portefeuilles rapporteren.
+Elke portefeuille krijgt een kleine vaste *pricing error* (een afwijking die
+geen factor verklaart). We variëren de ware $\lambda_\eta$ van 0 tot 7% per kwartaal, en
+voegen een *nutteloze factor* toe die met geen enkel rendement samenhangt
+{cite}`KanZhang1999`.
 
 ```{code-cell} ipython3
 def two_pass_arrays(R, F):
@@ -681,6 +661,10 @@ power_table = pd.DataFrame(power).T
 power_table.round(3)
 ```
 
+De toets ziet een ware prijs pas bij enkele procenten per kwartaal betrouwbaar, en de
+gestreepte lijn in de figuur laat zien dat de nutteloze factor ver boven de nominale 5%
+uitkomt.
+
 ```{code-cell} ipython3
 :label: cel-intermediaries-kracht
 :tags: [hide-input]
@@ -692,7 +676,7 @@ ax.plot(true_lams, power_table["P(|t Shanken| > 1,96)"].iloc[:6], "o-", color=ha
 ax.axhline(power_table.loc["nutteloze factor", "P(|t Shanken| > 1,96)"], color=hap.plotting.COLORS[1], ls="--",
            label="nutteloze factor, Shanken")
 ax.axhline(0.05, color="black", lw=0.8, ls=":", label="nominaal 5%")
-ax.set_title("Kans op een significante prijs van intermediary-risico in 50 jaar kwartaaldata")
+ax.set_title("Kans op een significante prijs van intermediairrisico in 50 jaar kwartaaldata")
 ax.set_xlabel("Ware prijs van risico $\\lambda_\\eta$ (% per kwartaal)")
 ax.set_ylabel("Fractie steekproeven met |t| > 1,96")
 ax.legend()
@@ -703,63 +687,36 @@ plt.show()
 :label: fig-intermediaries-kracht
 :width: 90%
 
-Een prijs van risico van de omvang die HKM rapporteren (7 tot 9% per kwartaal) is in vijftig
-jaar vrijwel altijd te zien; een prijs van 2% per kwartaal maar in de helft van de steekproeven.
-Tegelijk krijgt een factor die met geen enkel rendement samenhangt, in bijna een derde van de
-steekproeven een "significante" prijs zodra het model kleine pricing errors heeft.
+Een prijs van risico van de omvang die HKM rapporteren (7 tot 9% per kwartaal) is in vijftig jaar vrijwel altijd te zien, een prijs van 2% maar in de helft van de steekproeven. Een factor die met geen enkel rendement samenhangt, krijgt in ruim een kwart van de steekproeven toch een significante prijs.
 :::
 
-Zonder ware prijs verwerpt de toets in 10% in plaats van 5% van de steekproeven, omdat de
-pricing errors de nulhypothese van een perfect model schenden. Met een ware prijs van 2% per
-kwartaal is de kans op significantie 50%, met 3% ongeveer 77%. De nutteloze factor krijgt in
-31% van de steekproeven $|t| > 1{,}96$ volgens Fama-MacBeth en in 28% volgens Shanken, met een
-spreiding van de geschatte prijs van 4,4% per kwartaal, bijna vier keer die van een echte
-factor. Het mechanisme is dat van {cite:t}`KanZhang1999`: de geschatte bèta's zijn pure ruis,
-en de pricing errors worden toevallig aan die ruis toegeschreven. Dit is motief 1 in de
-cross-sectie: de standaardfout van de prijs van een niet-verhandelde factor zegt minder dan hij
-lijkt.
+Zonder ware prijs verwerpt de toets in 10% van de steekproeven in plaats van 5%, omdat de
+pricing errors de nulhypothese van een perfect model schenden. Met de standaardfouten van
+Shanken is de nutteloze factor in 28% van de steekproeven significant, omdat de geschatte
+bèta's pure ruis zijn en de pricing errors toevallig aan die ruis worden toegeschreven.
+Hier zien we [de standaardfout van 2%](#00-01-rendementen) terug in de cross-sectie, want
+de standaardfout van de prijs van een niet-verhandelde factor zegt minder dan hij lijkt.
 
 ## Replicatie op echte data
 
 ```{admonition} Replicatie
 :class: seealso
 
-**Bron.** He, Kelly & Manela, *Intermediary Asset Pricing: New Evidence from Many Asset
-Classes*, Journal of Financial Economics 2017 {cite}`HeKellyManela2017`; gelezen in de
-NBER-werkversie w21920 (januari 2016).
+**Bron.** He, Kelly & Manela, *Intermediary Asset Pricing: New Evidence from Many Asset Classes*, Journal of Financial Economics 2017 {cite}`HeKellyManela2017`. We lazen de NBER-werkversie w21920 (januari 2016).
 
-**Wat.** (1) De kapitaalratio van de primary dealers, figuur 1, met haar dieptepunt in de
-crisis. (2) Tabel 5: tweestapstoetsen met [markt, $\eta^\Delta$] over 1970Q1–2012Q4. HKM vinden
-voor alle 125 portefeuilles uit zeven activaklassen samen een prijs van risico van "9% per
-quarter with a GMM t-statistic of 2.56 and $R^2$ of 45%", per klasse van 7% voor aandelen tot
-22% voor opties, en positief in alle klassen (p. 4 en 17–18). (3) De kapitaalratio voorspelt
-toekomstige rendementen (sectie 5).
+**Wat.** De kapitaalratio van de primary dealers (figuur 1), de tweestapstoetsen van tabel 5 over 1970Q1–2012Q4 en de voorspellende kracht van de ratio (sectie 5). Op 125 portefeuilles uit zeven activaklassen vinden HKM een prijs van risico van 9% per kwartaal met een GMM-$t$ van 2,56, en 7% voor aandelen alleen.
 
-**Data hier.** `hap.data.hkm("monthly")` en `hap.data.hkm("quarterly")` (kapitaalratio en
-factor, 1970–2025); Kenneth French: 25 size/BM-portefeuilles, 10 momentumportefeuilles, FF3 en
-momentum via `hap.data.french(...)`; vijf Treasury-portefeuilles met looptijden van 1 tot 5 jaar,
-zelf berekend als maandelijkse houdrendementen van zero-coupon-obligaties uit de
-Svensson-parameters van `hap.data.gsw()`; FRED `BAA10Y`, `TEDRATE` en `USREC` via
-`hap.data.fred(...)`.
+**Data hier.** Kapitaalratio en factor via `hap.data.hkm`, de 25 size/BM- en 10 momentumportefeuilles van Kenneth French, en vijf Treasury-portefeuilles uit de Svensson-curve van `hap.data.gsw()`. Spreads en recessies komen van FRED.
 
-**Verschil met het origineel.** HKM gebruiken ook bedrijfsobligaties, staatsobligaties van
-opkomende landen, opties, CDS, grondstoffen en valuta; die portefeuilles zijn niet gratis
-beschikbaar en ontbreken hier. Hun obligatieportefeuilles komen uit CRSP; de onze zijn
-zero-coupon-rendementen uit een geschatte curve. Wij voegen momentumportefeuilles toe, die HKM
-niet gebruikten, en rapporteren naast hun steekproef ook 1970–2025. Onze GMM-schatting is een
-SDF-schatting zonder intercept met eerste-stapsgewichten; HKM rapporteren GMM-$t$-waarden bij
-een regressie met intercept.
+**Verschil met het origineel.** Zes van de zeven activaklassen ontbreken omdat die data niet gratis zijn, en onze obligaties komen uit een geschatte curve. We voegen momentum toe, rapporteren ook 1970–2025 en schatten de GMM-versie zonder intercept.
 
-**Verwachte afwijking.** Het minimum van de kapitaalratio moet in februari 2009 liggen, rond
-2,2% ([](#00-00-setup)). De prijs van intermediary-risico moet op aandelenportefeuilles
-positief zijn en in de orde van 7% per kwartaal; de cross-sectionele $R^2$ moet hoger zijn dan
-die van het CAPM. Lage kapitaalratio's moeten gevolgd worden door hogere marktrendementen
-(negatieve helling). Een negatief teken op de Fama-French-portefeuilles zou een fout in de code
-betekenen; een lagere $t$-waarde dan 2,56 is te verwachten, omdat we zes van de zeven
-activaklassen missen.
+**Verwachte afwijking.** Het minimum van de kapitaalratio moet in februari 2009 liggen, rond 2,2% ([](#00-00-setup)), en de prijs van intermediairrisico moet op aandelen positief zijn en rond 7% per kwartaal. Een negatief teken op de Fama-French-portefeuilles betekent een fout in de code, terwijl een lagere $t$ dan 2,56 te verwachten is.
 ```
 
 ### De kapitaalratio in de tijd
+
+We laden de kapitaalratio en twee spreads, en berekenen het minimum, de correlaties en de
+jaargemiddelden rond de crisis.
 
 ```{code-cell} ipython3
 hkm_monthly = hap_data.hkm("monthly")
@@ -774,6 +731,10 @@ print(f"kwartaalvolatiliteit van de factor: {hkm_quarterly['intermediary_capital
 eta_m.resample("YE").mean().loc["2005":"2012"].rename("gemiddelde kapitaalratio").to_frame().T.round(3)
 ```
 
+Het dieptepunt ligt op 2,23% in februari 2009, zoals verwacht, en het jaargemiddelde
+daalde van 8,2% in 2006 naar 4,1% in 2008. In de figuur vallen de pieken in de spreads
+samen met de dalen in de kapitaalratio.
+
 ```{code-cell} ipython3
 :label: cel-intermediaries-kapitaalratio
 :tags: [hide-input]
@@ -785,9 +746,9 @@ axes[0].annotate(f"{eta_m.min():.1%}, {eta_m.idxmin():%b %Y}", (eta_m.idxmin(), 
 axes[0].set_title("Kapitaalratio van de primary dealers (He-Kelly-Manela)")
 axes[0].set_ylabel("Marktwaarde eigen vermogen / activa (%)")
 hap.plotting.recession_shading(axes[0])
-for i, s in enumerate(["BAA10Y", "TEDRATE"]):
-    axes[1].plot(spreads.index, spreads[s], color=hap.plotting.COLORS[i + 1], label=s)
-axes[1].set_title("Credit- en financieringsspreads")
+for i, (s, name) in enumerate({"BAA10Y": "Baa-spread (Baa min 10-jaarsrente)", "TEDRATE": "TED-spread"}.items()):
+    axes[1].plot(spreads.index, spreads[s], color=hap.plotting.COLORS[i + 1], label=name)
+axes[1].set_title("Krediet- en financieringsspreads")
 axes[1].set_ylabel("Procentpunt")
 axes[1].set_xlabel("Jaar")
 axes[1].legend()
@@ -800,46 +761,31 @@ plt.show()
 :label: fig-intermediaries-kapitaalratio
 :width: 100%
 
-De kapitaalratio daalt in bijna elke recessie, en nergens zo diep als in 2008–2009, toen de
-spreads op bedrijfsobligaties en interbancaire leningen hun hoogste niveau van de steekproef
-bereikten. De dip en het herstel rond 1998 vallen samen met LTCM, zonder recessie.
+De kapitaalratio daalt in bijna elke recessie, en nergens zo diep als in 2008–2009, toen de spreads hun hoogste niveau van de steekproef bereikten. De dip rond 1998 valt samen met LTCM, zonder recessie.
 :::
 
-Het dieptepunt ligt op 2,23% in februari 2009, zoals verwacht. Het jaargemiddelde daalde van
-8,2% in 2006 via 6,8% in 2007 naar 4,1% in 2008 en 4,0% in 2009, en was in 2011 met 4,4% nog
-niet hersteld. Het niveau van de kapitaalratio correleert met $-0{,}33$ met de Baa-spread en
-$-0{,}14$ met de TED-spread: lage kapitaalratio's gaan samen met hoge spreads, maar het verband
-is niet mechanisch.
+Het niveau van de kapitaalratio correleert met $-0{,}33$ met de Baa-spread en met
+$-0{,}14$ met de TED-spread. Lage kapitaalratio's gaan dus samen met hoge spreads, maar
+het verband is niet mechanisch.
 
 ### Broker-dealer-leverage uit de Flow of Funds
 
 ```{admonition} Replicatie
 :class: seealso
 
-**Bron.** Adrian, Etula & Muir, *Financial Intermediaries and the Cross-Section of Asset
-Returns*, Journal of Finance 2014 {cite}`AdrianEtulaMuir2014`; gelezen in Federal Reserve Bank
-of New York Staff Report 464 (herzien september 2013).
+**Bron.** Adrian, Etula & Muir, *Financial Intermediaries and the Cross-Section of Asset Returns*, Journal of Finance 2014 {cite}`AdrianEtulaMuir2014`. We lazen Federal Reserve Bank of New York Staff Report 464 (september 2013).
 
-**Wat.** Hun eenfactormodel "prices size, book-to-market, momentum, and bond portfolios with an
-$R^2$ of 77 percent and an average annual pricing error of 1 percent" (samenvatting). In de
-werkversie, tabel III en p. 15–18: 25 size/BM-, 10 momentum- en 6 Treasury-portefeuilles over
-1968Q1–2009Q4, intercept 12 basispunten, MAPE 1,3% per jaar, prijs van leverage-risico 62% per
-jaar, tegen een aangepaste $R^2$ van 10% voor het CAPM, 16% voor Fama-French en 81% voor een
-vijffactormodel met momentum en een obligatiefactor.
+**Wat.** Hun eenfactormodel verklaart de rendementen van size/BM-, momentum- en obligatieportefeuilles met een $R^2$ van 77%, tegen een aangepaste $R^2$ van 10% voor het CAPM. In de werkversie (tabel III, 1968Q1–2009Q4) is de prijs van leverage-risico 62% per jaar.
 
-**Data hier.** FRED `BOGZ1FL664090005Q` (Security Brokers and Dealers; Total Financial Assets)
-en `BOGZ1FL664190005Q` (Total Liabilities), kwartaal, niet seizoensgecorrigeerd, via
-`hap.data.fred(...)`. Leverage $=$ activa$/$(activa $-$ schulden), zoals hun vergelijking (4);
-de factor is de verandering in de log-leverage, gecorrigeerd voor kwartaalgemiddelden.
+**Data hier.** Activa en schulden van Security Brokers and Dealers uit de Flow of Funds, per kwartaal via `hap.data.fred(...)`. De factor is de verandering in de log-leverage, gecorrigeerd voor kwartaalgemiddelden.
 
-**Verschil met het origineel.** AEM gebruikten tabel L.129 van de Flow of Funds van toen; de
-Z.1-cijfers zijn sindsdien herzien en herschikt. Hun seizoenscorrectie gebruikt een
-uitbreidend venster, de onze de hele steekproef (kijkt vooruit). Hun obligaties komen uit CRSP.
+**Verschil met het origineel.** De Flow of Funds is sinds 2013 herzien. Onze seizoenscorrectie gebruikt bovendien de hele steekproef, zodat ze vooruitkijkt.
 
-**Verwachte afwijking.** De boekleverage moet in 2008–2009 sterk dalen (procyclisch), terwijl
-de kapitaalratio van HKM tegelijk daalt. De prijs van leverage-risico moet positief zijn. Een
-$R^2$ van 77% halen we waarschijnlijk niet, omdat de onderliggende reeks herzien is.
+**Verwachte afwijking.** De boekleverage moet in 2008–2009 sterk dalen terwijl ook de kapitaalratio van HKM daalt, en de prijs van leverage-risico moet positief zijn. Een $R^2$ van 77% halen we waarschijnlijk niet.
 ```
+
+We bouwen de boekleverage uit de Flow of Funds en zetten de crisiskwartalen naast de maten
+van HKM.
 
 ```{code-cell} ipython3
 assets_bd = hap_data.fred("BOGZ1FL664090005Q")["BOGZ1FL664090005Q"]
@@ -860,25 +806,26 @@ print(f"correlatie log-veranderingen boekleverage (FoF) en marktleverage (HKM): 
 crisis.loc["2007-06":"2009-12"].round(3)
 ```
 
-De boekleverage van de broker-dealersector daalde van 47,0 in het eerste kwartaal van 2008
-naar 22,6 eind 2009: gehalveerd, precies het procyclische patroon van {cite:t}`AdrianShin2010`.
-In dezelfde periode daalde de kapitaalratio van de primary dealers van 4,5% naar 2,6% eind
-2008, dus steeg hun marktleverage van 22 naar 38. De log-veranderingen van de twee leverages
-correleren met $-0{,}10$. Toch zijn beide factoren in het vierde kwartaal van 2008 sterk negatief
-($-0{,}44$ en $-0{,}35$): in het slechtste kwartaal van de steekproef wijzen ze dezelfde kant op,
-zoals het toy-voorbeeld voorspelde. Over de hele steekproef is hun correlatie 0,06. Het zijn
-verschillende metingen van hetzelfde begrip, en daardoor ook bijna onafhankelijke factoren.
+De boekleverage van de broker-dealers halveerde van 47,0 in het eerste kwartaal van 2008
+naar 22,6 eind 2009, het procyclische patroon van {cite:t}`AdrianShin2010`. De
+marktleverage van de primary dealers steeg intussen van 22 naar een piek van 38 eind 2008,
+bijna een verdubbeling, en viel eind 2009 terug tot 19,8.
+
+Toch zijn beide factoren in het vierde kwartaal van 2008 sterk negatief, met $-0{,}35$
+voor AEM en $-0{,}44$ voor HKM, zodat ze in het slechtste kwartaal dezelfde kant op
+wijzen. Over de hele steekproef is hun correlatie met 0,06 bijna nul. Ze meten hetzelfde
+begrip op een andere manier, en als factoren zijn ze toch bijna onafhankelijk.
 
 ### De cross-sectie
 
-We bouwen kwartaalrendementen door maandrendementen samen te stellen, trekken het
-samengestelde risicovrije rendement af en schatten voor elk model (i) de tweestapstoets met
-intercept, met Shanken-$t$-waarden, en (ii) een GMM-schatting van de SDF
-$m = 1 - (\mathbf{f} - \E\mathbf{f})^\top\mathbf{b}$ zonder intercept, met
-$\boldsymbol{\lambda} = \Cov(\mathbf{f})\,\mathbf{b}$ en Newey-West-gewichten (twee lags) in de
-spreidingsmatrix. De Treasury-portefeuilles zijn de houdrendementen van zero-coupon-obligaties
-van 1 tot 5 jaar: $\log(P_{t+1}(n - 1/12)/P_t(n))$ met $\log P_t(n) = -n\,y_t(n)$ en $y_t(n)$ uit
-de Svensson-curve.
+We schatten elk model op twee manieren, met de tweestapstoets uit de simulatie en met een
+GMM-schatting van de SDF $m = 1 - (\mathbf{f} - \E\mathbf{f})^\top\mathbf{b}$ zonder
+intercept. Daarin is $\boldsymbol{\lambda} = \Cov(\mathbf{f})\,\mathbf{b}$, en de
+gewichten zijn van Newey-West met twee lags. De Treasury-portefeuilles zijn
+houdrendementen van zero-coupon-obligaties uit de Svensson-curve. Het rendement op een
+obligatie met looptijd $n$ jaar is de prijs een maand later,
+$e^{-(n-1/12)\,y_{t+1}(n-1/12)}$,
+gedeeld door de prijs nu, $e^{-n\,y_t(n)}$, min één.
 
 ```{code-cell} ipython3
 gsw = hap_data.gsw()
@@ -921,6 +868,10 @@ print(f"correlatie HKM-factor met het marktrendement: {factors_q[['eta', 'Mkt']]
 excess_q.loc["1970":].describe().loc[["count", "mean", "std"]].T.groupby(lambda c: c.split()[0]).mean().round(4)
 ```
 
+De HKM-factor correleert met 0,76 met het marktrendement, een getal waarop we aan het eind
+terugkomen. De volgende cel schat alle modellen op drie combinaties van testactiva en
+steekproef.
+
 ```{code-cell} ipython3
 def two_pass(excess, factors):
     """Two-pass test with intercept on DataFrames; returns prices of risk, Shanken t, R2, MAPE and pricing errors."""
@@ -950,6 +901,8 @@ def gmm_sdf(excess, factors, lags=2):
     for j in range(1, lags + 1):
         gamma_j = u[j:].T @ u[:-j] / T
         S += (1 - j / (lags + 1)) * (gamma_j + gamma_j.T)
+    # d: Jacobian of the N pricing moments and K mean moments w.r.t. (b, E f);
+    # a: first-stage selection, D' on the pricing moments and the identity on the mean moments
     d = np.block([[-D, mean_R[:, None] * b[None, :]], [np.zeros((K, K)), -np.eye(K)]])
     a = np.block([[D.T, np.zeros((K, K))], [np.zeros((K, N)), np.eye(K)]])
     ad_inv = np.linalg.inv(a @ d)
@@ -987,6 +940,33 @@ cross_section = pd.DataFrame(rows).T
 cross_section.round(2)
 ```
 
+In het HKM-model is de prijs van intermediairrisico in elke specificatie positief. De
+tabel hieronder zet de kern naast het origineel.
+
+| grootheid | origineel | hier |
+|---|---|---|
+| minimum kapitaalratio | rond 2,2%, februari 2009 | 2,23%, februari 2009 |
+| $\lambda_\eta$ op FF25, GMM, 1970–2012 (% per kwartaal) | 7 (aandelen) | 6,96 ($t = 3{,}10$) |
+| $\lambda_\eta$ op alle testactiva, GMM, 1970–2012 (% per kwartaal) | 9 ($t = 2{,}56$) | 4,94 ($t = 2{,}44$) |
+| $R^2$ op FF25, HKM tegen CAPM | hoger dan CAPM | 0,44 tegen 0,09 |
+| prijs van leverage-risico (AEM), alle testactiva | 62% per jaar | 8,79% per kwartaal (Shanken-$t$ 2,08) |
+| $R^2$ van AEM | 77% | 0,41 |
+
+De replicatie is gedeeltelijk geslaagd, want het dieptepunt ligt waar het moet liggen en
+het teken is overal positief. Op aandelen komt de GMM-schatting bovendien vrijwel precies
+op de 7% van HKM uit, al is de tweestapsschatting met intercept op FF25 lager, 4,98% met
+een Shanken-$t$ van 1,61.
+
+Op alle testactiva ligt onze GMM-schatting onder de 9% van HKM en is de $t$ iets lager, wat
+binnen de verwachte afwijking valt, want zes activaklassen ontbreken en onze obligaties
+komen uit een geschatte curve. Of obligaties dezelfde prijs krijgen als aandelen, toetsen
+we niet apart, want de vijf obligatieportefeuilles zitten alleen in de gemengde testset.
+Ook de AEM-factor krijgt een positieve prijs, maar lager dan de 62% per jaar van AEM, en hij haalt
+maar ruim de helft van de gepubliceerde $R^2$.
+
+De figuur zet voor drie modellen de gemiddelde rendementen uit tegen de voorspelling, en
+vooral bij de momentumportefeuilles lopen de modellen uiteen.
+
 ```{code-cell} ipython3
 :label: cel-intermediaries-cross
 :tags: [hide-input]
@@ -1010,39 +990,23 @@ plt.show()
 :label: fig-intermediaries-cross
 :width: 100%
 
-Gemiddelde kwartaalrendementen 1970–2025 tegen de voorspelling van drie modellen. Het CAPM
-kent de obligaties en aandelen een gemeenschappelijke lijn toe maar mist de spreiding binnen
-de aandelen. Het HKM-model trekt de size/BM-portefeuilles in de goede richting en laat de
-momentumportefeuilles, die het niet kan verklaren, als een verticale wolk staan. Carhart, met
-een factor die op momentum gesorteerd is, legt die wolk op de lijn.
+Gemiddelde kwartaalrendementen 1970–2025 tegen de voorspelling van drie modellen. Het HKM-model trekt de size/BM-portefeuilles in de goede richting, maar laat de momentumportefeuilles als een verticale wolk staan. Carhart, met een factor die op momentum gesorteerd is, legt die wolk op de lijn.
 :::
 
-Op de 25 size/BM-portefeuilles over de steekproef van HKM is de GMM-schatting van de prijs van
-intermediary-risico 6,96% per kwartaal met $t = 3{,}10$, vrijwel precies de 7% voor aandelen
-uit HKM's tabel 5; de tweestapsschatting met intercept is lager, 4,98% met een Shanken-$t$ van
-1,61. De cross-sectionele $R^2$ is 0,44, tegen 0,09 voor het CAPM, maar 0,73 voor Fama-French.
-Met momentum- en obligatieportefeuilles erbij daalt de tweestapsschatting naar 3,4% per
-kwartaal ($t = 1{,}94$) en de $R^2$ naar 0,22, nog altijd boven het CAPM (0,12) maar ver onder
-Carhart (0,85). Over 1970–2025 is de prijs 3,6% per kwartaal met een Shanken-$t$ van 2,48 en een
-GMM-$t$ van 2,74. Het teken is dus overal positief en in de meeste specificaties significant, maar
-het model verklaart momentum niet: zonder obligaties en met momentum is de tweestapsschatting
-over 1970–2025 zelfs nul (oefening 2).
-
-De AEM-factor doet het in onze data duidelijk slechter dan in het artikel. Op 25+10+5 obligaties
-over 1970–2012 is de prijs positief, 8,8% per kwartaal met een Shanken-$t$ van 2,08, maar de
-$R^2$ is 0,41 in plaats van 77%, en de GMM-$t$ is maar 1,36. Het verschil kan zitten in de
-obligaties (zes CRSP-portefeuilles tegenover vijf zero-coupon-reeksen), in de herziene Flow of
-Funds of in de seizoenscorrectie; met gratis data kunnen we dat niet uitmaken.
+Met momentum- en obligatieportefeuilles erbij daalt de $R^2$ van het HKM-model over
+1970–2012 naar 0,22, ver onder Carhart (0,85). Het model verklaart momentum dus niet
+(oefening 3). Dat de AEM-factor het slechter doet dan in het artikel, kan aan de
+obligaties liggen, aan de herziene Flow of Funds of aan de seizoenscorrectie, en met
+gratis data kunnen we dat niet uitmaken.
 
 ### Voorspelt de kapitaalratio rendementen en spreads?
 
-HKM rapporteren dat de kapitaalratio toekomstige rendementen voorspelt in vijf van de zeven
-activaklassen (werkversie, p. 6). We regresseren het cumulatieve excess marktrendement over $h$
-maanden op het niveau van de kapitaalratio, en de verandering in de Baa-spread over $h$ maanden
-op hetzelfde niveau. Omdat de kapitaalratio zeer persistent is en de horizonnen overlappen,
-gebruiken we de standaardfouten van {cite:t}`Hodrick1992` (variant 1B), die de overlap in de
-regressor stoppen in plaats van in de residuen; zie [](#04-20-voorspelbaarheid) voor de
-Stambaugh-bias die daarbovenop komt.
+HKM rapporteren dat de kapitaalratio toekomstige rendementen voorspelt in vijf van de
+zeven activaklassen. We regresseren het overrendement van de markt over $h$ maanden, en de
+verandering in de Baa-spread, op het niveau van de kapitaalratio. Omdat de ratio
+persistent is en de horizonnen overlappen, gebruiken we de standaardfouten van
+{cite:t}`Hodrick1992` (variant 1B). Daarbovenop komt nog de Stambaugh-bias uit
+[](#04-20-voorspelbaarheid).
 
 ```{code-cell} ipython3
 def hodrick_1b(y, x, horizon):
@@ -1074,79 +1038,95 @@ predict.update({("verandering Baa-spread", h): hodrick_1b(baa_change, eta_m, h) 
 pd.DataFrame(predict).T.rename_axis(["te voorspellen", "horizon (maanden)"]).round(3)
 ```
 
-Het teken klopt. Een kapitaalratio die één procentpunt lager ligt, gaat samen met een
-marktrendement dat over het volgende jaar 1,4 procentpunt en over drie jaar 4,1 procentpunt
-hoger ligt, en met een Baa-spread die over het volgende jaar 8 basispunten meer daalt. Maar
-geen van de Hodrick-$t$-waarden haalt 1,96: $-1{,}36$ op een jaar en $-1{,}43$ op drie jaar
-voor de markt, $1{,}78$ en $1{,}91$ voor de spread. De $R^2$ van 13,6% op drie jaar ziet er
-indrukwekkend uit, maar is voor een groot deel de overlap. Met 55 jaar maanddata en in feite
-een handvol crises (1974, 1990, 2008) is dit het 2%-motief in de tijdreeks: de voorspellende
-kracht rust op dezelfde paar episodes die de kapitaalratio laag maakten.
+Het teken klopt, want een kapitaalratio die één procentpunt lager ligt, gaat samen met een
+marktrendement dat over drie jaar 4,1 procentpunt hoger ligt, en met een dalende
+Baa-spread. Toch haalt geen van de $t$-waarden de 1,96, want voor de markt zijn ze
+$-1{,}36$ op een jaar en $-1{,}43$ op drie jaar. In 55 jaar zit maar een handvol crises,
+en de voorspellende kracht rust op dezelfde paar episodes die de kapitaalratio
+laag maakten.
 
 ## Wat er brak, en wat daarna kwam
 
 **Wat het model verklaart.** Intermediary asset pricing gaf 2008 een mechanisme dat
-consumptiemodellen missen: gedwongen verkopen, marges die met de volatiliteit oplopen, en een
-marginale belegger wiens kapitaal in een paar kwartalen verdwijnt. Het verklaart waarom
-liquiditeit overal tegelijk opdroogt, waarom premies niet-lineair exploderen en snel terugvallen,
-en waarom identieke kasstromen verschillende prijzen kregen: bij {cite:t}`GarleanuPedersen2011`
-worden vereiste rendementen bepaald door "their betas and their margin requirements", en
-{cite:t}`MitchellPulvino2012` beschreven hoe hedgefondsen na de val van hun prime brokers
-"became unable to maintain similar prices of similar assets". De data geven het model gelijk op
-het teken: de kapitaalratio bereikte in februari 2009 2,2%, en haar schokken hebben op aandelen-
-en obligatieportefeuilles een positieve prijs, voor aandelen in de orde die HKM rapporteren.
+consumptiemodellen missen, met gedwongen verkopen, oplopende marges en een marginale
+belegger wiens kapitaal in een paar kwartalen verdwijnt. Het verklaart waarom liquiditeit
+overal tegelijk opdroogt en waarom premies niet-lineair stijgen en snel terugvallen. Ook
+verklaart het waarom identieke kasstromen verschillende prijzen kregen, want bij
+{cite:t}`GarleanuPedersen2011` hangt het vereiste rendement ook af van de marge. Daarnaast
+beschreven {cite:t}`MitchellPulvino2012` hoe hedgefondsen na de val van hun prime brokers
+gelijke activa niet meer op gelijke prijzen konden houden. In onze data heeft het model
+in elk geval het teken goed.
 
-**Waar het breekt.** Op de meting. Twee factoren die elkaars omgekeerde zouden moeten zijn,
-leverage en kapitaalratio, krijgen allebei een positieve prijs, correleren in onze data met 0,06,
-en de boekleverage halveerde in 2008–2009 terwijl de marktleverage bijna verdubbelde. De $R^2$
-van 77% van AEM halen we met de huidige Flow of Funds niet (0,41), en het HKM-model laat
-momentum volledig liggen. De HKM-factor correleert bovendien met 0,76 met het marktrendement;
-een deel van zijn succes kan de bèta van dealeraandelen zijn in plaats van hun kapitaal. En
-[](#fig-intermediaries-kracht) waarschuwt dat een niet-verhandelde factor ook zonder enige
-samenhang met rendementen in bijna een derde van de steekproeven "significant" kan zijn.
+**Waar het breekt.** Het model loopt vast op de meting. Leverage en kapitaalratio zijn
+elkaars omgekeerde, maar krijgen allebei een positieve prijs, en als factoren zijn ze bijna
+ongecorreleerd. De $R^2$ van AEM halen we met de huidige Flow of Funds niet,
+en het HKM-model laat momentum liggen. De HKM-factor correleert bovendien met 0,76 met het
+marktrendement, zodat een deel van zijn succes de bèta van dealeraandelen kan zijn. Tot
+slot laat [](#fig-intermediaries-kracht) zien dat een factor zonder enige samenhang met
+rendementen in ruim een kwart van de steekproeven significant lijkt.
 
-**Risico of vergissing?** De Chicago-lezing: de intermediair is de marginale belegger, zijn
-marginale nut is de SDF, en de hoge premies van 2008 waren de rationele prijs van risico in een
-toestand waarin kapitaal schaars was. Wie toen kocht, werd betaald voor beprijsd risico,
-Santa-Clara's praktijkmotief. De Yale-lezing: dit zijn de limits of arbitrage van
-[](#04-23-behavioral) op macroschaal; prijzen weken af omdat arbitrageurs moesten verkopen, en
-dat identieke kasstromen verschillende prijzen kregen, is voor dit kamp een mispricing en geen
-premie. Beide lezingen zijn het eens over de kapitaalratio, de spreads en de bases. Scheiden zou
-kunnen met de posities van de marginale kopers: liepen de kortingen terug zodra kapitaal
-binnenkwam, ongeacht het risico? Die data is grotendeels niet publiek. Santa-Clara's les nummer
-tien geldt voor beide: "Leverage plus mark-to-market plus a deadline is the recipe for ruin"
-{cite}`SantaClara2026`.
+**Risico of vergissing?** In de Chicago-lezing is het marginale nut van de intermediair de
+SDF, en waren de hoge premies van 2008 de rationele prijs van risico toen kapitaal schaars
+was. Wie toen kocht, werd in de termen van Santa-Clara betaald voor het dragen van risico
+en niet voor een inzicht dat de markt miste. In de Yale-lezing zijn dit de limits of
+arbitrage van [](#04-23-behavioral) op macroschaal, en is een prijsverschil tussen
+identieke kasstromen een mispricing en geen premie. Beide lezingen zijn het eens over de
+kapitaalratio en de spreads. De kampen zouden te scheiden zijn door na te gaan of
+kortingen terugliepen zodra er kapitaal binnenkwam, ongeacht het risico, maar de benodigde
+posities zijn grotendeels niet openbaar. Santa-Clara trekt een les die
+voor beide kampen geldt: hefboom, waardering tegen marktprijzen en een deadline vormen
+samen het recept voor de ondergang {cite}`SantaClara2026`.
 
-**Wat er daarna kwam.** Als dezelfde feiten, voorspelbare premies die in crises exploderen,
-zowel een rationele discontovoet als een tijdelijke mispricing kunnen zijn, is de vraag wat het
-vakgebied daar in 2013 mee deed, toen Fama en Shiller samen de Nobelprijs kregen:
-[](#05-33-fama-vs-shiller).
+**Wat er daarna kwam.** Als voorspelbare premies die in crises exploderen zowel een
+rationele discontovoet als een tijdelijke mispricing kunnen zijn, rijst de vraag wat het
+vakgebied daarmee deed toen Fama en Shiller in 2013 samen de Nobelprijs kregen. Die vraag
+behandelt [](#05-33-fama-vs-shiller).
 
 ## Oefeningen
 
 :::{exercise}
 :label: ex-intermediaries-1
 
-**De liquiditeitsspiraal ontleed.** Neem het vereenvoudigde Brunnermeier-Pedersen-model met
-$K_0 = 1$, $x_0 = 8$, $h_0 = 0{,}08$, $\varepsilon = 60$ en $z = 13$.
+**Een grotere schok.** Herhaal het toy-voorbeeld met een prijsdaling van 4% in plaats van 2%. De haircut blijft vast op 10%.
 
-1. Laat zien dat de liquide markt geen evenwicht is, en vind voor $\theta = 0$ het evenwicht
-   $\Delta^*$ met de hand: los $\Delta = (z - (K_0 - x_0\Delta)/h_0)/\varepsilon$ op.
-2. Bereken met [](#eq-intermediaries-bp-multiplier) de multiplier $\mathrm{d}\Delta^*/\mathrm{d}z$
-   voor $\theta = 0$ en voor $\theta = 0{,}5$, en splits $G'$ in de verliesspiraal en de
-   margespiraal. Controleer met een eindige differentie.
-3. Voor welke $x_0$ wordt het evenwicht bij $\theta = 0$ instabiel?
+1. Bereken met de hand de kapitaalratio na de schok en de eerste gedwongen verkoop.
+2. Laat de code de spiraal afronden. Is de versterking, de totale prijsdaling gedeeld door de schok, groter of kleiner dan bij 2%, en wat gebeurt er met het eigen vermogen?
 :::
 
 :::{solution} ex-intermediaries-1
 :class: dropdown
 
-**(1)** $z = 13 > K_0/h_0 = 12{,}5$, dus $G(0) > 0$. Bij $\theta = 0$ en bindende restrictie is
-$\varepsilon\Delta = z - K_0/h_0 + x_0\Delta/h_0$, dus $\Delta^*(\varepsilon - x_0/h_0) = z - K_0/h_0$.
-Met $x_0/h_0 = 100 > \varepsilon = 60$ is $\Delta^* = 0{,}5/(-40) < 0$: er is geen evenwicht met
-bindende restrictie en positief kapitaal; de oplossing is het illiquide evenwicht
-$\Delta^* = z/\varepsilon = 0{,}2167$, waar het kapitaal op is ($K_0/x_0 = 0{,}125 < 0{,}2167$).
-Met $x_0 = 3$ is $x_0/h_0 = 37{,}5 < 60$ en $\Delta^* = 0{,}5/22{,}5 = 0{,}0222$.
+**(1)** Het verlies is $0{,}04 \times 100 = 4$, dus $E = 6$, $A = 96$ en $\eta = 6/96 = 6{,}25\%$. De toegestane balans is $6/0{,}10 = 60$, zodat de intermediair $S_1 = 36$ verkoopt.
+
+```{code-cell} ipython3
+eta_4, rounds_4, price_4 = deleverage(E0, A0, H0, EPS * W_OUT, 0.04)
+pd.DataFrame({
+    "schok 2%": {"eerste verkoop": const_rounds.loc[0, "verkoop"], "eigen vermogen na afloop": const_rounds["E"].iloc[-1],
+                 "prijsdaling (%)": 100 * (1 - const_price), "versterking": (1 - const_price) / SHOCK},
+    "schok 4%": {"eerste verkoop": rounds_4.loc[0, "verkoop"], "eigen vermogen na afloop": rounds_4["E"].iloc[-1],
+                 "prijsdaling (%)": 100 * (1 - price_4), "versterking": (1 - price_4) / 0.04},
+}).round(3)
+```
+
+**(2)** De versterking daalt licht, van 1,67 naar 1,58, omdat de balans na de eerste verkoop kleiner is. Het eigen vermogen daalt daarentegen tot 4,62, een verlies van 54% tegen 31% bij de kleine schok. Bij één intermediair aan zijn grens groeit de prijsdaling dus ongeveer evenredig met de schok, en de sterke niet-lineariteit ontstaat pas als intermediairs buffers hebben, zoals bij de twintig intermediairs in de theorie.
+:::
+
+:::{exercise}
+:label: ex-intermediaries-2
+
+**De liquiditeitsspiraal ontleed.** Neem het vereenvoudigde Brunnermeier-Pedersen-model uit de theorie. Kies $K_0 = 1$, $x_0 = 8$, $h_0 = 0{,}08$, $\varepsilon = 60$ en $z = 13$.
+
+1. Laat zien dat de liquide markt geen evenwicht is, en los voor $\theta = 0$ het evenwicht $\Delta^*$ met de hand op. Doe hetzelfde voor $x_0 = 3$.
+2. Bereken met [](#eq-intermediaries-bp-multiplier) de multiplier voor $\theta = 0$ en $\theta = 0{,}5$, en controleer hem met een eindige differentie.
+3. Voor welke $x_0$ wordt het evenwicht bij $\theta = 0$ instabiel?
+:::
+
+:::{solution} ex-intermediaries-2
+:class: dropdown
+
+**(1)** Omdat $z = 13 > K_0/h_0 = 12{,}5$ is $G(0) > 0$. Bij $\theta = 0$ en bindende restrictie geldt $\Delta^*(\varepsilon - x_0/h_0) = z - K_0/h_0$. Met $x_0/h_0 = 100 > 60$ is die oplossing negatief, zodat alleen het illiquide evenwicht $\Delta^* = z/\varepsilon = 0{,}2167$ overblijft. Met $x_0 = 3$ is $x_0/h_0 = 37{,}5$ en $\Delta^* = 0{,}5/22{,}5 = 0{,}0222$.
+
+De cel zoekt het kleinste positieve vaste punt en zet de formule naast een eindige differentie.
 
 ```{code-cell} ipython3
 def bp_equilibrium(z, K0, x0, h0, theta, eps):
@@ -1173,32 +1153,21 @@ for x0_ex in (8.0, 3.0):
 pd.DataFrame(rows).T.rename_axis(["x0", "theta"]).round(4)
 ```
 
-**(2)** Bij $x_0 = 3$, $\theta = 0$ is $G' = 3/(60 \times 0{,}08) = 0{,}625$ en de multiplier
-$(1/60)/0{,}375 = 0{,}044$: 2,7 keer de impact zonder speculanten met posities. Met
-$\theta = 0{,}5$ springt het evenwicht naar een korting van 16,5%, waar de marge 16% is; daar
-is de lokale multiplier met 0,031 lager, omdat de speculanten al weinig kapitaal over hebben.
-De margespiraal werkt dus vooral op het *niveau* van de korting. De eindige differentie
-bevestigt de formule in alle gevallen. Bij $x_0 = 8$ staat de markt in het illiquide
-evenwicht, waar $G' = 0$ en extra aanbod de korting met precies $1/\varepsilon$ verhoogt.
+**(2)** Bij $x_0 = 8$ ligt het evenwicht in de hoek $\Delta^* = z/\varepsilon$, waar de speculanten geen kapitaal meer hebben en niets kopen, zodat de multiplier daar voor beide $\theta$ de directe impact $1/60$ is. Bij $x_0 = 3$ en $\theta = 0$ is $G' = 3/(60 \times 0{,}08) = 0{,}625$ en de multiplier $(1/60)/0{,}375 = 0{,}044$. Met $\theta = 0{,}5$ springt het evenwicht naar een korting van 16,5%, waar de lokale multiplier lager is, omdat de speculanten weinig kapitaal over hebben. De margespiraal werkt dus vooral op het niveau van de korting, en de eindige differentie bevestigt de formule.
 
-**(3)** Bij $\theta = 0$ is $G' = x_0/(\varepsilon h_0)$, dus instabiel zodra
-$x_0 > \varepsilon h_0 = 4{,}8$. De oefening laat zien dat dezelfde verkoopdruk een kleine of een
-catastrofale prijsdaling geeft afhankelijk van hoeveel positie de speculanten al hadden: de
-fragiliteit zit in de balans, niet in het fundament.
+**(3)** Bij $\theta = 0$ is $G' = x_0/(\varepsilon h_0)$, dus het evenwicht wordt instabiel zodra $x_0 > \varepsilon h_0 = 4{,}8$. Dezelfde verkoopdruk geeft dus een kleine of een catastrofale daling, afhankelijk van de positie die de speculanten al hadden.
 :::
 
 :::{exercise}
-:label: ex-intermediaries-2
+:label: ex-intermediaries-3
 
-**Momentum, obligaties en de crisis.** Herhaal de tweestapstoets en de GMM-schatting van het
-HKM-model voor vier combinaties: testactiva FF25 of FF25 + 10 momentum, en steekproef
-1970–2006 (vóór de crisis, zoals HKM's robuustheidstoets) of 1970–2025. Rapporteer
-$\lambda_\eta$, de Shanken- en GMM-$t$-waarden en de $R^2$. Wat doet momentum met de schatting,
-en hangt het resultaat aan 2008?
+**Momentum en de crisis.** Herhaal de schattingen van het HKM-model met als testactiva FF25 of FF25 plus 10 momentumportefeuilles, over 1970–2006 of 1970–2025, net als in de replicatie. Wat doet momentum met de schatting, en hangt het resultaat af van 2008?
 :::
 
-:::{solution} ex-intermediaries-2
+:::{solution} ex-intermediaries-3
 :class: dropdown
+
+De cel herhaalt de schattingen uit de replicatie voor de vier combinaties.
 
 ```{code-cell} ipython3
 rows = {}
@@ -1212,61 +1181,5 @@ for label, cols in [("FF25", cols_25), ("FF25 + momentum", cols_25 + cols_mom)]:
 pd.DataFrame(rows).T.round(2)
 ```
 
-Vóór de crisis is de prijs met en zonder momentum ongeveer 9 tot 11% per kwartaal, met
-GMM-$t$-waarden boven 3,5, al halen de Shanken-$t$-waarden de 1,96 niet. Over 1970–2025 daalt
-de tweestapsschatting op FF25 naar 2,6% en met momentum naar 0,2%, terwijl de GMM-schatting
-zonder intercept rond 5% blijft: de momentumportefeuilles hebben een grote spreiding in
-gemiddelde rendementen en weinig spreiding in $\beta_\eta$, en een vrij intercept neemt dat op.
-Het resultaat hangt dus niet aan 2008, eerder omgekeerd, maar wel aan de testactiva en de
-methode {cite}`LewellenNagelShanken2010`.
-:::
-
-:::{exercise}
-:label: ex-intermediaries-3
-
-**Hodrick tegen naïeve standaardfouten.** Simuleer 1000 steekproeven van 660 maanden waarin
-rendementen niet voorspelbaar zijn ($r_{t+1} = 0{,}005 + \sigma_r e_{t+1}$, $\sigma_r = 4{,}5\%$)
-en de voorspeller een AR(1) is met coëfficiënt 0,98 en innovaties die met $-0{,}5$ correleren met
-$e_{t+1}$. Regresseer rendementen over 12 en 36 maanden op de voorspeller en vergelijk de
-verwerpingskans op 5% met (i) OLS-standaardfouten die de overlap negeren en (ii) Hodrick 1B.
-Wat is de gemiddelde geschatte helling?
-:::
-
-:::{solution} ex-intermediaries-3
-:class: dropdown
-
-```{code-cell} ipython3
-n_sims, n_months, rho, corr = 1000, 660, 0.98, -0.5
-reject = {h: {"OLS": 0, "Hodrick 1B": 0} for h in (12, 36)}
-slopes = {12: [], 36: []}
-index = pd.RangeIndex(n_months)
-for _ in range(n_sims):
-    e = rng.standard_normal(n_months)
-    v = corr * e + np.sqrt(1 - corr**2) * rng.standard_normal(n_months)
-    x = np.zeros(n_months)
-    for t in range(1, n_months):
-        x[t] = rho * x[t - 1] + 0.1 * v[t]
-    r = pd.Series(0.005 + 0.045 * e, index)
-    x = pd.Series(x, index)
-    for h in (12, 36):
-        res = hodrick_1b(r, x, h)
-        slopes[h].append(res["helling"])
-        reject[h]["Hodrick 1B"] += abs(res["t (Hodrick 1B)"]) > 1.96
-        target = np.convolve(r.to_numpy(), np.ones(h), "valid")[1:]
-        X = np.column_stack([np.ones(len(target)), x.to_numpy()[: len(target)]])
-        coef, ssr = np.linalg.lstsq(X, target, rcond=None)[:2]
-        se_ols = np.sqrt(ssr[0] / (len(target) - 2) * np.linalg.inv(X.T @ X)[1, 1])
-        reject[h]["OLS"] += abs(coef[1] / se_ols) > 1.96
-pd.DataFrame({h: {"verwerping OLS": reject[h]["OLS"] / n_sims, "verwerping Hodrick 1B": reject[h]["Hodrick 1B"] / n_sims,
-                  "gem. helling": np.mean(slopes[h])} for h in (12, 36)}).T.round(3)
-```
-
-Met OLS-standaardfouten wordt de ware nulhypothese in de meerderheid van de steekproeven
-verworpen, omdat de overlap de effectieve steekproef met een factor van orde $h$ verkleint.
-Hodrick 1B brengt de verwerpingskans terug in de buurt van de nominale 5%, al blijft er door
-de persistentie van de voorspeller een kleine afwijking, en de gemiddelde helling is door de
-Stambaugh-bias niet nul. Voor de kapitaalratio, met een maandelijkse persistentie van dezelfde
-orde, betekent dit dat de $t$-waarden van ongeveer $-1{,}4$ hierboven niet te redden zijn door
-naar langere horizonnen te kijken: de informatie zit in hooguit een handvol onafhankelijke
-episodes.
+Vóór de crisis is de prijs ongeveer 9 tot 11% per kwartaal, met hoge GMM-$t$-waarden. Tot 2025 zakt de tweestapsschatting met momentum tot bijna nul, terwijl de GMM-schatting zonder intercept rond 5% blijft. De momentumportefeuilles spreiden sterk in gemiddeld rendement maar weinig in $\beta_\eta$, en een vrij intercept neemt dat verschil op. Het teken blijft dus in alle vier de combinaties positief, maar het niveau hangt sterk af van de jaren na 2006, van de testactiva en van de methode {cite}`LewellenNagelShanken2010`.
 :::

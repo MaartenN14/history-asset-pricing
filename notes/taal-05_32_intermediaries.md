@@ -1,0 +1,18 @@
+STATUS 05_32_intermediaries T words=5089 prose=PASS
+- Overzicht: ongewijzigd; motief "theorie of feit" eenmaal, met betekenis in dezelfde zin.
+- Intuïtie: opening herschreven zonder de onbewezen consumptiebewering; twee inverse "Werkwoord ..., dan"-zinnen omgezet naar als/wanneer met een voegwoord.
+- Toy-voorbeeld: afgebroken regel in stap 5 samengevoegd tot één lopende zin.
+- Opzet en notatie: ongewijzigd.
+- Marktliquiditeit: slotzin over de multiplier als hele zin ("zo werd de eerste prijsdaling ... in totaal 1,35 procentpunt"); figuuraankondiging zonder "gaat het om".
+- Kapitaalratio en risicopremie: $\chi$ in een bijzin benoemd.
+- Numerieke oplossing: staccato-reeks ("daalt, stijgt, en die ... drukt") samengevoegd met "Daardoor"; "ruim drie keer zo groot" vervangen door de vergelijking met een verdubbeling; figuurzin met "laat zien hoe ver".
+- Wat het voorspelt: tweede sjabloonvraag gevarieerd ("Waar komt dat vandaan?"); "beide" vervangen door eenduidig antecedent; "gedwongen hebben afgebouwd" gecorrigeerd.
+- Samengevat: laatste punt is een bewering in plaats van een aankondiging.
+- Simulatie: dubbel "met" weg; figuurzin en Shanken-zin met "omdat" verbonden; motief "standaardfout van 2%" eenmaal, met betekenis.
+- Replicatie, kapitaalratio: "gaat het om" vervangen door een gewone hoofdzin.
+- Replicatie, broker-dealer-leverage: tijdsverloop expliciet (piek, terugval) in één zin.
+- Replicatie, cross-sectie: telegramzin "Gedeeltelijk geslaagd." tot hele zin met "want"; afgebroken "De / tweestaps..." hersteld.
+- Voorspelbaarheid: "Het teken klopt. Een ..." verbonden met "want"; congruentie "zit maar een handvol crises".
+- Wat er brak: calque "Op het teken krijgt het model gelijk" herschreven; "breekt op" wordt "loopt vast op"; afgebroken "elkaars / omgekeerde" hersteld.
+- Oefeningen: getallendichtheid in oplossing 3 verlaagd, verder ongewijzigd.
+- Vaktermen: niets vervangen; "Wie"-zinnen 1, sjabloonvragen 2 (één in het kopje), motiefnamen elk eenmaal.
