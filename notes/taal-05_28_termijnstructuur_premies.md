@@ -1,0 +1,12 @@
+STATUS 05_28_termijnstructuur_premies T words=5552 prose=PASS
+- Waar we zijn: PCA-zin gesplitst in waarneming en gevolg ("echter", "dus") in plaats van twee losse beweringen met "en".
+- Overzicht: "Dat is het niet." wordt "Het antwoord is nee."; "die" krijgt antecedent ("die factor"); literaire slotzin vervangen door een gewone zin met "maar".
+- Intuïtie: ongewijzigd; "Wie"-zinnen in het college nu 2, sjablonen 1.
+- Toy-voorbeeld: stap 3 herschreven zonder de achteraan hangende bepaling "op onafgeronde getallen"; overbodige vooruitverwijzing uit het recept geschrapt.
+- Theorie: "Het is de obligatieversie" krijgt onderwerp ("Die uitspraak"); losse korte zin over langere obligaties met "en" aan de vorige gekoppeld; tentalinea met "terwijl"; stringsubsectie opent met een zin met "want"; HJM-drift in één zin met "want"; Duffee-zin opent met "Volgens" (lange zin gesplitst).
+- Samengevat: bullet over $b_n$ gesplitst in bewering en reden met "omdat".
+- Simulatie: "In de figuur gaat het ... om" vervangen door "Links in de figuur telt ..."; zin van 40+ woorden over de standaardfout van 2% gesplitst met "immers".
+- Replicatie: vaste formule "In de figuur gaat het om" (drie keer) teruggebracht tot nul; Campbell-Shiller-intro gesplitst in twee zinnen; celaankondiging korter; "Geslaagd" bij de correlaties begint met de bewering, daarna het getal met "terwijl"; losse kappa-zin bij de alinea gevoegd.
+- Wat er brak: "Waar het breekt" van vier staccato-zinnen naar twee alinea's met "terwijl" en "Bovendien".
+- Oefeningen: "Wat dit leert:" (dubbele punt als lijm) wordt een hele zin met "dus ... maar"; oplossing 1 legt met "maar" uit waarom één jaar niets zegt.
+- Vaktermen: geen vervangen; "forward spread", "yield", "swaption" en "termijnpremie" ongemoeid (STYLE §3).

@@ -18,56 +18,82 @@ kernelspec:
 ```{admonition} Waar we zijn in het verhaal
 :class: important
 
-**Jaartal.** 1987–2018: van Fama en Bliss via het rentewerk van Santa-Clara rond
-2001 en Cochrane en Piazzesi in 2005 tot de kritiek van Bauer en Hamilton.
+**Jaartal.** 1987–2018. Het college loopt van Fama en Bliss via het rentewerk van
+Santa-Clara rond 2001 en Cochrane en Piazzesi in 2005 tot de kritiek van Bauer en Hamilton.
 
-**Wat we al weten.** In [](#03-17-termijnstructuur-real-options) prijsden Vasicek
-en CIR de hele rentecurve met één factor en een constante marktprijs van risico. Een
-principale-componentenanalyse op de GSW-curve vond daar drie factoren, en de lange
-rente bleek op eigen kracht te bewegen. [](#04-20-voorspelbaarheid) liet zien dat
-verwachte aandelenrendementen variëren, maar ook dat het bewijs in kleine, vertekende
-hellingen met overlappende waarnemingen zit. [](#05-27-drie-antwoorden) gaf drie
-modellen waarin de prijs van risico door de tijd beweegt.
+**Wat we al weten.** In [](#03-17-termijnstructuur-real-options) bepaalden Vasicek en CIR
+de prijs van de hele rentecurve met één factor en een constante marktprijs van risico
+$\lambda$. De *termijnpremie* (*term premium*: wat een lange obligatie naar verwachting
+meer verdient dan een reeks korte) lag daar dus vast. Een principale-componentenanalyse
+vond op dezelfde curve echter drie factoren. De lange rente beweegt dus deels los van de
+korte, en één factor kan de curve niet dragen.
+[](#05-27-drie-antwoorden) gaf drie modellen waarin de prijs van risico door de tijd
+beweegt.
 
-**Welke vraag staat open.** Is het extra rendement op lange obligaties constant,
-zoals de expectations hypothesis zegt, en zo niet: welke vorm van de curve voorspelt
-het, en hoeveel factoren heeft die curve eigenlijk?
+**Welke vraag staat open.** Is de termijnpremie constant, zoals de expectations hypothesis
+zegt, en als ze beweegt, welke vorm van de curve voorspelt die premie, en hoeveel factoren heeft
+die curve?
 ```
 
 ## Overzicht
 
-Stelling 8 in de lijst "What we know" van Pedro Santa-Clara luidt: "Long bonds carry
-a risk premium that varies over time and is forecastable from the shape of the yield
-curve. Forward rates are not unbiased forecasts of future short rates"
-{cite}`SantaClara2026`. Dat is een ontkenning van de oudste theorie over de
-rentecurve: de *expectations hypothesis* (verwachtingenhypothese: een lange rente is
-het gemiddelde van de verwachte toekomstige korte rentes, plus hooguit een constante).
-Die hypothese gaat terug op {cite:t}`Fisher1896`, werd door {cite:t}`Hicks1939`
-aangevuld met een liquiditeitspremie en door {cite:t}`Lutz1940` uitgewerkt tot een
-formule die elke looptijd uit de verwachte korte rentes opbouwt.
+Is het extra rendement op lange obligaties constant, zodat de rentecurve alleen verwachte
+toekomstige rentes weerspiegelt? Het antwoord is nee. Een steile curve voorspelt geen
+stijgende rente maar een hoog extra rendement, en één tentvormige combinatie van forward
+rates voorspelt dat rendement voor alle looptijden tegelijk. In dit college:
 
-Twee regressies brachten haar ten val. {cite:t}`FamaBliss1987` regresseerden het
-extra rendement van een $n$-jaarsobligatie op het verschil tussen de $n$-jaars
-*forward rate* (termijnrente: de rente die je vandaag kunt vastleggen voor een lening
-die over $n-1$ jaar begint) en de éénjaarsrente; onder de hypothese zou die helling
-nul zijn, en ze is rond één. {cite:t}`CampbellShiller1991` regresseerden de
-verandering van de lange rente op de *yield spread* (het verschil tussen lange en
-korte rente); onder de hypothese zou die helling één zijn, en ze is negatief.
-{cite:t}`CochranePiazzesi2005` lieten zien dat één tentvormige combinatie van vijf
-forward rates de extra rendementen van álle looptijden voorspelt, met een $R^2$ tot
-0,44, en dat die factor niet samenvalt met level, slope of curvature. Epistemisch is
-dit een lecture over een theorie die getoetst en verworpen werd (motief 3), en over
-een feit dat sindsdien op een theorie wacht. {cite:t}`LudvigsonNg2009`,
-{cite:t}`Duffee2011` en {cite:t}`BauerHamilton2018` debatteren nog over wat dat feit
-precies is.
+- leiden we af dat de expectations hypothesis gelijkstaat aan een constant verwacht extra
+  rendement, en dat één identiteit de regressies van Fama en Bliss en van Campbell en
+  Shiller verbindt;
+- laten we zien waarom een factor die de curve nauwelijks beweegt toch het rendement
+  voorspelt, en waarom de prijs van een swaption afhangt van de correlaties tussen
+  looptijden;
+- simuleren we hoe vaak veertig jaar data een voorspelbaarheid tonen die er niet is;
+- repliceren we op de GSW-curve de hellingen van Fama en Bliss en van Campbell en Shiller,
+  de tent van Cochrane en Piazzesi en de correlaties tussen looptijden.
 
-De tweede helft gaat over Santa-Clara's eigen werk. Als de curve niet door drie factoren wordt
-gedreven maar door een continuüm aan gecorreleerde schokken, het *string-model* van
-{cite:t}`SantaClaraSornette2001`, dan prijzen eindig-factormodellen producten die op
-correlaties tussen looptijden leunen verkeerd; {cite:t}`LongstaffSantaClaraSchwartz2001a`
-vonden dat bij caps en swaptions. We repliceren op de GSW-curve de Fama-Bliss-tabel, de tent
-van Cochrane en Piazzesi, de hellingen van Campbell en Shiller en de correlatiestructuur van
-forward-veranderingen.
+De *expectations hypothesis* (verwachtingenhypothese: een lange rente is het gemiddelde
+van de verwachte korte rentes, plus hooguit een constante) gaat terug op
+{cite:t}`Fisher1896`, {cite:t}`Hicks1939` en {cite:t}`Lutz1940`. Twee regressies, van
+{cite:t}`FamaBliss1987` en van {cite:t}`CampbellShiller1991`, lieten zien dat ze niet
+opgaat. Daarna vonden {cite:t}`CochranePiazzesi2005` één factor voor de extra rendementen
+van alle looptijden, en {cite:t}`LudvigsonNg2009`, {cite:t}`Duffee2011` en
+{cite:t}`BauerHamilton2018` debatteren nog over hoe robuust die factor is. Santa-Clara
+rekent een bewegende, voorspelbare premie op lange obligaties tot wat we weten
+{cite}`SantaClara2026`, en zijn eigen *string-model* {cite}`SantaClaraSornette2001` geeft
+elke looptijd een eigen schok. Sindsdien staat vast dat de termijnpremie beweegt, maar
+waarom ze beweegt, is nog open.
+
+## Intuïtie: waarom zou dit waar zijn?
+
+Een belegger die vijf jaar wil beleggen, kan een obligatie van vijf jaar kopen of vijf keer
+achter elkaar een obligatie van één jaar. Als beleggers alleen om verwachte opbrengst geven,
+leveren beide routes gemiddeld hetzelfde op. Een stijgende curve betekent dan dat de markt
+stijgende rentes verwacht. Toch is de lange route riskanter, want een belegger die de lange
+obligatie na een jaar verkoopt, kent die prijs vandaag nog niet.
+
+Stel dat beleggers voor dat risico een vergoeding vragen die met de conjunctuur meebeweegt.
+Een steile curve betekent dan deels dat de vergoeding hoog is, en niet alleen dat de rente
+gaat stijgen. Wie bij een steile curve de lange obligatie koopt, verdient dan meer dan de
+korte rente, terwijl de lange rente minder stijgt dan de curve aangaf.
+
+Rentes van verschillende looptijden bewegen bijna volledig samen. Een verschuiving, een
+kanteling en een buiging verklaren meer dan 99% van hun variantie. Een vergoeding die stijgt
+terwijl de verwachte rente daalt, verandert de curve echter nauwelijks, zodat de informatie
+over het rendement kan zitten in een vorm die in die variantie amper meetelt.
+
+Het string-model kijkt naar dezelfde curve vanuit optieprijzen. Als elke looptijd een eigen
+schok krijgt, hangen buren sterk samen en verre looptijden minder, terwijl een model met één
+factor alle correlaties op één zet. Een swaption, een optie op een gemiddelde van rentes, is
+duurder naarmate die rentes sterker samen bewegen. Een model met te hoge correlaties maakt
+swaptions daarom te duur.
+
+We verwachten dus dat een steile curve samengaat met een hoog extra rendement en met een
+lange rente die eerder daalt dan stijgt. Ook verwachten we dat een deel van de informatie
+over dat rendement zit in een vorm van de curve die nauwelijks variantie draagt, en dat de
+correlatie tussen twee looptijden kleiner wordt naarmate ze verder uit elkaar liggen.
+
+## Toy-voorbeeld: drie looptijden op twee datums
 
 ```{code-cell} ipython3
 import numpy as np
@@ -82,144 +108,107 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-## Intuïtie: waarom zou dit waar zijn?
+Op datum $t$ kosten nulcouponobligaties die over één, twee en drie jaar één euro uitkeren
+de prijzen $P^{(n)}_t$ in de tabel. Een jaar later is de obligatie die drie jaar liep een
+tweejaarsobligatie geworden. De tabel geeft ook de log-prijzen $p = \log P$ en de yields
+$y^{(n)} = -p^{(n)}/n$.
 
-Wie vijf jaar wil beleggen, kan een obligatie van vijf jaar kopen of vijf keer achter
-elkaar een obligatie van één jaar. Als beleggers alleen om verwachte opbrengst geven,
-moeten die twee routes gemiddeld hetzelfde opleveren. Dan zegt de rentecurve van vandaag
-alles over de korte rentes van morgen: een stijgende curve betekent dat de markt
-stijgende rentes verwacht, en een forward rate is de beste voorspelling van de korte
-rente op dat moment. Dat is de expectations hypothesis. Ze klinkt als no-arbitrage, maar de twee routes hebben
-verschillend risico: wie de lange obligatie na een jaar verkoopt, weet vandaag niet tegen
-welke prijs.
+| looptijd $n$ | $P^{(n)}_t$ | $p^{(n)}_t$ | $y^{(n)}_t$ | $P^{(n)}_{t+1}$ | $p^{(n)}_{t+1}$ | $y^{(n)}_{t+1}$ |
+|---|---|---|---|---|---|---|
+| 1 | 0,95 | −0,051293 | 5,1293% | 0,94 | −0,061875 | 6,1875% |
+| 2 | 0,90 | −0,105361 | 5,2680% | 0,88 | −0,127833 | 6,3916% |
+| 3 | 0,84 | −0,174353 | 5,8118% | – | – | – |
 
-Neem nu de data. Als de curve steil is, stijgen de lange rentes het jaar daarop niet,
-zoals de hypothese vereist; ze dalen eerder. Wie bij een steile curve de lange obligatie
-kocht, verdiende daardoor gemiddeld meer dan de korte rente, en ongeveer precies het
-verschil dat de curve aangaf. De steilheid van de curve voorspelt dus niet de rente,
-maar het extra rendement. Dat extra rendement is een risicopremie die in de tijd beweegt.
+**Het recept.** De forward spread splitst zich exact in een extra rendement en een
+renteverandering, $f^{(3)}_t - y^{(1)}_t = rx^{(3)}_{t+1} + 2\,(y^{(2)}_{t+1} - y^{(2)}_t)$.
 
-Dan de verrassing van Cochrane en Piazzesi. Forward rates van één tot vijf jaar bewegen bijna
-volledig samen: verschuiving, kanteling en buiging verklaren meer dan 99% van hun variantie.
-Toch zit de voorspellende informatie deels in een vorm die in die variantie nauwelijks
-meetelt, een tent met een top in het midden. Een factor die klein is voor rentes kan groot
-zijn voor verwachte rendementen.
+**Stap 1.** Een forward rate is het verschil van twee log-prijzen, dus
+$f^{(2)}_t = p^{(1)}_t - p^{(2)}_t = 5{,}4067\%$ en $f^{(3)}_t = p^{(2)}_t - p^{(3)}_t =
+6{,}8993\%$. Wie op $t$ de driejaars- tegen de tweejaarsobligatie ruilt, legt die rente vast
+voor het derde jaar.
 
-Het string-model kijkt naar dezelfde curve vanuit prijzen. Als elke looptijd een eigen schok
-krijgt, gecorreleerd met die van zijn buren, is de correlatie tussen de twee- en de
-driejaarsrente hoog en die tussen de één- en de tienjaarsrente lager; een eenfactormodel zet
-ze allemaal op één. Een cap is een reeks opties op afzonderlijke forward rates en hangt alleen
-van hun volatiliteiten af, een swaption is een optie op een gemiddelde van forwards en hangt
-ook van hun correlaties af. Een model met te hoge correlaties dat caps goed prijst, prijst
-swaptions dus te hoog. Santa-Clara noemt zijn model "an infinite-factor generalization of
-Heath, Jarrow and Morton" {cite}`SantaClara2026`.
+**Stap 2.** De driejaarsobligatie levert over het eerste jaar
+$p^{(2)}_{t+1} - p^{(3)}_t = -0{,}127833 + 0{,}174353 = 4{,}6520\%$ op. Boven de
+éénjaarsrente is dat $rx^{(3)}_{t+1} = 4{,}6520\% - 5{,}1293\% = -0{,}4773\%$.
 
-## Toy-voorbeeld: drie looptijden op twee datums
+**Stap 3.** De tweejaarsrente steeg met $6{,}3916\% - 5{,}2680\% = 1{,}1236$ procentpunt.
+Op de onafgeronde getallen is $-0{,}4773\% + 2 \times 1{,}1236\% = 1{,}7700\%$, precies de
+spread, zodat de identiteit sluit. Met de afgeronde getallen hierboven wijkt de som alleen
+in de vierde decimaal af.
 
-Op datum $t$ kosten nulcouponobligaties die over één, twee en drie jaar één euro
-uitkeren $P^{(1)}_t = 0{,}95$, $P^{(2)}_t = 0{,}90$ en $P^{(3)}_t = 0{,}84$. Een jaar
-later kosten de obligaties van één en twee jaar $P^{(1)}_{t+1} = 0{,}94$ en
-$P^{(2)}_{t+1} = 0{,}88$. De obligatie die op $t$ drie jaar liep, loopt op $t+1$ nog
-twee jaar en kost dus 0,88.
+**Stap 4.** Als het verwachte extra rendement nul is, zoals de pure hypothese zegt, komt de
+spread volledig in de renteverandering terecht. De tweejaarsrente stijgt dan naar
+verwachting met $1{,}7700\%/2 = 0{,}8850$ procentpunt tot $6{,}1530\%$, en de obligatie
+kost op $t+1$ dan $e^{-2 \times 0{,}061530} = 0{,}8842$.
 
-**Log-prijzen en yields.** Met $p = \log P$ en $y^{(n)} = -p^{(n)}/n$:
-
-$$
-\begin{aligned}
-p^{(1)}_t &= -0{,}051293, & p^{(2)}_t &= -0{,}105361, & p^{(3)}_t &= -0{,}174353,\\
-y^{(1)}_t &= 5{,}1293\%, & y^{(2)}_t &= 5{,}2680\%, & y^{(3)}_t &= 5{,}8118\%,
-\end{aligned}
-$$
-
-en op $t+1$: $p^{(1)}_{t+1} = -0{,}061875$, $p^{(2)}_{t+1} = -0{,}127833$, dus
-$y^{(1)}_{t+1} = 6{,}1875\%$ en $y^{(2)}_{t+1} = 6{,}3916\%$.
-
-**Forward rates.** De forward rate voor het jaar van $t+n-1$ naar $t+n$ is het verschil
-van twee log-prijzen: $f^{(2)}_t = p^{(1)}_t - p^{(2)}_t = 5{,}4067\%$ en
-$f^{(3)}_t = p^{(2)}_t - p^{(3)}_t = 6{,}8993\%$. Wie op $t$ één euro van de
-driejaars- in de tweejaarsobligatie ruilt, legt die rente vast voor het derde jaar.
-
-**Rendementen.** Het log-rendement van de driejaarsobligatie over het eerste jaar is
-$r^{(3)}_{t+1} = p^{(2)}_{t+1} - p^{(3)}_t = -0{,}127833 + 0{,}174353 = 4{,}6520\%$, en
-het extra rendement boven de éénjaarsrente is
-$rx^{(3)}_{t+1} = 4{,}6520\% - 5{,}1293\% = -0{,}4773\%$. Voor de tweejaarsobligatie:
-$rx^{(2)}_{t+1} = -0{,}061875 + 0{,}105361 - 0{,}051293 = -0{,}7808\%$ (op onafgeronde log-prijzen). De rente
-steeg dat jaar, dus lange obligaties deden het slechter dan kort beleggen.
-
-**De identiteit.** De forward spread $f^{(3)}_t - y^{(1)}_t = 1{,}7700\%$ splitst exact
-in het extra rendement en twee keer de verandering van de tweejaarsrente:
-
-$$
-f^{(3)}_t - y^{(1)}_t = rx^{(3)}_{t+1} + 2\,\big(y^{(2)}_{t+1} - y^{(2)}_t\big)
-= -0{,}4773\% + 2 \times 1{,}1236\% = 1{,}7700\% .
-$$
-
-Neem van beide kanten de verwachting op $t$. De forward spread is dan de som van een
-verwacht extra rendement en een verwachte renteverandering. De expectations hypothesis
-zegt dat de eerste term constant is, hier nul. Dan voorspelt de curve dat de
-tweejaarsrente met $1{,}7700\%/2 = 0{,}8850$ procentpunt stijgt, naar $6{,}1530\%$, en
-dat de tweejaarsobligatie op $t+1$ $e^{-2 \times 0{,}061530} = 0{,}8842$ kost. Ze kostte
-0,88: de rente steeg met 1,1236 procentpunt, meer dan voorspeld, en het verschil
-verscheen als een negatief extra rendement. Eén jaar zegt niets over de hypothese; de vraag is welke term de spread gemiddeld draagt.
+De code rekent dezelfde getallen uit en zet ze naast de handberekening.
 
 ```{code-cell} ipython3
-prices_t = {1: 0.95, 2: 0.90, 3: 0.84}
-prices_t1 = {1: 0.94, 2: 0.88}
+prices_t = {1: 0.95, 2: 0.90, 3: 0.84}      # zero-coupon prices on t, maturity in years
+prices_t1 = {1: 0.94, 2: 0.88}              # prices one year later
 p_t = {n: np.log(v) for n, v in prices_t.items()}
 p_t1 = {n: np.log(v) for n, v in prices_t1.items()}
 y_t = {n: -p_t[n] / n for n in p_t}
 y_t1 = {n: -p_t1[n] / n for n in p_t1}
 
 fwd_toy = {2: p_t[1] - p_t[2], 3: p_t[2] - p_t[3]}
-rx_toy = {2: p_t1[1] - p_t[2] - y_t[1], 3: p_t1[2] - p_t[3] - y_t[1]}
+rx3_toy = p_t1[2] - p_t[3] - y_t[1]
 spread_toy = fwd_toy[3] - y_t[1]
-yield_change_toy = 2 * (y_t1[2] - y_t[2])
+change_y2_toy = y_t1[2] - y_t[2]
 eh_y2 = y_t[2] + spread_toy / 2
+assert np.isclose(spread_toy, rx3_toy + 2 * change_y2_toy)
 
-print("yields t   (%):", [round(100 * float(y_t[n]), 4) for n in (1, 2, 3)], " hand: 5.1293, 5.2680, 5.8118")
-print("forwards   (%):", round(100 * fwd_toy[2], 4), round(100 * fwd_toy[3], 4), " hand: 5.4067, 6.8993")
-print("rx^(2), rx^(3) (%):", round(100 * rx_toy[2], 4), round(100 * rx_toy[3], 4), " hand: -0.7808, -0.4773")
-print(f"f3 - y1 = {100 * spread_toy:.4f}%,  rx3 + 2*dy2 = {100 * (rx_toy[3] + yield_change_toy):.4f}%  (hand: 1.7700)")
-print(f"EH: E[y2 op t+1] = {100 * eh_y2:.4f}%, prijs {np.exp(-2 * eh_y2):.4f}  (hand: 6.1530%, 0.8842)")
-assert np.isclose(spread_toy, rx_toy[3] + yield_change_toy)
-assert abs(100 * rx_toy[3] + 0.4773) < 5e-5 and abs(100 * spread_toy - 1.7700) < 5e-5
+code = pd.Series({
+    "y1 op t (%)": 100 * y_t[1], "y2 op t (%)": 100 * y_t[2], "y3 op t (%)": 100 * y_t[3],
+    "f2 (%)": 100 * fwd_toy[2], "f3 (%)": 100 * fwd_toy[3],
+    "rx3 (%)": 100 * rx3_toy, "verandering y2 (pp)": 100 * change_y2_toy,
+    "f3 - y1 (%)": 100 * spread_toy,
+    "EH: y2 op t+1 (%)": 100 * eh_y2, "EH: prijs op t+1": np.exp(-2 * eh_y2),
+})
+hand = pd.Series([5.1293, 5.2680, 5.8118, 5.4067, 6.8993, -0.4773, 1.1236, 1.7700, 6.1530, 0.8842],
+                 index=code.index)
+pd.DataFrame({"met de hand": hand, "code": code}).round(4)
 ```
 
-De code geeft dezelfde getallen, en de identiteit sluit op machineprecisie: ze volgt
-uit de definities en niet uit een model.
+De twee kolommen zijn gelijk, en de identiteit sluit op machineprecisie omdat ze uit de
+definities volgt en niet uit een model. Onder de hypothese hoorde bij de spread van 1,77
+procentpunt een prijs van 0,8842 op $t+1$. De obligatie kostte 0,88 omdat de rente meer
+steeg dan voorspeld, en dat verschil verscheen als een negatief extra rendement. Eén jaar
+zegt niets over de hypothese, want het gaat erom welk deel van de spread gemiddeld premie
+is.
 
 ## Theorie
 
-### Definities
+De kern is een exacte identiteit die de forward spread splitst in een extra rendement en een
+renteverandering. Daaruit volgt dat de expectations hypothesis hetzelfde zegt als een
+constant verwacht extra rendement, en dat de regressies van Fama en Bliss en van Campbell en
+Shiller één feit meten. Daarna volgen de factor van Cochrane en Piazzesi, die de curve
+nauwelijks beweegt, en het string-model, dat de prijs van swaptions aan de correlaties
+tussen looptijden koppelt.
+
+### Opzet en notatie
 
 Vanaf hier zijn kleine letters logs. Het superscript tussen haakjes is de looptijd in
-jaren en de tijdstap is één jaar, ook als we straks maandelijks waarnemen. We volgen de
-notatie van Cochrane en Piazzesi en schrijven het extra rendement als $rx$ in plaats van
-de $R^{e}$ uit de notatietabel: het gaat om log-rendementen per looptijd, en $rx^{(n)}$
-leest beter dan $r^{e,(n)}$.
+jaren, en de tijdstap is één jaar, ook bij maandelijkse waarnemingen. Het extra rendement
+heet $rx$, zoals bij Cochrane en Piazzesi.
 
 :::{prf:definition} Prijzen, yields, forwards en rendementen
 :label: def-termijnstructuur-premies-notatie
 
 Laat $p^{(n)}_t$ de log-prijs op $t$ zijn van een nulcouponobligatie die op $t+n$ één
-euro uitkeert, met $p^{(0)}_t = 0$. Dan zijn
+euro uitkeert, met $p^{(0)}_t = 0$. Alle andere grootheden zijn daarvan afgeleid:
 
-- de **yield**: $y^{(n)}_t = -\tfrac1n\, p^{(n)}_t$;
-- de **forward rate** voor het jaar van $t+n-1$ tot $t+n$: $f^{(n)}_t = p^{(n-1)}_t - p^{(n)}_t$;
-- het **holding-period return** (het rendement van een jaar houden en verkopen):
-  $r^{(n)}_{t+1} = p^{(n-1)}_{t+1} - p^{(n)}_t$;
-- het **extra rendement**: $rx^{(n)}_{t+1} = r^{(n)}_{t+1} - y^{(1)}_t$;
-- de **forward spread**: $f^{(n)}_t - y^{(1)}_t$, en de **yield spread**: $y^{(n)}_t - y^{(1)}_t$.
+- de **yield** $y^{(n)}_t = -\tfrac1n\, p^{(n)}_t$,
+- de **forward rate** voor het jaar van $t+n-1$ tot $t+n$, $f^{(n)}_t = p^{(n-1)}_t - p^{(n)}_t$,
+- het **rendement over één jaar** (een jaar houden en dan verkopen),
+  $r^{(n)}_{t+1} = p^{(n-1)}_{t+1} - p^{(n)}_t$,
+- het **extra rendement** $rx^{(n)}_{t+1} = r^{(n)}_{t+1} - y^{(1)}_t$,
+- de **forward spread** $f^{(n)}_t - y^{(1)}_t$ en de **yield spread** $y^{(n)}_t - y^{(1)}_t$.
 :::
 
-De yield is het gemiddelde van de forwards, $y^{(n)}_t = \tfrac1n\sum_{k=1}^{n} f^{(k)}_t$ met
-$f^{(1)}_t = y^{(1)}_t$.
-
-### De expectations hypothesis in drie gedaanten
-
-*Waarom zou dit waar zijn?* Als beleggers risiconeutraal zijn, levert elke manier om een jaar
-te beleggen in verwachting hetzelfde op. Hicks voegde een vaste vergoeding voor prijsrisico toe.
-De hypothese staat of valt dus met de vraag of de premie *constant* is.
+Als beleggers risiconeutraal zijn, levert elke manier om een jaar te beleggen in
+verwachting hetzelfde op. Hicks voegde daar een vaste vergoeding voor prijsrisico aan toe,
+zodat de hypothese staat of valt met de vraag of die vergoeding *constant* is.
 
 :::{prf:definition} Expectations hypothesis
 :label: def-termijnstructuur-premies-eh
@@ -232,8 +221,56 @@ bestaat met
 y^{(n)}_t = \frac1n \sum_{i=0}^{n-1} \E_t\big[y^{(1)}_{t+i}\big] + c_n .
 ```
 
-Met $c_n = 0$ heet ze de pure EH; met $c_n \ne 0$ laat ze een constante term premium toe.
+Met $c_n = 0$ heet ze de pure EH, en met $c_n \ne 0$ laat ze een constante termijnpremie
+toe. Een lange yield is dan het gemiddelde van de verwachte korte rentes plus een opslag die
+per looptijd mag verschillen, maar niet in de tijd.
 :::
+
+### Het kernresultaat: de spread is premie plus renteverandering
+
+Een forward spread boven nul komt terecht in een extra rendement of in een stijgende rente.
+Een belegger die de lange obligatie koopt terwijl de forward rate boven de korte rente ligt,
+strijkt dat verschil op, tenzij de rente stijgt en de obligatie koers verliest.
+
+:::{prf:proposition} Forward spread = extra rendement + renteverandering
+:label: thm-termijnstructuur-premies-identiteit
+
+Voor elke $n \ge 2$ geldt exact
+
+```{math}
+:label: eq-termijnstructuur-premies-identiteit
+f^{(n)}_t - y^{(1)}_t = rx^{(n)}_{t+1} + (n-1)\big(y^{(n-1)}_{t+1} - y^{(n-1)}_t\big),
+```
+
+en dus ook met $\E_t$ voor beide termen rechts. Als $\beta_{rx}$ en $\beta_{\Delta y}$ de
+OLS-hellingen zijn van de twee termen rechts op de forward spread, in dezelfde steekproef,
+dan is $\beta_{rx} + \beta_{\Delta y} = 1$.
+:::
+
+:::{prf:proof}
+Invullen van de definities geeft $rx^{(n)}_{t+1} = p^{(n-1)}_{t+1} - p^{(n)}_t + p^{(1)}_t$
+en $(n-1)(y^{(n-1)}_{t+1} - y^{(n-1)}_t) = -p^{(n-1)}_{t+1} + p^{(n-1)}_t$. De som is
+$p^{(n-1)}_t - p^{(n)}_t + p^{(1)}_t = f^{(n)}_t - y^{(1)}_t$. De hellingen tellen op tot
+één omdat OLS lineair is in de afhankelijke variabele en de spread op zichzelf helling één
+heeft. $\square$
+:::
+
+Het verschil tussen forward en korte rente is dus een extra rendement plus $n-1$ keer de
+stijging van een rente die een jaar korter loopt. In het toy-voorbeeld was de spread 1,77
+procentpunt, waarvan $-0{,}48$ extra rendement en $2 \times 1{,}12$ renteverandering.
+
+{cite:t}`FamaBliss1987` regresseerden het extra rendement op de forward spread,
+
+```{math}
+:label: eq-termijnstructuur-premies-fb
+rx^{(n)}_{t+1} = \alpha_n + \beta_n\big(f^{(n)}_t - y^{(1)}_t\big) + \varepsilon^{(n)}_{t+1},
+```
+
+en onder de EH is de helling $\beta_n$ nul. Bij $\beta_n = 1$ is de spread volledig premie
+en beweegt de lange rente gemiddeld niet. Een helling boven één betekent dat de rente
+zelfs tegen de spread in beweegt. Dat deze helling de EH toetst, volgt uit de volgende
+stelling, want de hypothese over yields zegt hetzelfde als een constant verwacht extra
+rendement.
 
 :::{prf:theorem} Drie equivalente vormen
 :label: thm-termijnstructuur-premies-eh
@@ -246,6 +283,8 @@ De volgende uitspraken zijn equivalent:
 :::
 
 :::{prf:proof}
+:class: dropdown
+
 Uit de definitie van $rx$ volgt voor elke $n \ge 1$ de exacte recursie
 $p^{(n)}_t = p^{(n-1)}_{t+1} - y^{(1)}_t - rx^{(n)}_{t+1}$. Neem de verwachting op $t$ en
 herhaal de substitutie voor $p^{(n-1)}_{t+1}$, $p^{(n-2)}_{t+2}$, tot $p^{(0)} = 0$:
@@ -255,75 +294,34 @@ $$
           + \sum_{i=0}^{n-1} \E_t\big[rx^{(n-i)}_{t+1+i}\big] .
 $$
 
-(3) ⇒ (1): zijn de verwachte extra rendementen constant, dan is de tweede som constant; deel
-door $n$. (1) ⇒ (3): trek de identiteit voor $n-1$, geschoven naar $t+1$ en in verwachting op
-$t$, af van die voor $n$; er blijft $\E_t[rx^{(n)}_{t+1}] = n c_n - (n-1) c_{n-1}$ over.
-(1) ⇔ (2): vul [](#eq-termijnstructuur-premies-eh-yield) in
-$f^{(n)}_t = n y^{(n)}_t - (n-1) y^{(n-1)}_t$ in; van de sommen blijft
+*Uit (3) volgt (1).* Zijn de verwachte extra rendementen constant, dan is de tweede som
+constant, en delen door $n$ geeft (1).
+
+*Uit (1) volgt (3).* Trek de identiteit voor $n-1$, geschoven naar $t+1$ en in verwachting
+op $t$, af van die voor $n$. Er blijft $\E_t[rx^{(n)}_{t+1}] = n c_n - (n-1) c_{n-1}$ over.
+
+*(1) en (2) zijn gelijkwaardig.* Vul [](#eq-termijnstructuur-premies-eh-yield) in
+$f^{(n)}_t = n y^{(n)}_t - (n-1) y^{(n-1)}_t$ in. Van de sommen blijft
 $\E_t[y^{(1)}_{t+n-1}]$ over, plus $a_n = n c_n - (n-1)c_{n-1}$. $\square$
 :::
 
-De derde vorm is de toetsbare: onder de EH is geen enkele variabele op $t$ in staat
-extra obligatierendementen te voorspellen. Het is de obligatieversie van het constante verwachte rendement uit
-[](#04-20-voorspelbaarheid).
+Onder de EH kan dus geen enkele variabele die op $t$ bekend is het extra rendement van een
+obligatie voorspellen. Die uitspraak is de obligatieversie van het constante verwachte
+rendement uit [](#04-20-voorspelbaarheid).
 
+### Campbell en Shiller: hetzelfde feit, het andere stuk
 
-
-### De identiteit achter beide regressies
-
-*Waarom zou dit waar zijn?* Ligt de forward rate boven de korte rente, dan moet dat verschil
-ergens heen: óf de langere rente stijgt, zodat wie lang koopt koersverlies lijdt, óf wie lang
-koopt verdient het als extra rendement.
-
-:::{prf:proposition} Forward spread = verwacht extra rendement + verwachte renteverandering
-:label: thm-termijnstructuur-premies-identiteit
-
-Voor elke $n \ge 2$ geldt exact
-
-```{math}
-:label: eq-termijnstructuur-premies-identiteit
-f^{(n)}_t - y^{(1)}_t = rx^{(n)}_{t+1} + (n-1)\big(y^{(n-1)}_{t+1} - y^{(n-1)}_t\big),
-```
-
-en dus ook met $\E_t$ voor beide termen rechts. Laat $\beta_{rx}$ en $\beta_{\Delta y}$
-de OLS-hellingen zijn van de twee termen rechts op de forward spread, in dezelfde
-steekproef. Dan is $\beta_{rx} + \beta_{\Delta y} = 1$.
-:::
-
-:::{prf:proof}
-Invullen van de definities: $rx^{(n)}_{t+1} = p^{(n-1)}_{t+1} - p^{(n)}_t + p^{(1)}_t$ en
-$(n-1)(y^{(n-1)}_{t+1} - y^{(n-1)}_t) = -p^{(n-1)}_{t+1} + p^{(n-1)}_t$. De som is
-$p^{(n-1)}_t - p^{(n)}_t + p^{(1)}_t = f^{(n)}_t - y^{(1)}_t$. De hellingen tellen op tot
-één omdat OLS lineair is in de afhankelijke variabele en de spread op zichzelf helling
-één heeft. $\square$
-:::
-
-Dit is het toy-voorbeeld in algemene vorm. De regressie van {cite:t}`FamaBliss1987`
-
-```{math}
-:label: eq-termijnstructuur-premies-fb
-rx^{(n)}_{t+1} = \alpha_n + \beta_n\big(f^{(n)}_t - y^{(1)}_t\big) + \varepsilon^{(n)}_{t+1}
-```
-
-toetst de EH als $H_0: \beta_n = 0$. Het alternatief waar de data op wijzen is het
-omgekeerde uiterste, $\beta_n = 1$: de spread is volledig premie en de lange rente
-beweegt gemiddeld niet in de voorspelde richting. Een helling boven één betekent dat de
-rente zelfs *tegen* de spread in beweegt.
-
-### Campbell en Shiller: de helling die één had moeten zijn
-
-*Waarom zou dit waar zijn?* Klopt de EH, dan moet de lange rente bij een steile curve precies
-genoeg stijgen om de extra coupon weg te nemen. De regressie meet hoeveel daarvan gebeurt.
-
-{cite:t}`CampbellShiller1991` schatten
+Campbell en Shiller keken naar de andere term van de identiteit, de verandering van de lange
+rente, en vonden hellingen die negatief zijn in plaats van één. Als de EH klopt, stijgt de
+lange rente bij een steile curve precies genoeg om het hogere rendement van de lange
+obligatie weg te nemen. Hun regressie meet hoeveel daarvan gebeurt:
 
 ```{math}
 :label: eq-termijnstructuur-premies-cs
 y^{(n-1)}_{t+1} - y^{(n)}_t = a_n + b_n\,\frac{y^{(n)}_t - y^{(1)}_t}{n-1} + u_{t+1},
 ```
 
-met onder de EH $b_n = 1$. Deze regressie en die van Fama en Bliss meten hetzelfde
-feit, maar met een ander stuk van de identiteit.
+met onder de EH $b_n = 1$, zodat de lange rente de yield spread één op één volgt.
 
 :::{prf:proposition} Het verband tussen Campbell-Shiller en Fama-Bliss
 :label: thm-termijnstructuur-premies-cs-fb
@@ -335,35 +333,33 @@ Fama-Bliss-helling uit [](#eq-termijnstructuur-premies-fb).
 :::
 
 :::{prf:proof}
+:class: dropdown
+
 Uit de definities volgt exact
-$rx^{(n)}_{t+1} = s_t - (n-1)\big(y^{(n-1)}_{t+1} - y^{(n)}_t\big)$: werk rechts uit tot
-$-(n-1)y^{(n-1)}_{t+1} + n y^{(n)}_t - y^{(1)}_t = p^{(n-1)}_{t+1} - p^{(n)}_t - y^{(1)}_t$.
-De linkerkant van [](#eq-termijnstructuur-premies-cs) is dus $(s_t - rx^{(n)}_{t+1})/(n-1)$
-en de regressor $s_t/(n-1)$. De factor $1/(n-1)$ valt uit de helling, en de helling van
-$s_t - rx^{(n)}_{t+1}$ op $s_t$ is $1 - \beta^s_n$. Voor $n=2$ is
-$f^{(2)} - y^{(1)} = p^{(1)} - p^{(2)} + p^{(1)} = 2y^{(2)} - 2y^{(1)}$. $\square$
+$rx^{(n)}_{t+1} = s_t - (n-1)\big(y^{(n-1)}_{t+1} - y^{(n)}_t\big)$, want de rechterkant
+is uitgewerkt $-(n-1)y^{(n-1)}_{t+1} + n y^{(n)}_t - y^{(1)}_t = p^{(n-1)}_{t+1} -
+p^{(n)}_t - y^{(1)}_t$. De linkerkant van [](#eq-termijnstructuur-premies-cs) is dus
+$(s_t - rx^{(n)}_{t+1})/(n-1)$ en de regressor is $s_t/(n-1)$. De factor $1/(n-1)$ valt uit
+de helling, en de helling van $s_t - rx^{(n)}_{t+1}$ op $s_t$ is $1 - \beta^s_n$. Voor
+$n=2$ is $f^{(2)} - y^{(1)} = p^{(1)} - p^{(2)} + p^{(1)} = 2y^{(2)} - 2y^{(1)}$. $\square$
 :::
 
-Een Fama-Bliss-helling van één op de forward spread voor $n=2$ geeft dus
-$b_2 = -1$: elke procentpunt spread gaat samen met een *daling* van de lange rente. De
-negatieve Campbell-Shiller-hellingen en de positieve Fama-Bliss-hellingen zijn geen twee
-anomalieën maar één. In de NBER-versie van hun artikel (werkpaper 3153, tabel 1b,
-1952–1987, maandelijkse horizon) vinden Campbell en Shiller $b = -1{,}815$ (standaardfout
-1,151) voor een looptijd van 24 maanden, $-3{,}099$ (1,749) voor 60 maanden en
-$-5{,}024$ (2,316) voor 120 maanden. De hellingen worden negatiever naarmate de looptijd
-langer is.
+Een Fama-Bliss-helling van één voor $n = 2$ geeft dus $b_2 = -1$, zodat elke procentpunt
+spread samengaat met een *daling* van de lange rente. De negatieve
+Campbell-Shiller-hellingen en de positieve Fama-Bliss-hellingen zijn daarmee één anomalie,
+en het teken dat de intuïtie voor beide verwachtte, komt uit. Campbell en Shiller vonden
+over 1952–1987 hellingen van $-1{,}8$ bij 24 maanden tot $-5{,}0$ bij 120 maanden.
 
 ### Cochrane en Piazzesi: één factor voor alle looptijden
 
-*Waarom zou dit waar zijn?* Is er één bron van tijdvariërend risico, dan bewegen de verwachte
-extra rendementen van alle looptijden door die ene toestandsvariabele, alleen sterker naarmate
-de obligatie langer loopt. Eén portefeuille van forward rates volstaat dan voor allemaal.
+Cochrane en Piazzesi vonden dat één combinatie van forward rates de extra rendementen van
+alle looptijden voorspelt, telkens met een andere schaal. Als er één bron van tijdvariërend
+risico is, bewegen de verwachte extra rendementen van alle looptijden met die ene
+toestandsvariabele mee, en reageren langere obligaties alleen sterker.
 
-Cochrane en Piazzesi begonnen met de onbeperkte regressie van elk extra rendement op
-alle vijf forwards, $rx^{(n)}_{t+1} = \boldsymbol\beta_n'\mathbf f_t + \varepsilon^{(n)}_{t+1}$
-met $\mathbf f_t = (1, y^{(1)}_t, f^{(2)}_t, \dots, f^{(5)}_t)'$, en zagen dat de vier
-coëfficiëntvectoren dezelfde vorm hebben, alleen geschaald. Dat is de restrictie
-$\boldsymbol\beta_n = b_n\boldsymbol\gamma$, of
+Ze regresseerden elk extra rendement op alle vijf forwards, $\mathbf f_t = (1, y^{(1)}_t, f^{(2)}_t, \dots, f^{(5)}_t)'$,
+en zagen dat de vier vectoren van coëfficiënten dezelfde vorm hebben, alleen geschaald.
+Dat levert de beperking
 
 ```{math}
 :label: eq-termijnstructuur-premies-cp
@@ -371,38 +367,33 @@ rx^{(n)}_{t+1} = b_n\big(\boldsymbol\gamma'\mathbf f_t\big) + \varepsilon^{(n)}_
 \qquad \frac14\sum_{n=2}^{5} b_n = 1 .
 ```
 
+Het extra rendement van elke looptijd is dus een vast veelvoud $b_n$ van één factor
+$\boldsymbol\gamma'\mathbf f_t$, en gemiddeld over de looptijden is dat veelvoud één.
+
 :::{prf:algorithm} De Cochrane-Piazzesi-schatting in twee stappen
 :label: alg-termijnstructuur-premies-cp
 
 1. Middel de extra rendementen over de looptijden,
    $\overline{rx}_{t+1} = \tfrac14\sum_{n=2}^{5} rx^{(n)}_{t+1}$, en regresseer met OLS op
    alle forwards: $\overline{rx}_{t+1} = \boldsymbol\gamma'\mathbf f_t + \bar\varepsilon_{t+1}$.
-   De fitted value $\hat x_t = \hat{\boldsymbol\gamma}'\mathbf f_t$ is de
-   *return-forecasting factor*.
-2. Regresseer per looptijd $rx^{(n)}_{t+1}$ zonder constante op $\hat x_t$; de helling is
-   $\hat b_n$. Omdat de gemiddelde helling op $\overline{rx}$ precies één is, geldt de
+   De voorspelde waarde $\hat x_t = \hat{\boldsymbol\gamma}'\mathbf f_t$ is de
+   *return-forecasting factor* (de factor die het rendement voorspelt).
+2. Regresseer per looptijd $rx^{(n)}_{t+1}$ zonder constante op $\hat x_t$. De helling is
+   $\hat b_n$, en omdat de gemiddelde helling op $\overline{rx}$ precies één is, geldt de
    normalisatie $\tfrac14\sum\hat b_n = 1$ vanzelf.
 :::
 
-Hun tabel 1 (maandelijkse waarnemingen van jaarlijkse rendementen, 1964–2003,
-Fama-Bliss-data van CRSP) geeft gewichten die negatief zijn op de éénjaarsrente, een top
-hebben op de derde forward en weer negatief zijn op de vijfde: de tent, met $R^2 = 0{,}35$
-voor het gemiddelde extra rendement en 0,31–0,37 per looptijd, bijna gelijk aan de
-onbeperkte regressies. Hun tabel 2 geeft voor de Fama-Bliss-regressies op dezelfde data
-$R^2$ van 0,09 tot 0,18. De $R^2$ van 0,44 uit hun abstract komt uit tabel 5: met drie maanden vertraagde
-forwards erbij loopt de $R^2$ op van 0,35 via 0,41 en 0,43 naar 0,44. Cochrane en
-Piazzesi lezen dat als een teken van meetfouten in de prijzen: een gemiddelde over
-opeenvolgende maanden dempt de ruis.
-
-De oorspronkelijke tabel van Fama en Bliss (1987) hebben we niet kunnen inzien; we
-vergelijken daarom met de update in tabel 2 van Cochrane en Piazzesi, die volgens hen
-"have held up well since publication, unlike many other anomalies".
+In hun tabel 1 zijn de gewichten negatief op de éénjaarsrente, hoog op de derde forward en
+weer negatief op de vijfde. Die tentvorm verklaart 35% van de variantie van het gemiddelde
+extra rendement, terwijl geen enkele afzonderlijke Fama-Bliss-regressie boven 18% komt.
 
 ### Waarom de premie niet in de PCA hoeft te zitten
 
-*Waarom zou dit waar zijn?* Een PCA ordent richtingen in de curve naar hun *variantie*, een
-voorspellende regressie naar hun *covariantie* met toekomstige rendementen, en die schaalt de
-regressor zelf op. Een richting met weinig variantie kan dus een grote $R^2$ opleveren.
+Een factor die nauwelijks bijdraagt aan de variantie van de curve, kan toch een groot deel
+van de premie voorspellen. Een PCA rangschikt bewegingen van de curve naar hun variantie,
+een regressie naar hun samenhang met latere rendementen. Denk aan een recessie die de premie
+verhoogt en tegelijk renteverlagingen doet verwachten. De twee effecten op de forward rates
+heffen elkaar dan op, zodat de curve per saldo niet verandert.
 
 :::{prf:proposition} Schaalinvariantie en de verborgen factor
 :label: thm-termijnstructuur-premies-verborgen
@@ -420,70 +411,38 @@ forward rate, en dus geen enkele yield.
 
 :::{prf:proof}
 (i) De $R^2$ van een enkelvoudige regressie is het kwadraat van de correlatie, en een
-correlatie verandert niet onder schaling. (ii) Volgt direct uit
-[](#eq-termijnstructuur-premies-identiteit) met $\E_t$: de linkerkant verandert niet als
-de twee termen rechts in tegengestelde richting evenveel bewegen. $\square$
+correlatie verandert niet onder schaling. (ii) Dit volgt direct uit
+[](#eq-termijnstructuur-premies-identiteit) met $\E_t$, want de linkerkant verandert niet
+als de twee termen rechts in tegengestelde richting evenveel bewegen. $\square$
 :::
 
-Deel (i) is de situatie van Cochrane en Piazzesi: in hun tabel 4 halen level, slope en
-curvature samen een $R^2$ van 0,26 tegen 0,35 voor alle vijf forwards, en de 4-5-jaarsspread
-is volgens hen "a tiny factor for yields" die toch veel over verwachte rendementen zegt. Deel
-(ii) is het extreme geval dat {cite:t}`Duffee2011` in de data vond: "almost half of the
-variation in bond risk premia" is niet te zien in de cross-sectie van yields. Zo'n factor vind
-je alleen met variabelen van buiten de curve, zoals de macrofactoren van
-{cite:t}`LudvigsonNg2009`. Economisch is dat geen toeval: een recessie die de premie verhoogt en
-tegelijk renteverlagingen doet verwachten, kan de curve per saldo ongemoeid laten.
-
-### Overlappende waarnemingen: Hansen-Hodrick en Newey-West
-
-*Waarom zou dit waar zijn?* Jaarrendementen die elke maand worden gemeten, delen elf maanden
-met hun buren; een gewone standaardfout telt ze als onafhankelijk.
-
-Schrijf de OLS-schatter als $\hat{\boldsymbol\beta} - \boldsymbol\beta =
-(\mathbf X'\mathbf X)^{-1}\sum_t \mathbf x_t\varepsilon_{t+12}$. Onder de nulhypothese
-volgt $\varepsilon$ een MA(11), dus $\mathbf g_t = \mathbf x_t\varepsilon_{t+12}$ is
-gecorreleerd tot en met vertraging 11, en
-
-```{math}
-:label: eq-termijnstructuur-premies-hac
-\widehat{\Var}\big(\hat{\boldsymbol\beta}\big) = (\mathbf X'\mathbf X)^{-1}
-\Big[\sum_{j=-L}^{L} w_j \sum_t \hat{\mathbf g}_t\hat{\mathbf g}_{t-j}'\Big]
-(\mathbf X'\mathbf X)^{-1} .
-```
-
-{cite:t}`HansenHodrick1980` nemen $w_j = 1$ tot $L = 11$ of 12, precies de MA-structuur, maar
-niet noodzakelijk positief definiet; {cite:t}`NeweyWest1987` nemen $w_j = 1 - |j|/(L+1)$, altijd
-positief semidefiniet, maar met een grotere $L$ nodig.
-Cochrane en Piazzesi rapporteren beide: de $\chi^2(5)$-toets op hun vijf forwards is 811 met
-Hansen-Hodrick (12 vertragingen) en 105 met Newey-West (18).
-
-```{warning}
-Beide correcties zijn asymptotisch. Met een persistente regressor, overlap en veertig jaar data
-verwerpen ze te vaak, en de $R^2$ is opwaarts vertekend. {cite:t}`BauerHamilton2018` toetsen de
-*spanning hypothesis* (dat level, slope en curvature alle voorspellende informatie bevatten) en
-noemen de gangbare toetsen "subject to serious small-sample distortions"; na hun bootstrap
-vinden ze "that the evidence against the spanning hypothesis is much weaker than it originally
-appeared". Het is de valkuil van [](#04-20-voorspelbaarheid) in een andere markt.
-```
+Deel (i) beschrijft de situatie van Cochrane en Piazzesi. In hun tabel 4 halen *level,
+slope en curvature* (verschuiving, kanteling en buiging, de eerste drie principale
+componenten) samen een $R^2$ van 0,26, tegen 0,35 voor alle vijf forwards. Deel (ii) maakt
+het recessievoorbeeld exact. Stijgt de premie op de vijfjaarsobligatie, en daalt de
+verwachte stijging van de vierjaarsrente met een kwart daarvan, dan blijft de vijfde forward
+staan. Volgens {cite:t}`Duffee2011` is bijna de helft van de variatie in de premies op
+obligaties zo onzichtbaar in de rentes. Zo'n factor is alleen te vinden met variabelen
+van buiten de curve, zoals de macrofactoren van {cite:t}`LudvigsonNg2009`.
 
 ### Van eindig veel factoren naar een string
 
-*Waarom zou dit waar zijn?* Een obligatie is een integraal over forward rates. Kies je de
-dynamiek van de hele forwardcurve, dan ligt de risiconeutrale drift van elke forward vast door de
-eis dat verdisconteerde obligatieprijzen martingalen zijn; welke schokken de curve krijgt, is vrij.
-
-Dit is de benadering van {cite:t}`HeathJarrowMorton1992` (HJM). Laat $f(t,T)$ de
-instantane forward rate op $t$ voor looptijd $T$ zijn en $P(t,T) = \exp(-\int_t^T
-f(t,u)\,\mathrm du)$. Een $K$-factor-HJM-model schrijft onder $\mathbb Q$
+Regressies op jaarrendementen zijn niet genoeg om een renteoptie te prijzen, want ze geven
+alleen een verwachting. De prijs van een optie hangt af van hoe de hele curve tot de
+uitoefendatum kan bewegen, en daarvoor moet het model die curve in continue tijd
+beschrijven. Het string-model geeft daarvoor elke looptijd een eigen schok en legt alleen
+vast hoe sterk die schokken samenhangen. Het past in de benadering van
+{cite:t}`HeathJarrowMorton1992` (HJM), die de dynamiek van de hele forwardcurve kiest.
+Laat $f(t,T)$ de instantane forward rate op $t$ voor looptijd $T$ zijn. Een HJM-model met
+$K$ factoren schrijft onder de risiconeutrale maat $\mathbb Q$
 
 $$
 \mathrm d f(t,T) = \alpha(t,T)\,\mathrm dt + \sum_{k=1}^{K}\sigma_k(t,T)\,\mathrm dW_k(t) .
 $$
 
-{cite:t}`SantaClaraSornette2001` gaven elke looptijd een eigen schok, "constrained in such a way
-as to keep the forward rate curve continuous": een *stochastic string* (een willekeurig veld
-$Z(t,T)$, in $t$ een Brownse beweging en in $T$ continu). Voor ons volstaat de
-covariantiestructuur:
+{cite:t}`SantaClaraSornette2001` vervingen de $K$ schokken door een *stochastic string*,
+een willekeurig veld $Z(t,T)$ dat in $t$ een Brownse beweging is en in $T$ continu. Voor ons
+volstaat de covariantiestructuur:
 
 ```{math}
 :label: eq-termijnstructuur-premies-string
@@ -492,78 +451,32 @@ covariantiestructuur:
 \Corr\big(\mathrm dZ(t,T_1),\ \mathrm dZ(t,T_2)\big) = c(T_1 - t,\ T_2 - t) .
 ```
 
-Het $K$-factormodel is het speciale geval waarin de covariantiekern
-$\sigma(t,T_1)\sigma(t,T_2)\,c(T_1-t, T_2-t)$ rang $K$ heeft; het eenfactormodel heeft $c \equiv 1$. Een eenvoudige string met een
-Ornstein-Uhlenbeck-structuur in de looptijd heeft $c(\tau_1,\tau_2) =
-e^{-\kappa|\tau_1-\tau_2|}$: buren bewegen bijna samen, verre looptijden steeds minder.
+Elke forward krijgt dus zijn eigen schok, en de kern $c$ bepaalt hoe sterk twee looptijden
+samen bewegen. Een model met $K$ factoren is het geval waarin de covariantiematrix van de
+forwards rang $K$ heeft, en het eenfactormodel heeft $c \equiv 1$. Een eenvoudige string
+heeft $c(\tau_1,\tau_2) = e^{-\kappa|\tau_1-\tau_2|}$, zodat buren bijna samen bewegen en
+verre looptijden steeds minder. Met $\kappa = 0{,}08$ is de correlatie tussen looptijden die
+negen jaar uit elkaar liggen $e^{-0{,}72} \approx 0{,}49$.
 
-:::{prf:theorem} De no-arbitragedrift van een string
-:label: thm-termijnstructuur-premies-hjm
+Zodra de schokken gekozen zijn, ligt de drift van elke forward onder $\mathbb Q$ vast,
+want anders zou een handelaar met obligaties van alle looptijden arbitrage vinden. Net als
+bij Black-Scholes is dus geen marktprijs van risico nodig.
 
-Laat de forwardcurve voldoen aan [](#eq-termijnstructuur-premies-string) onder
-$\mathbb Q$ met begrensde, continue $\sigma$ en $c$, en laat $r_t = f(t,t)$. Verdisconteerde
-obligatieprijzen zijn dan en slechts dan $\mathbb Q$-martingalen als
+### Caps en swaptions: de prijs van een verkeerde correlatie
 
-```{math}
-:label: eq-termijnstructuur-premies-drift
-\alpha(t,T) = \sigma(t,T)\int_t^T \sigma(t,u)\,c(T-t,\ u-t)\,\mathrm du .
-```
+Een model met te weinig factoren zet de correlaties tussen looptijden te hoog en maakt
+daardoor swaptions te duur. Een optie op één forward rate hangt alleen af van de
+volatiliteit van die rente. Een optie op een gemiddelde van forwards hangt ook af van hun
+correlaties, omdat een gemiddelde van rentes die niet volledig samen bewegen minder
+schommelt.
 
-Voor $c \equiv 1$ is dit de HJM-drift
-$\alpha(t,T) = \sigma(t,T)\int_t^T\sigma(t,u)\,\mathrm du$.
-:::
-
-:::{prf:proof}
-:class: dropdown
-
-Met $X_t = \log P(t,T) = -\int_t^T f(t,u)\,\mathrm du$ is
-
-$$
-\mathrm dX_t = \Big(r_t - \int_t^T \alpha(t,u)\,\mathrm du\Big)\mathrm dt
-             - \int_t^T \sigma(t,u)\,\mathrm dZ(t,u)\,\mathrm du ,
-$$
-
-met een schokterm van variantie $v(t,T) = \int_t^T\!\int_t^T \sigma(t,u)\sigma(t,s)\,c(u-t,s-t)\,\mathrm du\,\mathrm ds$
-per tijdseenheid. Itô geeft voor $P = e^X$ de drift
-$r_t - \int_t^T\alpha(t,u)\,\mathrm du + \tfrac12 v(t,T)$, en $P/B$ met $B_t = e^{\int_0^t r}$ is
-een martingaal precies als die drift voor elke $T$ gelijk is aan $r_t$:
-$\int_t^T\alpha(t,u)\,\mathrm du = \tfrac12 v(t,T)$. Differentiëren naar $T$ geeft, met de
-symmetrie van $c$, [](#eq-termijnstructuur-premies-drift); integreren geeft de omgekeerde
-richting, want beide kanten zijn nul in $T = t$. $\square$
-:::
-
-Net als bij Black-Scholes is geen marktprijs van risico nodig: de drift onder $\mathbb Q$ volgt
-uit de volatiliteiten en de correlatiekern. Het abstract noemt de keerzijde: "options can only
-be perfectly hedged by trading in bonds of all maturities available".
-
-:::{prf:corollary} Rang van de correlatiematrix
-:label: cor-termijnstructuur-premies-rang
-
-In een $K$-factormodel heeft de covariantiematrix van
-$(\mathrm df(t,T_1), \dots, \mathrm df(t,T_N))$ rang hoogstens $K$, voor elke $N$. In een
-eenfactormodel zijn alle correlaties één. Een string met $c = e^{-\kappa|\tau_1-\tau_2|}$
-en $\kappa > 0$ heeft voor elke keuze van verschillende looptijden een correlatiematrix van
-volle rang.
-:::
-
-:::{prf:proof}
-In het $K$-factormodel is de covariantiematrix $\mathbf S\mathbf S'$ met $\mathbf S =
-[\sigma_k(t,T_i)]$ van formaat $N\times K$, dus van rang hoogstens $K$; bij $K = 1$ zijn alle
-correlaties $\pm1$. De exponentiële kern is de correlatiefunctie van een stationair
-Ornstein-Uhlenbeck-proces, en die is strikt positief definiet. $\square$
-:::
-
-### Caps, swaptions en de prijs van een verkeerde correlatie
-
-*Waarom zou dit waar zijn?* Een optie op één forward rate ziet alleen diens volatiliteit, een
-optie op een gemiddelde van forwards ook hun correlaties.
-
-Een *cap* is een reeks *caplets*: calls op de korte rente van opeenvolgende perioden, dus
-op afzonderlijke forward rates. Een *swaption* is een optie om een renteswap aan te gaan,
-dus een call op de swaprente, en die is bij benadering een gewogen gemiddelde van de
-forwards over de looptijd van de swap: $S_t \approx \sum_i w_i F_i(t)$ met $w_i \ge 0$
-en $\sum w_i = 1$. In een normaal (Bachelier-)model is de caplet-prijs evenredig met
-$\sigma_i$ en de swaption-prijs evenredig met
+Een *cap* is een reeks calls op de korte rente van opeenvolgende perioden, dus op
+afzonderlijke forward rates. Een *swaption* is een optie om een renteswap aan te gaan, en de
+swaprente is bij benadering een gewogen gemiddelde van de forwards,
+$S_t \approx \sum_i w_i F_i(t)$ met $\sum w_i = 1$. In het normale model van Bachelier
+zijn renteveranderingen normaal verdeeld, zodat ook de swaprente normaal verdeeld is. De
+prijs van een at-the-money swaption is dan evenredig met de standaardafwijking van de
+swaprente,
 
 ```{math}
 :label: eq-termijnstructuur-premies-swaption
@@ -571,49 +484,80 @@ $\sigma_i$ en de swaption-prijs evenredig met
 \;\le\; \sum_i w_i\sigma_i ,
 ```
 
-met gelijkheid dan en slechts dan als alle $\rho_{ij} = 1$. Kalibreer een eenfactormodel
-aan caps en het prijst elke swaption tegen de bovengrens; kalibreer het aan swaptions en
-het heeft te lage caplet-volatiliteiten. Een model met $K$ factoren kan de ware
-correlatiematrix hooguit met rang $K$ benaderen.
+met gelijkheid dan en slechts dan als alle $\rho_{ij} = 1$. De volatiliteit van de
+swaprente daalt dus met de correlaties tussen de forwards. Een eenfactormodel dat aan caps
+is gekalibreerd, geeft elke swaption de bovengrens als volatiliteit. In oefening 4 maakt dat
+een swaption 6,4% duurder dan in een string met dezelfde capprijzen.
 
-{cite:t}`LongstaffSantaClaraSchwartz2001a` leidden met een string-model de correlaties af die in
-swaptionprijzen besloten liggen: vier factoren, geïmpliceerde correlaties lager dan de
-historische, "major pricing distortions during the 1998 hedge-fund crisis", en capprijzen die
-periodiek sterk afwijken van wat swaptions impliceren. Het "billion dollars" uit een tweede
-artikel gaat over iets anders: suboptimaal uitoefenen van swaptions
-{cite}`LongstaffSantaClaraSchwartz2001b`. Dat caps en swaptions "voor miljarden" verkeerd
-geprijsd waren, staat niet in de abstracts.
+{cite:t}`LongstaffSantaClaraSchwartz2001a` haalden met een string-model de correlaties uit
+swaptionprijzen. Ze vonden vier factoren en geïmpliceerde correlaties die lager lagen dan de
+historische.
 
-## Simulatie: kleine steekproeven, overlappende rendementen en strings
+### Hoe het getoetst wordt: overlappende waarnemingen
 
-### Een affien model met en zonder tijdvariërende prijs van risico
+De gewone standaardfouten van de regressies van Fama en Bliss, Campbell en Shiller en
+Cochrane en Piazzesi zijn te klein. Een jaarrendement dat elke maand wordt gemeten, deelt
+immers elf maanden met zijn buren. Hansen en Hodrick {cite}`HansenHodrick1980` tellen
+daarom de autocovarianties van de residuen tot lag 12 volledig mee, en
+{cite:t}`NeweyWest1987` laten de gewichten lineair dalen, wat altijd een positieve
+variantie geeft.
 
-We bouwen het kleinste model waarin de EH exact geldt of exact faalt: een Gaussisch affien
-model in maandtijd met drie factoren. Onder $\mathbb P$ is $\mathbf X_{t+1} =
-\boldsymbol\Phi^{\mathbb P}\mathbf X_t + \boldsymbol\Sigma\boldsymbol\varepsilon_{t+1}$, met
-persistenties 0,995 (level), 0,96 (slope) en 0,85 (een snelle factor), en $r_t = \delta_0 +
-\boldsymbol\delta_1'\mathbf X_t$. Met SDF $m_{t+1} = \exp(-r_t -
-\tfrac12\boldsymbol\lambda_t'\boldsymbol\lambda_t -
-\boldsymbol\lambda_t'\boldsymbol\varepsilon_{t+1})$ en $\boldsymbol\lambda_t =
-\boldsymbol\lambda_1\mathbf X_t$ is $\boldsymbol\Phi^{\mathbb Q} = \boldsymbol\Phi^{\mathbb P} -
-\boldsymbol\Sigma\boldsymbol\lambda_1$, en de log-prijzen zijn affien zoals in
-[](#thm-termijnstructuur-real-options-affien). Twee versies:
+```{warning}
+Beide correcties gelden pas in grote steekproeven. Met een persistente regressor en veertig jaar overlappende data verwerpen ze te vaak. Bauer en Hamilton {cite}`BauerHamilton2018` vinden na
+een bootstrap dat het bewijs voor voorspellers buiten level, slope en curvature veel zwakker
+is dan het leek. Het is dezelfde valkuil als in [](#04-20-voorspelbaarheid), maar dan in een
+andere markt.
+```
 
-- **EH**: $\boldsymbol\lambda_1 = 0$. Het verwachte extra rendement is dan exact
-  constant; alle voorspelbaarheid in een steekproef is ruis.
-- **Tijdvariërende premie**: $\boldsymbol\Sigma\boldsymbol\lambda_1$ heeft alleen in de
-  eerste rij twee elementen, 0,04 op de slope-factor en 0,10 op de snelle factor. De
-  $\mathbb P$-dynamiek, en dus de volatiliteit van de rentes, is identiek; alleen de
-  prijzen veranderen.
+```{admonition} Samengevat
+:class: tip
 
-Op de yields zetten we een meetfout van 1 basispunt (zonder ruis zijn vijf forwards in een
-driefactormodel exact collineair). Elke steekproef heeft 468 maandelijkse waarnemingen van
-jaarrendementen, zoals 1964–2003; de populatiewaarden komen uit één pad van 120.000 maanden.
+- De forward spread is exact een extra rendement plus een renteverandering,
+  [](#eq-termijnstructuur-premies-identiteit), en de EH zegt dat het verwachte extra
+  rendement constant is.
+- Onder de EH is de Fama-Bliss-helling [](#eq-termijnstructuur-premies-fb) nul en de
+  Campbell-Shiller-helling [](#eq-termijnstructuur-premies-cs) één. Hoe groter het deel van
+  de spread dat premie is, hoe hoger de eerste en hoe lager de tweede.
+- Eén factor voorspelt alle extra rendementen, [](#eq-termijnstructuur-premies-cp), ook als
+  hij de curve nauwelijks beweegt. Zijn schaal $b_n$ stijgt met de looptijd, omdat een
+  langere obligatie bij dezelfde renteschok meer koers verliest of wint.
+- In een string daalt de correlatie met de afstand tussen looptijden,
+  [](#eq-termijnstructuur-premies-string), en hoe lager de correlaties, hoe goedkoper een
+  swaption naast caps, [](#eq-termijnstructuur-premies-swaption).
+- De simulatie meet hoe vaak veertig jaar maanddata een Fama-Bliss-helling of een $R^2$ van
+  Cochrane en Piazzesi opleveren die in de populatie niet bestaat.
+```
+
+## Simulatie: veertig jaar overlappende jaarrendementen
+
+Hoe vaak vinden veertig jaar maanddata een voorspelbaarheid die er niet is, en hoe ver zit
+een geschatte helling naast de ware als de premie wel beweegt? We bouwen het kleinste model
+waarin de EH exact geldt of exact faalt, een Gaussisch affien model in maandtijd met drie
+factoren. Onder $\mathbb P$ is $\mathbf X_{t+1} = \boldsymbol\Phi^{\mathbb P}\mathbf X_t +
+\boldsymbol\Sigma\boldsymbol\varepsilon_{t+1}$, met persistenties 0,995, 0,96 en 0,85 voor
+level, slope en een snelle factor. De korte rente schommelt rond 5%, zoals in het
+toy-voorbeeld.
+
+De prijs van risico is $\boldsymbol\lambda_t = \boldsymbol\lambda_1\mathbf X_t$, zodat onder
+$\mathbb Q$ de matrix $\boldsymbol\Phi^{\mathbb Q} = \boldsymbol\Phi^{\mathbb P} -
+\boldsymbol\Sigma\boldsymbol\lambda_1$ geldt. De log-prijzen zijn dan affien in de toestand,
+zoals in [](#thm-termijnstructuur-real-options-affien), en we vergelijken twee versies:
+
+- **EH**: $\boldsymbol\lambda_1 = 0$, zodat het verwachte extra rendement exact constant is
+  en alle voorspelbaarheid in een steekproef ruis is.
+- **Tijdvariërende premie**: $\boldsymbol\Sigma\boldsymbol\lambda_1$ heeft in de eerste rij
+  0,04 op de slope-factor en 0,10 op de snelle factor. De schokken in de toestand zijn
+  identiek, maar via $\boldsymbol\Phi^{\mathbb Q}$ veranderen de prijzen en daarmee ook hoe
+  sterk elke yield op die schokken reageert.
+
+Op de yields zetten we een meetfout van 1 basispunt, omdat vijf forwards in een
+driefactormodel zonder ruis exact collineair zijn. Elke steekproef heeft 468 maanden, zoals
+1964–2003, en de populatiewaarden komen uit één pad van 120.000 maanden.
 
 ```{code-cell} ipython3
 PHI_P = np.diag([0.995, 0.96, 0.85])          # monthly persistence: level, slope, fast factor
 SIGMA = np.diag([0.0025, 0.0030, 0.0030])     # monthly shocks, annualised rate units
-DELTA0, DELTA1 = 0.05 / 12, np.ones(3) / 12   # monthly short rate = (5% + x1 + x2 + x3) / 12
+DELTA0, DELTA1 = 0.05 / 12, np.ones(3) / 12   # monthly rate r_t = (5% + x1 + x2 + x3) / 12
 MATURITIES = np.array([12, 24, 36, 48, 60])   # months
 NOISE_BP = 0.0001
 N_OBS_CP = 468
@@ -702,6 +646,11 @@ sim_table = pd.DataFrame(rows).round(3)
 sim_table
 ```
 
+De tabel zet voor elk model de populatiewaarde naast de verdeling over 2.000 steekproeven,
+voor de Fama-Bliss-regressie op de vijfjaarsobligatie en voor die van Cochrane en Piazzesi.
+Let links op hoe ver de blauwe verdeling van nul af ligt, en rechts op waar de 0,35 van
+Cochrane en Piazzesi valt ten opzichte van de blauwe verdeling.
+
 ```{code-cell} ipython3
 :tags: [hide-input]
 :label: cel-termijnstructuur-premies-steekproef
@@ -733,167 +682,64 @@ plt.show()
 :label: fig-termijnstructuur-premies-steekproef
 :width: 100%
 
-Links: onder de EH (blauw) is de ware helling nul, maar veertig jaar data laten in 95% van de
-steekproeven $-1{,}7$ tot $+0{,}6$ toe; gestippeld de populatiewaarden. Rechts: vijf forwards op
-overlappende jaarrendementen geven zonder enige voorspelbaarheid een $R^2$ tot 0,23. De grijze
-band is het EH-interval van Cochrane en Piazzesi; hun 0,35 ligt erbuiten.
+Links is de ware helling onder de EH (blauw) nul, maar in 95% van de steekproeven ligt de
+schatting tussen $-1{,}7$ en $+0{,}6$. Rechts halen vijf forwards zonder enige
+voorspelbaarheid een $R^2$ tot 0,23. De grijze band is het interval van Cochrane en Piazzesi
+onder de EH, en hun 0,35 ligt erbuiten.
 :::
 
-De tabel en de figuur leren drie dingen. Ten eerste reproduceert het EH-model het
-kleine-steekproefinterval van Cochrane en Piazzesi: de 97,5%-grens van de $R^2$ ligt
-op 0,23, tegen hun 0,17. Vijf regressoren, persistente forwards en elf
-maanden overlap blazen de $R^2$ op tot een orde van grootte die in een
-aandelenregressie als een ontdekking zou gelden.
+Onder de EH ligt de 97,5%-grens van de $R^2$ op 0,23, iets boven de 0,17 van Cochrane en
+Piazzesi. Vijf regressoren, persistente forwards en elf maanden overlap blazen de $R^2$ op
+tot een waarde die in een aandelenregressie als ontdekking zou gelden.
 
-Ten tweede verwerpt de Hansen-Hodrick-toets de ware nulhypothese in 14% van de
-steekproeven in plaats van 5%. Dat is het punt van Bauer en Hamilton in zijn eenvoudigste vorm: een $t$-waarde van 2 à 3 is
-minder overtuigend dan hij lijkt, maar niet waardeloos.
+De Hansen-Hodrick-toets verwerpt de ware nulhypothese in 14% van de steekproeven in plaats
+van 5%. Een $t$-waarde van 2 à 3 overtuigt dus minder dan hij lijkt.
 
-Ten derde de richting van de fout. Met een echte premie (populatiehelling 1,05, populatie-$R^2$
-0,25) loopt de vijfjaarshelling in 95% van de steekproeven van 0,45 tot 1,76, en de mediane
-$R^2$ is 0,31: hoger dan de waarheid. Onder de EH is de mediane helling $-0{,}34$, een
-Stambaugh-achtige vertekening als in [](#eq-voorspelbaarheid-stambaugh). Dat is motief 1 in de obligatiemarkt: extra rendementen op obligaties van twee tot vijf
-jaar hebben volgens tabel 7 van Cochrane en Piazzesi een standaarddeviatie van 1,9 tot 6,0
-procentpunt, veel minder dan de 20% van aandelen, en daarom is de premie hier sneller
-zichtbaar dan in [](#04-20-voorspelbaarheid). Toch heeft een helling met veertig jaar data
-nog een standaardfout van ongeveer een derde eenheid.
+Met een echte premie ligt de helling in 95% van de steekproeven tussen 0,45 en 1,76, rond
+de populatiewaarde van 1,05 uit de tabel. Onder de EH ligt de mediane helling juist onder
+nul, want de spread is persistent en zijn schokken hangen samen met het gerealiseerde
+rendement, zodat de vertekening van Stambaugh uit [](#eq-voorspelbaarheid-stambaugh) de
+schatting in een korte steekproef omlaag trekt.
 
-### Strings tegen factoren: de correlatiematrix
-
-We vergelijken drie modellen voor maandelijkse forward-veranderingen op 1 tot 10 jaar, met
-dezelfde volatiliteit per looptijd: één factor ($\rho_{ij} = 1$), een string met
-$c = e^{-\kappa|\tau_i - \tau_j|}$ en $\kappa = 0{,}08$, en de beste benadering van die string
-met drie factoren. Uit de string trekken we één steekproef van 600 maanden, en we berekenen de
-volatiliteit van de swaprente voor een swaption op een swap van jaar 5 tot 10 met
-[](#eq-termijnstructuur-premies-swaption).
-
-```{code-cell} ipython3
-TAU = np.arange(1, 11)
-KAPPA_STRING = 0.08
-VOL_FWD = 0.0030                                   # monthly forward-rate change volatility
-
-corr_string = np.exp(-KAPPA_STRING * np.abs(TAU[:, None] - TAU[None, :]))
-
-
-def rank_k_correlation(corr, k):
-    """Best rank-k approximation of a correlation matrix, rescaled to a unit diagonal."""
-    eigval, eigvec = np.linalg.eigh(corr)
-    top = eigvec[:, -k:] * np.sqrt(eigval[-k:])
-    approx = top @ top.T
-    scale = np.sqrt(np.diag(approx))
-    return approx / np.outer(scale, scale)
-
-
-shocks = rng.standard_normal((600, len(TAU))) @ np.linalg.cholesky(corr_string).T * VOL_FWD
-corr_sample = np.corrcoef(shocks.T)
-
-eig_pop = np.sort(np.linalg.eigvalsh(corr_string))[::-1]
-eig_sample = np.sort(np.linalg.eigvalsh(np.cov(shocks.T)))[::-1]
-
-weights = np.full(5, 0.2)                          # swap rate ~ average of forwards 6..10 years
-swaption_vol = {}
-for label, corr in {"eenfactor": np.ones((10, 10)), "drie factoren": rank_k_correlation(corr_string, 3),
-                    "string": corr_string}.items():
-    block = corr[5:, 5:] * VOL_FWD**2
-    swaption_vol[label] = np.sqrt(weights @ block @ weights)
-
-print("aandeel eerste drie componenten, populatie: "
-      f"{eig_pop[:3].sum() / eig_pop.sum():.3f}; steekproef: {eig_sample[:3].sum() / eig_sample.sum():.3f}")
-print(f"correlatie 1 en 10 jaar: populatie {corr_string[0, -1]:.3f}, steekproef {corr_sample[0, -1]:.3f}")
-pd.DataFrame(
-    {"swaprente-vol (bp/maand)": {k: 1e4 * v for k, v in swaption_vol.items()},
-     "prijs t.o.v. string": {k: v / swaption_vol["string"] for k, v in swaption_vol.items()}}
-).round(3)
-```
-
-```{code-cell} ipython3
-:tags: [hide-input]
-:label: cel-termijnstructuur-premies-string
-
-fig, axes = plt.subplots(1, 3, figsize=(13, 4.2))
-for ax, (title, corr) in zip(axes[:2], [("String: populatie", corr_string),
-                                        ("String: steekproef van 600 maanden", corr_sample)]):
-    image = ax.imshow(corr, vmin=0.3, vmax=1.0, cmap="viridis", origin="lower", extent=(0.5, 10.5, 0.5, 10.5))
-    ax.set_title(title)
-    ax.set_xlabel("Looptijd (jaren)")
-    ax.set_ylabel("Looptijd (jaren)")
-fig.colorbar(image, ax=axes[:2], shrink=0.85, label="Correlatie")
-axes[2].bar(np.arange(1, 11) - 0.2, eig_pop / eig_pop.sum(), width=0.4, label="string, populatie")
-axes[2].bar(np.arange(1, 11) + 0.2, eig_sample / eig_sample.sum(), width=0.4, label="string, steekproef")
-axes[2].set_title("Aandeel van elke principale component")
-axes[2].set_xlabel("Component")
-axes[2].set_ylabel("Aandeel van de variantie")
-axes[2].legend()
-plt.show()
-```
-
-:::{figure} #cel-termijnstructuur-premies-string
-:label: fig-termijnstructuur-premies-string
-:width: 100%
-
-Een string heeft oneindig veel factoren, maar de PCA ziet er vertrouwd uit: de eerste drie
-componenten dragen 94% van de variantie. Wie daaruit drie factoren concludeert, gooit de kleine
-componenten weg die de correlaties tussen verre looptijden bepalen.
-:::
-
-Twee lessen. Een PCA met drie dominante componenten is geen bewijs voor drie factoren: een
-continuüm aan schokken levert dezelfde tabel als die van Litterman en Scheinkman in
-[](#03-17-termijnstructuur-real-options). En de kleine componenten zijn voor prijzen niet
-klein: met dezelfde capprijzen prijst het eenfactormodel de swaption 6,4% hoger dan de string,
-en ook het driefactormodel zit er 2,9% boven, omdat een benadering met lage rang de
-correlaties tussen verre looptijden overschat. Tweede momenten zijn bovendien goed gemeten: de
-steekproefcorrelatie van 1 en 10 jaar is 0,43 tegen 0,49 in de populatie. Het string-model repareert dus een fout die in de
-data zichtbaar is.
+Het probleem van [de standaardfout van 2%](#00-01-rendementen), dat een gemiddeld
+rendement na een eeuw nog twee procentpunt onzeker is, speelt hier minder sterk. Extra
+rendementen op obligaties van twee tot vijf jaar schommelen immers veel minder dan die op
+aandelen. Toch blijft de helling na veertig jaar onnauwkeurig, want de band uit de vorige
+alinea is breder dan de ware helling zelf.
 
 ## Replicatie op echte data
 
 ```{admonition} Replicatie
 :class: seealso
 
-**Bron.** (1) Fama en Bliss, *The Information in Long-Maturity Forward Rates*, American
-Economic Review 1987 {cite}`FamaBliss1987`, in de update van tabel 2 van (2) Cochrane en
-Piazzesi, *Bond Risk Premia*, American Economic Review 2005 {cite}`CochranePiazzesi2005`.
-(3) Campbell en Shiller, *Yield Spreads and Interest Rate Movements: A Bird's Eye View*,
-Review of Economic Studies 1991 {cite}`CampbellShiller1991`, in de NBER-versie
-(werkpaper 3153). (4) Santa-Clara en Sornette, *The Dynamics of the Forward Interest Rate
-Curve with Stochastic String Shocks*, Review of Financial Studies 2001
+**Bron.** Fama en Bliss (1987) {cite}`FamaBliss1987`, in de update van Cochrane en Piazzesi (2005)
+{cite}`CochranePiazzesi2005`. Daarnaast gebruiken we Campbell en Shiller (1991)
+{cite}`CampbellShiller1991` in de NBER-versie en Santa-Clara en Sornette (2001)
 {cite}`SantaClaraSornette2001`.
 
-**Wat.** (1) Tabel 2 van Cochrane en Piazzesi: Fama-Bliss-hellingen 0,99; 1,35; 1,61; 1,27 met
-$R^2$ 0,16; 0,17; 0,18; 0,09 (1964–2003). (2) Hun tabel 1: de tent, $R^2 = 0{,}35$,
-$\hat b_n = 0{,}47;\ 0{,}87;\ 1{,}24;\ 1{,}43$; tabel 4: level, slope en curvature samen
-$R^2 = 0{,}26$. (3) Tabel 1b van Campbell en Shiller (1952–1987, horizon één maand):
-$b = -1{,}815$, $-3{,}099$ en $-5{,}024$ voor 24, 60 en 120 maanden. (4) De kwalitatieve
-voorspelling van een string: de correlatie van forward-veranderingen daalt met het
-looptijdverschil.
+**Wat.** Tabel 1, 2 en 4 van Cochrane en Piazzesi, tabel 1b van Campbell en Shiller, en de
+voorspelling van een string dat de correlatie van forward-veranderingen daalt met het
+looptijdverschil. De gepubliceerde getallen staan in de tabellen hieronder.
 
-**Data hier.** De nulcouponcurve van Gürkaynak, Sack en Wright {cite}`GurkaynakSackWright2007`
-via `hap.data.gsw()`: yields van 1 tot 10 jaar en instantane forwards, maandeinde, 1961-06 t/m
-2026-08. Voor de maandhorizon van Campbell en Shiller berekenen we yields op looptijd
-$n - 1/12$ met de Svensson-parameters uit hetzelfde bestand. Forecastdata $t$ lopen van
-1964-01 t/m 1984-12 (de periode die aan Fama en Bliss wordt toegeschreven), t/m 2002-12
-(Cochrane en Piazzesi) en t/m 2025-08 (het laatste rendement eindigt in 2026-08).
+**Data hier.** De nulcouponcurve van Gürkaynak, Sack en Wright
+{cite}`GurkaynakSackWright2007` via `hap.data.gsw()`, per maandeinde en vanaf 1961 beschikbaar. Voor de
+maandhorizon van Campbell en Shiller rekenen we yields uit de Svensson-parameters.
 
-**Verschil met het origineel.** De papers gebruikten de Fama-Bliss-bestanden van CRSP:
-nulcouponprijzen uit verhandelde obligaties, met hun meetfouten. GSW is een gladde
-Svensson-curve met zes parameters. Die gladheid verwijdert juist de kleine,
-looptijdspecifieke bewegingen waar de tent op leunt: de Cochrane-Piazzesi-$R^2$ moet lager
-uitvallen en de tent kan vervlakken of verschuiven. Campbell en Shiller gebruikten McCulloch-data
-vanaf 1952; GSW begint in 1961 en de éénmaandsrente is daar een extrapolatie. Een Svensson-curve
-laat bovendien maar weinig onafhankelijke bewegingen toe, dus de string-intuïtie is alleen in
-haar vorm te toetsen.
+**Verschil met het origineel.** De artikelen gebruikten nulcouponprijzen uit verhandelde
+obligaties, met hun meetfouten, terwijl GSW een gladde curve met zes parameters is. Die
+gladheid verwijdert juist de kleine bewegingen per looptijd waar de tent op leunt, en de
+éénmaandsrente is bij GSW een extrapolatie.
 
-**Verwachte afwijking.** (1) Alle Fama-Bliss-hellingen positief en binnen ongeveer één
-standaardfout van één, $R^2$ tussen 0,05 en 0,20. (2) De Cochrane-Piazzesi-$R^2$ duidelijk
-hoger dan de Fama-Bliss-$R^2$ in dezelfde periode maar lager dan 0,35; $\hat b_n$ stijgend
-in de looptijd; een negatief gewicht op $y^{(1)}$ en een positief gewicht in het midden. (3)
-Alle Campbell-Shiller-hellingen onder één en voor lange looptijden negatief, dalend met de
-looptijd. (4) De correlatie tussen veranderingen van de 1- en de 10-jaarsforward duidelijk
-onder één, monotoon dalend met het looptijdverschil. Wijkt een *teken* af, dan zit de fout
-in de code.
+**Verwachte afwijking.** Positieve Fama-Bliss-hellingen rond één, een $R^2$ van Cochrane en
+Piazzesi tussen die van Fama en Bliss en 0,35, negatieve Campbell-Shiller-hellingen die
+dalen met de looptijd, en correlaties die dalen met het looptijdverschil. Wijkt een *teken*
+af, dan zit de fout in de code.
 ```
 
 ### De data
+
+We laden de GSW-curve, nemen de laatste waarneming van elke maand en bouwen daaruit
+log-prijzen, forwards en extra rendementen over een jaar.
 
 ```{code-cell} ipython3
 gsw_month = hap_data.gsw().resample("ME").last()
@@ -902,12 +748,19 @@ log_prices = -yields * yields.columns
 forwards = pd.DataFrame({1: yields[1], **{n: log_prices[n - 1] - log_prices[n] for n in range(2, 11)}})
 excess = pd.DataFrame({n: log_prices[n - 1].shift(-12) - log_prices[n] - yields[1] for n in range(2, 11)})
 
+# forecast dates t; the last one-year return ends in 2026-08
 SAMPLES = {"1964-1985": ("1964-01", "1984-12"), "1964-2003": ("1964-01", "2002-12"),
            "1964-2026": ("1964-01", "2025-08")}
-(100 * yields[[1, 2, 5, 10]].describe()).round(2)
+(100 * yields[[1, 2, 5, 10]]).describe().round(2)
 ```
 
+De gemiddelde yield loopt op van 4,81% bij één jaar naar 5,96% bij tien jaar. De curve
+stijgt dus gemiddeld, maar dat zegt nog niets over de vraag of de premie beweegt.
+
 ### Fama en Bliss: de spread voorspelt het rendement, niet de rente
+
+De eerste regressie is die van Fama en Bliss, met standaardfouten volgens Hansen-Hodrick, in
+drie steekproeven en naast de gepubliceerde waarden.
 
 ```{code-cell} ipython3
 def ols_hac(y, X, lags, kernel="bartlett"):
@@ -936,18 +789,20 @@ fb_view[("CP tabel 2", "R2")] = [0.16, 0.17, 0.18, 0.09]
 fb_view.round(3)
 ```
 
-Alle hellingen zijn positief en liggen binnen één standaardfout van één, ver van de nul van de
-EH. Over 1964–2003 vinden we 0,97; 1,20; 1,40 en 1,59 tegen 0,99; 1,35; 1,61 en 1,27, met $R^2$
-van 0,12–0,13 binnen hun band van 0,09–0,18. Over 1964–1985 zijn hellingen (0,92–1,16) en $R^2$
-(0,05–0,11) lager dan de "about 18 percent" waarmee Cochrane en Piazzesi Fama en Bliss
-samenvatten; tot 2026 blijft het patroon staan (hellingen 0,72–1,20, $R^2$ 0,08–0,10).
+**Geslaagd.** Alle hellingen zijn positief en liggen, op de tweejaarsobligatie tot 2026
+na, binnen één standaardfout van één, ver van de waarde nul die de EH voorspelt. Over
+1964–2003 liggen ze bij twee tot vier jaar iets onder die van Cochrane en Piazzesi en bij
+vijf jaar erboven. Tot 2026 blijft het patroon staan, met hellingen van 0,72 tot 1,20 en
+$t$-waarden tegen nul van 2,6 tot 2,9.
 
-De standaardfouten verdienen aandacht (motief 1). Een helling van 1,2 met standaardfout 0,4
-verwerpt de EH met $t \approx 3$, maar 0,4 of 2,0 zou evengoed binnen twee standaardfouten
-liggen, en de simulatie liet zien dat de Hansen-Hodrick-$t$ hier te vaak verwerpt. De tekens
-zijn robuust, de precieze getallen niet.
+Een standaardfout rond 0,4 betekent wel dat hellingen van 0,4 tot 2,0 evengoed passen, en de
+simulatie liet zien dat de toets hier te vaak verwerpt. Het teken is robuust, de precieze
+grootte niet.
 
 ### Cochrane en Piazzesi: de tent op een gladde curve
+
+Daarna schatten we de tent in twee stappen, over de periode van Cochrane en Piazzesi en over
+de hele steekproef, en zetten we de gewichten $\boldsymbol\gamma$ naast hun tabel 1.
 
 ```{code-cell} ipython3
 def cochrane_piazzesi(start, end):
@@ -978,12 +833,24 @@ gamma_view.loc["Wald chi2(5), NW 18"] = [float(fit[0].wald_test(np.eye(6)[1:], s
 gamma_view.round(2)
 ```
 
+Over 1964–2003 is het gewicht op de éénjaarsrente negatief en dat op $f^{(2)}$ en
+$f^{(3)}$ positief, maar over de hele steekproef wisselen de gewichten sterk van teken. De
+volgende tabel zet per looptijd de lading $\hat b_n$ en de $R^2$ met en zonder de
+beperking naast het artikel.
+
 ```{code-cell} ipython3
 per_maturity = pd.concat({label: fit[2] for label, fit in cp_fits.items()}, axis=1)
 per_maturity[("CP tabel 1", "b_n")] = [0.47, 0.87, 1.24, 1.43]
 per_maturity[("CP tabel 1", "R2 beperkt")] = [0.31, 0.34, 0.37, 0.34]
 per_maturity.round(3)
 ```
+
+**Gedeeltelijk geslaagd.** De ladingen $\hat b_n$ liggen vrijwel op de gepubliceerde, en
+de onbeperkte regressies komen nauwelijks hoger uit, zodat de structuur met één factor
+overeind blijft. De factor verklaart op GSW over 1964–2003 echter 24% van de variantie van
+het gemiddelde extra rendement, tegen 35% in het artikel. De figuur legt de zwarte tent
+van het artikel naast de blauwe lijn voor dezelfde periode, en daarbij telt vooral de
+vorm.
 
 ```{code-cell} ipython3
 :tags: [hide-input]
@@ -1011,26 +878,16 @@ plt.show()
 
 De tent van Cochrane en Piazzesi (zwart) naast dezelfde regressie op de gladde GSW-curve.
 Over 1964–2003 (blauw) blijven het negatieve gewicht op de éénjaarsrente en het positieve
-midden staan, maar de top schuift van $f^{(3)}$ naar $f^{(2)}$ en de rechterpoot verdwijnt.
-Tot 2026 (rood) wisselen de gewichten wild van teken: de vijf forwards van een gladde curve
-zijn bijna collineair, en kleine verschillen in hun onderlinge bewegingen krijgen grote,
-tegengestelde coëfficiënten.
+midden staan, maar de top schuift naar $f^{(2)}$ en de rechterpoot verdwijnt. Tot 2026
+(rood) wisselen de gewichten sterk van teken, omdat de forwards van een gladde curve bijna
+collineair zijn.
 :::
 
-Op GSW over 1964–2003 verklaart de factor 24% van de variantie van het gemiddelde extra
-rendement, tegen 35% bij Cochrane en Piazzesi en 12–13% per Fama-Bliss-regressie. De ladingen
-$\hat b_n = 0{,}46;\ 0{,}85;\ 1{,}19;\ 1{,}50$ liggen vrijwel op de gepubliceerde, en de
-onbeperkte regressies komen nauwelijks hoger uit: de éénfactorstructuur overleeft. De tent is
-minder scherp, en de Newey-West-$\chi^2(5)$ is 34 tegen 105,5 (kritieke waarde 15,1 op 1%). Tot
-2026 zakt de $R^2$ naar 0,15 en worden de gewichten onleesbaar.
-
-Dat voorspelde het replicatieblok: een curve met zes parameters kan de kleine,
-looptijdspecifieke bewegingen waar de factor deels op leunt maar beperkt maken.
-
-Hoeveel van die voorspelling zit in level, slope en curvature? We herhalen tabel 4 van
-Cochrane en Piazzesi: principale componenten van de yieldniveaus van 1 tot 5 jaar,
-en de $R^2$ van het gemiddelde extra rendement op de eerste één, twee, drie en vijf
-componenten.
+Tot 2026 zakt de $R^2$ naar 0,15 en is de tent niet meer te herkennen, wat past bij een
+curve die de kleine bewegingen per looptijd maar beperkt weergeeft. Hoeveel van de
+voorspelling zit dan in level, slope en curvature? We herhalen tabel 4 van Cochrane en
+Piazzesi met de $R^2$ van het gemiddelde extra rendement op slope alleen, op de eerste twee
+en drie principale componenten en op alle vijf.
 
 ```{code-cell} ipython3
 def pca_regressions(start, end):
@@ -1056,23 +913,19 @@ pd.DataFrame({"GSW 1964-2003": pca_regressions(*SAMPLES["1964-2003"]),
               "CP tabel 4": [0.22, 0.24, 0.26, 0.35, np.nan]}).round(4)
 ```
 
-Hier zit het wezenlijke verschil met het artikel. Op GSW verklaren level, slope en curvature
-over 1964–2003 een $R^2$ van 0,243, en alle vijf componenten 0,244: de laatste twee
-componenten voegen niets toe, en hun aandeel in de variantie van de yieldniveaus is
-verwaarloosbaar (laatste rij, in miljoensten). Bij Cochrane en Piazzesi stijgt de $R^2$ van
-0,26 naar 0,35 door precies die kleine componenten. Het deel van de premie dat volgens
-[](#thm-termijnstructuur-premies-verborgen) klein is voor rentes en groot voor rendementen,
-is in de gladde GSW-curve weggestreken. De slope alleen haalt 0,19 (Cochrane en Piazzesi:
-0,22), en dat deel repliceert wel. De vraag van Bauer en Hamilton, of informatie buiten level, slope en curvature robuust is, is
-met deze data dus niet te beantwoorden: de data bevatten die informatie niet meer.
+**Niet geslaagd** voor het deel buiten level, slope en curvature. Op GSW voegen de vierde
+en vijfde component over 1964–2003 niets toe aan de $R^2$ van 0,24. Bij Cochrane en
+Piazzesi stijgt de $R^2$ van 0,26 naar 0,35 door precies die componenten. Het deel van de
+premie dat volgens [](#thm-termijnstructuur-premies-verborgen) klein is voor rentes en
+groot voor rendementen, en waar we bij de intuïtie de informatie over het rendement
+verwachtten, is in de gladde curve weggestreken. Of dat deel robuust is, zoals Bauer en
+Hamilton vragen, is met deze data dus niet te beantwoorden.
 
 ### Campbell en Shiller: de lange rente beweegt de verkeerde kant op
 
-We schatten [](#eq-termijnstructuur-premies-cs) op twee manieren: met een horizon van één
-jaar voor looptijden van 2 tot 10 jaar (jaarstappen, zoals de Fama-Bliss-regressie), en
-met een horizon van één maand voor looptijden van 24, 60 en 120 maanden, zoals in tabel 1b
-van Campbell en Shiller. Voor dat laatste hebben we yields nodig op looptijden als 59
-maanden en de rente op één maand; die leveren de Svensson-parameters van GSW.
+We schatten [](#eq-termijnstructuur-premies-cs) eerst met een horizon van een jaar voor
+looptijden van 2 tot 10 jaar, zoals de Fama-Bliss-regressie. Daarna volgt een horizon van
+een maand voor 24, 60 en 120 maanden, zoals in tabel 1b van Campbell en Shiller.
 
 ```{code-cell} ipython3
 def svensson_yield(params, tau):
@@ -1098,18 +951,27 @@ def campbell_shiller(n_years, horizon_years, start, end):
     steps = int(round(12 * h))
     lhs = (long_next.shift(-steps) - long_now).rename("lhs")
     x = (h / (n - h) * (long_now - short_now)).rename("spread")
-    fit = ols_hac(lhs.loc[start:end], x.loc[start:end], lags=max(steps, 1) - 1 + 1, kernel="uniform")
+    fit = ols_hac(lhs.loc[start:end], x.loc[start:end], lags=steps, kernel="uniform")
     return fit.params["spread"], fit.bse["spread"], int(fit.nobs)
 
 
 annual_rows = {}
 for n in range(2, 11):
-    first = "1964-01" if n <= 7 else "1971-08"
+    first = "1964-01" if n <= 7 else "1971-08"      # GSW reports 8-10 year yields from 1971-08
     b_03, se_03, _ = campbell_shiller(n, 1.0, first, "2002-12")
     b_26, se_26, _ = campbell_shiller(n, 1.0, first, "2025-08")
-    annual_rows[n] = {"start": first[:4], "b t/m 2003": b_03, "SE": se_03, "b t/m 2026": b_26, "SE ": se_26}
+    annual_rows[n] = {"b t/m 2003": b_03, "t (b = 1) t/m 2003": (b_03 - 1) / se_03,
+                      "b t/m 2026": b_26, "t (b = 1) t/m 2026": (b_26 - 1) / se_26}
 pd.DataFrame(annual_rows).T.rename_axis("n (jaren)").round(3)
 ```
+
+Met een horizon van een jaar zijn alle hellingen negatief en dalen ze met de looptijd, tot
+2003 van $-0{,}93$ bij twee jaar tot $-2{,}71$ bij tien jaar. De EH voorspelt één, en
+daar liggen ze ver onder.
+
+De $t$-waarden tegen die één liggen tussen $-3{,}5$ en $-2{,}6$, en oefening 2 laat zien dat
+de hellingen exact gelijk zijn aan $1 - \beta^s_n$. De volgende cel zet de maandhorizon
+naast tabel 1b.
 
 ```{code-cell} ipython3
 monthly_rows = {}
@@ -1117,33 +979,33 @@ for months, published in [(24, -1.815), (60, -3.099), (120, -5.024)]:
     first = "1961-07" if months <= 84 else "1971-08"
     b_87, se_87, n_87 = campbell_shiller(months / 12, 1 / 12, first, "1987-01")
     b_26, se_26, n_26 = campbell_shiller(months / 12, 1 / 12, first, "2026-07")
-    monthly_rows[months] = {"b t/m 1987": b_87, "SE (HH)": se_87, "nobs": n_87,
-                            "b t/m 2026": b_26, "SE (HH) ": se_26, "CS tabel 1b (1952-1987)": published}
+    monthly_rows[months] = {"b t/m 1987": b_87, "SE t/m 1987": se_87, "nobs": n_87,
+                            "b t/m 2026": b_26, "SE t/m 2026": se_26, "CS tabel 1b (1952-1987)": published}
 pd.DataFrame(monthly_rows).T.rename_axis("looptijd (maanden)").round(3)
 ```
 
-Met een horizon van één jaar zijn alle hellingen negatief en dalen ze met de looptijd: van
-$-0{,}93$ (twee jaar) tot $-2{,}71$ (tien jaar) tot 2003, en van $-0{,}44$ tot $-2{,}08$ tot 2026.
-Elke helling ligt 2,6 tot 3,5 standaardfouten onder de één van de EH. Oefening
-[](#ex-termijnstructuur-premies-1) laat zien dat ze exact $1 - \beta^s_n$ zijn.
+**Gedeeltelijk geslaagd.** Bij een horizon van een maand kloppen teken en rangorde met tabel
+1b, maar tot 1987 zijn de hellingen in absolute waarde veel kleiner. De waarschijnlijke
+oorzaak is de éénmaandsrente, die bij GSW een extrapolatie van de curve is. Een meetfout in
+de korte rente zit volledig in de regressor en trekt de helling naar nul, en onze
+steekproef begint bovendien in 1961 in plaats van 1952.
 
-Met een horizon van één maand komen we minder dicht bij tabel 1b. Teken en rangorde kloppen:
-$-0{,}05$, $-0{,}40$ en $-3{,}21$ voor 24, 60 en 120 maanden tot 1987, tegen $-1{,}82$,
-$-3{,}10$ en $-5{,}02$. De omvang niet. De waarschijnlijke oorzaak is de éénmaandsrente, bij GSW een extrapolatie van
-de curve: een meetfout in de korte rente zit volledig in de regressor en trekt de helling naar
-nul. Bij een horizon van een jaar speelt dat nauwelijks. Onze steekproef begint bovendien in
-1961 in plaats van 1952.
+### Forward-veranderingen: de correlatie daalt met de afstand
 
-### Forward-veranderingen: correlatie daalt met de afstand
+Tot slot toetsen we de voorspelling van het string-model met de correlaties tussen
+maandelijkse veranderingen van de GSW-forwards van 1 tot 10 jaar. De kern
+$e^{-\kappa|\Delta\tau|}$ passen we aan met kleinste kwadraten op $-\log\rho$.
 
 ```{code-cell} ipython3
+TAU = np.arange(1, 11)
 inst_fwd = pd.DataFrame({n: gsw_month[f"SVENF{n:02d}"] for n in range(1, 11)}).dropna()
 fwd_changes = inst_fwd.diff().dropna()
 corr_data = fwd_changes.corr()
 
 distance = np.abs(TAU[:, None] - TAU[None, :])
 off_diag = distance > 0
-kappa_fit = float((distance[off_diag] * -np.log(corr_data.to_numpy()[off_diag])).sum() / (distance[off_diag] ** 2).sum())
+minus_log_corr = -np.log(corr_data.to_numpy()[off_diag])
+kappa_fit = float((distance[off_diag] * minus_log_corr).sum() / (distance[off_diag] ** 2).sum())
 eig_data = np.sort(np.linalg.eigvalsh(fwd_changes.cov().to_numpy()))[::-1]
 
 print(f"steekproef {fwd_changes.index[0]:%Y-%m} t/m {fwd_changes.index[-1]:%Y-%m}, {len(fwd_changes)} maanden")
@@ -1151,6 +1013,16 @@ print(f"gefitte kappa in exp(-kappa |dtau|): {kappa_fit:.3f}")
 print(f"aandeel eerste drie componenten: {eig_data[:3].sum() / eig_data.sum():.3f}")
 corr_data.round(2)
 ```
+
+**Geslaagd.** Elke rij daalt monotoon met de afstand, zoals we bij de intuïtie al
+verwachtten. De correlatie tussen de 1- en de 10-jaarsforward is 0,47, terwijl buren met
+0,92 of meer samenhangen en een eenfactormodel overal één zou geven.
+
+De gefitte $\kappa$ van 0,075 ligt dicht bij de 0,08 die de Theorie ter illustratie koos,
+zodat dat voorbeeld een realistische orde van grootte had. Links in de figuur daalt de
+correlatie naarmate een cel verder van de diagonaal ligt, en rechts dalen de twee rijen van
+de tabel met de afstand zoals de gestippelde string, terwijl het eenfactormodel op één
+blijft.
 
 ```{code-cell} ipython3
 :tags: [hide-input]
@@ -1181,135 +1053,151 @@ plt.show()
 :label: fig-termijnstructuur-premies-correlatie
 :width: 100%
 
-Links: correlaties van maandelijkse veranderingen in de instantane GSW-forwards van 1 tot 10
-jaar, 1971–2026. Rechts: de correlatie vanaf de 1- en de 5-jaarsforward tegen het
-looptijdverschil, naast een string met de gefitte $\kappa$ en het eenfactormodel. De
-correlatie daalt monotoon met de afstand, zoals een string voorspelt, maar ze hangt niet
-alleen van de afstand af: aan de lange kant blijven buren sterker gecorreleerd dan aan de
-korte kant.
+Links staan, over 1971–2026, de correlaties van maandelijkse veranderingen in de GSW-forwards van 1 tot 10 jaar. Rechts staat de correlatie vanaf de 1- en de 5-jaarsforward tegen het
+looptijdverschil, naast een string met de gefitte $\kappa$ en het eenfactormodel. Aan de
+lange kant blijven buren sterker gecorreleerd dan aan de korte kant.
 :::
 
-De correlatie tussen veranderingen van de 1- en de 10-jaarsforward is 0,47, tussen buren 0,92
-(kort) tot 0,99 (lang), en elke rij daalt monotoon met de afstand. Een fit van $-\log\rho$ op de
-afstand geeft $\kappa = 0{,}075$, dicht bij de 0,08 uit de simulatie; een eenfactormodel zou
-overal één geven. Dat buren aan de lange kant sterker samenhangen, vraagt een kern die niet
-alleen van het looptijdverschil afhangt, en die vrijheid laat het string-model.
-
-Twee kanttekeningen. De eerste drie componenten dragen 99,0% van de variantie, meer dan de 94%
-van de string, maar dat zegt vooral iets over GSW: bij vaste $\tau_1$ en $\tau_2$ bewegen de
-forwards van een Svensson-curve in zes dimensies. De vorm van de matrix toetst de
-string-intuïtie, het aantal factoren niet. En tweede momenten zijn goed gemeten: met 660
-maanden is de standaardfout van een correlatie rond 0,5 ongeveer
-$(1-0{,}5^2)/\sqrt{660} \approx 0{,}03$; het verschil tussen 0,47 en één is geen ruis.
+De correlatie hangt dus niet alleen van de afstand af, en het string-model laat die
+vrijheid omdat $c$ van beide looptijden mag afhangen. De eerste drie componenten dragen
+hier 99,0% van de variantie, maar dat zegt vooral iets over GSW, want een Svensson-curve
+heeft maar weinig vrijheidsgraden. De correlaties zelf zijn goed gemeten. Met 660 maanden
+is de standaardfout van een correlatie rond 0,5 ongeveer $(1-0{,}5^2)/\sqrt{660} \approx 0{,}03$.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** De expectations hypothesis is een schoon en bruikbaar
-uitgangspunt: ze maakt van de rentecurve een voorspelling, en die voorspelling is voor de
-korte kant niet eens slecht. De identiteit [](#eq-termijnstructuur-premies-identiteit)
-laat zien waarom ze zo lang overeind bleef: een forward spread moet óf in renteveranderingen
-óf in extra rendementen terechtkomen, en zolang niemand naar het tweede keek, leek het
-eerste vanzelfsprekend. De affiene modellen en de HJM-benadering bleven bestaan, met een tijdvariërende prijs van
-risico of een rijkere correlatiestructuur erbij.
+**Wat het model verklaart.** De expectations hypothesis maakt van de rentecurve een
+toetsbare voorspelling over latere rentes. De identiteit
+[](#eq-termijnstructuur-premies-identiteit) laat zien waarom ze zo lang overeind bleef.
+Een forward spread komt terecht in renteveranderingen of in extra rendementen, en zolang
+niemand naar het tweede keek, leek het eerste vanzelfsprekend.
 
-**Waar het breekt.** Op GSW-data over 1964–2003 heeft de Fama-Bliss-regressie hellingen
-van ongeveer één in plaats van nul, en de Campbell-Shiller-hellingen zijn negatief in plaats
-van één; beide blijven zo tot 2026. Eén tentvormige combinatie van forwards voorspelt het
-gemiddelde extra rendement met een $R^2$ van 0,24 op GSW, tegen 0,35 op de
-CRSP-data van Cochrane en Piazzesi. En de correlaties van forward-veranderingen dalen van
-0,92 à 0,99 voor buren naar 0,47 tussen één en tien jaar, iets wat een
-eenfactormodel niet kan en een model met drie factoren alleen bij benadering. Wat níet
-robuust is, is de precieze vorm van de tent en de hoogte van de $R^2$: de simulatie laat zien
-dat vijf forwards met overlap onder de EH al een $R^2$ tot 0,23 kunnen halen; op GSW voegen de
-componenten buiten level, slope en curvature niets toe; buiten de steekproef verliest de
-factor van het gemiddelde (oefening [](#ex-termijnstructuur-premies-2)); en
-Bauer en Hamilton concluderen dat het bewijs voor voorspellers buiten level, slope en
-curvature "much weaker than it originally appeared" is.
+**Waar het breekt.** Drie bevindingen staan stevig. Van 1964 tot 2026 liggen de
+Fama-Bliss-hellingen op GSW-data rond één in plaats van nul, terwijl de
+Campbell-Shiller-hellingen negatief zijn in plaats van één. Bovendien bewegen de forwards op
+één en tien jaar maar met een correlatie van 0,47 samen, wat een eenfactormodel niet kan
+weergeven.
 
-**Risico of vergissing?** De Chicago-lezing: de premie vergoedt renterisico dat in slechte tijden toeslaat. Cochrane en
-Piazzesi noemen hun factor contracyclisch en hij voorspelt ook aandelenrendementen (helling 1,73 in
-hun tabel 3); Ludvigson en Ng vinden contracyclische macrofactoren in de premie. Dat is wat een
-SDF met tijdvariërende prijs van risico, zoals in [](#05-27-drie-antwoorden), vereist. De
-Yale-lezing: gesegmenteerde markten, pensioenfondsen en centrale banken die lange looptijden
-ongeacht de prijs kopen, geëxtrapoleerde inflatie en arbitrageurs met beperkt kapitaal. De
-"major pricing distortions" van 1998 in swaptions passen beter bij die lezing. De data
-scheiden de lezingen niet: een contracyclische premie is de voorspelling van beide. Voor
-Santa-Clara's praktijkmotief is het onderscheid scherp. Wie lange obligaties koopt als
-de tent hoog staat, draagt ofwel "risk that was priced", ofwel denkt hij iets te weten
-wat de prijs niet weet; en wie swaptions met een eenfactormodel prijst terwijl de markt
-correlaties onder één prijst, zit in het tweede geval zonder het te merken.
+Minder robuust zijn de vorm van de tent en de hoogte van de $R^2$. Onder de EH halen vijf
+forwards met overlap al een $R^2$ tot 0,23, op GSW voegen de componenten buiten level, slope
+en curvature niets toe, en buiten de steekproef faalt de factor.
 
-**Wat er daarna kwam.** Als de prijs van risico in obligaties voorspelbaar varieert en
-correlaties tussen looptijden in optieprijzen besloten liggen, is de volgende vraag wat
-optieprijzen op aandelen zeggen over het risico van een crash: zie
-[](#05-29-opties-crashrisico).
+**Risico of vergissing?** Volgens de Chicago-lezing vergoedt de premie renterisico dat in
+slechte tijden toeslaat. Cochrane en Piazzesi noemen hun factor contracyclisch, en
+Ludvigson en Ng vinden contracyclische macrofactoren in de premie, zoals een SDF met een
+tijdvariërende prijs van risico uit [](#05-27-drie-antwoorden) vraagt. Volgens de
+Yale-lezing zijn de markten gesegmenteerd, omdat pensioenfondsen en centrale banken lange
+looptijden ongeacht de prijs kopen en arbitrageurs weinig kapitaal hebben. De data
+scheiden de lezingen niet, want beide voorspellen een contracyclische premie. Een belegger
+die lange obligaties koopt als de factor hoog staat, draagt dus een risico met een premie,
+of denkt iets te weten wat de prijs niet weet.
+
+**Wat er daarna kwam.** Als de prijs van risico in obligaties voorspelbaar varieert, is de
+volgende vraag wat optieprijzen op aandelen zeggen over de prijs van crashrisico. Dat
+onderzoekt [](#05-29-opties-crashrisico).
 
 ## Oefeningen
 
 :::{exercise}
 :label: ex-termijnstructuur-premies-1
 
-**Campbell-Shiller uit Fama-Bliss.** Neem de jaarlijkse horizon en $n = 2,\dots,5$.
+**Instap: het toy-voorbeeld met een dalende rente.** Neem het toy-voorbeeld, maar laat de tweejaarsobligatie op $t+1$ 0,91 kosten, zodat de rente daalt in plaats van stijgt. De spread van 1,77 procentpunt verandert daardoor niet.
 
-1. Laat met [](#thm-termijnstructuur-premies-cs-fb) zien dat onder de hypothese
-   $\E_t[rx^{(n)}_{t+1}] = s_t$ (de spread is volledig premie) de Campbell-Shiller-helling
-   nul is. Welke waarde van $b_n$ hoort bij een Fama-Bliss-helling van één op de forward
-   spread als $n = 2$?
+1. Bereken met de hand het extra rendement $rx^{(3)}_{t+1}$ en de verandering van de
+   tweejaarsrente, en controleer de identiteit.
+2. Welk deel van de spread is nu extra rendement, en waarom?
+:::
+
+:::{solution} ex-termijnstructuur-premies-1
+:class: dropdown
+
+**(1)** De log-prijs wordt $\log 0{,}91 = -0{,}094311$, zodat
+$rx^{(3)}_{t+1} = -0{,}094311 + 0{,}174353 - 0{,}051293 = 2{,}8749\%$. De tweejaarsrente
+daalt met $0{,}5525$ procentpunt, en de identiteit sluit, want op de onafgeronde getallen
+is $2{,}8749\% - 2 \times 0{,}5525\% = 1{,}7700\%$. Net als in het toy-voorbeeld scheelt
+de afronding alleen in de vierde decimaal, en de code rekent het na.
+
+```{code-cell} ipython3
+p2_t1_alt = np.log(0.91)
+rx3_alt = p2_t1_alt - p_t[3] - y_t[1]
+change_y2_alt = -p2_t1_alt / 2 - y_t[2]
+pd.Series({"rx3 (%)": 100 * rx3_alt, "verandering y2 (pp)": 100 * change_y2_alt,
+           "rx3 + 2 x verandering (%)": 100 * (rx3_alt + 2 * change_y2_alt),
+           "f3 - y1 (%)": 100 * spread_toy}).round(4)
+```
+
+**(2)** Het extra rendement is nu groter dan de hele spread, omdat de rente daalde in plaats
+van steeg. De identiteit sluit in elk jaar, welke kant de rente ook op gaat, maar in één jaar
+is een premie niet te scheiden van een onverwachte renteverandering. Pas een gemiddelde over
+veel jaren zegt welk deel van de spread premie is.
+:::
+
+:::{exercise}
+:label: ex-termijnstructuur-premies-2
+
+**Campbell-Shiller uit Fama-Bliss.** Neem de jaarlijkse horizon en $n = 2,\dots,5$. Deze
+oefening leidt de negatieve Campbell-Shiller-hellingen af uit de positieve van Fama en
+Bliss.
+
+1. Laat met [](#thm-termijnstructuur-premies-cs-fb) zien dat de Campbell-Shiller-helling nul
+   is als $\E_t[rx^{(n)}_{t+1}] = s_t$, dus als de spread volledig premie is. Welke waarde
+   van $b_n$ hoort bij een Fama-Bliss-helling van één op de forward spread als $n = 2$?
 2. Schat op GSW over 1964–2003 per $n$ de helling $\beta^s_n$ van $rx^{(n)}_{t+1}$ op
    $s_t = y^{(n)}_t - y^{(1)}_t$ en de Campbell-Shiller-helling $b_n$. Controleer dat
    $b_n = 1 - \beta^s_n$ op machineprecisie.
 3. Bereken voor $n = 2$ ook $1 - 2\hat\beta_2$ met $\hat\beta_2$ uit de Fama-Bliss-tabel.
 :::
 
-:::{solution} ex-termijnstructuur-premies-1
+:::{solution} ex-termijnstructuur-premies-2
 :class: dropdown
 
 **(1)** Als $\E_t[rx^{(n)}_{t+1}] = s_t$ en de projectie van $rx$ op $s$ dus helling één
-heeft, is $b_n = 1 - 1 = 0$: de lange rente beweegt gemiddeld niet. Voor $n = 2$ is de
+heeft, is $b_n = 1 - 1 = 0$, zodat de lange rente gemiddeld niet beweegt. Voor $n = 2$ is de
 forward spread $2s_t$, dus een Fama-Bliss-helling van één betekent $\beta^s_2 = 2$ en
 $b_2 = -1$.
 
-**(2) en (3)**
+**(2) en (3)** De code schat beide hellingen per looptijd en vergelijkt ze.
 
 ```{code-cell} ipython3
 start, end = SAMPLES["1964-2003"]
-rows_ex1 = {}
+rows_ex2 = {}
 for n in range(2, 6):
     spread_n = (yields[n] - yields[1]).rename("s")
     lhs_cs = ((yields[n - 1].shift(-12) - yields[n]).rename("lhs"))
     beta_s = sm.OLS(excess[n].loc[start:end], sm.add_constant(spread_n.loc[start:end]), missing="drop").fit().params["s"]
     b_cs = sm.OLS(lhs_cs.loc[start:end], sm.add_constant(spread_n.loc[start:end] / (n - 1)),
                   missing="drop").fit().params["s"]
-    rows_ex1[n] = {"beta^s": beta_s, "b_CS": b_cs, "1 - beta^s": 1 - beta_s}
-table_ex1 = pd.DataFrame(rows_ex1).T.rename_axis("n")
-assert np.allclose(table_ex1["b_CS"], table_ex1["1 - beta^s"])
+    rows_ex2[n] = {"beta^s": beta_s, "b_CS": b_cs, "1 - beta^s": 1 - beta_s}
+table_ex2 = pd.DataFrame(rows_ex2).T.rename_axis("n")
+assert np.allclose(table_ex2["b_CS"], table_ex2["1 - beta^s"])
 print(f"n = 2: 1 - 2 * FB-helling = {1 - 2 * fb_tables['1964-2003'].loc[2, 'helling']:.4f}")
-table_ex1.round(4)
+table_ex2.round(4)
 ```
 
-De identiteit sluit exact, en voor $n = 2$ is $1 - 2\hat\beta_2$ gelijk aan $b_2$. De les:
-de negatieve Campbell-Shiller-hellingen en de positieve Fama-Bliss-hellingen zijn één
-feit, dat de spread vooral premie en weinig renteverwachting bevat.
+De identiteit sluit exact, en voor $n = 2$ is $1 - 2\hat\beta_2$ gelijk aan $b_2$. De
+negatieve Campbell-Shiller-hellingen en de positieve Fama-Bliss-hellingen zijn dus één feit,
+namelijk dat de spread vooral premie en weinig renteverwachting bevat.
 :::
 
 :::{exercise}
-:label: ex-termijnstructuur-premies-2
+:label: ex-termijnstructuur-premies-3
 
-**Vertraagde forwards en een test buiten de steekproef.** Cochrane en Piazzesi vonden in
+**Vertraagde forwards en een toets buiten de steekproef.** Cochrane en Piazzesi vonden in
 hun tabel 5 dat de $R^2$ oploopt tot 0,44 als de regressor een gemiddelde is van de forwards
-van de laatste vier maanden.
+van de laatste vier maanden. Ze lazen dat als een teken van meetfouten in de prijzen.
 
 1. Vervang op GSW over 1964–2003 in de eerste stap $\mathbf f_t$ door
-   $\tfrac14(\mathbf f_t + \mathbf f_{t-1} + \mathbf f_{t-2} + \mathbf f_{t-3})$ (gelijke
-   gewichten) en rapporteer de $R^2$ van het gemiddelde extra rendement, naast die zonder
-   vertragingen.
-2. Neem $\hat{\boldsymbol\gamma}$ uit 1964–2003 (zonder vertragingen), en voorspel
-   daarmee de gemiddelde extra rendementen voor forecastdata 2003-01 t/m 2025-08. Bereken
-   de out-of-sample $R^2$ tegen het gemiddelde extra rendement van 1964–2003.
+   $\tfrac14(\mathbf f_t + \mathbf f_{t-1} + \mathbf f_{t-2} + \mathbf f_{t-3})$ en
+   rapporteer de $R^2$ van het gemiddelde extra rendement, naast die zonder lags.
+2. Neem $\hat{\boldsymbol\gamma}$ uit 1964–2003 zonder lags en voorspel daarmee de
+   gemiddelde extra rendementen voor de datums 2003-01 t/m 2025-08. Bereken de $R^2$ buiten
+   de steekproef tegen het gemiddelde extra rendement van 1964–2003.
 :::
 
-:::{solution} ex-termijnstructuur-premies-2
+:::{solution} ex-termijnstructuur-premies-3
 :class: dropdown
+
+De code schat beide varianten en de voorspelling buiten de steekproef.
 
 ```{code-cell} ipython3
 fwd_cols = [1, 2, 3, 4, 5]
@@ -1327,17 +1215,86 @@ forecast = gamma_in[0] + oos[fwd_cols].to_numpy() @ gamma_in[1:]
 benchmark = avg_excess.loc[start:end].mean()
 r2_oos = 1 - ((oos["avg"] - forecast) ** 2).sum() / ((oos["avg"] - benchmark) ** 2).sum()
 
-pd.Series({**r2_by_lag, "CP tabel 5 (0 en 3 vertragingen)": "0.35 / 0.44",
+pd.Series({**r2_by_lag, "CP tabel 5 (0 en 3 lags)": "0.35 / 0.44",
            "OOS R2 2003-2025 met gamma uit 1964-2003": r2_oos,
            "gemiddelde voorspelling 2003-2025 (%)": 100 * forecast.mean(),
            "gemiddeld gerealiseerd 2003-2025 (%)": 100 * oos["avg"].mean(),
            "gemiddelde 1964-2003 (%)": 100 * benchmark}).apply(lambda v: round(v, 3) if isinstance(v, float) else v)
 ```
 
-Met een gemiddelde over vier maanden stijgt de $R^2$ op GSW van 0,24 naar 0,26, veel minder dan
-de stap van 0,35 naar 0,44 bij Cochrane en Piazzesi: een gladde curve bevat al minder meetruis.
-Buiten de steekproef faalt de factor: de $R^2_{OOS}$ over 2003–2025 is $-1{,}17$. Hij voorspelde
-gemiddeld $-1{,}9\%$ per jaar tegen een gerealiseerde $+0{,}6\%$, omdat de constante ($-3{,}1\%$)
-en de gewichten (som 0,39) niet neutraal zijn voor het renteniveau: bij rentes rond nul voorspelt
-de tent een negatieve premie. Les: in de steekproef sterk, buiten de steekproef instabiel.
+Met een gemiddelde over vier maanden stijgt de $R^2$ op GSW van 0,24 naar 0,26, veel minder
+dan de stap naar 0,44 bij Cochrane en Piazzesi. Een gladde curve bevat immers al minder
+meetruis.
+
+Buiten de steekproef, over 2003–2025, faalt de factor met een $R^2$ van $-1{,}17$. Hij voorspelde gemiddeld $-1{,}9\%$ per jaar tegen een gerealiseerde $+0{,}6\%$,
+omdat de constante en de gewichten niet neutraal zijn voor het renteniveau. In de
+steekproef is de factor dus sterk, maar daarbuiten is hij instabiel.
+:::
+
+:::{exercise}
+:label: ex-termijnstructuur-premies-4
+
+**Strings tegen factoren.** Neem voor forward-veranderingen op 1 tot 10 jaar een
+volatiliteit van 30 basispunten per maand, en vergelijk drie correlatiestructuren: één
+factor, een string met $\kappa = 0{,}08$ en de beste benadering van die string met drie factoren. De caps zijn in alle drie de modellen even duur, omdat de volatiliteit per looptijd gelijk is.
+
+1. Bereken met [](#eq-termijnstructuur-premies-swaption) de volatiliteit van de swaprente
+   voor een swap van jaar 5 tot 10, met gelijke gewichten op de forwards van 6 tot 10 jaar.
+2. Trek uit de string één steekproef van 600 maanden en bereken het aandeel van de eerste
+   drie principale componenten in de variantie. Wat zegt dat over een PCA met drie
+   dominante componenten?
+:::
+
+:::{solution} ex-termijnstructuur-premies-4
+:class: dropdown
+
+De code bouwt de drie correlatiematrices, trekt de steekproef en rekent de swaprente uit.
+
+```{code-cell} ipython3
+TAU = np.arange(1, 11)
+KAPPA_STRING = 0.08
+VOL_FWD = 0.0030                                   # monthly forward-rate change volatility
+
+corr_string = np.exp(-KAPPA_STRING * np.abs(TAU[:, None] - TAU[None, :]))
+
+
+def rank_k_correlation(corr, k):
+    """Best rank-k approximation of a correlation matrix, rescaled to a unit diagonal."""
+    eigval, eigvec = np.linalg.eigh(corr)
+    top = eigvec[:, -k:] * np.sqrt(eigval[-k:])
+    approx = top @ top.T
+    scale = np.sqrt(np.diag(approx))
+    return approx / np.outer(scale, scale)
+
+
+shocks = rng.standard_normal((600, len(TAU))) @ np.linalg.cholesky(corr_string).T * VOL_FWD
+corr_sample = np.corrcoef(shocks.T)
+
+eig_pop = np.sort(np.linalg.eigvalsh(corr_string))[::-1]
+eig_sample = np.sort(np.linalg.eigvalsh(np.cov(shocks.T)))[::-1]
+
+weights = np.full(5, 0.2)                          # swap rate ~ average of forwards 6..10 years
+correlations = {"eenfactor": np.ones((10, 10)), "drie factoren": rank_k_correlation(corr_string, 3),
+                "string": corr_string}
+swaption_vol = {}
+for label, corr in correlations.items():
+    block = corr[5:, 5:] * VOL_FWD**2
+    swaption_vol[label] = np.sqrt(weights @ block @ weights)
+
+print("aandeel eerste drie componenten, populatie: "
+      f"{eig_pop[:3].sum() / eig_pop.sum():.3f}; steekproef: {eig_sample[:3].sum() / eig_sample.sum():.3f}")
+print(f"correlatie 1 en 10 jaar: populatie {corr_string[0, -1]:.3f}, steekproef {corr_sample[0, -1]:.3f}")
+pd.DataFrame(
+    {"swaprente-vol (bp/maand)": {k: 1e4 * v for k, v in swaption_vol.items()},
+     "prijs t.o.v. string": {k: v / swaption_vol["string"] for k, v in swaption_vol.items()}}
+).round(3)
+```
+
+**(1)** Met dezelfde capprijzen maakt het eenfactormodel de swaption 6,4% duurder dan de
+string, en het driefactormodel 2,9%. Een benadering met lage rang overschat de correlaties
+tussen verre looptijden.
+
+**(2)** Toch dragen de eerste drie componenten van de string 94% van de variantie, zodat een
+PCA met drie dominante componenten geen bewijs is voor drie factoren. De kleine componenten
+die een PCA weggooit, bepalen juist de prijs van een swaption.
 :::
