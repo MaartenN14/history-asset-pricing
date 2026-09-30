@@ -1,0 +1,14 @@
+STATUS 06_36_inelastische_markten T words=5674 prose=PASS
+- Overzicht: "Er staat hier dus geen theorie ter toetsing" wordt een gewone zin met persoonsvorm; "tilden het" krijgt antecedent ("die aanpak"); Santa-Clara zonder superlatief.
+- Intuïtie: "Wie aandelen verkoopt" wordt "Een belegger die ..."; "geldstroom" wordt "flow" (H7); Shleifer-zin herschreven zonder ongetoetste dwarsdoorsnede.
+- Toy-voorbeeld: drie losse zinnen over elasticiteit en recept samengevoegd tot twee, met "zodat" en "namelijk" als verbindingen.
+- Theorie, opzet en kernresultaat: "komt uit bij één formule en bij het probleem" wordt "leidt naar één formule en naar de vraag hoe die te meten is"; regeltaal "De verwachting uit de intuïtie komt dus uit" vervangen door een zin met handelend onderwerp (een instroom drijft de prijs op).
+- Theorie, mean-variance: "Dat getal geldt wel" krijgt het ding zelf ("De waarde 20") en een omdat-zin.
+- Theorie, Koijen-Yogo: "zijn vraagcurve" (dubbelzinnig) wordt "de vraagcurve van die belegger"; "Het is de vorm van een logit" krijgt onderwerp; zin met citatie vooraan omgezet zodat de zin met een hoofdletter begint.
+- Theorie, GIV: voorbeeld vóór de formule; "veel groter dan verwacht" wordt een concreet getal; instrumentzinnen naar de GIV-alinea verplaatst.
+- Theorie, lage elasticiteit: "Dat is de voorspelbaarheid van Cochrane, en wie ..." wordt "Zo ontstaat ..., en een onderzoeker die ..."; "haar" voor een helling wordt "ze"; motiefnaam niet meer als onderwerp ("Net als bij de standaardfout van 2% ...").
+- Simulatie: "De tabel laat zien dat" en "In de figuur gaat het om" vervangen door zinnen die direct zeggen wat er staat; "dezelfde bandbreedte als die van de specificaties" wordt een concrete vergelijking.
+- Replicatie: "In de figuur gaat het links om" herschreven; oordeelszinnen "Gedeeltelijk geslaagd" en "Geslaagd" krijgen een bijzin die zegt waar het oordeel over gaat.
+- Wat er brak: "Voor wie tegen een flow in koopt ...: verdient hij ...?" (dubbele punt, Wie-zin) wordt één gewone zin; herhaald simulatiegetal geschrapt.
+- Oefeningen: "de ruis die een gewone regressie wegmiddelt" (onjuist beeld) herschreven.
+- Niet vervangen: "flow" blijft Engels (in Overzicht gedefinieerd); "instroom" blijft voor een positieve flow; $c_t$ niet hernoemd (wiskunde).
