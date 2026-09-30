@@ -1,0 +1,15 @@
+STATUS 05_30_wisselkoersen T words=5622 prose=PASS
+- Waar we zijn: ongewijzigd.
+- Overzicht: "waardoor ... te beantwoorden werd" natuurlijker gemaakt; "Dit is theorie of feit" kreeg een antecedent (de verworpen theorie werd een feit).
+- Intuïtie: "zodat consumptie ..., of wisselkoersen te glad zijn" wordt "ofwel ..., ofwel"; "Zo staan we voor de vraag van" en "We verwachten daarom" samengevoegd met de zin erna.
+- Toy: "carry-winst" wordt "carry-rendement"; verder hele zinnen, ongewijzigd.
+- Theorie, Identiteit: losse notatiezin geschrapt, slotzin met "Met de twee SDF's" verbonden.
+- Theorie, Hoe glad: de tabelcijfers van BCS krijgen een eigen hoofdzin ("Hun eigen schattingen bevestigen").
+- Theorie, Fama-decompositie: "De eerste twee ... Het derde ..." één zin met "en"; plek van de schatting benoemd.
+- Theorie, Lognormaal: zin over de rente loopt door naar wat $b$ meet.
+- Theorie, Carry-portefeuilles / Momentum en value: attributie per artikel eenduidig, één naam voor het value-signaal.
+- Simulatie: note-titel zonder regeltaal.
+- Replicatie: "Dat is dezelfde orde" als bijstelling; "iets scherps. De premie ..." wordt één zin met "namelijk dat"; dubbele punt als lijm bij Barroso en Santa-Clara weg; "Geslaagd" in twee zinnen (onder 40 woorden).
+- Wat er brak: tweede motiefnaam "theorie of feit" weg (nu één keer in het college); Yale-lezing als één opsomming.
+- Oefeningen: ongewijzigd.
+- Twijfelgeval niet vervangen: geen (geen vaste term uit STYLE §3 met afwijkende betekenis aangetroffen).
