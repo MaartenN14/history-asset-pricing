@@ -1,0 +1,11 @@
+STATUS 04_21_volatiliteit T words=5639 prose=PASS
+- Overzicht: "ervoor" zonder antecedent wordt "voor dat risico"; de Santa-Clara-zin met vooruitgeschoven "het ... dat" omgekeerd; "haar toets" (relatie) wordt "een toets".
+- Intuïtie: "haar waarde" (markt) wordt "de beurswaarde"; de abstracte spreiding krijgt "en dan nog pas na tientallen jaren".
+- Toy-voorbeeld: losse zin "De theorie leidt het recept als eerste af." in de volgende zin opgenomen; kapotte zin "Eén dag van -3% de voorspelde variantie ruim verdrievoudigt" wordt een zin met persoonsvorm (en klopt nu: ruim drie keer het langetermijnniveau).
+- Theorie: "staat GARCH er" wordt "is dat de GARCH-vergelijking"; "Alleen $A = B$" wordt "de gelijkheid $A = B$"; "haar gemiddelden" en "haar risiconeutrale verwachting" (zaken) herschreven; tweede "*Waarom zou dit waar zijn?*" geschrapt (sjabloon); "Dit is [de standaardfout...]" krijgt een antecedent ("Die rekensom"); overbodige bewijs-samenvattende zinnen bij prop-arma en thm-voorspelling geschrapt.
+- Simulatie: "vraagt wat" wordt "gaat na wat"; "Nu is ... waar" wordt "geldt ... per constructie"; twee sjabloonzinnen "In de figuur gaat het ..." vervangen; zin met verkeerde woordvolgorde ("tussen de haalbare schatters maar enkele procentpunten verschilt") hersteld; getallenzinnen gesplitst.
+- Replicatie: sjabloonopeningen "Geslaagd, want" en "Niet geslaagd." gevarieerd; drie "In de figuur gaat het ..."-zinnen herschreven; "haar logaritme" weg; "tegenover het historische gemiddelde verliest, omdat ze" wordt "doet het slechter dan ..., omdat die"; kaal "daar" en calque "draagt de hele" weg ("bepaalt de hele schatting").
+- Wat er brak: "haar verwachting" wordt "de verwachting ervan"; "Dat verklaart" krijgt onderwerp ("Die lezing"); telegramopening "Scheiden vraagt ..." wordt een hele zin.
+- Oefeningen: "het" zonder antecedent wordt "die som" en "het model".
+- Boekbreed: "lange-termijnniveau" overal "langetermijnniveau" (één vorm, zoals "langetermijnbelegger").
+- Twijfel, niet vervangen: "variance swap", "variance risk premium" en "realized/integrated variance" blijven Engels (staan niet in de tabel vaste termen; betekenis niet identiek aan een Nederlandse vaste term).
