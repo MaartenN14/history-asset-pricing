@@ -1,0 +1,12 @@
+STATUS 06_34_factor_zoo T words=5887 prose=PASS
+- Overzicht: zin van 50 woorden over HLZ in tweeën ("Zij eisten daarom ...").
+- Toy: "onder onafhankelijkheid zeldzaam. Het is wel ..." tot één zin met "maar"; "zes verschillende antwoorden, die verschillen" ontdubbeld; codeaankondiging tot één zin.
+- Theorie, BHY: bewijsidee als doorlopende zinnen met "Omdat"; "In de bespreking van hun figuur 3" ingekort.
+- Theorie, selectie: vaste formule "Zoals we in de intuïtie verwachtten" vervangen door een variant achteraan de zin.
+- Theorie, shrinkage: dubbele uitleg van de meetruis geschrapt; HLZ/JKP-tegenstelling in één zin met werkwoord.
+- Theorie, FF5: symboolzin toegevoegd; "Met $V_t$ de marktwaarde" daardoor weg.
+- Simulatie: "een halve procentpunt" wordt "een half procentpunt"; figuuraanwijzing ingekort.
+- Replicatie: congruentie ("halen", "hebben" bij "186 van de 212"); "daling van 36% van het gemiddelde in de steekproef in de tussenperiode" herbouwd; drie verklaringen als lijst; "replicatieblok" (regeltaal) weg.
+- Oordeel: telegramzin "Gedeeltelijk geslaagd." wordt een hele zin; "Bovendien" en "de verwachte minderheid" herschreven.
+- Wat er brak: dubbele punt als lijm ("even consistent: ...") vervangen door twee zinnen; "Daarnaast staat datamining, de lezing waarin" wordt "De derde lezing is datamining"; kocht-kocht weg; "Santa-Clara zegt het zo." herbouwd; slot tot één zin met "Als".
+- Vaktermen: geen vervangingen; "signaal/voorspeller" blijft (alias bij de eerste keer gegeven).
