@@ -1,0 +1,15 @@
+STATUS 05_31_portfolio_choice T words=5834 prose=PASS
+- Overzicht: gestapelde "maar ... maar"-zin in twee zinnen met "intussen"; "antwoordt dit college" wordt "geeft dit college feiten als antwoord".
+- Intuïtie: ongewijzigd; staccato en "Wie"-zinnen (2 in het college) binnen de norm.
+- Toy (a): inleiding van drie korte zinnen tot één zin met voegwoord; eerste zin na de kop geeft de bewering; "Het enige recept is" wordt "Er is maar één recept nodig".
+- Toy (b): ongewijzigd.
+- Theorie, BSC: sjabloon "*Waarom zou dit waar zijn?*" weg; "Gratis is de truc niet. Met ..." samengevoegd met "want".
+- Theorie, BSV: alleen citatie bij 3.680.
+- Theorie, Wat het voorspelt: onaangekondigde overgang "In de praktijk ..." krijgt een reden ("daarom"); CE-zin herschreven zonder bijzin-achteraan; "factor van ruim driehonderd".
+- Theorie, GSC: CLMX-zin met relatieve bewering; bronprecisering Ang e.a. weg.
+- Simulatie: "bouwt de wereld en draait 80 werelden" wordt "zet het model op en simuleert"; vaste formule "In de figuur gaat het om" vervangen door een gewone zin.
+- Replicatie BSV: "niet elke cel" (dubbelzinnig met notebookcel) wordt "niet elke size/BM-combinatie"; figuurzin gevarieerd; bijschrift in twee zinnen met "terwijl"; "zoals we vooraf verwachtten" eenmaal geschrapt; "het teken draait om" (ander antecedent) herschreven.
+- Replicatie GSC: dubbele ontkenning weg; figuurzin gevarieerd; "zoals we vooraf verwachtten" gevarieerd.
+- Wat er brak: "beslisregel ... als beslisregel" en "dan wat ook in de literatuur" herschreven; herhaalde zin over de premie van gisteren geschrapt.
+- Oefeningen: momentum-tussenzin in oefening 2 een eigen zin met "daarom".
+- Vakterm-twijfel: geen vervangingen gedaan; "managed portfolios", "certainty equivalent" en "mean-variance" blijven Engels (STYLE §3).
