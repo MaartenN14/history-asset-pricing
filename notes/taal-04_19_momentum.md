@@ -1,0 +1,17 @@
+STATUS 04_19_momentum T words=5654 prose=PASS
+- Overzicht: "zuiverste vorm van theorie of feit, een feit dat" wordt "zuiverste geval ..., een gemeten regelmaat die" (geen dubbel "feit").
+- Intuïtie: drie staccato-zinnen met "dan ... dan ... dan" samengevoegd tot twee zinnen met "en" en "dus"; "werkt dat beter" krijgt een eenduidig antecedent ("zo'n regel").
+- Toy-voorbeeld: "De theorie schrijft dit recept later als formule" als gewone zin; slot na de tabel herschreven ("De twee kolommen zijn gelijk ... dus" had een onlogisch "dus"), het tegenvoorbeeld (+0,70) als voorwaardelijke zin.
+- Theorie (intro): regeltaal "De theorie volgt de drie verwachtingen" wordt "We lopen de drie verwachtingen ... na".
+- Theorie > Constructie: omgekeerde staccatozin over het vierfactormodel wordt een hele zin met "want ... niet omdat".
+- Theorie > Waar komt: lange getallenzin in twee zinnen; gamma krijgt een orde van grootte.
+- Theorie > Bèta: getallenreeks ingekort; DM-alinea opent met een overgang in plaats van "voegden daar ... aan toe".
+- Theorie > Schalen: "namelijk ook" en "Dat schalen werkt ... komt door [motief]" herschreven; het motief is geen handelend onderwerp meer, puntkomma weg.
+- Simulatie: opzetzin zonder "plus ... plus"; cijferdichte alinea's herschreven met de conclusie vooraan; dubbele punt als lijm weg ("twee dingen betekenen:").
+- Replicatie (intro): "We gebruiken ... Dat zijn" samengevoegd.
+- Replicatie > JT: puntkomma wordt "want"; dubbele ontkenning weg; "de premie is er" wordt "het gemiddelde is positief" (ook juister voor 1927-1964, t=1,7).
+- Replicatie > BSC: "Geslaagd." gevarieerd; tikfout "maar maar".
+- Replicatie > DM: CRSP-zin herschreven en afgebroken regels hersteld; figuuraankondiging ingekort.
+- Wat er brak: ongewijzigd (leest natuurlijk; motiefkop "Risico of vergissing?" blijft vaste kop).
+- Oefeningen: look-ahead eerste keer cursief met uitleg; bewijs-puntkomma (Theorie > Bèta) wordt "en".
+- Vaste termen: geen vervangingen nodig; "prior 12-2" en "12-1-regel" bewust naast elkaar (alias één keer uitgelegd).
