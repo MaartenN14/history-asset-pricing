@@ -19,13 +19,12 @@ kernelspec:
 :class: important
 
 **Jaartal.** 1994–1998, van RiskMetrics tot de redding van Long-Term Capital Management,
-met een nasleep tot de Basel-regels van 2016.
+met een nasleep tot de Bazelse regels van 2016.
 
 **Wat we al weten.** [ARCH, GARCH en realized volatility](#04-21-volatiliteit) maakten
-het tweede moment van dag tot dag voorspelbaar: volatiliteit clustert, en de afgelopen
-weken zeggen veel over morgen. Uit [momentum crashes](#04-19-momentum) weten we dat een
-strategie met een mooie Sharpe-ratio in drie maanden driekwart van haar waarde kan
-verliezen.
+het tweede moment van dag tot dag voorspelbaar, omdat volatiliteit clustert. Uit [de
+momentumcrashes](#04-19-momentum) weten we bovendien dat een strategie met een mooie
+Sharpe-ratio in drie maanden driekwart van de belegde waarde kan verliezen.
 
 **Welke vraag staat open.** Kan een bank of fonds met een voorspelbaar tweede moment zijn
 kans op grote verliezen meten en begrenzen, en waarom was dat in 1998 niet genoeg?
@@ -33,32 +32,96 @@ kans op grote verliezen meten en begrenzen, en waarom was dat in 1998 niet genoe
 
 ## Overzicht
 
-In oktober 1994 publiceerde J.P. Morgan RiskMetrics: een methode en gratis data waarmee
-elke handelaar de *Value-at-Risk* (VaR: het verlies dat met een gegeven kans, zeg 99%,
-over een gegeven horizon niet wordt overschreden) van zijn portefeuille kon uitrekenen.
-De vierde editie van het *Technical Document* {cite}`JPMorganReuters1996` werd, naast het
-leerboek van Jorion {cite}`Jorion2006`, het naslagwerk van een nieuw beroep. In januari
-1996 maakte het Bazelse Comité VaR tot grondslag van het kapitaal tegen marktrisico
-{cite}`BCBS1996a`, met een regel om de modellen achteraf te toetsen {cite}`BCBS1996b`.
-Santa-Clara: "Out of the crash came a discipline the field had not had before: risk
-management as a function, with its own numbers, staff and regulators"
+Kan een bank met een voorspelbare volatiliteit meten en begrenzen hoeveel ze op een slechte
+dag verliest? Voor een gewone slechte dag wel, maar het getal dat daarvoor werd bedacht zegt
+niets over verliezen voorbij de grens, is met een jaar data nauwelijks te toetsen en mist de
+spiraal van hefboom en onderpand. In dit college:
+
+- definiëren we Value-at-Risk en Expected Shortfall en bewijzen we dat alleen de tweede
+  spreiding altijd beloont
+- schatten we het kwantiel met een voorspelbare volatiliteit en leiden we de backtests van
+  Kupiec en Christoffersen af
+- simuleren we hoe weinig een backtest van één jaar ziet, en hoe vaak dezelfde convergence
+  trade bij een hogere hefboom failliet gaat
+- backtesten we vier VaR-modellen op de Amerikaanse aandelenmarkt van 1990 tot 2026 en
+  bekijken we de spreads van 1998.
+
+In oktober 1994 publiceerde J.P. Morgan RiskMetrics, een methode met gratis data
+{cite}`JPMorganReuters1996`. Daarmee kon elke handelaar de *Value-at-Risk* van zijn
+portefeuille uitrekenen (VaR, het verlies dat met een gegeven kans, zeg 99%, over een
+gegeven
+horizon niet wordt overschreden). In 1996 maakte het Bazelse Comité VaR tot grondslag van
+het
+kapitaal tegen marktrisico, met een regel om de modellen achteraf te toetsen
+{cite}`BCBS1996a,BCBS1996b`. De toetsen kwamen van {cite:t}`Kupiec1995` en
+{cite:t}`Christoffersen1998`. Nadat {cite:t}`ArtznerDelbaenEberHeath1999` hadden laten zien
+dat VaR spreiding kan bestraffen, stapte het Comité in 2016 over op *Expected Shortfall*
+(ES,
+het gemiddelde verlies voorbij het kwantiel) {cite}`BCBS2016`. Zo werd risicobeheer een
+eigen vak, met een eigen leerboek {cite}`Jorion2006` en met eigen afdelingen bij banken en
+toezichthouders {cite}`SantaClara2026`. Toch ging in september 1998 Long-Term Capital
+Management (LTCM)
+bijna
+failliet, een fonds met Robert Merton en Myron Scholes onder zijn partners dat alles had wat
+het vak voorschreef {cite}`Lowenstein2000`.
+
+Al die regels en toetsen gaan over een meetinstrument en niet over een theorie van
+prijzen, zodat VaR buiten de tegenstelling theorie of feit valt. Een backtest toetst
+daarom geen evenwicht, maar alleen of een voorspeld kwantiel zo vaak wordt overschreden
+als het belooft.
+
+## Intuïtie: waarom zou dit waar zijn?
+
+Een bank met honderden posities wil na elke handelsdag één getal dat zegt hoeveel ze
+morgen kan verliezen. Een 99%-VaR van 40 miljoen betekent dat het verlies op één dag op de
+honderd groter mag zijn. Dat getal telt obligaties, valuta en aandelen op in één munt en
+beloont posities die elkaar opheffen. Omdat het verwachte rendement over één dag
+verwaarloosbaar is, vraagt het alleen de volatiliteit van morgen. Het slecht meetbare
+verwachte rendement telt dus niet mee, en alleen de goed meetbare volatiliteit blijft
+over.
+
+Toch heeft het getal drie zwakke plekken. De eerste is dat VaR niets zegt over de dagen
+die de grens overschrijden, terwijl juist die dagen tellen.
+{cite:t}`ArtznerDelbaenEberHeath1999` maakten dat punt al, en Pedro Santa-Clara herhaalt
+het in de terugblik op zijn loopbaan die deze reeks volgt {cite}`SantaClara2026`.
+De tweede is dat een kans van 1% slecht te controleren is, want een jaar van 250
+handelsdagen geeft gemiddeld 2,5 overschrijdingen, en een model dat maar 98% dekt, geeft
+er vaak niet meer dan vijf. De derde is dat VaR twee obligaties samen riskanter kan noemen
+dan elk apart.
+
+LTCM kocht effecten die net iets goedkoper waren dan vrijwel identieke andere en verkocht de
+duurdere, vooral staatsobligaties van de G-7-landen. Zo'n *convergence trade* (een positie
+die winst
+maakt als twee prijzen naar elkaar toe bewegen) verdient een fractie van een procent,
+zodat er
+pas met geleend geld iets aan te verdienen valt. Op 31 augustus 1998 stond er meer dan 125
+miljard dollar op de balans, tegen 4,8 miljard eigen vermogen begin dat jaar, een hefboom
+van
+meer dan 25 {cite}`PresidentsWorkingGroup1999`.
+
+Verbreden de spreads, dan ziet het fonds dat dagelijks in zijn waardering
+(*mark-to-market*).
+Tegenpartijen vragen dan extra onderpand, en het fonds moet verkopen voordat de prijzen
+convergeren. Is het fonds groot, of hebben veel fondsen dezelfde positie, dan drukt die
+verkoop de prijs verder de verkeerde kant op, zodat het verlies de volgende verkoop
+afdwingt.
+Santa-Clara noemt hefboom, dagelijkse waardering en een termijn samen het recept voor ruïne
 {cite}`SantaClara2026`.
 
-Epistemisch is VaR geen theorie over prijzen maar een meetinstrument, en een backtest
-toetst geen evenwicht maar een voorspelling van een kwantiel. De toetsen komen van
-{cite:t}`Kupiec1995` en {cite:t}`Christoffersen1998`, de eisen aan een goede risicomaat
-van {cite:t}`ArtznerDelbaenEberHeath1999`. Hun conclusie dat VaR diversificatie kan
-bestraffen, leidde in 2016 tot de overstap op *Expected Shortfall* (het gemiddelde verlies
-voorbij het kwantiel) {cite}`BCBS2016`.
+Uit dit beeld volgen drie verwachtingen. Een backtest van één jaar laat een verkeerd model
+vaak
+passeren, omdat een kans van 1% in 250 dagen te weinig uitkomsten geeft. De VaR van twee
+posities met een kleine kans op een groot verlies komt hoger uit dan de som van de losse
+VaR's,
+maar een maat die de staart middelt, doet dat niet. Ten slotte gaat dezelfde trade bij een
+hogere hefboom vaker failliet, en nog vaker als de eigen verkopen de prijs bewegen.
 
-In september 1998 ging een fonds bijna failliet dat alles had wat de nieuwe discipline
-voorschreef. Long-Term Capital Management (LTCM) had Robert Merton en Myron Scholes onder
-zijn partners, een jaar na hun Nobelprijs {cite}`Lowenstein2000`. Santa-Clara's les
-nummer tien: "Leverage plus mark-to-market plus a deadline is the recipe for ruin"
-{cite}`SantaClara2026`. We leiden VaR, Expected Shortfall en de backtests af, laten zien
-hoe weinig een backtest van 250 dagen ziet, en modelleren een gehefboomde arbitrageur met
-positieve verwachte opbrengst en een hoge kans op ruïne. Aan het eind backtesten we vier
-VaR-modellen op de Amerikaanse aandelenmarkt 1990–2026 en bekijken we de spreads van 1998.
+## Toy-voorbeeld: twee posities, twee obligaties en een convergence trade
+
+Het toy-voorbeeld bestaat uit drie kleine rekensommen die samen het college dragen. Deel
+(a) laat zien waarom VaR bij normale verliezen werkt, deel (b) hoe ze spreiding kan
+bestraffen en deel (c) hoe hefboom en eigen verkopen een fonds tot stoppen dwingen. Eerst
+laden we de pakketten die het hele college gebruikt.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -75,92 +138,86 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-## Intuïtie: waarom zou dit waar zijn?
+We gebruiken één recept dat de theorie pas daarna afleidt, namelijk dat de VaR van een
+normaal verlies met verwachting nul gelijk is aan $z_\alpha$ maal de standaarddeviatie,
+met $z_{0{,}99} = 2{,}3263$. De tabel geeft de opzet van de drie delen.
 
-Een bank met honderden posities wil aan het eind van de dag één getal: hoeveel kunnen we
-morgen verliezen? "De 99%-VaR is 40 miljoen" betekent dat het verlies op één dag op de
-honderd groter mag zijn. Het getal telt obligaties, valuta en aandelen op in één munt,
-beloont posities die elkaar opheffen, en vraagt alleen de spreiding van morgen, niet het
-verwachte rendement, dat op één dag verwaarloosbaar is. Het slecht meetbare moment doet
-er dus niet toe, het goed meetbare wel.
+| deel | opzet | wat we berekenen |
+|---|---|---|
+| (a) twee posities | 100 miljoen in A (dagvolatiliteit 1,5%) en 50 miljoen in B (1,0%), correlatie 0,4, verwacht rendement nul | 99%-VaR samen en apart |
+| (b) twee obligaties | elk levert 2 op, of verliest 100 bij faillissement (kans 4%), onafhankelijk | 95%-VaR en 95%-ES van één en van twee |
+| (c) convergence trade | eigen vermogen 100, positie 2500 (hefboom 25), spread duration 5, haircut 2% | drempels in basispunten en de verliesspiraal |
 
-Er zijn drie zwakke plekken. De eerste noemt Santa-Clara: "the number was dangerous,
-because it said nothing about the days that exceeded it, and the days that exceed it are
-the only ones that matter" {cite}`SantaClara2026`. De tweede is dat een kwantiel van 1%
-slecht te controleren is: in 250 handelsdagen verwacht je 2,5 overschrijdingen, en een
-model dat maar 98% dekt, geeft er vaak ook niet meer dan vijf. De derde: VaR kan twee
-obligaties samen riskanter noemen dan elk apart.
-
-Dan LTCM. Het fonds kocht effecten die net iets goedkoper waren dan vrijwel identieke
-andere en verkocht de duurdere, vooral in obligatiemarkten; ongeveer 80% van de
-balansposities waren staatsobligaties van de G-7. Zo'n *convergence trade* (een positie
-die winst maakt als twee prijzen naar elkaar toe bewegen) verdient een fractie van een
-procent, dus moet je lenen. Op 31 augustus 1998 stond er meer dan 125 miljard dollar op
-de balans, tegen 4,8 miljard eigen vermogen begin dat jaar: een hefboom van meer dan 25
-{cite}`PresidentsWorkingGroup1999`, plus derivaten met een nominale waarde van meer dan
-een biljoen dollar {cite}`Edwards1999`. Verbreden de spreads, dan ziet het fonds dat
-dagelijks in zijn waardering (*mark-to-market*), vragen tegenpartijen extra onderpand, en
-moet het verkopen vóór de convergentie. Dat is de deadline.
-
-Als het fonds groot is, of veel fondsen dezelfde positie hebben, drukt de gedwongen
-verkoop de prijs verder de verkeerde kant op, en dat verlies leidt tot de volgende
-verkoop. Les nummer negen: "Liquidity is priced, and it disappears when you need it"
-{cite}`SantaClara2026`. De Sharpe-ratio is bij elke hefboom dezelfde; de kans om de
-periode te overleven waarin het rendement binnenkomt, niet.
-
-## Toy-voorbeeld: twee posities, twee obligaties en een convergence trade
-
-**(a) Parametrische VaR.** 100 miljoen in aandeel A (dagvolatiliteit 1,5%) en 50 miljoen
-in B (1,0%), correlatie 0,4, verwachte rendementen nul. De posities hebben
-standaarddeviaties van 1,5 en 0,5 miljoen, dus
+**(a) Twee posities.** De posities hebben standaarddeviaties van 1,5 en 0,5 miljoen, zodat
 
 $$
 \sigma_p^2 = 1{,}5^2 + 0{,}5^2 + 2 \times 0{,}4 \times 1{,}5 \times 0{,}5 = 3{,}10,
-\qquad \sigma_p = 1{,}7607 .
+\qquad \sigma_p = 1{,}7607,
 $$
 
-Met $z_{0{,}99} = 2{,}3263$ is de 99%-VaR $4{,}096$ miljoen. Apart zijn de VaR's
-$3{,}490$ en $1{,}163$, samen $4{,}653$: spreiding scheelt $0{,}557$ miljoen. Met de
-wortel-uit-de-tijdregel is de VaR over tien dagen $\sqrt{10} \times 4{,}096 = 12{,}95$.
+en de 99%-VaR is $2{,}3263 \times 1{,}7607 = 4{,}096$ miljoen. Apart tellen de VaR's op tot
+4,653 miljoen, zodat spreiding 0,557 miljoen scheelt. Bazel liet in 1996 de VaR van één
+dag met
+de wortel uit de tijd opschalen naar tien dagen {cite}`BCBS1996a`, en dan wordt ze
+$\sqrt{10} \times 4{,}096 = 12{,}95$.
 
-**(b) Twee obligaties.** Een obligatie levert 2 op, of verliest 100 als de uitgever
-failleert (kans 4%). Bij 95% is de VaR het kleinste $\ell$ met $P(L > \ell) \le 5\%$;
-omdat $P(L > -2) = 4\%$, is de VaR $-2$. Twee onafhankelijke obligaties verliezen $-4$
-met kans $0{,}9216$, 98 met kans $0{,}0768$ en 200 met kans $0{,}0016$. Nu is
-$P(L > -4) = 7{,}84\%$, en de VaR springt naar 98: veel meer dan de som van de VaR's,
-$-4$. De Expected Shortfall op 95% middelt over de slechtste 5%: voor één obligatie
-$(0{,}04 \times 100 + 0{,}01 \times (-2))/0{,}05 = 79{,}6$, voor twee
-$(0{,}0016 \times 200 + 0{,}0484 \times 98)/0{,}05 = 101{,}26 < 159{,}2$. ES ziet het
-voordeel van spreiden wel.
+**(b) Twee obligaties.** Bij 95% is de VaR het kleinste verlies $x$ waarvoor de kans op
+een
+groter verlies hoogstens 5% is. Voor één obligatie is $P(L > -2) = 4\%$, dus de VaR is $-2$,
+een winst. Twee onafhankelijke obligaties verliezen $-4$ met kans $0{,}9216$, 98 met kans
+$0{,}0768$ en 200 met kans $0{,}0016$. Omdat nu $P(L > -4) = 7{,}84\%$, springt de VaR
+naar 98,
+ver boven de som van de losse VaR's. De Expected Shortfall op 95% middelt over de
+slechtste 5%,
 
-**(c) Een convergence trade.** Een fonds met eigen vermogen $E_0 = 100$ neemt een positie
-$X = 25 E_0 = 2500$ in een spread met *spread duration* $D = 5$ (het verlies is $D$ maal
-de verbreding maal de positie). De tegenpartij eist een *haircut* (het deel van de
-positie dat met eigen geld gefinancierd moet zijn) van $h = 2\%$: $E \ge hX = 50$. Elk
-basispunt kost $2500 \times 5 \times 0{,}0001 = 1{,}25$, dus de margin call komt na 40
-basispunten en het vermogen is op na 80. Bij hefboom 10 kost een basispunt $0{,}5$ en komen
-margin call en ruïne na 160 en 200 basispunten.
+$$
+\mathrm{ES}_1 = \frac{0{,}04 \times 100 + 0{,}01 \times (-2)}{0{,}05} = 79{,}6,
+\qquad
+\mathrm{ES}_2 = \frac{0{,}0016 \times 200 + 0{,}0484 \times 98}{0{,}05} = 101{,}26,
+$$
 
-Stel nu dat elke verkoop van 100 de spread 1 basispunt verbreedt, en dat het fonds op de
-grens ($E = 50$) nog 10 basispunten tegenwind krijgt. Het verlies is $12{,}5$, dus de
-positie mag nog $37{,}5/0{,}02 = 1875$ zijn. De verkoop van 625 verbreedt de spread
-$6{,}25$ basispunten en kost op de resterende positie
-$1875 \times 5 \times 0{,}000625 = 5{,}86$; dan mag de positie nog 1582 zijn, wordt 293
-verkocht, en kost dat nog $2{,}32$. Het proces convergeert naar een verlies van 22,0 in
-plaats van 12,5, bij een spreadverbreding van 21,0 basispunten waarvan het fonds de helft
-zelf veroorzaakte.
+en omdat 101,26 kleiner is dan $2 \times 79{,}6 = 159{,}2$, ziet ES het voordeel van
+spreiden
+wel.
+
+**(c) Een convergence trade.** Het fonds neemt met eigen vermogen 100 een positie van 2500
+in
+een spread met *spread duration* 5, zodat het verlies 5 maal de verbreding maal de positie
+is.
+De tegenpartij eist een *haircut* (het deel van de positie dat met eigen geld gefinancierd
+moet
+zijn) van 2%, dus het vermogen moet minstens 50 blijven. Elk basispunt kost
+$2500 \times 5 \times 0{,}0001 = 1{,}25$. De *margin call* (de eis om onderpand bij te
+storten
+of te verkopen) komt daardoor na 40 basispunten, en na 80 is het vermogen op. Bij hefboom 10
+komen margin call en ruïne pas na 160 en 200 basispunten.
+
+Stel nu dat elke verkoop van 100 de spread met 1 basispunt verbreedt, en dat het fonds op de
+grens van 50 nog 10 basispunten tegenwind krijgt. Het verliest dan 12,5, zodat de positie
+nog
+$37{,}5/0{,}02 = 1875$ mag zijn en er 625 verkocht moet worden. Die verkoop verbreedt de
+spread
+met 6,25 basispunten en kost op de resterende positie $1875 \times 5 \times 0{,}000625 = 5{,}86$.
+Daarna moet er nog 293 verkocht worden, wat 2,32 kost. Omdat elke ronde minder dan de
+helft van de vorige kost, voegen de resterende rondes samen nog 1,3 toe. Zo komt het
+proces uit op een verlies van 22,0 in plaats van 12,5, bij een verbreding van 21,0
+basispunten waarvan het fonds de helft zelf veroorzaakte.
+
+De codecel rekent de drie delen na en zet de uitkomsten naast de handberekening.
 
 ```{code-cell} ipython3
 :label: cel-risk-management-toy
 
-# (a) parametric VaR of two positions
+# (a) parametric VaR of two positions (millions)
 w = np.array([100.0, 50.0])
 sig = np.array([0.015, 0.010])
 rho = 0.4
-cov = np.array([[sig[0]**2, rho * sig[0] * sig[1]], [rho * sig[0] * sig[1], sig[1]**2]])
+cov = np.array([[sig[0]**2, rho * sig[0] * sig[1]],
+                [rho * sig[0] * sig[1], sig[1]**2]])
 z99 = stats.norm.ppf(0.99)
 sd_p = np.sqrt(w @ cov @ w)
-var_p, var_each = z99 * sd_p, z99 * w * sig
+var_p = z99 * sd_p
+var_each = z99 * w * sig
 
 
 def var_es_discrete(losses, probs, alpha):
@@ -169,6 +226,7 @@ def var_es_discrete(losses, probs, alpha):
     loss, p = np.asarray(losses, float)[order], np.asarray(probs, float)[order]
     cdf = np.cumsum(p)
     var = loss[np.searchsorted(cdf, alpha - 1e-12)]
+    # probability mass of each loss that lies beyond the alpha-quantile
     tail_mass = np.clip(cdf - np.maximum(cdf - p, alpha), 0.0, None)
     return var, (tail_mass * loss).sum() / (1 - alpha)
 
@@ -177,69 +235,87 @@ def var_es_discrete(losses, probs, alpha):
 var_1, es_1 = var_es_discrete([-2.0, 100.0], [0.96, 0.04], 0.95)
 var_2, es_2 = var_es_discrete([-4.0, 98.0, 200.0], [0.96**2, 2 * 0.96 * 0.04, 0.04**2], 0.95)
 
-# (c) levered convergence trade: thresholds and a fire-sale spiral
+# (c) levered convergence trade: thresholds in bp, then a fire-sale spiral
 E0, D, H, KAPPA = 100.0, 5.0, 0.02, 1e-6       # kappa: spread widening per unit sold
-thresholds = {L: (1e4 * (1 - H * L) / (L * D), 1e4 / (L * D)) for L in (10, 25)}
+call_25, ruin_25 = 1e4 * (1 - H * 25) / (25 * D), 1e4 / (25 * D)
+call_10, ruin_10 = 1e4 * (1 - H * 10) / (10 * D), 1e4 / (10 * D)
+
 X, E = 2500.0, 50.0 - 2500.0 * D * 0.0010       # at the margin limit, then a 10bp shock
-spread_move, rounds = 10.0, []
+spread_move, round_losses = 10.0, []
 while True:
     X_new = max(E, 0.0) / H
     sold = X - X_new
     if sold < 1e-9:
         break
     widening = KAPPA * sold
-    E -= X_new * D * widening
+    loss_round = X_new * D * widening
+    E -= loss_round
     spread_move += 1e4 * widening
-    rounds.append((sold, 1e4 * widening, E))
+    round_losses.append(loss_round)
     X = X_new
 
-print(f"(a) sigma_p = {sd_p:.4f}, VaR_99 = {var_p:.3f}, losse VaR's = {var_each.round(3)}, "
-      f"som = {var_each.sum():.3f}, 10 dagen = {var_p * np.sqrt(10):.2f}")
-print(f"(b) één obligatie: VaR = {var_1:.1f}, ES = {es_1:.2f}; twee: VaR = {var_2:.1f}, ES = {es_2:.2f}")
-print(f"(c) drempels (margin call, ruïne) in bp: {thresholds}")
-print("    eerste twee rondes (verkocht, bp, E):", [tuple(round(float(v), 2) for v in x) for x in rounds[:2]])
-print(f"    na convergentie: E = {E:.2f}, verlies = {50 - E:.2f}, spreadverbreding = {spread_move:.1f} bp")
-print("code == handberekening:", np.allclose(
-    [sd_p, var_p, var_each.sum(), var_1, es_1, var_2, es_2, 50 - E, spread_move],
-    [1.7607, 4.096, 4.653, -2.0, 79.6, 98.0, 101.26, 22.0, 21.0], atol=0.051))
+hand = {"sigma portefeuille": 1.7607, "VaR 99% samen": 4.096, "som losse VaR's": 4.653,
+        "VaR 99% over tien dagen": 12.95, "VaR 95% één obligatie": -2.0,
+        "ES 95% één obligatie": 79.6, "VaR 95% twee obligaties": 98.0,
+        "ES 95% twee obligaties": 101.26, "margin call bij L = 25 (bp)": 40.0,
+        "ruïne bij L = 25 (bp)": 80.0, "margin call bij L = 10 (bp)": 160.0,
+        "ruïne bij L = 10 (bp)": 200.0, "spiraal, verlies ronde 1": 5.86,
+        "spiraal, verlies ronde 2": 2.32, "spiraal, totaal verlies": 22.0,
+        "spiraal, verbreding (bp)": 21.0}
+code = [sd_p, var_p, var_each.sum(), var_p * np.sqrt(10), var_1, es_1, var_2, es_2,
+        call_25, ruin_25, call_10, ruin_10, round_losses[0], round_losses[1], 50 - E, spread_move]
+pd.DataFrame({"met de hand": list(hand.values()), "code": code}, index=list(hand)).round(4)
 ```
+
+De twee kolommen zijn gelijk, op de afronding van de spiraal na. VaR beloont spreiding dus
+zolang verliezen normaal verdeeld zijn, maar draait dat om bij een kleine kans op een
+groot verlies. Deel (c) laat bovendien zien dat de hefboom, niet de trade, bepaalt na
+hoeveel basispunten het fonds moet stoppen.
 
 ## Theorie
 
-### VaR en Expected Shortfall
+We definiëren eerst VaR en Expected Shortfall en rekenen ze uit voor een normaal verlies,
+zodat ook het recept uit het toy-voorbeeld is afgeleid. Daarna volgt de kern, namelijk dat
+VaR niet subadditief is en ES wel. Vervolgens schatten we het kwantiel met een
+voorspelbare volatiliteit en toetsen we het achteraf, met weinig kracht per jaar. Tot slot
+leiden we af na hoeveel spreadverbreding een gehefboomde arbitrageur moet stoppen, en hoe
+zijn eigen verkopen dat versnellen.
 
-Laat $W_t$ de waarde van een portefeuille zijn en $L_{t+1} = -(W_{t+1} - W_t)$ het verlies.
-Kansen zijn conditioneel op de informatie op $t$; we schrijven $P_t$.
+### Opzet: VaR en Expected Shortfall
 
-:::{prf:definition} Value-at-Risk
+Beide maten vatten het verlies van morgen samen in één getal, maar ze gebruiken de staart
+verschillend. Laat $W_t$ de waarde van een portefeuille zijn en $L_{t+1} = -(W_{t+1} - W_t)$
+het
+verlies, met kansen $P_t$ conditioneel op de informatie op $t$.
+
+:::{prf:definition} Value-at-Risk en Expected Shortfall
 :label: def-risk-management-var
 
-De Value-at-Risk op betrouwbaarheid $\alpha \in (0,1)$ is
+De Value-at-Risk en de Expected Shortfall op betrouwbaarheid $\alpha \in (0,1)$ zijn
 
 ```{math}
 :label: eq-risk-management-var
-\mathrm{VaR}_{\alpha,t} = \inf\left\{\ell \in \mathbb{R} : P_t\!\left(L_{t+1} > \ell\right) \le 1-\alpha\right\}.
+\mathrm{VaR}_{\alpha,t} = \inf\left\{x \in \mathbb{R} : P_t\!\left(L_{t+1} > x\right) \le 1-\alpha\right\},
 ```
-:::
-
-:::{prf:definition} Expected Shortfall
-:label: def-risk-management-es
-
-De Expected Shortfall op betrouwbaarheid $\alpha$ is
 
 ```{math}
 :label: eq-risk-management-es
-\mathrm{ES}_{\alpha,t} = \frac{1}{1-\alpha}\int_\alpha^1 \mathrm{VaR}_{u,t}\,\mathrm{d}u .
+\mathrm{ES}_{\alpha,t} = \frac{1}{1-\alpha}\int_\alpha^1 \mathrm{VaR}_{u,t}\,\mathrm{d}u ,
 ```
 
-Bij een continue verdeling is dit $\E_t\!\left[L_{t+1} \mid L_{t+1} \ge \mathrm{VaR}_{\alpha,t}\right]$.
+terwijl bij een continue verdeling $\mathrm{ES}_{\alpha,t} = \E_t\!\left[L_{t+1} \mid L_{t+1} \ge \mathrm{VaR}_{\alpha,t}\right]$. De ES is dan het
+verwachte verlies op de dagen waarop de VaR wordt overschreden.
 :::
 
-De integraalvorm werkt ook voor verdelingen met atomen, zoals die van de obligaties.
-
-*Waarom zou dit waar zijn?* Bij een normale verdeling ligt elk kwantiel een vast aantal
-standaarddeviaties boven het gemiddelde. Voor de ES is dat aantal het gemiddelde van de
-standaardnormale verdeling boven het kwantiel, dat verder in de staart ligt.
+De VaR is dus het kleinste verlies dat hoogstens met kans $1-\alpha$ wordt overschreden,
+waarbij
+een $\alpha$ van 0,95 of 0,99 gebruikelijk is. De ES middelt alle VaR's boven $\alpha$ en
+is daarmee het
+gemiddelde verlies op de slechtste fractie $1-\alpha$ van de dagen. De integraalvorm werkt
+ook
+bij atomen, zoals bij de obligaties uit het toy-voorbeeld. Voor een normaal verlies liggen
+beide maten een vast aantal standaarddeviaties boven het gemiddelde, de ES verder dan de
+VaR.
 
 :::{prf:proposition} VaR en ES onder normaliteit
 :label: prop-risk-management-normaal
@@ -251,8 +327,11 @@ Is $L_{t+1} \sim \mathcal{N}(\mu_L, \sigma^2)$ gegeven de informatie op $t$, dan
 \mathrm{VaR}_{\alpha} = \mu_L + \sigma z_\alpha,
 \qquad
 \mathrm{ES}_{\alpha} = \mu_L + \sigma \frac{\varphi(z_\alpha)}{1-\alpha},
-\qquad z_\alpha = \Phi^{-1}(\alpha).
+\qquad z_\alpha = \Phi^{-1}(\alpha),
 ```
+
+waarbij de ES-factor $\varphi(z_\alpha)/(1-\alpha)$ altijd groter is dan $z_\alpha$. De ES ligt dus verder in
+de staart dan de VaR.
 :::
 
 :::{prf:proof}
@@ -261,129 +340,161 @@ Voor de ES is $\E[Z \mid Z \ge z_\alpha] = \frac{1}{1-\alpha}\int_{z_\alpha}^\in
 omdat $\varphi'(z) = -z\varphi(z)$. $\square$
 :::
 
-Voor $\alpha = 0{,}99$ is de VaR-factor $2{,}326$ en de ES-factor $2{,}665$; voor
-$\alpha = 0{,}975$ is de ES-factor $2{,}338$. Onder normaliteit is de ES op 97,5% dus
-bijna de VaR op 99%. Daarom koos het Comité in 2016 "a 97.5th percentile, one-tailed
-confidence level" (paragraaf 181(b) van {cite}`BCBS2016`): het kapitaal blijft onder
-normale verdelingen gelijk, en alleen dikke staarten kosten meer.
+Bij $\alpha = 0{,}99$ is de VaR-factor 2,326, het getal uit het toy-voorbeeld, en de
+ES-factor
+$\varphi(2{,}326)/0{,}01 \approx 2{,}665$. Bij $\alpha = 0{,}975$ is de ES-factor 2,338,
+bijna de
+VaR-factor bij 99%. Daarom koos het Comité in 2016 een ES op 97,5% (paragraaf 181(b) van
+{cite}`BCBS2016`). Onder een normale verdeling blijft het kapitaal dan gelijk, en alleen
+dikke
+staarten kosten meer.
 
-### Drie manieren om het kwantiel te schatten
+### Het kernresultaat: VaR is niet coherent, ES wel
 
-Met gewichten $\mathbf{w}$ in euro, covariantiematrix $\boldsymbol{\Sigma}_t$ en verwachte
-rendementen nul is de **parametrische** VaR
+*Waarom zou dit waar zijn?* Een risicomaat zegt hoeveel kapitaal een bank naast een
+positie moet aanhouden. Een positie die altijd slechter uitpakt, vraagt meer kapitaal.
+Twee keer dezelfde positie vraagt twee keer zoveel, en een euro contant verlaagt het
+vereiste kapitaal met een euro. Twee posities samen mogen niet meer vragen dan apart, want
+anders daalt het vereiste kapitaal als een bank zich in afdelingen opsplitst, en worden
+limieten per afdeling zinloos.
+
+:::{prf:definition} Coherente risicomaat
+:label: def-risk-management-coherent
+
+Een risicomaat $\rho$ kent aan elk verlies een kapitaalbedrag in $\mathbb{R}$ toe. Ze is coherent
+{cite}`ArtznerDelbaenEberHeath1999` als voor alle $L_1, L_2$, $c \ge 0$ en $k \in \mathbb{R}$ geldt:
+
+1. *monotoniteit*, $L_1 \le L_2$ bijna zeker $\Rightarrow \rho(L_1) \le \rho(L_2)$
+2. *subadditiviteit*, $\rho(L_1 + L_2) \le \rho(L_1) + \rho(L_2)$
+3. *positieve homogeniteit*, $\rho(cL_1) = c\,\rho(L_1)$
+4. *translatie-invariantie*, $\rho(L_1 + k) = \rho(L_1) + k$.
+:::
+
+:::{prf:theorem} VaR is niet coherent, ES wel
+:label: thm-risk-management-coherentie
+
+VaR voldoet aan (1), (3) en (4), maar niet in het algemeen aan (2). ES voldoet aan alle
+vier. Zijn $(L_1, L_2)$ gezamenlijk normaal, dan is VaR voor $\alpha \ge 1/2$ subadditief.
+:::
+
+Het origineel formuleert de axioma's voor toekomstige nettowaarden, en omdat wij met
+verliezen
+werken, draaien de tekens om. Het bewijsidee is dat een kwantiel van een som niet begrensd
+wordt
+door de losse kwantielen. ES is daarentegen een supremum van verwachtingen, en een
+supremum van
+een som is hoogstens de som van de suprema.
+
+:::{prf:proof}
+:class: dropdown
+
+*VaR.* (1), (3) en (4) volgen omdat kwantielen behouden blijven onder stijgende
+transformaties. Toy-voorbeeld (b) is een tegenvoorbeeld voor (2), want $98 > -4$.
+
+*ES.* (1), (3) en (4) erft ES via [](#eq-risk-management-es). Voor (2) gebruiken we de
+duale vorm {cite}`AcerbiTasche2002`
+
+$$
+\mathrm{ES}_\alpha(L) = \sup\left\{\E[L\,\xi] : 0 \le \xi \le \tfrac{1}{1-\alpha},\ \E[\xi] = 1\right\}.
+$$
+
+Het supremum wordt bereikt door $\xi$ maximaal te maken op de slechtste fractie $1-\alpha$ van
+de uitkomsten, fractioneel op een atoom op de grens, wat het gemiddelde van de bovenste
+kwantielen geeft. Een supremum van een som is hoogstens de som van de suprema, dus
+$\mathrm{ES}_\alpha(L_1+L_2) \le \mathrm{ES}_\alpha(L_1) + \mathrm{ES}_\alpha(L_2)$, bij de twee obligaties 101,26 tegen $2 \times 79{,}6$.
+
+*Normaal.* Nu is $\mathrm{VaR}_\alpha(L_1+L_2) = \mu_1 + \mu_2 + z_\alpha\sigma_{12}$ met
+$\sigma_{12} = \sqrt{\sigma_1^2 + \sigma_2^2 + 2\rho\sigma_1\sigma_2} \le \sigma_1 + \sigma_2$. Omdat
+$z_\alpha \ge 0$ voor $\alpha \ge 1/2$, is dat hoogstens de som van de losse VaR's. $\square$
+:::
+
+De stelling bewijst dus wat we bij twee obligaties verwachtten, want samen krijgen ze een
+VaR van 98 in plaats van $-4$, terwijl hun ES van 159,2 naar 101,26 daalt. Het normale
+geval verklaart waarom de
+praktijk het probleem lang niet zag, want bij aandelen en valuta gedraagt VaR zich netjes.
+Het gaat pas mis bij een kleine kans op een groot verlies, zoals bij kredietrisico,
+verkochte opties en convergence trades.
+
+### Wat het voorspelt: het kwantiel uit een voorspelbare volatiliteit
+
+Met een voorspelbare volatiliteit is het kwantiel van morgen op drie manieren te schatten,
+die
+verschillen in waar de vorm van de staart vandaan komt. Met posities $\mathbf{w}$ in dollar,
+covariantiematrix $\boldsymbol{\Sigma}_t$ en verwachte rendementen nul is de parametrische
+VaR
 
 ```{math}
 :label: eq-risk-management-parametrisch
-\mathrm{VaR}_{\alpha,t} = z_\alpha \sqrt{\mathbf{w}^\top \boldsymbol{\Sigma}_t \mathbf{w}} .
+\mathrm{VaR}_{\alpha,t} = z_\alpha \sqrt{\mathbf{w}^\top \boldsymbol{\Sigma}_t \mathbf{w}} ,
 ```
 
-Zo werkte RiskMetrics ("In RiskMetrics, we assume that the mean value of daily returns is
-zero", p. 92–93 van {cite}`JPMorganReuters1996`), met 95% en $1{,}65\,\sigma$; Bazel eiste
-99%. **Historische simulatie** past de rendementen van de afgelopen $K$ dagen toe op de
-huidige posities en leest het empirische kwantiel af: dikke staarten zonder
-verdelingsaanname, maar traag, want een crash telt $K$ dagen mee en valt er dan in één
-keer uit. **Filtered historical simulation** {cite}`HullWhite1998,BaroneAdesiGiannopoulosVosper1999`
-deelt elk historisch rendement door de volatiliteit van toen en vermenigvuldigt het
-kwantiel van die residuen met de volatiliteit van morgen: de vorm van de staart uit de
-data, het niveau uit een volatiliteitsmodel.
+het recept van toy-deel (a) voor een hele portefeuille. De drie manieren zijn:
 
-### EWMA als speciaal geval van GARCH
+- **parametrisch**, met [](#eq-risk-management-parametrisch). Zo werkte RiskMetrics, dat het
+  verwachte dagrendement op nul zette (p. 92–93 van {cite}`JPMorganReuters1996`) en met 95%
+  rekende, terwijl Bazel 99% eiste.
+- **historische simulatie**, die de rendementen van de afgelopen $K$ dagen op de huidige
+  posities
+  toepast en het empirische kwantiel afleest. Dat vraagt geen verdelingsaanname, maar een
+  crash
+  telt $K$ dagen mee en valt er dan in één keer uit.
+- **filtered historical simulation**
+  {cite}`HullWhite1998,BaroneAdesiGiannopoulosVosper1999`,
+  die de staart haalt uit historische rendementen gedeeld door de volatiliteit van toen,
+  en het
+  niveau uit de volatiliteit van morgen.
 
-*Waarom zou dit waar zijn?* RiskMetrics wilde voor 480 reeksen één schatter die snel op
-schokken reageert en geen parameters per reeks vraagt. Een gemiddelde van gekwadrateerde
-rendementen met exponentieel dalende gewichten doet dat, en blijkt een GARCH-model
-waarin schokken nooit uitdoven.
-
-De *exponentially weighted moving average* (EWMA) is
+RiskMetrics zocht voor 480 reeksen één volatiliteitsschatter die snel op schokken reageert
+en
+geen parameters per reeks vraagt. Het koos de *exponentially weighted moving average*
+(EWMA),
 
 ```{math}
 :label: eq-risk-management-ewma
 \sigma_{t+1}^2 = \lambda\,\sigma_t^2 + (1-\lambda)\,r_t^2
-= (1-\lambda)\sum_{j=0}^{\infty} \lambda^j r_{t-j}^2 .
+= (1-\lambda)\sum_{j=0}^{\infty} \lambda^j r_{t-j}^2 ,
 ```
 
-RiskMetrics koos de *decay factor* die de voorspelfout van de variantie over alle reeksen
-minimaliseert: "the decay factor for the daily data set is 0.94, and the decay factor for
-the monthly data set is 0.97" (§5.3.2.2, p. 100 van {cite}`JPMorganReuters1996`). Het
-optimum per reeks liep uiteen van 0,835 tot 0,995 (tabel 5.8). Bij $\lambda = 0{,}94$
-dragen de laatste $\ln 0{,}01/\ln 0{,}94 \approx 74$ dagen 99% van het gewicht (tabel 5.7).
+waarin elke dag ouder een factor $\lambda$ minder weegt. Een hogere $\lambda$ maakt de
+schatting
+dus trager. RiskMetrics koos $\lambda = 0{,}94$ voor dagdata, de waarde die de
+voorspelfout over
+alle reeksen minimaliseert (§5.3.2.2 van {cite}`JPMorganReuters1996`). Dan dragen de laatste
+$\ln 0{,}01/\ln 0{,}94 \approx 74$ dagen 99% van het gewicht, zodat een crash na een
+kwartaal
+vrijwel vergeten is.
 
-GARCH(1,1) uit [de vorige lecture](#04-21-volatiliteit) {cite}`Engle1982,Bollerslev1986` is
+Vergelijk dat met GARCH(1,1) uit [het vorige college](#04-21-volatiliteit)
+{cite}`Engle1982,Bollerslev1986`,
 
 ```{math}
 :label: eq-risk-management-garch
 \sigma_{t+1}^2 = \omega + a\, r_t^2 + b\,\sigma_t^2 ,
 ```
 
-met $a, b$ in plaats van de gebruikelijke $\alpha, \beta$, die hier al bezet zijn. EWMA is
-het geval $\omega = 0$, $a = 1-\lambda$, $b = \lambda$, dus $a + b = 1$: het *integrated*
-GARCH-model van {cite:t}`EngleBollerslev1986`, zonder eindig onvoorwaardelijk niveau.
+met $a$ en $b$ in plaats van $\alpha$ en $\beta$, die hier al bezet zijn. EWMA is het geval
+$\omega = 0$, $a = 1-\lambda$ en $b = \lambda$. Dan is $a + b = 1$, het *integrated*
+GARCH-model
+van {cite:t}`EngleBollerslev1986`, waarin een schok nooit uitdooft. Voor één dag vooruit
+maakt
+dat weinig uit, omdat dan vooral telt hoe snel het model op een schok reageert.
 
-:::{prf:proposition} Variantie over $k$ dagen
-:label: prop-risk-management-horizon
+### Hoe het getoetst wordt: Kupiec en Christoffersen
 
-Laat rendementen conditioneel ongecorreleerd zijn met gemiddelde nul. Onder GARCH(1,1) met
-$a + b < 1$ en $\bar\sigma^2 = \omega/(1-a-b)$ is
-
-```{math}
-:label: eq-risk-management-horizon
-\Var_t\!\left(\sum_{j=1}^{k} r_{t+j}\right)
-= k\,\bar\sigma^2 + \frac{1-(a+b)^k}{1-(a+b)}\left(\sigma_{t+1}^2 - \bar\sigma^2\right).
-```
-
-Onder EWMA is de variantie over $k$ dagen $k\,\sigma_{t+1}^2$: de wortel-uit-de-tijdregel
-is dan voor de variantie exact.
-:::
-
-:::{prf:proof}
-De variantie van de som is de som van $\E_t[\sigma_{t+j}^2]$. Uit
-[](#eq-risk-management-garch) en $\E_t[r_{t+j}^2] = \E_t[\sigma_{t+j}^2]$ volgt
-$\E_t[\sigma_{t+j+1}^2] = \omega + (a+b)\E_t[\sigma_{t+j}^2]$, met oplossing
-$\bar\sigma^2 + (a+b)^{j-1}(\sigma_{t+1}^2 - \bar\sigma^2)$. Tel op met de meetkundige reeks.
-Bij $a + b = 1$, $\omega = 0$ is elke term $\sigma_{t+1}^2$. $\square$
-:::
-
-Bazel stond toe dat de VaR "scaled up to ten days by the square root of time" werd (B.4(c)
-van {cite}`BCBS1996a`). Dat faalt om drie redenen. Onder GARCH keert de volatiliteit terug
-naar haar gemiddelde; een kwantiel van dikstaartige dagrendementen maal $\sqrt{k}$ is niet
-het kwantiel van de som; en de regel veronderstelt dat de positie tien dagen stilstaat en
-dan tegen de marktprijs kan worden gesloten. Daarom vervingen de regels van 2016 de tien
-dagen door *liquidity horizons* (de tijd om een positie zonder grote prijsdruk af te
-bouwen) van 10 tot 120 dagen, paragraaf 181(c) en (k) van {cite}`BCBS2016`.
-
-```{code-cell} ipython3
-A_GARCH, B_GARCH = 0.08, 0.91   # daily GARCH(1,1), persistence 0.99
-
-
-def horizon_ratio(state, k, a=A_GARCH, b=B_GARCH):
-    """sqrt of true k-day variance over k * one-day variance, with sigma_{t+1}^2 = state * sigma_bar^2."""
-    persistence = a + b
-    true = k + (1 - persistence**k) / (1 - persistence) * (state - 1)
-    return np.sqrt(true / (k * state))
-
-
-states = [0.25, 1.0, 4.0, 16.0]
-pd.DataFrame({f"k = {k}": [horizon_ratio(s, k) for s in states] for k in (10, 60, 250)},
-             index=pd.Index(states, name="sigma_{t+1}^2 / sigma_bar^2")).round(3)
-```
-
-Bij persistentie 0,99 is de fout over tien dagen klein (+6% bij een halve, −2% bij een
-dubbele volatiliteit), over een jaar een factor twee. Voor de horizon van Bazel zijn de
-staart en de liquiditeit het probleem, niet de mean reversion.
-
-### Backtesting: Kupiec en Christoffersen
-
-*Waarom zou dit waar zijn?* Geeft een model elke dag het juiste conditionele kwantiel, dan
-is de kans op een overschrijding elke dag $p = 1-\alpha$, wat er eerder ook gebeurde. De
-overschrijdingen zijn dan onafhankelijke muntworpen: het juiste aantal, zonder patroon.
-
-Definieer de *hit sequence* $I_{t+1} = \mathbb{1}\{L_{t+1} > \mathrm{VaR}_{\alpha,t}\}$.
+Een VaR-model wordt achteraf getoetst door te tellen hoe vaak het verlies de VaR
+overschreed, en
+of die overschrijdingen clusteren. Geeft een model elke dag het juiste kwantiel, dan is de
+kans
+op een overschrijding elke dag $p = 1-\alpha$, wat er eerder ook gebeurde. De reeks
+overschrijdingen (*hit sequence*) $I_{t+1} = \mathbb{1}\{L_{t+1} > \mathrm{VaR}_{\alpha,t}\}$
+bestaat dan uit onafhankelijke muntworpen.
 
 :::{prf:proposition} Hits zijn Bernoulli
 :label: prop-risk-management-hits
 
 Is $\mathrm{VaR}_{\alpha,t}$ het ware conditionele $\alpha$-kwantiel van een continu verdeeld
-verlies, dan zijn de $I_{t+1}$ onafhankelijke Bernoulli-variabelen met kans $1-\alpha$.
+verlies, dan zijn de $I_{t+1}$ onafhankelijke Bernoulli-variabelen met kans $1-\alpha$. Hun
+aantal in $T$ dagen is dan binomiaal verdeeld.
 :::
 
 :::{prf:proof}
@@ -392,19 +503,23 @@ op $t$, dus $P(I_{t+1} = 1 \mid I_1, \dots, I_t) = 1-\alpha$. Dan is de kans op 
 het product van de marginale kansen. $\square$
 :::
 
-{cite:t}`Kupiec1995` toetste het aantal. Met $x$ overschrijdingen in $T$ dagen en
-$\hat\pi = x/T$ is de *proportion-of-failures*-toets
+{cite:t}`Kupiec1995` toetste het aantal. Met $x$ overschrijdingen in $T$ dagen en fractie
+$\hat\pi = x/T$ vergelijkt de *proportion-of-failures*-toets de kans op de waargenomen reeks
+onder $p$ met die onder $\hat\pi$,
 
 ```{math}
 :label: eq-risk-management-kupiec
 \mathrm{LR}_{\mathrm{pof}} = -2\ln\frac{(1-p)^{T-x}p^{x}}{(1-\hat\pi)^{T-x}\hat\pi^{x}}
-\;\overset{a}{\sim}\; \chi^2_1 .
+\;\overset{a}{\sim}\; \chi^2_1 ,
 ```
 
-{cite:t}`Christoffersen1998` toetste ook het patroon. Laat $n_{ij}$ tellen hoe vaak
+en hoe verder $\hat\pi$ van $p$ ligt, hoe groter de statistiek. Boven 3,84 verwerpt de
+toets op
+5%. {cite:t}`Christoffersen1998` toetste ook het patroon. Laat $n_{ij}$ tellen hoe vaak
 $I_t = i$ werd gevolgd door $I_{t+1} = j$, met $\hat\pi_{01} = n_{01}/(n_{00}+n_{01})$,
 $\hat\pi_{11} = n_{11}/(n_{10}+n_{11})$ en $\hat\pi$ de totale fractie. Tegen een
-Markov-keten als alternatief is
+Markov-keten
+als alternatief is
 
 ```{math}
 :label: eq-risk-management-christoffersen
@@ -416,16 +531,20 @@ Markov-keten als alternatief is
 \;\overset{a}{\sim}\; \chi^2_2 .
 ```
 
-$\mathrm{LR}_{\mathrm{cc}}$ toetst *conditional coverage*. Een statisch model met te weinig
-overschrijdingen in rustige en te veel in drukke jaren kan het juiste totaal halen en toch
-falen, omdat een overschrijding gisteren die van vandaag waarschijnlijker maakt.
+De eerste statistiek wordt groot als een overschrijding vaker op een overschrijding volgt
+dan
+op een rustige dag. De tweede toetst aantal en patroon samen (*conditional coverage*), zodat
+een statisch model met het juiste totaal toch kan falen.
 
-Bazel telt alleen. Over de laatste 250 dagen staat het verkeerslicht op groen bij 0 tot 4
-overschrijdingen, op geel bij 5 tot 9 en op rood bij 10 of meer: de grenzen waar de
-binomiale kans op zoveel of minder onder een juist model 95% en 99,99% passeert. In het
-gele gebied stijgt de vermenigvuldigingsfactor van minimaal 3 met 0,40 tot 0,85, in het
-rode met 1 {cite}`BCBS1996a,BCBS1996b`. Het Comité schreef zelf dat "tests of this type are
-limited in their power to distinguish an accurate model from an inaccurate model" (p. 5).
+Bazel telt alleen het aantal. Over 250 dagen staat het verkeerslicht op groen bij 0 tot 4
+overschrijdingen, op geel bij 5 tot 9 en op rood bij 10 of meer. In het gele gebied stijgt
+de
+vermenigvuldigingsfactor op het kapitaal, die minimaal 3 is, en in het rode gebied met 1
+{cite}`BCBS1996a,BCBS1996b`. Het Comité schreef zelf dat zulke toetsen een goed model maar
+beperkt van een slecht model kunnen onderscheiden (p. 5 van {cite}`BCBS1996b`). De cel
+hieronder programmeert
+beide
+toetsen en zet de zones naast de binomiale kansen.
 
 ```{code-cell} ipython3
 def kupiec_lr(hits, p=0.01):
@@ -460,88 +579,45 @@ basel["zone"] = pd.cut(basel["overschrijdingen"], [-1, 4, 9, 250], labels=["groe
 basel.round(4)
 ```
 
-De tweede kolom is tabel 2 van het Bazelse kader (89,22% bij vier, 95,88% bij vijf, 99,99%
-bij tien). De derde kolom is het probleem: een model dat maar 98% dekt, geeft verwacht vijf
-overschrijdingen, maar blijft met kans 44% groen. Kupiec verwerpt op 5% bij nul
-($\mathrm{LR}_{\mathrm{pof}} = 5{,}0$) en bij zeven of meer overschrijdingen; vijf en zes
-vallen erbinnen.
+De tweede kolom reproduceert tabel 2 van het Bazelse kader, met 95,88% bij vijf en 99,99%
+bij
+tien overschrijdingen, en daar liggen de grenzen van geel en rood. De derde kolom laat het
+probleem zien, want een model dat maar 98% dekt, blijft met kans 44% groen. Kupiec
+verwerpt op
+5% alleen bij nul of bij zeven en meer overschrijdingen.
 
-Dit is motief 1 in de staart. Een kans van 1% geschat uit 250 dagen heeft een
-standaardfout van $\sqrt{0{,}01 \times 0{,}99/250} = 0{,}63$ procentpunt, 63% van de kans
-zelf. Een VaR-model is niet op een jaar te beoordelen.
+Het probleem is hetzelfde als bij [de standaardfout van 2%](#00-01-rendementen), maar dan
+in de staart. Een kans van 1% geschat uit 250 dagen heeft een standaardfout van
+$\sqrt{0{,}01 \times 0{,}99/T} = 0{,}63$ procentpunt bij $T = 250$, 63% van de kans zelf,
+en die standaardfout daalt alleen met de wortel van het aantal dagen $T$. Zoals een
+gemiddeld rendement een eeuw data vraagt, is één jaar veel te kort om een VaR-model te
+beoordelen.
 
-### Coherente risicomaten
+### De gehefboomde arbitrageur
 
-*Waarom zou dit waar zijn?* Een risicomaat zegt hoeveel kapitaal naast een positie moet
-staan. Een positie die altijd slechter uitpakt, vraagt meer; twee keer dezelfde positie
-twee keer zoveel; een euro contant een euro minder; en twee posities samen niet meer dan
-apart, anders loont het een bank op te splitsen en zijn limieten per afdeling zinloos.
-
-:::{prf:definition} Coherente risicomaat
-:label: def-risk-management-coherent
-
-Een afbeelding $\rho$ van verliezen naar $\mathbb{R}$ is coherent
-{cite}`ArtznerDelbaenEberHeath1999` als voor alle $L_1, L_2$, $c \ge 0$ en $m \in \mathbb{R}$:
-(1) *monotoniteit*: $L_1 \le L_2$ bijna zeker $\Rightarrow \rho(L_1) \le \rho(L_2)$;
-(2) *subadditiviteit*: $\rho(L_1 + L_2) \le \rho(L_1) + \rho(L_2)$;
-(3) *positieve homogeniteit*: $\rho(cL_1) = c\,\rho(L_1)$;
-(4) *translatie-invariantie*: $\rho(L_1 + m) = \rho(L_1) + m$.
-:::
-
-Het origineel formuleert de axioma's voor toekomstige nettowaarden; wij vertalen naar
-verliezen, wat de tekens omdraait.
-
-:::{prf:theorem} VaR is niet coherent, ES wel
-:label: thm-risk-management-coherentie
-
-VaR voldoet aan (1), (3) en (4), maar niet in het algemeen aan (2). ES voldoet aan alle
-vier. Zijn $(L_1, L_2)$ gezamenlijk normaal, dan is VaR voor $\alpha \ge 1/2$ subadditief.
-:::
-
-:::{prf:proof}
-:class: dropdown
-
-*VaR.* (1), (3) en (4) volgen omdat kwantielen behouden blijven onder stijgende
-transformaties. Toy-voorbeeld (b) is een tegenvoorbeeld voor (2): $98 > -4$.
-
-*ES.* (1), (3) en (4) erft ES via [](#eq-risk-management-es). Voor (2) gebruiken we de
-duale vorm {cite}`AcerbiTasche2002`
-
-$$
-\mathrm{ES}_\alpha(L) = \sup\left\{\E[L\,\xi] : 0 \le \xi \le \tfrac{1}{1-\alpha},\ \E[\xi] = 1\right\},
-$$
-
-waarvan het supremum wordt bereikt door $\xi$ maximaal te maken op de slechtste fractie
-$1-\alpha$ van de uitkomsten (fractioneel op een atoom op de grens), wat het gemiddelde
-van de bovenste kwantielen geeft. Een supremum van een som is hoogstens de som van de
-suprema, dus $\mathrm{ES}_\alpha(L_1+L_2) \le \mathrm{ES}_\alpha(L_1) + \mathrm{ES}_\alpha(L_2)$.
-
-*Normaal.* $\mathrm{VaR}_\alpha(L_1+L_2) = \mu_1 + \mu_2 + z_\alpha\sigma_{12}$ met
-$\sigma_{12} = \sqrt{\sigma_1^2 + \sigma_2^2 + 2\rho\sigma_1\sigma_2} \le \sigma_1 + \sigma_2$,
-en $z_\alpha \ge 0$. $\square$
-:::
-
-Het normale geval verklaart waarom de praktijk het probleem lang niet zag: bij aandelen en
-valuta gedraagt VaR zich. Het gaat mis bij een kleine kans op een groot verlies:
-kredietrisico, verkochte opties, convergence trades.
-
-### De dynamiek van een gehefboomde arbitrageur
-
-*Waarom zou dit waar zijn?* Een arbitrageur met positieve verwachte opbrengst kan failliet
+*Waarom zou dit waar zijn?* Een arbitrageur met een positieve verwachte opbrengst kan
+failliet
 gaan zonder ongelijk te hebben. Door de hefboom is een kleine prijsbeweging een groot deel
-van het vermogen, door de dagelijkse waardering meteen een verlies, en door het onderpand
-meteen een gedwongen verkoop. Beweegt die verkoop de prijs, dan voedt het verlies zichzelf.
+van
+zijn vermogen. Door de dagelijkse waardering is die beweging meteen een verlies, en door het
+onderpand volgt meteen een gedwongen verkoop. Duwt die verkoop de prijs verder weg, dan
+groeit
+het verlies vanzelf.
 
-Laat $E_t$ het eigen vermogen zijn, $X_t = L_t E_t$ de positie en
+Vanaf hier staat $L$ voor de hefboom en niet meer voor het verlies. Laat $E_t$ het eigen
+vermogen zijn, $X_t = L_t E_t$ de positie met hefboom $L_t$, en
 $r_{t+1} = c - D\,\Delta s_{t+1}$ het rendement per eenheid, met *carry* $c$ (de opbrengst
-als er niets gebeurt), spread duration $D$ en spreadverbreding $\Delta s_{t+1}$. Dan is
+als er
+niets gebeurt), spread duration $D$ en spreadverbreding $\Delta s_{t+1}$. Dan is
 
 ```{math}
 :label: eq-risk-management-vermogen
 E_{t+1} = E_t + X_t\, r_{t+1} = E_t\left(1 + L_t\, r_{t+1}\right),
 ```
 
-en de tegenpartij eist $E_t \ge h X_t$.
+en de tegenpartij eist $E_t \ge h X_t$ met haircut $h$. Bij hefboom 25 en duration 5 kost
+elk
+basispunt zo 1,25% van het vermogen, zoals in het toy-voorbeeld.
 
 :::{prf:proposition} Drempels voor margin call en ruïne
 :label: prop-risk-management-drempel
@@ -555,6 +631,8 @@ call en de ruïne bij een cumulatieve verbreding van
 \qquad
 \Delta s^{\mathrm{ru\ddot{\imath}ne}} = \frac{1}{L D} .
 ```
+
+Beide drempels dalen dus met $1/L$, zodat een fonds met meer hefboom eerder moet stoppen.
 :::
 
 :::{prf:proof}
@@ -562,11 +640,12 @@ Na een verbreding $\Delta s$ is $E = E_0(1 - LD\Delta s)$. Stel gelijk aan $hLE_
 respectievelijk nul. $\square$
 :::
 
-Beide drempels dalen als $1/L$, terwijl de Sharpe-ratio $\E[Xr]/\SD(Xr)$ niet van $L$ afhangt.
-Dat is het formele gehalte van "de Sharpe-ratio zegt niets over de overlevingskans": de ene
-grootheid is invariant onder schaling, de andere niet.
-
-Laat nu een verkoop van $q$ de spread met $\kappa q$ verbreden, en laat de restrictie binden.
+Met de toy-getallen geeft dat 40 en 80 basispunten. De Sharpe-ratio $\E[Xr]/\SD(Xr)$ hangt
+daarentegen niet van $L$ af, want de hefboom schaalt teller en noemer even hard. Ze zegt
+dus niets over de kans om te overleven, zodat een hogere hefboom het fonds al kwetsbaarder
+maakt voordat zijn eigen verkopen meetellen. Om die verkopen mee te nemen, laten we een
+verkoop van $q$ eenheden de spread met $\kappa q$ verbreden, terwijl het fonds precies op
+de grens staat.
 
 :::{prf:proposition} Verliesspiraal
 :label: prop-risk-management-spiraal
@@ -576,44 +655,74 @@ dan is het totale verlies in lineaire benadering
 
 ```{math}
 :label: eq-risk-management-spiraal
-\mathrm{d}E = \frac{\mathrm{d}E^{\mathrm{exo}}}{1 - a},
+\mathrm{d}E = \frac{\mathrm{d}E^{\mathrm{exo}}}{1 - \theta},
 \qquad
-a = \frac{X D \kappa}{h},
+\theta = \frac{X D \kappa}{h},
 ```
 
-zolang $a < 1$. Bij $a \ge 1$ divergeert de reeks en stopt de spiraal pas als de positie
-grotendeels is afgebouwd.
+zolang $\theta < 1$. Bij $\theta \ge 1$ divergeert de reeks en stopt de spiraal pas als de
+positie grotendeels is afgebouwd.
 :::
 
 :::{prf:proof}
 Een verlies $\delta$ verlaagt de toegestane positie met $\delta/h$. Die verkoop verbreedt de
-spread met $\kappa\delta/h$ en kost op $X$ nog $a\delta$, wat een verkoop van $a\delta/h$
-en een verlies $a^2\delta$ oplevert, enzovoort: $\delta(1 + a + a^2 + \dots)$. $\square$
+spread met $\kappa\delta/h$ en kost op $X$ nog $\theta\delta$, wat een verkoop van $\theta\delta/h$
+en een verlies $\theta^2\delta$ oplevert, enzovoort: $\delta(1 + \theta + \theta^2 + \dots)$. $\square$
 :::
 
-In het toy-voorbeeld is $a = 2500 \times 5 \times 10^{-6}/0{,}02 = 0{,}625$; de lineaire
-benadering geeft $12{,}5/0{,}375 = 33{,}3$, meer dan de werkelijke 22,0, omdat $a$ daalt
-naarmate de positie krimpt. Een grote positie ten opzichte van de markt en een lage
-haircut maken $a$ groot. Dit is in miniatuur {cite:t}`ShleiferVishny1997`: arbitrageurs
-verliezen financiering als de prijs tegen ze beweegt, en kunnen de mispricing niet
-corrigeren wanneer die het grootst is ([behavioral finance](#04-23-behavioral)).
-{cite:t}`BrunnermeierPedersen2009` lieten ook de haircut met de volatiliteit stijgen; dat
-is het verhaal van [liquiditeit](#04-24-microstructuur) en
-[intermediaries in 2008](#05-32-intermediaries).
+Het verlies wordt dus met $1/(1-\theta)$ vergroot, en $\theta$ stijgt met de positie en de
+prijsimpact en daalt met de haircut. In het toy-voorbeeld is
+$\theta = 2500 \times 5 \times 10^{-6}/0{,}02 = 0{,}625$, zodat de lineaire benadering
+$12{,}5/0{,}375 = 33{,}3$ geeft. Dat is meer dan de werkelijke 22,0, omdat $\theta$ daalt
+naarmate de positie krimpt.
 
-## Simulatie: backtests zonder kracht en hefbomen zonder vangnet
+In het klein is dit het mechanisme van {cite:t}`ShleiferVishny1997`. Arbitrageurs verliezen
+financiering als de prijs tegen hen beweegt, zodat ze een mispricing niet kunnen corrigeren
+wanneer die het grootst is. {cite:t}`BrunnermeierPedersen2009` lieten daarnaast de haircut
+met
+de volatiliteit stijgen, wat de spiraal versterkt.
 
-### (a) Hoe vaak ziet Kupiec een fout model?
+```{admonition} Samengevat
+:class: tip
 
-We simuleren 2000 paden uit GARCH(1,1) met $a = 0{,}08$, $b = 0{,}91$, een
-onvoorwaardelijke volatiliteit van 16% per jaar en gestandaardiseerde Student-$t$-schokken
-met zes vrijheidsgraden. Vier modellen voorspellen de 99%-VaR: het **ware** conditionele
-kwantiel; een **statisch normaal** model met de perfect gekende onvoorwaardelijke
-volatiliteit; **historische simulatie** over 250 dagen; en **EWMA** met $\lambda = 0{,}94$ en
-het normale kwantiel. We tellen hoe vaak Kupiec en Christoffersen op 5% verwerpen na 250,
-500 en 1000 dagen, en hoe vaak een model na een jaar rood is.
+- VaR is een kwantiel van het verlies en ES het gemiddelde erachter. Onder normaliteit zijn ze
+  $2{,}326\,\sigma$ bij 99% en $2{,}338\,\sigma$ bij 97,5%, [](#eq-risk-management-normaal).
+- VaR kan spreiding bestraffen en ES niet, [](#thm-risk-management-coherentie). Dat gebeurt bij
+  een kleine kans op een groot verlies.
+- Het kwantiel komt uit een voorspelbare volatiliteit, en EWMA is GARCH met $a + b = 1$,
+  [](#eq-risk-management-ewma). Een hogere $\lambda$ maakt de VaR trager.
+- Een backtest telt overschrijdingen, [](#eq-risk-management-kupiec), en wint kracht met de
+  wortel van het aantal dagen $T$.
+- Margin call en ruïne komen na een verbreding die daalt met $1/L$,
+  [](#eq-risk-management-drempel), en eigen prijsdruk vergroot het verlies met $1/(1-\theta)$,
+  [](#eq-risk-management-spiraal).
+- De simulatie vraagt hoe vaak een backtest van 250 dagen een fout model vindt, en hoe vaak
+  één convergence trade binnen vijf jaar failliet gaat bij stijgende $L$ en $\kappa$.
+```
+
+## Simulatie: wat een korte steekproef over de staart zegt
+
+Hoeveel ziet een korte steekproef van een risico dat in de staart zit? We beantwoorden die
+vraag eerst voor de toezichthouder, die één jaar overschrijdingen heeft om een VaR-model
+te beoordelen, en daarna voor een fonds met vier goede jaren.
+
+### Een jaar backtest
+
+We simuleren 2000 paden uit GARCH(1,1) met $a = 0{,}08$ en $b = 0{,}91$, een
+onvoorwaardelijke volatiliteit van 16% per jaar en Student-$t$-schokken met zes
+vrijheidsgraden. Vier modellen voorspellen de 99%-VaR:
+
+- het **ware** conditionele kwantiel
+- een **statisch normaal** model met de perfect gekende onvoorwaardelijke volatiliteit
+- **historische simulatie** over 250 dagen
+- **EWMA** met $\lambda = 0{,}94$ en het normale kwantiel.
+
+Daarna tellen we hoe vaak Kupiec en Christoffersen op 5% verwerpen na 250, 500 en 1000
+dagen.
+Ook tellen we hoe vaak een model na een jaar rood is.
 
 ```{code-cell} ipython3
+A_GARCH, B_GARCH = 0.08, 0.91   # daily GARCH(1,1), persistence 0.99
 N_PATHS, BURN, WINDOW, T_MAX = 2000, 500, 250, 1000
 NU, VOL_ANN = 6.0, 0.16
 var_bar = VOL_ANN**2 / 252
@@ -643,14 +752,19 @@ rows = {}
 for name, hits in hits_sim.items():
     for T in (250, 500, 1000):
         lr_ind, lr_cc = christoffersen_lr(hits[:, :T])
-        rows[(name, T)] = {"fractie overschr.": hits[:, :T].mean(),
+        rows[(name, T)] = {"fractie overschrijdingen": hits[:, :T].mean(),
                            "Kupiec verwerpt": (kupiec_lr(hits[:, :T]) > stats.chi2.ppf(0.95, 1)).mean(),
                            "Christoffersen verwerpt": (lr_cc > stats.chi2.ppf(0.95, 2)).mean(),
-                           "rood (eerste 250 d)": (hits[:, :250].sum(axis=1) >= 10).mean()}
+                           "rood na een jaar": (hits[:, :250].sum(axis=1) >= 10).mean()}
 sim_table = pd.DataFrame(rows).T
 sim_table.index.names = ["model", "T"]
 sim_table.round(3)
 ```
+
+Alleen het ware model komt op 1% overschrijdingen uit, en na een jaar laten beide toetsen
+elk fout model vaker door dan dat ze het verwerpen. Wat in de figuur telt, is de
+hoogte van de lijnen bij de stippellijn van één jaar, links gesimuleerd en rechts exact
+berekend.
 
 ```{code-cell} ipython3
 :label: cel-risk-management-kracht
@@ -672,6 +786,7 @@ for i, coverage in enumerate([0.99, 0.985, 0.98, 0.97]):
     for T in T_grid:
         x = np.arange(T + 1)
         pi_hat = x / T
+        # Kupiec LR for every possible count x (kupiec_lr takes a hit series)
         lr = -2 * ((xlogy(T - x, 0.99) + xlogy(x, 0.01)) - (xlogy(T - x, 1 - pi_hat) + xlogy(x, pi_hat)))
         power.append(stats.binom.pmf(x, T, 1 - coverage)[lr > stats.chi2.ppf(0.95, 1)].sum())
     axes[1].plot(T_grid, power, color=hap.plotting.COLORS[i], label=f"ware dekking {coverage:.1%}")
@@ -689,35 +804,45 @@ plt.show()
 :label: fig-risk-management-kracht
 :width: 100%
 
-Links: een statisch model met perfect gekende onvoorwaardelijke volatiliteit wordt na een
-jaar in minder dan de helft van de paden verworpen, en EWMA met normale staarten in een op
-de zeven. Rechts, exact binomiaal: om een model dat 98% in plaats van 99% dekt met kans 80%
-te betrappen, zijn ruim vier jaar dagdata nodig. De stippellijn is het jaar van Bazel.
+Links: een statisch model met perfect gekende onvoorwaardelijke volatiliteit wordt na een jaar
+in minder dan de helft van de paden verworpen, en EWMA met normale staarten in een op de zeven.
+Rechts, exact binomiaal: om een model dat 98% in plaats van 99% dekt met kans 80% te betrappen,
+zijn enkele jaren dagdata nodig. De stippellijn is het jaar van Bazel.
 :::
 
-Zelfs het ware model wordt na 250 dagen in 8,8% van de paden verworpen in plaats van 5%:
-bij 2,5 verwachte overschrijdingen is de $\chi^2$-benadering grof. Het statische model wordt
-op 1,5% van de dagen overschreden en in 46% van de paden verworpen, en dat stijgt
-nauwelijks met de lengte (47% na 1000 dagen), omdat de overschrijdingen clusteren: een
-periode zonder volatiliteitsgolf geeft het goede aantal. Christoffersen, die de clustering
-moet zien, verwerpt het na een jaar in 15% en na vier jaar in 46% van de paden. EWMA wordt
-door de normale staart op 1,8% van de dagen overschreden; Kupiec ziet dat na een jaar in
-15% en na vier jaar in 63% van de paden. Na een jaar is het statische model in 9,2% van de
-paden rood, EWMA in 1,1%. Rechts de algemene les: een model met 98% dekking wordt na 250
-dagen met kans 24% verworpen, een met 98,5% met kans 11%. Een kans van 1% meten is even
-moeilijk als een gemiddeld rendement meten, en om dezelfde reden.
+Zelfs het ware model wordt na 250 dagen in 8,8% van de paden verworpen in plaats van 5%,
+omdat
+de $\chi^2$-benadering bij 2,5 verwachte overschrijdingen grof is. Het statische model
+wordt op
+1,5% van de dagen overschreden en na een jaar in 46% van de paden verworpen. Dat stijgt
+nauwelijks met de lengte van de backtest, want de overschrijdingen clusteren, zodat een
+periode
+zonder volatiliteitsgolf het goede aantal geeft.
 
-### (b) Een convergence trade over vijf jaar
+EWMA wordt door zijn normale staart op 1,8% van de dagen overschreden, wat Kupiec na een
+jaar in 15% van de paden ziet. Het rechterpaneel maakt de les algemeen. Een model met 98%
+dekking wordt na 250 dagen maar met kans 24% verworpen, de 0,236 voor zeven of meer
+overschrijdingen uit de Bazelse tabel plus 0,006 voor nul. Een backtest van één jaar laat
+een fout model dus, zoals verwacht, meestal passeren, om dezelfde reden als bij een
+gemiddeld rendement, want de standaardfout is groot naast de grootheid zelf.
 
-Nu [](#prop-risk-management-spiraal) op schaal. Een spreadafwijking (in basispunten) volgt
-$x_{t+1} = 0{,}99\,x_t + \eta_{t+1}$, met $\eta$ een normale dagschok van 1,5 basispunt plus,
-gemiddeld eens in de drie jaar, een gecompenseerde sprong van gemiddeld 30 basispunten
-(exponentieel verdeeld). De positie heeft duration 5 en carry 1% per jaar. Het fonds begint
-met $E_0 = 1$ en $X = LE_0$, zet de positie elke maand terug op $L$ maal het vermogen, en
-moet verkopen zodra $E < hX$ met $h = 2\%$. Met fire sale verbreedt elke gedwongen verkoop
-van één eenheid beginvermogen de spread met 2 basispunten, een prijsdruk die daarna even
-snel terugloopt als de rest van de spread. We simuleren 4000 paden van 1260 handelsdagen,
-met dezelfde schokken voor elke hefboom.
+### Vier goede jaren van een convergence trade
+
+Nu zetten we [](#prop-risk-management-spiraal) op schaal, met duration 5 en haircut 2% uit
+het
+toy-voorbeeld. Een spreadafwijking in basispunten volgt $x_{t+1} = 0{,}99\,x_t + \eta_{t+1}$.
+De
+dagschok $\eta$ is normaal met een standaarddeviatie van 1,5 basispunt. Gemiddeld eens in de
+drie jaar komt daar een exponentieel verdeelde sprong van gemiddeld 30 basispunten bij, en
+het
+gemiddelde daarvan wordt afgetrokken.
+
+De positie levert een carry van 1% per jaar. Het fonds begint met vermogen 1, zet de positie
+elke maand terug op $L$ maal het vermogen, en moet verkopen zodra $E < hX$. We simuleren
+4000
+paden van 1260 handelsdagen, met dezelfde schokken voor elke hefboom. Eerst kijken we wat
+het
+fonds uit zijn eigen rendementen over de trade kan leren.
 
 ```{code-cell} ipython3
 N_FUND, T_FUND = 4000, 1260
@@ -741,6 +866,18 @@ pd.Series({"Sharpe-ratio (populatie, alle paden)": sr_true,
            "mediane Sharpe over 4 jaar, zonder sprong": np.median(sr_4y[no_jump_4y]),
            "mediane Sharpe over 4 jaar, met sprong": np.median(sr_4y[~no_jump_4y])}).round(3)
 ```
+
+De trade heeft een Sharpe-ratio van 0,58, maar de scheefheid van de dagrendementen is $-21$,
+zodat er bijna altijd een beetje winst is en zelden een groot verlies. In 27% van de
+vierjaarsperiodes komt geen sprong voor, en daar is de mediane Sharpe-ratio met 0,88 veel
+hoger. Een fonds met
+vier goede jaren achter de rug, zoals LTCM in 1994–1997, kan dus met reden denken dat zijn
+trade
+beter is dan ze is.
+
+De functie hieronder laat het fonds elke dag zijn vermogen bijwerken, verkopen zodra het
+vermogen onder de haircut zakt en elke maand de hefboom herstellen. We draaien de functie
+eerst zonder prijsdruk.
 
 ```{code-cell} ipython3
 def run_fund(leverage, kappa):
@@ -777,10 +914,33 @@ fund_no_fs = pd.DataFrame({L: run_fund(L, 0.0) for L in LEVERAGES}).T
 fund_no_fs.round(3)
 ```
 
+Zonder prijsdruk stijgt de kans op ruïne binnen vijf jaar van 0,2% bij hefboom 10 naar
+11,3% bij hefboom 25, terwijl de mediane eindwaarde stijgt van 1,57 naar 2,56 keer het
+beginvermogen. Het typische pad beloont de hefboom dus, en de staart straft hem. In de
+tweede run laat elke gedwongen verkoop van één eenheid beginvermogen de spread met 2
+basispunten verbreden, een *fire sale* (een gedwongen verkoop die de prijs drukt) waarvan
+de druk even snel wegebt als de rest van de spread.
+
 ```{code-cell} ipython3
 fund_fs = pd.DataFrame({L: run_fund(L, KAPPA_FS) for L in LEVERAGES}).T
 pd.concat({"zonder fire sale": fund_no_fs, "met fire sale": fund_fs}, axis=1).round(3)
 ```
+
+Met prijsdruk blijft de kans op een margin call gelijk, want de eerste call komt vóór elke
+gedwongen verkoop. De kans op ruïne stijgt bij hefboom 25 wel, van 11,3% naar 23,6%,
+terwijl er bij hefboom 10 of minder geen verschil is. Dezelfde trade gaat dus bij een
+hogere hefboom vaker failliet, en met eigen prijsdruk nog vaker, zoals we verwachtten.
+
+Waarom de prijsdruk pas bij hoge hefboom telt, volgt uit $\theta$ in
+[](#prop-risk-management-spiraal). De prijsimpact is hier 2 basispunten per eenheid
+beginvermogen, twee keer die van het toy-voorbeeld, waar een verkoop van 100 bij vermogen
+100 de spread 1 basispunt verbreedde. Bij een call is de positie ongeveer $L$ keer het
+beginvermogen, zodat $\theta = XD\kappa/h \approx 0{,}05\,L$. Bij hefboom 10 is $\theta$
+dus 0,5 en komt het fonds bovendien zelden aan zijn limiet, want de kans op een margin
+call is daar 0,9%. Bij hefboom 20 is $\theta$ precies 1 en bij hefboom 25 al groter dan 1,
+zodat de spiraal volgens de propositie divergeert. In de figuur is dat de afstand tussen
+de twee
+ruïnelijnen boven hefboom 20.
 
 ```{code-cell} ipython3
 :label: cel-risk-management-ltcm-sim
@@ -801,25 +961,11 @@ plt.show()
 :label: fig-risk-management-ltcm-sim
 :width: 90%
 
-De Sharpe-ratio van de trade is bij elke hefboom dezelfde; de kans op een margin call en op
-ruïne binnen vijf jaar stijgt steil met de hefboom. Vanaf hefboom 25 verdubbelt de prijsdruk
-van de eigen verkopen de kans op ruïne ruimschoots; tot hefboom 10 doet ze er niet toe.
+De Sharpe-ratio van de trade is bij elke hefboom dezelfde, maar de kans op een margin call en
+op ruïne binnen vijf jaar stijgt steil met de hefboom. Vanaf hefboom 25 verdubbelt de eigen
+prijsdruk de kans op ruïne ruimschoots, terwijl ze tot hefboom 10 geen rol speelt.
 :::
 
-De trade heeft een Sharpe-ratio van 0,58, een volatiliteit van 1,7% per jaar en een
-scheefheid van de dagrendementen van $-21$: bijna altijd een beetje winst, zelden een groot
-verlies. In 27% van de vierjaarsperiodes komt geen sprong voor, en daar is de mediane
-gerealiseerde Sharpe-ratio 0,88. Een fonds met vier goede jaren achter de rug, zoals LTCM in
-1994–1997, kan met reden denken dat zijn trade beter is dan ze is: vier jaar data zeggen
-weinig over een gemiddelde en niets over een sprong die eens in de drie jaar komt.
-
-Zonder fire sale is de kans op ruïne binnen vijf jaar 0,2% bij $L = 10$, 6,1% bij 20, 11,3%
-bij 25 en 16,8% bij 30, terwijl de mediane eindwaarde stijgt van 1,57 naar 2,85 keer het
-beginvermogen: het typische pad beloont hefboom, de staart straft haar. Met fire sale blijft
-de kans op een margin call gelijk, want de eerste call komt vóór elke gedwongen verkoop,
-maar stijgt de kans op ruïne bij $L = 25$ naar 23,6% en bij $L = 30$ naar 39,7%. Bij
-$L \le 10$ is er geen verschil: prijsdruk kost alleen iets bij een fonds dat vaak tegen zijn
-limiet aan zit, zoals [](#prop-risk-management-spiraal) voorspelt.
 
 ## Replicatie op echte data
 
@@ -828,27 +974,29 @@ limiet aan zit, zoals [](#prop-risk-management-spiraal) voorspelt.
 ```{admonition} Replicatie
 :class: seealso
 
-**Bron.** J.P. Morgan/Reuters, *RiskMetrics — Technical Document*, vierde editie 1996
-{cite}`JPMorganReuters1996`; Basle Committee on Banking Supervision, *Supervisory
-framework for the use of "backtesting"*, 1996 {cite}`BCBS1996b`; Kupiec 1995
-{cite}`Kupiec1995`; Christoffersen 1998 {cite}`Christoffersen1998`.
+**Bron.** Het rekenrecept komt uit RiskMetrics {cite}`JPMorganReuters1996` en de zones uit het
+Bazelse backtestkader {cite}`BCBS1996b`. De toetsen zijn van {cite:t}`Kupiec1995` en
+{cite:t}`Christoffersen1998`.
 
-**Wat.** Tabel 2 van het Bazelse kader (hierboven al exact gereproduceerd), $\lambda = 0{,}94$
-uit §5.3.2.2 van RiskMetrics, en de toetsen [](#eq-risk-management-kupiec) en
-[](#eq-risk-management-christoffersen) op een 99%-VaR voor één dag.
+**Wat.** De toetsen [](#eq-risk-management-kupiec) en [](#eq-risk-management-christoffersen) op
+een 99%-VaR voor één dag, met $\lambda = 0{,}94$ uit RiskMetrics. Tabel 2 van het Bazelse kader
+staat al hierboven.
 
-**Data hier.** Kenneth French Data Library, dagelijks marktrendement (`Mkt` = `Mkt-RF` +
-`RF`) 1963-07 t/m 2026-07 via `hap.data.market_daily()`; backtest 1990-01 t/m 2026-07.
+**Data hier.** Het dagelijkse marktrendement uit de Kenneth French Data Library via
+`hap.data.market_daily()`. De backtest loopt van januari 1990 tot juli 2026.
 
-**Verschil met het origineel.** Bazel toetst handelsresultaten met wisselende posities, wij
-een vaste positie in één index; RiskMetrics schatte $\lambda$ op 480 reeksen, wij passen het
-toe op één. GARCH schatten we eenmaal op 1963–1989, zodat de backtest niet vooruitkijkt.
+**Verschil met het origineel.** Bazel toetst handelsresultaten met wisselende posities, en wij
+een vaste positie in één index. GARCH schatten we eenmaal op 1963–1989, zodat de backtest niet
+vooruitkijkt.
 
-**Verwachte afwijking.** Het statische normale model moet duidelijk meer dan 1%
-overschrijdingen hebben, geclusterd in crisisjaren, en door Christoffersen worden verworpen.
-EWMA en GARCH moeten dichter bij 1% zitten maar erboven, door hun normale staarten. Het teken
-van die afwijkingen en de rangorde statisch > aanpassend moeten kloppen.
+**Verwachte afwijking.** Het statische normale model heeft duidelijk meer dan 1%
+overschrijdingen, geclusterd in crisisjaren. EWMA en GARCH zitten dichter bij 1% maar erboven,
+door hun normale staart.
 ```
+
+We bouwen de vier VaR-reeksen, elk met alleen informatie tot en met de dag ervoor, en
+schatten
+GARCH op de jaren vóór 1990.
 
 ```{code-cell} ipython3
 market = hap_data.market_daily()["Mkt"].loc["1963-07-01":]
@@ -870,6 +1018,10 @@ hits_bt = var_bt.lt(loss_bt, axis=0).astype(int)
 garch_fit.params.round(4)
 ```
 
+Het GARCH-model heeft $a = 0{,}092$ en $b = 0{,}905$, een persistentie van 0,997, en ligt
+dus dicht bij de EWMA van RiskMetrics, waarvoor $a + b$ precies 1 is. Daarna tellen we per
+model de overschrijdingen, de toetsen en de zones per volledig jaar.
+
 ```{code-cell} ipython3
 full_years = hits_bt.loc[:"2025"]
 by_year = full_years.groupby(full_years.index.year)
@@ -890,10 +1042,40 @@ for name in hits_bt:
 pd.DataFrame(summary_bt).T.round(3)
 ```
 
+De tabel hieronder zet de kern van die uitkomst naast een juist model, dat op 1% van de
+dagen wordt overschreden.
+
+| model | overschrijdingen hier (%) | juist model (%) | rode jaren (van 36) | $\mathrm{LR}_{\mathrm{ind}}$ (kritiek 3,84) |
+|---|---|---|---|---|
+| statisch normaal | 3,26 | 1 | 11 | 27,3 |
+| historisch 250 dagen | 1,63 | 1 | 2 | 23,9 |
+| EWMA 0,94 | 1,98 | 1 | 2 | 6,0 |
+| GARCH(1,1) | 2,15 | 1 | 1 | 4,2 |
+
+**Geslaagd.** Teken en rangorde kloppen met wat we vooraf verwachtten. Het statische model
+wordt
+ruim drie keer zo vaak overschreden als het hoort, en het heeft 29 keer twee
+overschrijdingen op
+rij, waar bij zijn eigen frequentie $9211 \times 0{,}0326^2 \approx 9{,}8$ te verwachten
+zijn. De
+aanpassende modellen zitten dichter bij 1%, maar erboven. Over 36 jaar verwerpt
+Christoffersen
+alle vier, omdat de toets met 9211 dagen de kracht heeft die hij met 250 mist. Voor de
+crisisjaren zetten we de overschrijdingen per jaar naast elkaar.
+
 ```{code-cell} ipython3
 yearly = hits_bt.groupby(hits_bt.index.year).sum()
 yearly.loc[[1997, 1998, 1999, 2000, 2002, 2007, 2008, 2009, 2011, 2020, 2022]]
 ```
+
+In 1998 is alleen het statische model rood, omdat de andere zich binnen weken aanpasten.
+In 2008 zijn het statische en het historische model rood, en in 2020 worden ook EWMA en
+GARCH rood, terwijl het statische model met 23 overschrijdingen nog ver boven hen uitkomt.
+In 2008 bouwde de volatiliteit zich namelijk over maanden op, zodat EWMA en GARCH konden
+meelopen, terwijl de volatiliteit in februari 2020 sprong vanuit een van de rustigste
+periodes van de steekproef. Een model dat van gisteren leert, ziet zo'n sprong niet
+aankomen. De eerste figuur toont de overschrijdingen per jaar als staven, met de grenzen
+van geel en rood als lijnen.
 
 ```{code-cell} ipython3
 :label: cel-risk-management-jaren
@@ -919,10 +1101,11 @@ plt.show()
 :label: fig-risk-management-jaren
 :width: 100%
 
-Het statische normale model is rood rond 2000 en in 2008 en haast groen in de rustige jaren:
-zijn overschrijdingen clusteren. De aanpassende modellen zijn meestal groen of geel, maar het
-historische model is rood in 2008 en 2022, EWMA in 2007 en 2020 en GARCH in 2020.
+Het statische normale model is rood in elf van de 36 jaren, vooral rond 2000, rond 2008 en in 2020 en 2022, en in de rustige jaren meestal groen, omdat zijn overschrijdingen clusteren. De aanpassende modellen zijn meestal groen of geel, maar het historische model is rood in 2008 en 2022, EWMA in 2007 en 2020 en GARCH in 2020.
 :::
+
+De tweede figuur zoomt in op 2008 en 2020, en laat zien hoe snel elke VaR-lijn de verliezen
+volgt.
 
 ```{code-cell} ipython3
 :label: cel-risk-management-crises
@@ -948,57 +1131,39 @@ plt.show()
 :label: fig-risk-management-crises
 :width: 100%
 
-In 2008 liep de volatiliteit in weken op en EWMA en GARCH liepen mee; het historische model
-steeg in trappen en bleef daarna een jaar te hoog. In februari 2020 stond de VaR van alle
+In 2008 liep de volatiliteit in weken op en liepen EWMA en GARCH mee, terwijl het historische
+model in trappen steeg en daarna een jaar te hoog bleef. In februari 2020 stond de VaR van alle
 modellen laag toen de eerste grote verliezen kwamen.
 :::
 
-Het GARCH-model heeft $a = 0{,}092$ en $b = 0{,}905$, een persistentie van 0,997, dicht bij
-de IGARCH van RiskMetrics. Het statische model wordt op 3,3% van de 9211 dagen overschreden,
-is in 11 van de 36 volle jaren rood en heeft 29 keer twee overschrijdingen op rij, waar bij
-zijn eigen frequentie ongeveer tien te verwachten zijn. Historische simulatie (1,6%), EWMA
-(2,0%) en GARCH (2,2%) zitten dichter bij 1%, met twee, twee en één rood jaar. Over 36 jaar
-verwerpt Christoffersen alle vier met een $p$-waarde van nul: met 9211 dagen heeft de toets
-de kracht die hij met 250 mist, en dan is ook 2% te veel. $\mathrm{LR}_{\mathrm{ind}}$
-scheidt de modellen wel: 27,3 en 23,9 voor statisch en historisch, 6,0 en 4,2 voor EWMA en
-GARCH, bij een kritieke waarde van 3,84.
-
-In 1998 is het statische model rood (16) en zijn de andere groen of geel (5, 7, 9). Op 4, 27
-en 31 augustus werden alle vier overschreden; de zes overschrijdingen tussen 10 september en
-5 oktober kwamen alleen nog bij het statische model, omdat de andere zich in weken hadden
-aangepast. In 2008 zijn het statische (38) en het historische model (15) rood, EWMA (7) en
-GARCH (9) geel. In 2020 zijn EWMA (12) en GARCH (11) rood. De verwachting klopt in teken en
-rangorde, maar de snelle modellen falen niet in 2008 maar in 2020: in 2008 bouwde de
-volatiliteit zich over maanden op, in februari 2020 sprong ze vanuit een van de rustigste
-periodes van de steekproef. Een model dat van gisteren leert, ziet een sprong vanuit rust
-niet aankomen.
 
 ### De spreads van 1998
 
 ```{admonition} Replicatie
 :class: seealso
 
-**Bron.** President's Working Group on Financial Markets, *Hedge Funds, Leverage, and the
-Lessons of Long-Term Capital Management*, april 1999 {cite}`PresidentsWorkingGroup1999`;
-Jorion 2000 {cite}`Jorion2000`.
+**Bron.** Het rapport van de Working Group on Financial Markets van de Amerikaanse president
+over LTCM, april 1999 {cite}`PresidentsWorkingGroup1999`. Een analyse van de risicobeheersing
+van het fonds staat in {cite:t}`Jorion2000`.
 
-**Wat.** Het rapport (p. 12 en 16): na de Russische devaluatie en het moratorium van 17
-augustus 1998 "risk spreads and liquidity premiums rose sharply in markets around the
-world", terwijl LTCM "was betting in general that liquidity, credit and volatility spreads
-would narrow from historically high levels".
+**Wat.** Het rapport beschrijft hoe risico- en liquiditeitspremies na de Russische devaluatie
+van 17 augustus 1998 wereldwijd sterk stegen (p. 12). LTCM had juist gewed dat die spreads
+zouden dalen (p. 16).
 
-**Data hier.** FRED, dagelijks: `BAA10Y` en `AAA10Y` (Moody's Baa- en Aaa-rendementen min de
-tienjaars staatsrente), `TEDRATE` (driemaands Eurodollar min T-bill) en `DGS10`, via
-`hap.data.fred(...)`.
+**Data hier.** Dagelijkse FRED-reeksen via `hap.data.fred(...)`. We gebruiken de Baa- en
+Aaa-spread van Moody's boven de tienjaarsrente, de TED-spread en de tienjaarsrente zelf.
 
-**Verschil met het origineel.** De posities van LTCM zijn niet publiek; we tonen alleen dat
-het soort spreads waarop het fonds wedde, verbreedde. Swap spreads staan voor 1998 niet
-gratis in FRED (`DSWP10` begint in juli 2000).
+**Verschil met het origineel.** De posities van LTCM zijn niet publiek, dus we tonen alleen dat
+het soort spreads waarop het fonds wedde, verbreedde. Swap spreads staan pas vanaf juli 2000
+gratis in FRED.
 
-**Verwachte afwijking.** Alle drie de spreads moeten tussen half augustus en half oktober
-1998 met tientallen basispunten verbreden, veel meer dan de dagschommelingen van 1997
-verwachten, terwijl de tienjaars staatsrente daalt (vlucht naar kwaliteit).
+**Verwachte afwijking.** Alle drie de spreads verbreden tussen half augustus en half oktober
+met tientallen basispunten, veel meer dan de dagschommelingen van 1997 doen verwachten. De
+tienjaarsrente daalt, omdat beleggers naar kwaliteit vluchten.
 ```
+
+We meten de verbreding vanaf 14 augustus tot het extreem in de drie maanden erna, en drukken
+die uit in de dagschommelingen van 1997.
 
 ```{code-cell} ipython3
 spreads = pd.concat([hap_data.fred(s)[s] for s in ["BAA10Y", "AAA10Y", "TEDRATE", "DGS10"]], axis=1, sort=True)
@@ -1014,6 +1179,16 @@ pd.DataFrame({"14 aug 1998 (%)": before, "extreem aug-okt (%)": extreme, "datum"
               "SD dagverandering 1997 (bp)": 100 * sd_1997,
               "in SD's (sqrt-tijd)": (extreme - before) / (sd_1997 * np.sqrt(n_days_move))}).round(2)
 ```
+
+**Geslaagd.** De bedrijfsobligatiespreads verbreedden met 84 (Aaa) en 103 basispunten
+(Baa), terwijl de tienjaarsrente daalde. Een getal uit het origineel staat er niet naast,
+omdat het rapport de verbreding alleen beschrijft en wij laten zien dat dit soort spreads
+meebewoog. Opgeschaald met de wortel uit het aantal
+handelsdagen zijn de bewegingen van de bedrijfsobligatiespreads ruim zes
+standaarddeviaties van 1997. De TED-spread schommelde in 1997 al sterk en blijft onder
+drie. Zes standaarddeviaties bewijzen niet dat de wereld niet normaal is, want 1997 was
+rustig, maar ze laten wel zien wat een model ziet dat in een rustige periode is geschat.
+De figuur toont de sprong na de lijn van 17 augustus.
 
 ```{code-cell} ipython3
 :label: cel-risk-management-spreads
@@ -1038,82 +1213,124 @@ plt.show()
 :width: 90%
 
 Na 17 augustus verbreedden de bedrijfsobligatiespreads en de TED-spread in weken met meer dan
-tachtig basispunten; de piek viel pas in oktober, na de redding van LTCM, en begin 1999 waren
+tachtig basispunten. De piek viel pas in oktober, na de redding van LTCM, en begin 1999 waren
 de bedrijfsobligatiespreads nog niet terug op hun niveau van juli 1998.
 :::
 
-Tussen 14 augustus en 16 oktober 1998 verbreedde de Baa-spread met 103, de Aaa-spread met 84
-en de TED-spread met 87 basispunten; de tienjaarsrente daalde tot 5 oktober met 124
-basispunten. Gemeten in de dagschommelingen van 1997, opgeschaald met de wortel uit het aantal
-handelsdagen, zijn de bewegingen in de bedrijfsobligatiespreads 6,6 standaarddeviaties, met
-onder normaliteit een kans van ongeveer twee op honderd miljard. Dat bewijst niet dat de
-wereld niet normaal is (1997 was rustig, en dagveranderingen van Moody's-reeksen zijn niet
-onafhankelijk), maar het is wat een model ziet dat "during more stable periods" is geschat.
+Die beweging is groot naast de drempels uit toy-deel (c). Een fonds met hefboom 25 krijgt
+zijn margin call na 40 basispunten en is failliet na 80, zodat een beweging als die van de
+Aaa-spread genoeg is. Met hefboom 10 had hetzelfde fonds niet eens een margin call
+gekregen. De werkelijke posities en haircuts van LTCM kennen we niet, maar het rapport
+beschrijft wel de afloop (p. 12–14):
 
-Naast toy-voorbeeld (c): een fonds met hefboom 25, duration 5 en haircut 2% krijgt zijn
-margin call na 40 basispunten en is failliet na 80, dus een beweging als die van de
-Aaa-spread is genoeg; met hefboom 10 was er geen margin call geweest. De werkelijke posities,
-durations en haircuts van LTCM kennen we niet. Het rapport geeft wel de afloop: 4,1 miljard
-kapitaal op 31 juli, 1,8 miljard verlies in augustus, en op 23 september nam een consortium
-van veertien instellingen, bijeengebracht bij de Federal Reserve Bank of New York, voor
-ongeveer 3,6 miljard dollar 90% van het fonds over (p. 12–14). Het vaak genoemde
-totaalverlies van ongeveer 4,6 miljard dollar {cite}`Lowenstein2000` hebben we niet in een
-primaire bron kunnen verifiëren.
+- op 31 juli had het fonds 4,1 miljard dollar kapitaal
+- in augustus verloor het 1,8 miljard
+- op 23 september nam een consortium van veertien instellingen, bijeengebracht door de
+  Federal
+  Reserve Bank of New York, voor ongeveer 3,6 miljard dollar 90% van het fonds over.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het model verklaart.** VaR gaf risicobeheer een gemeenschappelijke taal en een getal
-voor limieten en kapitaal. Het gebruikt wat meetbaar is, het tweede moment, en laat weg wat
-niet meetbaar is. Het werkt redelijk: in onze backtest liggen de aanpassende modellen op
-1,6 tot 2,2% overschrijdingen tegen 3,3% voor een statisch model, meestal in het groene of
-gele gebied. Kupiec en Christoffersen maakten een risicomodel weerlegbaar, en de
-coherentie-axioma's belandden in 2016 in de regels.
+**Wat het model verklaart.** VaR gaf risicobeheer een gemeenschappelijke taal en één getal
+voor
+limieten en kapitaal. Het gebruikt wat goed meetbaar is, het tweede moment, en laat weg
+wat dat
+niet is. In onze backtest werkt dat redelijk, want de aanpassende modellen liggen op 1,6 tot
+2,2% overschrijdingen tegen 3,3% voor een statisch model. Kupiec en Christoffersen maakten
+een
+risicomodel weerlegbaar, en de coherentie-axioma's kwamen in 2016 in de regels.
 
-**Waar het breekt.** Waar het getal niets over zegt. Een 99%-VaR die in 2020 twaalf keer
-wordt overschreden, is geen goed model met pech. Het soort spreads waarop LTCM wedde, bewoog
-in twee maanden ruim zes standaarddeviaties; het rapport schreef dat de verliezen "greatly
-exceeded what conventional risk models, estimated during more stable periods, suggested were
-probable" (p. 12). Santa-Clara: LTCM en "the whole dealer system in 2008 had risk
-departments, models and limits, and were destroyed by losses their models had called
-impossible" {cite}`SantaClara2026`. Het diepste gebrek was de aanname dat een positie tegen
-de marktprijs kan worden gesloten: in onze simulatie heeft dezelfde trade met dezelfde
-Sharpe-ratio een kans op ruïne van bijna nul of bijna een op vier, afhankelijk van hefboom en
-eigen prijsdruk.
+**Waar het breekt.** Het breekt op de dagen waarover het getal niets zegt. Een 99%-VaR die
+in
+2020 twaalf keer wordt overschreden, is geen goed model met pech. De spreads waarop LTCM
+wedde,
+bewogen in twee maanden ruim zes standaarddeviaties, en volgens het rapport waren de
+verliezen
+veel groter dan modellen uit rustiger tijden waarschijnlijk vonden (p. 12). Het diepste
+gebrek
+was de aanname dat een positie tegen de marktprijs kan worden gesloten. In onze simulatie
+heeft
+dezelfde trade daardoor een kans op ruïne van bijna nul of bijna een op vier, afhankelijk
+van
+hefboom en eigen prijsdruk.
 
-**Risico of vergissing?** De Chicago-lezing: de spreads van 1997 waren een beloning voor
-liquiditeits- en crashrisico, en augustus 1998 was de slechte toestand waarvoor die beloning
-werd betaald. LTCM droeg beprijsd risico met te weinig kapitaal, en dat het fonds de toestand
-niet overleefde, bewijst niet dat de prijzen verkeerd waren. De Yale-lezing, van
-{cite:t}`ShleiferVishny1997`: de spreads werden groter dan hun fundamentele waarde *omdat*
-arbitrageurs moesten verkopen, en LTCM dacht iets te weten wat de prijs niet wist. Dat de
-spreads begin 1999 deels terugliepen, past bij beide. Scheiden zou kunnen met de posities en
-verkopen van de arbitrageurs, gekoppeld aan hoe snel spreads daarna terugliepen; die data is
-voor 1998 niet publiek, en één episode is geen steekproef. Het praktijkmotief zegt hier iets
-over het fonds, niet over de prijzen: het rendement kwam uit beprijsd risico, het verlies uit
-de overtuiging dat de hefboom veilig was.
+**Risico of vergissing?** De Chicago-lezing ziet in de spreads van 1997 een beloning voor
+liquiditeits- en crashrisico, en in augustus 1998 de slechte toestand waarvoor die
+beloning werd
+betaald. LTCM droeg dan risico met een premie, alleen met te weinig kapitaal. De
+Yale-lezing van
+{cite:t}`ShleiferVishny1997` ziet spreads die groter werden dan hun fundamentele waarde
+*omdat*
+arbitrageurs moesten verkopen. De posities en verkopen van arbitrageurs zouden de lezingen
+kunnen scheiden, maar die data zijn niet publiek, en één episode is geen steekproef. Wel
+zegt
+Santa-Clara's onderscheid tussen premie en vermeend inzicht iets over het fonds. Het
+rendement
+kwam uit risico met een premie, en het verlies uit het geloof dat de hefboom veilig was.
 
 **Wat er daarna kwam.** Als arbitrageurs een mispricing niet kunnen wegwerken omdat hun
-financiering verdwijnt, is de vraag wie de prijzen dan zet en waarom beleggers afwijken:
-[behavioral finance en limits of arbitrage](#04-23-behavioral).
+financiering verdwijnt, wordt de vraag wie de prijzen dan zet en waarom beleggers zich
+vergissen. Daarover gaat [het college over gedrag en de grenzen van arbitrage](#04-23-behavioral).
 
 ## Oefeningen
 
 :::{exercise}
 :label: ex-risk-management-1
 
-**ES en VaR bij dikke staarten.** Laat $L = \sigma T_\nu\sqrt{(\nu-2)/\nu}$ met $T_\nu$
-Student-$t$, zodat $\SD(L) = \sigma$.
+**Instap: de hefboom uit het toy-voorbeeld.** Neem toy-deel (c). Duration en haircut blijven 5
+en 2%, en alleen de hefboom verandert.
 
-1. Laat zien dat $\mathrm{ES}_\alpha(T_\nu) = \dfrac{f_\nu(t_\alpha)}{1-\alpha}\cdot\dfrac{\nu + t_\alpha^2}{\nu-1}$,
-   met $f_\nu$ de dichtheid en $t_\alpha$ het $\alpha$-kwantiel van $T_\nu$.
-2. Bereken voor $\nu \in \{4, 6, 10, \infty\}$ de verhouding $\mathrm{ES}_{0{,}975}/\mathrm{VaR}_{0{,}99}$.
-3. Wat betekent dat voor het kapitaal onder de regels van 2016 tegenover 1996?
+1. Bereken met [](#eq-risk-management-drempel) de drempels voor margin call en ruïne bij
+   hefboom 15 en 20.
+2. Wat is de hoogste hefboom waarbij het fonds geen margin call krijgt bij een verbreding van
+   84 basispunten, de beweging van de Aaa-spread in 1998?
 :::
 
 :::{solution} ex-risk-management-1
 :class: dropdown
 
-**(1)** Differentieer $f_\nu(t) \propto (1+t^2/\nu)^{-(\nu+1)/2}$: dan is
+**(1)** Bij hefboom 20 komt de margin call na $(1 - 0{,}4)/(20 \times 5) = 0{,}006$, dus 60
+basispunten, en de ruïne na $1/100$, dus 100 basispunten. Bij hefboom 15 is dat
+$(1 - 0{,}3)/75 \approx 0{,}00933$, dus 93,3 basispunten, en $1/75$, dus 133,3 basispunten.
+
+**(2)** Geen margin call betekent $(1 - hL)/(LD) \ge 0{,}0084$, dus
+$1 \ge L\,(h + 0{,}0084\,D) = 0{,}062\,L$, en $L \le 16{,}1$.
+
+```{code-cell} ipython3
+def thresholds_bp(leverage, duration=D, haircut=H):
+    """Spread widening in basis points at which the margin call and ruin arrive."""
+    call = (1 - haircut * leverage) / (leverage * duration)
+    ruin = 1 / (leverage * duration)
+    return 1e4 * call, 1e4 * ruin
+
+
+max_leverage = 1 / (H + 0.0084 * D)
+print(f"hoogste hefboom zonder margin call bij 84 bp: {max_leverage:.1f}")
+pd.DataFrame({L: thresholds_bp(L) for L in (10, 15, 20, 25)},
+             index=["margin call (bp)", "ruïne (bp)"]).T.round(1)
+```
+
+Van hefboom 10 naar 20 daalt de afstand tot de margin call van 160 naar 60 basispunten, dus met
+meer dan de helft. Een hogere hefboom verhoogt namelijk zowel het verlies per basispunt als het
+vereiste onderpand.
+:::
+
+:::{exercise}
+:label: ex-risk-management-2
+
+**ES en VaR bij dikke staarten.** Laat $L = \sigma T_\nu\sqrt{(\nu-2)/\nu}$ met $T_\nu$
+Student-$t$. Dan is $\SD(L) = \sigma$, zodat alleen de staart verandert.
+
+1. Laat zien dat $\mathrm{ES}_\alpha(T_\nu) = \dfrac{f_\nu(t_\alpha)}{1-\alpha}\cdot\dfrac{\nu + t_\alpha^2}{\nu-1}$,
+   met $f_\nu$ de dichtheid en $t_\alpha$ het $\alpha$-kwantiel van $T_\nu$.
+2. Bereken voor $\nu \in \{4, 6, 10, \infty\}$ de verhouding $\mathrm{ES}_{0{,}975}/\mathrm{VaR}_{0{,}99}$.
+3. Wat betekent dat voor het kapitaal onder de regels van 2016 tegenover die van 1996?
+:::
+
+:::{solution} ex-risk-management-2
+:class: dropdown
+
+**(1)** Differentieer $f_\nu(t) \propto (1+t^2/\nu)^{-(\nu+1)/2}$. Dan is
 $\frac{\mathrm{d}}{\mathrm{d}t}\left[\frac{\nu+t^2}{\nu-1}f_\nu(t)\right] = -t f_\nu(t)$, dus
 $\int_{t_\alpha}^\infty t f_\nu(t)\,\mathrm{d}t = \frac{\nu+t_\alpha^2}{\nu-1}f_\nu(t_\alpha)$.
 Deel door $1-\alpha$.
@@ -1137,56 +1354,20 @@ pd.DataFrame({nu: {"VaR 99%": t_scaled(0.99, nu)[0], "ES 97,5%": t_scaled(0.975,
               for nu in (4, 6, 10, np.inf)}).T.round(3)
 ```
 
-De verhouding is 1,005 bij normaliteit, 1,020 bij $\nu = 10$, 1,036 bij $\nu = 6$ en 1,066
-bij $\nu = 4$. Bij gelijke volatiliteit ligt de 99%-VaR van een dikstaartige verdeling al
-hoger (2,65 tegen 2,33 bij $\nu = 4$), en de ES stijgt nog iets meer. De overstap laat het
-kapitaal onder normaliteit gelijk en maakt dikke staarten duurder, precies de zwakte die
-Santa-Clara noemt. (De kalibratie op een stressperiode in 2016 zit niet in deze oefening.)
-:::
-
-:::{exercise}
-:label: ex-risk-management-2
-
-**Tabel 1 van Bazel.** (1) Bereken voor 250 dagen de kans dat een model met ware dekking
-98%, 97% en 95% groen is; vergelijk met de "type 2"-kolom bij vijf overschrijdingen in tabel
-1 van het kader (43,9%, 12,8%, 0,5%). (2) Hoeveel dagen zijn nodig voordat Kupiec op 5% een
-model met 98% dekking in minstens 80% van de gevallen verwerpt?
-:::
-
-:::{solution} ex-risk-management-2
-:class: dropdown
-
-```{code-cell} ipython3
-green = {c: round(float(stats.binom.cdf(4, 250, 1 - c)), 3) for c in (0.98, 0.97, 0.95)}
-print("P(groen):", green)
-
-
-def kupiec_power(T, coverage, level=0.05):
-    """Exact power of the Kupiec POF test against a model with the given true coverage."""
-    x = np.arange(T + 1)
-    pi_hat = x / T
-    lr = -2 * ((xlogy(T - x, 0.99) + xlogy(x, 0.01)) - (xlogy(T - x, 1 - pi_hat) + xlogy(x, pi_hat)))
-    return stats.binom.pmf(x, T, 1 - coverage)[lr > stats.chi2.ppf(1 - level, 1)].sum()
-
-
-T_needed = next(T for T in range(250, 5000, 10) if kupiec_power(T, 0.98) >= 0.80)
-print(f"dagen nodig voor 80% kracht tegen 98% dekking: {T_needed} (= {T_needed / 250:.1f} jaar)")
-```
-
-De kansen zijn 43,9%, 12,8% en 0,5%, precies tabel 1. Voor 80% kracht zijn ruim vier jaar
-dagdata nodig; door de discrete verdeling stijgt de kracht niet monotoon, dus het precieze
-getal kan een paar dagen verschuiven. Een zeldzame gebeurtenis meten is als een gemiddeld
-rendement meten: de standaardfout daalt met $1/\sqrt{T}$, en de grootheid zelf is klein.
+**(2) en (3)** De verhouding stijgt van 1,005 bij normaliteit naar 1,066 bij $\nu = 4$. Bij
+gelijke volatiliteit ligt de 99%-VaR van een dikstaartige verdeling al hoger, 2,65 tegen 2,33
+bij $\nu = 4$, en de ES stijgt nog iets meer. De overstap laat het kapitaal onder normaliteit
+dus gelijk en maakt dikke staarten duurder, precies waar Santa-Clara de zwakte van VaR zag.
 :::
 
 :::{exercise}
 :label: ex-risk-management-3
 
-**Filtered historical simulation.** Voeg aan de backtest van 1990–2026 toe: (i) GARCH(1,1)
-met gestandaardiseerde Student-$t$-schokken, geschat op 1963–1989; (ii) filtered historical
-simulation: deel de rendementen door de EWMA-volatiliteit, neem het 1%-kwantiel van de
-gestandaardiseerde rendementen over 1000 dagen, en vermenigvuldig met de EWMA-volatiliteit
-van morgen. Rapporteer overschrijdingen, rode jaren en de aantallen in 1998, 2008 en 2020.
+**Filtered historical simulation.** Voeg aan de backtest van 1990–2026 twee modellen toe. Het
+eerste is GARCH(1,1) met gestandaardiseerde Student-$t$-schokken, geschat op 1963–1989. Het
+tweede is filtered historical simulation, die de rendementen deelt door de EWMA-volatiliteit en
+het 1%-kwantiel over 1000 dagen vermenigvuldigt met de EWMA-volatiliteit van morgen. Rapporteer
+overschrijdingen, rode jaren en de aantallen in 1998, 2008 en 2020.
 :::
 
 :::{solution} ex-risk-management-3
@@ -1215,11 +1396,8 @@ pd.DataFrame({name: {"nu": nu_hat if name == "GARCH-t" else np.nan,
                      "2020": yearly_extra.loc[2020, name]} for name in extra}).T.round(3)
 ```
 
-Met $t$-schokken ($\hat\nu = 7{,}4$) daalt het aantal GARCH-overschrijdingen van 198 naar 156
-(1,7%), maar 2020 blijft rood (10). FHS komt met 107 (1,16%) het dichtst bij 1%, zonder rood
-jaar, met vijf, vier en vier overschrijdingen in 1998, 2008 en 2020. De $t$-verdeling
-repareert de staart; FHS haalt de staart uit de data en het niveau uit EWMA, en pakt zo beide
-fouten uit de backtest aan. Geen van beide ziet de sprong vanuit rust: ook FHS wordt in 2020
-vaker overschreden dan de 2,5 keer die bij een juist model hoort. De meeste falen van VaR
-komen dus niet uit het idee maar uit de normale staart en de trage aanpassing.
+Met $t$-schokken ($\hat\nu = 7{,}4$) daalt het aantal GARCH-overschrijdingen van 198 naar 156,
+maar 2020 blijft rood. FHS komt met 1,16% het dichtst bij 1%, zonder rood jaar, omdat het de
+staart uit de data haalt en het niveau uit EWMA. Ook FHS wordt in 2020 iets vaker overschreden dan verwacht, maar blijft daar groen. De meeste fouten van VaR komen dus niet uit het idee zelf, maar
+uit de normale staart en de trage aanpassing.
 :::
