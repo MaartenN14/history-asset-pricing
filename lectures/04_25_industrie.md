@@ -279,11 +279,11 @@ geld een risicogecorrigeerd overrendement vóór kosten $R_{t+1} = a + e_{t+1}$,
 onafhankelijke ruis $e_{t+1} \sim N(0, \sigma^2)$ en $\sigma$ in de orde van $5\%$
 per jaar. Niemand kent $a$, ook de beheerder niet. De markt begint met de *prior*
 (de verdeling vóór de eerste waarneming) $a \sim N(\phi_0, \eta^2)$ en schrijft
-$\gamma = 1/\eta^2$ en $\omega = 1/\sigma^2$ voor de precisies. Met de regel van Bayes
+$\tau = 1/\eta^2$ en $\omega = 1/\sigma^2$ voor de precisies. Met de regel van Bayes
 is de verwachte vaardigheid na $t$ jaar
 
 $$
-\phi_t = \E[a \mid R_1,\dots,R_t] = \frac{\gamma \phi_0 + \omega \sum_{s=1}^{t} R_s}{\gamma + t\,\omega},
+\phi_t = \E[a \mid R_1,\dots,R_t] = \frac{\tau \phi_0 + \omega \sum_{s=1}^{t} R_s}{\tau + t\,\omega},
 $$
 
 een gewogen gemiddelde van de prior en de waarnemingen, zodat elk goed jaar
@@ -347,7 +347,7 @@ $\E[r_{t+1}] = 0$, dus de covariantie is nul.
 *Stap 4: de omvang stijgt met elk goed jaar.* In het inwendige geval geeft de
 omhullende-stelling $dq_t/d\phi_t = q_{a,t}/f > 0$. In het randgeval is
 $\phi_t = C(q_t)/q_t + f$, en $C(q)/q$ stijgt strikt omdat $C$ strikt convex is met
-$C(0) = 0$. Ten slotte is $\partial\phi_t/\partial R_s = \omega/(\gamma + t\omega) > 0$.
+$C(0) = 0$. Ten slotte is $\partial\phi_t/\partial R_s = \omega/(\tau + t\omega) > 0$.
 $\square$
 :::
 
@@ -1096,7 +1096,7 @@ fonds koopt, denkt iets te weten wat de prijs niet weet.
 **Wat er daarna kwam.** Elke alpha in dit college is gemeten tegen een
 factormodel, en de keuze van dat model bepaalde het antwoord. Het volgende college,
 [](#05-26-sdf-unificatie), laat zien dat elk zulk model een uitspraak is over één
-*stochastic discount factor* (SDF, de stochastische factor waarmee alle payoffs
+*stochastische discontofactor* $m$ (SDF, de factor waarmee alle payoffs
 worden verdisconteerd).
 
 ## Oefeningen
@@ -1162,7 +1162,7 @@ voorwaarde van de belegger geeft $f q_t = \phi_t q_a - b q_a^2 = \phi_t^2/(2b) -
 \phi_t^2/(4b) = \phi_t^2/(4b)$. De indexpositie $q_t - q_a = \phi_t(\phi_t - 2f)/(4bf)$
 is niet negatief als en slechts als $\phi_t \geq 2f$.
 
-**(2)** Met $\gamma = 1/0{,}01^2 = 10\,000$ en $\omega = 1/0{,}05^2 = 400$ is
+**(2)** Met $\tau = 1/0{,}01^2 = 10\,000$ en $\omega = 1/0{,}05^2 = 400$ is
 $\phi_1 = (10\,000 \times 0{,}03 + 400 \times 0{,}08)/10\,400 = 3{,}19\%$.
 
 ```{code-cell} ipython3

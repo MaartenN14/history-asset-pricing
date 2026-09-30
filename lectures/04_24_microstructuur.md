@@ -939,12 +939,12 @@ via `hap.data.yahoo` (dezelfde vijftig als in [](#03-14-roll)), de French-factor
 liquiditeitsreeksen van Stambaugh, 1962–2025, via een kleine lokale loader.
 
 **Verschil met het origineel.** Amihud en Roll gebruikten alle NYSE-aandelen uit CRSP en
-Amihud werkte met jaren, terwijl wij vijftig overlevers ([](#02-05-crsp-tape)) per maand
+Amihud werkte met jaren, terwijl wij vijftig overlevenden ([](#02-05-crsp-tape)) per maand
 volgen. De verhandelbare factor van Pástor en Stambaugh sorteert op historische in plaats
 van voorspelde bèta's.
 
 **Verwachte afwijking.** Het teken van $g_2$ moet negatief zijn, met een $t$-waarde ruim
-boven twee in absolute waarde. Voor $g_1$ verwachten we met 24 jaar van vijftig overlevers
+boven twee in absolute waarde. Voor $g_1$ verwachten we met 24 jaar van vijftig overlevenden
 geen significant verband. De alpha van de factor ligt lager dan in het artikel, omdat
 historische bèta's de toekomstige liquiditeitsbèta met ruis meten. De diepste maanden uit het artikel moeten bij de laagste
 van de bijgewerkte reeks zitten, en de correlatie van $\mathcal{L}_t$ met het
@@ -1051,7 +1051,7 @@ dezelfde maand. Een deel daarvan zit mechanisch in de
 constructie, omdat een koersdaling $|r|$ verhoogt en de dollaromzet verlaagt. De
 coëfficiënt $g_1$ op de vertraagde illiquiditeit is klein, negatief en niet significant.
 Om een voorspellend verband voor het marktrendement aan te tonen, zijn echter decennia nodig
-([](#04-20-voorspelbaarheid)), en 24 jaar van vijftig overlevers is daarvoor te kort. De
+([](#04-20-voorspelbaarheid)), en 24 jaar van vijftig overlevenden is daarvoor te kort. De
 figuur laat onder de maanden zien waarin de illiquiditeit boven het gemiddelde van het
 voorgaande jaar uitschiet.
 

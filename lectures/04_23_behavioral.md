@@ -320,7 +320,7 @@ $\tfrac{1{,}25}{3{,}25}(0{,}2 \cdot 0{,}798 - 0{,}01) = 5{,}75\%$. De exacte opl
 Een belegger die vaker kijkt, eist dus een hogere premie, zoals de munt al deed
 vermoeden. Daarmee verdwijnt de puzzel van [](#03-13-equity-premium-puzzle), waar zo'n
 premie
-bij gewoon verwacht nut een risicoaversie van vijftien of meer vroeg. Daar staat wel een
+bij gewoon verwacht nut een risicoaversie van tientallen vroeg. Daar staat wel een
 nieuwe vrije parameter tegenover, de evaluatieperiode $h$. De code lost
 [](#eq-behavioral-bt-exact) numeriek op en
 zet de benadering ernaast.
@@ -742,7 +742,8 @@ dat de prijs te laag was, en de rationele econoom dat het verwachte rendement ho
 zijn echter twee beschrijvingen van hetzelfde getal.
 
 We werken dat uit in de log-lineaire notatie van [](#04-20-voorspelbaarheid). Vanaf hier
-zijn kleine letters logs, zodat $r_{t+1}$ het log rendement is en $dp_t = d_t - p_t$ de log
+zijn kleine letters logs, zodat $\ell_{t+1}$ het log rendement is en $dp_t = d_t - p_t$ de
+log
 dividend-prijsratio. Dividendgroei
 is i.i.d., en $\varrho$, een getal iets onder 1, is de linearisatieconstante van Campbell en
 Shiller. We schrijven $\varrho$ om verwarring met het sentiment $\rho_t$ te voorkomen.
@@ -751,16 +752,16 @@ Shiller. We schrijven $\varrho$ om verwarring met het sentiment $\rho_t$ te voor
 :label: prop-behavioral-joint
 
 Beschouw twee economieën. In economie **R** (risico) is het verwachte log-rendement
-$\E_t[r_{t+1}] = \bar r + x_t$, met $x_{t+1} = \phi x_t + \eta_{t+1}$, en is de prijs de
+$\E_t[\ell_{t+1}] = \bar\ell + x_t$, met $x_{t+1} = \phi x_t + \eta_{t+1}$, en is de prijs de
 contante waarde tegen deze discontovoet. In economie **M** (mispricing) is de discontovoet
-constant $\bar r$, maar handelt de prijs op $p_t = p^{*}_t - u_t$, met $p^{*}_t$ de
+constant $\bar\ell$, maar handelt de prijs op $p_t = p^{*}_t - u_t$, met $p^{*}_t$ de
 fundamentele prijs en sentiment $u_{t+1} = \phi u_t + \epsilon_{t+1}$. Als
 $x_t = (1-\varrho\phi)\,u_t$, dan hebben $\{d_t, p_t, r_t\}$ in beide economieën dezelfde
 gezamenlijke verdeling, met in beide
 
 ```{math}
 :label: eq-behavioral-joint
-\E_t[r_{t+1}] = \text{constante} + (1 - \varrho\phi)\,dp_t .
+\E_t[\ell_{t+1}] = \text{constante} + (1 - \varrho\phi)\,dp_t .
 ```
 :::
 
@@ -770,10 +771,10 @@ dezelfde toestand. Via de Campbell-Shiller-identiteit vallen dan ook de rendemen
 :::{prf:proof}
 :class: dropdown
 
-In **R** geeft de Campbell-Shiller-identiteit $dp_t = \text{c} + \sum_{j \geq 0}\varrho^{j}\E_t[r_{t+1+j} - \Delta d_{t+1+j}]
+In **R** geeft de Campbell-Shiller-identiteit $dp_t = \text{c} + \sum_{j \geq 0}\varrho^{j}\E_t[\ell_{t+1+j} - \Delta d_{t+1+j}]
 = \text{c}' + x_t/(1-\varrho\phi)$. In **M** is $dp^{*}_t$ constant, dus
-$dp_t = \text{c}'' + u_t$, en $r_{t+1} \approx \text{k} + \varrho\,(p_{t+1} - d_{t+1}) - (p_t - d_t) + \Delta d_{t+1}$
-geeft $\E_t[r_{t+1}] = \bar r + u_t - \varrho\phi u_t = \bar r + (1-\varrho\phi)u_t$. Met
+$dp_t = \text{c}'' + u_t$, en $\ell_{t+1} \approx \text{k} + \varrho\,(p_{t+1} - d_{t+1}) - (p_t - d_t) + \Delta d_{t+1}$
+geeft $\E_t[\ell_{t+1}] = \bar\ell + u_t - \varrho\phi u_t = \bar\ell + (1-\varrho\phi)u_t$. Met
 $x_t = (1-\varrho\phi)u_t$ is $dp_t$ in beide economieën dezelfde lineaire functie van dezelfde
 AR(1)-toestand, en zijn de rendementen via de identiteit dezelfde functie van $dp$ en
 $\Delta d$. $\square$
@@ -788,7 +789,8 @@ waarde als in [](#04-20-voorspelbaarheid). Prijzen, dividenden en rendementen sc
 twee dus nooit, zodat een hoog rendement na een lage prijs er bij risico en bij vergissing
 hetzelfde uitziet, en het vermoeden van het begin houdt stand. Alleen een reeks van buiten
 kan het, zoals
-marginaal nut (de stochastic discount factor uit [](#03-12-consumptie-capm)) of gemeten
+marginaal nut (de stochastische discontofactor $m$ uit [](#03-12-consumptie-capm)) of
+gemeten
 fouten in verwachtingen.
 
 ```{admonition} Samengevat
