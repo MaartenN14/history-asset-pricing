@@ -1,0 +1,16 @@
+STATUS 05_27_drie_antwoorden T words=5636 prose=PASS
+- Waar we zijn: "Het tijdvak loopt van" (regeltaal) wordt "Dit college volgt de literatuur van".
+- Overzicht: Santa-Clara-zin in één tijd (tegenwoordige tijd), "ze" vervangen door "de modellen".
+- Intuïtie: geen wijziging; motiefnaam standaardfout 1× (plus 1× in Simulatie, samen 2).
+- Toy-voorbeeld: recept in twee zinnen gesplitst, notatie $1 + R^f$ ingevoerd met de netto rente in één bijzin.
+- Theorie, inleiding: drie staccato-zinnen samengevoegd met "Omdat"; 12 woorden korter.
+- Theorie, Epstein-Zin: onvolledige zin hersteld met "Zo krijgt"; alinea na de formule begint niet meer met kleine "en".
+- Theorie, Bansal-Yaron: "laag is als de toekomst verslechtert, en omdat ... is de SDF dan hoog" in twee zinnen met richting (daalt, stijgt) en een terugkoppeling naar de intuïtie; θ krijgt een betekenis in de zin.
+- Theorie, Rietz-Barro: "Dat geeft" als losse zin opgenomen in een bijzin met "wat"; spatie achter de alinea weg.
+- Theorie, Observationele equivalentie: parafrase "Gewoon gezegd ..." vóór de afhankelijkheid van $T$.
+- Samengevat: redenen bij φ en ψ met "omdat".
+- Simulatie: "Dat is meer dan" opgenomen in de vorige zin; motiefzin staat los als korte zin.
+- Replicatie: "Oefening 3 laat zien" met "want" aan de vorige zin gekoppeld; "Een codefout is dat niet" wordt "Die ene band wijst niet op een codefout" (antecedent eenduidig).
+- Wat er brak: "hetzelfde op een andere plek" wordt "elk via een ander mechanisme"; "die die ... nodig hebben" wordt "die er ... behoefte aan hebben"; zin met verwrongen volgorde ("Dan is het deel ... de vergissing") rechtgezet.
+- Oefeningen: aankondigende zin vóór de cellen in oplossingen 3 en 4; "zodat haar roosters" wordt "wat erop wijst dat" ("haar" = Wachter, persoon).
+- Vaste termen: geen vervanging nodig; STYLE §3-tabel noemt $R^f$ nog "bruto risicovrij rendement", terwijl setup en kaart-rollen netto gebruiken. Dit college volgt nu setup en kaart-rollen, en STYLE §3 moet worden bijgewerkt (melding voor de eigenaar).
