@@ -1,0 +1,18 @@
+STATUS 04_24_microstructuur T words=5667 prose=PASS
+- Waar we zijn: "Een model ... ontbrak nog, dus van wie" wordt "Wat nog ontbrak, was een model ..., dat zegt wie".
+- Overzicht: "zette ... zette" niet meer dubbel; "Die modellen zijn theorieën." en de empirie-zin samengevoegd met "maar".
+- Intuïtie: ongewijzigd (verbanden al benoemd, voorspelling in gewone zinnen).
+- Toy-voorbeeld: "Het recept van Kyle ..." wordt een hele zin met reden ("want de afleiding volgt pas in de theorie").
+- Theorie, Opzet: "noemt de market maker een koers" wordt "zet".
+- Theorie, Kyle één ronde: "de ruis betaalt de verzamelaar van informatie" wordt "de verliezen van de noise traders betalen het verzamelen van informatie".
+- Theorie, Kyle vele ronden: "Theorem 2 en 3" wordt "stelling 2 en 3".
+- Theorie, Numerieke oplossing: "die limiet" krijgt een antecedent; figuurzin zegt wat de figuur vergelijkt in plaats van "de vraag is of"; overgangszin na de figuur; motief niet meer als handelend onderwerp ("Het probleem van de standaardfout van 2% bestaat ook op de handelsvloer"); "dat" met dubbel antecedent weg.
+- Theorie, Amihud-niveau: dubbele punt als lijm weg ("vonden precies dat het verwachte rendement ... stijgt").
+- Theorie, Liquiditeit als risico: "ontdaan van voorspelbaarheid" wordt "min het voorspelbare deel" (vaste term §3). Samengevat: vooruitblik-bullet over de simulatie weg (geen samenvatting van Theorie).
+- Simulatie: "Varianties zijn dus goed meetbaar" (los verband) wordt "Beide laten zien dat een variantie goed meetbaar is, tenzij ...".
+- Replicatie, per aandeel: inversie "Per aandeel ordent ILLIQ ... plausibel" weg; tweede "deed verwachten" wordt "wat past bij de simulatie"; "die trend moet ... eerst weg" wordt een zin met "zodat we ... moeten halen".
+- Replicatie, marktbreed: "model (11)" wordt "tijdreeksregressie"; "Een voorspellend verband heeft decennia nodig" wordt "Om ... aan te tonen, zijn decennia nodig".
+- Replicatie, Pástor-Stambaugh: lange getallenalinea in tweeën, verband "Na de publicatie verandert het beeld".
+- Wat er brak: telegramzin "Bij de meting." wordt een hele zin; "en na 2003 was dat risico kleiner of zien we ruis" krijgt "dan" en "alleen"; vooruitverwijzing met het college als onderwerp.
+- Oefeningen: sjabloon "De oefening laat zien" (2x) vervangen door gewone conclusiezinnen met "dus".
+- Vaktermen: niets vervangen dat niet identiek was; twijfel: geen.
