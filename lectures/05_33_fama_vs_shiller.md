@@ -18,59 +18,95 @@ kernelspec:
 ```{admonition} Waar we zijn in het verhaal
 :class: important
 
-**Jaartal.** 1998–2017: van Fama's verdediging van efficiënte markten via de Nobelprijs
-van 2013 en Cochrane's presidentiële rede tot de eerste modellen die enquêtes over
-verwachtingen serieus nemen.
+**Jaartal.** De jaren 1998 tot 2017 staan centraal. We volgen het debat van Fama's
+verdediging van efficiënte markten via de presidentiële rede van Cochrane en de Nobelprijs
+van 2013 tot de eerste modellen die enquêtes over verwachtingen serieus nemen.
 
-**Wat we al weten.** De prijs-dividend-ratio voorspelt rendementen en geen dividenden
-([](#04-20-voorspelbaarheid)); koersen bewegen meer dan dividendnieuws kan dragen
-([](#03-15-shiller-excess-volatility)). Drie consumptiemodellen maken daar een rationele
-discontovoet van, maar zijn op honderd jaar data niet van elkaar te onderscheiden
-([](#05-27-drie-antwoorden)), en in [](#05-32-intermediaries) bleek dat ook de premies
-die in 2008 explodeerden, zowel beprijsd risico als gedwongen mispricing kunnen zijn. In
-[](#04-23-behavioral) zagen we al dat een risico-economie en een sentimenteconomie
-dezelfde prijzen kunnen maken.
+**Wat we al weten.** De prijs-dividendratio voorspelt rendementen en geen dividenden,
+zodat koersen meer bewegen dan het dividendnieuws kan verklaren
+([](#04-20-voorspelbaarheid)). Consumptiemodellen maken daar een rationele discontovoet
+van, maar zijn op honderd jaar data niet van elkaar te onderscheiden. In
+[](#05-32-intermediaries) bleek bovendien dat de premies die in 2008 explodeerden, zowel
+een vergoeding voor risico als gedwongen mispricing kunnen zijn.
 
-**Welke vraag staat open.** Als iedereen het over de feiten eens is, welke data zou dan
-kunnen beslissen of een variërende discontovoet risico of vergissing is?
+**Welke vraag staat open.** Beide kampen zijn het over de feiten eens. Welke data kan dan
+uitmaken of een variërende discontovoet een vergoeding voor risico is of een vergissing
+van beleggers?
 ```
 
 ## Overzicht
 
-In oktober 2013 kende het Nobelcomité de prijs voor economie toe aan Eugene Fama, Lars
-Peter Hansen en Robert Shiller, "for their empirical analysis of asset prices". De
-wetenschappelijke toelichting van het comité heette eenvoudig *Understanding Asset
-Prices* {cite}`NobelCommittee2013`. Dat Fama en Shiller de prijs deelden, werd breed als
-grap gelezen. Santa-Clara leest het anders: het was "a precise description of the
-field's condition". Beide hadden gelijk over de feiten; "They disagreed about what the
-facts meant, and the committee, wisely, declined to decide" {cite}`SantaClara2026`. Elders
-in dezelfde terugblik staat de korte versie: de twee kampen "agreed about almost every
-fact and almost no interpretation".
+Waarom voorspelt een lage prijs een hoog rendement, omdat beleggers dan meer eisen of
+omdat ze zich vergissen? Koersen kunnen die vraag niet beantwoorden, omdat prijzen alleen
+het product van overtuigingen en marginaal nut vastleggen. Enquêtes over verwachtingen
+kunnen het wel, en die geven tot nu toe het teken van de vergissing. In dit college
 
-Deze lecture sluit deel V af en is de synthese van twee motieven. Motief 2 (risico
-versus vergissing) krijgt hier zijn formele vorm: we bewijzen dat prijzen en dividenden
-alleen het *product* van overtuigingen en marginaal nut identificeren, zodat een
-rationele economie met tijdvariërende risicoaversie en een economie met extrapolerende
-beleggers exact dezelfde prijzen kunnen maken. Motief 3 krijgt zijn scharnier: volgens
-Santa-Clara veranderde het vak "from a theory with tests to a body of facts with
-competing theories, and the prize made the change official". Het feit waar alles om
-draait, vatte Cochrane in zijn presidentiële rede samen {cite}`Cochrane2011`: "Now it
-seems all price-dividend variation corresponds to discount-rate variation." Waarom de
-discontovoet varieert, daarover lopen de Nobellezingen van Fama {cite}`Fama2014` en
-Shiller {cite}`Shiller2014` uiteen, en Hansen {cite}`Hansen2014` maakt er een vraag van
-over onzekerheid binnen en buiten economische modellen. Epistemisch is dit het moment
-waarop een feit (variërende discontovoeten) definitief op meerdere theorieën wacht, in
-plaats van één theorie op haar toets.
+- bewijzen we dat prijzen, dividenden en rendementen in een rationele en in een
+  extrapolerende economie precies dezelfde verdeling kunnen hebben;
+- leiden we af welk teken een enquête over verwachtingen in elk van beide economieën
+  krijgt;
+- simuleren we hoeveel jaar koersdata en hoeveel jaar enquêtedata nodig zijn om de twee
+  economieën te scheiden;
+- repliceren we de decompositie van Cochrane {cite}`Cochrane2011` en het enquêteresultaat
+  van Greenwood en Shleifer {cite}`GreenwoodShleifer2014`, en werken we Shillers
+  CAPE-voorspelling bij tot nu.
 
-We herhalen de replicaties van eerdere lectures niet. Het toy-voorbeeld rekent twee
-economieën met hetzelfde prijspad met de hand door. De theorie bewijst de
-observationele gelijkwaardigheid in het algemeen en laat zien welke extra data
-(enquêtes, opties, flows) haar kan doorbreken. De simulatie laat zien dat honderd jaar
-koersen de twee economieën niet scheidt, maar enkele decennia enquêtes wel. De
-replicatie rapporteert Cochrane's variantiedecompositie van 2011, zet de verwachtingen
-van financieel directeuren uit de CFO-enquête naast de prijs-dividend-ratio en latere
-rendementen, zoals Greenwood en Shleifer {cite}`GreenwoodShleifer2014` met zes enquêtes
-deden, en werkt Shillers CAPE-voorspelling bij tot nu.
+In oktober 2013 deelden Eugene Fama, Lars Peter Hansen en Robert Shiller de Nobelprijs
+voor hun empirische analyse van activaprijzen {cite}`NobelCommittee2013`. Velen zagen
+daarin een grap, Santa-Clara juist een goede weergave van het vak {cite}`SantaClara2026`.
+Beide kampen waren het immers over bijna elk feit eens en over bijna geen interpretatie.
+Het centrale feit, dat vrijwel alle variatie in de prijs-dividendratio variatie in
+discontovoeten is, had Cochrane twee jaar eerder in zijn presidentiële rede samengevat.
+Over de vraag waarom de discontovoet varieert, lopen de Nobellezingen van Fama
+{cite}`Fama2014` en Shiller {cite}`Shiller2014` uiteen. Hansen {cite}`Hansen2014` maakt er
+een vraag over modelonzekerheid van.
+
+## Intuïtie: waarom zou dit waar zijn?
+
+Beide kampen zijn het over drie feiten eens. Op korte termijn zijn koersen nauwelijks te
+voorspellen, en actieve beleggers verslaan de markt na kosten zelden. Op lange termijn
+voorspellen waarderingsratio's zoals de dividend-prijsratio en Shillers CAPE de
+rendementen wel, en vrijwel niets anders. Bovendien beweegt de prijs-dividendratio veel
+meer dan het dividendnieuws kan verklaren. Die laatste twee feiten zijn één feit, want een
+ratio die geen dividenden voorspelt, kan alleen bewegen als ze rendementen voorspelt.
+
+Het meningsverschil gaat over de vraag waarom het verwachte rendement hoog is als de prijs
+laag is. Het Chicago-antwoord luidt dat beleggers dan meer eisen. Na een crash zijn ze
+armer en banger, of hebben hun intermediairs geen kapitaal meer, zodat ze alleen aandelen
+willen houden als die goedkoop zijn. Een belegger die dan koopt, verzekert de beleggers
+die op dat moment het bangst zijn, en wordt daarvoor betaald.
+
+Het Yale-antwoord luidt dat beleggers zich vergissen. Na een reeks goede jaren verwachten
+ze meer goede jaren en bieden ze de prijs op, zodat de lage rendementen daarna een
+langzame correctie zijn. Na een crash werkt hetzelfde mechanisme in omgekeerde richting.
+
+Koersen kunnen tussen deze twee antwoorden niet kiezen, omdat een prijs een verwachting
+maal een weging is. Een lage prijs kan betekenen dat beleggers de toekomst somber
+inschatten, maar ook dat ze een gegeven toekomst zwaar wegen. Een aandeel dat in slechte
+tijden weinig uitbetaalt, is even weinig waard voor een belegger die slechte tijden
+waarschijnlijk vindt als voor een belegger die ze erg vindt. Zo keert de gezamenlijke
+hypothese uit [](#02-06-efficiente-markten) terug, die zegt dat een toets van efficiëntie
+altijd ook een toets van een model voor de discontovoet is. Geen hoeveelheid koersdata
+haalt die twee uit elkaar.
+
+Een aparte meting van de verwachting kan dat wel. Als we beleggers vragen wat ze
+verwachten, voorspellen de twee lezingen bij dezelfde prijs een tegengesteld teken.
+Volgens Chicago verwachten beleggers na een crash hoge rendementen, omdat ze weten dat
+aandelen goedkoop zijn en dat ook eisen. Volgens Yale verwachten ze dan lage rendementen,
+omdat ze de slechte jaren doortrekken. We verwachten dus dat een enquête in de rationele
+economie negatief met de prijs-dividendratio samenhangt en in de extrapolerende economie
+positief, terwijl de koersen in beide hetzelfde zijn.
+
+Een enquête laat bovendien sneller iets zien dan koersen. Een voorspellingsregressie van
+rendementen heeft rond een eeuw data nodig, omdat de voorspelbare component verdrinkt in
+twintig procent ruis per jaar. In een regressie van enquêteverwachtingen op de prijs staat
+links een overtuiging, en die ruis ontbreekt daar. Greenwood en Shleifer vonden in zes
+enquêtes het teken van Yale, al meet een enquête wat mensen zeggen en niet noodzakelijk
+wat de belegger denkt die de prijs zet.
+
+## Toy-voorbeeld: twee economieën, één prijspad, drie perioden
+
+We laden eerst de pakketten die het hele college gebruikt.
 
 ```{code-cell} ipython3
 import io
@@ -89,122 +125,72 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-## Intuïtie: waarom zou dit waar zijn?
-
-Beide kampen zijn het over drie feiten eens. Op korte termijn zijn koersen nauwelijks te
-voorspellen, en wie de markt na kosten wil verslaan, faalt bijna altijd. Op lange termijn
-voorspellen waarderingsratio's zoals de dividend-prijsratio en Shillers CAPE de rendementen
-wel, en vrijwel niets anders. En de prijs-dividend-ratio beweegt veel meer dan het
-dividendnieuws dat haar zou moeten bewegen. Het tweede en derde feit zijn hetzelfde feit:
-als de ratio geen dividenden voorspelt, moet ze rendementen voorspellen, anders kan ze
-niet bewegen.
-
-Het meningsverschil gaat over één woord: *waarom* is het verwachte rendement hoog als de
-prijs laag is? Het Chicago-antwoord: omdat beleggers dan meer eisen. Na een crash zijn
-mensen armer, banger en dichter bij hun gewoonte, of hebben hun intermediairs geen
-kapitaal meer. Ze willen alleen aandelen houden als die goedkoop zijn. Wie dan koopt,
-verkoopt verzekering aan wie die op dat moment het hardst nodig heeft, en wordt daarvoor
-betaald. Het Yale-antwoord: omdat beleggers zich vergissen. Na een reeks goede jaren
-verwachten ze meer goede jaren, bieden ze de prijs op, en de lage rendementen daarna zijn
-de langzame correctie. Na een crash is het omgekeerd.
-
-Waarom kunnen koersen dit niet beslissen? Omdat een prijs een verwachting maal een
-weging is. Een lage prijs kan betekenen dat beleggers de toekomst somber *inschatten*,
-of dat ze een gegeven toekomst zwaar *wegen*. Een aandeel dat in slechte tijden slecht
-uitbetaalt, is weinig waard voor wie slechte tijden waarschijnlijk vindt, en evenveel
-voor wie slechte tijden erg vindt. Uit de prijs zie je alleen het product. Dat is de
-joint hypothesis van [](#02-06-efficiente-markten) in haar scherpste vorm, en er is
-geen hoeveelheid koersdata die haar oplost.
-
-Wat haar wel kan oplossen, is een meting van een van de twee factoren apart. Vraag
-beleggers wat ze verwachten. Als de Chicago-lezing klopt, verwachten beleggers na een
-crash *hoge* rendementen: ze weten dat aandelen goedkoop zijn, en dat is precies wat ze
-eisen. Als de Yale-lezing klopt, verwachten ze na een crash *lage* rendementen: ze
-extrapoleren de slechte jaren. De twee lezingen voorspellen bij dezelfde prijs het
-tegenovergestelde teken van de enquête. Greenwood en Shleifer vonden het teken van
-Yale: verwachtingen zijn hoog als prijzen hoog zijn, en juist dan zijn latere
-rendementen laag. Dat is het sterkste bewijs tegen de zuiver rationele lezing, maar geen
-beslissend bewijs, want een enquête meet wat mensen *zeggen*, en niet noodzakelijk wat
-de belegger denkt die de prijs zet.
-
-Het 2%-motief speelt hier een onverwachte rol. Een voorspellingsregressie van
-rendementen heeft zeventig à tachtig jaar nodig om iets te zien, omdat het gerealiseerde
-rendement de voorspelbare component verdrinkt in twintig procent ruis per jaar. Een
-regressie van enquêteverwachtingen op de prijs heeft die ruis niet: links staat geen
-uitkomst, maar een overtuiging. Daarom kunnen een paar decennia enquêtedata zeggen wat
-een eeuw koersdata niet kan.
-
-## Toy-voorbeeld: twee economieën, één prijspad, drie perioden
-
-Vanaf hier zijn kleine letters logs, $dp_t = d_t - p_t$ is de log dividend-prijsratio
-(hoog is goedkoop), en alle grootheden zijn afwijkingen van hun gemiddelde. Het rendement
-volgt uit de Campbell-Shiller-benadering van [](#04-20-voorspelbaarheid):
-$r_{t+1} = dp_t - \rho\, dp_{t+1} + \Delta d_{t+1}$, met $\rho = 0{,}96$.
-
-**Het gemeenschappelijke prijspad.** De log dividend-prijsratio is
-$dp_0 = 0{,}10$, $dp_1 = 0{,}00$, $dp_2 = -0{,}10$, $dp_3 = 0{,}05$, en de
-dividendgroei is $\Delta d_1 = 0{,}02$, $\Delta d_2 = -0{,}01$, $\Delta d_3 = 0{,}00$.
-Dan is
+Vanaf hier zijn kleine letters logs. De log dividend-prijsratio $dp_t = d_t - p_t$ is hoog
+als de markt goedkoop is, en alle grootheden zijn afwijkingen van hun gemiddelde. We lenen
+de benadering van Campbell en Shiller uit [](#04-20-voorspelbaarheid). Die schrijft het
+log rendement als de ratio van vandaag, min de verdisconteerde ratio van morgen, plus de
+dividendgroei:
 
 $$
-\begin{aligned}
-r_1 &= \phantom{-}0{,}10 - 0{,}96 \times 0{,}00 + 0{,}02 = \phantom{-}0{,}120, \\
-r_2 &= \phantom{-}0{,}00 - 0{,}96 \times (-0{,}10) - 0{,}01 = \phantom{-}0{,}086, \\
-r_3 &= -0{,}10 - 0{,}96 \times 0{,}05 + 0{,}00 = -0{,}148 .
-\end{aligned}
+r_{t+1} = dp_t - \rho\, dp_{t+1} + \Delta d_{t+1}.
 $$
 
-**De voorspellingsregressie.** De regressor $x = (0{,}10;\ 0{,}00;\ -0{,}10)$ heeft
-gemiddelde nul en $\sum x^2 = 0{,}02$, dus de helling is
-$\hat b_r = \sum x\,r / 0{,}02 = (0{,}012 + 0 + 0{,}0148)/0{,}02 = 1{,}34$. Een goedkope markt
-voorspelt een hoog rendement. Deze regressie is in beide economieën dezelfde, want ze
-gebruikt alleen prijzen en dividenden.
+Hier is $\rho = 0{,}96$, een getal net onder één dat past bij een prijs die gemiddeld 24
+keer het dividend is. Beide economieën delen het volgende pad van de ratio en de
+dividendgroei, en ze verschillen alleen in wie de prijs zet.
 
-**Economie (a): rationeel, met tijdvariërende risicoaversie.** De representatieve
-belegger eist een verwacht rendement $x_t$ boven het gemiddelde, dat traag terugkeert:
-$\E_t[x_{t+1}] = \phi\, x_t$ met $\phi = 0{,}5$. Verwachte dividendgroei is constant. Uit
-de Campbell-Shiller-identiteit volgt $dp_t = \sum_{j \ge 1}\rho^{j-1}\E_t[x_{t+j-1}] =
-x_t/(1-\rho\phi)$. Met $1 - \rho\phi = 1 - 0{,}48 = 0{,}52$ horen bij het prijspad
-de eisen $x_0 = 0{,}052$, $x_1 = 0$ en $x_2 = -0{,}052$. In jaar 0 is de markt goedkoop
+| jaar $t$ | 0 | 1 | 2 | 3 |
+|---|---|---|---|---|
+| $dp_t$ | 0,10 | 0,00 | −0,10 | 0,05 |
+| $\Delta d_t$ | – | 0,02 | −0,01 | 0,00 |
+
+De ratio zakt twee jaar lang van hoog naar laag en herstelt in jaar 3 gedeeltelijk,
+terwijl de dividendgroei klein blijft. In economie (a) eist een rationele belegger een
+vereiste premie $\pi_t$ boven het gemiddelde, die met persistentie $\phi = 0{,}5$ naar nul
+terugkeert, zodat er elk jaar naar verwachting de helft van overblijft, terwijl de verwachte
+dividendgroei constant is. In economie (b) is de vereiste premie constant, maar wijkt de
+prijs $p_t$ af van de fundamentele prijs $p^{*}_t$, de waarde bij de vaste premie. Dat
+verschil $s_t = p_t - p^{*}_t$ is het sentiment van extrapolerende beleggers, en het dooft
+met dezelfde persistentie uit. In een enquête noemt de rationele belegger in (a) zijn premie
+$\pi_t$, en noemen de extrapolatoren in (b) een verwachting $\theta s_t$, met $\theta$ hun
+gevoeligheid voor het sentiment, die we in stap 5 vastleggen.
+
+**Stap 1, de rendementen.** We vullen het pad in de identiteit in. Dat geeft $r_1 = 0{,}10 - 0 + 0{,}02 = 0{,}120$,
+dan $r_2 = 0 + 0{,}96 \times 0{,}10 - 0{,}01 = 0{,}086$ en $r_3 = -0{,}10 - 0{,}96 \times 0{,}05 = -0{,}148$.
+
+**Stap 2, de voorspellingsregressie.** De regressor $dp_0, dp_1, dp_2$ heeft gemiddelde
+nul en kwadratensom $0{,}02$, dus $\hat b_r = (0{,}10 \times 0{,}120 + 0{,}10 \times 0{,}148)/0{,}02 = 1{,}34$.
+Deze helling gebruikt alleen prijzen en dividenden en is in beide economieën dezelfde.
+
+**Stap 3, economie (a).** Het verwachte rendement is hier de premie. Nemen we de
+verwachting van de identiteit, waarin de verwachte dividendgroei als afwijking van haar
+gemiddelde nul is, dan is de ratio van vandaag de premie plus $\rho$ maal de verwachte
+ratio van volgend jaar. Die verwachte ratio is $\phi$ maal de ratio van vandaag, ook al
+volgt het pad in de tabel die regel niet, omdat er elk jaar een schok
+bijkomt. Herhaald
+invullen geeft de meetkundige reeks $dp_t = \pi_t(1 + \rho\phi + (\rho\phi)^2 + \dots) = \pi_t/(1 - \rho\phi)$,
+met $1 - \rho\phi = 0{,}52$, dus $\pi_t = 0{,}52\, dp_t$. In jaar 0 is de markt goedkoop
 omdat beleggers 5,2 procentpunt extra eisen.
 
-**Economie (b): constante vereiste premie, extrapolerende beleggers.** Fundamentele
-beleggers disconteren tegen een constante discontovoet, dus de fundamentele ratio
-$dp^{*}_t$ is constant (nul). De prijs wijkt af door het sentiment $s_t$ van
-extrapolerende beleggers, $p_t - p^{*}_t = s_t$, dat met dezelfde snelheid $\phi = 0{,}5$
-uitdooft. Het prijspad vraagt $s_0 = -0{,}10$, $s_1 = 0$, $s_2 = 0{,}10$: in jaar 0 zijn de
-extrapolatoren somber, in jaar 2 euforisch. Het *objectieve* verwachte rendement is
-$\E_t[r_{t+1}] = dp_t - \rho\phi\, dp_t = 0{,}52\, dp_t$, dus $0{,}052$, $0$ en $-0{,}052$:
-precies hetzelfde als in (a), want het is dezelfde identiteit op hetzelfde pad.
+**Stap 4, economie (b).** De fundamentele ratio is constant, dus $s_t = -dp_t$. Het
+objectieve verwachte rendement is $dp_t - \rho\phi\, dp_t = 0{,}52\, dp_t$, precies als in
+(a), omdat het dezelfde identiteit op hetzelfde pad is.
 
-**De enquête.** Nu vragen we in beide economieën wat beleggers verwachten. In (a)
-antwoordt de rationele belegger met zijn eigen eis, $\E^{s}_t = x_t$. In (b) antwoorden
-de extrapolatoren, die het rendement verwachten dat bij hun stemming past:
-$\E^{s}_t = \theta\, s_t$, met $\theta = 0{,}52$ zodat de schaal gelijk is. De tabel:
+**Stap 5, de enquête.** Met $\theta = 0{,}52$, zodat de schaal gelijk is, antwoorden de
+beleggers $+0{,}52\, dp_t$ in (a) en $-0{,}52\, dp_t$ in (b). De helling van het rendement
+op de enquête is dan $1{,}34/0{,}52 = 2{,}58$ in (a) en $-2{,}58$ in (b).
 
-| $t$ | $dp_t$ | $r_{t+1}$ | $\E_t[r_{t+1}]$, (a) én (b) | enquête (a) | enquête (b) |
-|---|---|---|---|---|---|
-| 0 | 0,10 | 0,120 | 0,052 | 0,052 | −0,052 |
-| 1 | 0,00 | 0,086 | 0,000 | 0,000 | 0,000 |
-| 2 | −0,10 | −0,148 | −0,052 | −0,052 | 0,052 |
-
-De helling van de enquête op $dp$ is in (a) $(0{,}10 \times 0{,}052 + 0{,}10 \times
-0{,}052)/0{,}02 = 0{,}52$ en in (b) $-0{,}52$. Omdat $pd = -dp$, is de correlatie van de
-enquête met de prijs-dividend-ratio in (a) $-1$ en in (b) $+1$. En wie het gerealiseerde
-rendement op de enquête regresseert, vindt in (a) $\sum \E^{s} r/\sum (\E^{s})^2 =
-0{,}013936/0{,}005408 = 2{,}5769$ en in (b) $-2{,}5769$. In (a) voorspellen hoge
-verwachtingen hoge rendementen; in (b) lage.
-
-Prijzen, dividenden, rendementen en de voorspellingsregressie zijn in beide economieën
-identiek. Alleen de enquête scheidt ze, en met het tegenovergestelde teken.
+Omdat de prijs-dividendratio in logs gelijk is aan $-dp$, hangt de enquête in (a) negatief
+en in (b) positief samen met de prijs-dividendratio. De codecel rekent de vijf stappen na
+en zet de uitkomsten naast de handberekening.
 
 ```{code-cell} ipython3
 RHO_TOY, PHI_TOY = 0.96, 0.50
-K_TOY = 1 - RHO_TOY * PHI_TOY
-dp_toy = np.array([0.10, 0.00, -0.10, 0.05])
-dd_toy = np.array([0.02, -0.01, 0.00])
-r_toy = dp_toy[:-1] - RHO_TOY * dp_toy[1:] + dd_toy
-x_toy = dp_toy[:-1]
+K_TOY = 1 - RHO_TOY * PHI_TOY                          # 1 - rho * phi = 0.52
+dp_toy = np.array([0.10, 0.00, -0.10, 0.05])           # dp_0 .. dp_3
+dd_toy = np.array([0.02, -0.01, 0.00])                 # dividend growth in years 1 .. 3
+r_toy = dp_toy[:-1] - RHO_TOY * dp_toy[1:] + dd_toy    # Campbell-Shiller returns r_1 .. r_3
+dp_start = dp_toy[:-1]                                 # the predictor dp_0 .. dp_2
 
 
 def ols_slope(y, x):
@@ -213,41 +199,45 @@ def ols_slope(y, x):
     return float((xd * (y - y.mean())).sum() / (xd**2).sum())
 
 
-required_a = K_TOY * x_toy                          # (a): the rational investor's required return
-sentiment_b = -x_toy                                # (b): p - p* with a constant-discount-rate p*
-objective_b = x_toy - RHO_TOY * PHI_TOY * x_toy     # (b): E_t[r] from the identity
-survey_toy = {"a": required_a, "b": K_TOY * sentiment_b + 0.0}   # + 0.0 avoids a printed -0.0
+survey_a = K_TOY * dp_start      # (a): the rational investor reports the required premium
+survey_b = -K_TOY * dp_start     # (b): extrapolators report theta * s_t with s_t = -dp_t
 
-toy = pd.DataFrame(
-    {"dp_t": x_toy, "r_t+1": r_toy, "E_t[r] (a)": required_a, "E_t[r] (b)": objective_b,
-     "enquête (a)": survey_toy["a"], "enquête (b)": survey_toy["b"]},
-    index=pd.Index([0, 1, 2], name="t"),
-)
-print(f"b_r (beide economieën)        : {ols_slope(r_toy, x_toy):.4f}   (hand: 1.3400)")
-for e, sign in [("a", "+"), ("b", "-")]:
-    print(f"({e}) enquête op dp            : {ols_slope(survey_toy[e], x_toy):+.4f}   (hand: {sign}0.5200)")
-    print(f"({e}) corr(enquête, pd = -dp)  : {np.corrcoef(survey_toy[e], -x_toy)[0, 1]:+.1f}")
-    print(f"({e}) r op enquête             : {ols_slope(r_toy, survey_toy[e]):+.4f}   (hand: {sign}2.5769)")
-toy.round(4)
+code = {
+    "r_1": r_toy[0], "r_2": r_toy[1], "r_3": r_toy[2],
+    "helling r op dp, (a) en (b)": ols_slope(r_toy, dp_start),
+    "helling enquête op dp, (a)": ols_slope(survey_a, dp_start),
+    "helling enquête op dp, (b)": ols_slope(survey_b, dp_start),
+    "helling r op enquête, (a)": ols_slope(r_toy, survey_a),
+    "helling r op enquête, (b)": ols_slope(r_toy, survey_b),
+}
+hand = [0.120, 0.086, -0.148, 1.34, 0.52, -0.52, 2.5769, -2.5769]
+pd.DataFrame({"met de hand": hand, "code": list(code.values())}, index=list(code)).round(4)
 ```
 
-De code geeft dezelfde getallen. Let op wat er níet in de tabel staat: niets in de
-kolommen $dp_t$ en $r_{t+1}$ verraadt welke economie de data maakte.
+De code geeft dezelfde getallen. Niets in de rendementen of in de helling op $dp$ verraadt
+welke economie de data maakte, en alleen de enquête scheidt de twee, met een tegengesteld
+teken.
 
 ## Theorie
 
-### Het feit: Cochrane's decompositie in één schema
+De theorie gaat van een feit via een onmogelijkheid naar een uitweg. Het feit is de
+decompositie waarover beide kampen het eens zijn. De onmogelijkheid is dat prijzen alleen
+het product van overtuigingen en marginaal nut vastleggen, en de uitweg is het teken van
+een enquête.
 
-*Waarom zou dit waar zijn?* Een hoge dividend-prijsratio moet vroeg of laat worden
-"terugbetaald": door hoge rendementen, door lage dividendgroei, of doordat de ratio
-over $k$ jaar nog steeds hoog is. Er is geen vierde uitweg. Regresseer elk van die drie
-toekomstige grootheden op de ratio van vandaag, en de hellingen moeten optellen tot
-één. Welke helling het werk doet, is een empirische vraag.
+### Het feit: de decompositie van Cochrane
 
-In [](#04-20-voorspelbaarheid) leidden we [](#eq-voorspelbaarheid-lr) af voor een
-oneindige horizon. Cochrane {cite}`Cochrane2011` schrijft de eindige-horizonversie,
-met lange-termijncoëfficiënten $b^{(k)}$ uit regressies van
-$\sum_{j=1}^{k}\rho^{j-1}r_{t+j}$, $\sum_{j=1}^{k}\rho^{j-1}\Delta d_{t+j}$ en
+Een hoge dividend-prijsratio wordt later terugbetaald met hoge rendementen, met lage
+dividendgroei, of doordat de ratio over $k$ jaar nog steeds hoog is. Een belegger die
+vandaag goedkoop koopt, ontvangt het verschil langs een van die drie wegen, en een vierde
+weg bestaat niet. Regresseren we elk van de drie toekomstige grootheden op de ratio van
+vandaag, dan tellen de hellingen dus op tot één. Welke helling het werk doet, is een
+empirische vraag.
+
+In [](#04-20-voorspelbaarheid) leidden we die optelling af voor een oneindige horizon
+([](#eq-voorspelbaarheid-lr)). Cochrane {cite}`Cochrane2011` schrijft de versie voor een
+eindige horizon $k$, met lange-termijncoëfficiënten $b^{(k)}$ uit regressies van
+$\sum_{j=1}^{k}\rho^{j-1}r_{t+j}$, van $\sum_{j=1}^{k}\rho^{j-1}\Delta d_{t+j}$ en van
 $dp_{t+k}$ op $dp_t$:
 
 ```{math}
@@ -260,79 +250,71 @@ $dp_{t+k}$ op $dp_t$:
 \underbrace{\rho^{k}\, b_{dp}^{(k)}}_{\text{ratio over } k \text{ jaar (bel als } k\to\infty)} .
 ```
 
-Zijn tabel II, jaardata 1947–2009, vult het schema zo in: met directe regressies over
-$k = 15$ jaar $1{,}01$, $-0{,}11$ en $-0{,}11$; geïmpliceerd door een VAR met $k = 15$
-$1{,}05$, $0{,}27$ en $0{,}22$; en voor $k = \infty$ $1{,}35$, $0{,}35$ en $0{,}00$. Zijn
-conclusie: "the estimates say that all price-dividend ratio volatility corresponds to
-variation in expected returns. None corresponds to variation in expected dividend
-growth, and none to rational bubbles." In de jaren zeventig had men het omgekeerde
-verwacht; in zijn woorden: "What we expected to be 0 is 1; what we expected to be 1
-is 0."
+De vergelijking verdeelt de hele variantie van de dividend-prijsratio over verwachte
+rendementen, verwachte dividendgroei en een eindterm, die bij een oneindige horizon alleen
+een bel kan zijn. Cochranes tabel II vindt over 1947–2009 een rendementsterm rond één en
+dividend- en eindtermen rond nul, en de replicatie zet die getallen naast de onze.
+Cochrane merkte op dat men in de jaren zeventig precies het omgekeerde had verwacht. Wat
+men op nul schatte, bleek één, en wat men op één schatte, bleek nul.
 
-Het schema zegt dus met grote precisie *dat* de discontovoet beweegt. Over *waarom*
-zegt het niets. $b_r^{(k)}$ is een covariantie tussen een prijs en latere rendementen;
-het is dezelfde covariantie in een economie waar beleggers rationeel meer eisen en in een
-economie waar ze zich vergissen. Cochrane noemt variatie in discontovoeten daarom "the
-central organizing question of current asset pricing research", een vraag en geen
-antwoord.
 
-### De joint hypothesis opnieuw, en wat "efficiënt" betekent als discontovoeten variëren
+De decompositie zegt met grote precisie dát de discontovoet beweegt, maar niet waarom. De
+helling $b_r^{(k)}$ is een covariantie tussen een prijs en latere rendementen. Die
+covariantie is dezelfde als beleggers rationeel meer eisen en als ze zich vergissen. Het
+toy-voorbeeld liet dat zien met $\hat b_r = 1{,}34$ in beide economieën. Cochrane noemde
+de variatie in discontovoeten daarom de centrale vraag van het vak, en niet het antwoord.
 
-*Waarom zou dit waar zijn?* Fama's definitie van 1970 zegt dat prijzen alle beschikbare
-informatie "fully reflect". Dat is pas toetsbaar als je zegt welk verwacht rendement een
-correcte prijs zou opleveren. Zolang dat verwachte rendement constant werd verondersteld,
-betekende efficiëntie in de praktijk: onvoorspelbare rendementen. Zodra het mag variëren,
-valt die toets weg, en moet de inhoud van het woord ergens anders vandaan komen.
+### Wat "efficiënt" betekent als discontovoeten variëren
 
-In [](#02-06-efficiente-markten) bewezen we dat elk patroon van voorspelbaarheid een
-positieve SDF heeft die het prijst ({prf:ref}`thm-efficiente-markten-elke-sdf`). Een
-voorspellende dividend-prijsratio is dus geen bewijs tegen efficiëntie, alleen tegen de
-combinatie "efficiënt en constante discontovoet". Fama {cite}`Fama1991` formuleerde het
-zo: efficiëntie "must be tested jointly with some model of equilibrium, an asset-pricing
-model". Zijn Nobellezing heet daarom *Two Pillars of Asset Pricing*
-{cite}`Fama2014`: efficiëntie en prijsmodellen zijn twee pijlers die alleen samen te
-toetsen zijn.
+Zolang het verwachte rendement constant werd verondersteld, betekende efficiëntie in de
+praktijk dat rendementen onvoorspelbaar zijn, en die betekenis verdwijnt zodra de
+discontovoet mag bewegen. Fama definieerde in 1970 een efficiënte markt als een markt
+waarin prijzen alle beschikbare informatie weerspiegelen. Dat is pas toetsbaar als erbij
+staat welk verwacht rendement een correcte prijs oplevert.
 
-Als discontovoeten variëren, verschuift de inhoud van "efficiënt" van rendementen naar
-*verwachtingen*. Een markt is efficiënt als de verwachtingen in de prijs dezelfde zijn als
-die van een econometrist met dezelfde informatie; welke weging beleggers aan toestanden
-geven, is dan een kwestie van voorkeuren, en die mag alles zijn wat de
-Hansen-Jagannathan-grens van [](#03-13-equity-premium-puzzle) toelaat. Een markt is
-inefficiënt als de verwachtingen in de prijs systematisch afwijken. Dat is geen spel met
-woorden: het maakt van de vraag een meetprobleem, en de volgende twee subsecties laten
-zien welk meetprobleem.
+In [](#02-06-efficiente-markten) bewezen we dat bij elk patroon van voorspelbaarheid een
+positieve SDF bestaat die het verklaart ({prf:ref}`thm-efficiente-markten-elke-sdf`). Een
+voorspellende dividend-prijsratio weerlegt dus niet de efficiëntie zelf, maar alleen de
+combinatie van efficiëntie en een constante discontovoet. Fama {cite}`Fama1991` schreef
+daarom dat efficiëntie alleen samen met een evenwichtsmodel te toetsen is, en zijn
+Nobellezing {cite}`Fama2014` noemt die twee de pijlers van de theorie van activaprijzen.
 
-Fama's verdediging tegen de anomalieën van de behavioral finance liep langs dezelfde weg.
-In zijn artikel van 1998 {cite}`Fama1998` betoogde hij dat de lange-termijnanomalieën
-de toets als bewijs voor *systematische vergissingen* niet doorstaan: schijnbare
-overreactie komt ongeveer even vaak voor als onderreactie, voortzetting na een
-gebeurtenis ongeveer even vaak als omkering, en de meeste anomalieën verdwijnen bij
-redelijke veranderingen in de methode. Onder toevalsresultaten verwacht je precies dat
-patroon; onder een gedeelde vergissing een vaste richting. (De bewoording hier is een
-parafrase; de tekst van het artikel konden we niet inzien.) Het argument is sterk tegen
-losse anomalieën, maar raakt de dividend-prijsratio niet: die voorspelt over een eeuw
-steeds met hetzelfde teken.
+Als discontovoeten variëren, verschuift de inhoud van het woord van rendementen naar
+verwachtingen. Een markt is dan efficiënt als de verwachtingen in de prijs gelijk zijn aan
+die van een econometrist met dezelfde informatie. De weging van toestanden is een kwestie
+van voorkeuren. Aan die voorkeuren stelt de Hansen-Jagannathan-grens van
+[](#03-13-equity-premium-puzzle) alleen een ondergrens, want de SDF moet minstens zo
+volatiel zijn als de Sharpe-ratio van de markt vraagt. Die voorwaarde is noodzakelijk,
+niet voldoende, en sluit alleen te vlakke SDF's uit. Zo wordt de
+vraag een meetprobleem, en de volgende twee
+subsecties laten zien wat er gemeten moet worden.
 
-### Observationele gelijkwaardigheid, formeel
+Tegen de anomalieën uit de gedragseconomie verdedigde Fama zich in 1998 met een ander
+argument {cite}`Fama1998`. Overreactie komt volgens hem ongeveer even vaak voor als
+onderreactie, wat bij toeval past en niet bij een gedeelde vergissing. Dat argument raakt
+de dividend-prijsratio niet, want die voorspelt over een eeuw steeds met hetzelfde teken.
 
-*Waarom zou dit waar zijn?* Een prijs is een som over toestanden van kans maal weging
-maal uitbetaling. Verdubbel de kans op een toestand en halveer de weging, en de prijs blijft
-gelijk. Wie alleen prijzen ziet, kan kans en weging nooit uit elkaar halen. En zolang de
-toestanden zelf, de dividenden, volgens de ware kansen worden getrokken, zien ook de
-gerealiseerde rendementen er in beide gevallen hetzelfde uit.
+### Het kernresultaat: prijzen zien alleen het product
 
-Laat $\mathbb P$ de objectieve kansmaat zijn en $m_{t+1} > 0$ een SDF, zodat prijzen
-voldoen aan $p_t = \E_t[m_{t+1}x_{t+1}]$. Een belegger met *subjectieve* overtuigingen
-$\tilde{\mathbb P}$ gebruikt verwachtingen $\tilde\E_t$. Als $\tilde{\mathbb P}$ en
-$\mathbb P$ dezelfde gebeurtenissen onmogelijk vinden, is er een dichtheid
-$\xi_{t+1} = d\tilde{\mathbb P}/d\mathbb P > 0$ met $\E_t[\xi_{t+1}] = 1$ en
-$\tilde\E_t[z] = \E_t[\xi_{t+1}z]$ voor elke $z$.
+Een prijs is een som over toestanden van kans maal weging maal uitbetaling. Een belegger
+die de kans op een recessie verdubbelt en tegelijk de weging van een euro in die recessie
+halveert, betaalt voor een aandeel precies hetzelfde. Koersen kunnen kans en weging dus
+nooit uit elkaar halen. Zolang de dividenden volgens de ware kansen worden getrokken, zien
+ook de gerealiseerde rendementen er in beide gevallen hetzelfde uit.
+
+In deze subsectie is $p_t$ de prijs zelf, niet de log ervan. Laat $\mathbb P$ de
+objectieve kansmaat zijn en $m_{t+1} > 0$ een SDF, zodat $p_t = \E_t[m_{t+1}x_{t+1}]$ voor
+elke payoff $x_{t+1}$. Een belegger met subjectieve overtuigingen $\tilde{\mathbb P}$
+rekent met verwachtingen $\tilde\E_t$. Als beide kansmaten dezelfde gebeurtenissen
+onmogelijk vinden, bestaat er een dichtheid $\xi_{t+1} = d\tilde{\mathbb P}/d\mathbb P > 0$
+met $\E_t[\xi_{t+1}] = 1$ en $\tilde\E_t[z] = \E_t[\xi_{t+1}z]$ voor elke $z$. Die
+dichtheid is de verhouding tussen subjectieve en ware kans. Een belegger die de kans op
+een recessie verdubbelt, heeft in die toestand $\xi = 2$.
 
 :::{prf:proposition} Prijzen identificeren alleen het product van overtuigingen en marginaal nut
 :label: prop-fama-vs-shiller-equivalentie
 
-1. Voor elke dichtheid $\xi_{t+1} > 0$ met $\E_t[\xi_{t+1}] = 1$ geldt, met
-   $\tilde m_{t+1} = m_{t+1}/\xi_{t+1}$,
+1. Voor elke dichtheid $\xi_{t+1} > 0$ met $\E_t[\xi_{t+1}] = 1$ geldt, met $\tilde m_{t+1} = m_{t+1}/\xi_{t+1}$,
 
    ```{math}
    :label: eq-fama-vs-shiller-equivalentie
@@ -340,43 +322,48 @@ $\tilde\E_t[z] = \E_t[\xi_{t+1}z]$ voor elke $z$.
    \qquad \text{voor elke payoff } x_{t+1}.
    ```
 
-2. Omgekeerd: voor elke kandidaat-SDF $\tilde m_{t+1} > 0$ met
-   $c_t \equiv \E_t[m_{t+1}/\tilde m_{t+1}] < \infty$ zijn er overtuigingen
-   $\xi_{t+1} = m_{t+1}/(c_t\tilde m_{t+1})$ waaronder $c_t\tilde m_{t+1}$ dezelfde prijzen
-   geeft als $m_{t+1}$ onder $\mathbb P$, inclusief dezelfde risicovrije rente.
+2. Omgekeerd zijn er voor elke kandidaat-SDF $\tilde m_{t+1} > 0$ met $c_t \equiv \E_t[m_{t+1}/\tilde m_{t+1}] < \infty$
+   overtuigingen $\xi_{t+1} = m_{t+1}/(c_t\tilde m_{t+1})$ waaronder $c_t\tilde m_{t+1}$
+   dezelfde prijzen geeft als $m_{t+1}$ onder $\mathbb P$, inclusief dezelfde risicovrije
+   rente.
 
-Een economie $(\mathbb P, m)$ met rationele verwachtingen en een economie
-$(\tilde{\mathbb P}, \tilde m)$ met subjectieve verwachtingen geven daarom dezelfde
-prijsfunctie. Worden dividenden in beide volgens $\mathbb P$ getrokken, dan hebben
-$\{p_t, d_t, R_t\}$ in beide dezelfde gezamenlijke verdeling.
+Een economie $(\mathbb P, m)$ met rationele verwachtingen en een economie $(\tilde{\mathbb P}, \tilde m)$
+met subjectieve verwachtingen geven daarom dezelfde prijsfunctie. Worden de dividenden in
+beide volgens $\mathbb P$ getrokken, dan hebben $\{p_t, d_t, R_t\}$ in beide dezelfde
+gezamenlijke verdeling.
 :::
 
 :::{prf:proof}
-(1) $\tilde\E_t[\tilde m\,x] = \E_t[\xi\,(m/\xi)\,x] = \E_t[m\,x]$. (2) $\xi > 0$ en
-$\E_t[\xi] = \E_t[m/\tilde m]/c_t = 1$, dus $\xi$ is een geldige dichtheid; toepassen
-van (1) met $c_t\tilde m = m/\xi$ geeft gelijke prijzen voor elke payoff, en voor
-$x = 1$ dezelfde $1/R^f_{t+1}$. Het laatste deel: prijzen zijn in beide economieën
-dezelfde functie van de toestand, en de toestand heeft in beide de verdeling
-$\mathbb P$, dus geldt dat ook voor elke functie van prijzen en dividenden. $\square$
+(1) $\tilde\E_t[\tilde m\,x] = \E_t[\xi\,(m/\xi)\,x] = \E_t[m\,x]$. (2) Omdat $\xi > 0$ en
+$\E_t[\xi] = \E_t[m/\tilde m]/c_t = 1$, is $\xi$ een geldige dichtheid. Deel (1) met
+$c_t\tilde m = m/\xi$ geeft dan gelijke prijzen voor elke payoff, en voor $x = 1$ dezelfde
+$1/R^f_{t+1}$. Voor het laatste deel zijn prijzen in beide economieën dezelfde functie van
+de toestand. Omdat de toestand in beide de verdeling $\mathbb P$ heeft, geldt dat ook voor
+elke functie van prijzen en dividenden. $\square$
 :::
 
-Deel 2 is de scherpe kant. Kies voor $\tilde m$ wat u wilt, bijvoorbeeld een SDF met
-een constante prijs van risico, en er bestaan overtuigingen die de waargenomen prijzen
-precies rationaliseren. De rationele econometrist legt $\xi \equiv 1$ op en schat $m$; de
-gedragseconoom legt een plausibele $\tilde m$ op en schat $\xi$. Beide passen perfect,
-en de data kunnen niet kiezen. {prf:ref}`prop-behavioral-joint` in [](#04-23-behavioral)
-was een speciaal geval in een log-lineaire economie; dit is de algemene vorm. De
-proposition raakt ook Hansens thema {cite}`Hansen2014`: als beleggers zelf niet weten
-welk model waar is, is $\xi \neq 1$ geen vergissing maar een uitdrukking van
-modelonzekerheid, en is "rationeel" niet meer hetzelfde als "$\xi = 1$".
+De scherpe kant van de propositie is het tweede deel. Welke $\tilde m$ we ook kiezen,
+bijvoorbeeld een SDF met een constante prijs van risico, er bestaan overtuigingen die
+samen met $\tilde m$, op de schaalfactor $c_t$ na, de waargenomen prijzen precies
+verklaren. De rationele econometrist zet $\xi \equiv 1$ vast
+en schat $m$, terwijl de gedragseconoom een plausibele $\tilde m$ vastzet en $\xi$ schat.
+Beide modellen passen perfect, en de data kunnen er niet tussen kiezen.
 
-### Wat enquêtes meten, en wat ze scheiden
+In het toy-voorbeeld is (a) de economie met $\xi \equiv 1$ en een variërende premie.
+Economie (b) heeft een constante premie en overtuigingen die met het sentiment meebewegen.
+{prf:ref}`prop-behavioral-joint` in [](#04-23-behavioral) was een speciaal geval hiervan
+in een log-lineaire economie. De propositie raakt ook het thema van Hansen
+{cite}`Hansen2014`. Als beleggers zelf niet weten welk model waar is, is $\xi \neq 1$ geen
+vergissing maar een uitdrukking van modelonzekerheid, zodat "rationeel" niet meer
+hetzelfde betekent als $\xi = 1$.
 
-*Waarom zou dit waar zijn?* Als prijzen alleen het product $\xi m$ zien, heb je een
-aparte meting van $\xi$ of van $m$ nodig. Een enquête vraagt beleggers naar hun
-verwachting, dus meet ze een moment van $\tilde{\mathbb P}$. Gerealiseerde rendementen
-meten, op de lange duur, hetzelfde moment onder $\mathbb P$. Het verschil tussen de
-twee is precies de afwijking van rationele verwachtingen.
+### Wat het voorspelt: het teken van een enquête
+
+Als prijzen alleen het product $\xi m$ zien, is een aparte meting van $\xi$ of van $m$
+nodig, en een enquête levert zo'n meting. Een enquête over verwachtingen meet een moment
+onder $\tilde{\mathbb P}$, terwijl gerealiseerde rendementen op den duur hetzelfde moment
+onder $\mathbb P$ meten. Het verschil tussen beide is de afwijking van rationele
+verwachtingen.
 
 :::{prf:corollary} Een enquête meet één moment van de overtuigingen
 :label: cor-fama-vs-shiller-enquete
@@ -388,24 +375,30 @@ Laat $\E^{s}_t[R_{t+1}] = \tilde\E_t[R_{t+1}]$ de verwachting in een enquête zi
 \E^{s}_t[R_{t+1}] - \E_t[R_{t+1}] = \Cov_t\!\left(\xi_{t+1}, R_{t+1}\right).
 ```
 
-Onder rationele verwachtingen ($\xi \equiv 1$) is dit nul, zodat in de regressie
-$R_{t+1} = a + b\,\E^{s}_t[R_{t+1}] + u_{t+1}$ geldt $a = 0$ en $b = 1$.
+Onder rationele verwachtingen ($\xi \equiv 1$) is dit nul. In de regressie $R_{t+1} = a + b\,\E^{s}_t[R_{t+1}] + u_{t+1}$
+geldt dan $a = 0$ en $b = 1$.
 :::
 
 :::{prf:proof}
+De subjectieve verwachting is een objectieve verwachting met gewicht $\xi$, dus
 $\tilde\E_t[R] = \E_t[\xi R] = \E_t[\xi]\E_t[R] + \Cov_t(\xi, R) = \E_t[R] + \Cov_t(\xi, R)$.
 Onder $\xi \equiv 1$ is $\E^{s}_t[R_{t+1}] = \E_t[R_{t+1}]$, en een voorwaardelijke
 verwachting heeft in een regressie van de uitkomst helling één en intercept nul. $\square$
 :::
 
-Dat is precies de nulhypothese $b = 1$ die Greenwood en Shleifer toetsen. In de
-log-lineaire wereld van het toy-voorbeeld wordt het corollarium een tekenvoorspelling.
-Laat $dp_t$ een AR(1) zijn met persistentie $\phi$ en variantie $V = \Var(dp_t)$, laat
-verwachte dividendgroei constant zijn, en schrijf $K = 1 - \rho\phi$. In beide
-economieën is het objectieve verwachte rendement $\E_t[r_{t+1}] = \text{c} + K\,dp_t$. De
-enquête is $\E^{s}_t = \text{c}' + a\,dp_t + \eta_t$, met $\eta_t$ een onafhankelijke
-meetfout met variantie $\sigma_\eta^2$, en $a = K$ in economie (a) en $a = -\theta < 0$ in
-economie (b). Dan is
+De enquête wijkt dus alleen van het ware verwachte rendement af als de overtuigingen
+samenhangen met het rendement zelf. De toets $b = 1$ is de nulhypothese van Greenwood en
+Shleifer. In de log-lineaire wereld van het toy-voorbeeld mogen we het bruto rendement $R$
+door het log rendement $r$ vervangen, omdat het verschil bij constante variantie alleen het
+intercept raakt, en wordt [](#eq-fama-vs-shiller-enquete) een voorspelling over tekens.
+Laat $dp_t$ een AR(1) zijn
+met persistentie $\phi$ en variantie $V = \Var(dp_t)$, laat de verwachte dividendgroei
+constant zijn, en schrijf $K = 1 - \rho\phi$. In beide economieën is het objectieve
+verwachte rendement dan $\E_t[r_{t+1}] = c + K\,dp_t$.
+
+De enquête is $\E^{s}_t = c' + a\,dp_t + \eta_t$, met $\eta_t$ een onafhankelijke meetfout
+met variantie $\sigma_\eta^2$. De gevoeligheid $a$ is $K$ in economie (a) en $-\theta < 0$
+in economie (b). Dan geldt
 
 ```{math}
 :label: eq-fama-vs-shiller-tekens
@@ -414,91 +407,117 @@ economie (b). Dan is
 \beta\!\left(r_{t+1}, \E^{s}_t\right) = \frac{a\,K\,V}{a^2 V + \sigma_\eta^2},
 ```
 
-want $\Cov(r_{t+1}, \E^{s}_t) = \Cov(K\,dp_t, a\,dp_t) = aKV$ en
-$\Var(\E^{s}_t) = a^2V + \sigma_\eta^2$. In (a) zijn beide hellingen positief en is de
-tweede gelijk aan één zonder meetfout; in (b) zijn beide negatief. De enquête correleert
-in (a) negatief met de prijs-dividend-ratio en in (b) positief.
+omdat $\Cov(r_{t+1}, \E^{s}_t) = \Cov(K\,dp_t, a\,dp_t) = aKV$ en $\Var(\E^{s}_t) = a^2V + \sigma_\eta^2$.
+Beide hellingen hebben dus het teken van $a$, positief in de rationele economie en
+negatief in de extrapolerende. Dat is het teken dat de intuïtie verwachtte, want een
+enquête die positief met $dp$ samenhangt, hangt negatief samen met de prijs-dividendratio.
 
-Dezelfde logica rangschikt de andere bronnen van extra data.
+In het toy-voorbeeld is $K = 0{,}52$, zodat de enquête een helling van $\pm 0{,}52$ op
+$dp$ heeft. Zonder meetfout is de helling van het rendement op de enquête in de populatie
+dan precies $+1$ in (a) en $-1$ in (b). De drie gerealiseerde rendementen gaven $\pm 2{,}58$,
+omdat drie waarnemingen vooral ruis bevatten.
 
-- **Opties.** Optieprijzen meten verwachtingen onder de risiconeutrale maat, dus opnieuw
-  het product van $\xi$ en $m$. Martin {cite}`Martin2017` haalt er toch een grens uit:
-  onder een voorwaarde op de SDF (de *negative correlation condition*) is het verwachte
-  excess rendement minstens een risiconeutrale variantie die hij uit een
-  volatiliteitsindex, SVIX, afleidt. Volgens zijn samenvatting impliceert de grens dat de
-  premie "is extremely volatile and that it rose above 20% at the height of the crisis in
-  2008". Dat is een meting van $\E_t[R]$ die geen honderd jaar rendementen nodig heeft,
-  maar wel een aanname over $m$; zie [](#05-29-opties-crashrisico).
-- **Flows.** Wie koopt en wie verkoopt, meet de vraag van afzonderlijke groepen beleggers.
-  Als extrapolatoren kopen na stijgingen en prijzen daarop reageren, is dat een meting van
-  $\xi$ die niet op zelfrapportage leunt. Dat programma, met {cite}`KoijenYogo2019` en
-  {cite}`GabaixKoijen2021`, komt terug in [](#06-36-inelastische-markten).
-- **Consumptie en intermediairs.** Een onafhankelijke meting van $m$, zoals in
-  [](#03-12-consumptie-capm) en [](#05-32-intermediaries). Het probleem daar was dat de
-  gemeten $m$ niet volatiel genoeg is.
+In de simulatie van de volgende sectie, die op Cochranes VAR is gekalibreerd, is $K$ veel
+kleiner, ongeveer 0,093, en heeft de enquête een meetfout van 4 procentpunt. Daar zakt de
+tweede helling in (a) naar 0,525, omdat de meetfout bijna evenveel variantie heeft als de
+verwachting zelf. Hoe groter de meetfout, hoe dichter de tweede helling bij nul komt,
+terwijl de eerste helling $a$ blijft. Daarom is de helling van de enquête op de prijs de
+robuustere toets. Ook de andere bronnen van extra data meten $\xi$ of $m$ apart, elk met
+een eigen aanname.
+
+- **Opties.** Optieprijzen meten verwachtingen onder de risiconeutrale maat, en dus
+  opnieuw het product van $\xi$ en $m$. Martin {cite}`Martin2017` haalt er onder een
+  voorwaarde op de SDF toch een ondergrens voor de premie uit, en die grens liep in de
+  crisis van 2008 op tot boven 20%. Zo'n meting vraagt geen eeuw rendementen, maar wel een
+  aanname over $m$.
+- **Flows.** Gegevens over wie koopt en wie verkoopt meten de vraag van afzonderlijke
+  groepen beleggers. Als extrapolatoren kopen na stijgingen en prijzen daarop reageren, is
+  dat een meting van $\xi$ die niet op zelfrapportage steunt. Dat programma van
+  {cite:t}`KoijenYogo2019` en {cite:t}`GabaixKoijen2021` komt terug in
+  [](#06-36-inelastische-markten).
+- **Consumptie en intermediairs.** Die geven een onafhankelijke meting van $m$, zoals in
+  [](#03-12-consumptie-capm) en [](#05-32-intermediaries), maar de gemeten $m$ bleek daar
+  niet volatiel genoeg.
 
 ### Middenwegen: vier modellen en hun enquêtetekens
 
-*Waarom zou dit waar zijn?* De twee economieën van het toy-voorbeeld zijn uitersten. Echte
-modellen combineren een rationele belegger met afwijkende verwachtingen van een deel van
-de markt, of maken de verwachtingen zelf het resultaat van leren. Wat ze onderscheidt, is
-wie de enquête beantwoordt en welk teken die enquête dan krijgt.
+Echte modellen liggen tussen de twee economieën van het toy-voorbeeld in, en ze
+verschillen vooral in wie de enquête beantwoordt en welk teken die enquête dan krijgt.
 
-**Campbell-Cochrane (1999).** Het rationele antwoord uit [](#05-27-drie-antwoorden): de
-premie is hoog als consumptie dicht bij de gewoonte zit {cite}`CampbellCochrane1999`. Dit
-is economie (a). Als die beleggers de enquête beantwoorden, zijn hun verwachtingen hoog
-na een crash en correleren ze negatief met de prijs-dividend-ratio.
+**Campbell-Cochrane (1999).** Het rationele antwoord uit [](#05-27-drie-antwoorden) is
+economie (a). De premie is daar hoog als de consumptie dicht bij de gewoonte ligt, het
+niveau waaraan beleggers gewend zijn {cite}`CampbellCochrane1999`. Als deze beleggers de
+enquête beantwoorden, zijn hun verwachtingen hoog na een crash en hangen ze negatief samen
+met de prijs-dividendratio.
 
-**Extrapolatie met een rationele tegenpartij.** In het X-CAPM van Barberis, Greenwood,
-Jin en Shleifer {cite}`BarberisGreenwoodJinShleifer2015` en in het model waarmee
-Greenwood en Shleifer hun enquêtes verklaren, vormen extrapolatoren hun verwachtingen uit
-recente koersstijgingen, en eisen fundamentele beleggers een premie om hun vraagschokken
-op te vangen. Volgens Greenwood en Shleifer is de markt dan "not efficient", ook al
-gedragen de fundamentele beleggers zich rationeel. Dit is economie (b), met de
-extrapolatoren als respondenten.
+**Extrapolatie met een rationele tegenpartij.** In het X-CAPM van Barberis, Greenwood, Jin
+en Shleifer (BGJS) {cite}`BarberisGreenwoodJinShleifer2015` vormen extrapolatoren hun
+verwachtingen uit recente koersstijgingen. Greenwood en Shleifer verklaren hun enquêtes
+met hetzelfde mechanisme. Fundamentele beleggers vangen hun vraagschokken op tegen een
+premie. Greenwood en Shleifer noemen die markt niet efficiënt, ook al gedragen de
+fundamentele beleggers zich rationeel. Dit is economie (b), met de extrapolatoren als
+respondenten.
 
-**Leren over koerswinsten.** Adam, Marcet en Beutel {cite}`AdamMarcetBeutel2017` zetten
-het debat op de grens. Hun beleggers optimaliseren rationeel *gegeven* hun overtuigingen
-over koerswinsten, maar leren die overtuigingen uit het verleden. In hun samenvatting:
-"Survey measures of these expectations display excessive optimism (pessimism) at market
-peaks (troughs)", en ze verwerpen formeel dat de enquêtedata verenigbaar zijn met
-rationele verwachtingen. Dit geeft het teken van (b), nu met een marginale belegger die
-geen vergissing maakt die hij zelf zou kunnen zien.
+**Leren over koerswinsten.** Adam, Marcet en Beutel {cite}`AdamMarcetBeutel2017` laten
+beleggers rationeel optimaliseren gegeven hun overtuigingen over koerswinsten, terwijl ze
+die overtuigingen uit het verleden leren. Volgens hen zijn enquêteverwachtingen te
+optimistisch op koerstoppen en te pessimistisch in dalen, en zijn ze formeel niet
+rationeel. Dat geeft het teken van (b), maar dan met een marginale belegger die geen
+vergissing maakt die hij zelf zou kunnen zien.
 
-**Vervagend geheugen.** Nagel en Xu {cite}`NagelXu2022` laten een representatieve
-belegger de gemiddelde groei leren met een geheugen dat vervaagt, gekalibreerd op het
-bewijs dat levenservaring macro-verwachtingen vormt. Volgens hun samenvatting geeft het
-model een objectieve premie die sterk tegen de conjunctuur in beweegt, terwijl de
-subjectieve premie nagenoeg vlak blijft, en voorspelt de uitkeringsgroei uit het verleden
-zowel latere rendementen als de fouten in enquêteverwachtingen. Dat is een derde patroon:
-een enquêtepremie die nauwelijks met de prijs meebeweegt, en voorspelbare fouten.
+**Vervagend geheugen.** Nagel en Xu {cite}`NagelXu2022` laten een representatieve belegger
+de gemiddelde groei leren met een geheugen dat vervaagt. In hun model beweegt de
+objectieve premie sterk tegen de conjunctuur in, terwijl de subjectieve premie nagenoeg
+vlak blijft. Bovendien voorspelt de dividendgroei uit het verleden zowel latere
+rendementen als de fouten in enquêteverwachtingen. Dat is een derde patroon naast de
+tekens van (a) en (b).
 
-| Model | Wie beantwoordt de enquête | $\Corr(\E^{s}_t, \mathrm{PD}_t)$ | $\beta(R_{t+1}, \E^{s}_t)$ |
+| Model | Wie beantwoordt de enquête | $\Corr(\E^{s}_t, -dp_t)$ | $\beta(R_{t+1}, \E^{s}_t)$ |
 |---|---|---|---|
 | (a) Tijdvariërende risicoaversie, Campbell-Cochrane | de rationele, marginale belegger | negatief | positief, één zonder meetfout |
 | (b) Extrapolatie met rationele tegenpartij, BGJS, Greenwood-Shleifer | extrapolatoren | positief | negatief |
 | Leren over koerswinsten, Adam-Marcet-Beutel | de marginale belegger, subjectief | positief | negatief |
-| Vervagend geheugen, Nagel-Xu | de representatieve belegger | subjectieve premie vrijwel vlak | fouten voorspelbaar |
+| Vervagend geheugen, Nagel-Xu | de representatieve belegger | vrijwel nul, de subjectieve premie is vlak | geen vast teken, de fouten zijn voorspelbaar |
 
-De tabel is het debat van 2013 in één scherm: de kolom met prijzen is voor alle vier
-rijen dezelfde, de kolommen met enquêtes niet.
+De tabel laat zien dat alle vier de modellen bij dezelfde prijzen passen, maar een ander
+verband tussen enquête en prijs voorspellen.
 
-## Simulatie: honderd jaar van twee economieën, en hoeveel enquêtejaren je nodig hebt
+```{admonition} Samengevat
+:class: tip
 
-We schalen het toy-voorbeeld op naar de kalibratie van Cochrane's VAR uit
-[](#04-20-voorspelbaarheid): $\phi = 0{,}941$, $\rho = 0{,}9638$, schokken in $dp$ met
-een standaarddeviatie van 15,3%, dividendschokken met 14,0% en een correlatie van 7,5%, en
-geen voorspelbare dividendgroei. Economie (a) simuleert de vereiste premie
-$x_{t+1} = \phi x_t + K\varepsilon_{t+1}$ en prijst $dp_t = x_t/K$. Economie (b) simuleert
-sentiment $s_{t+1} = \phi s_t - \varepsilon_{t+1}$ met een eigen trekking van de schokken
-en prijst $dp_t = -s_t$. Rendementen volgen in beide uit de identiteit. De enquête is
-$x_t + \eta_t$ in (a) en $\theta s_t + \eta_t$ in (b), met $\theta = K$ en een meetfout
-$\eta_t$ van 4 procentpunt, ongeveer het dubbele van de standaarddeviatie van de
-herschaalde enquêtes bij Greenwood en Shleifer.
+- Vrijwel alle beweging in de dividend-prijsratio is beweging in verwachte rendementen,
+  [](#eq-fama-vs-shiller-schema), maar de decompositie zegt niet waarom.
+- Prijzen leggen alleen het product van overtuigingen en marginaal nut vast,
+  [](#eq-fama-vs-shiller-equivalentie), zodat een rationele en een extrapolerende economie
+  dezelfde koersen kunnen maken.
+- Onder rationele verwachtingen is de enquête gelijk aan het ware verwachte rendement,
+  [](#eq-fama-vs-shiller-enquete).
+- De enquête heeft in de rationele economie een positieve en in de extrapolerende een
+  negatieve helling op $dp$, [](#eq-fama-vs-shiller-tekens). Meetfout verzwakt vooral de
+  helling van het rendement op de enquête.
 
-Twee vragen. Zijn de twee economieën met honderd jaar koersdata te onderscheiden? En
-hoeveel jaar enquêtedata is nodig om ze te scheiden, vergeleken met het aantal jaren
-koersdata dat nodig is om überhaupt te zien dat rendementen voorspelbaar zijn?
+```
+
+## Simulatie: honderd jaar van twee economieën, en hoeveel enquêtejaren nodig zijn
+
+De simulatie beantwoordt één vraag, namelijk hoeveel jaar data nodig is om de rationele en
+de extrapolerende economie van elkaar te scheiden, met koersen of met een enquête. We
+schalen het toy-voorbeeld daarvoor op naar de kalibratie van Cochranes VAR uit
+[](#04-20-voorspelbaarheid). De persistentie van $dp$ wordt $\phi = 0{,}941$, en $\rho = 0{,}9638$
+ligt dicht bij de 0,96 van het toy-voorbeeld.
+
+Schokken in $dp$ hebben een standaarddeviatie van 15,3% en dividendschokken van 14,0%, met
+een onderlinge correlatie van 7,5%, en de dividendgroei is niet voorspelbaar. Economie (a)
+laat de vereiste premie bewegen volgens $\pi_{t+1} = \phi \pi_t + K\varepsilon_{t+1}$ en
+zet $dp_t = \pi_t/K$. Economie (b) laat het sentiment bewegen volgens $s_{t+1} = \phi s_t - \varepsilon_{t+1}$,
+met een eigen trekking van de schokken, en zet $dp_t = -s_t$. In beide volgen de
+rendementen uit de identiteit van Campbell en Shiller.
+
+De enquête is $\pi_t + \eta_t$ in (a) en $\theta s_t + \eta_t$ in (b), met $\theta = K$
+zoals in het toy-voorbeeld. De meetfout $\eta_t$ heeft een standaarddeviatie van 4
+procentpunt, en oefening 4 laat zien wat er bij meer of minder meetfout verandert. De
+eerste cel legt het model vast in twee functies, één die steekproeven uit een economie
+trekt en één die per steekproef een regressie schat.
 
 ```{code-cell} ipython3
 RHO, PHI = 0.9638, 0.941
@@ -541,8 +560,13 @@ def ols_rows(y, x):
     resid = yd - slope[:, None] * xd
     se = np.sqrt((resid**2).sum(axis=1) / (y.shape[1] - 2) / (xd**2).sum(axis=1))
     return slope, slope / se
+```
 
+De tweede cel trekt uit elke economie 10 000 steekproeven van honderd jaar. In elke
+steekproef schatten we drie regressies, van het rendement op $dp$, van de enquête op $dp$
+en van het rendement op de enquête.
 
+```{code-cell} ipython3
 sim = {}
 for economy in "ab":
     dp_s, r_s, survey_s = simulate_economy(10_000, 100, economy)
@@ -566,6 +590,19 @@ print(f"populatie b(r op enquête): (a) {beta_pop:+.3f}, (b) {-beta_pop:+.3f}")
 pd.DataFrame({"economie (a)": sim["a_row"], "economie (b)": sim["b_row"]}).round(3)
 ```
 
+De voorspellende helling $\hat b_r$ is in beide economieën gemiddeld 0,132, met dezelfde
+spreiding, en de Kolmogorov-Smirnov-toets verwerpt niet dat de twee verdelingen gelijk
+zijn. Het gemiddelde ligt boven de ware waarde $K \approx 0{,}093$. Dat verschil is de
+Stambaugh-bias uit [](#04-20-voorspelbaarheid). Die ontstaat omdat een schok die de ratio
+verlaagt tegelijk het rendement verhoogt, en is in beide economieën even groot.
+
+De helling van de enquête op $dp$ ligt daarentegen met een standaarddeviatie van 0,012
+rond $+0{,}093$ en $-0{,}093$, zodat de twee verdelingen niet overlappen. De mediane
+helling van het rendement op de enquête ligt dicht bij de populatiewaarde uit
+[](#eq-fama-vs-shiller-tekens), die de cel ook afdrukt. De volgende cel herhaalt de proef
+voor steekproeven van vijf tot honderdvijftig jaar en telt hoe vaak elke regressie het
+juiste teken met $|t| > 2$ vindt.
+
 ```{code-cell} ipython3
 years = [5, 10, 15, 20, 30, 50, 75, 100, 150]
 power_rows = []
@@ -582,9 +619,15 @@ power = pd.DataFrame(power_rows).set_index("jaren")
 power.round(3)
 ```
 
+Een enquête van dertig jaar vindt het juiste teken in 85% van de steekproeven. De
+rendementsregressie is na honderd jaar pas in twee van de drie steekproeven significant.
+De figuur zet de drie resultaten naast elkaar. Let links op de overlap van de verdelingen
+van $\hat b_r$, in het midden op de scheiding van de enquêtehellingen en rechts op de
+afstand tussen de krommen.
+
 ```{code-cell} ipython3
-:tags: [hide-input]
 :label: cel-fama-vs-shiller-sim
+:tags: [hide-input]
 
 fig, axes = plt.subplots(1, 3, figsize=(13, 4.2))
 for economy, colour, label in [("a", hap.plotting.COLORS[0], "(a) rationeel"),
@@ -606,7 +649,7 @@ axes[2].plot(power.index, power["rendementen: t(b_r) > 2"], marker="s", label="r
 axes[2].axhline(0.8, color="grey", lw=0.8, ls=":")
 axes[2].set_xscale("log")
 axes[2].set_xticks(years, [str(y) for y in years])
-axes[2].set_title("Hoeveel jaar data je nodig hebt")
+axes[2].set_title("Hoeveel jaar data nodig is")
 axes[2].set_xlabel("Lengte van de steekproef (jaren)")
 axes[2].set_ylabel("Kans op $|t| > 2$ met het juiste teken")
 axes[2].legend()
@@ -617,33 +660,25 @@ plt.show()
 :label: fig-fama-vs-shiller-sim
 :width: 100%
 
-Links: de verdeling van de voorspellende helling $\hat b_r$ over 10 000 steekproeven van
-honderd jaar is in de rationele en de extrapolerende economie dezelfde; honderd jaar
-koersen zegt niets over wie gelijk heeft. Midden: de helling van de enquête op $dp$ heeft
-in de twee economieën een tegengesteld teken, en de verdelingen overlappen niet. Rechts:
-de kans om het teken met $|t| > 2$ te zien. Voor de enquête is dertig jaar genoeg voor
-ongeveer 85%; voor de rendementsregressie haalt zelfs honderd jaar maar twee op de drie.
+Links is de verdeling van de voorspellende helling $\hat b_r$ over 10 000 steekproeven van
+honderd jaar in beide economieën dezelfde. Honderd jaar koersen zegt dus niets over wie
+gelijk heeft. In het midden heeft de helling van de enquête op $dp$ in de twee economieën
+een tegengesteld teken, en overlappen de verdelingen niet. Rechts staat de kans om het
+juiste teken met $|t| > 2$ te zien. Voor de enquête is die na dertig jaar rond 85%, voor
+de rendementsregressie na honderd jaar twee op de drie.
 :::
 
-De simulatie maakt drie punten. De verdelingen van $\hat b_r$ vallen samen (de
-Kolmogorov-Smirnov-toets verwerpt gelijkheid niet), met een gemiddelde van ongeveer
-0,13 tegen een ware waarde van 0,093: de Stambaugh-bias uit [](#04-20-voorspelbaarheid),
-in beide economieën even groot. De helling van de enquête op $dp$ ligt daarentegen met
-een standaarddeviatie van ruim 0,01 rond $+0{,}093$ en $-0{,}093$, en de mediane helling van
-het rendement op de enquête is ongeveer $+0{,}55$ en $-0{,}55$, dicht bij de populatiewaarde
-uit [](#eq-fama-vs-shiller-tekens). En het 2%-motief keert om: om het teken van de
-enquêteregressie in 80% van de steekproeven te zien, is tussen de twintig en dertig jaar nodig;
-om de rendementsregressie even vaak significant te zien, meer dan een eeuw. Een enquête
-heeft geen twintig procent rendementsruis aan de linkerkant.
+Een enquête haalt de grens van 80% dus na twintig à dertig jaar en de rendementsregressie
+pas na meer dan een eeuw, omdat links in de enquêteregressie geen twintig procent
+rendementsruis staat.
 
 ```{warning}
-De simulatie is gunstig voor enquêtes. Ze neemt aan dat de respondenten precies de
-beleggers zijn wier overtuigingen de prijs zetten, dat de meetfout onafhankelijk is, en dat
-de enquête in dezelfde eenheden staat als het verwachte rendement. Echte enquêtes zijn
-herschaald, lopen door elkaar (particulieren, nieuwsbrieven, financieel directeuren), en
-meten mogelijk wat mensen denken dat de vraag betekent. In [](#ex-fama-vs-shiller-1)
-blijkt bovendien dat een mengsel van rationele en extrapolerende respondenten met
-dezelfde enquêtehelling bij oneindig veel combinaties past.
+De simulatie is gunstig voor enquêtes, omdat de respondenten er precies de beleggers zijn
+die de prijs zetten. Ook is de meetfout onafhankelijk en staat de enquête in dezelfde
+eenheden als het verwachte rendement, terwijl echte enquêtes herschaald zijn en door
+elkaar lopen, van particulieren tot financieel directeuren. Oefening 2 laat zien dat één
+enquêtehelling bij oneindig veel mengsels van rationele en extrapolerende respondenten
+past.
 ```
 
 ## Replicatie op echte data
@@ -651,59 +686,51 @@ dezelfde enquêtehelling bij oneindig veel combinaties past.
 ```{admonition} Replicatie
 :class: seealso
 
-**Bron.** (1) John H. Cochrane, *Presidential Address: Discount Rates*, Journal of Finance
-2011 {cite}`Cochrane2011`. (2) Robin Greenwood en Andrei Shleifer, *Expectations of
-Returns and Expected Returns*, Review of Financial Studies 2014
-{cite}`GreenwoodShleifer2014`. (3) Robert J. Shiller, *Irrational Exuberance*, Princeton
-University Press 2000 {cite}`Shiller2000`, als update van de CAPE-regressie uit
-[](#01-03-williams-ddm).
+**Bron.**
 
-**Wat.** (1) Tabel II: lange-termijncoëfficiënten $b_r^{(k)}$, $b_d^{(k)}$ en
-$\rho^k b_{dp}^{(k)}$ over 1947–2009, direct met $k = 15$: $1{,}01$, $-0{,}11$, $-0{,}11$;
-VAR met $k = 15$: $1{,}05$, $0{,}27$, $0{,}22$; VAR met $k = \infty$: $1{,}35$, $0{,}35$,
-$0{,}00$. De onderliggende éénjaarsregressies (tabel III, rechts, 1947–2010): $b_r = 0{,}13$
-($t = 2{,}61$, $R^2 = 0{,}10$), $b_d = 0{,}04$ ($t = 0{,}92$), $\phi = 0{,}94$ ($t = 23{,}8$).
-(2) Tabel 4: de correlatie van de Graham-Harvey-enquête onder financieel directeuren
-met log(D/P) is $-0{,}443$ ($N = 42$ kwartalen, 2000–2011); voor de zes enquêtes ligt ze
-tussen $-0{,}193$ en $-0{,}567$. Tabel 5: in regressies van latere excess rendementen op
-enquêteverwachtingen wordt de rationele nulhypothese $b = 1$ voor Graham-Harvey verworpen
-($p = 0{,}000$ op twaalf maanden). (3) Het teken en de orde van grootte van de helling van
-het reële tienjaarsrendement op log CAPE, bijgewerkt tot nu.
+- (1) Cochrane, *Discount Rates*, presidentiële rede van 2011 {cite}`Cochrane2011`.
+- (2) Greenwood en Shleifer, *Expectations of Returns and Expected Returns*, 2014
+  {cite}`GreenwoodShleifer2014`.
+- (3) Shiller, *Irrational Exuberance*, 2000 {cite}`Shiller2000`, als update van de
+  CAPE-regressie uit [](#01-03-williams-ddm).
 
-**Data hier.** (1) `hap.data.goyal_welch("annual")`, S&P 500-rendement met (`CRSP_SPvw`)
-en zonder dividend (`CRSP_SPvwx`), dividenden geconstrueerd als in
-[](#04-20-voorspelbaarheid), nominale logs. (2) De CFO Survey van Duke University en de
-Federal Reserve Banks van Richmond en Atlanta {cite}`CFOSurvey2026`, de voortzetting van
-de Graham-Harvey-enquête: het gemiddelde verwachte S&P 500-rendement over twaalf maanden,
-kwartaaldata 2001Q4–2026Q2, via een kleine lokale loader die het werkboek één keer
-downloadt en in `data/cache/` bewaart; daarnaast log(D/P) uit `hap.data.shiller()` en het
-excess marktrendement uit `hap.data.market_monthly()`. (3) `hap.data.shiller()`,
-decemberwaarnemingen van `cape` en `stock_real_return_10y` (het geannualiseerde reële
-totaalrendement over de volgende tien jaar).
+**Wat.**
 
-**Verschil met het origineel.** (1) Cochrane gebruikt de hele CRSP-markt, wij de S&P 500;
-een iets andere $\hat\phi$ verandert de VAR-coëfficiënten sterk, omdat ze met
-$1/(1-\rho\phi)$ worden opgeblazen. (2) Greenwood en Shleifer gebruiken zes enquêtes
-(Gallup, Graham-Harvey, AAII, Investors Intelligence, Shiller, Michigan); daarvan is
-alleen de CFO-enquête gratis en scriptbaar te downloaden. De AAII-site weigert een
-geautomatiseerde download, en voor Shillers vertrouwensindices vonden we geen
-downloadbaar bestand. Ons werkboek begint in 2001Q4 in plaats van 2000Q4, en we stempelen
-elke enquête op het einde van de tweede maand van het kwartaal, omdat ze begin van de
-derde maand sluit. (3) Geen verschil in data; de update is de periode na
-[](#01-03-williams-ddm).
+- (1) Tabel II en III, de decompositie [](#eq-fama-vs-shiller-schema) over vijftien jaar
+  en de éénjaarsregressies over 1947–2009.
+- (2) Tabel 4 en 5, de correlatie van de CFO-enquête met $dp$ en de toets $b = 1$.
+- (3) Het teken van de helling van het reële tienjaarsrendement op log CAPE.
 
-**Verwachte afwijking.** (1) Over 1947–2009 moeten de éénjaarshellingen binnen twee
-standaardfouten van Cochrane's tabel III liggen, moet de directe $b_r^{(15)}$ tussen 0,8
-en 1,3 liggen en $b_d^{(15)}$ binnen 0,3 van nul, en moeten de drie termen van
-[](#eq-fama-vs-shiller-schema) tot op 0,02 optellen tot één: bijna alle variantie in P/D
-via verwachte rendementen. (2) De correlatie tussen de CFO-verwachting en log(D/P) moet
-negatief zijn (dus positief met P/D), in de orde van $-0{,}3$ tot $-0{,}6$ over 2001–2011,
-en de helling van het latere twaalfmaands excess rendement op de CFO-verwachting mag niet
-significant positief zijn. Wijkt een van die twee tekens af, dan zit de fout in de code.
-(3) De helling op log CAPE moet negatief zijn met $|t| > 2$.
+**Data hier.**
+
+- (1) S&P 500-rendementen uit `hap.data.goyal_welch("annual")`.
+- (2) De CFO-enquête van Duke en de Fed van Richmond en Atlanta
+  {cite}`CFOSurvey2026`, met $dp$ en het marktrendement uit `hap.data`.
+- (3) CAPE en tienjaarsrendement uit `hap.data.shiller()`.
+
+**Verschil met het origineel.**
+
+- (1) Cochrane gebruikt de hele CRSP-markt en wij de S&P 500, wat vooral de
+  VAR-coëfficiënten verschuift.
+- (2) Greenwood en Shleifer gebruiken zes enquêtes, waarvan alleen de CFO-enquête gratis
+  is, en onze reeks begint een jaar later.
+- (3) Er komen alleen tien jaar bij.
+
+**Verwachte afwijking.**
+
+- (1) De éénjaarshellingen liggen binnen twee standaardfouten van tabel III en de directe
+  $b_r^{(15)}$ ligt tussen 0,8 en 1,3. De term $b_d^{(15)}$ ligt binnen 0,3 van nul, en de
+  drie termen tellen tot op 0,02 op tot één.
+- (2) De correlatie met $dp$ ligt over 2001–2011 tussen $-0{,}3$ en $-0{,}6$, en de
+  helling van het latere rendement op de enquête is niet significant positief.
+- (3) De CAPE-helling is negatief met $|t| > 2$.
 ```
 
-### (1) Cochrane's decompositie
+### (1) De decompositie van Cochrane
+
+Volgens Cochrane verklaart de rendementsterm bijna de hele beweging in $dp$. We toetsen
+dat over zijn periode 1947–2009 en over de naoorlogse steekproef tot 2025, met jaarlijkse
+log rendementen, dividendgroei en $dp$.
 
 ```{code-cell} ipython3
 gw = hap_data.goyal_welch("annual")
@@ -746,10 +773,13 @@ def cochrane_decomposition(first, last, k=15):
 
 one_0909, rho_0909, lr_0909 = cochrane_decomposition(1947, 2009)
 _, _, lr_4725 = cochrane_decomposition(1947, 2025)
-print("één jaar, 1947-2009 (b, t, R2):",
-      {c: tuple(round(float(v), 3) for v in vals) for c, vals in one_0909.items()},
-      f" rho = {rho_0909:.4f}")
-print("Cochrane tabel III (1947-2010):  r 0.13 (2.61) 0.10 | dd 0.04 (0.92) 0.02 | dp 0.94 (23.8) 0.91")
+cochrane_table3 = {"r": (0.13, 2.61, 0.10), "dd": (0.04, 0.92, 0.02), "dp": (0.94, 23.8, 0.91)}
+one_year_table = pd.concat(
+    {"hier 1947-2009": pd.DataFrame(one_0909, index=["b", "t", "R2"]).T,
+     "Cochrane tabel III (1947-2009)": pd.DataFrame(cochrane_table3, index=["b", "t", "R2"]).T},
+    axis=1)
+print(f"één jaar, regressie op dp van vorig jaar (rho = {rho_0909:.4f}):")
+print(one_year_table.round(3).to_string(), "\n")
 cochrane_table2 = pd.DataFrame({"b_r": [1.01, 1.05, 1.35], "b_d": [-0.11, 0.27, 0.35],
                                 "rho^k b_dp": [-0.11, 0.22, 0.00]}, index=lr_0909.index)
 cochrane_table2["som"] = cochrane_table2["b_r"] - cochrane_table2["b_d"] + cochrane_table2["rho^k b_dp"]
@@ -757,27 +787,28 @@ pd.concat({"hier 1947-2009": lr_0909, "Cochrane tabel II (k=15)": cochrane_table
            "hier 1947-2025": lr_4725}).round(3)
 ```
 
-Op Cochrane's periode komen de éénjaarsregressies uit op $\hat b_r = 0{,}131$
-($t = 2{,}88$), $\hat b_d = 0{,}053$ en $\hat\phi = 0{,}952$, tegen $0{,}13$, $0{,}04$ en
-$0{,}94$ in zijn tabel III. De directe decompositie over vijftien jaar geeft
-$b_r^{(15)} = 1{,}16$, $b_d^{(15)} = -0{,}01$ en een eindterm van $-0{,}18$, tegen $1{,}01$,
-$-0{,}11$ en $-0{,}11$: in beide gevallen draagt het verwachte rendement alles en de
-dividendgroei niets. De VAR-rijen wijken meer af ($1{,}65$ en $0{,}67$ voor
-$k = \infty$ tegen $1{,}35$ en $0{,}35$), en dat is precies de gevoeligheid die het
-replicatieblok aankondigde: bij $\rho\hat\phi = 0{,}92$ in plaats van $0{,}90$ is
-$1/(1-\rho\phi)$ een kwart groter. In alle rijen tellen de drie termen op tot tussen
-0,985 en 1,01: de identiteit geldt in de data op enkele duizendsten na.
+**Geslaagd.** De éénjaarshellingen in de eerste tabel liggen binnen één standaardfout van
+Cochranes tabel III, ruim binnen de verwachte twee standaardfouten. De directe decompositie
+over vijftien jaar legt in de eerste rij van de tweede tabel de hele beweging bij de
+verwachte rendementen, met $b_r^{(15)}$ binnen de verwachte band en $b_d^{(15)}$ vrijwel
+nul. In elke rij tellen de drie termen vrijwel op tot één. De VAR-rijen wijken meer af van
+Cochrane, omdat ze gevoelig
+zijn voor $\phi$. Zo is bij $\rho\hat\phi = 0{,}92$ in plaats van 0,90 de factor
+$1/(1-\rho\phi)$ al ruim een kwart groter.
 
-Tot 2025 verandert het beeld op één punt. De directe $b_r^{(15)}$ zakt naar $0{,}73$, de
-dividendterm blijft dicht bij nul, en de eindterm stijgt naar $0{,}17$: een zesde van de
-beweging in de ratio is na vijftien jaar nog niet "terugbetaald". Dat is de lage
-dividend-prijsratio na 1995, die ook in [](#04-20-voorspelbaarheid) de
-voorspellingsregressie verzwakte. Of dat een permanent lagere discontovoet is, een
-verschuiving van dividend naar inkoop van eigen aandelen, of een trage bel, zegt het
-schema niet; het zegt alleen dat de eindterm, die op Cochrane's steekproef rond nul lag,
-op de langere steekproef niet meer nul is.
+Tot 2025 verandert het beeld op één punt. De directe $b_r^{(15)}$ zakt naar 0,73 en de
+eindterm stijgt naar 0,17, zodat een zesde van de beweging in de ratio na vijftien jaar
+nog niet is terugbetaald. Dat komt door de lage dividend-prijsratio van de laatste
+decennia, die ook in [](#04-20-voorspelbaarheid) de voorspellingsregressie verzwakte. Of
+daarachter een blijvend lagere discontovoet zit, een verschuiving van dividend naar inkoop
+van eigen aandelen of een trage bel, zegt de decompositie niet.
 
-### (2) Enquêteverwachtingen: de CFO-enquête
+### (2) De CFO-enquête
+
+Volgens Chicago verwachten financieel directeuren een hoog rendement als $dp$ hoog is, en
+volgens Yale een laag rendement. We laden hun enquête met een kleine lokale loader en
+berekenen de correlatie met $dp$ over de periode van Greenwood en Shleifer en over de hele
+steekproef.
 
 ```{code-cell} ipython3
 CFO_URL = ("https://www.richmondfed.org/-/media/RichmondFedOrg/research/national_economy/"
@@ -829,30 +860,41 @@ pd.DataFrame(
 ).round(3)
 ```
 
+De correlatie is in beide periodes negatief, zoals bij Greenwood en Shleifer. De volgende
+cel schat vier regressies met Newey-West-standaardfouten. De eerste twee verklaren de
+enquête uit $dp$, met en zonder het rendement van het afgelopen jaar, en de laatste twee
+voorspellen het latere overrendement met de enquête of met $dp$.
+
 ```{code-cell} ipython3
 specs = [("enquete", ["log_dp"], 4), ("enquete", ["rendement_vorig_jaar", "log_dp"], 4),
          ("excess_volgend_jaar", ["enquete"], 6), ("excess_volgend_jaar", ["log_dp"], 6)]
-reg_rows = {}
+reg_rows = []
 for y, xs, lags in specs:
     fit = hap.newey_west(survey_panel[y], survey_panel[xs], lags=lags)
-    reg_rows[f"{y} op {' + '.join(xs)}"] = {
-        **{f"b({x})": fit.params[x] for x in xs}, **{f"t({x})": fit.tvalues[x] for x in xs},
-        "R2": fit.rsquared, "N": int(fit.nobs)}
+    for x in xs:
+        reg_rows.append({"regressie": f"{y} op {' + '.join(xs)}", "regressor": x,
+                         "b": fit.params[x], "t": fit.tvalues[x],
+                         "R2": fit.rsquared, "N": int(fit.nobs)})
 fit_b1 = hap.newey_west(survey_panel["excess_volgend_jaar"], survey_panel[["enquete"]], lags=6)
 print(f"toets b = 1 in de voorspellingsregressie: t = "
       f"{(fit_b1.params['enquete'] - 1) / fit_b1.bse['enquete']:.2f}")
-pd.DataFrame(reg_rows).T.round(3)
+pd.DataFrame(reg_rows).set_index(["regressie", "regressor"]).round(3)
 ```
 
+De eerste rij van de tabel toont het teken van extrapolatie, want de enquête heeft een
+helling van $-0{,}029$ op $dp$ met $t = -3{,}7$. In de figuur gaat het links om de
+richting van de puntenwolk en rechts om het verschil tussen de zwarte OLS-lijn en de
+gestreepte lijn met helling één.
+
 ```{code-cell} ipython3
-:tags: [hide-input]
 :label: cel-fama-vs-shiller-cfo
+:tags: [hide-input]
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.4))
 year_frac = survey_panel.index.year + (survey_panel.index.month - 1) / 12
 sc = axes[0].scatter(-survey_panel["log_dp"], 100 * survey_panel["enquete"], c=year_frac,
                      cmap="viridis", s=22)
-axes[0].set_xlabel("Log prijs-dividend-ratio")
+axes[0].set_xlabel("Log prijs-dividendratio")
 axes[0].set_ylabel("Verwacht S&P 500-rendement, 12 maanden (%)")
 axes[0].set_title("CFO's verwachten meer als de markt duur is")
 fig.colorbar(sc, ax=axes[0], label="Jaar")
@@ -864,7 +906,7 @@ axes[1].plot(100 * grid, 100 * np.polyval(line, grid), color="black", lw=1.2, la
 axes[1].plot(100 * grid, 100 * (grid - ok["enquete"].mean() + ok["excess_volgend_jaar"].mean()),
              color="grey", lw=1.0, ls="--", label="rationele verwachtingen: helling 1")
 axes[1].set_xlabel("Verwacht S&P 500-rendement, 12 maanden (%)")
-axes[1].set_ylabel("Gerealiseerd log excess rendement, 12 maanden (%)")
+axes[1].set_ylabel("Gerealiseerd log overrendement, 12 maanden (%)")
 axes[1].set_title("... en die verwachting voorspelt het rendement niet")
 axes[1].legend()
 plt.show()
@@ -874,40 +916,40 @@ plt.show()
 :label: fig-fama-vs-shiller-cfo
 :width: 100%
 
-De CFO-enquête, 2001–2026. Links: de verwachting van financieel directeuren stijgt met de
-prijs-dividend-ratio, het teken van economie (b) en van Greenwood en Shleifer. Rechts: de
-helling van het latere excess rendement op de verwachting is negatief en onnauwkeurig,
-ver van de helling één die rationele verwachtingen eisen. Met ruim negentig overlappende
-kwartalen is de rechterfiguur vooral ruis: het 2%-motief aan de rendementskant.
+De CFO-enquête, 2001–2026. Links stijgt de verwachting van financieel directeuren met de
+prijs-dividendratio, het teken van economie (b) en van Greenwood en Shleifer. Rechts is de
+helling van het latere overrendement op de verwachting negatief en onnauwkeurig, ver van
+de helling één die rationele verwachtingen vragen. Ruim negentig overlappende kwartalen
+bevatten vooral ruis.
 :::
 
-De tekens kloppen met Greenwood en Shleifer. Over 2001–2011 is de correlatie tussen de
-CFO-verwachting en log(D/P) $-0{,}55$, tegen $-0{,}443$ in hun tabel 4; over de volle
-steekproef tot 2026 is ze $-0{,}41$. Een regressie van de verwachting op log(D/P) geeft
-een helling van ongeveer $-0{,}03$ ($t = -3{,}7$): een log-punt duurdere markt gaat samen
-met een drie procentpunt hogere verwachting. Economie (a) voorspelde het omgekeerde teken,
-met een helling in de orde van $+0{,}09$ tot $+0{,}13$. Het rendement van het afgelopen jaar
-komt er met een positief teken bij ($t = 1{,}4$), zoals bij extrapolatie hoort. Aan de rendementskant is
-de helling van het latere twaalfmaands excess rendement op de verwachting negatief
-($-1{,}4$, $t = -0{,}9$) en insignificant, terwijl log(D/P) in dezelfde steekproef met het juiste teken
-voorspelt. De nulhypothese $b = 1$ halen we met deze ene enquête niet formeel onderuit ($t = -1{,}6$);
-Greenwood en Shleifer, met langere reeksen en meer enquêtes, wel.
+**Geslaagd.** Beide tekens kloppen met Greenwood en Shleifer, en beide correlaties in de
+eerste tabel liggen in de verwachte band van $-0{,}3$ tot $-0{,}6$, dicht bij hun
+$-0{,}443$.
 
-Hoe sterk is dit bewijs? Aan de enquêtekant sterk: bijna honderd kwartalen en een
-$t$-waarde van $-3{,}7$, de meetbaarheid die de simulatie beloofde. Maar de simulatie liet
-ook zien wat de enquête niet uitsluit. Als financieel directeuren niet de marginale
-beleggers zijn, zegt hun extrapolatie weinig over de $\xi$ van wie de prijs zet, en de
-rationele lezing kan volhouden dat de marginale belegger (een pensioenfonds, een
-intermediair) na een crash wel hoge rendementen verwacht. Het teken van de enquête bewijst
-dat *iemand* extrapoleert, niet dat die iemand de prijs bepaalt.
+Een markt die een log-punt duurder is, gaat samen met een verwachting die drie procentpunt
+hoger ligt, terwijl economie (a) het omgekeerde teken voorspelde. Het
+rendement van het afgelopen jaar komt er met een positief teken bij, zoals bij
+extrapolatie hoort.
+
+Aan de rendementskant is de helling van het latere overrendement op de verwachting
+negatief maar niet significant, terwijl $dp$ in dezelfde steekproef met het juiste teken
+voorspelt. De nulhypothese $b = 1$ verwerpen we met deze ene enquête niet, maar Greenwood
+en Shleifer deden dat met langere reeksen en meer enquêtes wel.
+
+Aan de enquêtekant is het bewijs dus sterk, want bijna honderd kwartalen volstaan, zoals
+de simulatie beloofde. Maar de simulatie liet ook zien wat de enquête
+niet uitsluit. Als financieel directeuren niet de marginale beleggers zijn, zegt hun
+extrapolatie weinig over de $\xi$ van de beleggers die de prijs zetten. Het teken van de
+enquête bewijst dat iemand extrapoleert, maar niet dat die iemand de prijs bepaalt.
 
 ### (3) Shillers CAPE, bijgewerkt
 
 In [](#01-03-williams-ddm) regresseerden we het reële tienjaarsrendement op log CAPE over
-de hele steekproef tot 2015. Hier alleen de update, zonder vooruitkijken: we schatten de
-regressie op beginjaren tot en met 2006 (waarvan de uitkomsten in 2016 bekend waren),
-voorspellen de beginjaren 2007–2015, en maken daarna een voorspelling vanaf de huidige
-CAPE met de regressie op alle beginjaren tot en met 2016.
+de hele steekproef tot 2015, en hier werken we de jaren daarna bij zonder vooruit te
+kijken. We schatten de regressie op beginjaren tot en met 2006, waarvan de uitkomsten in
+2016 bekend waren. Daarmee voorspellen we de beginjaren 2007–2015, en voor de huidige CAPE
+gebruiken we de regressie op alle beginjaren tot en met 2016.
 
 ```{code-cell} ipython3
 december = shiller[shiller.index.month == 12][["cape", "stock_real_return_10y"]].copy()
@@ -940,98 +982,122 @@ print(f"CAPE {cape_now.index[-1]:%Y-%m}: {cape_now.iloc[-1]:.1f} -> voorspeld re
 update.round(3)
 ```
 
-De helling is negatief en ruim significant: $-0{,}075$ ($t = -6{,}6$) op beginjaren tot
-2006, $-0{,}063$ ($t = -4{,}6$) tot 2016. Maar de voorspellingen voor 2007–2015 zaten er
-gemiddeld zeven procentpunt per jaar naast, en steeds aan de lage kant: een CAPE van 26 in
-2007 beloofde reëel 2,3% per jaar en leverde 6,6% op; de CAPE van 15 in 2008 beloofde 6,3% en
-leverde 11,6%. De *rangorde* klopte (correlatie 0,52), het *niveau* niet. In september 2026
-staat de voorlopige CAPE op 40,6, na december 1999 de hoogste decemberwaarde sinds 1881,
-en de regressie voorspelt een reëel rendement van ongeveer 0,6% per jaar, met een
-residuele standaarddeviatie van 4,5 procentpunt en een steekproef die in feite uit
-dertien onafhankelijke decennia bestaat.
+**Geslaagd.** De eerste regel van de uitvoer geeft op beginjaren tot 2006 een negatieve
+helling met $|t|$ ruim boven de verwachte grens van twee, en ze blijft negatief als we de
+beginjaren tot 2016 meenemen. Niet voorzien was het niveau. Volgens de tabel lagen de
+voorspellingen voor 2007–2015 elk jaar te laag, gemiddeld zeven procentpunt per jaar. De
+rangorde van de jaren klopte wel, het niveau niet.
 
-Die fout van zeven procentpunt is zelf een test van de twee lezingen, en ze beslist niet.
-De Chicago-lezing: de discontovoet is na 2008 blijvend gedaald, samen met de reële rente,
-dus een hoge CAPE is een lage premie en geen overwaardering, en een regressie met een
-constant gemiddelde moest te laag uitkomen. De Yale-lezing: de markt is steeds duurder
-geworden omdat beleggers de hausse extrapoleerden, en de correctie is uitgesteld, niet
-afgeschaft. De lage rendementen na de CAPE-top van 1999 gaven Shiller gelijk, de hoge
+In september 2026 staat de voorlopige CAPE op 40,6. Van alle decemberwaarden sinds 1881
+lag alleen die van 1999 hoger. De regressie voorspelt daarbij een reëel rendement van
+ongeveer 0,6% per jaar, met een residuele standaarddeviatie van 4,5 procentpunt, en de
+steekproef bevat maar een dozijn onafhankelijke decennia.
+
+De fout van zeven procentpunt beslist evenmin tussen de twee lezingen. Volgens de
+Chicago-lezing is de discontovoet na 2008 samen met de reële rente blijvend gedaald. Een
+hoge CAPE is dan een lage premie en geen overwaardering, zodat een regressie met een
+constant gemiddelde te laag moest uitkomen. Volgens de Yale-lezing is de markt steeds
+duurder geworden omdat beleggers de hausse doortrokken, en is de correctie uitgesteld en
+niet afgeschaft. De lage rendementen na de CAPE-top van 1999 gaven Shiller gelijk, de hoge
 rendementen na 2009 niet.
 
 ## Wat er brak, en wat daarna kwam
 
-**Wat het debat opleverde.** Een feit dat vaststaat en een formulering die vaststaat. Het
-feit: de variatie in de prijs-dividend-ratio is variatie in verwachte rendementen. Op
-Cochrane's periode vinden we een directe lange-termijncoëfficiënt van 1,16 voor
-rendementen en $-0{,}01$ voor dividendgroei, en honderd jaar gesimuleerde data laat zien
-dat dat feit in een rationele en in een extrapolerende economie hetzelfde is. De
-formulering: elk model van de discontovoet is een keuze voor $(\tilde{\mathbb P}, \tilde m)$,
-en prijzen identificeren alleen hun product ({prf:ref}`prop-fama-vs-shiller-equivalentie`).
-Dat maakte van een ideologisch debat een meetprobleem met een duidelijke opdracht: meet
-$\xi$ of meet $m$ apart.
+**Wat het debat opleverde.** Het debat leverde een feit en een formulering op die allebei
+vaststaan. Het feit is dat de variatie in de prijs-dividendratio variatie in verwachte
+rendementen is, en onze replicatie bevestigt dat op de periode van Cochrane. De
+formulering is dat elk model van de discontovoet een keuze voor $(\tilde{\mathbb P}, \tilde m)$
+is, terwijl prijzen alleen hun product vastleggen
+({prf:ref}`prop-fama-vs-shiller-equivalentie`). Daardoor is het debat een meetprobleem
+geworden, met als opdracht $\xi$ of $m$ apart te meten.
 
-**Waar het breekt.** Op het eerste meetinstrument dat beide kampen serieus namen. Enquêtes
-geven het teken van Yale: de CFO-verwachting correleert over 2001–2011 met $-0{,}55$ met
-log(D/P) en voorspelt latere rendementen met een negatieve helling, zoals Greenwood en
-Shleifer met zes enquêtes vonden. Dat is het sterkste bewijs tegen de zuiver rationele
-lezing, want economie (a) voorspelt het tegenovergestelde teken, en de simulatie laat
-zien dat twintig à dertig jaar enquêtedata genoeg is om dat verschil te zien. Tegelijk is de
-eindterm van de decompositie tot 2025 niet meer nul, en zat de CAPE-voorspelling sinds
-2007 systematisch te laag: de feiten zelf bewegen.
+**Waar het breekt.** Het eerste meetinstrument dat beide kampen serieus namen, geeft het
+teken van Yale. De CFO-verwachting hangt significant negatief samen met $dp$, zoals
+Greenwood en Shleifer met zes enquêtes vonden, terwijl economie (a) het tegenovergestelde
+teken voorspelt. Dat verband is het sterkste bewijs tegen de zuiver rationele lezing, want
+de helling van latere rendementen op de verwachting is hier niet significant. Ondertussen
+zijn ook de getallen verschoven, want
+de eindterm van de decompositie is tot 2025 niet meer nul en de CAPE-voorspelling zat
+sinds 2007 steeds te laag.
 
-**Risico of vergissing?** Hier kiest de reeks, zoals beloofd, nog steeds niet. De
-Chicago-lezing van de enquêtes: financieel directeuren, particulieren en
-nieuwsbriefschrijvers zijn niet de marginale belegger; de prijs wordt gezet door wie de
-risico's draagt, en voor die groep zijn er geen enquêtes. Martins optiegrens
-([](#05-29-opties-crashrisico)) en de intermediairfactor ([](#05-32-intermediaries))
-zeggen dat verwachte rendementen juist in crises het hoogst zijn, zoals economie (a)
-voorspelt. De Yale-lezing: als de verwachtingen van iedereen die we kunnen vragen het
-verkeerde teken hebben, is een marginale belegger die wél rationeel is een postulaat en
-geen waarneming, en verklaart een model met extrapolatoren en een beperkte rationele
-tegenpartij dezelfde prijzen plús de enquêtes. De middenwegen van Adam, Marcet en Beutel en
-van Nagel en Xu laten zien dat de grens zelf vervaagt: beleggers die volkomen rationeel
-handelen op overtuigingen die ze uit hun ervaring leren. Welke data zou beslissen? De
-verwachtingen en de posities van de beleggers die de prijs *zetten*, op hetzelfde moment
-gemeten. Die data bestaan gedeeltelijk, in flows en bezitsgegevens, en daar ging het vak
-heen. Santa-Clara's praktijkmotief geeft beide lezingen dezelfde les: wie koopt als de
-enquêtes somber zijn, draagt ofwel beprijsd risico, ofwel profiteert hij van de vergissing
-van anderen, en in beide gevallen verdient hij alleen als hij het kan volhouden.
+**Risico of vergissing?** Ook hier kiest dit boek niet. Volgens de Chicago-lezing zijn de
+respondenten van enquêtes niet de marginale beleggers, en voor de beleggers die de
+risico's dragen zijn er geen enquêtes. Martins optiegrens en de intermediairfactor zeggen
+juist dat verwachte rendementen in crises het hoogst zijn, zoals economie (a) voorspelt.
+Volgens de Yale-lezing is een rationele marginale belegger een postulaat en geen
+waarneming zolang iedereen die we kunnen vragen het verkeerde teken heeft. Scheiden kan
+alleen met de verwachtingen en posities van de beleggers die de prijs zetten, op hetzelfde
+moment gemeten. Die data bestaan pas gedeeltelijk, in flows en bezitsgegevens.
 
-**Wat er daarna kwam.** Cochrane's rede noemde een tweede feit dat evenmin een theorie had:
-in de cross-sectie "Now we have a zoo of new factors". Hoeveel van die honderden
-voorspellers echt zijn, is de vraag van [](#06-34-factor-zoo).
+**Wat er daarna kwam.** Cochranes rede noemde ook een tweede feit zonder theorie, de
+factor zoo van honderden kenmerken die in de cross-sectie rendementen lijken te
+voorspellen. Hoeveel daarvan echt zijn, is de vraag van [](#06-34-factor-zoo).
 
 ## Oefeningen
 
 :::{exercise}
 :label: ex-fama-vs-shiller-1
 
-**Een mengsel van respondenten.** Stel dat een fractie $w$ van de enquêterespondenten
-extrapoleert zoals in economie (b), met gevoeligheid $\theta$, en dat de rest rationeel is
-zoals in economie (a). De prijzen zijn die van economie (a); de enquête is het gemiddelde
-antwoord.
+**Instap: een tragere premie.** Neem het toy-voorbeeld met hetzelfde prijspad, maar laat
+de vereiste premie in economie (a) trager naar nul terugkeren, met $\phi = 0{,}75$.
+Prijzen en dividenden blijven dus gelijk.
 
-1. Laat zien dat de helling van de enquête op $dp_t$ gelijk is aan $(1-w)K - w\theta$, en
-   geef de helling van $r_{t+1}$ op de enquête in termen van $w$, $\theta$, $K$, $V$ en
-   $\sigma_\eta^2$.
-2. Neem $K = 0{,}093$ en de CFO-helling van $-0{,}029$ uit de replicatie. Welke $w$ past
-   bij $\theta = K$? En bij $\theta = 2K$?
-3. Controleer (1) met een simulatie van 5000 steekproeven van 100 jaar voor beide
-   combinaties uit (2). Wat identificeert een enquêtehelling wel, en wat niet?
+1. Bereken $1 - \rho\phi$, de vereiste premie in jaar 0 en de helling van de enquête op
+   $dp$ in economie (a).
+2. Verandert de voorspellende helling $\hat b_r$? Bereken de helling van het rendement op
+   de enquête.
 :::
 
 :::{solution} ex-fama-vs-shiller-1
 :class: dropdown
 
+**(1)** $1 - 0{,}96 \times 0{,}75 = 0{,}28$, dus $\pi_0 = 0{,}28 \times 0{,}10 = 0{,}028$,
+en de enquête heeft een helling van 0,28 op $dp$. **(2)** De helling $\hat b_r = 1{,}34$
+verandert niet, omdat ze alleen prijzen en dividenden gebruikt. De helling van het
+rendement op de enquête wordt $1{,}34/0{,}28 = 4{,}79$.
+
+```{code-cell} ipython3
+k_slow = 1 - RHO_TOY * 0.75
+survey_slow = k_slow * dp_start
+pd.Series({"1 - rho * phi": k_slow, "premie in jaar 0": survey_slow[0],
+           "helling r op dp": ols_slope(r_toy, dp_start),
+           "helling enquête op dp": ols_slope(survey_slow, dp_start),
+           "helling r op enquête": ols_slope(r_toy, survey_slow)}).round(4)
+```
+
+Een tragere premie verandert welke premie bij hetzelfde prijspad hoort, maar niet de
+koersstatistiek. Koersen zeggen dus niets over $\phi$ of over de oorzaak, terwijl het
+teken van de enquête blijft.
+:::
+
+:::{exercise}
+:label: ex-fama-vs-shiller-2
+
+**Een mengsel van respondenten.** Een fractie $w$ van de respondenten extrapoleert zoals
+in economie (b), met gevoeligheid $\theta$. De rest is rationeel zoals in economie (a). De
+prijzen zijn die van economie (a), en de enquête is het gemiddelde antwoord.
+
+1. Laat zien dat de helling van de enquête op $dp_t$ gelijk is aan $(1-w)K - w\theta$.
+   Geef de helling van $r_{t+1}$ op de enquête in termen van $w$, $\theta$, $K$, $V$ en
+   $\sigma_\eta^2$.
+2. Neem $K = 0{,}093$ en de CFO-helling van $-0{,}029$ uit de replicatie. Welke $w$ past
+   bij $\theta = K$? En bij $\theta = 2K$?
+3. Controleer (1) met een simulatie van 5000 steekproeven van 100 jaar voor beide
+   combinaties uit (2). Wat legt een enquêtehelling wel vast, en wat niet?
+:::
+
+:::{solution} ex-fama-vs-shiller-2
+:class: dropdown
+
 **(1)** De enquête is $(1-w)(K\,dp_t) + w(-\theta\,dp_t) + \eta_t = a\,dp_t + \eta_t$ met
 $a = (1-w)K - w\theta$, dus de helling op $dp_t$ is $a$. Het objectieve verwachte
-rendement is $K\,dp_t$, dus volgens [](#eq-fama-vs-shiller-tekens) is
+rendement is $K\,dp_t$, zodat volgens [](#eq-fama-vs-shiller-tekens) geldt dat
 $\beta(r_{t+1}, \E^{s}_t) = aKV/(a^2V + \sigma_\eta^2)$.
 
-**(2)** $(1-w)K - w\theta = -0{,}029$ geeft $w = (K + 0{,}029)/(K + \theta)$. Met
-$\theta = K$: $w = 0{,}122/0{,}186 = 0{,}656$. Met $\theta = 2K$: $w = 0{,}122/0{,}279 = 0{,}437$.
+**(2)** Uit $(1-w)K - w\theta = -0{,}029$ volgt $w = (K + 0{,}029)/(K + \theta)$. Met
+$\theta = K$ is $w = 0{,}122/0{,}186 = 0{,}656$, en met $\theta = 2K$ is $w = 0{,}122/0{,}279 = 0{,}437$.
 
-**(3)**
+**(3)** De simulatie gebruikt de functies uit de simulatiesectie.
 
 ```{code-cell} ipython3
 def simulate_mixture(n, T, w, theta):
@@ -1055,23 +1121,26 @@ pd.DataFrame(rows_mix).T.round(3)
 ```
 
 Beide combinaties geven dezelfde enquêtehelling van ongeveer $-0{,}03$ en dezelfde, zwak
-negatieve helling van rendementen op de enquête. Een enquête identificeert de *netto*
-afwijking van rationele verwachtingen, niet hoeveel beleggers extrapoleren of hoe sterk:
-de gelijkwaardigheid van {prf:ref}`prop-fama-vs-shiller-equivalentie` schuift een laag op.
+negatieve helling van rendementen op de enquête. Een enquête legt dus de netto afwijking
+van rationele verwachtingen vast, maar niet hoeveel beleggers extrapoleren of hoe sterk.
+Zo keert de gelijkwaardigheid van {prf:ref}`prop-fama-vs-shiller-equivalentie` terug in de
+enquête zelf, want veel mengsels van respondenten geven hetzelfde gemiddelde antwoord.
 :::
 
 :::{exercise}
-:label: ex-fama-vs-shiller-2
+:label: ex-fama-vs-shiller-3
 
-**De decompositie op andere horizonten en steekproeven.** Herhaal de directe
-decompositie [](#eq-fama-vs-shiller-schema) met `cochrane_decomposition` voor
-$k = 10$ en $k = 20$, over 1927–2025, 1947–2009 en 1947–2025. Hoe verandert de
-eindterm $\rho^k b_{dp}^{(k)}$ met de horizon en met de steekproef, en wat betekent dat
-voor Cochrane's "none to rational bubbles"?
+**Andere horizonnen en steekproeven.** Herhaal de directe decompositie
+[](#eq-fama-vs-shiller-schema) met `cochrane_decomposition` voor $k = 10$ en $k = 20$. Doe
+dat over 1927–2025, over 1947–2009 en over 1947–2025, en kijk hoe de eindterm $\rho^k b_{dp}^{(k)}$
+met de horizon en de steekproef verandert. Wat betekent dat voor Cochranes conclusie dat
+niets van de variatie op rationele bellen wijst?
 :::
 
-:::{solution} ex-fama-vs-shiller-2
+:::{solution} ex-fama-vs-shiller-3
 :class: dropdown
+
+De cel herhaalt de decompositie voor de zes combinaties van steekproef en horizon.
 
 ```{code-cell} ipython3
 rows_k = {}
@@ -1081,30 +1150,31 @@ for first, last in [(1927, 2025), (1947, 2009), (1947, 2025)]:
 pd.DataFrame(rows_k).T.rename_axis(["steekproef", "k"]).round(3)
 ```
 
-Over 1947–2009 draagt $b_r^{(k)}$ het grootste deel: 0,89 bij $k = 10$ en 1,05 bij
-$k = 20$. Zodra de steekproef tot 2025 doorloopt, en nog meer vanaf 1927, blijft een
-groter deel van de beweging na $k$ jaar in de ratio zelf zitten: over 1927–2025 is de
-eindterm bij $k = 10$ met 0,47 even groot als $b_r^{(10)}$, en pas bij $k = 20$ zakt hij
-naar 0,20. Op een langere
-steekproef is de dividend-prijsratio persistenter, en dan valt bij een eindige horizon
-een deel van de variantie buiten beeld. Dat is geen bewijs voor een bel, maar het zwakt
-het woord "none" af: het oordeel over de eindterm hangt af van hoe ver je kijkt, en
-daarmee van de schatting van $\phi$ die in [](#04-20-voorspelbaarheid) al de zwakke
-plek was.
+Over 1947–2009 levert $b_r^{(k)}$ het grootste deel, 0,89 bij $k = 10$ en 1,05 bij $k = 20$.
+Zodra de steekproef tot 2025 doorloopt, en nog meer vanaf 1927, blijft een groter deel van
+de beweging na $k$ jaar in de ratio zelf zitten. Over 1927–2025 is de eindterm bij $k = 10$
+met 0,47 even groot als $b_r^{(10)}$, en pas bij $k = 20$ zakt hij naar 0,20.
+
+Op een langere steekproef is de dividend-prijsratio persistenter, zodat bij een eindige
+horizon een deel van de variantie buiten beeld valt. Dat is geen bewijs voor een bel, maar
+het oordeel over de eindterm hangt wel af van hoe ver we kijken. Daarmee hangt het af van
+de schatting van $\phi$, die in [](#04-20-voorspelbaarheid) al de zwakke plek was.
 :::
 
 :::{exercise}
-:label: ex-fama-vs-shiller-3
+:label: ex-fama-vs-shiller-4
 
-**Hoeveel enquêtejaren bij meer meetfout?** Herhaal de machtsberekening uit de simulatie
-voor een meetfout in de enquête van 2, 4 en 8 procentpunt. Rapporteer voor elk het
-kleinste aantal jaren uit $\{5, 10, 15, 20, 30, 50, 75, 100\}$ waarbij de enquêteregressie
-in economie (a) in minstens 80% van de steekproeven $t > 2$ geeft. Leid een vuistregel af
-voor hoe dat aantal met de meetfout schaalt.
+**Hoeveel enquêtejaren bij meer meetfout?** Herhaal de berekening van het onderscheidend
+vermogen uit de simulatie voor een meetfout in de enquête van 2, 4 en 8 procentpunt.
+Rapporteer voor elk het kleinste aantal jaren uit $\{5, 10, 15, 20, 30, 50, 75, 100\}$
+waarbij de enquêteregressie in economie (a) in minstens 80% van de steekproeven $t > 2$
+geeft. Leid een vuistregel af voor hoe dat aantal met de meetfout schaalt.
 :::
 
-:::{solution} ex-fama-vs-shiller-3
+:::{solution} ex-fama-vs-shiller-4
 :class: dropdown
+
+De cel zoekt per meetfout het kleinste aantal jaren dat de grens van 80% haalt.
 
 ```{code-cell} ipython3
 needed = {}
@@ -1118,13 +1188,15 @@ for sd_eta in (0.02, 0.04, 0.08):
 pd.Series(needed, name="jaren nodig voor 80% kans").rename_axis("meetfout enquête").to_frame()
 ```
 
-Bij 2, 4 en 8 procentpunt meetfout zijn 15, 30 en 75 jaar nodig. De standaardfout van de helling is ongeveer $\sigma_\eta/(\sqrt{T}\,\sigma_{dp,T})$, met
-$\sigma_{dp,T}$ de spreiding van $dp$ binnen een steekproef van $T$ jaar. Bij een vaste
-$\sigma_{dp,T}$ zou een verdubbeling van de meetfout vier keer zoveel jaren vragen. Omdat
-een langere steekproef ook meer van de trage beweging in $dp$ ziet, groeit
-$\sigma_{dp,T}$ mee met $T$, en is de toename in de praktijk kleiner dan een factor
-vier: een verdubbeling van de meetfout vraagt hier twee à tweeënhalf keer zoveel jaren.
-Les: bij een ruis van 8 procentpunt heeft ook een enquête driekwart eeuw nodig, en dan
-verdwijnt haar voordeel op de rendementsregressie grotendeels. Hoe goed een enquête
-meet, is daarom net zo belangrijk als de vraag of de respondenten de prijs zetten.
+Bij 2, 4 en 8 procentpunt meetfout zijn 15, 30 en 75 jaar nodig. De standaardfout van de
+helling is ongeveer $\sigma_\eta/(\sqrt{T}\,\sigma_{dp,T})$, met $\sigma_{dp,T}$ de
+spreiding van $dp$ binnen een steekproef van $T$ jaar. Bij een vaste $\sigma_{dp,T}$ zou
+een verdubbeling van de meetfout vier keer zoveel jaren vragen.
+
+Een langere steekproef ziet echter ook meer van de trage beweging in $dp$, zodat
+$\sigma_{dp,T}$ met $T$ meegroeit. Een verdubbeling van de meetfout vraagt hier daarom
+maar twee à tweeënhalf keer zoveel jaren. Bij een ruis van 8 procentpunt heeft ook een
+enquête driekwart eeuw nodig, al blijft ze twee keer zo snel als de rendementsregressie,
+die de grens van 80% pas na anderhalve eeuw haalt. Hoe goed een enquête meet, is daarom net zo belangrijk
+als de vraag of de respondenten de prijs zetten.
 :::

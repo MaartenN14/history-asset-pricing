@@ -1,0 +1,12 @@
+STATUS 05_33_fama_vs_shiller T words=5839 prose=PASS
+- Hele college: alinea's met afgebroken regels ("discontovoeten / is", "waarom / de") samengevoegd en opnieuw afgebroken; tokens ongewijzigd.
+- Overzicht: "Velen lazen dat als grap" wordt een zin met contrast (grap tegenover weergave van het vak); Nobelzin met drie namen in tweeën.
+- Intuïtie: "Wel meet een enquête ..." als losse zin opgenomen met "al"; ruiszin zonder "geen X maar Y"-draai.
+- Toy-voorbeeld: stap 3 heeft een uitgeschreven tussenstap; zin na de tabel; "Neem je" wordt "Nemen we" (geen je-vorm).
+- Theorie: "laten zien welk" wordt "wat er gemeten moet worden"; "komt de verwachting uit de intuïtie uit" wordt "Dat is het teken dat de intuïtie verwachtte"; "Dezelfde logica rangschikt" (logica als handelend onderwerp) wordt "Langs dezelfde lijn ordenen we"; "Wie koopt ... meet" wordt "Gegevens over wie koopt ... meten".
+- Theorie, Middenwegen: tabelzin zegt nu wat de tabel toont; dubbele patroonzin ingekort.
+- Simulatie: zin na de figuur herhaalt het bijschrift niet meer; waarschuwing zonder dubbel "bovendien".
+- Replicatie: openingszinnen van (1) en (2) zijn beweringen in plaats van codebeschrijving; getallenreeksen in Geslaagd-alinea's teruggebracht; "niet X, niet dat" wordt "maar niet".
+- Wat er brak: "Zo werd een ideologisch debat een meetprobleem" en "de feiten bewegen zelf" herschreven tot gewone zinnen.
+- Oefening 2: metafoor "een laag opschuift" vervangen door wat er concreet terugkeert.
+- Vaktermen niet vervangen; geen twijfelgevallen. Motiefnamen 0, "Wie"-zinnen 0, sjabloonzinnen alleen de kop.
