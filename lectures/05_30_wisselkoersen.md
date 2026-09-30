@@ -21,7 +21,7 @@ kernelspec:
 **Jaartal.** Het college loopt van de toetsen van Hansen en Hodrick (1980) en Fama (1984) tot
 de valutaportefeuilles van Barroso en Santa-Clara (2015).
 
-**Wat we al weten.** Elk prijsmodel is een uitspraak over een *stochastic discount factor*
+**Wat we al weten.** Elk prijsmodel is een uitspraak over een *stochastische discontofactor*
 (SDF, de toestandsafhankelijke weging $m$ in $p_t = \E_t[m_{t+1}x_{t+1}]$). Volgens de
 Hansen-Jagannathan-grens uit [](#03-13-equity-premium-puzzle) is die SDF minstens zo
 volatiel als de hoogste Sharpe-ratio, ongeveer een half per jaar. In
@@ -151,7 +151,9 @@ verhouding van de twee SDF's, zodat $S_{t+1}/S_t = m^*/m$ in elke toestand. Dat 
 formule die de theorie pas later afleidt, want de premieformule in stap 5 kennen we al en de
 index in stap 6 is een definitie.
 
-1. *Rentes.* $R^f = 1/\E[m] = 1/1{,}00 = 1{,}00$ en $R^{f*} = 1/\E[m^*] = 1/0{,}98 = 1{,}0204$.
+1. *Rentes.* $R^f = 1/\E[m] = 1/1{,}00 = 1{,}00$ en $R^{f*} = 1/\E[m^*] = 1/0{,}98 = 1{,}0204$
+   ($R^f$ staat in dit college kortheidshalve voor het bruto risicovrije rendement, $1 + R^f$
+   in de notatie van de setup).
    De Zwitserse $\E[m^*]$ is hier lager gekozen, zodat het land met de rustigere SDF ook de
    hogere rente heeft. Of dat in het algemeen zo is, bepaalt in de theorie de parameter $b$.
 2. *Wisselkoers.* $S_{t+1}/S_t$ is $0{,}88/0{,}80 = 1{,}10$ in de goede en $1{,}08/1{,}20 =
@@ -1193,8 +1195,10 @@ overreactie {cite}`MenkhoffSarnoSchmelingSchrimpf2012b`, crashes uit gedwongen a
 is de
 SDF in zeldzame crisistoestanden nodig, en die is met een handvol crises niet te meten.
 
-**Wat er daarna kwam.** Barroso en Santa-Clara vervingen het sorteren op één kenmerk door
-gewichten die rechtstreeks als functie van kenmerken worden geschat. Die parametrische
+**Wat er daarna kwam.** Barroso en Santa-Clara pasten op valuta's de methode toe die het
+sorteren op
+één kenmerk vervangt door gewichten die rechtstreeks als functie van kenmerken worden
+geschat. Die parametrische
 portefeuilles zijn het onderwerp van [](#05-31-portfolio-choice).
 
 ## Oefeningen
@@ -1386,7 +1390,7 @@ pd.DataFrame(rows_pp).T.round(2)
 
 In de schattingsperiode legt de optimale portefeuille het meeste gewicht op value, met een
 Sharpe-ratio van 1,02. Buiten de steekproef is dat 0,24, iets onder gelijke gewichten (0,26) en
-boven carry alleen (0,18). Dat is het effect van Michaud uit [](#01-04-markowitz), waarbij
+boven carry alleen (0,18). Dat is het bekende effect uit [](#01-04-markowitz), waarbij
 $\boldsymbol{\Sigma}_F^{-1}\boldsymbol{\mu}_F$ de schattingsfout in $\boldsymbol{\mu}_F$
 versterkt. De winst zit dus in het combineren van kenmerken met verschillend risico, en
 geschatte gewichten helpen pas als de schattingsfout wordt ingetoomd, zoals in

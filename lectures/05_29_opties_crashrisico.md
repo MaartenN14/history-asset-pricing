@@ -124,13 +124,13 @@ $\beta = 0{,}97$.
 | neer | $0{,}95$ | $0{,}33$ |
 | crash | $0{,}60$ | $0{,}02$ |
 
-**Het recept.** De *stochastic discount factor* (SDF: de toestandsafhankelijke factor
+**Het recept.** De *stochastische discontofactor* (SDF: de toestandsafhankelijke factor
 waarmee payoffs worden verdisconteerd) is $m = \beta g^{-\gamma}$, en de prijs van een
 payoff
 $x$ is $\E[mx]$. De risiconeutrale kans van toestand $s$ is $q_s = p_s m_s/\E[m]$. Die
 kansen
 tellen op tot één, en elke prijs is de verwachte payoff onder $q$ gedeeld door
-$R^f = 1/\E[m]$.
+het bruto $R^f = 1/\E[m]$ ($1 + R^f$ in de setup).
 
 **Stap 1, de SDF.** Per toestand is $m_{\text{op}} = 0{,}97/1{,}10^4 = 0{,}97/1{,}4641 = 0{,}6625$,
 $m_{\text{neer}} = 0{,}97/0{,}8145 = 1{,}1909$ en $m_{\text{crash}} = 0{,}97/0{,}1296 = 7{,}4846$.

@@ -132,7 +132,7 @@ log rendement als de ratio van vandaag, min de verdisconteerde ratio van morgen,
 dividendgroei:
 
 $$
-r_{t+1} = dp_t - \rho\, dp_{t+1} + \Delta d_{t+1}.
+\ell_{t+1} = dp_t - \rho\, dp_{t+1} + \Delta d_{t+1}.
 $$
 
 Hier is $\rho = 0{,}96$, een getal net onder één dat past bij een prijs die gemiddeld 24
@@ -337,7 +337,7 @@ gezamenlijke verdeling.
 (1) $\tilde\E_t[\tilde m\,x] = \E_t[\xi\,(m/\xi)\,x] = \E_t[m\,x]$. (2) Omdat $\xi > 0$ en
 $\E_t[\xi] = \E_t[m/\tilde m]/c_t = 1$, is $\xi$ een geldige dichtheid. Deel (1) met
 $c_t\tilde m = m/\xi$ geeft dan gelijke prijzen voor elke payoff, en voor $x = 1$ dezelfde
-$1/R^f_{t+1}$. Voor het laatste deel zijn prijzen in beide economieën dezelfde functie van
+$1/(1 + R^f_{t+1})$. Voor het laatste deel zijn prijzen in beide economieën dezelfde functie van
 de toestand. Omdat de toestand in beide de verdeling $\mathbb P$ heeft, geldt dat ook voor
 elke functie van prijzen en dividenden. $\square$
 :::
@@ -389,12 +389,13 @@ verwachting heeft in een regressie van de uitkomst helling één en intercept nu
 De enquête wijkt dus alleen van het ware verwachte rendement af als de overtuigingen
 samenhangen met het rendement zelf. De toets $b = 1$ is de nulhypothese van Greenwood en
 Shleifer. In de log-lineaire wereld van het toy-voorbeeld mogen we het bruto rendement $R$
-door het log rendement $r$ vervangen, omdat het verschil bij constante variantie alleen het
+door het log rendement $\ell$ vervangen, omdat het verschil bij constante variantie alleen
+het
 intercept raakt, en wordt [](#eq-fama-vs-shiller-enquete) een voorspelling over tekens.
 Laat $dp_t$ een AR(1) zijn
 met persistentie $\phi$ en variantie $V = \Var(dp_t)$, laat de verwachte dividendgroei
 constant zijn, en schrijf $K = 1 - \rho\phi$. In beide economieën is het objectieve
-verwachte rendement dan $\E_t[r_{t+1}] = c + K\,dp_t$.
+verwachte rendement dan $\E_t[\ell_{t+1}] = c + K\,dp_t$.
 
 De enquête is $\E^{s}_t = c' + a\,dp_t + \eta_t$, met $\eta_t$ een onafhankelijke meetfout
 met variantie $\sigma_\eta^2$. De gevoeligheid $a$ is $K$ in economie (a) en $-\theta < 0$
@@ -404,10 +405,10 @@ in economie (b). Dan geldt
 :label: eq-fama-vs-shiller-tekens
 \beta\!\left(\E^{s}_t, dp_t\right) = a,
 \qquad
-\beta\!\left(r_{t+1}, \E^{s}_t\right) = \frac{a\,K\,V}{a^2 V + \sigma_\eta^2},
+\beta\!\left(\ell_{t+1}, \E^{s}_t\right) = \frac{a\,K\,V}{a^2 V + \sigma_\eta^2},
 ```
 
-omdat $\Cov(r_{t+1}, \E^{s}_t) = \Cov(K\,dp_t, a\,dp_t) = aKV$ en $\Var(\E^{s}_t) = a^2V + \sigma_\eta^2$.
+omdat $\Cov(\ell_{t+1}, \E^{s}_t) = \Cov(K\,dp_t, a\,dp_t) = aKV$ en $\Var(\E^{s}_t) = a^2V + \sigma_\eta^2$.
 Beide hellingen hebben dus het teken van $a$, positief in de rationele economie en
 negatief in de extrapolerende. Dat is het teken dat de intuïtie verwachtte, want een
 enquête die positief met $dp$ samenhangt, hangt negatief samen met de prijs-dividendratio.
@@ -1078,7 +1079,7 @@ in economie (b), met gevoeligheid $\theta$. De rest is rationeel zoals in econom
 prijzen zijn die van economie (a), en de enquête is het gemiddelde antwoord.
 
 1. Laat zien dat de helling van de enquête op $dp_t$ gelijk is aan $(1-w)K - w\theta$.
-   Geef de helling van $r_{t+1}$ op de enquête in termen van $w$, $\theta$, $K$, $V$ en
+   Geef de helling van $\ell_{t+1}$ op de enquête in termen van $w$, $\theta$, $K$, $V$ en
    $\sigma_\eta^2$.
 2. Neem $K = 0{,}093$ en de CFO-helling van $-0{,}029$ uit de replicatie. Welke $w$ past
    bij $\theta = K$? En bij $\theta = 2K$?
@@ -1092,7 +1093,7 @@ prijzen zijn die van economie (a), en de enquête is het gemiddelde antwoord.
 **(1)** De enquête is $(1-w)(K\,dp_t) + w(-\theta\,dp_t) + \eta_t = a\,dp_t + \eta_t$ met
 $a = (1-w)K - w\theta$, dus de helling op $dp_t$ is $a$. Het objectieve verwachte
 rendement is $K\,dp_t$, zodat volgens [](#eq-fama-vs-shiller-tekens) geldt dat
-$\beta(r_{t+1}, \E^{s}_t) = aKV/(a^2V + \sigma_\eta^2)$.
+$\beta(\ell_{t+1}, \E^{s}_t) = aKV/(a^2V + \sigma_\eta^2)$.
 
 **(2)** Uit $(1-w)K - w\theta = -0{,}029$ volgt $w = (K + 0{,}029)/(K + \theta)$. Met
 $\theta = K$ is $w = 0{,}122/0{,}186 = 0{,}656$, en met $\theta = 2K$ is $w = 0{,}122/0{,}279 = 0{,}437$.

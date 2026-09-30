@@ -174,7 +174,7 @@ andere symbolen gebruikt, vertaal je naar deze tabel en zeg je dat in één zin.
 | $R_{t+1}$ | bruto rendement, $R = 1 + r$ |
 | $r_{t+1}$ | netto rendement; **kleine letter = log** waar dat is aangekondigd |
 | $R^{e}_{t+1}$ | overrendement (*excess return*), $R^{e} = R - R^{f}$ |
-| $R^{f}_{t+1}$ | bruto risicovrij rendement, bekend op $t$ |
+| $R^{f}_{t+1}$ | netto risicovrije rente, bekend op $t$; het bruto risicovrije rendement is $1 + R^{f}_{t+1}$ (zoals in de setup) |
 | $p_t$ | prijs op $t$ |
 | $x_{t+1}$ | payoff op $t+1$; $R_{t+1} = x_{t+1}/p_t$ |
 | $d_t$ | dividend |
@@ -219,14 +219,11 @@ Een vakterm blijft Engels als de Nederlandse vertaling gekunsteld is of
 niemand hem gebruikt. **De eerste keer in elke lecture:** cursief, gevolgd door
 een korte uitleg tussen haakjes.
 
-> ... de *stochastic discount factor* (SDF, stochastische disconteringsfactor:
-> de willekeurige variabele waarmee je toekomstige payoffs verdisconteert) ...
-
 > ... een *carry trade* (lenen in een valuta met lage rente, uitzetten in een
 > valuta met hoge rente) ...
 
 Daarna gewoon de Engelse term, zonder cursief. Engels blijven onder meer:
-stochastic discount factor, alpha (niet "alfa"), momentum, carry, value en size (als
+alpha (niet "alfa"), momentum, carry, value en size (als
 naam van een factor of van een reeks zoals size/BM), hedge en hedgen, spread,
 mispricing, limits of arbitrage, event study, sorts, factor zoo, smart beta,
 market maker, order flow, payoff, proxy, P&L, Greeks, smirk, implied volatility,
@@ -244,6 +241,7 @@ naam wisselt (H7).
 | afdekken, indekken, het indekken van | hedgen; "zich indekken" alleen wederkerend |
 | prijzen, geprijsd (*to price*); beprijsd | waarderen, de prijs bepalen van; met een risicopremie (of *priced*) |
 | excess rendement | overrendement |
+| stochastic discount factor (in lopende tekst) | stochastische discontofactor $m$ (SDF); de Engelse term hoogstens één keer tussen haakjes |
 | in-sample, out-of-sample | in de steekproef, buiten de steekproef |
 | efficiënte rand, "de rand" als alias | efficiënte grens (bovenste tak); de hele parabool heet minimum-variantierand, een eigen begrip |
 | equal-weighted, value-weighted | gelijkgewogen, waardegewogen |

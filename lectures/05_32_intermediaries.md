@@ -20,7 +20,7 @@ kernelspec:
 
 **Jaartal.** 2007–2017, van de run op de repomarkt tot de kapitaalratio van de *primary dealers* (de banken die rechtstreeks met de Federal Reserve in staatsobligaties handelen) als risicofactor. In die jaren verschoof de marginale belegger in de modellen van het huishouden naar de bank.
 
-**Wat we al weten.** Elk prijsmodel is een uitspraak over de stochastic discount factor, en in [](#05-31-portfolio-choice) zagen we hoe een belegger die de schattingsfout in gemiddelden serieus neemt, zijn portefeuille kiest. Uit [LTCM](#04-22-risk-management) weten we dat een gehefboomde arbitrageur kan omvallen voordat zijn gelijk uitbetaalt. Wat nog ontbrak, was de stap van één fonds naar de prijzen van alle activa.
+**Wat we al weten.** Elk prijsmodel is een uitspraak over de stochastische discontofactor, en in [](#05-31-portfolio-choice) zagen we hoe een belegger die de schattingsfout in gemiddelden serieus neemt, zijn portefeuille kiest. Uit [LTCM](#04-22-risk-management) weten we dat een gehefboomde arbitrageur kan omvallen voordat zijn gelijk uitbetaalt. Wat nog ontbrak, was de stap van één fonds naar de prijzen van alle activa.
 
 **Welke vraag staat open.** Als de marginale belegger geen huishouden is maar een gefinancierde intermediair, bepaalt de balans van die intermediair dan de verwachte rendementen, en waarom explodeerden de risicopremies in 2008?
 ```
@@ -211,7 +211,7 @@ die ratio in 2009 tot ongeveer 2%. De financieringsrestrictie luidt $E_t \ge hA_
 haircut $h$, in het toy-voorbeeld 10%.
 
 De artikelen gebruiken $m$ voor de marge of voor de inbreng van huishoudens, maar hier
-blijft $m_{t+1}$ de stochastic discount factor. Een verliesspiraal met vaste haircut is al
+blijft $m_{t+1}$ de stochastische discontofactor. Een verliesspiraal met vaste haircut is al
 afgeleid in [](#prop-risk-management-spiraal). Nieuw is dat de haircut, en daarmee de
 toegestane balans, zelf van de marktliquiditeit afhangt.
 
@@ -961,7 +961,8 @@ Op alle testactiva ligt onze GMM-schatting onder de 9% van HKM en is de $t$ iets
 binnen de verwachte afwijking valt, want zes activaklassen ontbreken en onze obligaties
 komen uit een geschatte curve. Of obligaties dezelfde prijs krijgen als aandelen, toetsen
 we niet apart, want de vijf obligatieportefeuilles zitten alleen in de gemengde testset.
-Ook de AEM-factor krijgt een positieve prijs, maar lager dan de 62% per jaar van AEM, en hij haalt
+Ook de AEM-factor krijgt een positieve prijs, maar lager dan de 62% per jaar van AEM, en
+hij haalt
 maar ruim de helft van de gepubliceerde $R^2$.
 
 De figuur zet voor drie modellen de gemiddelde rendementen uit tegen de voorspelling, en

@@ -35,7 +35,7 @@ verschillende uitspraken over hetzelfde object, en hoe vergelijken we ze dan?
 ## Overzicht
 
 Zijn het CAPM, het consumptie-CAPM, de APT en het driefactormodel verschillende theorieën?
-Nee, want elk model is een keuze voor de *stochastic discount factor* $m$ in $p = \E[mx]$
+Nee, want elk model is een keuze voor de *stochastische discontofactor* $m$ in $p = \E[mx]$
 (SDF, stochastische discontofactor: de willekeurige variabele waarmee een toekomstige
 payoff wordt verdisconteerd). Daardoor zijn alle modellen met één meetlat te vergelijken.
 In dit college:
@@ -140,7 +140,9 @@ Daaruit volgt $x^* = 1{,}35 - 0{,}40\,x_a = (0{,}75;\ 0{,}95;\ 1{,}15)$.
 
 **Stap 3: de controle.** $\E[x^*] = 0{,}1875 + 0{,}475 + 0{,}2875 = 0{,}95$ is de prijs
 van de obligatie, en $\E[x^* x_a] = 0{,}28125 + 0{,}475 + 0{,}14375 = 0{,}90$ is die van
-het aandeel. De risicovrije rente is dan $R^f = 1/\E[x^*] = 1{,}0526$.
+het aandeel. De risicovrije rente is dan $R^f = 1/\E[x^*] = 1{,}0526$ (in dit college
+staat $R^f$
+kortheidshalve voor het bruto risicovrije rendement, $1 + R^f$ in de notatie van de setup).
 
 **Stap 4: alle andere SDF's.** De vector $\varepsilon = (1;\ -1;\ 1)$ heeft
 $\E[\varepsilon] = \tfrac14 - \tfrac12 + \tfrac14 = 0$ en $\E[\varepsilon x_a] = \tfrac14 \cdot 1{,}5 - \tfrac12 + \tfrac14 \cdot 0{,}5 = 0$.

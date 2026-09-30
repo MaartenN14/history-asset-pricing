@@ -363,20 +363,22 @@ Dat levert de beperking
 
 ```{math}
 :label: eq-termijnstructuur-premies-cp
-rx^{(n)}_{t+1} = b_n\big(\boldsymbol\gamma'\mathbf f_t\big) + \varepsilon^{(n)}_{t+1},
+rx^{(n)}_{t+1} = b_n\big(\boldsymbol\omega'\mathbf f_t\big) + \varepsilon^{(n)}_{t+1},
 \qquad \frac14\sum_{n=2}^{5} b_n = 1 .
 ```
 
 Het extra rendement van elke looptijd is dus een vast veelvoud $b_n$ van één factor
-$\boldsymbol\gamma'\mathbf f_t$, en gemiddeld over de looptijden is dat veelvoud één.
+$\boldsymbol\omega'\mathbf f_t$, en gemiddeld over de looptijden is dat veelvoud één.
+Cochrane en Piazzesi schrijven $\boldsymbol\gamma$ voor deze gewichten; hier heet de vector
+$\boldsymbol\omega$, omdat $\gamma$ in dit boek de risicoaversie is.
 
 :::{prf:algorithm} De Cochrane-Piazzesi-schatting in twee stappen
 :label: alg-termijnstructuur-premies-cp
 
 1. Middel de extra rendementen over de looptijden,
    $\overline{rx}_{t+1} = \tfrac14\sum_{n=2}^{5} rx^{(n)}_{t+1}$, en regresseer met OLS op
-   alle forwards: $\overline{rx}_{t+1} = \boldsymbol\gamma'\mathbf f_t + \bar\varepsilon_{t+1}$.
-   De voorspelde waarde $\hat x_t = \hat{\boldsymbol\gamma}'\mathbf f_t$ is de
+   alle forwards: $\overline{rx}_{t+1} = \boldsymbol\omega'\mathbf f_t + \bar\varepsilon_{t+1}$.
+   De voorspelde waarde $\hat x_t = \hat{\boldsymbol\omega}'\mathbf f_t$ is de
    *return-forecasting factor* (de factor die het rendement voorspelt).
 2. Regresseer per looptijd $rx^{(n)}_{t+1}$ zonder constante op $\hat x_t$. De helling is
    $\hat b_n$, en omdat de gemiddelde helling op $\overline{rx}$ precies één is, geldt de
@@ -652,8 +654,8 @@ Let links op hoe ver de blauwe verdeling van nul af ligt, en rechts op waar de 0
 Cochrane en Piazzesi valt ten opzichte van de blauwe verdeling.
 
 ```{code-cell} ipython3
-:tags: [hide-input]
 :label: cel-termijnstructuur-premies-steekproef
+:tags: [hide-input]
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.3))
 colours = {"EH": hap.plotting.COLORS[0], "tijdvariërende premie": hap.plotting.COLORS[1]}
@@ -802,7 +804,7 @@ grootte niet.
 ### Cochrane en Piazzesi: de tent op een gladde curve
 
 Daarna schatten we de tent in twee stappen, over de periode van Cochrane en Piazzesi en over
-de hele steekproef, en zetten we de gewichten $\boldsymbol\gamma$ naast hun tabel 1.
+de hele steekproef, en zetten we de gewichten $\boldsymbol\omega$ naast hun tabel 1.
 
 ```{code-cell} ipython3
 def cochrane_piazzesi(start, end):
@@ -853,8 +855,8 @@ van het artikel naast de blauwe lijn voor dezelfde periode, en daarbij telt voor
 vorm.
 
 ```{code-cell} ipython3
-:tags: [hide-input]
 :label: cel-termijnstructuur-premies-tent
+:tags: [hide-input]
 
 fig, ax = plt.subplots(figsize=(8, 4.5))
 ax.plot(range(1, 6), [-2.14, 0.81, 3.00, 0.80, -2.08], marker="o", color="black",
@@ -867,7 +869,7 @@ ax.axhline(0, color="grey", lw=0.8)
 ax.set_xticks(range(1, 6), ["$y^{(1)}$", "$f^{(2)}$", "$f^{(3)}$", "$f^{(4)}$", "$f^{(5)}$"])
 ax.set_title("De return-forecasting factor: gewichten op de forward rates")
 ax.set_xlabel("Forward rate")
-ax.set_ylabel("Gewicht $\\gamma$")
+ax.set_ylabel("Gewicht $\\omega$")
 ax.legend()
 plt.show()
 ```
@@ -1025,8 +1027,8 @@ de tabel met de afstand zoals de gestippelde string, terwijl het eenfactormodel 
 blijft.
 
 ```{code-cell} ipython3
-:tags: [hide-input]
 :label: cel-termijnstructuur-premies-correlatie
+:tags: [hide-input]
 
 fig, axes = plt.subplots(1, 2, figsize=(11, 4.3))
 image = axes[0].imshow(corr_data.to_numpy(), vmin=0.3, vmax=1.0, cmap="viridis", origin="lower",
@@ -1189,7 +1191,7 @@ van de laatste vier maanden. Ze lazen dat als een teken van meetfouten in de pri
 1. Vervang op GSW over 1964–2003 in de eerste stap $\mathbf f_t$ door
    $\tfrac14(\mathbf f_t + \mathbf f_{t-1} + \mathbf f_{t-2} + \mathbf f_{t-3})$ en
    rapporteer de $R^2$ van het gemiddelde extra rendement, naast die zonder lags.
-2. Neem $\hat{\boldsymbol\gamma}$ uit 1964–2003 zonder lags en voorspel daarmee de
+2. Neem $\hat{\boldsymbol\omega}$ uit 1964–2003 zonder lags en voorspel daarmee de
    gemiddelde extra rendementen voor de datums 2003-01 t/m 2025-08. Bereken de $R^2$ buiten
    de steekproef tegen het gemiddelde extra rendement van 1964–2003.
 :::
