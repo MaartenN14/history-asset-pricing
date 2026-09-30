@@ -1154,7 +1154,7 @@ datamining, waarin er nooit iets was. Een daling die precies op de publicatiedat
 zou de lezingen kunnen scheiden. In onze data is die echter niet te onderscheiden van een
 algemene daling door de tijd, die zelf arbitrage of risicodeling kan zijn. Een belegger
 die in 2015 een factorfonds kocht, betaalde dus voor risico of voor een vermeend inzicht,
-en de data zeggen niet waarvoor. Santa-Clara vat het verschil vanuit de praktijk samen.
+en de data zeggen niet waarvoor. Santa-Clara vat het samen in het motto uit [](#00-00-setup).
 
 > Everything I made that lasted came from bearing risk that was priced. Everything I lost
 > came from thinking I knew something the price did not. {cite}`SantaClara2026`

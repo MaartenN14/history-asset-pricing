@@ -34,7 +34,7 @@ betekent die?
 
 ## Overzicht
 
-Blijft er voorspelbaarheid over als een machine alle bekende karakteristieken van aandelen
+Blijft er voorspelbaarheid over als een machine alle bekende kenmerken van aandelen
 tegelijk gebruikt en we de voorspellingen streng buiten de steekproef beoordelen? Ja, er
 blijft een kleine maar echte hoeveelheid over, vooral uit niet-lineaire verbanden. Zo'n
 voorspelling meet verwachte rendementen echter zonder ze te verklaren, en na kosten en na
@@ -48,20 +48,20 @@ voorspelling meet verwachte rendementen echter zonder ze te verklaren, en na kos
 - We passen de methoden toe op 212 signaalportefeuilles van Chen en Zimmermann.
 
 Het werk van Gu, Kelly en Xiu {cite}`GuKellyXiu2020`, hierna GKX, zette deze
-onderzoekslijn in gang. Ze voerden bijna honderd karakteristieken van tienduizenden
+onderzoekslijn in gang. Ze voerden bijna honderd kenmerken van tienduizenden
 Amerikaanse aandelen aan een reeks voorspelmethoden, van OLS tot netwerken met vijf
 verborgen lagen. Elke methode werd getoetst op dertig jaar data die bij het schatten niet
 waren gebruikt.
 In sommige gevallen verdubbelde een strategie op hun voorspellingen de prestatie van de
 beste regressiestrategieën. Die winst kwam volgens GKX uit niet-lineaire interacties
-tussen voorspellers, niet uit een nieuwe variabele. De vraag was daarmee niet langer welke
-karakteristiek een risicopremie heeft,
-maar hoeveel voorspelbaarheid een gedisciplineerde machine uit alle karakteristieken samen
+tussen voorspellers, niet uit een nieuwe variabele. De vraag was daarmee niet langer welk
+kenmerk een risicopremie heeft,
+maar hoeveel voorspelbaarheid een gedisciplineerde machine uit alle kenmerken samen
 haalt.
 
 Hier staat de meting het verst van de theorie af, want een voorspelling zonder model meet
 verwachte rendementen maar verklaart ze niet. Drie tegenbewegingen brachten structuur
-terug. Kelly, Pruitt en Su lazen karakteristieken als bèta's {cite}`KellyPruittSu2019`.
+terug. Kelly, Pruitt en Su lazen kenmerken als bèta's {cite}`KellyPruittSu2019`.
 Kozak, Nagel en Santosh schatten de SDF met een Bayesiaanse prior
 {cite}`KozakNagelSantosh2020`, en Martin en Nagel lieten zien dat voorspelbaarheid in de
 steekproef ook bij rationele beleggers te verwachten is {cite}`MartinNagel2022`.
@@ -70,7 +70,7 @@ eind is geen replicatie van GKX, omdat gegevens over losse aandelen niet gratis 
 
 ## Intuïtie: waarom zou dit waar zijn?
 
-Denk aan een analist die tweehonderd karakteristieken van elk aandeel kent. Het ware
+Denk aan een analist die tweehonderd kenmerken van elk aandeel kent. Het ware
 verwachte
 rendement verschilt tussen aandelen misschien een paar procent per jaar, terwijl het
 gerealiseerde rendement tien procent per maand schommelt. Schat de analist tweehonderd
@@ -94,7 +94,7 @@ Blijft er voorspelbaarheid over, dan moet nog blijken wat ze betekent. Santa-Cla
 of de voorspellingen van GKX ook werken na publicatie, op grote schaal, na kosten en als
 de machines tegen elkaar handelen, en de geschiedenis van eerdere anomalieën belooft
 weinig goeds {cite}`SantaClara2026`. Martin en Nagel waarschuwen subtieler. Beleggers die
-zelf moeten leren hoe tweehonderd karakteristieken met kasstromen samenhangen, zitten er
+zelf moeten leren hoe tweehonderd kenmerken met kasstromen samenhangen, zitten er
 elke
 periode een beetje naast, zodat rendementen achteraf voorspelbaar lijken terwijl er vooraf
 niets te verdienen viel.
@@ -103,7 +103,7 @@ We verwachten dus dat krimp de gewone regressie verslaat zodra er veel voorspell
 Bomen en netwerken winnen alleen als de wereld echte interacties bevat, en een markt die
 leert, lijkt in de steekproef voorspelbaarder dan erbuiten.
 
-## Toy-voorbeeld: vijf aandelen, twee karakteristieken, één maand
+## Toy-voorbeeld: vijf aandelen, twee kenmerken, één maand
 
 De cel hieronder laadt de pakketten die alle code van dit college gebruikt.
 
@@ -124,7 +124,7 @@ hap.plotting.setup()
 rng = np.random.default_rng(20240101)
 ```
 
-Vijf aandelen hebben twee gestandaardiseerde karakteristieken $x_1$ en $x_2$ en een
+Vijf aandelen hebben twee gestandaardiseerde kenmerken $x_1$ en $x_2$ en een
 rendement $r$ in de maand erna, in procenten en min het cross-sectionele gemiddelde. Het
 voorbeeld laat zien wat krimp en selectie met twee regressiegewichten doen.
 
@@ -138,7 +138,7 @@ voorbeeld laat zien wat krimp en selectie met twee regressiegewichten doen.
 
 De kolommen hebben gemiddelde nul en staan loodrecht op elkaar, zodat
 $\mathbf{X}'\mathbf{X} = 10\,\mathbf{I}$. Daardoor valt elke methode uiteen in twee losse
-problemen, één per karakteristiek. Voor elk probleem geldt het recept uit
+problemen, één per kenmerk. Voor elk probleem geldt het recept uit
 [](#eq-machine-learning-soft),
 
 $$
@@ -194,18 +194,18 @@ en 2 en $(1 + 0 + 4)/3 = 1{,}67$ voor de rest. Hij negeert $x_2$ en legt een tra
 een lijn legt.
 
 Ridge trekt de voorspellingen dus evenredig naar het gemiddelde en laat de rangorde
-intact, terwijl LASSO de zwakke karakteristiek weggooit en de sterke met een vast bedrag
+intact, terwijl LASSO het zwakke kenmerk weggooit en het sterke met een vast bedrag
 krimpt. Welke van de twee beter voorspelt, kan dit voorbeeld niet zeggen, omdat we de ware
 gewichten niet kennen. Ook de $R^2$ van 88% zegt het niet, want met twee gewichten op vijf
 waarnemingen meet die vooral hoe goed OLS zich aan juist deze vijf rendementen aanpast.
 
 ## Theorie
 
-Voorspellen met honderden karakteristieken is een schattingsprobleem, en de theorie volgt
+Voorspellen met honderden kenmerken is een schattingsprobleem, en de theorie volgt
 dat probleem in drie stappen. Eerst splitsen we de voorspelfout in ruis, bias en
 variantie, wat laat zien waarom de gewone regressie faalt. Daarna leiden we het recept van
 krimp af, samen met de maatstaf waarmee GKX methoden vergelijken. Ten slotte brengen drie
-modellen structuur terug, van karakteristieken als bèta's via een gekrompen SDF tot
+modellen structuur terug, van kenmerken als bèta's via een gekrompen SDF tot
 beleggers die moeten leren. De kern is dat krimp de prijs is van een zwak signaal in veel
 ruis.
 
@@ -256,7 +256,7 @@ van
 de voorspelbaarheid niets over. Zo keert de [standaardfout van 2%](#00-01-rendementen)
 terug in de cross-sectie, want verwachte rendementen zijn slecht gemeten, zodat elke vrije
 parameter voorspelkracht kost. Zo vergaat het ook de analist met tweehonderd
-karakteristieken, en
+kenmerken, en
 krimp is het antwoord.
 
 ### Krimp en selectie: ridge, LASSO en elastic net
@@ -372,10 +372,10 @@ voorspellingen van NN4 haalt ruim twee keer de Sharpe-ratio van OLS-3. Of de net
 winnen doordat de wereld interacties bevat, laat de tabel niet zien, en die vraag
 beantwoordt de simulatie.
 
-### Karakteristieken als bèta's: IPCA
+### Kenmerken als bèta's: IPCA
 
-Een karakteristiek die rendementen voorspelt, meet een bèta op een factor met een
-risicopremie of een fout in de prijs. Een model dat bèta's uit karakteristieken opbouwt,
+Een kenmerk dat rendementen voorspelt, meet een bèta op een factor met een
+risicopremie of een fout in de prijs. Een model dat bèta's uit kenmerken opbouwt,
 kan die lezingen tegen elkaar toetsen. Kelly, Pruitt en Su {cite}`KellyPruittSu2019`
 schrijven
 
@@ -388,16 +388,16 @@ r_{i,t+1} = \alpha_{i,t} + \boldsymbol{\beta}_{i,t}'\mathbf{f}_{t+1} + \varepsil
 \alpha_{i,t} = \boldsymbol{\Gamma}_\alpha'\mathbf{z}_{i,t},
 ```
 
-met $\mathbf{z}_{i,t}$ de karakteristieken inclusief een constante, $\mathbf{f}_{t+1}$ een
-handvol latente factoren en $\boldsymbol{\Gamma}_\beta$ de matrix die karakteristieken in
+met $\mathbf{z}_{i,t}$ de kenmerken inclusief een constante, $\mathbf{f}_{t+1}$ een
+handvol latente factoren en $\boldsymbol{\Gamma}_\beta$ de matrix die kenmerken in
 bèta's vertaalt. Een element van $\boldsymbol{\Gamma}_\beta$ zegt bijvoorbeeld hoeveel de
 bèta van een aandeel op de eerste factor stijgt als het bedrijf één standaarddeviatie
 kleiner is. Dit model heet *instrumented PCA* (IPCA), een analyse van hoofdcomponenten met
-bèta's die lineair in waarneembare karakteristieken zijn. De toets
-$\boldsymbol{\Gamma}_\alpha = 0$ vraagt of karakteristieken nog iets voorspellen naast hun
+bèta's die lineair in waarneembare kenmerken zijn. De toets
+$\boldsymbol{\Gamma}_\alpha = 0$ vraagt of kenmerken nog iets voorspellen naast hun
 rol in de bèta's. Volgens de auteurs verklaren een paar IPCA-factoren de cross-sectie
 beter dan bestaande factormodellen en zijn de alpha's van anomalieën klein en
-insignificant, zodat karakteristieken vooral covarianties lijken te meten.
+insignificant, zodat kenmerken vooral covarianties lijken te meten.
 
 ### De SDF krimpen: Kozak, Nagel en Santosh
 
@@ -456,7 +456,7 @@ een extra straf op de absolute waarde van $\mathbf{b}$ ontstaat een elastic net 
 SDF met weinig factoren zoekt.
 
 Zo vinden KNS dat een SDF met een handvol
-karakteristiekfactoren de gemiddelde rendementen slecht verklaart en een SDF met een paar
+kenmerkfactoren de gemiddelde rendementen slecht verklaart en een SDF met een paar
 hoofdcomponenten goed. Hun maatstaf is de cross-sectionele $R^2$ buiten de steekproef, $1 - \hat{\mathbf{e}}'\hat{\mathbf{e}}/\bar{\boldsymbol{\mu}}_2'\bar{\boldsymbol{\mu}}_2$,
 met prijsfouten $\hat{\mathbf{e}} = \bar{\boldsymbol{\mu}}_2 - \boldsymbol{\Sigma}_2\hat{\mathbf{b}}$
 uit de momenten van het testblok, zodat een waarde van 0,4 betekent dat de prijsfouten nog
@@ -465,11 +465,11 @@ uit de momenten van het testblok, zodat een waarde van 0,4 betekent dat de prijs
 ### Wat voorspelbaarheid betekent: Martin en Nagel
 
 Voorspelbaarheid in de steekproef bewijst geen inefficiëntie als beleggers de parameters
-zelf moeten leren. Een belegger die moet leren hoe honderden karakteristieken met kasstromen
+zelf moeten leren. Een belegger die moet leren hoe honderden kenmerken met kasstromen
 samenhangen, schat de waarde van een aandeel elke periode een beetje verkeerd. Achteraf
 lijken die fouten systematisch, hoewel ze vooraf niet te voorspellen waren.
 
-In een gestileerde versie van hun model hebben $N$ activa elk $J$ karakteristieken in de
+In een gestileerde versie van hun model hebben $N$ activa elk $J$ kenmerken in de
 vaste matrix $\mathbf{X}$, en betalen ze per periode $\mathbf{y}_t = \mathbf{X}\boldsymbol{\theta} + \mathbf{e}_t$,
 met $\mathbf{e}_t \sim N(0, \sigma^2\mathbf{I})$. Beleggers zijn risiconeutraal, de rente
 is nul en hun prior is $\boldsymbol{\theta} \sim N(0, (g/J)\mathbf{I})$, zodat het totale
@@ -495,7 +495,7 @@ $$
 met $\mathbf{X}'\mathbf{X} \approx N\mathbf{I}$. De breuk is het deel van het signaal dat
 de beleggers nog niet hebben geleerd. Met $t = g = \sigma = 1$ en $N = 500$ is dat $1/51 = 2\%$
 bij $J = 10$ en $1/2{,}25 = 44\%$ bij $J = 400$. Het ongeleerde deel is dus groot zodra
-het aantal karakteristieken in de buurt van het aantal activa komt.
+het aantal kenmerken in de buurt van het aantal activa komt.
 
 Een regressie achteraf vindt dan een significante helling die geen winstkans is, omdat ze
 alleen bestaat in het licht van een $\boldsymbol{\theta}$ die niemand kende. Toetsen in de
@@ -528,13 +528,13 @@ binnenkomen en een wereld met niet-lineaire termen en interacties. Onze verklein
 heeft een signaal van 2% en idiosyncratische ruis van 10% per maand, zodat
 $\sigma^2/\beta^2$ hier 25 is, minder extreem dan bij de getallen van de Theorie.
 
-- Er zijn 500 aandelen, 180 maanden, 20 persistente karakteristieken die elke maand een
+- Er zijn 500 aandelen, 180 maanden, 20 persistente kenmerken die elke maand een
   rang tussen $-1$ en $1$ krijgen, en één persistente macrovariabele $x_t$. De
-  voorspellers zijn de karakteristieken en hun producten met $x_t$, dus $P = 40$.
+  voorspellers zijn de kenmerken en hun producten met $x_t$, dus $P = 40$.
 - In de lineaire wereld is $g^\star$ een gewogen som van $c_1$, $c_2$ en $c_3x_t$, in de
   niet-lineaire van $c_1^2 - \tfrac13$, $c_1c_2$ en $\operatorname{sign}(c_3x_t)$, met
   elke term geschaald op eenheidsvariantie. Maar drie
-  van de twintig karakteristieken tellen, en de andere zeventien zijn zuivere ruis die een
+  van de twintig kenmerken tellen, en de andere zeventien zijn zuivere ruis die een
   methode moet leren negeren.
 - Maanden 1–108 zijn training, 109–144 validatie en 145–180 test.
 
@@ -694,7 +694,7 @@ verschillen tussen de goede methoden.
 ### Wanneer lijkt een lerende markt voorspelbaar?
 
 We simuleren [](#eq-machine-learning-mn) met $N = 500$ activa, $g = \sigma = 1$ en een
-oplopend aantal karakteristieken $J$, telkens voor 100 economieën. De beleggers zien één
+oplopend aantal kenmerken $J$, telkens voor 100 economieën. De beleggers zien één
 periode kasstromen voordat de vijf perioden van de econometrist beginnen. Per economie
 berekenen we de $F$-toets van een gepoolde regressie van rendementen op $\mathbf{X}$ in de
 steekproef. Daarnaast schatten twee econometristen elke periode opnieuw op de rendementen
@@ -808,7 +808,7 @@ Nagel en Santosh, Journal of Financial Economics 2020 {cite}`KozakNagelSantosh20
 **Wat.** (1) De vergelijking uit tabel 1 en 7 van GKX: de $R^2$ van [](#eq-machine-learning-oos)
 en de Sharpe-ratio van een long-short-portefeuille, voor lineaire methoden en bomen. (2) Het
 resultaat van KNS dat een gekrompen SDF met weinig hoofdcomponenten de gemiddelde rendementen
-buiten de steekproef beter verklaart dan een SDF met even weinig karakteristieken.
+buiten de steekproef beter verklaart dan een SDF met even weinig kenmerken.
 
 **Data hier.** De 212 maandelijkse long-short signaalportefeuilles van Chen en Zimmermann
 {cite}`ChenZimmermann2022`, via `hap.data.osap()`. In (1) voorspellen we vanaf 1990 welk signaal
@@ -1129,7 +1129,7 @@ Sparse SDF's, geschat op 1975–2004 en getoetst op 2005–2024. Links verklaart
 De tabel zet de uitkomsten na 2005 naast de bevindingen van KNS. Voor KNS staan er woorden
 in plaats van getallen, omdat hun data en toetsperiode van de onze verschillen.
 
-| maatstaf, 2005–2024 | KNS (eigen anomalieportefeuilles) | hier (158 signalen) |
+| maatstaf, 2005–2024 | KNS (eigen anomalieportefeuilles) | hier (158 signalen; $R^2$ als fractie) |
 |---|---|---|
 | cs-$R^2$, volledige gekrompen SDF | positief | 0,40 |
 | cs-$R^2$, ongekrompen tangentportefeuille | negatief | $-170$ |
@@ -1152,11 +1152,11 @@ onderzoeker die de SDF zoekt.
 ## Wat er brak, en wat daarna kwam
 
 **Wat machine learning verklaart.** Machine learning maakte van de factor zoo een
-meetprobleem met een oplossing. Honderden karakteristieken, in [](#06-34-factor-zoo) nog
+meetprobleem met een oplossing. Honderden kenmerken, in [](#06-34-factor-zoo) nog
 een bron van valse ontdekkingen, worden met krimp en validatie één voorspelling die buiten
 de steekproef standhoudt. Bij GKX is dat een maandelijkse $R^2$ van 0,40% tegen
 $-3{,}46\%$ voor OLS met alle voorspellers. KNS beschreven de SDF achter al die anomalieën
-met een paar hoofdcomponenten, en Kelly, Pruitt en Su lazen karakteristieken als bèta's.
+met een paar hoofdcomponenten, en Kelly, Pruitt en Su lazen kenmerken als bèta's.
 
 **Waar het breekt.** Het model breekt niet in de voorspelling maar in de vertaling naar
 winst en betekenis. Volgens Avramov, Cheng en Metzker halen strategieën op
@@ -1168,7 +1168,7 @@ efficiëntie als beleggers moeten leren.
 
 **Risico of vergissing?** Volgens de Chicago-lezing, waarin verwachte rendementen
 risicopremies zijn, meet een netwerk die premies beter omdat bèta's niet-lineair van
-karakteristieken afhangen, zoals IPCA en de prior van KNS suggereren. Volgens de
+kenmerken afhangen, zoals IPCA en de prior van KNS suggereren. Volgens de
 Yale-lezing, waarin beleggers zich vergissen en arbitrageurs dat maar deels herstellen,
 zijn de sterkste voorspellers bij GKX niet toevallig kortetermijnomkering, momentum,
 liquiditeit en volatiliteit. Daar laten *limits of arbitrage* (de kosten en risico's die
@@ -1205,7 +1205,7 @@ pd.DataFrame({"met de hand": [0.4, -0.075, 1.4, -0.1],
              index=["ridge b1", "ridge b2", "LASSO b1", "LASSO b2"]).round(4)
 ```
 
-Een grotere absolute straf laat meer karakteristieken wegvallen, de zwakste eerst, terwijl ridge alle gewichten met dezelfde factor krimpt.
+Een grotere absolute straf laat meer kenmerken wegvallen, de zwakste eerst, terwijl ridge alle gewichten met dezelfde factor krimpt.
 :::
 
 :::{exercise}
@@ -1298,13 +1298,13 @@ Bij $\sigma^2/\beta^2 = 100$ is de optimale krimpfactor $10/110 \approx 0{,}09$,
 :::{exercise}
 :label: ex-machine-learning-4
 
-**Wanneer OLS instort.** Herhaal de eerste simulatie in de lineaire wereld met OLS, ridge en LASSO, maar met $T = 48$ maanden (training 1–30, validatie 31–39, test 40–48) en 60 extra karakteristieken zonder voorspellende waarde, zodat $P = 160$. Hoe verhouden de $R^2$ van OLS, van ridge en van de populatie zich in drie replicaties, en stort OLS in elke replicatie in?
+**Wanneer OLS instort.** Herhaal de eerste simulatie in de lineaire wereld met OLS, ridge en LASSO, maar met $T = 48$ maanden (training 1–30, validatie 31–39, test 40–48) en 60 extra kenmerken zonder voorspellende waarde, zodat $P = 160$. Hoe verhouden de $R^2$ van OLS, van ridge en van de populatie zich in drie replicaties, en stort OLS in elke replicatie in?
 :::
 
 :::{solution} ex-machine-learning-4
 :class: dropdown
 
-`simulate_gkx` met `n_char=80` levert $P = 160$ voorspellers, waarvan alleen de eerste drie karakteristieken meetellen in $g^\star$.
+`simulate_gkx` met `n_char=80` levert $P = 160$ voorspellers, waarvan alleen de eerste drie kenmerken meetellen in $g^\star$.
 
 ```{code-cell} ipython3
 linear_models = {k: SIM_MODELS[k] for k in ["OLS", "ridge", "LASSO"]}
@@ -1319,5 +1319,5 @@ for rep in range(3):
 (100 * pd.DataFrame(rows).rename_axis("replicatie")).round(2)
 ```
 
-Met 15.000 trainingswaarnemingen lijkt $P/n$ klein, maar de gemeenschappelijke schok en de persistentie van de karakteristieken maken $n_{\text{eff}}$ veel kleiner. In de eerste replicatie zakt OLS naar $-16\%$ bij een populatie-$R^2$ van 5,4%, terwijl ridge $-7\%$ haalt en LASSO $-1{,}8\%$. In de andere twee blijft OLS rond nul en haalt LASSO 2,2% en 1,2%. LASSO wint omdat maar drie van de 80 karakteristieken tellen. OLS faalt dus niet door een eigenschap van rendementen, maar door de verhouding tussen parameters en effectieve informatie, hetzelfde mechanisme als bij GKX.
+Met 15.000 trainingswaarnemingen lijkt $P/n$ klein, maar de gemeenschappelijke schok en de persistentie van de kenmerken maken $n_{\text{eff}}$ veel kleiner. In de eerste replicatie zakt OLS naar $-16\%$ bij een populatie-$R^2$ van 5,4%, terwijl ridge $-7\%$ haalt en LASSO $-1{,}8\%$. In de andere twee blijft OLS rond nul en haalt LASSO 2,2% en 1,2%. LASSO wint omdat maar drie van de 80 kenmerken tellen. OLS faalt dus niet door een eigenschap van rendementen, maar door de verhouding tussen parameters en effectieve informatie, hetzelfde mechanisme als bij GKX.
 :::
